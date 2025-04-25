@@ -1,0 +1,183 @@
+{
+  "services": [
+    {
+      "img": "image/service/MVP.png",
+      "alt": "MVP",
+      "title": "MVP/ Product Development",
+      "desc": "Streamline development for rapid innovation and sustainable growth."
+    },
+    {
+      "img": "image/service/Cloud-Services.png",
+      "alt": "Cloud",
+      "title": "Cloud Services",
+      "desc": "Scalable, secure solutions for seamless business operations."
+    },
+    {
+      "img": "image/service/Cybersecurity.png",
+      "alt": "Cybersecurity",
+      "title": "Cybersecurity",
+      "desc": "Robust security solutions to safeguard data and prevent threats."
+    },
+    {
+      "img": "image/service/Web-Development.png",
+      "alt": "Web Dev",
+      "title": "Web Development",
+      "desc": "Custom solutions for high performance and scalability."
+    },
+    {
+      "img": "image/service/Mobile-App.png",
+      "alt": "Mobile",
+      "title": "Mobile App Development",
+      "desc": "Custom android and iOS apps for seamless performance."
+    },
+    {
+      "img": "image/service/Blockchain-Solutions.png",
+      "alt": "Blockchain",
+      "title": "Blockchain Solution",
+      "desc": "Secure and scalable blockchain solutions for next-gen innovation."
+    },
+    {
+      "img": "image/service/IT-Consulting.png",
+      "alt": "IT",
+      "title": "IT Consulting",
+      "desc": "Expert solutions for strategic growth and digital transformation."
+    },
+    {
+      "img": "image/service/UI-UX-Designing-1.png",
+      "alt": "UI/UX Designing",
+      "title": "UI/UX Designing",
+      "desc": "Intuitive and engaging design for seamless user experiences."
+    },
+    {
+      "img": "image/service/Data-Analytics.png",
+      "alt": "Data",
+      "title": "Data Analytics",
+      "desc": "Advanced insights for smarter decisions and business growth."
+    },
+    {
+      "img": "image/service/eCommerce.png",
+      "alt": "E-Commerce",
+      "title": "eCommerce Solutions",
+      "desc": "Scalable solutions for effortless shopping experiences and business growth."
+    },
+    {
+      "img": "image/service/Mobile-App.png",
+      "alt": "DevOps",
+      "title": "DevOps Services",
+      "desc": "Efficient solutions for automation, scalability, and accelerated delivery."
+    },
+    {
+      "img": "image/service/SEO-and-PPC-Mareting.png",
+      "alt": "Digital Marketing",
+      "title": "Digital Marketing",
+      "desc": "SEO, social media, and PPC strategies for maximum traffic, leads, and conversions."
+    }
+  ],
+  "cards": [
+    {
+      "img": "image/why/Expertise-in-Latest.png",
+      "alt": "Expertise Icon",
+      "title": "Expertise in Latest Technologies",
+      "text": "Our team stays up to date with the latest technologies and frameworks, such as React, Node.js, Python, and cloud."
+    },
+    {
+      "img": "image/why/Affordable-High.png",
+      "alt": "Affordable Icon",
+      "title": "Affordable, High-Quality Solutions",
+      "text": "We provide premium software services at competitive prices, making high-end technology accessible to businesses."
+    },
+    {
+      "img": "image/why/Cutting-Edge.png",
+      "alt": "Cutting-edge Icon",
+      "title": "Cutting-Edge Technology",
+      "text": "We leverage the latest technologies and best practices to provide innovative solutions that keep you ahead of the competition."
+    },
+    {
+      "img": "image/why/Comprehensive-Services.png",
+      "alt": "Comprehensive Icon",
+      "title": "Comprehensive Services",
+      "text": "From software development to cybersecurity, we offer a full range of IT services, making us a one-stop solution for all your technology needs."
+    },
+    {
+      "img": "image/why/Proven-Track-Record.png",
+      "alt": "Track Record Icon",
+      "title": "Proven Track Record",
+      "text": "Our history of successful projects and satisfied clients showcases our commitment to excellence and reliability in delivering results."
+    },
+    {
+      "img": "image/why/Focus-on-User.png",
+      "alt": "UX Icon",
+      "title": "Focus on User Experience (UX)",
+      "text": "We believe software should not only perform well but also provide an excellent user experience. Our UI/UX experts design intuitive, user-friendly solutions."
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Jill Cabana",
+      "title": "CEO, Jill Melissa Corp, NY",
+      "text": "I would highly recommend using Guru and for your web design needs. He offers a reliable and affordable service that never compromises quality.",
+      "image": "image/contact.jpeg"
+    },
+    {
+      "name": "Mohamed Albastaki",
+      "title": "Founder, Equilibria Digital Solutions, Bahrain",
+      "text": "Guru and his team have been an invaluable partner, working with us on multiple long-term projects with exceptional professionalism.",
+      "image": "image/contact.jpeg"
+    },
+    {
+      "name": "Andrea Houston",
+      "title": "CEO, Lead Like a Woman, USA",
+      "text": "Pawna and team was wonderful to work with! Very responsive and asking for details when needed. I really appreciated her outstanding work on this project.",
+      "image": "image/contact.jpeg"
+    }
+  ],
+  "portfolio": {
+    "all": [
+      {
+        "src": "image/portfolio/portfolio1.jpg",
+        "alt": "Bolster"
+      },
+      {
+        "src": "image/portfolio/portfolio2.png",
+        "alt": "SaaS"
+      },
+      {
+        "src": "image/portfolio/portfolio3.jpg",
+        "alt": "E-commerce"
+      },
+      {
+        "src": "image/portfolio/portfolio4.jpg",
+        "alt": "Mobile App"
+      },
+      {
+        "src": "image/portfolio/portfolio5.jpg",
+        "alt": "Web App"
+      },
+      {
+        "src": "image/portfolio/portfolio6.jpg",
+        "alt": "Blockchain"
+      },
+      {
+        "src": "image/portfolio/portfolio7.jpg",
+        "alt": "Healthcare"
+      },
+      {
+        "src": "image/portfolio/portfolio8.jpg",
+        "alt": "E-learning"
+      },
+      {
+        "src": "image/portfolio/portfolio9.jpg",
+        "alt": "Fintech"
+      },
+      {
+        "src": "image/portfolio/portfolio10.jpg",
+        "alt": "Travel"
+      },
+
+      {
+        "src": "image/portfolio/portfolio12.jpg",
+        "alt": "Social Media"
+      }
+    ]
+  }
+}

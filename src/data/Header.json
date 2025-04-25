@@ -1,0 +1,57 @@
+[
+    {
+      "label": "About Us",
+      "href": "/",
+      "dropdownKey": "about",
+      "items": [
+        { "label": "Who we are", "href": "/about-us" },
+        { "label": "Why Us Top 10 Reasons", "href": "/about-us/why-us " },
+        { "label": "How We Work", "href": "/about-us/sample-page" },
+        { "label": "Careers", "href": "/about-us/careers" },
+        { "label": "Approach", "href": "/about-us/why-us" }
+      ]
+    },
+    {
+      "label": "Services",
+      "href": "/",
+      "dropdownKey": "services",
+      "items": [
+        { "label": "Application Development", "href": "/" },
+        { "label": "Web Development", "href": "/web-developer" },
+        { "label": "Web Designing", "href": "/web-designing" },
+        { "label": "Graphic Design", "href": "/graphic-design" },
+        { "label": "Digital Marketing", "href": "/digital-marketing-3" },
+        { "label": "Content Writing", "href": "/content-writing" }
+        
+      ]
+    },
+    {
+      "label": "Solutions",
+      "href": "/",
+      "dropdownKey": "solutions",
+      "items": [
+        { "label": "DevOps", "href": "/devops" },
+        { "label": "Product Lifecycle Management", "href": "/product-lifecycle-management" },
+        { "label": "SLA Support Services", "href": "/sla-support-services" },
+        { "label": "Backup & Disaster Recovery", "href": "/backup-disaster-recovery" },
+        { "label": "Web Hosting Services", "href": "/web-hosting-services" },
+        { "label": "Software Testing", "href": "/software-testing" },
+        { "label": "Shopify Developer", "href": "/shopify-developer" },
+        { "label": "Quality Assurance Services", "href": "/quality-assurance-services" }
+      ]
+    },
+    {
+      "label": "Portfolio",
+      "href": "/portfolio"
+    },
+    {
+      "label": "Careers",
+      "href": "/careers"
+    },
+    {
+      "label": "Contact Us",
+      "href": "/contact",
+      "isButton": true
+    }
+  ]
+  

@@ -1,0 +1,71 @@
+.hero-section {
+    text-align: center;
+    padding: 6rem 1rem;
+    max-width: 1800px;
+    margin: 0 auto;
+    background: linear-gradient(to right, #85005f, #4a0457);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .hero-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .hero-section h1.fade {
+    opacity: 0;
+  }
+  
+  .cta-buttons {
+    display: inline-block;
+    background-color: white;
+    color: rgb(103, 36, 36);
+    padding: 0.75rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 1000;
+    transition: background 0.3s, transform 0.2s;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .cta-buttons:hover {
+    background-color: #f8f8f8;
+    transform: translateY(-2px);
+  }
+  
+  /* Animation for the network nodes */
+  .node {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+  }
+  
+  .line {
+    position: absolute;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+    transform-origin: left center;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0) translateX(0);
+    }
+    50% {
+      transform: translateY(-10px) translateX(5px);
+    }
+    100% {
+      transform: translateY(0) translateX(0);
+    }
+  }
+  
