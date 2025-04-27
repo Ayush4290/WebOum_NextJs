@@ -3,7 +3,7 @@ import Header from '../components/Header.js';
 import Footer from '../components/Footer.js';
 
 export const metadata = {
-  title: 'Weboum Technology',
+  title: 'Weboum ',
   description: 'Innovative software solutions for your business.',
 };
 
