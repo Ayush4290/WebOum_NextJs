@@ -35,10 +35,10 @@ export default function Footer() {
               <Link href="/portfolio">Portfolio</Link>
             </li>
             <li>
-              <Link href="/careers">Careers</Link>
+              <Link href= "/about-us/careers">Careers</Link>
             </li>
             <li>
-              <Link href="/contact">Contact</Link>
+              <Link href="/about-us/contact">Contact</Link>
             </li>
             <li>
               <Link href="/hire-developer">Hire Developer</Link>
@@ -54,22 +54,22 @@ export default function Footer() {
           <div className="underline"></div>
           <ul>
             <li>
-              <Link href="/application-developer">Application Development</Link>
+              <Link href="/services/application-developer">Application Development</Link>
             </li>
             <li>
-              <Link href="/web-designing">Web Designing</Link>
+              <Link href="/services/web-designing">Web Designing</Link>
             </li>
             <li>
-              <Link href="/web-developer">Web Development</Link>
+              <Link href="/services/web-developer">Web Development</Link>
             </li>
             <li>
-              <Link href="/digital-marketing">Digital Marketing</Link>
+              <Link href="/services/digital-marketing-3">Digital Marketing</Link>
             </li>
             <li>
-              <Link href="/graphic-design">Graphic Design</Link>
+              <Link href="/services/graphic-design">Graphic Design</Link>
             </li>
             <li>
-              <Link href="/content-writing">Content Writing</Link>
+              <Link href= "/services/content-writing">Content Writing</Link>
             </li>
             <li>
               <Link href="/all-logos">All Logos Designs</Link>

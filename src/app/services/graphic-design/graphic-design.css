@@ -1,0 +1,161 @@
+:root {
+  --font-main: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --color-bg: #ffffff;
+  --color-dark: #222;
+  --color-light-bg: #f0f7fa;
+  --color-accent: #810082;
+  --color-note-bg: #eaf4f9;
+  --color-shadow: rgba(0, 0, 0, 0.05);
+}
+
+.graphicDesign {
+  width: 100%;
+}
+
+.graphicDesign-row {
+  max-width: 1100px;
+  margin: 10px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+}
+
+.graphicDesign-text,
+.graphicDesign-text-box {
+  flex: 1 1 500px;
+}
+
+.graphicDesign-image,
+.graphicDesign-image-box {
+  flex: 1 1 350px;
+  text-align: center;
+}
+
+.graphicDesign-image img,
+.graphicDesign-image-box img {
+  max-width: 100%;
+  border-radius: 12px;
+}
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 22px;
+  margin-top: 60px;
+  margin-bottom: 16px;
+}
+
+p {
+  margin-bottom: 16px;
+}
+
+.graphicDesign-intro,
+.graphicDesign-services-section,
+.graphicDesign-offers,
+.graphicDesign-results {
+  padding: 60px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.graphicDesign-services-section.light {
+  background-color: var(--color-light-bg);
+}
+
+.graphicDesign-more-info {
+  padding-top: 40px;
+}
+
+ul {
+  padding-left: 20px;
+  margin: 16px 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+.graphicDesign-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 40px;
+  justify-content: center;
+}
+
+.graphicDesign-box {
+  flex: 1 1 45%;
+  min-width: 280px;
+  text-align: center;
+}
+
+.graphicDesign-box h4 {
+  font-size: 20px;
+  color: var(--color-accent);
+  margin-bottom: 12px;
+}
+
+.graphicDesign-box p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.graphicDesign-result-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.graphicDesign-result-card {
+  background-color: #fff;
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px var(--color-shadow);
+  flex: 1 1 300px;
+  max-width: 350px;
+  text-align: center;
+}
+
+.graphicDesign-icon {
+  font-size: 30px;
+  color: var(--color-accent);
+  margin-bottom: 16px;
+}
+
+.graphicDesign-result-card h3 {
+  font-size: 20px;
+  color: var(--color-accent);
+  margin-bottom: 12px;
+}
+
+.graphicDesign-result-card p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.graphicDesign-note {
+  margin-top: 40px;
+  font-size: 15px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .graphicDesign-row {
+    flex-direction: column;
+  }
+
+  .graphicDesign-image {
+    order: -1;
+  }
+}
