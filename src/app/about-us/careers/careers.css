@@ -54,7 +54,7 @@
 }
 
 textarea.careers-form-control {
-  resize: vertical; /* Allow vertical resizing for the textarea */
+  resize: vertical;
 }
 
 .careers-form-label {

@@ -2,6 +2,7 @@ import Days from "@/app/about-us/days/page";
 import SubHeader from "@/app/sub-header/page";
 import Image from "next/image";
 import "./sla-support-services.css";
+
 // Metadata for SEO
 export const metadata = {
   title: "SLA Support Services – WebOum Technology",
@@ -13,9 +14,9 @@ export default function SLASupportServices() {
   return (
     <>
       <SubHeader title="SLA Support Services" />
-      <div className="page">
-        <div className="section-row">
-          <div className="section-image">
+      <div className="support-page">
+        <div className="support-section-row">
+          <div className="support-section-image">
             <Image
               src="/image/SLA/SLA-1.png"
               alt="SLA Illustration"
@@ -24,8 +25,8 @@ export default function SLASupportServices() {
               priority
             />
           </div>
-          <div className="section-text">
-            <h2 className="section-heading">
+          <div className="support-section-text">
+            <h2 className="support-section-heading">
               Manage the expectations of your consumers with expert SLA Support
               Services
             </h2>
@@ -51,9 +52,9 @@ export default function SLASupportServices() {
           </div>
         </div>
 
-        <div className="section-row">
-          <div className="section-text">
-            <h2 className="section-heading">
+        <div className="support-section-row">
+          <div className="support-section-text">
+            <h2 className="support-section-heading">
               Manage the expectations of your consumers with expert SLA Support
               Services
             </h2>
@@ -64,8 +65,7 @@ export default function SLASupportServices() {
               specific requirements of your business. <br />
               Our skilled providers ensure you get top-tier support. <br />
               By hiring our skilled service providers, you stay rest assured
-              about working with the best. {""}
-              <br />
+              about working with the best. <br />
               Our specialists align end-to-end communications and managed
               agreement services to make sure that results-driven service
               agreement services are provided. <br />
@@ -76,7 +76,7 @@ export default function SLASupportServices() {
               the best value.
             </p>
           </div>
-          <div className="section-image">
+          <div className="support-section-image">
             <Image
               src="/image/SLA/SLA-2.png"
               alt="SLA Flow"
@@ -86,11 +86,11 @@ export default function SLASupportServices() {
           </div>
         </div>
 
-        <div className="benefits">
-          <h2 className="section-heading">
+        <div className="support-benefits">
+          <h2 className="support-section-heading">
             Let’s Check Out A Few Of The Many Benefits Of Our SLA Services!
           </h2>
-          <ul className="list">
+          <ul className="support-list">
             <li>The service deliverables are all described in detail. </li>
             <li>
               Our SLAs represent the promise of dealing with your ICT issues and
@@ -98,10 +98,10 @@ export default function SLASupportServices() {
             </li>
             <li>
               We run our monitoring services with the help of our out-of-hour
-              incident team.{" "}
+              incident team.
             </li>
             <li>
-              We aim to be flexible and understand the demand of a situation.{" "}
+              We aim to be flexible and understand the demand of a situation.
             </li>
             <li>
               Our team is equipped with industry leading tools and systems to
@@ -110,12 +110,12 @@ export default function SLASupportServices() {
           </ul>
         </div>
 
-        <div className="call-to-action">
-          <h2 className="section-heading">
+        <div className="support-call-to-action">
+          <h2 className="support-section-heading">
             Get Ready To Get Best In Class Scalable SLA Support Services that
             Exceed Expectation
           </h2>
-          <p className="section-p">
+          <p className="support-section-p">
             Up-to-date technology combined with industry talent helps us offer
             optimal SLA support services. <br />
             Feel free to call us anytime. WebOum Technology offers a host of

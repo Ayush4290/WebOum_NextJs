@@ -1,13 +1,14 @@
 :root {
-  --primary-color: #6a005f;
+  --primary-color: #21071e;
   --text-color: #111;
   --background-color: #fff;
   --radius: 0.5rem;
-  --spacing: 1.5rem;
-  --max-width: 1200px;
+  --spacing: 1rem;
+  --max-width: 1400px;
 }
 
-.page {
+/* General Page Styling */
+.webhosting-page {
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -15,138 +16,187 @@
   margin: 0;
 }
 
-.container {
+/* Container Common Styling */
+.webhosting-container,
+.webhosting-container-reverse {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   padding: 40px 20px;
   max-width: var(--max-width);
   margin: auto;
+  gap: 2rem;
 }
 
-.image-section {
+/* Special background for reverse container */
+.webhosting-container-reverse {
+  background-color: #f5f5f5;
+}
+
+/* Image Section */
+.webhosting-image-section,
+.webhosting-container-reverse-image {
   flex: 1 1 400px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.image-section img {
-  max-width: 100%;
+.webhosting-image-section img,
+.webhosting-container-reverse-image img {
+  width: 100%;
   height: auto;
+  border-radius: 20px;
+  object-fit: cover;
 }
 
-.text-section {
+/* Text Section */
+.webhosting-text-section {
   flex: 1 1 500px;
   padding: 20px;
 }
 
-.text-section h1 {
-  font-size: 2em;
+.webhosting-text-section h1 {
+  font-size: 2.2rem;
   margin-bottom: 20px;
-  color: #000;
+  color: var(--primary-color);
+  line-height: 1.2;
 }
 
-.text-section p {
-  font-size: 1.1em;
+.webhosting-text-section p {
+  font-size: 1.1rem;
   line-height: 1.7;
   margin-bottom: 15px;
+  color: var(--text-color);
 }
 
-.section {
-  padding: 2rem 1rem;
+/* Section Center Text */
+.webhosting-section {
+  padding: 3rem 1rem;
+  background-color: var(--background-color);
 }
 
-.center-text {
+.webhosting-center-text {
   text-align: center;
 }
 
-.hosting-type {
-  margin: 1rem 0;
-  padding-left: 1rem;
+.webhosting-center-text h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
 }
 
-.hosting-type h4 {
-  font-size: 1.25rem;
+.webhosting-center-text p {
+  max-width: 800px;
+  margin: 0 auto 1rem auto;
+}
+
+/* Apart Container */
+.webhosting-container-Apart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: #f5f5f5;
+}
+
+.webhosting-container-Apart h3 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 2rem;
+  text-align: center;
+  max-width: 900px;
+}
+
+/* Hosting Types */
+.webhosting-hosting-type {
+  background: var(--background-color);
+  padding: 20px;
+  border-radius: var(--radius);
+  max-width: 800px;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.webhosting-hosting-type h4 {
+  font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
   color: var(--primary-color);
 }
 
-.grid {
+.webhosting-hosting-type p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-color);
+}
+
+/* Grid Section */
+.webhosting-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--spacing);
-  margin: 1.5rem 0;
+  margin: 2rem 0;
 }
 
 @media (min-width: 768px) {
-  .grid {
+  .webhosting-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-.card {
+/* Card inside Grid */
+.webhosting-card {
   display: flex;
-  gap: 1rem;
-  padding: 1rem;
-  border-radius: var(--radius);
+  gap: 1.2rem;
   background: #f9f9f9;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  align-items: flex-start;
+  border-radius: var(--radius);
+  padding: 20px;
+  align-items: center;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.06);
 }
 
-.card-title {
+.webhosting-card img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.webhosting-card-title {
+  font-size: 1.2rem;
   font-weight: bold;
-  margin-bottom: 0.5rem;
   color: var(--primary-color);
+  margin-bottom: 0.5rem;
 }
 
-.bottom-note {
+/* Bottom Note */
+.webhosting-bottom-note {
   text-align: center;
-  margin-top: 2rem;
+  font-size: 1.1rem;
   font-weight: 500;
+  margin-top: 2rem;
 }
 
-.pt-20 {
+/* Padding Utilities */
+.webhosting-pt-20 {
   padding-top: 70px;
 }
 
-.pt-32 {
+.webhosting-pt-32 {
   padding-top: 130px;
 }
 
-.pb-10 {
+.webhosting-pb-10 {
   padding-bottom: 40px;
 }
 
-/* Additional styles for better layout and spacing */
-.call-to-action {
+/* Small fixes */
+.webhosting-container h1.webhosting-pb-10 {
+  font-size: 2rem;
   text-align: center;
-  margin-top: var(--spacing);
-  font-size: 1.5rem;
-  font-weight: 700;
   color: var(--primary-color);
-}
-
-.call-to-action p {
-  font-size: 1.1rem;
-  color: var(--text-color);
-  margin-bottom: 1rem;
-}
-
-.call-to-action a {
-  display: inline-block;
-  background-color: var(--primary-color);
-  color: #fff;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius);
-  text-decoration: none;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-}
-
-.call-to-action a:hover {
-  background-color: #5a0050;
+  margin-bottom: 20px;
 }

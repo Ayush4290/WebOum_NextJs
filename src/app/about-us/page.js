@@ -7,7 +7,7 @@ import "./about-us.css";
 export default function AboutUs() {
   return (
     <>
-      <SubHeader title="About Us" className="about-header" />
+      <SubHeader title="About Us" />
       <div>
         <div className="about-container">
           <div className="about-content-section">

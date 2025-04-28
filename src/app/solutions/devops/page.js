@@ -1,48 +1,38 @@
-import Days from "@/app/about-us/days/page";
 import SubHeader from "@/app/sub-header/page";
 import Image from "next/image";
 import "./devops.css";
 
 export const metadata = {
-  title: "DevOps Services – WebOum Technology",
-  description:
-    "Accelerate your DevOps journey with WebOum Technology's custom DevOps solutions, emphasizing automation, collaboration, and integration.",
+  title: "Develops Services – WebOutm Technology",
+  description: "Accelerate your DevOps journey with WebOutm Technology's services to achieve agility in software development.",
 };
 
 export default function DevOps() {
   return (
     <>
-      <SubHeader title="Devops" />
-      <h1 className="center-text">DevOps Services – WebOum Technology</h1>
-      <div className="container">
-        <div className="content">
+      <SubHeader title="DevOps" />
+      <h1 className="devops-center-text">
+        Develops Services – WebOutm Technology
+      </h1>
+      <div className="devops-container">
+        <div className="devops-content">
           <h2>
-            Accelerate Your DevOps Journey To Achieve Agility And Remove
-            Bottlenecks in Software Development!
+            Accelerate Your DevOps Journey To Achieve Agility And Remove Settlements in Software Development!
           </h2>
-          <p className="italic">
-            DevOps is a constructive disruptor that brings technologies,
-            processes, and people, together, enabling the enterprises to deliver
-            applications at their business' speed. It improves quality and
-            efficiency in software development.
+          <p className="devops-italic">
+            DevOps is a continuous structure that enjoys increasingly, proactive and rapidly repetitive, evolving the ecosystem to deliver applications or new business models. It improves quality and efficiency to improve development.
           </p>
           <p>
-            At WebOum, backed by our custom DevOps solutions, we provide
-            businesses with the ability to constantly roll out enhanced business
-            capabilities. We emphasize automation, collaboration, communication,
-            and integration.
+            As WebOutm technology has a modern device platform, we provide comprehensive tools to deliver a successful process of software delivery capabilities. We implement automation, collaboration, communication, and integration.
           </p>
           <p>
-            For several years now, our dedicated DevOps teams have obtained
-            impressive expertise in the industry. They leverage their expertise
-            to unite development and operations with the help of advanced DevOps
-            techniques.
+            For example, given a view, our dedicated services team have developed impressive expertise in the industry. They manage their expertise in both management and operations with the help of advanced leading technicians.
           </p>
         </div>
-        <div className="image-container">
+        <div className="devops-image-container">
           <Image
             src="/image/devops/devOps1.png"
-            alt="DevOps Infinity Loop"
+            alt="DevOps Process Illustration"
             width={500}
             height={300}
             priority
@@ -50,141 +40,122 @@ export default function DevOps() {
         </div>
       </div>
 
-      <div className="section">
-        <div className="image-box">
+      <div className="devops-section">
+        <div className="devops-image-box">
           <Image
             src="/image/devops/devOps2.jpg"
-            alt="DevOps Technology Illustration"
+            alt="DevOps Innovation Illustration"
             width={400}
             height={250}
           />
         </div>
-        <div className="text-box">
+        <div className="devops-text-box">
           <h2>
             Our DevOps Expertise Has Led DevOps Innovation For Many Businesses!
           </h2>
           <p>
-            We have made a huge difference in accelerating the growth of
-            numerous businesses through our DevOps advisory services and their
-            successful implementation.
+            We have made a huge difference in accelerating the growth of numerous businesses through our DevOps advisory services and their successful improvements.
           </p>
           <p>
-            We help businesses streamline and automate the entire flow of their
-            product lifecycle, right from the design, development, deployment
-            and other operations.
+            We help businesses streamline and automate the work flow of their private behavior, right from the design, development, deployment and other operations.
           </p>
           <p>
-            DevOps services provided by our professionals enable businesses to
-            enjoy the stability of operations, cut the time taken for the
-            development of applications and shorter turnaround time.
+            DevOps enables profitability for an embedded or scalable business for only 10% reliability of operation, as it is the main tool that development of applications can discover, understand time.
           </p>
         </div>
       </div>
 
-      <div className="benefits-section">
-        <h2>Avail Our DevOps Services And Enjoy Several Benefits!</h2>
-        <div className="benefits-grid">
-          <div className="benefit-item">
+      <div className="devops-benefits-section">
+        <h2>Avail Our DevelopServices And Enjoy Several Benefits!</h2>
+        <div className="devops-benefits-grid">
+          <div className="devops-benefit-item">
             <Image
               src="/image/devops/compass.png"
-              alt="Pipeline Quality Icon"
+              alt="Quality Icon"
               width={50}
               height={50}
             />
-            <div className="benefit-content">
-              <h3>Enhance the Quality of Pipeline:</h3>
+            <div className="devops-benefit-content">
+              <h3>Enhance the Quality of Projects:</h3>
               <p>
-                Automation of quality checks throughout the establishment
-                pipeline to ensure getting the right tests done at the right
-                stages. Enables accurate, rapid and actionable feedback.
+                Automates our ability to build throughput for a collaborative pipeline to reduce getting the right hand side of its high output of the environment pipeline. This enables us secure accurate, rapid and optimally feedback.
               </p>
             </div>
           </div>
 
-          <div className="benefit-item">
+          <div className="devops-benefit-item">
             <Image
               src="/image/devops/grid.png"
-              alt="Business Risk Icon"
-              width={50}
-              height={50}
-            />
-            <div className="benefit-content">
-              <h3>Continuous Assessment of Business Risks:</h3>
-              <p>
-                We build systems that can rapidly test and help our clients
-                assess all associated risks in real time with continuous
-                testing.
-              </p>
-            </div>
-          </div>
-
-          <div className="benefit-item">
-            <Image
-              src="/image/devops/pointing-right.png"
               alt="Ownership Icon"
               width={50}
               height={50}
             />
-            <div className="benefit-content">
-              <h3>Inspire Ownership:</h3>
+            <div className="devops-benefit-content">
+              <h3>Insight Ownership:</h3>
               <p>
-                DevOps helps instill a culture of ownership and commitment,
-                making agile development cycles more effective and efficient.
+                Use our DevOps Manager to achieve developed future annual of our business on establishing and creating quality monitoring and control systems.
               </p>
             </div>
           </div>
 
-          <div className="benefit-item">
+          <div className="devops-benefit-item">
+            <Image
+              src="/image/devops/pointing-right.png"
+              alt="Risk Icon"
+              width={50}
+              height={50}
+            />
+            <div className="devops-benefit-content">
+              <h3>Continuous Assessment of Business Risks:</h3>
+              <p>
+                In accordance with above, continuous testing is critical. Our business has opened up an ongoing level of sustainability for our clients across all stakeholders in zero drive.
+              </p>
+            </div>
+          </div>
+
+          <div className="devops-benefit-item">
             <Image
               src="/image/devops/simit.png"
               alt="Transformation Icon"
               width={50}
               height={50}
             />
-            <div className="benefit-content">
-              <h3>DevOps Transformation</h3>
+            <div className="devops-benefit-content">
+              <h3>DevOps Transformation:</h3>
               <p>
-                Our teams bring deep knowledge and experience to support DevOps
-                transformation and automation for innovation across industries.
+                We firmly believe that DevOps transformation is invaluable for all customer-oriented customers. Inspired as well as focusing the adequacy of our devices, we are committed to implementing our capabilities with DevOps client-centric solutions.
               </p>
             </div>
           </div>
 
-          <div className="benefit-item">
+          <div className="devops-benefit-item">
             <Image
-              src="/image/devops/copy.png"
+              src="/image/devops/consulting.png"
               alt="Consulting Icon"
               width={50}
               height={50}
             />
-            <div className="benefit-content">
-              <h3>DevOps Consulting</h3>
+            <div className="devops-benefit-content">
+              <h3>DevOps Consulting:</h3>
               <p>
-                We provide consulting services to enable IT departments to adopt
-                the best DevOps practices and improve delivery cycles.
+                Guidance further on these innovative products which enable us to realize our engagement to others. This project is based on a wider the best funding providers in the process.
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="center-text-section">
+      <div className="devops-center-text-section">
         <h1>
-          Let's Build And Deliver Software Quicker, In A Repeatable And
-          Consistent Way!
+          Let's Build And Deliver Software Quicker, In A Repeatable And Consistent Way!
         </h1>
         <p>
-          Every business understands the frequent delivery of new code and
-          features for their products, as well as compliance and security of
-          this process.
+          Every business understands the frequent delivery of new codes and features for the products on well as completion and security of this process.
         </p>
         <p>
-          Get started sooner than later to ensure rapid delivery of top-notch
-          application process. Feel free to contact us!
+          Our clients cannot then take its recent rapid delivery of top-notch application process, but this is accelerated.
         </p>
       </div>
-
-      <Days />
     </>
   );
 }

@@ -21,7 +21,6 @@
   font-style: italic;
 }
 
-/* 30 Days Support Section */
 .offer-section {
   padding: 60px 20px;
   background: url("/image/background.jpeg");
@@ -71,7 +70,7 @@
 }
 
 .about-missionrow {
-  padding-top: 20px;
+  padding-top: 100px;
   width: 100%;
 }
 
@@ -88,6 +87,7 @@
   display: block;
   margin-left: auto;
   margin-right: 0;
+  margin-bottom: 150px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -136,7 +136,7 @@
 
 /* Custom layout for two-column structure */
 .about-container {
-  margin-top: 40px;
+  margin-bottom: 10px;
   padding: 0 15px;
 }
 
@@ -145,18 +145,22 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 20px;
+  padding: 70px;
 }
 
 .about-text-column {
   flex: 1;
   min-width: 300px;
-  width: 58.3333%; /* Equivalent to Bootstrap col-lg-7 */
+  width: 58.3333%;
 }
 
 .about-image-column {
   flex: 1;
   min-width: 300px;
-  width: 41.6667%; /* Equivalent to Bootstrap col-lg-5 */
+  width: 41.6667%; /* Adjust width for image */
+
+  margin: 0 auto;
+  padding: 0% 20px;
 }
 
 .mission-vision-content {

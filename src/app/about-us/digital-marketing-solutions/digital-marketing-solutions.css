@@ -1,264 +1,309 @@
 .digital-marketing-container {
   font-family: Arial, sans-serif;
   color: #333;
-  background-color: #f5f7fa;
+  background-color: white;
   padding: 40px 20px;
+  margin: 0 auto;
+}
+
+.digital-marketing-content-box {
+  background-color: #fff;
+  padding: 30px;
+  margin-bottom: 40px;
+}
+
+.digital-marketing-hero-section {
+  text-align: center;
+}
+
+.digital-marketing-hero-section h1 {
+  font-size: 2rem;
+  color: #2a2a2a;
+  margin-bottom: 20px;
+}
+
+.digital-marketing-hero-section p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #666;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.hero-section {
-  text-align: center;
-  margin-bottom: 50px;
+.digital-marketing-benefits-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+  background-color: #f1f5f9; /* Light gray-blue like your screenshot */
+  border-radius: 10px;
+  padding: 40px 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
 }
 
-.hero-section h1 {
-  font-size: 2.5rem;
-  color: #2a2a2a;
+.digital-marketing-benefits-image {
+  flex: 1 1 45%;
+  text-align: center;
+}
+
+.digital-marketing-benefits-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.digital-marketing-benefits-content {
+  flex: 1 1 50%;
+}
+
+.digital-marketing-benefits-content h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #0f172a;
   margin-bottom: 20px;
 }
 
-.hero-section p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #666;
+.digital-marketing-benefits-content p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #334155;
+  margin-bottom: 15px;
+}
+
+.digital-marketing-social-media-section {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 50px 40px;
+  margin-bottom: 50px;
+  flex-wrap: wrap; /* Allows stacking on smaller screens */
+}
+
+.digital-marketing-social-media-content {
+  flex: 2;
+  min-width: 300px;
+}
+
+.digital-marketing-social-media-content h2 {
+  font-size: 2rem;
+  color: #1e293b;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.digital-marketing-social-media-content p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #475569;
+  margin-bottom: 18px;
+}
+
+.digital-marketing-social-media-image {
+  flex: 1;
+  text-align: center;
+  min-width: 250px;
+}
+
+.digital-marketing-social-media-image img {
+  border-radius: 12px;
+  width: 450px;
+  height: 350px;
+}
+
+.digital-marketing-services-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+  background-color: #f1f5f9; /* Light gray-blue */
+  border-radius: 12px;
+  padding: 50px 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 50px;
+}
+
+.digital-marketing-services-image {
+  flex: 1 1 40%;
+  text-align: center;
+  min-width: 280px;
+}
+
+.digital-marketing-services-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.digital-marketing-services-content {
+  flex: 1 1 55%;
+  min-width: 300px;
+}
+
+.digital-marketing-services-content h2 {
+  font-size: 2rem;
+  color: #1e293b;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.digital-marketing-services-content p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #475569;
+  margin-bottom: 18px;
+}
+
+.digital-marketing-social-media-benefits {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.digital-marketing-social-media-benefits h2 {
+  font-size: 2rem;
+  color: #0f172a;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.digital-marketing-social-media-benefits p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #475569;
   max-width: 800px;
+  margin: 0 auto 40px;
+}
+
+.digital-marketing-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-.benefits-section {
+.digital-marketing-benefit-item {
   display: flex;
-  align-items: center;
-  gap: 30px;
-  margin-bottom: 50px;
+  align-items: flex-start;
+  gap: 20px;
 }
 
-.benefits-image {
-  flex: 1;
+.digital-marketing-benefit-icon {
+  color: #6a005f;
+  font-size: 2.5rem;
+  flex-shrink: 0;
+  margin-top: 5px;
 }
 
-.benefits-image img {
-  border-radius: 10px;
-}
-
-.benefits-content {
-  flex: 2;
-}
-
-.benefits-content h2 {
-  font-size: 1.8rem;
-  color: #2a2a2a;
-  margin-bottom: 20px;
-}
-
-.benefits-content p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #666;
-  margin-bottom: 15px;
-}
-
-.social-media-section {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  margin-bottom: 50px;
-}
-
-.social-media-content {
-  flex: 2;
-}
-
-.social-media-content h2 {
-  font-size: 1.8rem;
-  color: #2a2a2a;
-  margin-bottom: 20px;
-}
-
-.social-media-content p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #666;
-  margin-bottom: 15px;
-}
-
-.social-media-image {
-  flex: 1;
-}
-
-.social-media-image img {
-  border-radius: 10px;
-}
-
-.services-section {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  margin-bottom: 50px;
-}
-
-.services-image {
-  flex: 1;
-}
-
-.services-image img {
-  border-radius: 10px;
-}
-
-.services-content {
-  flex: 2;
-}
-
-.services-content h2 {
-  font-size: 1.8rem;
-  color: #2a2a2a;
-  margin-bottom: 20px;
-}
-
-.services-content p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #666;
-  margin-bottom: 15px;
-}
-
-.social-media-benefits {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.social-media-benefits h2 {
-  font-size: 2rem;
-  color: #2a2a2a;
-  margin-bottom: 20px;
-}
-
-.social-media-benefits p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #666;
-  max-width: 800px;
-  margin: 0 auto 30px;
-}
-
-.benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-}
-
-.benefit-item {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  text-align: left;
-}
-
-.benefit-icon {
-  font-size: 2rem;
-  display: block;
+.digital-marketing-benefit-content h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #6a005f;
   margin-bottom: 10px;
 }
 
-.benefit-item h3 {
-  font-size: 1.2rem;
-  color: #2a2a2a;
-  margin-bottom: 10px;
-}
-
-.benefit-item p {
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: #666;
-}
-
-.cta-section {
-  text-align: center;
-  margin-bottom: 50px;
-}
-
-.cta-section h2 {
-  font-size: 2rem;
-  color: #2a2a2a;
-  margin-bottom: 20px;
-}
-
-.cta-section p {
+.digital-marketing-benefit-content p {
   font-size: 1rem;
   line-height: 1.6;
-  color: #666;
-  max-width: 800px;
-  margin: 0 auto 30px;
+  color: #475569;
 }
 
-.why-use-section {
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 50px;
+.digital-marketing-weboum-benefits {
+  text-align: center;
+  background: #f8fafc;
+  padding: 60px 20px;
+}
+.digital-marketing-content-box {
+  width: 100%;
+  height: 100%;
 }
 
-.why-use-section h2 {
-  font-size: 1.8rem;
-  color: #2a2a2a;
+.digital-marketing-weboum-intro {
+  max-width: 1200px;
+  margin: 0 auto 50px;
+}
+
+.digital-marketing-weboum-intro h2 {
+  font-size: 2rem;
+  color: #0f172a;
+  font-weight: 700;
   margin-bottom: 20px;
 }
 
-.why-use-section ul {
+.digital-marketing-weboum-intro p {
+  font-size: 1rem;
+  color: #475569;
+  line-height: 1.7;
+}
+
+.digital-marketing-weboum-why {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.digital-marketing-weboum-why h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 30px;
+}
+
+.digital-marketing-weboum-why ul {
   list-style: none;
   padding: 0;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
-.why-use-section ul li {
+.digital-marketing-weboum-why ul li {
   font-size: 1rem;
-  color: #666;
-  line-height: 1.6;
-  margin-bottom: 10px;
+  color: #475569;
+  text-align: left;
   position: relative;
-  padding-left: 25px;
+  padding-left: 30px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #6a005f; /* Purple underline */
+  padding-bottom: 10px;
 }
 
-.why-use-section ul li:before {
-  content: "✔";
-  color: #6a1b9a;
+.digital-marketing-check-icon {
+  color: #2563eb; /* Blue color */
+  font-weight: bold;
   position: absolute;
   left: 0;
+  top: 2px;
 }
 
-.why-use-section p {
+.digital-marketing-weboum-note p {
   font-size: 1rem;
-  line-height: 1.6;
-  color: #666;
+  color: #475569;
+  line-height: 1.7;
   margin-bottom: 20px;
 }
 
-.cta-button {
-  background-color: #6a1b9a;
+.digital-marketing-cta-button {
+  background-color: #6a005f;
   color: #fff;
   border: none;
   padding: 15px 30px;
   font-size: 1rem;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
-.cta-button:hover {
-  background-color: #4a0072;
+.digital-marketing-cta-button:hover {
+  background-color: #4a004b;
 }
 
 @media (max-width: 768px) {
-  .benefits-section,
-  .social-media-section,
-  .services-section {
+  .digital-marketing-benefits-section,
+  .digital-marketing-social-media-section,
+  .digital-marketing-services-section {
     flex-direction: column;
     text-align: center;
   }
 
-  .benefits-grid {
+  .digital-marketing-benefits-grid {
     grid-template-columns: 1fr;
   }
 }

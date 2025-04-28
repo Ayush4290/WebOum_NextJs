@@ -14,9 +14,9 @@ export default function WebHostingServices() {
   return (
     <>
       <SubHeader title="Web Hosting Services" />
-      <div className="page">
-        <div className="container">
-          <div className="image-section">
+      <div className="webhosting-page">
+        <div className="webhosting-container">
+          <div className="webhosting-image-section">
             <Image
               src="/image/WebHostingServices/web-host.jpg"
               alt="Web Hosting Illustration"
@@ -25,7 +25,7 @@ export default function WebHostingServices() {
               priority
             />
           </div>
-          <div className="text-section">
+          <div className="webhosting-text-section">
             <h1>
               Power up Your Business Website with Next Level Web Hosting
               Services
@@ -55,8 +55,8 @@ export default function WebHostingServices() {
           </div>
         </div>
 
-        <div className="container">
-          <div className="text-section">
+        <div className="webhosting-container-reverse">
+          <div className="webhosting-text-section">
             <h1>Powerful And Fastest Web Hosting!</h1>
             <p>
               A host of different plans are offered with varied features for
@@ -74,7 +74,7 @@ export default function WebHostingServices() {
               guarantee to entrust our customers with the best.
             </p>
           </div>
-          <div className="image-section pt-20">
+          <div className="webhosting-container-reverse-image">
             <Image
               src="/image/WebHostingServices/web-hosting2.jpg"
               alt="Web Hosting Illustration"
@@ -84,7 +84,7 @@ export default function WebHostingServices() {
           </div>
         </div>
 
-        <div className="section center-text">
+        <div className="webhosting-section webhosting-center-text">
           <h2>Trust your website with leading web hosting service provider</h2>
           <p>
             Our domains have best in class security and deliver leading load
@@ -97,8 +97,8 @@ export default function WebHostingServices() {
           </p>
         </div>
 
-        <div className="container">
-          <div className="image-section pt-32">
+        <div className="webhosting-container">
+          <div className="webhosting-image-section webhosting-pt-32">
             <Image
               src="/image/WebHostingServices/web-hosting3.jpg"
               alt="Web Hosting Illustration"
@@ -106,11 +106,11 @@ export default function WebHostingServices() {
               height={300}
             />
           </div>
-          <div className="text-section">
+          <div className="webhosting-text-section">
             <p>
-              <b>Shared Hosting -</b> It the cheapest type of hosting out there.
+              <b>Shared Hosting -</b> It is the cheapest type of hosting out there.
               Shared hosting is an arrangement where a number of websites are
-              kept on a similar server. Your will be making monthly payments to
+              kept on a similar server. You will be making monthly payments to
               the hosting provider and you will share the facilities with other
               users on the server.
             </p>
@@ -125,7 +125,7 @@ export default function WebHostingServices() {
               apartment.
             </p>
             <p>
-              <b>Dedicated Hosting -</b>As the name implies, this type of
+              <b>Dedicated Hosting -</b> As the name implies, this type of
               hosting gives you elite rental rights on a particular web server.
               You can avoid noisy neighbors and have full control over the
               environment. It is like living in an isolated house since you have
@@ -135,24 +135,24 @@ export default function WebHostingServices() {
           </div>
         </div>
 
-        <div className="container">
+        <div className="webhosting-container-Apart">
           <h3>
             Apart from these three, there are many other types of web hosting
-            options that have become popular such as AWS hosting ,Cloud Hosting,
+            options that have become popular such as AWS hosting, Cloud Hosting,
             Azure Hosting, Managed web hosting and more. Let’s check out a
             couple of them:
           </h3>
 
-          <div className="hosting-type">
+          <div className="webhosting-hosting-type">
             <h4>Cloud Hosting</h4>
             <p>
               Hosted by the cloud services provider (CSP), you can rent a
               “piece” of a data centre where you will run your web applications
-              on their infrastructure, comprising of distributed servers.
+              on their infrastructure, comprising distributed servers.
               <br />
               Hence, you won’t be renting from one location and one shared
               server only. You will get access to distributed resources. This
-              helps in increasing increases resource availability and reducing
+              helps in increasing resource availability and reducing
               latency issues.
               <br />
               For example, your website won’t be affected if any of the
@@ -160,7 +160,7 @@ export default function WebHostingServices() {
             </p>
           </div>
 
-          <div className="hosting-type">
+          <div className="webhosting-hosting-type">
             <h4>Azure Hosting</h4>
             <p>
               Azure web hosting is pretty popular with business owners because
@@ -174,11 +174,11 @@ export default function WebHostingServices() {
           </div>
         </div>
 
-        <div className="container">
-          <h1 className="pb-10">Every Web Hosting Plan Include</h1>
+        <div className="webhosting-container">
+          <h1 className="webhosting-pb-10">Every Web Hosting Plan Include</h1>
 
-          <div className="grid">
-            <div className="card">
+          <div className="webhosting-grid">
+            <div className="webhosting-card">
               <Image
                 src="/image/WebHostingServices/recycle.png"
                 alt="icon"
@@ -186,7 +186,7 @@ export default function WebHostingServices() {
                 height={50}
               />
               <div>
-                <div className="card-title">One-click Install:</div>
+                <div className="webhosting-card-title">One-click Install:</div>
                 <p>
                   Get the benefits of accessing over 150 apps for free to
                   effortlessly build CMS websites, blogs and forums, just by
@@ -195,7 +195,7 @@ export default function WebHostingServices() {
               </div>
             </div>
 
-            <div className="card">
+            <div className="webhosting-card">
               <Image
                 src="/image/WebHostingServices/troca.png"
                 alt="icon"
@@ -203,7 +203,9 @@ export default function WebHostingServices() {
                 height={40}
               />
               <div>
-                <div className="card-title">Easy to use Control Panel:</div>
+                <div className="webhosting-card-title">
+                  Easy to use Control Panel:
+                </div>
                 <p>
                   Comprises standardized cPanel to easily manage backups, apps
                   and security.
@@ -212,8 +214,8 @@ export default function WebHostingServices() {
             </div>
           </div>
 
-          <div className="grid">
-            <div className="card">
+          <div className="webhosting-grid">
+            <div className="webhosting-card">
               <Image
                 src="/image/WebHostingServices/recycle.png"
                 alt="icon"
@@ -221,7 +223,7 @@ export default function WebHostingServices() {
                 height={50}
               />
               <div>
-                <div className="card-title">Resources on Demand:</div>
+                <div className="webhosting-card-title">Resources on Demand:</div>
                 <p>
                   Want more resources for your website? Easily power it up by
                   seamlessly increasing the RAM/CPU, storage and I/O just in a
@@ -230,7 +232,7 @@ export default function WebHostingServices() {
               </div>
             </div>
 
-            <div className="card">
+            <div className="webhosting-card">
               <Image
                 src="/image/WebHostingServices/troca.png"
                 alt="icon"
@@ -238,7 +240,9 @@ export default function WebHostingServices() {
                 height={40}
               />
               <div>
-                <div className="card-title">24/7 Network Security:</div>
+                <div className="webhosting-card-title">
+                  24/7 Network Security:
+                </div>
                 <p>
                   Enjoy the peace of mind that your network is secured and
                   monitored 24/7.
@@ -247,8 +251,8 @@ export default function WebHostingServices() {
             </div>
           </div>
 
-          <div className="grid">
-            <div className="card">
+          <div className="webhosting-grid">
+            <div className="webhosting-card">
               <Image
                 src="/image/WebHostingServices/recycle.png"
                 alt="icon"
@@ -256,7 +260,7 @@ export default function WebHostingServices() {
                 height={50}
               />
               <div>
-                <div className="card-title">Easy Domain Name Setup:</div>
+                <div className="webhosting-card-title">Easy Domain Name Setup:</div>
                 <p>
                   Linking your website to the domain name has been easier than
                   ever with WebOum’s web hosting services.
@@ -265,9 +269,9 @@ export default function WebHostingServices() {
             </div>
           </div>
 
-          <p className="bottom-note">
+          <p className="webhosting-bottom-note">
             Be smart - Stay Smart – Choose web hosting services that are
-            reliable and backed up. Your favorites hosting is just a click away!
+            reliable and backed up. Your favorite hosting is just a click away!
           </p>
         </div>
       </div>

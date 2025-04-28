@@ -1,31 +1,48 @@
 /* DevOps Page Styles */
-.center-text {
+.devops-center-text {
   text-align: center;
-  color: blueviolet;
-  font-size: 1.8rem;
-  font-weight: 700px;
+  color: rgb(22, 18, 26);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 2rem;
 }
 
-.container {
+.devops-container {
   display: flex;
   flex-wrap: wrap;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   align-items: center;
+  gap: 2rem;
 }
 
-.content {
+.devops-content {
   flex: 1;
   min-width: 300px;
   padding-right: 30px;
 }
 
-.italic {
-  font-style: italic;
+.devops-content h2 {
+  color: #2c3e50;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-.image-container {
+.devops-italic {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.devops-content p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.devops-image-container {
   flex: 1;
   min-width: 300px;
   display: flex;
@@ -33,24 +50,27 @@
   align-items: center;
 }
 
-.image-container img {
+.devops-image-container img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Section with image on left, text on right */
-.section {
+.devops-section {
   display: flex;
   flex-wrap: wrap;
   max-width: 1200px;
   margin: 40px auto;
-  padding: 20px;
+  padding: 30px;
   background-color: #f9f9f9;
   border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  gap: 2rem;
 }
 
-.image-box {
+.devops-image-box {
   flex: 1;
   min-width: 300px;
   display: flex;
@@ -59,94 +79,160 @@
   padding: 10px;
 }
 
-.image-box img {
+.devops-image-box img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.text-box {
+.devops-text-box {
   flex: 1;
   min-width: 300px;
   padding: 10px 30px;
 }
 
+.devops-text-box h2 {
+  color: #2c3e50;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.devops-text-box p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
 /* Benefits Section */
-.benefits-section {
+.devops-benefits-section {
   max-width: 1200px;
   margin: 40px auto;
   padding: 20px;
 }
 
-.benefits-section h2 {
+.devops-benefits-section h2 {
   text-align: center;
   margin-bottom: 30px;
+  color: #2c3e50;
+  font-size: 1.8rem;
 }
 
-.benefits-grid {
+.devops-benefits-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 30px;
 }
 
-.benefit-item {
+.devops-benefit-item {
   display: flex;
   background-color: #fff;
   border-radius: 8px;
-  padding: 20px;
+  padding: 25px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  border: 1px solid #eee;
 }
 
-.benefit-item:hover {
+.devops-benefit-item:hover {
   transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.benefit-item img {
+.devops-benefit-item img {
   width: 50px;
   height: 50px;
   margin-right: 15px;
   object-fit: contain;
+  flex-shrink: 0;
 }
 
-.benefit-content {
+.devops-benefit-content {
   flex: 1;
 }
 
-.benefit-content h3 {
+.devops-benefit-content h3 {
   margin-top: 0;
-  font-size: 18px;
-  color: #333;
+  font-size: 1.1rem;
+  color: #2c3e50;
+  margin-bottom: 0.8rem;
 }
 
-.benefit-content p {
-  font-size: 14px;
+.devops-benefit-content p {
+  font-size: 0.95rem;
   color: #666;
-  line-height: 1.5;
+  line-height: 1.6;
+  margin: 0;
 }
 
 /* Final CTA section */
-.center-text-section {
+.devops-center-text-section {
   text-align: center;
   max-width: 800px;
-  margin: 40px auto;
+  margin: 60px auto;
   padding: 20px;
+}
+
+.devops-center-text-section h1 {
+  color: rgb(54, 44, 64);
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.devops-center-text-section p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .container,
-  .section {
+  .devops-container,
+  .devops-section {
     flex-direction: column;
+    padding: 20px;
   }
 
-  .content,
-  .text-box {
+  .devops-content,
+  .devops-text-box {
     padding-right: 0;
     padding-bottom: 20px;
   }
 
-  .benefits-grid {
+  .devops-benefits-grid {
     grid-template-columns: 1fr;
+  }
+
+  .devops-center-text {
+    font-size: 1.5rem;
+    padding: 0 15px;
+  }
+
+  .devops-section {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .devops-center-text {
+    font-size: 1.3rem;
+  }
+  
+  .devops-content h2,
+  .devops-text-box h2 {
+    font-size: 1.3rem;
+  }
+  
+  .devops-benefit-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .devops-benefit-item img {
+    margin-right: 0;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

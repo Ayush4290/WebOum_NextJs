@@ -24,6 +24,7 @@
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 20px;
+  color: white;
 }
 
 .samplePage_content p {
@@ -208,11 +209,15 @@
 /* Why us section styles */
 .samplePage_section-wrapper {
   padding: 60px 20px;
+  
 }
+
+
 
 .samplePage_left-content h6 {
   color: #333;
   text-transform: uppercase;
+  font-size: 1.2rem;
   font-weight: 600;
 }
 
