@@ -412,47 +412,43 @@ textarea.form-control {
 /* Testimonial Section */
 .testimonial-section {
   background-color: #6a005f;
-  color: var(--text-light);
+  color: #fff;
   text-align: center;
   padding: 60px 20px;
   width: 100%;
-  font-family: var(--font-family);
+  font-family: Arial, sans-serif;
+}
+
+.test_container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .testimonial-title {
   font-size: 36px;
   font-weight: 700;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   letter-spacing: 1px;
-  text-transform: capitalize;
-  color: var(--text-light);
+  text-transform: uppercase;
+  color: #fff;
 }
 
 .testimonial-carousel {
   display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  gap: 20px;
-  padding: 20px 0;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   justify-content: center;
-}
-
-.testimonial-carousel::-webkit-scrollbar {
-  display: none;
+  gap: 20px;
+  overflow: hidden;
+  padding: 20px 0;
 }
 
 .testimonial-item {
   flex: 0 0 calc(33.333% - 20px);
-  scroll-snap-align: center;
-  background: var(--background-white);
-  color:white;
+  background: #fff;
+  color: #333;
   border-radius: 12px;
-  box-shadow: var(--box-shadow);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 32px;
-  transition: transform var(--transition), opacity var(--transition);
+  transition: opacity 0.5s ease, transform 0.3s ease;
   min-height: 350px;
   display: flex;
   flex-direction: column;
@@ -466,7 +462,7 @@ textarea.form-control {
 
 .testimonial-item:hover {
   transform: translateY(-5px);
-  box-shadow: var(--box-shadow-hover);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
 }
 
 .testimonial-text {
@@ -474,15 +470,15 @@ textarea.form-control {
   line-height: 1.6;
   margin-bottom: 20px;
   flex-grow: 1;
-  text-align: start;
-  color: var(--secondary-color);
+  text-align: left;
+  color: #666;
 }
 
 .stars {
   color: #facc15;
   font-size: 20px;
   margin-bottom: 20px;
-  text-align: start;
+  text-align: left;
 }
 
 .testimonial-image {
@@ -498,43 +494,53 @@ textarea.form-control {
   font-weight: bold;
   font-size: 18px;
   margin-bottom: 4px;
-  text-align: start;
+  text-align: left;
+  color: #333;
 }
 
 .testimonial-position {
   font-size: 14px;
-  color: #2b2121;
+  color: #666;
   margin-top: 5px;
-  text-align: start;
+  text-align: left;
 }
 
 .testimonial-controls {
   margin-top: 30px;
-}
-
-.arrow {
-  background: var(--background-white);
-  color: #6a005f;
-  border: none;
-  font-size: 28px;
-  font-weight: bold;
-  width: 48px;
-  height: 48px;
-  margin: 0 8px;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: var(--box-shadow);
-  transition: background var(--transition), transform 0.2s;
-  display: inline-flex;
-  align-items: center;
+  display: flex;
   justify-content: center;
+  gap: 10px;
 }
 
-.arrow:hover {
-  background: #e0d0e0;
-  transform: scale(1.1);
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
+.dot.active {
+  background-color: #fff;
+}
+
+.dot:hover {
+  background-color: #e0d0e0;
+}
+
+@media (max-width: 768px) {
+  .testimonial-carousel {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .testimonial-item {
+    flex: 0 0 100%;
+    max-width: 90%;
+  }
+}
 /* CTA Section */
 .cta-section {
   padding: 64px 20px;

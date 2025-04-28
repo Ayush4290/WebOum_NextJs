@@ -5,7 +5,6 @@ import "./Header.css";
 import { BiCaretDown } from "react-icons/bi";
 import menuData from "../data/Header.json";
 import Link from "next/link";
-import Image from "next/image";
 
 const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -18,10 +17,11 @@ const Header = () => {
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
-    setActiveDropdown(null);
+    setActiveDropdown(null); // Reset dropdown when toggling mobile menu
   };
 
-  const handleMainMenuClick = (menuKey) => {
+  const handleMainMenuClick = (menuKey, event) => {
+    event.stopPropagation(); // Prevent event bubbling to document
     toggleDropdown(menuKey);
   };
 
@@ -49,13 +49,12 @@ const Header = () => {
       <header className="navbar">
         <div className="navbar-inner">
           <Link href="/" className="logo">
-            <Image
+            <img
               src="/image/logo-1.png"
               alt="Omega Prime Trading Logo"
               className="logo-img"
               width={150}
               height={50}
-              priority
             />
           </Link>
 
@@ -81,17 +80,11 @@ const Header = () => {
                   <li className="menu-dropdown" key={index}>
                     <div
                       className="menu-link"
-                      onClick={() => handleMainMenuClick(menu.dropdownKey)}
+                      onClick={(event) => handleMainMenuClick(menu.dropdownKey, event)}
                     >
                       {menu.label}
                       {menu.dropdownKey && (
-                        <BiCaretDown
-                          className="menu-icon"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            toggleDropdown(menu.dropdownKey);
-                          }}
-                        />
+                        <BiCaretDown className="menu-icon" />
                       )}
                     </div>
                     {menu.dropdownKey && (

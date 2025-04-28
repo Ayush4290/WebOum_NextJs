@@ -74,10 +74,26 @@ const Home = () => {
     }
   };
 
+  // Auto-scroll every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prevSlide) =>
+        prevSlide === homeData.testimonials.length - 1 ? 0 : prevSlide + 1
+      );
+    }, 3000);
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
+
+  const handleDotClick = (index) => {
+    setCurrentSlide(index);
+  };
+
   return (
     <div className="home-page">
       {/* Hero Section */}
       <HeroSection />
+
       {/* Our Services */}
       <section id="services" className="services-section">
         <div className="container">
@@ -157,15 +173,12 @@ const Home = () => {
                           }
                         </div>
                       </div>
+
                       {/* Top Image (Scrolling) */}
                       <div className="portfolio-item top-image">
                         <img
-                          src={
-                            homeData.portfolio.all[currentPortfolioIndex].src
-                          }
-                          alt={
-                            homeData.portfolio.all[currentPortfolioIndex].alt
-                          }
+                          src={homeData.portfolio.all[currentPortfolioIndex].src}
+                          alt={homeData.portfolio.all[currentPortfolioIndex].alt}
                           className="portfolio-image"
                           onClick={scrollPortfolioToTop}
                         />
@@ -302,7 +315,7 @@ const Home = () => {
 
       {/* Testimonials */}
       <section id="testimonials" className="testimonial-section">
-        <div className="container">
+        <div className="test_container">
           <h2 className="testimonial-title">OUR TESTIMONIALS</h2>
 
           <div className="testimonial-carousel">
@@ -315,11 +328,16 @@ const Home = () => {
               >
                 <div className="testimonial-box">
                   <p className="testimonial-text">{testimonial.text}</p>
-                  <div className="stars">★ ★ ★ ★ ★</div>
+                  <div className="stars">
+                    {"★".repeat(testimonial.stars)}
+                    {"☆".repeat(5 - testimonial.stars)}
+                  </div>
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
                     className="testimonial-image"
+                    width="72"
+                    height="72"
                   />
                   <div className="testimonial-name">{testimonial.name}</div>
                   <div className="testimonial-position">
@@ -331,12 +349,13 @@ const Home = () => {
           </div>
 
           <div className="testimonial-controls">
-            <button className="arrow" onClick={handlePrev}>
-              ‹
-            </button>
-            <button className="arrow" onClick={handleNext}>
-              ›
-            </button>
+            {homeData.testimonials.map((_, index) => (
+              <span
+                key={index}
+                className={`dot ${index === currentSlide ? "active" : ""}`}
+                onClick={() => handleDotClick(index)}
+              ></span>
+            ))}
           </div>
         </div>
       </section>
