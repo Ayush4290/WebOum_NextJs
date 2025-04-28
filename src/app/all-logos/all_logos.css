@@ -1,0 +1,46 @@
+:root {
+  --logo-grid-gap: 20px;
+  --logo-border-radius: 10px;
+  --logo-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --logo-bg: #fff;
+  --logo-img-height: 250px;
+}
+
+/* ✅ Responsive background image */
+.logo-grid {
+  background-image: url("/image/background.jpeg"); /* ✅ Use public path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns on desktop */
+  gap: var(--logo-grid-gap);
+  padding: 40px;
+  background-color: var(--logo-bg);
+  justify-items: center;
+}
+
+/* ✅ Logo images styling */
+.logo-item img {
+  width: 100%;
+  max-width: 500px;
+  height: var(--logo-img-height);
+  object-fit: contain;
+  border-radius: var(--logo-border-radius);
+  box-shadow: var(--logo-shadow);
+  background: #fff;
+  padding: 12px;
+}
+
+/* ✅ Responsive: stack logos in one column on small screens */
+@media (max-width: 768px) {
+  .logo-grid {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .logo-item img {
+    height: 200px;
+  }
+}

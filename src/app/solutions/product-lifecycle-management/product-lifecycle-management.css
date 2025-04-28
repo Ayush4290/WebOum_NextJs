@@ -1,0 +1,107 @@
+:root {
+  --primary-color: #6a005f;
+  --text-color: #333;
+  --heading-color: #111;
+  --spacing: 1.5rem;
+  --radius: 0.5rem;
+  --card-bg: #f9f9f9;
+}
+
+.page {
+  padding: var(--spacing);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
+}
+
+.section-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing);
+  margin-bottom: var(--spacing);
+}
+
+@media (min-width: 768px) {
+  .section-row {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.section-text {
+  flex: 1;
+}
+
+.section-image {
+  flex: 1;
+}
+
+.section-image img {
+  width: 100%;
+  height: 60vh;
+  border-radius: var(--radius);
+}
+
+.section-heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-bottom: 0.5rem;
+}
+
+.list {
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+  list-style-type: disc;
+}
+
+.container {
+  margin-top: var(--spacing);
+  padding: var(--spacing);
+}
+
+.main-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: var(--spacing);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing);
+  margin-top: var(--spacing);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: var(--radius);
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.card-title {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  color: var(--primary-color);
+}
+
+.bottom-note {
+  text-align: center;
+  margin-top: var(--spacing);
+}

@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import "./careers.css";
 import Days from "../days/page";
-import SubHeader from "@/app/sub-header/page"; // Adjust the import path as necessary
+import SubHeader from "@/app/sub-header/page"; 
 
 const Careers = () => {
   const [formData, setFormData] = useState({
@@ -51,7 +51,7 @@ const Careers = () => {
 
   return (
     <>
-    <SubHeader title="Careers" />
+      <SubHeader title="Careers" />
       <section className="careers-application-section">
         <div className="careers-container">
           <div className="careers-row">

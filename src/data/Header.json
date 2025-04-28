@@ -8,7 +8,12 @@
       { "label": "Why Us Top 10 Reasons", "href": "/about-us/why-us" },
       { "label": "How We Work", "href": "/about-us/sample-page" },
       { "label": "Careers", "href": "/about-us/careers" },
-      { "label": "Approach", "href": "/about-us/contact" }
+      { "label": "Approach", "href": "/about-us/contact" },
+      { "label": "Hosting Management", "href": "/about-us/hoisting" },
+      {
+        "label": "Digital Marketing Solutions",
+        "href": "/about-us/digital-marketing-solutions"
+      }
     ]
   },
   {

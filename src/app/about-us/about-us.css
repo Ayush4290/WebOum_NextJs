@@ -1,227 +1,219 @@
 :root {
-    --primary-font: "Segoe UI", sans-serif;
-    --background-color: #fff;
-    --text-color: #333;
-    --primary-color: #87005a;
-    --primary-color-hover: #6c0048;
-    --form-label-color: #555;
-    --form-bg-color: #f8f9fa;
-    --form-border-color: #ced4da;
-  }
-  
-  body {
-    font-family: var(--primary-font);
-    color: var(--text-color);
-    background-color: var(--background-color);
-    margin: 0;
-    padding: 0;
-  }
-  
-  .about-abbreviation b {
-    display: block;
-    margin-top: 20px;
-    color: #000;
-    font-weight: bold;
-  }
-  
-  .about-abbreviation i {
-    font-weight: bold;
-    font-style: italic;
-  }
-  
-  /* 30 Days Support Section */
-  .offer-section {
-    padding: 60px 20px;
-    background: url("/image/background.jpeg");
-    width: 100%;
-    background-size: cover;
-  }
-  
-  .support-text h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-  }
-  
-  .support-text h3 {
-    font-size: 2rem;
-    color: black;
-    font-weight: bold;
-  }
-  
-  .support-text ul {
-    list-style: none;
-    padding-left: 0;
-  }
-  
-  .support-text ul li::before {
-    content: "✔️ ";
-    margin-right: 5px;
-  }
-  
-  .quote-btn {
-    background-color: #0056d2;
-    color: white;
-    padding: 12px 20px;
-    font-weight: bold;
-    border-radius: 5px;
-    display: inline-block;
-    margin-top: 20px;
-    text-decoration: none;
-  }
-  
-  .quote-btn:hover {
-    background-color: #0042a7;
-    color: white;
-  }
-  
-  .about-content-section {
-    padding: 20px;
-  }
-  
-  .about-missionrow {
-    padding-top: 20px;
-    width: 100%;
-  }
-  
-  /* Image Container Specific Styles */
-  .about-image-column {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-  
-  .about-image {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin-left: auto;
-    margin-right: 0;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Top border line for header */
-  .about-header {
-    border-bottom: 4px solid var(--primary-color);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: var(--primary-color);
-    text-transform: uppercase;
-  }
-  
-  /* Chat Button */
-  .fixed-chat-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-  }
-  
-  .chat-btn {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: white;
-    border: 2px solid #eee;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .chat-btn:hover {
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-  }
-  
-  .chat-icon {
-    width: 30px;
-    height: 30px;
-  }
-  
-  /* Custom layout for two-column structure */
-  .about-container {
-    margin-top: 40px;
-    padding: 0 15px;
-  }
-  
+  --primary-font: "Segoe UI", sans-serif;
+  --background-color: #fff;
+  --text-color: #333;
+  --primary-color: #87005a;
+  --primary-color-hover: #6c0048;
+  --form-label-color: #555;
+  --form-bg-color: #f8f9fa;
+  --form-border-color: #ced4da;
+}
+
+.about-abbreviation b {
+  display: block;
+  margin-top: 20px;
+  color: #000;
+  font-weight: bold;
+}
+
+.about-abbreviation i {
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* 30 Days Support Section */
+.offer-section {
+  padding: 60px 20px;
+  background: url("/image/background.jpeg");
+  width: 100%;
+  background-size: cover;
+}
+
+.support-text h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.support-text h3 {
+  font-size: 2rem;
+  color: black;
+  font-weight: bold;
+}
+
+.support-text ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.support-text ul li::before {
+  content: "✔️ ";
+  margin-right: 5px;
+}
+
+.quote-btn {
+  background-color: #0056d2;
+  color: white;
+  padding: 12px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+.quote-btn:hover {
+  background-color: #0042a7;
+  color: white;
+}
+
+.about-content-section {
+  padding: 20px;
+}
+
+.about-missionrow {
+  padding-top: 20px;
+  width: 100%;
+}
+
+/* Image Container Specific Styles */
+.about-image-column {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.about-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Top border line for header */
+.about-header {
+  border-bottom: 4px solid var(--primary-color);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-transform: uppercase;
+}
+
+/* Chat Button */
+.fixed-chat-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.chat-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: white;
+  border: 2px solid #eee;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.chat-btn:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.chat-icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* Custom layout for two-column structure */
+.about-container {
+  margin-top: 40px;
+  padding: 0 15px;
+}
+
+.about-columns {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+
+.about-text-column {
+  flex: 1;
+  min-width: 300px;
+  width: 58.3333%; /* Equivalent to Bootstrap col-lg-7 */
+}
+
+.about-image-column {
+  flex: 1;
+  min-width: 300px;
+  width: 41.6667%; /* Equivalent to Bootstrap col-lg-5 */
+}
+
+.mission-vision-content {
+  width: 100%;
+}
+
+/* Content-specific styles */
+.about-container p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.about-abbreviation h5 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.about-missionrow h4 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.about-missionrow ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.about-missionrow ul li {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
   .about-columns {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 20px;
+    flex-direction: column;
   }
-  
-  .about-text-column {
-    flex: 1;
-    min-width: 300px;
-    width: 58.3333%; /* Equivalent to Bootstrap col-lg-7 */
-  }
-  
+
+  .about-text-column,
   .about-image-column {
-    flex: 1;
-    min-width: 300px;
-    width: 41.6667%; /* Equivalent to Bootstrap col-lg-5 */
-  }
-  
-  .mission-vision-content {
     width: 100%;
   }
-  
-  /* Content-specific styles */
-  .about-container p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
+
+  .about-image-column {
+    justify-content: center;
+    margin-top: 30px;
   }
-  
-  .about-abbreviation h5 {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 15px;
+
+  .about-image {
+    margin-left: auto;
+    margin-right: auto;
   }
-  
-  .about-missionrow h4 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    color: #000;
-  }
-  
-  .about-missionrow ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .about-missionrow ul li {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 10px;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 992px) {
-    .about-columns {
-      flex-direction: column;
-    }
-  
-    .about-text-column,
-    .about-image-column {
-      width: 100%;
-    }
-  
-    .about-image-column {
-      justify-content: center;
-      margin-top: 30px;
-    }
-  
-    .about-image {
-      margin-left: auto;
-      margin-right: auto;
-    }
-  }
+}

@@ -1,0 +1,63 @@
+:root {
+  --primary-color: #6a005f;
+  --text-color: #333;
+  --heading-color: #111;
+  --spacing: 1.5rem;
+  --radius: 0.5rem;
+}
+
+.page {
+  padding: var(--spacing);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
+}
+
+.section-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing);
+  margin-bottom: var(--spacing);
+}
+
+@media (min-width: 768px) {
+  .section-row {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.section-text {
+  flex: 1;
+}
+
+.section-image {
+  flex: 1;
+}
+
+.section-image img {
+  width: 100%;
+  border-radius: var(--radius);
+}
+
+.section-heading {
+  font-size: 1.5rem;
+  color: var(--heading-color);
+  margin-bottom: 0.5rem;
+}
+
+.list {
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+  list-style-type: disc;
+}
+
+.call-to-action {
+  text-align: center;
+  margin-top: var(--spacing);
+}
+.section-p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--text-color);
+  margin-bottom: var(--spacing);
+}

@@ -1,0 +1,152 @@
+:root {
+  --primary-color: #6a005f;
+  --text-color: #111;
+  --background-color: #fff;
+  --radius: 0.5rem;
+  --spacing: 1.5rem;
+  --max-width: 1200px;
+}
+
+.page {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+  max-width: var(--max-width);
+  margin: auto;
+}
+
+.image-section {
+  flex: 1 1 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-section img {
+  max-width: 100%;
+  height: auto;
+}
+
+.text-section {
+  flex: 1 1 500px;
+  padding: 20px;
+}
+
+.text-section h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.text-section p {
+  font-size: 1.1em;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+.section {
+  padding: 2rem 1rem;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.hosting-type {
+  margin: 1rem 0;
+  padding-left: 1rem;
+}
+
+.hosting-type h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing);
+  margin: 1.5rem 0;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: var(--radius);
+  background: #f9f9f9;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  align-items: flex-start;
+}
+
+.card-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.bottom-note {
+  text-align: center;
+  margin-top: 2rem;
+  font-weight: 500;
+}
+
+.pt-20 {
+  padding-top: 70px;
+}
+
+.pt-32 {
+  padding-top: 130px;
+}
+
+.pb-10 {
+  padding-bottom: 40px;
+}
+
+/* Additional styles for better layout and spacing */
+.call-to-action {
+  text-align: center;
+  margin-top: var(--spacing);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.call-to-action p {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.call-to-action a {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.call-to-action a:hover {
+  background-color: #5a0050;
+}

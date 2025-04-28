@@ -1,155 +1,153 @@
 :root {
-    --primary-color: #aa00aa;
-    --primary-hover: #6c0048;
-    --button-bg: #87005a;
-    --quote-bg: #0056d2;
-    --quote-hover: #0042a7;
-    --text-color: #333;
-    --light-text: #666;
-    --bg-white: #fff;
-  }
-  
-  .offer-section {
-    padding: 60px 20px;
-    background: url("/image/background.jpeg") no-repeat center center/cover;
-    width: 100%;
-  }
-  
+  --primary-color: #aa00aa;
+  --primary-hover: #6c0048;
+  --button-bg: #87005a;
+  --quote-bg: #0056d2;
+  --quote-hover: #0042a7;
+  --text-color: #333;
+  --light-text: #666;
+  --bg-white: #fff;
+}
+
+.offer-section {
+  padding: 60px 20px;
+  background: url("/image/background.jpeg") no-repeat center center/cover;
+  width: 100%;
+}
+
+.offer-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.support-text {
+  flex: 1 1 50%;
+}
+
+.support-text h6 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.support-text h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.support-text h3 {
+  font-size: 2rem;
+  color: black;
+  font-weight: bold;
+}
+
+.support-text ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 16px;
+}
+
+.support-text ul li::before {
+  content: "✔️ ";
+  margin-right: 5px;
+}
+
+.support-text ul li {
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.quote-btn {
+  background-color: var(--quote-bg);
+  color: white;
+  padding: 12px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+.quote-btn:hover {
+  background-color: var(--quote-hover);
+  color: white;
+}
+
+.image-container {
+  flex: 1 1 40%;
+  text-align: center;
+}
+
+.image-container img {
+  max-height: 500px;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* CONNECT SECTION */
+
+.DigitalMarketing-connect-section {
+  background-color: #430243;
+  color: white;
+  padding: 40px 24px;
+}
+
+.DigitalMarketing-connect-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+}
+
+.DigitalMarketing-connect-container h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.DigitalMarketing-connect-container p {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.DigitalMarketing-connect-container a {
+  background-color: #0066cc;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 16px 24px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.DigitalMarketing-connect-container a:hover {
+  background-color: #0055aa;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
   .offer-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-  }
-  
-  .support-text {
-    flex: 1 1 50%;
-  }
-  
-  .support-text h6 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--primary-color);
-  }
-  
-  .support-text h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-  }
-  
-  .support-text h3 {
-    font-size: 2rem;
-    color: black;
-    font-weight: bold;
-  }
-  
-  .support-text ul {
-    list-style: none;
-    padding-left: 0;
-    margin-top: 16px;
-  }
-  
-  .support-text ul li::before {
-    content: "✔️ ";
-    margin-right: 5px;
-  }
-  
-  .support-text ul li {
-    margin-bottom: 8px;
-    font-size: 1rem;
-  }
-  
-  .quote-btn {
-    background-color: var(--quote-bg);
-    color: white;
-    padding: 12px 20px;
-    font-weight: bold;
-    border-radius: 5px;
-    display: inline-block;
-    margin-top: 20px;
-    text-decoration: none;
-  }
-  
-  .quote-btn:hover {
-    background-color: var(--quote-hover);
-    color: white;
-  }
-  
-  .image-container {
-    flex: 1 1 40%;
-    text-align: center;
-  }
-  
-  .image-container img {
-    max-height: 500px;
-    width: 100%;
-    object-fit: contain;
-    border-radius: 8px;
-  }
-  
-  /* CONNECT SECTION */
-  
-  .DigitalMarketing-connect-section {
-    background-color: #430243;
-    color: white;
-    padding: 40px 24px;
-  }
-  
-  .DigitalMarketing-connect-container {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 24px;
-    text-align: center;
   }
-  
-  .DigitalMarketing-connect-container h2 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 8px;
-    color: white;
+
+  .support-text h2 {
+    font-size: 2rem;
   }
-  
-  .DigitalMarketing-connect-container p {
-    font-size: 18px;
-    font-weight: 600;
+
+  .support-text h3 {
+    font-size: 1.5rem;
   }
-  
-  .DigitalMarketing-connect-container a {
-    background-color: #0066cc;
-    color: white;
-    font-weight: 600;
-    font-size: 14px;
-    padding: 16px 24px;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background-color 0.3s;
- 
+
+  .image-container img {
+    max-height: 300px;
   }
-  
-  .DigitalMarketing-connect-container a:hover {
-    background-color: #0055aa;
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    .offer-content {
-      flex-direction: column;
-    }
-  
-    .support-text h2 {
-      font-size: 2rem;
-    }
-  
-    .support-text h3 {
-      font-size: 1.5rem;
-    }
-  
-    .image-container img {
-      max-height: 300px;
-    }
-  }
-  
+}

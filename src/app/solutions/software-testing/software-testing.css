@@ -1,0 +1,97 @@
+.software-testing {
+  font-family: Arial, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.software-container {
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+
+.software-container:first-child {
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.software-image-section {
+  flex: 1;
+  min-width: 300px;
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.software-image-section img {
+  max-width: 100%;
+  height: auto;
+}
+
+.software-text-section {
+  flex: 1;
+  min-width: 300px;
+  padding: 0 20px;
+}
+
+.software-h1 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+.software-p {
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.software-section-header {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.software-services-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 20px 0;
+}
+
+.software-services-list li {
+  padding-bottom: 20px;
+  text-align: left;
+}
+
+.software-services-list li b {
+  margin-right: 10px;
+  color: #3498db;
+}
+
+.software-bottom-note {
+  text-align: left;
+  margin-top: 30px;
+  color: #3498db;
+}
+
+@media screen and (max-width: 768px) {
+  .software-container:first-child {
+    flex-direction: column;
+  }
+
+  .software-image-section {
+    padding-top: 20px;
+    order: 2;
+  }
+
+  .software-text-section {
+    order: 1;
+    padding: 0;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+}

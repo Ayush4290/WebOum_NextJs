@@ -1,0 +1,152 @@
+/* DevOps Page Styles */
+.center-text {
+  text-align: center;
+  color: blueviolet;
+  font-size: 1.8rem;
+  font-weight: 700px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  align-items: center;
+}
+
+.content {
+  flex: 1;
+  min-width: 300px;
+  padding-right: 30px;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.image-container {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Section with image on left, text on right */
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.image-box {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.image-box img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.text-box {
+  flex: 1;
+  min-width: 300px;
+  padding: 10px 30px;
+}
+
+/* Benefits Section */
+.benefits-section {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.benefits-section h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.benefit-item {
+  display: flex;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.benefit-item:hover {
+  transform: translateY(-5px);
+}
+
+.benefit-item img {
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+  object-fit: contain;
+}
+
+.benefit-content {
+  flex: 1;
+}
+
+.benefit-content h3 {
+  margin-top: 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.benefit-content p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Final CTA section */
+.center-text-section {
+  text-align: center;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container,
+  .section {
+    flex-direction: column;
+  }
+
+  .content,
+  .text-box {
+    padding-right: 0;
+    padding-bottom: 20px;
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+}

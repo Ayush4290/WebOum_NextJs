@@ -1,140 +1,139 @@
 :root {
-    --primary-color: #a104b5;
-    --text-color: #333;
-    --bg-color: #f9f9f9;
-  }
-  
-  .approach-section {
-    background-color: var(--bg-color);
-    padding: 60px 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
+  --primary-color: #a104b5;
+  --text-color: #333;
+  --bg-color: #f9f9f9;
+}
+
+.approach-section {
+  background-color: var(--bg-color);
+  padding: 60px 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.approach-row {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.approach-left {
+  flex: 1 1 40%;
+}
+
+.approach-title {
+  color: var(--primary-color);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.approach-heading {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--text-color);
+  margin-bottom: 25px;
+}
+
+.approach-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.approach-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  color: var(--primary-color);
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.approach-icons a:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.approach-form {
+  flex: 1 1 55%;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ddd;
+}
+
+.approach-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.approach-form label {
+  font-weight: 500;
+  color: #222;
+}
+
+.approach-form input,
+.approach-form textarea {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.approach-form input:focus,
+.approach-form textarea:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.captcha-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.approach-form button {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.approach-form button:hover {
+  background: #85018f;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
   .approach-row {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: auto;
-    gap: 40px;
-    align-items: flex-start;
-  }
-  
-  .approach-left {
-    flex: 1 1 40%;
-  }
-  
-  .approach-title {
-    color: var(--primary-color);
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-  
-  .approach-heading {
-    font-size: 32px;
-    font-weight: bold;
-    color: var(--text-color);
-    margin-bottom: 25px;
-  }
-  
-  .approach-icons {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-  }
-  
-  .approach-icons a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
-    border: 2px solid var(--primary-color);
-    border-radius: 50%;
-    color: var(--primary-color);
-    font-size: 18px;
-    transition: 0.3s;
-  }
-  
-  .approach-icons a:hover {
-    background-color: var(--primary-color);
-    color: white;
-  }
-  
-  .approach-form {
-    flex: 1 1 55%;
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #ddd;
-  }
-  
-  .approach-form form {
-    display: flex;
     flex-direction: column;
-    gap: 15px;
   }
-  
-  .approach-form label {
-    font-weight: 500;
-    color: #222;
+
+  .approach-left,
+  .approach-form {
+    flex: 1 1 100%;
   }
-  
-  .approach-form input,
-  .approach-form textarea {
-    padding: 10px 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 15px;
-    resize: vertical;
-    font-family: inherit;
+
+  .approach-heading {
+    font-size: 26px;
   }
-  
-  .approach-form input:focus,
-  .approach-form textarea:focus {
-    border-color: var(--primary-color);
-    outline: none;
+
+  .approach-form {
+    padding: 20px;
   }
-  
-  .captcha-box {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 14px;
-  }
-  
-  .approach-form button {
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s ease;
-  }
-  
-  .approach-form button:hover {
-    background: #85018f;
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    .approach-row {
-      flex-direction: column;
-    }
-  
-    .approach-left,
-    .approach-form {
-      flex: 1 1 100%;
-    }
-  
-    .approach-heading {
-      font-size: 26px;
-    }
-  
-    .approach-form {
-      padding: 20px;
-    }
-  }
-  
+}
