@@ -22,7 +22,7 @@ const logos = [
 export default function LogosPage() {
   return (
     <>
-      <SubHeader title="All Logo" />
+      <SubHeader title="All Logos" />
       <div className="logo-grid">
         {logos.map((file, index) => (
           <div key={index} className="logo-item">

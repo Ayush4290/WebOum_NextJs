@@ -1,106 +1,112 @@
 "use client";
-
 import React, { useEffect, useRef, useState } from "react";
 import "./HeroSection.css";
 
 const HeroSection = () => {
-  const heroSectionRef = useRef(null);
+  const particlesRef = useRef(null);
+  const headingRef = useRef(null);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
-  const [textFade, setTextFade] = useState(false);
-
+  
   const textOptions = [
-    "Smart CRM, ERP & AI-powered automation for enterprises.",
+    "AI automation & innovation—engineered for rapid success",
+    "Serious about growth? Let's craft your million-dollar strategy",
     "Unlock unlimited growth with premium custom development",
-    "Transform your business with intelligent solutions",
-    "Streamline operations with next-gen technology",
+    "Transform your brand into a market leader with elite tech.",
+    "Dominate your industry with enterprise-grade AI solutions.",
+    "We build success stories—will yours be next?",
+    "Scale your business with next-gen automation and SaaS.",
+    "Smart CRM, ERP & AI-powered automation for enterprises.",
+    "Your next breakthrough starts with the right technology partner."
   ];
 
-  // Text rotation functionality
   useEffect(() => {
-    const textInterval = setInterval(() => {
-      setTextFade(true);
-
-      setTimeout(() => {
-        setCurrentTextIndex((prevIndex) => (prevIndex + 1) % textOptions.length);
-        setTextFade(false);
-      }, 500);
-    }, 2000);
-
-    return () => clearInterval(textInterval);
-  }, []);
-
-  // Network animation
-  useEffect(() => {
-    const heroSection = heroSectionRef.current;
-    if (!heroSection) return;
-
-    const numNodes = 20;
-    const nodes = [];
-
-    // Create nodes
-    for (let i = 0; i < numNodes; i++) {
-      const node = document.createElement("div");
-      node.className = "node";
-
-      // Random position
-      const left = Math.random() * 100;
-      const top = Math.random() * 100;
-
-      node.style.left = `${left}%`;
-      node.style.top = `${top}%`;
-
-      // Add animation with random duration and delay
-      const duration = 5 + Math.random() * 15;
-      const delay = Math.random() * 5;
-      node.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
-
-      heroSection.appendChild(node);
-      nodes.push({
-        element: node,
-        x: left,
-        y: top,
-      });
-    }
-
-    // Create connections between nodes
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        // Only connect some nodes (not all to avoid too many lines)
-        if (Math.random() > 0.7) continue;
-
-        const dx = nodes[j].x - nodes[i].x;
-        const dy = nodes[j].y - nodes[i].y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        // Only connect if within a certain distance
-        if (distance < 30) {
-          const line = document.createElement("div");
-          line.className = "line";
-
-          // Position and rotate line to connect nodes
-          line.style.left = `${nodes[i].x}%`;
-          line.style.top = `${nodes[i].y}%`;
-          line.style.width = `${distance}%`;
-          line.style.transform = `rotate(${Math.atan2(dy, dx)}rad)`;
-
-          heroSection.appendChild(line);
-        }
+    // Load particles.js script dynamically
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js';
+    script.async = true;
+    
+    script.onload = () => {
+      if (window.particlesJS && particlesRef.current) {
+        window.particlesJS(particlesRef.current.id, {
+          "particles": {
+            "number": { "value": 80 },
+            "color": { "value": "#ffffff" },
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.5 },
+            "size": { "value": 3 },
+            "line_linked": {
+              "enable": true,
+              "distance": 150,
+              "color": "#ffffff",
+              "opacity": 0.4,
+              "width": 1
+            },
+            "move": {
+              "enable": true,
+              "speed": 2,
+              "direction": "none",
+              "out_mode": "out"
+            }
+          },
+          "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+              "onhover": { "enable": true, "mode": "repulse" },
+              "onclick": { "enable": true, "mode": "push" },
+              "resize": true
+            },
+            "modes": {
+              "repulse": {
+                "distance": 60,
+                "duration": 0.4
+              },
+              "push": {
+                "particles_nb": 4
+              }
+            }
+          },
+          "retina_detect": true
+        });
       }
-    }
-
-    // Cleanup function
+    };
+    
+    document.body.appendChild(script);
+    
     return () => {
-      const nodes = heroSection.querySelectorAll(".node, .line");
-      nodes.forEach((node) => node.remove());
+      if (script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
     };
   }, []);
 
+  useEffect(() => {
+    const heading = headingRef.current;
+    if (!heading) return;
+    
+    function changeTitle() {
+      heading.style.opacity = 0;
+      
+      setTimeout(() => {
+        setCurrentTextIndex((prevIndex) => (prevIndex + 1) % textOptions.length);
+        heading.style.opacity = 1;
+      }, 800);
+    }
+    
+    heading.style.opacity = 1;
+    const interval = setInterval(changeTitle, 4000); // 4 seconds
+    
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="hero-section" ref={heroSectionRef}>
-      <h1 className={textFade ? "fade" : ""}>{textOptions[currentTextIndex]}</h1>
-      <a href="/" className="cta-buttons">
-        Start Building Today!
-      </a>
+    <div className="banner-mains">
+      <section className="banner">
+        <div className="content">
+          <h1 ref={headingRef}>{textOptions[currentTextIndex]}</h1>
+          <a href="/request-a-quote/">Start Building Today!</a>
+        </div>
+        <div id="particles-js" ref={particlesRef} className="particle-area"></div>
+      </section>
     </div>
   );
 };

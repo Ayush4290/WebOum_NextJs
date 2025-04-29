@@ -1,37 +1,40 @@
-'use client';
+"use client";
 
 import Days from "@/app/about-us/days/page";
 import SubHeader from "@/app/sub-header/page";
-import "./content-writing.css"
-
+import "./content-writing.css";
 
 export default function ContentWriting() {
   return (
     <>
       <SubHeader title="Content Writing" />
-      <section className="section">
-        <div className="container">
-          <div className="custom-row">
-            <div className="column">
-              <h2 className="heading-bold">
-                Let's build your business with
-                <br />
-                content that attracts, acquaints,
-                <br />
+      <section className="content-section">
+        <div className="content-container">
+          <div className="content-custom-row">
+            <div className="content-column">
+              <h2 className="content-heading-bold">
+                Let's build your business with content that attracts, acquaints,
                 engages, and sells!
               </h2>
-              <p className="mt-3">
-                Content is often hailed as the cornerstone of the digital realm. Today’s discerning internet users will quickly leave your website if it fails to deliver the information they seek. While captivating designs may initially draw attention, they alone cannot retain your audience.
+              <p className="content-mt-3">
+                Content is often hailed as the cornerstone of the digital realm.
+                Today’s discerning internet users will quickly leave your
+                website if it fails to deliver the information they seek. While
+                captivating designs may initially draw attention, they alone
+                cannot retain your audience.
               </p>
               <p>
-                This is where exceptional content takes center stage. It plays a pivotal role in determining your ranking on search engine results pages (SERPs). To significantly increase your website’s traffic, publishing high-quality content is essential.
+                This is where exceptional content takes center stage. It plays a
+                pivotal role in determining your ranking on search engine
+                results pages (SERPs). To significantly increase your website’s
+                traffic, publishing high-quality content is essential.
               </p>
             </div>
-            <div className="column center">
+            <div className="content-column content-center">
               <img
                 src="/image/content-wrinting-1.png"
                 alt="Illustration"
-                className="img-fluid"
+                className="content-img-fluid"
               />
             </div>
           </div>
@@ -39,86 +42,114 @@ export default function ContentWriting() {
       </section>
 
       {/* Section 2 */}
-      <section className="section bg-light-blue">
-        <div className="container">
-          <h3 className="heading-bold mb-4">
-            Lets' tell your story in the most captivating manner!
+      <section className="content-section content-bg-light-blue">
+        <div className="content-container">
+          <h3 className="content-heading-bold content-mb-4">
+            Let's tell your story in the most captivating manner!
           </h3>
           <p>
-            Allow the skilled content writers at Weboum Technology to narrate your brand’s story in a compelling and engaging way.
+            Give our content writers, Weboum Technology, a chance to tell the
+            story of your brand in an appealing manner.
           </p>
           <p>
-            As the saying goes, for customers to invest in your products, they must first connect with your story. The value of impactful content cannot be overstated, making it crucial to partner with a top-tier content writing company to fulfill all your content needs.
+            It is rightly said that for the public to buy your products, they
+            need to buy your story first. The importance of content is beyond
+            words. Thus, you must always choose the best content writing company
+            to meet all your content-related needs.
           </p>
           <p>
-            Audiences are unlikely to engage with aggressive language or lengthy explanations; instead, they gravitate toward concise, clear content. When your content saves them time and effort, it reinforces their decision to explore your brand, leaving a lasting impression that piques their interest.
+            People will not engage with belligerent wordings used and long
+            explanations, instead, they are attracted towards crisper content.
+            If your content saves them time and energy, they will feel that
+            their decision of checking your brand out was right. Make every
+            impression in front of your prospects to tickle their fancy.
           </p>
           <p>
-            Searching for the right partner? Look no further! Weboum Technology offers a comprehensive solution for all your content writing requirements.
+            Looking for one? Congratulations! You have landed at the correct
+            place. Weboum Technology is your one-stop solution to all your
+            content writing needs.
           </p>
           <p>
-            Our seasoned professionals bring years of expertise and a deep understanding of industry-leading strategies. You can trust them to deliver high-quality content that drives results.
+            Our professionals have years of experience and they are well aware
+            of the major strategies followed in the industry. You can rely on
+            them to churn out high-quality content that will
           </p>
         </div>
       </section>
 
       {/* Section 3: Strategies */}
-      <section className="section">
-        <div className="container center-text">
-          <h3 className="heading-bold">
+      <section className="content-section">
+        <div className="content-container content-center-text">
+          <h3 className="content-heading-bold">
             Content Writing Strategies To Boost Your SERP Ranking :
           </h3>
-          <p className="text-muted mb-5">
+          <p className="content-text-muted content-mb-5">
             Our content writing process involves the following steps:
           </p>
 
-          <div className="strategy-grid">
-            <div className="strategy-item">
-              <div className="icon text-danger">
-                <span className="search-icon"></span>
+          <div className="content-strategy-grid">
+            <div className="content-strategy-item">
+              <div className="content-icon content-text-danger">
+                <span className="content-search-icon"></span>
               </div>
               <div>
-                <h5 className="heading-bold text-danger">Keyword Research:</h5>
+                <h5 className="content-heading-bold content-text-danger">
+                  Keyword Research:
+                </h5>
                 <p>
-                  Our team begins by identifying relevant keywords to seamlessly integrate into your content. We ensure these keywords resonate with your target audience, enhancing your website’s visibility and ranking on SERPs.
+                  At first, our professionals find the fitting keywords to be
+                  inserted in your content. We make sure that the targeted
+                  audience can relate to the keywords used in the contents of
+                  your website, thereby boosting its ranking on the SERPs.
                 </p>
               </div>
             </div>
 
-            <div className="strategy-item">
-              <div className="icon text-purple">
-                <span className="binoculars-icon"></span>
+            <div className="content-strategy-item">
+              <div className="content-icon content-text-purple">
+                <span className="content-binoculars-icon"></span>
               </div>
               <div>
-                <h5 className="heading-bold text-purple">
+                <h5 className="content-heading-bold content-text-purple">
                   Competitor Research:
                 </h5>
                 <p>
-                  Next, we conduct thorough competitor research, analyzing the headings and subheadings they’ve used to inform our content strategy.
+                  In the next step, we research your competitor and check what
+                  heading and subheadings they have covered in their article.
                 </p>
               </div>
             </div>
 
-            <div className="strategy-item">
-              <div className="icon text-pink">
-                <span className="pencil-icon"></span>
+            <div className="content-strategy-item">
+              <div className="content-icon content-text-pink">
+                <span className="content-pencil-icon"></span>
               </div>
               <div>
-                <h5 className="heading-bold text-pink">Writing:</h5>
+                <h5 className="content-heading-bold content-text-pink">
+                  Writing:
+                </h5>
                 <p>
-                  Based on our research, we craft high-quality content tailored to your needs. Keywords are incorporated naturally to optimize search engine recognition, and we utilize premium tools to verify the content’s excellence.
+                  According to the research done, we churn out high-quality
+                  content for you. Then, we insert the keywords as naturally as
+                  possible so that the search engines can easily pick them up.
+                  We then check the content on various premium tools to ensure
+                  that it is of high quality.
                 </p>
               </div>
             </div>
 
-            <div className="strategy-item">
-              <div className="icon text-purple">
-                <span className="journal-icon"></span>
+            <div className="content-strategy-item">
+              <div className="content-icon content-text-purple">
+                <span className="content-journal-icon"></span>
               </div>
               <div>
-                <h5 className="heading-bold text-purple">Proofreading:</h5>
+                <h5 className="content-heading-bold content-text-purple">
+                  Proofreading:
+                </h5>
                 <p>
-                  Proofreading is a critical step in our process. We meticulously review the content for errors, ensuring it meets the highest standards before delivering it to you.
+                  It is one of the most important steps. We look for any errors
+                  that we have made while reading. Once we ensure that it is
+                  good to go, we hand it over to you.
                 </p>
               </div>
             </div>
@@ -127,33 +158,42 @@ export default function ContentWriting() {
       </section>
 
       {/* Section 4 */}
-      <section className="section bg-light-blue">
-        <div className="container">
-          <div className="custom-row">
-            <div className="column center">
+      <section className="content-section content-bg-light-blue">
+        <div className="content-container">
+          <div className="content-custom-row">
+            <div className="content-column content-center">
               <img
                 src="/image/content-wrinting.png"
                 alt="Enhance Content"
-                className="img-fluid"
+                className="content-img-fluid"
               />
             </div>
-            <div className="column">
-              <h4 className="heading-bold">
+            <div className="content-column">
+              <h4 className="content-heading-bold">
                 Let's Enhance The Already Published Content On Your Site!
               </h4>
               <p>
-                Using cutting-edge tools, we enhance your website’s existing content, transforming outdated material into highly user-friendly and engaging content.
+                We use the latest tools to enhance the content already published
+                on your website. We modify the old content and recreate it into
+                highly user-friendly content.
               </p>
               <p>
-                Our services extend to format management, web-based publishing, and search indexing, among others. With our proven content creation expertise, you can trust our specialists to produce high-quality content that elevates your SERP rankings, helping you connect with a broader audience of potential clients.
+                We also deal with format management, web-based publishing,
+                indexing search etc. You stay rest assured with our effective
+                content creation services that our experts will churn out
+                high-quality content that will help you rank higher on the
+                SERPs. Avail of our services to reach the maximum number of
+                potential clients.
               </p>
               <p>
-                Contact us today to take advantage of our services. We’re available to assist you anytime.
+                Reach out to us today and avail of our services. Feel free to
+                contact us anytime
               </p>
             </div>
           </div>
         </div>
       </section>
+
       <Days />
     </>
   );

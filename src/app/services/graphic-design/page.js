@@ -19,11 +19,18 @@ export default function GraphicDesign() {
                 <strong>Creatively Designed Graphics!</strong>
               </h2>
               <p>
-                There is a reason why graphics work like magic for a website...
+                There is a reason why graphics work like magic for a website.
+                With ingeniously designed graphics you can transform a bland
+                site into a powerful and striking communication channel for your
+                brand. Some stunning photographs can set an emotional tone or
+                augment the already existing one.
               </p>
               <p>
-                Staying up-to-date with design is essential. As new concepts
-                emerge, design continually changes...
+                Staying up-to-date with the world of design is essential. As new
+                concepts emerge, design continually changes, and old concepts
+                need to be changed or modified. This is where you need to be at
+                your best as far as graphic designing is concerned. There’s no
+                limit to what you can get designed at Weboum Technology.
               </p>
             </div>
             <div className="graphicDesign-image">
@@ -32,14 +39,34 @@ export default function GraphicDesign() {
           </div>
 
           <div className="graphicDesign-more-info">
-            <h3>Communicate Your Idea In An Imaginative Way...</h3>
+            <h3>
+              Communicate Your Idea To In An Imaginative Way And Let The
+              Creativity Flow!
+            </h3>
             <p>
               At Weboum Technology, we offer a multitude of graphic designing
-              services...
+              services and much more in the design spectrum. Your business and
+              website are too dependent on what you are showing to your
+              consumers. It is the graphic design that makes the idea and
+              content of your business look more trustworthy and professional.
+              Compelling graphic design is crucial for your business to increase
+              your sales.
             </p>
-            <h3>Graphics are the most innovative tools...</h3>
-            <p>We provide a competitive edge to businesses...</p>
-            <p>We have some of the most creative minds working...</p>
+            <h3>
+              Graphics are the most innovative tools to convey your message!
+            </h3>
+            <p>
+              At Weboum Technology, we know the craft of designing creative
+              graphics like the back of our hand, and this makes us one of the
+              leading and passionate graphic design service providers. We
+              provide a competitive edge to businesses by offering compelling
+              graphic designs to make your business stand out.
+            </p>
+            <p>
+              We have some of the most creative minds working for us that
+              produce attention-grabbing designs and visuals for flyers,
+              banners, e-books, brochures, business cards, and much more..
+            </p>
             <p>
               We know how important it is to establish your brand identity...
             </p>

@@ -13,10 +13,11 @@
   color: white;
   min-height: 9vh;
   font-family: Arial, sans-serif;
+  position: relative;
 }
 
 .navbar {
-  padding: 1rem 2rem; 
+  padding: 1rem 2rem;
 }
 
 .navbar-inner {
@@ -25,12 +26,14 @@
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  position: relative; 
+  position: relative;
 }
 
 /* Logo */
 .logo {
   display: block;
+  z-index: 2000;
+  position: relative;
 }
 
 .logo-img {
@@ -49,7 +52,7 @@
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 1.5rem; /* Increased gap for better spacing */
+  gap: 1.5rem;
 }
 
 .menu-link {
@@ -61,12 +64,12 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  transition: background 0.3s; /* Changed to background transition for better feedback */
+  transition: background 0.3s;
 }
 
 .menu-link:hover,
 .menu-link.active {
-  background-color: rgba(255, 255, 255, 0.1); /* Added background for hover/active */
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Dropdown */
@@ -98,7 +101,7 @@
 
 .dropdown li a {
   color: #333;
-  padding: 0.5rem 1rem; /* Adjusted padding for better alignment */
+  padding: 0.5rem 1rem;
   display: block;
   text-decoration: none;
   transition: background 0.2s;
@@ -135,13 +138,31 @@
   color: white;
   font-size: 24px;
   cursor: pointer;
-  position: relative; /* Added for positioning the close icon */
+  z-index: 2500;
+  position: relative;
 }
 
 .hamburger-icon,
 .close-icon {
   font-size: 28px;
   color: white;
+  float: right;
+}
+
+/* Overlay for mobile menu */
+.menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1500;
+}
+
+.menu-overlay.active {
+  display: block;
 }
 
 /* Media queries for responsive design */
@@ -158,20 +179,20 @@
   .menu {
     position: fixed;
     top: 0;
-    left: 0;
+    right: -100%; /* Start off-screen */
     background: var(--primary-gradient);
-    width: 100%;
+    width: 80%;
     height: 100vh;
     flex-direction: column;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-    z-index: 1000; /* Increased z-index to ensure it’s on top */
-    padding-top: 80px; /* Adjusted for better spacing */
+    transition: right 0.3s ease;
+    z-index: 2000;
+    padding: 80px 20px 20px 20px;
+    box-sizing: border-box;
     overflow-y: auto;
   }
 
   .menu.menu-open {
-    transform: translateX(0);
+    right: 0; /* Move on-screen */
   }
 
   .menu-list {
@@ -187,17 +208,18 @@
   }
 
   .menu-link {
-    padding: 1rem 2rem;
+    padding: 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     justify-content: space-between;
     width: 100%;
+    box-sizing: border-box;
     font-size: 18px;
   }
 
   .dropdown {
     position: static;
-    width: 100%; /* Explicitly set to 100% */
-    min-width: 100%; /* Override desktop min-width */
+    width: 100%;
+    min-width: 100%;
     box-shadow: none;
     background: transparent;
     margin-top: 0;
@@ -216,7 +238,7 @@
 
   .dropdown li a {
     color: white;
-    padding: 0.8rem 2rem; 
+    padding: 0.8rem 1rem;
     font-size: 16px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
@@ -231,7 +253,7 @@
 
   .btn-contact {
     margin: 0;
-    border-radius: 4px; /* Added slight border-radius for aesthetics */
+    border-radius: 4px;
     width: 100%;
     text-align: center;
     padding: 1.2rem;
@@ -248,21 +270,4 @@
   .menu-icon {
     margin-left: auto;
   }
-}
-
-/* Icon styles */
-.menu-icon {
-  width: 16px;
-  height: 16px;
-  margin-left: 0.5rem;
-  cursor: pointer;
-}
-
-/* Close button for mobile menu */
-.close-icon {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  font-size: 24px;
 }

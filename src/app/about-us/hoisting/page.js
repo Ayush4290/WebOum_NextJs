@@ -1,7 +1,7 @@
-// pages/index.js
 import Image from "next/image";
 import "./HostingManagement.css";
-export default function Home() {
+
+export default function WebHosting() {
   return (
     <main>
       {/* Hero Section */}
@@ -10,12 +10,16 @@ export default function Home() {
           <h1>Managed Web Hosting for an Exceptional Online Presence</h1>
           <p>
             Cloudways powers your digital agency, eCommerce store, or online
-            business with a fast, secure, and user-friendly cloud hosting
-            platform, supported by 24/7 expert assistance.
+            business with a fast, secure, and user-friendly cloud hosting platform, supported by 24/7 expert
+            assistance.
           </p>
           <div className="hero-buttons">
-            <button className="btn primary-btn">Start Free Trial</button>
-            <button className="btn secondary-btn">View Plans</button>
+            <button className="btn primary-btn">
+              Start Free Trial
+            </button>
+            <button className="btn secondary-btn">
+              View Plans
+            </button>
           </div>
         </div>
         <div className="hero-image">
@@ -34,7 +38,7 @@ export default function Home() {
         <div className="client-logos">
           <Image
             src="https://weboum.com/wp-content/uploads/2024/11/Hostgator.png"
-            alt="SiteMap"
+            alt="Hostinger"
             width={100}
             height={50}
           />
@@ -45,20 +49,20 @@ export default function Home() {
             height={50}
           />
           <Image
-            src="https://weboum.com/wp-content/uploads/2024/11/Blue.png"
-            alt="Hostinger"
+            src="https://weboum.com/wp-content/uploads/2024/11/Hostgator.png"
+            alt="HostGator"
             width={100}
             height={50}
           />
           <Image
             src="https://weboum.com/wp-content/uploads/2024/11/Knownhost-1.png"
-            alt="GoDaddy"
+            alt="Knownhost"
             width={100}
             height={50}
           />
           <Image
             src="https://weboum.com/wp-content/uploads/2024/11/Wordpress-1.png"
-            alt="HostGator"
+            alt="WordPress"
             width={100}
             height={50}
           />
@@ -75,40 +79,23 @@ export default function Home() {
             website and focus on growing your business, while Autonomous takes
             care of everything else!
           </p>
-          <button className="btn primary-btn">Get Started </button>
+          <button className="btn primary-btn">
+            Get Started
+          </button>
         </div>
         <div className="testimonial">
           <div className="quote-icon">
             <i className="fas fa-quote-left"></i>
           </div>
-          <p>
-            "As a busy shop 'Chocolatey Love' I've been thrilled with Weboum's
-            WordPress hosting. The servers handle tremendous seasonal traffic
-            spikes. Thanks to your hosting, I never had to worry about upgrading
-            or downgrading servers. Couldn't be more satisfied with the
-            product!"
-          </p>
-          <p>
-            "As a busy shop 'Chocolatey Love' I've been thrilled with Weboum's
-            WordPress hosting. The servers handle tremendous seasonal traffic
-            spikes. Thanks to your hosting, I never had to worry about upgrading
-            or downgrading servers. Couldn't be more satisfied with the
-            product!"
-          </p>
-          <p>
-            "As a busy shop 'Chocolatey Love' I've been thrilled with Weboum's
-            WordPress hosting. The servers handle tremendous seasonal traffic
-            spikes. Thanks to your hosting, I never had to worry about upgrading
-            or downgrading servers. Couldn't be more satisfied with the
-            product!"
-          </p>
-          <p>
-            "As a long-time Cloudways user, I've been thrilled with the
-            platform! During early access, my site, TechYorker, experienced
-            several traffic spikes. Thanks to auto-scaling, I never had to worry
-            about upgrading or downgrading servers. I couldn’t be more satisfied
-            with the product!"
-          </p>
+          <div className="testimonial-content">
+            <p>
+              "As a long-time Cloudways user, I've been thrilled with the
+              platform! During early access, my site, TechYorker, experienced
+              several traffic spikes. Thanks to auto-scaling, I never had to
+              worry about upgrading or downgrading servers. I couldn't be more
+              satisfied with the product!"
+            </p>
+          </div>
           <div className="pagination">
             <span className="dot active"></span>
             <span className="dot"></span>
@@ -141,7 +128,7 @@ export default function Home() {
           <div className="provider-card">
             <div className="provider-logo">
               <Image
-                src="/aws-logo.png"
+                src="https://weboum.com/wp-content/uploads/2024/11/Aws.png"
                 alt="AWS Logo"
                 width={100}
                 height={50}
@@ -149,10 +136,7 @@ export default function Home() {
             </div>
             <h3>AWS (Amazon Web Services)</h3>
             <p>
-              Cloud hosting is AWS, Amazon Web Services is the best possible
-              cloud infrastructure available. Designed to work with
-              organizations and any individual web application needs. Highly
-              configurable, scalable, and easy to set up.
+              The industry-leading AWS (Amazon Web Services) has been providing world-leading cloud technologies that help scale operations. Our secure, built-for-business platform features computing, networking, and tools for a better experience.
             </p>
             <a href="#" className="learn-more">
               Learn More
@@ -162,7 +146,7 @@ export default function Home() {
           <div className="provider-card">
             <div className="provider-logo">
               <Image
-                src="/azure-logo.png"
+                src="https://weboum.com/wp-content/uploads/2024/11/Azure.png"
                 alt="Azure Logo"
                 width={100}
                 height={50}
@@ -170,40 +154,40 @@ export default function Home() {
             </div>
             <h3>Azure</h3>
             <p>
-              Microsoft-powered for cloud computing, Azure features a robust set
-              of tools and services. Through its integrated development
-              platform, Azure is an industry-leading provider, access to
-              on-demand applications and services that make your hosting
-              experience smooth.
+              Microsoft-powered cloud computing platform and service. Thanks to its robust infrastructure, it manages, provides access to, and develops applications and services for people, businesses, and governments.
             </p>
+            <a href="#" className="learn-more">
+              Learn More
+            </a>
           </div>
 
           <div className="provider-card">
             <div className="provider-logo">
               <Image
-                src="/gcp-logo.png"
+                src="https://weboum.com/wp-content/uploads/2024/11/Google.png"
                 alt="Google Cloud Logo"
                 width={100}
                 height={50}
               />
             </div>
-            <h3>(GCP) Google Cloud</h3>
+            <h3>(GCP) Google Cloud Platform</h3>
             <p>
-              Google Cloud Platform (GCP) is Google's suite of cloud computing
-              services, designed to provide businesses with powerful data
-              storage, data analytics, machine learning, and web application
-              tools.
+              Google Cloud Platform (GCP) is Google's suite of cloud computing services, offering a broad range of products across storage, data analytics, and machine learning, as well as management tools.
             </p>
+            <a href="#" className="learn-more">
+              Learn More
+            </a>
           </div>
         </div>
       </section>
 
       {/* SMB Hosting Section */}
       <section className="smb-hosting">
-        <div className="hosting-header">
+        {/* SMB Hosting Header */}
+        <section className="hosting-header">
           <div className="hosting-image">
             <Image
-              src="/support-agent.jpg"
+              src="https://weboum.com/wp-content/uploads/2024/11/Knownhost.png"
               alt="Support Agent"
               width={500}
               height={500}
@@ -222,7 +206,7 @@ export default function Home() {
               </div>
               <div className="badge">
                 <i className="fas fa-percent"></i>
-                <strong>98 %</strong>
+                <strong>98%</strong>
                 <span>CSAT Score</span>
               </div>
               <div className="badge">
@@ -232,30 +216,32 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div className="stats-row">
+        {/* Stats Section */}
+        <section className="stats-section">
           <div className="stat-item">
             <strong>73</strong>
-            <span>Industry-leading NPS</span>
+            <span>Industry-Leading NPS</span>
           </div>
           <div className="stat-item">
             <strong>50+</strong>
-            <span>All-time Data Centers</span>
+            <span>Global Data Centers</span>
           </div>
           <div className="stat-item">
             <strong>840k+</strong>
-            <span>Technological Industries</span>
+            <span>Websites Hosted</span>
           </div>
-        </div>
+        </section>
 
-        <div className="app-selection">
+        {/* App Selection Section */}
+        <section className="app-selection">
           <div className="app-technologies">
             <Image
-              src="/tech-icons.png"
+              src="https://weboum.com/wp-content/uploads/2024/11/Choose-Your-App-293x300.png"
               alt="Technology Icons"
-              width={500}
-              height={500}
+              width={450}
+              height={350}
             />
           </div>
           <div className="app-content">
@@ -265,14 +251,17 @@ export default function Home() {
               optimized to the max, and host them on top cloud services like
               DigitalOcean, Google Cloud, or Amazon Web Service.
             </p>
-            <button className="btn primary-btn">Launch Now</button>
+            <button className="btn primary-btn">
+              Launch Now
+            </button>
           </div>
-        </div>
+        </section>
 
-        <div className="features">
+        {/* Features Section */}
+        <section className="features">
           <div className="feature-card">
             <Image
-              src="/security-icon.png"
+              src="https://weboum.com/wp-content/uploads/2024/11/Level-Security.jpg"
               alt="Security Icon"
               width={100}
               height={100}
@@ -286,7 +275,7 @@ export default function Home() {
           </div>
           <div className="feature-card">
             <Image
-              src="/collaboration-icon.png"
+              src="https://weboum.com/wp-content/uploads/2024/11/Team-collaboration.jpg"
               alt="Collaboration Icon"
               width={100}
               height={100}
@@ -300,19 +289,18 @@ export default function Home() {
           </div>
           <div className="feature-card">
             <Image
-              src="/monitoring-icon.png"
+              src="https://weboum.com/wp-content/uploads/2024/11/Real-Time-Server-Monitoring-1.jpg"
               alt="Monitoring Icon"
               width={100}
               height={100}
             />
             <h3>Real-Time Server Monitoring</h3>
             <p>
-              24/7/365 real-time monitoring and CloudWatch will ensure you can
-              see every server event in real-time, knowing everything is being
-              exactly.
+              24/7/365 real-time monitoring ensures you can see every server
+              event in real-time, knowing everything is being monitored exactly.
             </p>
           </div>
-        </div>
+        </section>
       </section>
     </main>
   );

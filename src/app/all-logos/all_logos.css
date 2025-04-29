@@ -4,40 +4,48 @@
   --logo-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   --logo-bg: #fff;
   --logo-img-height: 250px;
+  --logo-max-width: 100%;
+  --logo-padding: 12px;
 }
 
-/* ✅ Responsive background image */
 .logo-grid {
-  background-image: url("/image/background.jpeg"); /* ✅ Use public path */
+  background-image: url(https://weboum.com/wp-content/uploads/2021/05/map-pattern.png);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two columns on desktop */
+  grid-template-columns: repeat(2, 1fr); 
   gap: var(--logo-grid-gap);
   padding: 40px;
   background-color: var(--logo-bg);
   justify-items: center;
 }
 
-/* ✅ Logo images styling */
-.logo-item img {
+.logo-item {
   width: 100%;
-  max-width: 500px;
-  height: var(--logo-img-height);
-  object-fit: contain;
+  max-width: var(--logo-max-width);
+  background: var(--logo-bg);
+  padding: var(--logo-padding);
   border-radius: var(--logo-border-radius);
   box-shadow: var(--logo-shadow);
-  background: #fff;
-  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* ✅ Responsive: stack logos in one column on small screens */
+.logo-item img {
+  width: 100%;
+  height: var(--logo-img-height);
+  object-fit: contain;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--logo-border-radius);
+}
+
 @media (max-width: 768px) {
   .logo-grid {
-    grid-template-columns: 1fr;
     padding: 20px;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .logo-item img {

@@ -19,13 +19,18 @@ export default function DigitalMarketing() {
         <section className="DigitalMarketing-agency">
           <h2>Marketing agency with expert troops in charge!</h2>
           <p>
-            Is your brand popular enough on social media platforms? If not, it's
-            high time to leverage the amazing benefits of social media...
+            Is your brand popular enough on social media platforms? If not, it’s
+            high time to leverage the amazing benefits of social media. Weboum
+            Technology is an expert social media marketing agency that combines
+            advertising and organic social strategy for platform leading
+            results.
           </p>
           <p>
             Want the finest game in social media for your brand? Let Weboum
-            Technology pull apart the competition and drive ascendancy for
-            you...
+            Technology pull apart the competition and drive ascendancy for you.
+            Build brand awareness across the web and create several meaningful
+            relationships with followers and fans present on social media
+            networks.
           </p>
 
           <div className="DigitalMarketing-content">
@@ -36,7 +41,19 @@ export default function DigitalMarketing() {
               <h3>Spending in digital, but no multiples of return?</h3>
               <p>
                 Social media has immense power to change the fate of your
-                business...
+                business. If you spending your money and still not getting the
+                results, then your social media campaign is in the wrong hands.
+                We have an effective social media marketing strategy in place to
+                take your business to the next level. Work with our social media
+                experts to set up campaigns that will make a great difference
+                for your brand.
+              </p>
+              <br />
+              <p>
+                Enjoy the benefits offered by social media platforms to
+                businesses and Skyrocket your business with social media
+                marketing services that will make you a major player of social
+                media.
               </p>
             </div>
           </div>
@@ -47,7 +64,17 @@ export default function DigitalMarketing() {
             <h2>Get Sociable with The Best Social Media Marketing Agency!</h2>
             <p>
               Irrespective of the industry you operate in, and the type of
-              business you own...
+              business you own, the team of our social media managers is more
+              than capable of helping businesses from all niches.
+            </p>
+            <br />
+            <p>
+              We understand the fact that no business is alike and therefore, we
+              offer custom services that would suit the different needs of
+              <br />
+              businesses. Whether you are looking forward to targeting one
+              social media platform or five, our social media professionals will
+              help formulate a plan tailored specifically for your company.
             </p>
           </div>
           <div className="DigitalMarketing-sociable-image">
@@ -61,11 +88,13 @@ export default function DigitalMarketing() {
         <section className="DigitalMarketing-social-benefits-section">
           <div className="DigitalMarketing-container">
             <h2 className="DigitalMarketing-section-title">
-              That's How Social Media Marketing Will Help Your Brand!
+              Social Media Marketing Will Help Your Brand!
             </h2>
             <p className="DigitalMarketing-section-subtitle">
               Social Media Marketing is a considerable aspect of Digital
-              Marketing...
+              Marketing. It helps businesses in several ways. Hire experienced
+              social media managers from Weboum Technology to obtain the
+              following benefits for your business.
             </p>
 
             <div className="DigitalMarketing-benefits-grid">
@@ -75,8 +104,11 @@ export default function DigitalMarketing() {
                 </div>
                 <h3>Quick Problem Resolution:</h3>
                 <p>
-                  Social media agencies like us quickly come up with
-                  strategies...
+                  Social media agencies like us quickly come up with strategies
+                  to react to the feedback received. Reacting to negative
+                  feedback promptly is essential to maintain a brand image. We
+                  address all potential issues and try to fix them for your
+                  business before it's too late.
                 </p>
               </div>
               <div className="DigitalMarketing-benefit-box">
@@ -87,7 +119,10 @@ export default function DigitalMarketing() {
                 </div>
                 <h3>Connect with End-Users:</h3>
                 <p>
-                  Social media helps brands and end-users connect seamlessly...
+                  Social media helps brands and end-users connect with each
+                  other seamlessly. With the help of consumer insights and
+                  user-generated content, get a better understanding of each
+                  other.
                 </p>
               </div>
               <div className="DigitalMarketing-benefit-box">
@@ -98,8 +133,9 @@ export default function DigitalMarketing() {
                 </div>
                 <h3>Brand Awareness:</h3>
                 <p>
-                  Social media platforms bring brands close to their
-                  end-users...
+                  Social media platforms are where brands come in close contact
+                  with their end-users. By reaching your target audience, Weboum
+                  Technology will help you build robust brand awareness.
                 </p>
               </div>
               <div className="DigitalMarketing-benefit-box">
@@ -110,8 +146,9 @@ export default function DigitalMarketing() {
                 </div>
                 <h3>Boost Sales:</h3>
                 <p>
-                  Using influencer marketing and social commerce to boost
-                  sales...
+                  By leveraging the power of influencer marketing, product posts
+                  and with features like Instagram shop, Weboum Technology will
+                  help your business spike up your sales up.
                 </p>
               </div>
             </div>
@@ -124,11 +161,16 @@ export default function DigitalMarketing() {
             <div className="DigitalMarketing-brand-voice-content">
               <p>
                 We will help develop social media pages that will resonate with
-                your brand's core objectives...
+                the core objective of your business. After having an in-depth
+                understanding of your brand, we work on establishing exciting
+                campaigns that will be exclusive to your brand.
               </p>
               <p>
                 Research says, almost 74% of people use social media to make a
-                purchase decision...
+                purchase decision. That said, you are missing out on something
+                great, if not yet active on social media. Contact social media
+                managers from Weboum Technology and discover how you can
+                incorporate its benefits in your marketing strategy.
               </p>
             </div>
 
@@ -137,42 +179,56 @@ export default function DigitalMarketing() {
               <ul>
                 <li>
                   <FaCheckCircle style={{ color: "#0066cc" }} />
-                  <span>Custom solutions to fit unique client needs.</span>
-                </li>
-                <li>
-                  <FaCheckCircle style={{ color: "#0066cc" }} />
-                  <span>In-house team to use optimal images and content.</span>
-                </li>
-                <li>
-                  <FaCheckCircle style={{ color: "#0066cc" }} />
                   <span>
-                    Industry experts who believe in delivering results.
+                    Custom solutions to fit the unique needs and preferences of
+                    our clients.
                   </span>
                 </li>
                 <li>
                   <FaCheckCircle style={{ color: "#0066cc" }} />
                   <span>
-                    Performance-based billing — pay for real work only.
+                    In-house team to ensure the usage of optimal images and
+                    content.
                   </span>
                 </li>
                 <li>
                   <FaCheckCircle style={{ color: "#0066cc" }} />
-                  <span>Deep understanding of user trends and behaviors.</span>
+                  <span>
+                    A team of enthusiasts, leaders and experts of the industry
+                    who firmly believe in delivering results.
+                  </span>
                 </li>
                 <li>
                   <FaCheckCircle style={{ color: "#0066cc" }} />
-                  <span>Analytics and technology-driven strategies.</span>
+                  <span>
+                    100% performance-based approach and we raise invoices only
+                    for the work done.
+                  </span>
+                </li>
+                <li>
+                  <FaCheckCircle style={{ color: "#0066cc" }} />
+                  <span>
+                    Deep understanding of user patterns, trends, and behaviors
+                    within the social media network.
+                  </span>
+                </li>
+                <li>
+                  <FaCheckCircle style={{ color: "#0066cc" }} />
+                  <span>
+                    Integrated approach that is analytics and technology-driven.
+                  </span>
                 </li>
               </ul>
             </div>
 
             <div className="DigitalMarketing-contact-note">
-              It's time to boost your social media marketing with Weboum
-              Technology!
+              So, it’s time to boost your social media marketing with the best
+              strategies available with Weboum Technology. Contact us anytime;
+              we are always there to help.
             </div>
 
             <div className="DigitalMarketing-cta">
-              <p>Looking for the best packages? Click below:</p>
+              <p>Are you looking for best packages click:</p>
               <a href="#">Digital Marketing Packages</a>
             </div>
           </div>

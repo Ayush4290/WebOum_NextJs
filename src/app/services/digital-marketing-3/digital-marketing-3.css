@@ -13,18 +13,21 @@
   .DigitalMarketing-agency {
     padding: 60px 20px;
     text-align: center;
+    color: black;
   }
   
   .DigitalMarketing-agency h2 {
     font-size: 32px;
     font-weight: bold;
     margin-bottom: 20px;
+    color: black;
   }
   
   .DigitalMarketing-agency > p {
     max-width: 900px;
     margin: 0 auto 15px;
     font-size: 17px;
+    color: black;
   }
   
   .DigitalMarketing-content {
@@ -37,6 +40,7 @@
     align-items: center;
     gap: 40px;
     justify-content: center;
+    color: black;
   }
   
   .DigitalMarketing-image-container {
@@ -53,17 +57,20 @@
     flex: 1 1 350px;
     max-width: 600px;
     text-align: left;
+    color: black;
   }
   
   .DigitalMarketing-text-content h3 {
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 20px;
+    color: black;
   }
   
   .DigitalMarketing-text-content p {
     font-size: 16px;
     margin-bottom: 15px;
+    color: black;
   }
   
   /* Sociable Section */
@@ -80,12 +87,14 @@
   .DigitalMarketing-sociable-text {
     flex: 1 1 500px;
     padding: 20px;
+
   }
   
   .DigitalMarketing-sociable-text h2 {
     font-size: 30px;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 20px; 
+    color: black;
   }
   
   .DigitalMarketing-sociable-text p {
@@ -155,7 +164,7 @@
   
   .DigitalMarketing-benefit-box h3 {
     font-size: 18px;
-    color: #990066;
+    color: #181116;
     font-weight: 700;
     margin-bottom: 2px;
   }

@@ -10,39 +10,59 @@ const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const menuRef = useRef(null);
+  const toggleButtonRef = useRef(null);
 
   const toggleDropdown = (menuKey) => {
-    setActiveDropdown(activeDropdown === menuKey ? null : menuKey);
+    setActiveDropdown((prev) => (prev === menuKey ? null : menuKey));
   };
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
-    setActiveDropdown(null); // Reset dropdown when toggling mobile menu
+    document.body.style.overflow = mobileMenuOpen ? "auto" : "hidden";
   };
 
   const handleMainMenuClick = (menuKey, event) => {
-    event.stopPropagation(); // Prevent event bubbling to document
+    event.preventDefault();
+    event.stopPropagation();
     toggleDropdown(menuKey);
   };
 
   const handleDropdownItemClick = () => {
     setActiveDropdown(null);
     setMobileMenuOpen(false);
+    document.body.style.overflow = "auto";
   };
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
+      // Skip if clicking on the toggle button
+      if (
+        toggleButtonRef.current &&
+        toggleButtonRef.current.contains(event.target)
+      ) {
+        return;
+      }
+
+      // Close menu if clicking outside
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setActiveDropdown(null);
         setMobileMenuOpen(false);
+        document.body.style.overflow = "auto";
       }
     };
 
-    document.addEventListener("click", handleOutsideClick);
+    document.addEventListener("mousedown", handleOutsideClick);
+
     return () => {
-      document.removeEventListener("click", handleOutsideClick);
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.body.style.overflow = "auto";
     };
   }, []);
+
+  // Debug logs
+  useEffect(() => {
+    console.log("Mobile menu state:", mobileMenuOpen);
+  }, [mobileMenuOpen]);
 
   return (
     <div className="main-container">
@@ -51,7 +71,7 @@ const Header = () => {
           <Link href="/" className="logo">
             <img
               src="/image/logo-1.png"
-              alt="Omega Prime Trading Logo"
+              alt="Weboum Logo"
               className="logo-img"
               width={150}
               height={50}
@@ -62,6 +82,7 @@ const Header = () => {
             className="menu-toggle"
             onClick={toggleMobileMenu}
             aria-label="Toggle navigation"
+            ref={toggleButtonRef}
           >
             {mobileMenuOpen ? (
               <span className="close-icon">✕</span>
@@ -71,6 +92,11 @@ const Header = () => {
           </button>
 
           <div
+            className={`menu-overlay ${mobileMenuOpen ? "active" : ""}`}
+            onClick={toggleMobileMenu}
+          ></div>
+
+          <nav
             className={`menu ${mobileMenuOpen ? "menu-open" : ""}`}
             ref={menuRef}
           >
@@ -80,7 +106,9 @@ const Header = () => {
                   <li className="menu-dropdown" key={index}>
                     <div
                       className="menu-link"
-                      onClick={(event) => handleMainMenuClick(menu.dropdownKey, event)}
+                      onClick={(event) =>
+                        handleMainMenuClick(menu.dropdownKey, event)
+                      }
                     >
                       {menu.label}
                       {menu.dropdownKey && (
@@ -95,7 +123,11 @@ const Header = () => {
                       >
                         {menu.items.map((item, subIndex) => (
                           <li key={subIndex}>
-                            <Link href={item.href} onClick={handleDropdownItemClick}>
+                            <Link
+                              href={item.href}
+                              onClick={handleDropdownItemClick}
+                              className="dropdown-link"
+                            >
                               {item.label}
                             </Link>
                           </li>
@@ -107,10 +139,10 @@ const Header = () => {
                   <li key={index}>
                     <Link
                       href={menu.href}
-                      className={`menu-link ${menu.isButton ? "btn-contact" : ""}`}
-                      onClick={() => {
-                        setMobileMenuOpen(false);
-                      }}
+                      className={`menu-link ${
+                        menu.isButton ? "btn-contact" : ""
+                      }`}
+                      onClick={handleDropdownItemClick}
                     >
                       {menu.label}
                     </Link>
@@ -118,7 +150,7 @@ const Header = () => {
                 )
               )}
             </ul>
-          </div>
+          </nav>
         </div>
       </header>
     </div>

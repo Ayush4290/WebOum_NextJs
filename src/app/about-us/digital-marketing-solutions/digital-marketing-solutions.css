@@ -1,173 +1,181 @@
-.digital-marketing-container {
+.digital-container {
   font-family: Arial, sans-serif;
   color: #333;
   background-color: white;
-  padding: 40px 20px;
-  margin: 0 auto;
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  box-sizing: border-box;
 }
 
-.digital-marketing-content-box {
+.digital-content-box {
   background-color: #fff;
-  padding: 30px;
+  padding: 20px;
   margin-bottom: 40px;
-}
-
-.digital-marketing-hero-section {
+  width: 100%;
+  box-sizing: border-box;
   text-align: center;
 }
 
-.digital-marketing-hero-section h1 {
-  font-size: 2rem;
+.digital-hero-section {
+  text-align: center;
+}
+
+.digital-hero-section h1 {
+  font-size: 2.5rem;
   color: #2a2a2a;
   margin-bottom: 20px;
 }
 
-.digital-marketing-hero-section p {
+.digital-hero-section p {
   font-size: 1.1rem;
   line-height: 1.6;
   color: #666;
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
-.digital-marketing-benefits-section {
+.digital-benefits-section {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 30px;
-  background-color: #f1f5f9; /* Light gray-blue like your screenshot */
+  background-color: #f1f5f9;
   border-radius: 10px;
   padding: 40px 30px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin-bottom: 40px;
 }
 
-.digital-marketing-benefits-image {
+.digital-benefits-image {
   flex: 1 1 45%;
   text-align: center;
 }
 
-.digital-marketing-benefits-image img {
-  max-width: 100%;
+.digital-benefits-image img {
+  max-width: 140%;
   height: auto;
   border-radius: 10px;
 }
 
-.digital-marketing-benefits-content {
+.digital-benefits-content {
   flex: 1 1 50%;
 }
 
-.digital-marketing-benefits-content h2 {
-  font-size: 2rem;
+.digital-benefits-content h2 {
+  font-size: 1.2rem;
   font-weight: bold;
   color: #0f172a;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+  justify-content: center;
 }
 
-.digital-marketing-benefits-content p {
+.digital-benefits-content p {
   font-size: 1rem;
   line-height: 1.7;
   color: #334155;
   margin-bottom: 15px;
 }
 
-.digital-marketing-social-media-section {
+.digital-social-media-section {
   display: flex;
   align-items: center;
   gap: 40px;
   padding: 50px 40px;
   margin-bottom: 50px;
-  flex-wrap: wrap; /* Allows stacking on smaller screens */
+  flex-wrap: wrap;
 }
 
-.digital-marketing-social-media-content {
+.digital-social-media-content {
   flex: 2;
   min-width: 300px;
 }
 
-.digital-marketing-social-media-content h2 {
-  font-size: 2rem;
+.digital-social-media-content h2 {
+  font-size: 1.75rem;
   color: #1e293b;
   margin-bottom: 20px;
   font-weight: 700;
 }
 
-.digital-marketing-social-media-content p {
+.digital-social-media-content p {
   font-size: 1.05rem;
   line-height: 1.7;
   color: #475569;
   margin-bottom: 18px;
 }
 
-.digital-marketing-social-media-image {
+.digital-social-media-image {
   flex: 1;
   text-align: center;
   min-width: 250px;
 }
 
-.digital-marketing-social-media-image img {
+.digital-social-media-image img {
   border-radius: 12px;
-  width: 450px;
-  height: 350px;
+  width: 100%;
+  height: auto;
+  max-width: 450px;
 }
 
-.digital-marketing-services-section {
+.digital-services-section {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 40px;
-  background-color: #f1f5f9; /* Light gray-blue */
+  background-color: #f1f5f9;
   border-radius: 12px;
   padding: 50px 40px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   margin-bottom: 50px;
 }
 
-.digital-marketing-services-image {
+.digital-services-image {
   flex: 1 1 40%;
   text-align: center;
   min-width: 280px;
 }
 
-.digital-marketing-services-image img {
+.digital-services-image img {
   max-width: 100%;
   height: auto;
   border-radius: 20px;
   object-fit: cover;
 }
 
-.digital-marketing-services-content {
+.digital-services-content {
   flex: 1 1 55%;
   min-width: 300px;
 }
 
-.digital-marketing-services-content h2 {
-  font-size: 2rem;
+.digital-services-content h2 {
+  font-size: 1.5rem;
   color: #1e293b;
   font-weight: 700;
   margin-bottom: 20px;
 }
 
-.digital-marketing-services-content p {
+.digital-services-content p {
   font-size: 1.05rem;
   line-height: 1.7;
   color: #475569;
   margin-bottom: 18px;
 }
 
-.digital-marketing-social-media-benefits {
+.digital-social-media-benefits {
   text-align: center;
   padding: 60px 20px;
 }
 
-.digital-marketing-social-media-benefits h2 {
+.digital-social-media-benefits h2 {
   font-size: 2rem;
   color: #0f172a;
   font-weight: 700;
   margin-bottom: 20px;
 }
 
-.digital-marketing-social-media-benefits p {
+.digital-social-media-benefits p {
   font-size: 1rem;
   line-height: 1.7;
   color: #475569;
@@ -175,112 +183,111 @@
   margin: 0 auto 40px;
 }
 
-.digital-marketing-benefits-grid {
+.digital-benefits-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 20px;
 }
 
-.digital-marketing-benefit-item {
+.digital-benefit-item {
   display: flex;
   align-items: flex-start;
-  gap: 20px;
+  gap: 15px;
 }
 
-.digital-marketing-benefit-icon {
+.digital-benefit-icon {
   color: #6a005f;
-  font-size: 2.5rem;
+  font-size: 2rem;
   flex-shrink: 0;
   margin-top: 5px;
 }
 
-.digital-marketing-benefit-content h3 {
+.digital-benefit-content h3 {
   font-size: 1.25rem;
   font-weight: 700;
   color: #6a005f;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
 }
 
-.digital-marketing-benefit-content p {
-  font-size: 1rem;
-  line-height: 1.6;
+.digital-benefit-content p {
+  font-size: 0.95rem;
+  line-height: 1.5;
   color: #475569;
 }
 
-.digital-marketing-weboum-benefits {
+.digital-weboum-benefits {
   text-align: center;
   background: #f8fafc;
   padding: 60px 20px;
 }
-.digital-marketing-content-box {
-  width: 100%;
-  height: 100%;
-}
 
-.digital-marketing-weboum-intro {
-  max-width: 1200px;
+.digital-weboum-intro {
+  max-width: 1800px;
   margin: 0 auto 50px;
 }
 
-.digital-marketing-weboum-intro h2 {
+.digital-weboum-intro h2 {
   font-size: 2rem;
   color: #0f172a;
   font-weight: 700;
   margin-bottom: 20px;
 }
 
-.digital-marketing-weboum-intro p {
+.digital-weboum-intro p {
   font-size: 1rem;
   color: #475569;
   line-height: 1.7;
 }
 
-.digital-marketing-weboum-why {
+.digital-weboum-why {
   max-width: 900px;
   margin: 0 auto;
 }
 
-.digital-marketing-weboum-why h3 {
+.digital-weboum-why h3 {
   font-size: 1.5rem;
   font-weight: 700;
   color: #0f172a;
   margin-bottom: 30px;
 }
 
-.digital-marketing-weboum-why ul {
+.digital-weboum-why ul {
   list-style: none;
   padding: 0;
   margin-bottom: 40px;
 }
 
-.digital-marketing-weboum-why ul li {
+.digital-weboum-why ul li {
   font-size: 1rem;
   color: #475569;
   text-align: left;
   position: relative;
   padding-left: 30px;
   margin-bottom: 20px;
-  border-bottom: 2px solid #6a005f; /* Purple underline */
+  border-bottom: 2px solid #6a005f;
   padding-bottom: 10px;
 }
 
-.digital-marketing-check-icon {
-  color: #2563eb; /* Blue color */
+.digital-check-icon {
+  color: #2563eb;
   font-weight: bold;
   position: absolute;
   left: 0;
   top: 2px;
 }
 
-.digital-marketing-weboum-note p {
+.digital-weboum-note p {
   font-size: 1rem;
   color: #475569;
   line-height: 1.7;
   margin-bottom: 20px;
 }
 
-.digital-marketing-cta-button {
+.digital-cta-button {
   background-color: #6a005f;
   color: #fff;
   border: none;
@@ -291,19 +298,32 @@
   transition: background-color 0.3s;
 }
 
-.digital-marketing-cta-button:hover {
+.digital-cta-button:hover {
   background-color: #4a004b;
 }
 
 @media (max-width: 768px) {
-  .digital-marketing-benefits-section,
-  .digital-marketing-social-media-section,
-  .digital-marketing-services-section {
+  .digital-benefits-section,
+  .digital-social-media-section,
+  .digital-services-section {
     flex-direction: column;
     text-align: center;
   }
 
-  .digital-marketing-benefits-grid {
+  .digital-benefits-grid {
     grid-template-columns: 1fr;
+  }
+
+  .digital-hero-section h1,
+  .digital-benefits-content h2,
+  .digital-social-media-content h2,
+  .digital-services-content h2,
+  .digital-social-media-benefits h2,
+  .digital-weboum-intro h2 {
+    font-size: 1.5rem;
+  }
+
+  .digital-container {
+    padding: 20px 10px;
   }
 }

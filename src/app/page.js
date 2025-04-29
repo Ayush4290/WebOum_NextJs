@@ -5,7 +5,6 @@ import homeData from "../data/home.json";
 import HeroSection from "./herosection/page";
 
 const Home = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
   const [currentPortfolioIndex, setCurrentPortfolioIndex] = useState(0);
   const [startScrolling, setStartScrolling] = useState(false);
   const [formData, setFormData] = useState({
@@ -38,16 +37,6 @@ const Home = () => {
     return () => clearInterval(interval);
   }, [startScrolling]);
 
-  const handlePrev = () =>
-    setCurrentSlide((prev) =>
-      prev === 0 ? homeData.testimonials.length - 1 : prev - 1
-    );
-
-  const handleNext = () =>
-    setCurrentSlide((prev) =>
-      prev === homeData.testimonials.length - 1 ? 0 : prev + 1
-    );
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -72,21 +61,6 @@ const Home = () => {
     if (portfolioRef.current) {
       portfolioRef.current.scrollTo({ top: 0, behavior: "smooth" });
     }
-  };
-
-  // Auto-scroll every 3 seconds
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prevSlide) =>
-        prevSlide === homeData.testimonials.length - 1 ? 0 : prevSlide + 1
-      );
-    }, 3000);
-
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, []);
-
-  const handleDotClick = (index) => {
-    setCurrentSlide(index);
   };
 
   return (
@@ -141,8 +115,7 @@ const Home = () => {
               <div id="portfolio" className="portfolio-section">
                 <h2 className="section-title">OUR PORTFOLIO</h2>
                 <div className="portfolio-carousel" ref={portfolioRef}>
-                  {homeData.portfolio.all &&
-                  homeData.portfolio.all.length > 1 ? (
+                  {homeData.portfolio.all && homeData.portfolio.all.length > 0 ? (
                     <div className="portfolio-stack">
                       {/* Bottom Image */}
                       <div className="portfolio-item bottom-image">
@@ -152,14 +125,14 @@ const Home = () => {
                               currentPortfolioIndex === 0
                                 ? homeData.portfolio.all.length - 1
                                 : currentPortfolioIndex - 1
-                            ].src
+                            ]?.src || "/image/placeholder.jpg"
                           }
                           alt={
                             homeData.portfolio.all[
                               currentPortfolioIndex === 0
                                 ? homeData.portfolio.all.length - 1
                                 : currentPortfolioIndex - 1
-                            ].alt
+                            ]?.alt || "Portfolio Image"
                           }
                           className="portfolio-image"
                         />
@@ -169,7 +142,7 @@ const Home = () => {
                               currentPortfolioIndex === 0
                                 ? homeData.portfolio.all.length - 1
                                 : currentPortfolioIndex - 1
-                            ].title
+                            ]?.title || "Portfolio Item"
                           }
                         </div>
                       </div>
@@ -177,13 +150,22 @@ const Home = () => {
                       {/* Top Image (Scrolling) */}
                       <div className="portfolio-item top-image">
                         <img
-                          src={homeData.portfolio.all[currentPortfolioIndex].src}
-                          alt={homeData.portfolio.all[currentPortfolioIndex].alt}
+                          src={
+                            homeData.portfolio.all[currentPortfolioIndex]?.src ||
+                            "/image/placeholder.jpg"
+                          }
+                          alt={
+                            homeData.portfolio.all[currentPortfolioIndex]?.alt ||
+                            "Portfolio Image"
+                          }
                           className="portfolio-image"
                           onClick={scrollPortfolioToTop}
                         />
                         <div className="portfolio-text">
-                          {homeData.portfolio.all[currentPortfolioIndex].title}
+                          {
+                            homeData.portfolio.all[currentPortfolioIndex]
+                              ?.title || "Portfolio Item"
+                          }
                         </div>
                       </div>
                     </div>
@@ -318,14 +300,9 @@ const Home = () => {
         <div className="test_container">
           <h2 className="testimonial-title">OUR TESTIMONIALS</h2>
 
-          <div className="testimonial-carousel">
+          <div className="testimonial-grid">
             {homeData.testimonials.map((testimonial, index) => (
-              <div
-                key={index}
-                className={`testimonial-item ${
-                  index === currentSlide ? "active" : ""
-                }`}
-              >
+              <div key={index} className="testimonial-item">
                 <div className="testimonial-box">
                   <p className="testimonial-text">{testimonial.text}</p>
                   <div className="stars">
@@ -333,7 +310,7 @@ const Home = () => {
                     {"☆".repeat(5 - testimonial.stars)}
                   </div>
                   <img
-                    src={testimonial.image}
+                    src={testimonial.image || "/image/placeholder.jpg"}
                     alt={testimonial.name}
                     className="testimonial-image"
                     width="72"
@@ -345,16 +322,6 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-
-          <div className="testimonial-controls">
-            {homeData.testimonials.map((_, index) => (
-              <span
-                key={index}
-                className={`dot ${index === currentSlide ? "active" : ""}`}
-                onClick={() => handleDotClick(index)}
-              ></span>
             ))}
           </div>
         </div>

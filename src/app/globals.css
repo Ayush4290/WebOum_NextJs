@@ -23,7 +23,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, 'Roboto', sans-serif;
+  font-family: Arial, "Roboto", sans-serif;
 }
 
 .container {
@@ -85,7 +85,6 @@
   margin-bottom: 12px;
   text-align: start;
   color: #180505;
-
 }
 
 .section-desc {
@@ -151,7 +150,7 @@
   height: 600px;
   overflow: hidden;
   background-color: var(--background-black);
-  border: 3px solid var(--portfolio-border-color); /* Red border added */
+  border: 3px solid var(--portfolio-border-color);
   border-radius: var(--border-radius);
 }
 
@@ -371,7 +370,7 @@
   font-weight: 700;
   font-size: 1.2rem;
   margin-bottom: 25px;
-  color: var(--text-dark);;
+  color: var(--text-dark);
   text-align: center;
 }
 
@@ -432,30 +431,24 @@ textarea.form-control {
   color: #fff;
 }
 
-.testimonial-carousel {
-  display: flex;
-  justify-content: center;
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
-  overflow: hidden;
-  padding: 20px 0;
+  padding: 0 20px;
 }
 
 .testimonial-item {
-  flex: 0 0 calc(33.333% - 20px);
   background: #fff;
   color: #333;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 32px;
-  transition: opacity 0.5s ease, transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   min-height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  opacity: 0;
-}
-
-.testimonial-item.active {
   opacity: 1;
 }
 
@@ -504,46 +497,12 @@ textarea.form-control {
   text-align: left;
 }
 
-.testimonial-controls {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.dot {
-  width: 12px;
-  height: 12px;
-  background-color: #ccc;
-  border-radius: 50%;
-  display: inline-block;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.dot.active {
-  background-color: #fff;
-}
-
-.dot:hover {
-  background-color: #e0d0e0;
-}
-
-@media (max-width: 768px) {
-  .testimonial-carousel {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .testimonial-item {
-    flex: 0 0 100%;
-    max-width: 90%;
-  }
-}
 /* CTA Section */
 .cta-section {
   padding: 64px 20px;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
+  border-top: 5px solid #6a005f;
+  border-bottom: 5px solid #6a005f;
 }
 
 .cta-container {
@@ -551,49 +510,62 @@ textarea.form-control {
   margin: auto;
   display: flex;
   flex-direction: column;
-  gap: 20px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 20px;
   font-family: var(--font-family);
 }
 
 .cta-left {
   text-align: center;
+  max-width: 700px;
 }
 
 .cta-heading {
-  font-size: 32px;
-  font-weight: 700;
-  color: var(--text-dark);
+  font-size: 36px;
+  font-weight: 800;
+  color: #1b1b1b;
+  margin-bottom: 16px;
   text-align: center;
-  text-transform: capitalize;
 }
 
 .cta-text {
-  font-size: 18px;
-  color: var(--text-dark);
-  max-width: 600px;
+  font-size: 1.2rem;
+  color: #333;
   text-align: center;
 }
 
 .cta-right {
-  text-align: center;
   margin-top: 20px;
 }
 
 .cta-button {
   background-color: #00247d;
-  color: var(--text-light);
+  color: #ffffff;
   font-weight: bold;
-  padding: 12px 24px;
+  padding: 14px 32px;
   border-radius: 999px;
   text-decoration: none;
   display: inline-block;
-  transition: background var(--transition);
+  transition: background 0.3s ease;
+  white-space: nowrap;
+  font-size: 26px;
+  animation: slideInRight 3s ease-out;
 }
 
 .cta-button:hover {
   background-color: #001b5f;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 /* Responsive Designs */
@@ -607,7 +579,6 @@ textarea.form-control {
   }
 
   .testimonial-item {
-    flex: 0 0 100%;
     min-height: 300px;
   }
 
@@ -640,6 +611,7 @@ textarea.form-control {
 @media (min-width: 768px) {
   .cta-container {
     flex-direction: row;
+    align-items: center;
     text-align: left;
   }
 
@@ -648,22 +620,17 @@ textarea.form-control {
     text-align: left;
   }
 
+  .cta-heading,
+  .cta-text {
+    text-align: left;
+  }
+
   .cta-right {
     flex: 1;
     text-align: right;
     margin-top: 0;
   }
-
-  .cta-heading {
-    text-align: start;
-    padding-right: 90px;
-  }
-
-  .cta-text {
-    text-align: start;
-  }
 }
-
 @media (max-width: 1024px) {
   .process-image {
     max-width: 100%;
