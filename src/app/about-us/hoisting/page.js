@@ -10,16 +10,12 @@ export default function WebHosting() {
           <h1>Managed Web Hosting for an Exceptional Online Presence</h1>
           <p>
             Cloudways powers your digital agency, eCommerce store, or online
-            business with a fast, secure, and user-friendly cloud hosting platform, supported by 24/7 expert
-            assistance.
+            business with a fast, secure, and user-friendly cloud hosting
+            platform, supported by 24/7 expert assistance.
           </p>
           <div className="hero-buttons">
-            <button className="btn primary-btn">
-              Start Free Trial
-            </button>
-            <button className="btn secondary-btn">
-              View Plans
-            </button>
+            <button className="btn primary-btn">Start Free Trial</button>
+            <button className="btn secondary-btn">View Plans</button>
           </div>
         </div>
         <div className="hero-image">
@@ -79,9 +75,7 @@ export default function WebHosting() {
             website and focus on growing your business, while Autonomous takes
             care of everything else!
           </p>
-          <button className="btn primary-btn">
-            Get Started
-          </button>
+          <button className="btn primary-btn">Get Started</button>
         </div>
         <div className="testimonial">
           <div className="quote-icon">
@@ -136,7 +130,10 @@ export default function WebHosting() {
             </div>
             <h3>AWS (Amazon Web Services)</h3>
             <p>
-              The industry-leading AWS (Amazon Web Services) has been providing world-leading cloud technologies that help scale operations. Our secure, built-for-business platform features computing, networking, and tools for a better experience.
+              The industry-leading AWS (Amazon Web Services) has been providing
+              world-leading cloud technologies that help scale operations. Our
+              secure, built-for-business platform features computing,
+              networking, and tools for a better experience.
             </p>
             <a href="#" className="learn-more">
               Learn More
@@ -154,7 +151,10 @@ export default function WebHosting() {
             </div>
             <h3>Azure</h3>
             <p>
-              Microsoft-powered cloud computing platform and service. Thanks to its robust infrastructure, it manages, provides access to, and develops applications and services for people, businesses, and governments.
+              Microsoft-powered cloud computing platform and service. Thanks to
+              its robust infrastructure, it manages, provides access to, and
+              develops applications and services for people, businesses, and
+              governments.
             </p>
             <a href="#" className="learn-more">
               Learn More
@@ -172,7 +172,9 @@ export default function WebHosting() {
             </div>
             <h3>(GCP) Google Cloud Platform</h3>
             <p>
-              Google Cloud Platform (GCP) is Google's suite of cloud computing services, offering a broad range of products across storage, data analytics, and machine learning, as well as management tools.
+              Google Cloud Platform (GCP) is Google's suite of cloud computing
+              services, offering a broad range of products across storage, data
+              analytics, and machine learning, as well as management tools.
             </p>
             <a href="#" className="learn-more">
               Learn More
@@ -251,9 +253,7 @@ export default function WebHosting() {
               optimized to the max, and host them on top cloud services like
               DigitalOcean, Google Cloud, or Amazon Web Service.
             </p>
-            <button className="btn primary-btn">
-              Launch Now
-            </button>
+            <button className="btn primary-btn">Launch Now</button>
           </div>
         </section>
 
