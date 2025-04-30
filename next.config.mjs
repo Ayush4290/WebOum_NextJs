@@ -1,7 +1,7 @@
 const nextConfig = {
   output: "export",
-  basePath: "/static-website",
-  assetPrefix: "/static-website",
+  // basePath: "/static-website",
+  // assetPrefix: "/static-website",
   images: {
     remotePatterns: [
       {
@@ -16,7 +16,10 @@ const nextConfig = {
       },
     ],
     unoptimized: true,
+    loader: 'custom',
+    loaderFile: './image-loader.js',
   },
+  trailingSlash: true,
 };
 
 export default nextConfig;

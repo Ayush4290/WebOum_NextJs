@@ -22,7 +22,8 @@ const Header = () => {
     document.body.style.overflow = mobileMenuOpen ? "auto" : "hidden";
   };
 
-  const handleMainMenuClick = (menuKey, event) => {
+  // Modified to handle icon click only
+  const handleIconClick = (menuKey, event) => {
     event.preventDefault();
     event.stopPropagation();
     toggleDropdown(menuKey);
@@ -105,16 +106,16 @@ const Header = () => {
               {menuData.map((menu, index) =>
                 menu.items ? (
                   <li className="menu-dropdown" key={index}>
-                    <div
-                      className="menu-link"
-                      onClick={(event) =>
-                        handleMainMenuClick(menu.dropdownKey, event)
-                      }
-                    >
-                      {menu.label}
-                      {menu.dropdownKey && (
-                        <BiCaretDown className="menu-icon" />
-                      )}
+                    <div className="menu-link">
+                      <span >
+                        {menu.label}
+                        {menu.dropdownKey && (
+                          <BiCaretDown 
+                            className="menu-icon" 
+                            onClick={(event) => handleIconClick(menu.dropdownKey, event)}
+                          />
+                        )}
+                      </span>
                     </div>
                     {menu.dropdownKey && (
                       <ul

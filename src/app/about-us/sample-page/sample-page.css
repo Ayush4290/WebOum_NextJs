@@ -208,8 +208,9 @@
 
 /* Why us section styles */
 .samplePage_section-wrapper {
-  padding: 60px 20px;
-  
+  padding: 60px 90px;
+
+  margin: 0 auto;
 }
 
 
@@ -222,9 +223,9 @@
 }
 
 .samplePage_highlight-line {
-  width: 200px;
+  width: 400px;
   border-top: 3px solid #aa00aa;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .samplePage_left-content h2 {
@@ -608,11 +609,17 @@
 /* Container class */
 .container {
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between; 
+  gap: 40px;
+  box-sizing: border-box;
 }
+
 
 @media (min-width: 576px) {
   .container {

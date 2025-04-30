@@ -8,6 +8,7 @@ import HeroSection from "./herosection/page";
 const Home = () => {
   const [currentPortfolioIndex, setCurrentPortfolioIndex] = useState(0);
   const [startScrolling, setStartScrolling] = useState(false);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,6 +17,7 @@ const Home = () => {
   });
 
   const portfolioRef = useRef(null);
+  const testimonialRef = useRef(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -37,6 +39,28 @@ const Home = () => {
 
     return () => clearInterval(interval);
   }, [startScrolling]);
+
+  // Testimonial auto-scrolling
+  useEffect(() => {
+    const testimonialInterval = setInterval(() => {
+      setActiveTestimonial((prev) => 
+        prev === homeData.testimonials.length - 1 ? 0 : prev + 1
+      );
+    }, 5000);
+
+    return () => clearInterval(testimonialInterval);
+  }, []);
+
+  // Update scroll position when active testimonial changes
+  useEffect(() => {
+    if (testimonialRef.current) {
+      const scrollPosition = activeTestimonial * testimonialRef.current.children[0].offsetWidth;
+      testimonialRef.current.scrollTo({
+        left: scrollPosition,
+        behavior: 'smooth'
+      });
+    }
+  }, [activeTestimonial]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -62,6 +86,10 @@ const Home = () => {
     if (portfolioRef.current) {
       portfolioRef.current.scrollTo({ top: 0, behavior: "smooth" });
     }
+  };
+
+  const handleDotClick = (index) => {
+    setActiveTestimonial(index);
   };
 
   return (
@@ -118,7 +146,8 @@ const Home = () => {
               <div id="portfolio" className="portfolio-section">
                 <h2 className="section-title">OUR PORTFOLIO</h2>
                 <div className="portfolio-carousel" ref={portfolioRef}>
-                  {homeData.portfolio.all && homeData.portfolio.all.length > 0 ? (
+                  {homeData.portfolio.all &&
+                  homeData.portfolio.all.length > 0 ? (
                     <div className="portfolio-stack">
                       {/* Bottom Image */}
                       <div className="portfolio-item bottom-image">
@@ -142,13 +171,11 @@ const Home = () => {
                           height={300}
                         />
                         <div className="portfolio-text">
-                          {
-                            homeData.portfolio.all[
-                              currentPortfolioIndex === 0
-                                ? homeData.portfolio.all.length - 1
-                                : currentPortfolioIndex - 1
-                            ]?.title || "Portfolio Item"
-                          }
+                          {homeData.portfolio.all[
+                            currentPortfolioIndex === 0
+                              ? homeData.portfolio.all.length - 1
+                              : currentPortfolioIndex - 1
+                          ]?.title || "Portfolio Item"}
                         </div>
                       </div>
 
@@ -156,12 +183,12 @@ const Home = () => {
                       <div className="portfolio-item top-image">
                         <Image
                           src={
-                            homeData.portfolio.all[currentPortfolioIndex]?.src ||
-                            "/image/placeholder.jpg"
+                            homeData.portfolio.all[currentPortfolioIndex]
+                              ?.src || "/image/placeholder.jpg"
                           }
                           alt={
-                            homeData.portfolio.all[currentPortfolioIndex]?.alt ||
-                            "Portfolio Image"
+                            homeData.portfolio.all[currentPortfolioIndex]
+                              ?.alt || "Portfolio Image"
                           }
                           className="portfolio-image"
                           width={500}
@@ -169,10 +196,8 @@ const Home = () => {
                           onClick={scrollPortfolioToTop}
                         />
                         <div className="portfolio-text">
-                          {
-                            homeData.portfolio.all[currentPortfolioIndex]
-                              ?.title || "Portfolio Item"
-                          }
+                          {homeData.portfolio.all[currentPortfolioIndex]
+                            ?.title || "Portfolio Item"}
                         </div>
                       </div>
                     </div>
@@ -194,21 +219,21 @@ const Home = () => {
             Trusted software design, develop and digital marketing company
           </h5>
           <p className="why-lead">
-            In today&apos;s digital landscape, a strong online presence is no longer
-            a luxury—it&apos;s a necessity. Choosing the right partner to guide you
-            through this complex world is crucial. Here&apos;s why Weboum is the
-            perfect choice for your business:
+            In today&apos;s digital landscape, a strong online presence is no
+            longer a luxury—it&apos;s a necessity. Choosing the right partner to
+            guide you through this complex world is crucial. Here&apos;s why
+            Weboum is the perfect choice for your business:
           </p>
 
           <div className="why-card-grid">
             {homeData.cards.map((card, index) => (
               <div className="why-card" key={index}>
-                <Image 
-                  src={card.img} 
-                  alt={card.alt} 
-                  className="why-icon" 
-                  width={64} 
-                  height={64} 
+                <Image
+                  src={card.img}
+                  alt={card.alt}
+                  className="why-icon"
+                  width={64}
+                  height={64}
                 />
                 <div>
                   <div className="why-card-title">{card.title}</div>
@@ -312,31 +337,46 @@ const Home = () => {
 
       {/* Testimonials */}
       <section id="testimonials" className="testimonial-section">
-        <div className="test_container">
-          <h2 className="testimonial-title">OUR TESTIMONIALS</h2>
+        <h2 className="testimonial-title">OUR TESTIMONIALS</h2>
 
-          <div className="testimonial-grid">
-            {homeData.testimonials.map((testimonial, index) => (
-              <div key={index} className="testimonial-item">
-                <div className="testimonial-box">
-                  <p className="testimonial-text">{testimonial.text}</p>
+        <div className="testimonial-container">
+          <div className="auto-scroll-wrapper">
+            <div 
+              className="testimonial-carousel" 
+              ref={testimonialRef}
+            >
+              {homeData.testimonials.map((testimonial, index) => (
+                <div 
+                  className={`testimonial-item ${index === activeTestimonial ? 'active' : ''}`} 
+                  key={index}
+                >
+                  <p className="testimonial-text">"{testimonial.text}"</p>
+
                   <div className="stars">
                     {"★".repeat(testimonial.stars)}
                     {"☆".repeat(5 - testimonial.stars)}
                   </div>
-                  <Image
-                    src={testimonial.image || "/image/placeholder.jpg"}
+
+                  <img
+                    src={testimonial.image}
                     alt={testimonial.name}
                     className="testimonial-image"
-                    width={72}
-                    height={72}
                   />
-                  <div className="testimonial-name">{testimonial.name}</div>
-                  <div className="testimonial-position">
-                    {testimonial.title}
-                  </div>
+
+                  <h4 className="testimonial-name">{testimonial.name}</h4>
+                  <p className="testimonial-position">{testimonial.title}</p>
                 </div>
-              </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="scroll-indicator">
+            {homeData.testimonials.map((_, index) => (
+              <div
+                className={`scroll-dot ${index === activeTestimonial ? "active" : ""}`}
+                key={index}
+                onClick={() => handleDotClick(index)}
+              />
             ))}
           </div>
         </div>
@@ -348,8 +388,9 @@ const Home = () => {
           <div className="cta-left">
             <h2 className="cta-heading">Contact Us to Grow Your Business!</h2>
             <p className="cta-text">
-              Let&apos;s discuss how we can help you achieve your goals. Schedule a
-              consultation to explore the best solutions for your needs.
+              Let&apos;s discuss how we can help you achieve your goals.
+              Schedule a consultation to explore the best solutions for your
+              needs.
             </p>
           </div>
           <div className="cta-right">

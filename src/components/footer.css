@@ -65,13 +65,13 @@
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 0.7rem;
-  color: var(--white);
+  color: white;
 }
 
 .underline {
   width: 80px;
   height: 2px;
-  background-color: var(--white);
+  background-color: white;
   margin-bottom: 1.2rem;
 }
 
@@ -90,7 +90,7 @@
 
 .footer-links-section ul li a,
 .footer-services-section ul li a {
-  color: var(--white);
+  color: white;
   text-decoration: none;
   font-size: 1rem;
   transition: color 0.3s;
@@ -126,7 +126,7 @@
   padding: 0.8rem;
   border-radius: 30px;
   border: none;
-  background-color: var(--white);
+  background-color: white;
   color: var(--primary-color);
   font-weight: 600;
   font-size: 0.9rem;
@@ -151,7 +151,7 @@
   align-items: center;
   width: 40px;
   height: 40px;
-  background-color: var(--white);
+  background-color: white;
   border-radius: 50%;
   color: rgb(162, 35, 35);
   font-size: 1.2rem;
