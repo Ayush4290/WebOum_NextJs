@@ -55,7 +55,7 @@ export default function WeboumContactForm() {
             {/* Left column */}
             <div id="left-column">
               <h1 id="main-title">
-                Do You Have Any Questions? We'll Be Happy To Assist!
+                Do You Have Any Questions? We&rsquo;ll Be Happy To Assist!
               </h1>
 
               <div id="social-links">

@@ -23,7 +23,7 @@ p {
   margin-bottom: 1.5rem;
 }
 
-.btn {
+.btnhosting {
   display: inline-block;
   padding: 12px 24px;
   border-radius: 4px;
@@ -34,22 +34,22 @@ p {
   transition: all 0.3s ease;
 }
 
-.primary-btn {
+.primary-btnhosting {
   background-color: #00b67a;
   color: white;
 }
 
-.primary-btn:hover {
+.primary-btnhosting:hover {
   background-color: #009e69;
 }
 
-.secondary-btn {
+.secondary-btnhosting {
   background-color: transparent;
   border: 2px solid white;
   color: white;
 }
 
-.secondary-btn:hover {
+.secondary-btnhosting:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -58,8 +58,8 @@ section {
 }
 
 /* Hero Section */
-.hero {
-  background-color: #040450;
+.herohosting {
+  background: linear-gradient(to right, #040450, #1e3a8a);
   color: white;
   display: flex;
   flex-wrap: wrap;
@@ -68,53 +68,41 @@ section {
   padding: 20px 8%;
 }
 
-.hero-content {
+.herohosting-content {
   flex: 1;
   min-width: 300px;
   padding-right: 40px;
 }
 
-.hero h1 {
-  font-size: 2.5rem;
+.herohosting h1 {
+  font-size: 2.8rem;
   margin-bottom: 1.5rem;
 }
 
-.hero-buttons {
+.herohosting-buttons {
   margin-top: 2rem;
 }
 
-.hero-buttons .btn {
+.herohosting-buttons .btnhosting {
   margin-right: 15px;
   margin-bottom: 15px;
 }
 
-.hero-image {
-  flex: 1;
-  min-width: 300px;
-  display: flex;
-  justify-content: center;
-}
-
-.hero-image img {
-  max-width: 100%;
-  border-radius: 8px;
-}
-
 /* Trusted By Section */
-.trusted-by {
+.trusted-byhosting {
   background-color: #ffffff;
   text-align: center;
   padding-top: 30px;
   padding-bottom: 30px;
 }
 
-.trusted-by h2 {
+.trusted-byhosting h2 {
   color: #333;
   font-size: 1.5rem;
   margin-bottom: 30px;
 }
 
-.client-logos {
+.client-logoshosting {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -123,19 +111,19 @@ section {
   padding: 10px 0;
 }
 
-.client-logos img {
+.client-logoshosting img {
   height: 40px;
   opacity: 0.7;
   transition: opacity 0.3s ease;
   border-radius: 0;
 }
 
-.client-logos img:hover {
+.client-logoshosting img:hover {
   opacity: 1;
 }
 
 /* WordPress Hosting Section */
-.wordpress-hosting {
+.wordpress-hostinghosting {
   background-color: #f5f7fa;
   display: flex;
   flex-wrap: wrap;
@@ -143,18 +131,18 @@ section {
   padding: 60px 8%;
 }
 
-.wordpress-content {
+.wordpress-contenthosting {
   flex: 1;
   min-width: 300px;
   padding-right: 40px;
 }
 
-.wordpress-content h2 {
+.wordpress-contenthosting h2 {
   color: #040450;
-  font-size: 2rem;
+  font-size: 2.2rem;
 }
 
-.testimonial {
+.testimonialhosting {
   flex: 1;
   min-width: 300px;
   background-color: white;
@@ -164,30 +152,30 @@ section {
   position: relative;
 }
 
-.quote-icon {
+.quote-iconhosting {
   color: #00b67a;
   font-size: 2rem;
   margin-bottom: 15px;
 }
 
-.testimonial-content {
+.testimonial-contenthosting {
   max-height: 200px;
   overflow-y: auto;
   scroll-behavior: smooth;
 }
 
-.testimonial-content p {
+.testimonial-contenthosting p {
   margin-bottom: 20px;
   font-style: italic;
 }
 
-.pagination {
+.paginationhosting {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
 
-.dot {
+.dothosting {
   height: 10px;
   width: 10px;
   background-color: #bbb;
@@ -197,39 +185,33 @@ section {
   cursor: pointer;
 }
 
-.dot.active {
+.dothosting.activehosting {
   background-color: #00b67a;
 }
 
 /* Success Story Section */
-.success-story {
+.success-storyhosting {
   text-align: center;
-  background-color: #fff;
+  background: linear-gradient(to bottom, #fff, #e6f0fa);
   padding: 40px 8%;
 }
 
-.success-story h2 {
+.success-storyhosting h2 {
   font-size: 2rem;
   color: #040450;
 }
 
-.success-story span {
+.success-storyhosting span {
   color: #00b67a;
 }
 
-/* Server Options Section */
-.server-options {
-  background-color: #f9f9f9;
-  padding: 60px 8%;
-}
-
-.tabs {
+.tabshosting {
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
 }
 
-.tab-btn {
+.tab-btnhosting {
   padding: 12px 24px;
   background-color: transparent;
   border: none;
@@ -237,13 +219,14 @@ section {
   font-weight: bold;
   position: relative;
   transition: box-shadow 0.3s ease;
+  color: #040450;
 }
 
-.tab-btn.active {
+.tab-btnhosting.activehosting {
   color: #00b67a;
 }
 
-.tab-btn.active::after {
+.tab-btnhosting.activehosting::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -253,24 +236,25 @@ section {
   background-color: #00b67a;
 }
 
-.tab-btn:hover {
+.tab-btnhosting:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.cloud-providers {
+.cloud-providershosting {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
 }
 
-.provider-card {
+.provider-cardhosting {
   background-color: #fff;
+  border: 2px solid #1e3a8a;
   border-radius: 8px;
   padding: 30px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.provider-logo {
+.provider-logohosting {
   width: 60px;
   height: 60px;
   background-color: #f1f1f1;
@@ -281,18 +265,18 @@ section {
   margin-bottom: 20px;
 }
 
-.provider-logo img {
+.provider-logohosting img {
   max-width: 70%;
   max-height: 70%;
   border-radius: 0;
 }
 
-.provider-card h3 {
+.provider-cardhosting h3 {
   color: #040450;
   margin-bottom: 15px;
 }
 
-.learn-more {
+.learn-morehosting {
   color: #00b67a;
   text-decoration: none;
   font-weight: bold;
@@ -301,13 +285,12 @@ section {
 }
 
 /* SMB Hosting Section */
-.smb-hosting {
+.smb-hostinghosting {
   background-color: #fff;
   padding: 0;
 }
 
-/* Hosting Header Subsection */
-.hosting-header {
+.hosting-headerhosting {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -316,39 +299,39 @@ section {
   position: relative;
 }
 
-.hosting-image {
+.hosting-imagehosting {
   flex: 0 0 30%;
   min-width: 300px;
   z-index: 2;
 }
 
-.hosting-image img {
+.hosting-imagehosting img {
   max-width: 100%;
   height: auto;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.hosting-heading {
+.hosting-headinghosting {
   flex: 0 0 70%;
   min-width: 300px;
   padding-left: 40px;
   z-index: 2;
 }
 
-.hosting-heading h2 {
+.hosting-headinghosting h2 {
   color: #333;
   font-size: 1.8rem;
   margin-bottom: 30px;
 }
 
-.rating-badges {
+.rating-badgeshosting {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
 
-.badge {
+.badgehosting {
   text-align: center;
   padding: 15px;
   border-radius: 8px;
@@ -358,20 +341,19 @@ section {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
-.badge i {
+.badgehosting i {
   font-size: 1.5rem;
   color: #00b67a;
   margin-bottom: 10px;
 }
 
-.badge strong {
+.badgehosting strong {
   display: block;
   font-size: 1.2rem;
   margin-bottom: 5px;
 }
 
-/* Stats Section */
-.stats-section {
+.stats-sectionhosting {
   display: flex;
   justify-content: space-around;
   padding: 30px 8%;
@@ -379,25 +361,24 @@ section {
   text-align: center;
 }
 
-.stat-item {
+.stat-itemhosting {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.stat-item strong {
+.stat-itemhosting strong {
   font-size: 2rem;
   color: #040450;
   margin-bottom: 5px;
 }
 
-.stat-item span {
+.stat-itemhosting span {
   font-size: 0.9rem;
   color: #666;
 }
 
-/* App Selection Subsection */
-.app-selection {
+.app-selectionhosting {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -405,7 +386,7 @@ section {
   padding: 0;
 }
 
-.app-technologies {
+.app-technologieshosting {
   flex: 1;
   min-width: 300px;
   display: flex;
@@ -414,35 +395,34 @@ section {
   padding: 30px;
 }
 
-.app-technologies img {
+.app-technologieshosting img {
   max-width: 100%;
   height: auto;
   border-radius: 0;
 }
 
-.app-content {
+.app-contenthosting {
   flex: 1;
   min-width: 300px;
   padding: 30px;
   text-align: left;
 }
 
-.app-content h2 {
+.app-contenthosting h2 {
   color: #1f2937;
   font-size: 2rem;
   margin-bottom: 20px;
   font-weight: 700;
 }
 
-.app-content p {
+.app-contenthosting p {
   color: #4b5563;
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 20px;
 }
 
-/* Features Subsection */
-.features {
+.featureshosting {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
@@ -450,7 +430,7 @@ section {
   background-color: #fff;
 }
 
-.feature-card {
+.feature-cardhosting {
   text-align: center;
   padding: 30px 20px;
   background-color: #e6f0fa;
@@ -459,26 +439,26 @@ section {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.feature-card:hover {
+.feature-cardhosting:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.feature-card img {
+.feature-cardhosting img {
   height: 100px;
   width: 100px;
   margin-bottom: 20px;
   object-fit: contain;
 }
 
-.feature-card h3 {
+.feature-cardhosting h3 {
   color: #1e40af;
   margin-bottom: 15px;
   font-size: 1.5rem;
   font-weight: 600;
 }
 
-.feature-card p {
+.feature-cardhosting p {
   color: #4b5563;
   font-size: 1rem;
   line-height: 1.5;
@@ -490,30 +470,30 @@ section {
     padding: 40px 5%;
   }
 
-  .hero-content,
-  .wordpress-content {
+  .herohosting-content,
+  .wordpress-contenthosting {
     padding-right: 0;
     margin-bottom: 30px;
   }
 
-  .hosting-image {
+  .hosting-imagehosting {
     margin-bottom: 30px;
   }
 
-  .hosting-heading {
+  .hosting-headinghosting {
     padding-left: 0;
   }
 
-  .rating-badges {
+  .rating-badgeshosting {
     justify-content: center;
   }
 
-  .app-content {
+  .app-contenthosting {
     padding-left: 0;
     margin-top: 0;
   }
 
-  .stats-section {
+  .stats-sectionhosting {
     flex-direction: column;
     gap: 20px;
   }

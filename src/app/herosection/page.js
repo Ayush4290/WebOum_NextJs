@@ -98,7 +98,7 @@ const HeroSection = () => {
     const interval = setInterval(changeTitle, 4000); // 4 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [textOptions.length]);
 
   return (
     <div className="banner-mains">

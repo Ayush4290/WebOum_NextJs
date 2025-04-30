@@ -58,9 +58,9 @@ export default function SoftwareTesting() {
 
         <div className="software-container">
           <div className="software-section-header">
-            <h1 className="software-h1">Weboum's Software Testing Solutions</h1>
+            <h1 className="software-h1">Weboum&apos;s Software Testing Solutions</h1>
             <p className="software-p">
-              Get your software development team augmented with Weboum's
+              Get your software development team augmented with Weboum&apos;s
               software development solutions that are custom-tailored to suit
               different needs. We are software geeks who will test your software
               in painstakingly in the best possible way.
@@ -126,7 +126,7 @@ export default function SoftwareTesting() {
             </li>
           </ul>
           <h1 className="software-h1">
-            Let's Build and Deploy bug-free software products!
+            Let&apos;s Build and Deploy bug-free software products!
           </h1>
           <p className="software-p">
             Our quality assurance and software testing services are based on the

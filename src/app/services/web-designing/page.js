@@ -3,6 +3,7 @@
 import Days from "@/app/about-us/days/page";
 import SubHeader from "@/app/sub-header/page";
 import "./web-designing.css";
+import Image from "next/image";
 
 const WebsiteDesign = () => {
   return (
@@ -23,9 +24,9 @@ const WebsiteDesign = () => {
               </p>
               <p>
                 Are you running a business for quite some time now but still
-                haven't tapped the power of the internet by taking the online
-                route? Want to create a website right from scratch or facelift
-                one you already have? Our competent{" "}
+                haven&apos;t tapped the power of the internet by taking the
+                online route? Want to create a website right from scratch or
+                facelift one you already have? Our competent{" "}
                 <strong>web designers at</strong> Weboum Technology will go
                 beyond your expectations in terms of enactment and
                 functionality.
@@ -34,9 +35,11 @@ const WebsiteDesign = () => {
 
             {/* Right Image */}
             <div className="col-md-6 text-center">
-              <img
+              <Image
                 src="/image/web design.png"
                 alt="Website Design"
+                width={600}
+                height={400}
                 className="img-fluid"
               />
             </div>
@@ -46,10 +49,12 @@ const WebsiteDesign = () => {
           <div className="row align-items-center">
             {/* Left Image */}
             <div className="col-md-6 text-center mb-4 mb-md-0">
-              <img
+              <Image
                 src="/image/web-design 2.png"
                 alt="Design Team"
                 className="img-fluid"
+                width={600}
+                height={400}
               />
             </div>
 
@@ -74,10 +79,10 @@ const WebsiteDesign = () => {
               </p>
               <p>
                 With years of experience in the industry, we are well-aware of
-                what works and what doesn't. Our extensive expertise helps us
-                deliver results-driven design services. We offer bespoke designs
-                and have the best consultants, UI/UX designers, experts in our
-                team to cater to varied needs.
+                what works and what doesn&apos;t. Our extensive expertise helps
+                us deliver results-driven design services. We offer bespoke
+                designs and have the best consultants, UI/UX designers, experts
+                in our team to cater to varied needs.
               </p>
             </div>
           </div>
@@ -112,10 +117,12 @@ const WebsiteDesign = () => {
 
             {/* Right Image */}
             <div className="col-md-6 text-center">
-              <img
+              <Image
                 src="/image/webdesign3.jpg"
                 alt="Website Design"
                 className="img-fluid"
+                width={600}
+                height={400}
               />
             </div>
           </div>

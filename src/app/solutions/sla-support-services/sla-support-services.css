@@ -2,83 +2,79 @@
   --primary-color: #6a005f;
   --text-color: #333;
   --heading-color: #111;
+  --background-light: #f4f8fb;
+  --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   --spacing: 3.4rem;
   --radius: 0.5rem;
-  --background-light: #f4f8fb;
-  --card-bg: #ffffff;
 }
 
-/* Overall Page */
+/* Base Page */
 .support-page {
+  font-family: var(--font-family);
   padding: var(--spacing);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fff;
   color: var(--text-color);
-
 }
 
 /* Row Layout */
 .support-section-row {
   display: flex;
-  flex-direction: column;
-  gap: var(--spacing);
-  margin-bottom: 2rem;
-  font-size: 1.3rem;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 3rem;
 }
 
-@media (min-width: 768px) {
-  .support-section-row {
-    flex-direction: row;
-    align-items: center;
-  }
-}
-
-/* Text and Image Sides */
+/* Text Column */
 .support-section-text {
-  flex: 1;
+  flex: 1 1 50%;
+  font-size: 1.1rem;
+  line-height: 1.7;
 }
 
+/* Heading */
+.support-section-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--heading-color);
+  margin-bottom: 1rem;
+}
+
+/* Image Column */
 .support-section-image {
-  flex: 1;
+  flex: 1 1 45%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .support-section-image img {
-  width: 100%;
-  max-width: 450px;
+  max-width: 100%;
   height: auto;
   border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Headings */
-.support-section-heading {
-  font-size: 1.75rem;
-  font-weight: bold;
-  color: var(--heading-color);
-  margin-bottom: 1rem;
-}
-
-/* List Styles */
-.support-list {
-  padding-left: 1.5rem;
-  margin-top: 1rem;
-  list-style-type: disc;
-}
-
-.support-list li {
-  margin-bottom: 0.5rem;
-}
-
-/* Benefits Section Background */
+/* Benefits Block */
 .support-benefits {
   background-color: var(--background-light);
   padding: var(--spacing);
   border-radius: var(--radius);
-  margin: 2rem 0;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
-/* Call to Action */
+.support-benefits ul {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.support-list li {
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+/* CTA Section */
 .support-call-to-action {
   text-align: center;
   margin-top: var(--spacing);
@@ -87,6 +83,31 @@
 .support-section-p {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: var(--text-color);
   margin-top: 1rem;
+  color: var(--text-color);
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .support-section-row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .support-section-text,
+  .support-section-image {
+    flex: 1 1 100%;
+  }
+
+  .support-section-heading {
+    font-size: 1.75rem;
+  }
+
+  .support-section-p {
+    text-align: center;
+  }
+
+  .support-section-image img {
+    max-width: 90%;
+  }
 }

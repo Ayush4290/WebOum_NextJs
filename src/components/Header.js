@@ -5,6 +5,7 @@ import "./Header.css";
 import { BiCaretDown } from "react-icons/bi";
 import menuData from "../data/Header.json";
 import Link from "next/link";
+import Image from "next/image";
 
 const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -69,7 +70,7 @@ const Header = () => {
       <header className="navbar">
         <div className="navbar-inner">
           <Link href="/" className="logo">
-            <img
+            <Image
               src="/image/logo-1.png"
               alt="Weboum Logo"
               className="logo-img"

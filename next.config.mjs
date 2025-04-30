@@ -7,9 +7,15 @@ const nextConfig = {
         hostname: "weboum.com",
         pathname: "/wp-content/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "www.gstatic.com",
+        pathname: "/recaptcha/api2/**",
+      },
     ],
+    unoptimized: true, 
   },
-  output: 'standalone',
+  output: 'export',
 };
 
 export default nextConfig;

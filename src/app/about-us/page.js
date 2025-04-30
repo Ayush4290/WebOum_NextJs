@@ -3,7 +3,7 @@
 import SubHeader from "../sub-header/page";
 import Days from "./days/page";
 import "./about-us.css";
-
+import Image from "next/image";
 export default function AboutUs() {
   return (
     <>
@@ -63,10 +63,12 @@ export default function AboutUs() {
                 </div>
               </div>
               <div className="about-image-column">
-                <img
+                <Image
                   src="/image/development-about.jpg"
                   alt="Technology Graphic"
                   className="about-image"
+                  width={500} 
+                  height={500} 
                 />
               </div>
             </div>

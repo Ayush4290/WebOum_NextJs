@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import "./careers.css";
 import Days from "../days/page";
 import SubHeader from "@/app/sub-header/page";
+import Image from "next/image";
 
 const Careers = () => {
   const [formData, setFormData] = useState({
@@ -163,11 +164,13 @@ const Careers = () => {
                       checked={formData.notRobot}
                       onChange={handleInputChange}
                     />
-                    <label htmlFor="robot-check">I'm not a robot</label>
-                    <img
+                    <label htmlFor="robot-check">I&apos;m not a robot</label>
+                    <Image
                       src="https://www.gstatic.com/recaptcha/api2/logo_48.png"
                       alt="Captcha"
                       className="careers-captcha-image"
+                      width={48}
+                      height={48}
                     />
                   </div>
 
@@ -179,7 +182,12 @@ const Careers = () => {
             </div>
 
             <div className="careers-col-lg-5 careers-form-image">
-              <img src="/image/Careers.jpg" alt="HR Image or Graphic" />
+              <Image
+                src="/image/Careers.jpg"
+                alt="HR Image or Graphic"
+                width={500}
+                height={500}
+              />
             </div>
           </div>
         </div>

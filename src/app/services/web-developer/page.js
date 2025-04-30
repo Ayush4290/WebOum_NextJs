@@ -484,7 +484,7 @@ export default function WebDevelopment() {
                 <SiElm className="tech-logo" />
                 <div className="tech-title">ELM</div>
                 <p className="tech-description">
-                  Our team uses ELM's fast compilation, user-friendliness, and
+                  Our team uses ELM&apos;s fast compilation, user-friendliness, and
                   safety benefits to build, integrate, and customize your
                   website or app.
                 </p>

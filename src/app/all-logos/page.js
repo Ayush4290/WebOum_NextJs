@@ -1,6 +1,7 @@
 import Days from "../about-us/days/page";
 import SubHeader from "../sub-header/page";
 import "./all_logos.css";
+import Image from "next/image";
 
 const logos = [
   "logo1-1.jpg",
@@ -26,7 +27,13 @@ export default function LogosPage() {
       <div className="logo-grid">
         {logos.map((file, index) => (
           <div key={index} className="logo-item">
-            <img src={`/image/logo-image/${file}`} alt={`Logo ${index + 1}`} />
+            <Image
+              src={`/image/logo-image/${file}`}
+              alt={`Logo ${index + 1}`}
+              width={100}
+              height={100}
+              className="logo-image"
+            />
           </div>
         ))}
       </div>

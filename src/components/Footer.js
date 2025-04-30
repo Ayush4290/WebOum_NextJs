@@ -3,6 +3,7 @@
 import "./footer.css";
 import Link from "next/link";
 import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -10,8 +11,12 @@ export default function Footer() {
       <div className="footer-content">
         <div className="footer-company-info">
           <div className="footer-logo">
-            <img src="/image/logo-1.png" alt="Weboum Logo" />
-           
+            <Image
+              src="/image/logo-1.png"
+              alt="Weboum Logo"
+              width={600}
+              height={400}
+            />
           </div>
           <p className="company-description">
             Weboum empowers small businesses and startups with high-impact
@@ -35,7 +40,7 @@ export default function Footer() {
               <Link href="/portfolio">Portfolio</Link>
             </li>
             <li>
-              <Link href= "/about-us/careers">Careers</Link>
+              <Link href="/about-us/careers">Careers</Link>
             </li>
             <li>
               <Link href="/about-us/contact">Contact</Link>
@@ -54,7 +59,9 @@ export default function Footer() {
           <div className="underline"></div>
           <ul>
             <li>
-              <Link href="/services/application-developer">Application Development</Link>
+              <Link href="/services/application-developer">
+                Application Development
+              </Link>
             </li>
             <li>
               <Link href="/services/web-designing">Web Designing</Link>
@@ -63,13 +70,15 @@ export default function Footer() {
               <Link href="/services/web-developer">Web Development</Link>
             </li>
             <li>
-              <Link href="/services/digital-marketing-3">Digital Marketing</Link>
+              <Link href="/services/digital-marketing-3">
+                Digital Marketing
+              </Link>
             </li>
             <li>
               <Link href="/services/graphic-design">Graphic Design</Link>
             </li>
             <li>
-              <Link href= "/services/content-writing">Content Writing</Link>
+              <Link href="/services/content-writing">Content Writing</Link>
             </li>
             <li>
               <Link href="/all-logos">All Logos Designs</Link>
@@ -124,130 +133,3 @@ export default function Footer() {
     </div>
   );
 }
-
-// /my-weboum-app
-// ├── /app
-// │   ├── /about-us
-// │   │   ├── page.js                      // Main About Us page
-// │   │   ├── about-us.css                // CSS for About Us page
-// │   │   ├── /why-us
-// │   │   │   ├── page.js                 // Why Us page
-// │   │   │   └── why-us.css              // CSS for Why Us page
-// │   │   ├── /careers
-// │   │   │   ├── page.js                 // Careers page
-// │   │   │   └── careers.css             // CSS for Careers page
-// │   │   ├── /contact
-// │   │   │   ├── page.js                 // Contact page
-// │   │   │   └── contact.css             // CSS for Contact page
-// │   │   ├── /sample-page
-// │   │   │   ├── page.js                 // Sample Page
-// │   │   │   └── sample-page.css         // CSS for Sample Page
-// │   │   ├── /digital-marketing-solutions
-// │   │   │   ├── page.js                 // Digital Marketing Solutions page
-// │   │   │   └── digital-marketing-solutions.css // CSS for Digital Marketing Solutions
-// │   │   ├── /days
-// │   │   │   ├── page.js                 // Days page
-// │   │   │   └── days.css                // CSS for Days page
-// │   │   ├── /build-start
-// │   │   │   ├── page.js                 // Build Start page
-// │   │   │   └── build-start.css         // CSS for Build Start page
-// │   ├── /services
-// │   │   ├── page.js                     // Main Services page (lists all services)
-// │   │   ├── services.css                // CSS for Services page
-// │   │   ├── /application-developer
-// │   │   │   ├── page.js                 // Application Development page
-// │   │   │   └── application-developer.css // CSS for Application Development
-// │   │   ├── /web-developer
-// │   │   │   ├── page.js                 // Web Development page
-// │   │   │   └── web-developer.css       // CSS for Web Development
-// │   │   ├── /web-designing
-// │   │   │   ├── page.js                 // Web Designing page
-// │   │   │   └── web-designing.css       // CSS for Web Designing
-// │   │   ├── /graphic-design
-// │   │   │   ├── page.js                 // Graphic Design page
-// │   │   │   └── graphic-design.css      // CSS for Graphic Design
-// │   │   ├── /digital-marketing-3
-// │   │   │   ├── page.js                 // Digital Marketing page
-// │   │   │   └── digital-marketing-3.css // CSS for Digital Marketing
-// │   │   ├── /content-writing
-// │   │   │   ├── page.js                 // Content Writing page
-// │   │   │   └── content-writing.css     // CSS for Content Writing
-// │   ├── /solutions
-// │   │   ├── page.js                     // Main Solutions page (lists all solutions)
-// │   │   ├── solutions.css               // CSS for Solutions page
-// │   │   ├── /devops
-// │   │   │   ├── page.js                 // DevOps page
-// │   │   │   └── devops.css              // CSS for DevOps
-// │   │   ├── /product-lifecycle-management
-// │   │   │   ├── page.js                 // Product Lifecycle Management page
-// │   │   │   └── product-lifecycle-management.css // CSS for Product Lifecycle Management
-// │   │   ├── /quality-assurance-services
-// │   │   │   ├── page.js                 // Quality Assurance Services page
-// │   │   │   └── quality-assurance-services.css // CSS for Quality Assurance Services
-// │   │   ├── /sla-support-services
-// │   │   │   ├── page.js                 // SLA Support Services page
-// │   │   │   └── sla-support-services.css // CSS for SLA Support Services
-// │   │   ├── /backup-disaster-recovery
-// │   │   │   ├── page.js                 // Backup Disaster Recovery page
-// │   │   │   └── backup-disaster-recovery.css // CSS for Backup Disaster Recovery
-// │   │   ├── /web-hosting-services
-// │   │   │   ├── page.js                 // Web Hosting Services page
-// │   │   │   └── web-hosting-services.css // CSS for Web Hosting Services
-// │   │   ├── /software-testing
-// │   │   │   ├── page.js                 // Software Testing page
-// │   │   │   └── software-testing.css    // CSS for Software Testing
-// │   │   ├── /shopify-developer
-// │   │   │   ├── page.js                 // Shopify Development page
-// │   │   │   └── shopify-developer.css   // CSS for Shopify Development
-// │   ├── /portfolio
-// │   │   ├── page.js                     // Portfolio page
-// │   │   └── portfolio.css               // CSS for Portfolio
-// │   ├── /request-a-quote
-// │   │   ├── page.js                     // Request a Quote page
-// │   │   └── request-a-quote.css         // CSS for Request a Quote
-// │   ├── /all-logos
-// │   │   ├── page.js                     // All Logos page
-// │   │   └── all-logos.css               // CSS for All Logos
-// │   ├── /hire-developer
-// │   │   ├── page.js                     // Hire Developer page
-// │   │   └── hire-developer.css          // CSS for Hire Developer
-// │   ├── layout.js                       // Root layout (shared across all pages)
-// │   ├── page.js                         // Home page (HeroSection)
-// │   ├── globals.css                     // Global CSS styles
-// │   └── favicon.ico                     // Favicon
-// ├── /components
-// │   ├── Header.js                       // Header with navigation
-// │   ├── header.css                      // CSS for Header
-// │   ├── Footer.js                       // Footer component
-// │   ├── footer.css                      // CSS for Footer
-// │   ├── Navbar.js                       // Navigation bar with nested menus
-// │   ├── navbar.css                      // CSS for Navbar
-// │   ├── HeroSection.js                  // Hero section for home page
-// │   ├── hero-section.css                // CSS for HeroSection
-// │   ├── ServiceCard.js                  // Card for displaying services
-// │   ├── service-card.css                // CSS for ServiceCard
-// │   ├── SolutionCard.js                 // Card for displaying solutions
-// │   ├── solution-card.css               // CSS for SolutionCard
-// │   ├── ContactForm.js                  // Contact form component
-// │   ├── contact-form.css                // CSS for ContactForm
-// │   ├── PortfolioItem.js                // Component for portfolio items
-// │   ├── portfolio-item.css              // CSS for PortfolioItem
-// │   └── QuoteForm.js                    // Request a Quote form component
-// │   ├── quote-form.css                  // CSS for QuoteForm
-// ├── /public
-// │   ├── /images
-// │   │   ├── logo.png                    // Logo image
-// │   │   ├── hero-bg.jpg                 // Hero background image
-// │   │   └── ...                         // Other images
-// │   └── favicon.ico                     // Favicon (optional, if not in /app)
-// ├── /data
-// │   ├── services.json                   // JSON data for services
-// │   ├── solutions.json                  // JSON data for solutions
-// │   └── about-us.json                   // JSON data for About Us content
-// ├── /styles
-// │   ├── globals.css                     // Global CSS (already in /app, linked here for clarity)
-// │   └── components.css                  // Shared component styles (if needed)
-// ├── package.json                        // Project dependencies
-// ├── next.config.js                      // Next.js configuration
-// ├── .gitignore                          // Git ignore file
-// └── README.md                           // Project documentation

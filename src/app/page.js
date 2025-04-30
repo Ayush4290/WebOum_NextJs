@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import homeData from "../data/home.json";
 import HeroSection from "./herosection/page";
 
@@ -98,10 +99,12 @@ const Home = () => {
               <div className="services-grid">
                 {homeData.services.map((service, index) => (
                   <div className="service-card" key={index}>
-                    <img
+                    <Image
                       src={service.img}
                       alt={service.alt}
                       className="service-icon"
+                      width={64}
+                      height={64}
                     />
                     <div>
                       <div className="service-title">{service.title}</div>
@@ -119,7 +122,7 @@ const Home = () => {
                     <div className="portfolio-stack">
                       {/* Bottom Image */}
                       <div className="portfolio-item bottom-image">
-                        <img
+                        <Image
                           src={
                             homeData.portfolio.all[
                               currentPortfolioIndex === 0
@@ -135,6 +138,8 @@ const Home = () => {
                             ]?.alt || "Portfolio Image"
                           }
                           className="portfolio-image"
+                          width={500}
+                          height={300}
                         />
                         <div className="portfolio-text">
                           {
@@ -149,7 +154,7 @@ const Home = () => {
 
                       {/* Top Image (Scrolling) */}
                       <div className="portfolio-item top-image">
-                        <img
+                        <Image
                           src={
                             homeData.portfolio.all[currentPortfolioIndex]?.src ||
                             "/image/placeholder.jpg"
@@ -159,6 +164,8 @@ const Home = () => {
                             "Portfolio Image"
                           }
                           className="portfolio-image"
+                          width={500}
+                          height={300}
                           onClick={scrollPortfolioToTop}
                         />
                         <div className="portfolio-text">
@@ -187,16 +194,22 @@ const Home = () => {
             Trusted software design, develop and digital marketing company
           </h5>
           <p className="why-lead">
-            In today's digital landscape, a strong online presence is no longer
-            a luxury—it's a necessity. Choosing the right partner to guide you
-            through this complex world is crucial. Here's why Weboum is the
+            In today&apos;s digital landscape, a strong online presence is no longer
+            a luxury—it&apos;s a necessity. Choosing the right partner to guide you
+            through this complex world is crucial. Here&apos;s why Weboum is the
             perfect choice for your business:
           </p>
 
           <div className="why-card-grid">
             {homeData.cards.map((card, index) => (
               <div className="why-card" key={index}>
-                <img src={card.img} alt={card.alt} className="why-icon" />
+                <Image 
+                  src={card.img} 
+                  alt={card.alt} 
+                  className="why-icon" 
+                  width={64} 
+                  height={64} 
+                />
                 <div>
                   <div className="why-card-title">{card.title}</div>
                   <div className="why-card-text">{card.text}</div>
@@ -217,10 +230,12 @@ const Home = () => {
             process that guarantees transparency and successful delivery of
             solutions.
           </p>
-          <img
-            src="image/Process-We-Follow.png"
+          <Image
+            src="/image/Process-We-Follow.png"
             alt="Process We Follow"
             className="process-image"
+            width={1200}
+            height={400}
           />
         </div>
       </section>
@@ -229,7 +244,7 @@ const Home = () => {
       <section
         id="contact"
         className="contact-section"
-        style={{ backgroundImage: "url('image/contact.jpeg')" }}
+        style={{ backgroundImage: "url('/image/contact.jpeg')" }}
       >
         <div className="container">
           <div className="contact-row">
@@ -309,12 +324,12 @@ const Home = () => {
                     {"★".repeat(testimonial.stars)}
                     {"☆".repeat(5 - testimonial.stars)}
                   </div>
-                  <img
+                  <Image
                     src={testimonial.image || "/image/placeholder.jpg"}
                     alt={testimonial.name}
                     className="testimonial-image"
-                    width="72"
-                    height="72"
+                    width={72}
+                    height={72}
                   />
                   <div className="testimonial-name">{testimonial.name}</div>
                   <div className="testimonial-position">
@@ -333,7 +348,7 @@ const Home = () => {
           <div className="cta-left">
             <h2 className="cta-heading">Contact Us to Grow Your Business!</h2>
             <p className="cta-text">
-              Let's discuss how we can help you achieve your goals. Schedule a
+              Let&apos;s discuss how we can help you achieve your goals. Schedule a
               consultation to explore the best solutions for your needs.
             </p>
           </div>

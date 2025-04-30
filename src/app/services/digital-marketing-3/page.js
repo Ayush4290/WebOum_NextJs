@@ -3,6 +3,8 @@
 import Days from "@/app/about-us/days/page";
 import SubHeader from "@/app/sub-header/page";
 import "./digital-marketing-3.css";
+import Image from "next/image";
+
 import {
   FaCubes,
   FaCompressArrowsAlt,
@@ -35,7 +37,12 @@ export default function DigitalMarketing() {
 
           <div className="DigitalMarketing-content">
             <div className="DigitalMarketing-image-container">
-              <img src="/image/digital.jpg" alt="Social Media Campaign" />
+              <Image
+                src="/image/digital.jpg"
+                alt="Social Media Campaign"
+                width={600}
+                height={400}
+              />
             </div>
             <div className="DigitalMarketing-text-content">
               <h3>Spending in digital, but no multiples of return?</h3>
@@ -78,9 +85,11 @@ export default function DigitalMarketing() {
             </p>
           </div>
           <div className="DigitalMarketing-sociable-image">
-            <img
+            <Image
               src="/image/digital2.jpg"
               alt="Social Media Icons Around Laptop"
+              width={600}
+              height={400}
             />
           </div>
         </section>
@@ -108,7 +117,7 @@ export default function DigitalMarketing() {
                   to react to the feedback received. Reacting to negative
                   feedback promptly is essential to maintain a brand image. We
                   address all potential issues and try to fix them for your
-                  business before it's too late.
+                  business before it&apos;s  too late.
                 </p>
               </div>
               <div className="DigitalMarketing-benefit-box">

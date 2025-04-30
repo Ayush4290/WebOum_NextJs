@@ -64,7 +64,7 @@ export default function Contact() {
 
               <div className="captcha-box">
                 <input type="checkbox" id="captcha" />
-                <label htmlFor="captcha"> I'm not a robot</label>
+                <label htmlFor="captcha"> I&apos;m not a robot</label>
               </div>
 
               <button type="submit">Submit</button>

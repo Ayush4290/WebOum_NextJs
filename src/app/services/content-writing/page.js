@@ -3,6 +3,7 @@
 import Days from "@/app/about-us/days/page";
 import SubHeader from "@/app/sub-header/page";
 import "./content-writing.css";
+import Image from "next/image";
 
 export default function ContentWriting() {
   return (
@@ -12,13 +13,13 @@ export default function ContentWriting() {
         <div className="content-container">
           <div className="content-custom-row">
             <div className="content-column">
-              <h2 className="content-heading-bold">
-                Let's build your business with content that attracts, acquaints,
+              <h2 className="content-heading-bold-part">
+                Let&apos;s build your business with content that attracts, acquaints,
                 engages, and sells!
               </h2>
               <p className="content-mt-3">
                 Content is often hailed as the cornerstone of the digital realm.
-                Today’s discerning internet users will quickly leave your
+                Today&apos;s discerning internet users will quickly leave your
                 website if it fails to deliver the information they seek. While
                 captivating designs may initially draw attention, they alone
                 cannot retain your audience.
@@ -31,9 +32,11 @@ export default function ContentWriting() {
               </p>
             </div>
             <div className="content-column content-center">
-              <img
+              <Image
                 src="/image/content-wrinting-1.png"
                 alt="Illustration"
+                width={500}
+                height={300}
                 className="content-img-fluid"
               />
             </div>
@@ -45,7 +48,7 @@ export default function ContentWriting() {
       <section className="content-section content-bg-light-blue">
         <div className="content-container">
           <h3 className="content-heading-bold content-mb-4">
-            Let's tell your story in the most captivating manner!
+            Let&apos;s tell your story in the most captivating manner!
           </h3>
           <p>
             Give our content writers, Weboum Technology, a chance to tell the
@@ -162,15 +165,17 @@ export default function ContentWriting() {
         <div className="content-container">
           <div className="content-custom-row">
             <div className="content-column content-center">
-              <img
+              <Image
                 src="/image/content-wrinting.png"
                 alt="Enhance Content"
+                width={500}
+                height={300}
                 className="content-img-fluid"
               />
             </div>
             <div className="content-column">
               <h4 className="content-heading-bold">
-                Let's Enhance The Already Published Content On Your Site!
+                Let&apos;s Enhance The Already Published Content On Your Site!
               </h4>
               <p>
                 We use the latest tools to enhance the content already published

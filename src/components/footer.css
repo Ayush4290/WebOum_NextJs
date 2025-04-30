@@ -47,9 +47,10 @@
 }
 
 .company-description {
-  font-size: 0.95rem;
+  font-size: 1.3rem;
   line-height: 1.6;
   margin-top: 1rem;
+  color: white;
 }
 
 /* Links and Services sections */
@@ -79,6 +80,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
+  font-size: 1rem;
 }
 
 .footer-links-section ul li,
@@ -90,7 +92,7 @@
 .footer-services-section ul li a {
   color: var(--white);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 1rem;
   transition: color 0.3s;
 }
 
@@ -160,9 +162,10 @@
 .footer-copyright {
   text-align: center;
   padding-top: 2rem;
-  margin-top: 2rem;
+  margin-top: 4rem;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
-  font-size: 0.9rem;
+  font-size: 1rem;
+  color: white;
 }
 
 /* Responsive design */

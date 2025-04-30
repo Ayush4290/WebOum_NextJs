@@ -3,6 +3,7 @@
 import Days from "@/app/about-us/days/page";
 import SubHeader from "@/app/sub-header/page";
 import "./graphic-design.css";
+import Image from "next/image";
 
 import { FaCubes, FaCompressArrowsAlt, FaVectorSquare } from "react-icons/fa";
 
@@ -34,7 +35,12 @@ export default function GraphicDesign() {
               </p>
             </div>
             <div className="graphicDesign-image">
-              <img src="/image/graphic-design.jpg" alt="Graphic Design" />
+              <Image
+                src="/image/graphic-design.jpg"
+                alt="Graphic Design"
+                width={600}
+                height={400}
+              />
             </div>
           </div>
 
@@ -65,18 +71,26 @@ export default function GraphicDesign() {
             <p>
               We have some of the most creative minds working for us that
               produce attention-grabbing designs and visuals for flyers,
-              banners, e-books, brochures, business cards, and much more..
+              banners, e-books, brochures, business cards, and much more.
             </p>
             <p>
-              We know how important it is to establish your brand identity...
+              We know how important it is to establish your great brand identity
+              in the market and that is why we aim to produce designs that would
+              become the identity of your brand. With tough competition in the
+              digital space, it becomes difficult for the brands to create brand
+              awareness. With the help of captivating designs created by our
+              team, you will have a great impression of your business in the
+              minds of your prospects.
             </p>
             <p>
-              The designs created by our team are a mixture of skills and
-              professionalism...
+              The designs created by our team are a complete mixture of
+              outstanding creative skills and professionalism. Contact our team
+              today, to establish an attractive business profile in the online
+              world.
             </p>
             <p>
               Hire no other than Weboum Technology to create a strong online
-              presence...
+              presence in the competitive online world.
             </p>
           </div>
         </section>
@@ -84,22 +98,32 @@ export default function GraphicDesign() {
         <section className="graphicDesign-services-section light">
           <div className="graphicDesign-row">
             <div className="graphicDesign-image-box">
-              <img
+              <Image
                 src="/image/graphic-design-2-1024x690.jpg"
                 alt="Graphic Services"
+                width={600}
+                height={400}
               />
             </div>
             <div className="graphicDesign-text-box">
               <h2>What You Get From Our Graphic Designing Services?</h2>
               <p>
-                Weboum Technology is a pioneer in the graphic design space...
+                Weboum Technology is a pioneer in the graphic design space, and
+                the services contain several benefits for businesses, operating
+                in all industries. Our team of designers create magnificent
+                designs that will transform your business standard across all
+                digital platforms.
               </p>
-              <p>The commitment includes:</p>
+              <p>
+                The commitment made by our graphics designing team includes:
+              </p>
               <ul>
                 <li>Streamlined Communication.</li>
-                <li>Quick turnaround time and timely delivery.</li>
-                <li>Unique, professional, and creative designs.</li>
-                <li>Regular follow-ups for approvals.</li>
+                <li>
+                  Quick turnaround time and timely delivery of the projects.
+                </li>
+                <li>Unique, professional, creative and graphic designs.</li>
+                <li>Regular follow-ups to get the curated designs approved.</li>
               </ul>
             </div>
           </div>
@@ -115,23 +139,36 @@ export default function GraphicDesign() {
             <div className="graphicDesign-box">
               <h4>🖐️ Social Media Design</h4>
               <p>
-                Designs that compel your audience on social media platforms.
+                We have a team of professional designers at your service who are
+                committed to delivering personalized designs to compel your
+                audience on social media platforms. Our designs help develop a
+                powerful bond between your brand and consumers.
               </p>
             </div>
             <div className="graphicDesign-box">
               <h4>🎯 Branding and Logo Design</h4>
               <p>
-                Creative and meaningful logo designs at cost-effective rates.
+                When it comes to logo designs, we offer unmatched services at
+                cost-effective rates. Our logo designers are all highly creative
+                and create a logo that will depict the message of your brand
+                effectively.
               </p>
             </div>
             <div className="graphicDesign-box">
               <h4>📱 Mobile App Design</h4>
-              <p>Attractive mobile app designs that improve business growth.</p>
+              <p>
+                We deliver intuitive and attractive mobile app designs that lay
+                an engaging platform down and also improve the online growth of
+                your business.
+              </p>
             </div>
             <div className="graphicDesign-box">
               <h4>✨ Website UI and UX Design</h4>
               <p>
-                User-centric graphic designs that boost consumer engagement.
+                We use a user-centric approach in designing graphics for
+                businesses. The level of dedication enables us to create awesome
+                graphic designs that boost the engagement of your consumers and
+                prospects.
               </p>
             </div>
           </div>
@@ -145,7 +182,11 @@ export default function GraphicDesign() {
                 <FaCubes style={{ color: "#6a005f", fontSize: "40px" }} />
               </div>
               <h3>Optimized Ranking on the SERP</h3>
-              <p>Improved SERP ranking through user-friendly designs.</p>
+              <p>
+                Our team of experts will help you witness significant
+                improvements in terms of SERP ranking. User-friendly websites
+                will make you attain higher ranks..
+              </p>
             </div>
             <div className="graphicDesign-result-card">
               <div className="graphicDesign-icon">
@@ -154,7 +195,11 @@ export default function GraphicDesign() {
                 />
               </div>
               <h3>Enhanced Usability</h3>
-              <p>Improved user experience by optimizing site components.</p>
+              <p>
+                Our team of designers work collectively to enhance the user
+                experience of your website. Several different components are
+                worked on collectively to attain desired results..
+              </p>
             </div>
             <div className="graphicDesign-result-card">
               <div className="graphicDesign-icon">
@@ -163,12 +208,17 @@ export default function GraphicDesign() {
                 />
               </div>
               <h3>Competitive Advantage</h3>
-              <p>Boost customer perception and stand out from competitors.</p>
+              <p>
+                Excellent user experience will help you get ahead of the
+                competition. User experience has everything to do with how
+                consumers perceive your products or services.
+              </p>
             </div>
           </div>
           <p className="graphicDesign-note">
             Need someone who can use their creative skills to make a design that
-            you desire? Contact Weboum Technology!
+            you desire? Weboum Technology is what you&rsquo;re looking for. Feel free
+            to contact us!
           </p>
         </section>
       </div>

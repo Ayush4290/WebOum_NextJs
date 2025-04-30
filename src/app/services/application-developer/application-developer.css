@@ -11,10 +11,38 @@
   --max-width: 1200px;
 }
 
+/* Animation */
+@keyframes slideFadeLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideFadeRight {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .Application-section {
   padding: var(--section-padding);
   display: flex;
   justify-content: center;
+  background-color: var(--background-color);
+}
+
+.Application-section:nth-of-type(even) {
+  background-color: var(--section-bg-even);
 }
 
 .Application-section-content {
@@ -29,8 +57,17 @@
 
 .Application-section-content .Application-section-image {
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
   margin-bottom: 20px;
+  animation: slideFadeRight 1s ease-in-out both;
+}
+
+.Application-section-content .Application-section-text {
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  padding-bottom: 20px;
+  animation: slideFadeLeft 1s ease-in-out both;
 }
 
 .Application-section-content .Application-section-image img {
@@ -38,13 +75,6 @@
   height: auto;
   border-radius: var(--image-border-radius);
   object-fit: cover;
-}
-
-.Application-section-content .Application-section-text {
-  width: 100%;
-  max-width: 500px;
-  text-align: center;
-  padding-bottom: 20px;
 }
 
 .Application-section-content .Application-section-text h4 {
@@ -57,17 +87,15 @@
   line-height: var(--paragraph-line-height);
   font-weight: 400;
   margin-bottom: 30px;
-  font-size: 16px;
+  font-size: 18px;
 }
 
-
-
-/* Responsive Design */
+/* Responsive Layout */
 @media (min-width: 768px) {
   .Application-section-content {
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .Application-section-content .Application-section-image {
@@ -77,9 +105,10 @@
   .Application-section-content .Application-section-text {
     text-align: left;
     padding-left: 30px;
-    padding-top: 90px;
+    padding-top: 40px;
   }
 
+  /* Order classes for alternating layout */
   .Application-order-1 {
     order: 1;
   }
@@ -94,5 +123,22 @@
 
   .Application-order-md-2 {
     order: 2;
+  }
+
+  /* Flip animation directions based on order */
+  .Application-order-1.Application-section-image {
+    animation: slideFadeRight 1s ease-in-out both;
+  }
+
+  .Application-order-2.Application-section-text {
+    animation: slideFadeLeft 1s ease-in-out both;
+  }
+
+  .Application-order-md-2.Application-section-image {
+    animation: slideFadeLeft 1s ease-in-out both;
+  }
+
+  .Application-order-md-1.Application-section-text {
+    animation: slideFadeRight 1s ease-in-out both;
   }
 }

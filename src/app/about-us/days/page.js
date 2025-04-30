@@ -3,15 +3,14 @@
 import React, { useEffect } from "react";
 import "./Days.css";
 import Link from "next/link";
-import AOS from "aos"; 
-import "aos/dist/aos.css"; 
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Days = () => {
- 
   useEffect(() => {
     AOS.init({
-      duration: 1000, 
-      once: true, 
+      duration: 1000,
+      once: true,
     });
   }, []);
 
@@ -48,6 +47,7 @@ const Days = () => {
             </Link>
           </div>
           <div className="image-container" data-aos="fade-left">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/image/android-app.jpg" alt="Android App Illustration" />
           </div>
         </div>
@@ -58,7 +58,7 @@ const Days = () => {
           <div>
             <h2>What product can we engineer for you?</h2>
             <p>
-              Tell us a little about yourself in the form below and we'll get in
+              Tell us a little about yourself in the form below and we&apos;ll get in
               touch soon for product consultation.
             </p>
           </div>

@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import Days from "../days/page";
 import { useEffect, useRef } from "react";
+import Image from "next/image"; // Import Next.js Image component
 import "./sample-page.css";
 
 export default function SamplePage() {
@@ -72,7 +73,7 @@ export default function SamplePage() {
               for your Business
             </h1>
             <p>
-              In today's digital world, having a professional and efficient
+              In today&apos;s digital world, having a professional and efficient
               website is essential for business growth. We specialize in
               creating modern, fast, and responsive websites that help you reach
               your target audience effectively.
@@ -87,9 +88,11 @@ export default function SamplePage() {
             </div>
           </div>
           <div className="samplePage_image">
-            <img
+            <Image
               src="/image/samplePage/development-about.jpg"
               alt="Digital Marketing"
+              width={400} // Placeholder width
+              height={300} // Placeholder height
             />
           </div>
         </section>
@@ -178,70 +181,160 @@ export default function SamplePage() {
         {/* Portfolio items */}
         <div id="all" className="samplePage_portfolio samplePage_active">
           <div className="samplePage_item">
-            <img src="/image/samplePage/portfolio1.jpg" alt="Portfolio 1" />
+            <Image
+              src="/image/samplePage/portfolio1.jpg"
+              alt="Portfolio 1"
+              width={200} // Placeholder width
+              height={150} // Placeholder height
+            />
           </div>
           <div className="samplePage_item">
-            <img src="/image/samplePage/portfolio2.png" alt="Portfolio 2" />
+            <Image
+              src="/image/samplePage/portfolio2.png"
+              alt="Portfolio 2"
+              width={200} // Placeholder width
+              height={150} // Placeholder height
+            />
           </div>
           <div className="samplePage_item">
-            <img src="/image/samplePage/portfolio4.jpg" alt="Software 1" />
+            <Image
+              src="/image/samplePage/portfolio4.jpg"
+              alt="Software 1"
+              width={200} // Placeholder width
+              height={150} // Placeholder height
+            />
           </div>
           <div className="samplePage_item">
-            <img src="/image/samplePage/portfolio5.jpg" alt="Software 2" />
+            <Image
+              src="/image/samplePage/portfolio5.jpg"
+              alt="Software 2"
+              width={200} // Placeholder width
+              height={150} // Placeholder height
+            />
           </div>
           <div className="samplePage_item">
-            <img src="/image/samplePage/portfolio6.jpg" alt="Apps 1" />
+            <Image
+              src="/image/samplePage/portfolio6.jpg"
+              alt="Apps 1"
+              width={200} // Placeholder width
+              height={150} // Placeholder height
+            />
           </div>
           <div className="samplePage_item">
-            <img src="/image/samplePage/portfolio7.jpg" alt="Apps 2" />
+            <Image
+              src="/image/samplePage/portfolio7.jpg"
+              alt="Apps 2"
+              width={200} // Placeholder width
+              height={150} // Placeholder height
+            />
           </div>
           <div className="samplePage_item">
-            <img src="/image/samplePage/portfolio8.jpg" alt="Graphics 1" />
+            <Image
+              src="/image/samplePage/portfolio8.jpg"
+              alt="Graphics 1"
+              width={200} // Placeholder width
+              height={150} // Placeholder height
+            />
           </div>
           <div className="samplePage_item">
-            <img src="/image/samplePage/portfolio9.jpg" alt="Graphics 2" />
+            <Image
+              src="/image/samplePage/portfolio9.jpg"
+              alt="Graphics 2"
+              width={200} // Placeholder width
+              height={150} // Placeholder height
+            />
           </div>
           <div className="samplePage_item">
-            <img src="/image/samplePage/portfolio10.jpg" alt="Marketing 1" />
+            <Image
+              src="/image/samplePage/portfolio10.jpg"
+              alt="Marketing 1"
+              width={200} // Placeholder width
+              height={150} // Placeholder height
+            />
           </div>
           <div className="samplePage_item">
-            <img src="/image/samplePage/portfolio12.jpg" alt="Marketing 2" />
+            <Image
+              src="/image/samplePage/portfolio12.jpg"
+              alt="Marketing 2"
+              width={200} // Placeholder width
+              height={150} // Placeholder height
+            />
           </div>
         </div>
 
         <div id="software" className="samplePage_portfolio">
           <div className="samplePage_item">
-            <img src="/image/samplePage/portfolio15.jpg" alt="Software 1" />
+            <Image
+              src="/image/samplePage/portfolio15.jpg"
+              alt="Software 1"
+              width={200} // Placeholder width
+              height={150} // Placeholder height
+            />
           </div>
           <div className="samplePage_item">
-            <img src="/image/samplePage/portfolio14.jpg" alt="Software 2" />
+            <Image
+              src="/image/samplePage/portfolio14.jpg"
+              alt="Software 2"
+              width={200} // Placeholder width
+              height={150} // Placeholder height
+            />
           </div>
         </div>
 
         <div id="apps" className="samplePage_portfolio">
           <div className="samplePage_item">
-            <img src="/image/samplePage/portfolio15.jpg" alt="Apps 1" />
+            <Image
+              src="/image/samplePage/portfolio15.jpg"
+              alt="Apps 1"
+              width={200} // Placeholder width
+              height={150} // Placeholder height
+            />
           </div>
           <div className="samplePage_item">
-            <img src="/image/samplePage/portfolio17.jpg" alt="Apps 2" />
+            <Image
+              src="/image/samplePage/portfolio17.jpg"
+              alt="Apps 2"
+              width={200} // Placeholder width
+              height={150} // Placeholder height
+            />
           </div>
         </div>
 
         <div id="graphics" className="samplePage_portfolio">
           <div className="samplePage_item">
-            <img src="/image/samplePage/portfolio19.jpg" alt="Graphics 1" />
+            <Image
+              src="/image/samplePage/portfolio19.jpg"
+              alt="Graphics 1"
+              width={200} // Placeholder width
+              height={150} // Placeholder height
+            />
           </div>
           <div className="samplePage_item">
-            <img src="/image/samplePage/portfolio20.jpg" alt="Graphics 2" />
+            <Image
+              src="/image/samplePage/portfolio20.jpg"
+              alt="Graphics 2"
+              width={200} // Placeholder width
+              height={150} // Placeholder height
+            />
           </div>
         </div>
 
         <div id="marketing" className="samplePage_portfolio">
           <div className="samplePage_item">
-            <img src="/image/samplePage/portfolio4.jpg" alt="Marketing 1" />
+            <Image
+              src="/image/samplePage/portfolio4.jpg"
+              alt="Marketing 1"
+              width={200} // Placeholder width
+              height={150} // Placeholder height
+            />
           </div>
           <div className="samplePage_item">
-            <img src="/image/samplePage/portfolio7.jpg" alt="Marketing 2" />
+            <Image
+              src="/image/samplePage/portfolio7.jpg"
+              alt="Marketing 2"
+              width={200} // Placeholder width
+              height={150} // Placeholder height
+            />
           </div>
         </div>
 
@@ -254,12 +347,14 @@ export default function SamplePage() {
           <span className="samplePage_close-btn" onClick={closeLightbox}>
             <X size={24} />
           </span>
-          <img
+          <Image
             id="samplePage_lightbox-img"
             src="/image/samplePage/portfolio4.jpg"
             alt="Full Image"
             className="samplePage_lightbox-img"
             ref={lightboxImgRef}
+            width={800} // Placeholder width
+            height={600} // Placeholder height
           />
         </div>
 
@@ -329,7 +424,12 @@ export default function SamplePage() {
             {/* Right Form */}
             <div className="col-lg-6 mt-4 mt-lg-0">
               <div className="samplePage_form-box">
-                <img src="/image/featured-image.jpg" alt="Featured" />
+                <Image
+                  src="/image/featured-image.jpg"
+                  alt="Featured"
+                  width={400} // Placeholder width
+                  height={200} // Placeholder height
+                />
                 <h5>Request A Free Consultation</h5>
                 <small>
                   We Help Customers Digital Transformation By IT Solutions
@@ -369,7 +469,7 @@ export default function SamplePage() {
                   {/* Simulated CAPTCHA box */}
                   <div className="my-3">
                     <input type="checkbox" id="captcha" />
-                    <label htmlFor="captcha"> I'm not a robot</label>
+                    <label htmlFor="captcha"> I&apos;m not a robot</label>
                   </div>
 
                   <button type="submit" className="btn samplePage_btn-submit">
@@ -468,7 +568,12 @@ export default function SamplePage() {
                 </div>
                 <div className="samplePage_author">
                   <div className="samplePage_author-info">
-                    <img src="/image/contact.jpeg" alt="author" />
+                    <Image
+                      src="/image/contact.jpeg"
+                      alt="author"
+                      width={50} // Placeholder width
+                      height={50} // Placeholder height
+                    />
                     <strong>Klaus Holzapfel</strong>
                   </div>
                   <div className="samplePage_quote">
@@ -495,7 +600,12 @@ export default function SamplePage() {
                 </div>
                 <div className="samplePage_author">
                   <div className="samplePage_author-info">
-                    <img src="/image/contact.jpeg" alt="author" />
+                    <Image
+                      src="/image/contact.jpeg"
+                      alt="author"
+                      width={50} // Placeholder width
+                      height={50} // Placeholder height
+                    />
                     <strong>Jill Cabana</strong>
                   </div>
                   <div className="samplePage_quote">

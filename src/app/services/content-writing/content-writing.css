@@ -12,25 +12,7 @@
   --spacing-xl: 3rem;
 }
 
-body {
-  font-family: var(--font-family);
-  margin: 0;
-  padding: 0;
-  background-color: #fff;
-}
 
-h2,
-h3,
-h4,
-h5,
-p {
-  font-size: 1.2rem;
-  color: var(--primary-color);
-  margin-bottom: var(--spacing-md);
-  text-align: start;
-  justify-content: center;
-  
-}
 
 img {
   max-width: 100%;
@@ -39,8 +21,7 @@ img {
 }
 
 .content-section {
-  padding: 60px 20px;
-  text-align: center;
+  padding: 60px 0;
 }
 
 .content-bg-light-blue {
@@ -60,7 +41,6 @@ img {
   justify-content: center;
   align-items: center;
   gap: 40px;
-  margin-top: var(--spacing-lg);
 }
 
 .content-column {
@@ -80,12 +60,48 @@ img {
   text-align: center;
 }
 
-/* Typography */
-.content-heading-bold {
+/* Headings */
+h2,
+h3,
+h4,
+h5 {
   font-weight: bold;
-  font-size: 1.5rem;
+  margin-bottom: var(--spacing-md);
+  
 }
 
+p {
+  line-height: 1.7;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* Icon strategy section */
+.content-strategy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-top: var(--spacing-lg);
+}
+
+.content-strategy-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  text-align: left;
+}
+
+.content-icon {
+  font-size: 24px;
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon colors */
 .content-text-purple {
   color: var(--purple);
 }
@@ -102,7 +118,7 @@ img {
   color: var(--muted);
 }
 
-/* Spacing utilities */
+/* Margin utilities */
 .content-mb-4 {
   margin-bottom: var(--spacing-lg);
 }
@@ -115,53 +131,7 @@ img {
   margin-top: var(--spacing-md);
 }
 
-/* Strategies section */
-.content-strategy-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
-  margin-top: var(--spacing-lg);
-  text-align: left;
-}
-
-.content-strategy-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-}
-
-.content-icon {
-  font-size: 24px;
-  min-width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Icons */
-.content-search-icon::before {
-  content: "🔍";
-}
-
-.content-binoculars-icon::before {
-  content: "🔭";
-}
-
-.content-pencil-icon::before {
-  content: "✏️";
-}
-
-.content-journal-icon::before {
-  content: "📖";
-}
-
-.content-img-fluid {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Responsive */
+/* Responsive Layout */
 @media (max-width: 768px) {
   .content-custom-row {
     flex-direction: column;

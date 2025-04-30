@@ -130,7 +130,7 @@ export default function DevOps() {
 
           <div className="devops-benefit-item">
             <Image
-              src="/image/devops/consulting.png"
+              src="/image/devops/pointing-right.png"
               alt="Consulting Icon"
               width={50}
               height={50}
@@ -147,7 +147,7 @@ export default function DevOps() {
 
       <div className="devops-center-text-section">
         <h1>
-          Let's Build And Deliver Software Quicker, In A Repeatable And Consistent Way!
+          Let&apos;s Build And Deliver Software Quicker, In A Repeatable And Consistent Way!
         </h1>
         <p>
           Every business understands the frequent delivery of new codes and features for the products on well as completion and security of this process.
