@@ -12,7 +12,7 @@ export default function WebHosting() {
       logo: "https://weboum.com/wp-content/uploads/2024/11/Knownhost-1.png",
       name: "Knownhost",
       description:
-        "Since our founding in 2005, we've been delivering exceptional hosting services to customers in over 150 countries. Our mission is simple: to offer high-quality, fully managed hosting backed by exceptional, personalized support that exceeds expectations.",
+        "Since our founding in 2005, we&apos;ve been delivering exceptional hosting services to customers in over 150 countries. Our mission is simple: to offer high-quality, fully managed hosting backed by exceptional, personalized support that exceeds expectations.",
     },
     {
       logo: "https://weboum.com/wp-content/uploads/2024/11/Bluehost-1.png",
@@ -24,7 +24,7 @@ export default function WebHosting() {
       logo: "https://weboum.com/wp-content/uploads/2024/11/Hostgator.png",
       name: "HostGator",
       description:
-        "Web hosting is our DNA, and we've been powering it since the early days of the internet. Over the years, we've expanded globally, driven by our dedication to helping people worldwide build their websites.",
+        "Web hosting is our DNA, and we&quot;ve been powering it since the early days of the internet. Over the years, we&quot;ve expanded globally, driven by our dedication to helping people worldwide build their websites.",
     },
     {
       logo: "https://weboum.com/wp-content/uploads/2024/11/Godaddy-1.png",
@@ -36,7 +36,7 @@ export default function WebHosting() {
       logo: "https://weboum.com/wp-content/uploads/2024/11/Hostinger-1.png",
       name: "Hostinger",
       description:
-        "Hostinger is dedicated to empowering people to learn, create, grow, and succeed online, whether you're a developer, an aspiring blogger, or a business owner. With premium hosting solutions at budget-friendly prices, and an intuitive brand identity guiding your website to a new level success.",
+        "Hostinger is dedicated to empowering people to learn, create, grow, and succeed online, whether you&quot;re a developer, an aspiring blogger, or a business owner. With premium hosting solutions at budget-friendly prices, and an intuitive brand identity guiding your website to a new level success.",
     },
     {
       logo: "https://weboum.com/wp-content/uploads/2024/11/Verotech.png",
@@ -96,6 +96,14 @@ export default function WebHosting() {
             </button>
           </div>
         </div>
+        <div className="herohosting-image">
+          <Image
+            src="https://weboum.com/wp-content/uploads/2024/11/web-hosting-1.jpg"
+            alt="Web Hosting Concept"
+            width={500}
+            height={500}
+          />
+        </div>
       </section>
 
       {/* Trusted By Section */}
@@ -148,15 +156,12 @@ export default function WebHosting() {
           <button className="btnhosting primary-btnhosting">Get Started</button>
         </div>
         <div className="testimonialhosting">
-          <div className="quote-iconhosting">"</div>
+          <div className="quote-iconhosting">&quot;</div>
           <div className="testimonial-contenthosting">
-            <p>
-              "As a long-time Cloudways user, I've been thrilled with the
-              platform! During early access, my site, TechYorker, experienced
-              several traffic spikes. Thanks to auto-scaling, I never had to
-              worry about upgrading or downgrading servers. I couldn't be more
-              satisfied with the product!"
-            </p>
+            <h2>
+              Discover G2&apos;s top-rated SMB hosting provider, with a 4.7-star
+              rating and trusted by websites across 200+ countries.
+            </h2>
           </div>
           <div className="paginationhosting">
             <span className="dothosting activehosting"></span>
@@ -243,7 +248,7 @@ export default function WebHosting() {
           </div>
           <div className="hosting-headinghosting">
             <h2>
-              Discover G2's top-rated SMB hosting provider, with a 4.7-star
+              Discover G2&quot;s top-rated SMB hosting provider, with a 4.7-star
               rating and trusted by websites across 200+ countries.
             </h2>
             <div className="rating-badgeshosting">

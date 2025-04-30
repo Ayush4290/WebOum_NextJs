@@ -32,6 +32,7 @@ p {
   cursor: pointer;
   border: none;
   transition: all 0.3s ease;
+  margin-right: 15px;
 }
 
 .primary-btnhosting {
@@ -62,43 +63,51 @@ section {
   background: linear-gradient(to right, #040450, #1e3a8a);
   color: white;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
   min-height: 500px;
-  padding: 20px 8%;
+  padding: 60px 8%;
 }
 
 .herohosting-content {
   flex: 1;
-  min-width: 300px;
   padding-right: 40px;
+  max-width: 50%;
 }
 
 .herohosting h1 {
   font-size: 2.8rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 20px;
 }
 
 .herohosting-buttons {
-  margin-top: 2rem;
+  margin-top: 30px;
 }
 
-.herohosting-buttons .btnhosting {
-  margin-right: 15px;
-  margin-bottom: 15px;
+.herohosting-image {
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.herohosting-image img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
 }
 
 /* Trusted By Section */
 .trusted-byhosting {
-  background-color: #ffffff;
+  background-color: #fff;
   text-align: center;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding: 40px 8%;
 }
 
 .trusted-byhosting h2 {
   color: #333;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   margin-bottom: 30px;
 }
 
@@ -106,16 +115,15 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 40px;
   flex-wrap: wrap;
-  padding: 10px 0;
+  padding: 20px 0;
 }
 
 .client-logoshosting img {
   height: 40px;
   opacity: 0.7;
   transition: opacity 0.3s ease;
-  border-radius: 0;
 }
 
 .client-logoshosting img:hover {
@@ -126,30 +134,30 @@ section {
 .wordpress-hostinghosting {
   background-color: #f5f7fa;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
   padding: 60px 8%;
 }
 
 .wordpress-contenthosting {
   flex: 1;
-  min-width: 300px;
   padding-right: 40px;
+  max-width: 50%;
 }
 
 .wordpress-contenthosting h2 {
   color: #040450;
   font-size: 2.2rem;
+  margin-bottom: 20px;
 }
 
 .testimonialhosting {
   flex: 1;
-  min-width: 300px;
-  background-color: white;
+  max-width: 50%;
+  background-color: #fff;
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  position: relative;
 }
 
 .quote-iconhosting {
@@ -161,18 +169,18 @@ section {
 .testimonial-contenthosting {
   max-height: 200px;
   overflow-y: auto;
-  scroll-behavior: smooth;
+  margin-bottom: 20px;
 }
 
 .testimonial-contenthosting p {
-  margin-bottom: 20px;
   font-style: italic;
+  color: #666;
 }
 
 .paginationhosting {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  gap: 10px;
 }
 
 .dothosting {
@@ -180,8 +188,6 @@ section {
   width: 10px;
   background-color: #bbb;
   border-radius: 50%;
-  display: inline-block;
-  margin: 0 5px;
   cursor: pointer;
 }
 
@@ -193,21 +199,27 @@ section {
 .success-storyhosting {
   text-align: center;
   background: linear-gradient(to bottom, #fff, #e6f0fa);
-  padding: 40px 8%;
+  padding: 60px 8%;
 }
 
 .success-storyhosting h2 {
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: #040450;
+  margin-bottom: 20px;
 }
 
 .success-storyhosting span {
   color: #00b67a;
 }
 
+.success-storyhosting p {
+  margin-bottom: 30px;
+}
+
 .tabshosting {
   display: flex;
   justify-content: center;
+  gap: 20px;
   margin-bottom: 40px;
 }
 
@@ -217,41 +229,38 @@ section {
   border: none;
   cursor: pointer;
   font-weight: bold;
-  position: relative;
-  transition: box-shadow 0.3s ease;
   color: #040450;
+  transition: color 0.3s ease;
 }
 
 .tab-btnhosting.activehosting {
   color: #00b67a;
+  position: relative;
 }
 
 .tab-btnhosting.activehosting::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: -10px;
   left: 0;
   width: 100%;
   height: 3px;
   background-color: #00b67a;
 }
 
-.tab-btnhosting:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
 .cloud-providershosting {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
+  padding: 0 0 20px;
 }
 
 .provider-cardhosting {
   background-color: #fff;
   border: 2px solid #1e3a8a;
   border-radius: 8px;
-  padding: 30px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
 }
 
 .provider-logohosting {
@@ -259,20 +268,25 @@ section {
   height: 60px;
   background-color: #f1f1f1;
   border-radius: 50%;
+  margin: 0 auto 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
 }
 
 .provider-logohosting img {
   max-width: 70%;
   max-height: 70%;
-  border-radius: 0;
 }
 
 .provider-cardhosting h3 {
   color: #040450;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.provider-cardhosting p {
+  color: #666;
   margin-bottom: 15px;
 }
 
@@ -280,8 +294,6 @@ section {
   color: #00b67a;
   text-decoration: none;
   font-weight: bold;
-  display: inline-block;
-  margin-top: 15px;
 }
 
 /* SMB Hosting Section */
@@ -292,31 +304,24 @@ section {
 
 .hosting-headerhosting {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   padding: 60px 8%;
   background-color: #f5f7fa;
-  position: relative;
 }
 
 .hosting-imagehosting {
   flex: 0 0 30%;
-  min-width: 300px;
-  z-index: 2;
+  margin-right: 40px;
 }
 
 .hosting-imagehosting img {
-  max-width: 100%;
-  height: auto;
   border-radius: 50%;
-  object-fit: cover;
+  width: 100%;
+  height: auto;
 }
 
 .hosting-headinghosting {
-  flex: 0 0 70%;
-  min-width: 300px;
-  padding-left: 40px;
-  z-index: 2;
+  flex: 0 0 65%;
 }
 
 .hosting-headinghosting h2 {
@@ -327,17 +332,17 @@ section {
 
 .rating-badgeshosting {
   display: flex;
-  flex-wrap: wrap;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .badgehosting {
-  text-align: center;
+  background-color: #fff;
   padding: 15px;
   border-radius: 8px;
-  background-color: #fff;
+  text-align: center;
   flex: 1;
-  min-width: 100px;
+  min-width: 120px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -350,75 +355,55 @@ section {
 .badgehosting strong {
   display: block;
   font-size: 1.2rem;
-  margin-bottom: 5px;
 }
 
 .stats-sectionhosting {
   display: flex;
   justify-content: space-around;
-  padding: 30px 8%;
+  padding: 40px 8%;
   background-color: #fff;
   text-align: center;
 }
 
 .stat-itemhosting {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: 0 15px;
 }
 
 .stat-itemhosting strong {
   font-size: 2rem;
   color: #040450;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .stat-itemhosting span {
-  font-size: 0.9rem;
   color: #666;
+  font-size: 0.9rem;
 }
 
 .app-selectionhosting {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
+  padding: 60px 8%;
   background-color: #e6e7eb;
-  padding: 0;
 }
 
 .app-technologieshosting {
   flex: 1;
-  min-width: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 30px;
-}
-
-.app-technologieshosting img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 0;
+  margin-right: 40px;
 }
 
 .app-contenthosting {
   flex: 1;
-  min-width: 300px;
-  padding: 30px;
-  text-align: left;
 }
 
 .app-contenthosting h2 {
   color: #1f2937;
   font-size: 2rem;
   margin-bottom: 20px;
-  font-weight: 700;
 }
 
 .app-contenthosting p {
   color: #4b5563;
-  font-size: 1.1rem;
-  line-height: 1.6;
   margin-bottom: 20px;
 }
 
@@ -432,69 +417,76 @@ section {
 
 .feature-cardhosting {
   text-align: center;
-  padding: 30px 20px;
+  padding: 20px;
   background-color: #e6f0fa;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.feature-cardhosting:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .feature-cardhosting img {
-  height: 100px;
-  width: 100px;
   margin-bottom: 20px;
-  object-fit: contain;
 }
 
 .feature-cardhosting h3 {
   color: #1e40af;
   margin-bottom: 15px;
   font-size: 1.5rem;
-  font-weight: 600;
 }
 
 .feature-cardhosting p {
   color: #4b5563;
-  font-size: 1rem;
-  line-height: 1.5;
 }
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
-  section {
-    padding: 40px 5%;
+  .herohosting,
+  .wordpress-hostinghosting,
+  .hosting-headerhosting,
+  .app-selectionhosting {
+    flex-direction: column;
+    text-align: center;
   }
 
   .herohosting-content,
-  .wordpress-contenthosting {
+  .wordpress-contenthosting,
+  .hosting-headinghosting,
+  .app-contenthosting {
+    max-width: 100%;
     padding-right: 0;
     margin-bottom: 30px;
   }
 
-  .hosting-imagehosting {
-    margin-bottom: 30px;
+  .herohosting-image,
+  .hosting-imagehosting,
+  .app-technologieshosting {
+    max-width: 100%;
+    margin: 0 0 30px;
   }
 
-  .hosting-headinghosting {
-    padding-left: 0;
+  .herohosting-image img,
+  .hosting-imagehosting img {
+    max-height: 300px;
   }
 
   .rating-badgeshosting {
     justify-content: center;
   }
 
-  .app-contenthosting {
-    padding-left: 0;
-    margin-top: 0;
-  }
-
   .stats-sectionhosting {
     flex-direction: column;
     gap: 20px;
+  }
+
+  .tabshosting {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cloud-providershosting {
+    grid-template-columns: 1fr;
+  }
+
+  .featureshosting {
+    grid-template-columns: 1fr;
   }
 }
