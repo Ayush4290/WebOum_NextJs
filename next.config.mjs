@@ -1,5 +1,7 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
+  basePath: "/static-website",
+  assetPrefix: "/static-website",
   images: {
     remotePatterns: [
       {
@@ -13,9 +15,8 @@ const nextConfig = {
         pathname: "/recaptcha/api2/**",
       },
     ],
-    unoptimized: true, 
+    unoptimized: true,
   },
-  output: 'export',
 };
 
 export default nextConfig;

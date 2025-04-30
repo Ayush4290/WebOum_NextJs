@@ -27,7 +27,7 @@ export default function AboutUs() {
                   <b>
                     W: <i>Web Applications</i>
                   </b>
-                  , develop and maintain web applications tailored to your
+                  ;develop and maintain web applications tailored to your
                   specific needs, whether for personal use, business operations,
                   or any other purpose.
                   <b>

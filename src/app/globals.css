@@ -60,6 +60,10 @@
   padding: var(--spacing-sm);
   text-align: start;
   color: var(--text-dark);
+  position: sticky;
+  top: 20px;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
 }
 
 .sidebar a {
@@ -407,7 +411,7 @@ textarea.form-control {
   background-color: #001f5c;
 }
 
-/* Testimonial Section */
+/* Base styles */
 .testimonial-section {
   background-color: #6a005f;
   color: #fff;
@@ -418,8 +422,9 @@ textarea.form-control {
 }
 
 .test_container {
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .testimonial-title {
@@ -432,26 +437,49 @@ textarea.form-control {
 }
 
 .testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
   gap: 20px;
   padding: 0 20px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
 }
 
+/* Box styling */
 .testimonial-item {
   background: #fff;
   color: #333;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   padding: 32px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   min-height: 350px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  opacity: 1;
+  flex: 0 0 400px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 0 auto;
+  /* Scroll animation */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease forwards;
 }
 
+/* Delayed animations for each item */
+.testimonial-item:nth-child(1) { animation-delay: 0.2s; }
+.testimonial-item:nth-child(2) { animation-delay: 0.4s; }
+.testimonial-item:nth-child(3) { animation-delay: 0.6s; }
+.testimonial-item:nth-child(4) { animation-delay: 0.8s; }
+.testimonial-item:nth-child(5) { animation-delay: 1s; }
+/* Add more delays as needed for more items */
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover effect */
 .testimonial-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
@@ -496,6 +524,7 @@ textarea.form-control {
   margin-top: 5px;
   text-align: left;
 }
+
 
 /* CTA Section */
 .cta-section {
@@ -580,6 +609,7 @@ textarea.form-control {
 
   .testimonial-item {
     min-height: 300px;
+    flex: 0 0 250px;
   }
 
   .testimonial-title {
@@ -708,6 +738,12 @@ textarea.form-control {
   .services-grid {
     gap: 15px;
   }
+
+  .sidebar {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+  }
 }
 
 @media (max-width: 640px) {
@@ -759,5 +795,24 @@ textarea.form-control {
 
   .why-card-text {
     font-size: 13px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .form-container {
+    width: 100%;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-container {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    padding: 15px;
   }
 }
