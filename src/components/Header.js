@@ -13,31 +13,32 @@ const Header = () => {
   const menuRef = useRef(null);
   const toggleButtonRef = useRef(null);
 
-  const toggleDropdown = (menuKey) => {
-    setActiveDropdown((prev) => (prev === menuKey ? null : menuKey));
-  };
-
   const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
+    setMobileMenuOpen((prev) => !prev);
     document.body.style.overflow = mobileMenuOpen ? "auto" : "hidden";
   };
 
-  // Modified to handle icon click only
-  const handleIconClick = (menuKey, event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    toggleDropdown(menuKey);
+  const handleMouseEnter = (menuKey) => {
+    setActiveDropdown(menuKey); 
+  };
+
+  const handleMouseLeave = () => {
+    setActiveDropdown(null); 
+  };
+
+  const handleMenuItemClick = (menuKey, event) => {
+    event.preventDefault(); 
+    setActiveDropdown((prev) => (prev === menuKey ? null : menuKey));
   };
 
   const handleDropdownItemClick = () => {
-    setActiveDropdown(null);
-    setMobileMenuOpen(false);
+    setActiveDropdown(null); 
+    setMobileMenuOpen(false); 
     document.body.style.overflow = "auto";
   };
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
-      // Skip if clicking on the toggle button
       if (
         toggleButtonRef.current &&
         toggleButtonRef.current.contains(event.target)
@@ -45,7 +46,6 @@ const Header = () => {
         return;
       }
 
-      // Close menu if clicking outside
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setActiveDropdown(null);
         setMobileMenuOpen(false);
@@ -60,11 +60,6 @@ const Header = () => {
       document.body.style.overflow = "auto";
     };
   }, []);
-
-  // Debug logs
-  useEffect(() => {
-    console.log("Mobile menu state:", mobileMenuOpen);
-  }, [mobileMenuOpen]);
 
   return (
     <div className="main-container">
@@ -105,16 +100,21 @@ const Header = () => {
             <ul className="menu-list">
               {menuData.map((menu, index) =>
                 menu.items ? (
-                  <li className="menu-dropdown" key={index}>
-                    <div className="menu-link">
-                      <span >
+                  <li
+                    className="menu-dropdown"
+                    key={index}
+                    onMouseEnter={() => handleMouseEnter(menu.dropdownKey)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <div
+                      className="menu-link cursor-pointer"
+                      onClick={(event) =>
+                        handleMenuItemClick(menu.dropdownKey, event)
+                      }
+                    >
+                      <span className="menu-item-content">
                         {menu.label}
-                        {menu.dropdownKey && (
-                          <BiCaretDown 
-                            className="menu-icon" 
-                            onClick={(event) => handleIconClick(menu.dropdownKey, event)}
-                          />
-                        )}
+                        <BiCaretDown className="menu-icon" />
                       </span>
                     </div>
                     {menu.dropdownKey && (
