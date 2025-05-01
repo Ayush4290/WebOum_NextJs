@@ -96,7 +96,7 @@
 
 .requestaQuote-option {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   gap: 0.5rem;
   font-size: 1rem;
   font-weight: 500;

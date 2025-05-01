@@ -115,15 +115,6 @@
   }
 }
 
-
-
-
-
-
-
-
-
-
 #main-title {
   text-align: center;
   font-size: 2rem;
@@ -136,7 +127,6 @@
   right: 0;
 }
 
-
 @media (min-width: 768px) {
   #right-column {
     padding-top: 0.5rem;
@@ -145,7 +135,7 @@
 
 /* Form sections */
 
-.section-contact{
+.section-contact {
   display: none;
   margin-bottom: 5rem;
   padding: 2rem;
@@ -177,8 +167,6 @@
   margin: 15px 0;
 }
 
-
-
 /* Tag containers */
 #tag-container-skills,
 #tag-container-technology,
@@ -187,7 +175,7 @@
 #tag-container-start {
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: flex-start;
   gap: 10px;
   margin-bottom: 20px;
 }
@@ -272,4 +260,3 @@
   display: flex;
   gap: 1rem;
 }
-

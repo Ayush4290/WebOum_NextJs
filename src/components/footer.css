@@ -12,7 +12,7 @@
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Main content layout */
+
 .footer-content {
   display: flex;
   justify-content: space-between;
@@ -53,7 +53,7 @@
   color: white;
 }
 
-/* Links and Services sections */
+
 .footer-links-section,
 .footer-services-section {
   flex: 1;
@@ -101,7 +101,6 @@
   color: var(--secondary-color);
 }
 
-/* Newsletter section */
 .footer-newsletter-section {
   flex: 1.5;
 }
@@ -138,7 +137,7 @@
   background-color: var(--secondary-color);
 }
 
-/* Social section */
+
 .social-section p {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
@@ -157,12 +156,11 @@
   height: 40px;
   background-color: white;
   border-radius: 50%;
-  color: rgb(162, 35, 35);
+  color: #800080;
   font-size: 1.2rem;
   transition: all 0.3s;
 }
 
-/* Footer copyright */
 .footer-copyright {
   text-align: center;
   padding-top: 2rem;
@@ -172,7 +170,7 @@
   color: white;
 }
 
-/* Responsive design */
+
 @media (max-width: 1024px) {
   .footer-content {
     flex-wrap: wrap;
