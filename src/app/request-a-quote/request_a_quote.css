@@ -11,7 +11,6 @@
 
 .requestaQuote-wrapper {
   position: relative;
-
   min-height: 100vh;
 }
 
@@ -45,6 +44,7 @@
   border-top: 3px solid var(--primary-color);
   margin-bottom: 20px;
 }
+
 .requestaQuote-title {
   font-size: 2.5rem;
   font-weight: bold;
@@ -96,7 +96,7 @@
 
 .requestaQuote-option {
   display: flex;
-  align-items: center;
+  align-items: start;
   gap: 0.5rem;
   font-size: 1rem;
   font-weight: 500;
@@ -106,24 +106,31 @@
   border-radius: 999px;
   background-color: #fff;
   transition: background-color 0.3s, border-color 0.3s;
-  flex: 1 1 calc(50% - 0.4rem);
+  flex: 0 0 auto;
   box-sizing: border-box;
-  white-space: nowrap; /* Prevent text wrapping */
-  overflow: hidden; /* Hide overflow text */
-  text-overflow: ellipsis; /* Add ellipsis for truncated text */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-/* Specific styling for "Stage" section to match the screenshot */
 .requestaQuote-section:has(h5:contains("Stage")) .requestaQuote-options {
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 
 .requestaQuote-section:has(h5:contains("Stage")) .requestaQuote-option {
-  flex: 1 1 auto;
+  min-width: 300px;
+  max-width: 350px;
 }
 
-/* Hide the radio button while allowing it to be interactive */
+.requestaQuote-section:has(h5:contains("Services needed"))
+  .requestaQuote-option,
+.requestaQuote-section:has(h5:contains("Development stages needed"))
+  .requestaQuote-option {
+  min-width: 200px;
+  max-width: 220px;
+}
+
 .requestaQuote-option input[type="radio"] {
   position: absolute;
   opacity: 0;
@@ -131,22 +138,40 @@
   height: 0;
 }
 
-/* Style the option box when selected */
 .requestaQuote-option:has(input[type="radio"]:checked),
 .requestaQuote-option input[type="radio"]:checked + label {
-  border-color: var(--selected-border); /* Blue border when selected */
-  background-color: #f0f8ff; /* Light blue background when selected */
+  border-color: var(--selected-border);
+  background-color: #f0f8ff;
 }
 
-/* Unselected state */
 .requestaQuote-option:not(:has(input[type="radio"]:checked)) {
-  border-color: var(--tag-border); /* Ensure gray border when not selected */
-  background-color: #fff; /* Ensure white background when not selected */
+  border-color: var(--tag-border);
+  background-color: #fff;
 }
 
 .requestaQuote-option:hover {
   background-color: #f5f5f5;
   border-color: #999;
+}
+
+@media (max-width: 768px) {
+  .requestaQuote-option {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .requestaQuote-section:has(h5:contains("Stage")) .requestaQuote-option {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .requestaQuote-section:has(h5:contains("Services needed"))
+    .requestaQuote-option,
+  .requestaQuote-section:has(h5:contains("Development stages needed"))
+    .requestaQuote-option {
+    min-width: 100%;
+    max-width: 100%;
+  }
 }
 
 .requestaQuote-form {
@@ -183,7 +208,7 @@
   text-align: center;
   margin-top: 2rem;
   display: flex;
-  justify-content: flex-center;
+  justify-content: center;
   gap: 1rem;
 }
 
@@ -199,12 +224,14 @@
   transition: all 0.3s ease;
   text-transform: uppercase;
   display: flex;
-  text-align: center;
   justify-content: center;
   align-items: center;
+  text-align: center;
   min-width: 160px;
   height: 50px;
+  margin: 0 auto;
 }
+
 
 .requestaQuote-button.back {
   background-color: var(--secondary-color);
@@ -215,7 +242,7 @@
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-/* Media queries for responsiveness */
+
 @media (max-width: 768px) {
   .requestaQuote-container {
     flex-direction: column;

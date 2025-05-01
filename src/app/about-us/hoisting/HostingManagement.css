@@ -1,4 +1,12 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
+body {
+  font-family: Arial, sans-serif;
+}
 
 img {
   max-width: 100%;
@@ -13,8 +21,22 @@ h3 {
   margin-bottom: 1rem;
 }
 
+h1 {
+  font-size: 2.8rem;
+}
+
+h2 {
+  font-size: 2.2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
 p {
   margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  line-height: 1.6;
 }
 
 .btnhosting {
@@ -60,7 +82,6 @@ section {
   align-items: center;
   justify-content: space-between;
   min-height: 500px;
-  padding: 60px 8%;
 }
 
 .herohosting-content {
@@ -69,8 +90,7 @@ section {
   max-width: 50%;
 }
 
-.herohosting h1 {
-  font-size: 2.8rem;
+.herohosting-content h1 {
   margin-bottom: 20px;
 }
 
@@ -87,7 +107,6 @@ section {
 
 .herohosting-image img {
   width: 100%;
-  height: auto;
   max-height: 400px;
   object-fit: contain;
 }
@@ -96,7 +115,6 @@ section {
 .trusted-byhosting {
   background-color: #fff;
   text-align: center;
-  padding: 40px 8%;
 }
 
 .trusted-byhosting h2 {
@@ -105,23 +123,36 @@ section {
   margin-bottom: 30px;
 }
 
+.client-logoshosting-wrapper {
+  overflow: hidden;
+  width: 100%;
+  background: #fff;
+}
+
 .client-logoshosting {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-  padding: 20px 0;
+  gap: 60px;
+  animation: scrollLeft 20s linear infinite;
+  width: max-content;
 }
 
 .client-logoshosting img {
-  height: 40px;
-  opacity: 0.7;
+  opacity: 0.9;
   transition: opacity 0.3s ease;
 }
 
 .client-logoshosting img:hover {
   opacity: 1;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* WordPress Hosting Section */
@@ -130,7 +161,6 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 60px 8%;
 }
 
 .wordpress-contenthosting {
@@ -140,18 +170,14 @@ section {
 }
 
 .wordpress-contenthosting h2 {
-  color: #040450;
-  font-size: 2.2rem;
+  color: #131314;
   margin-bottom: 20px;
 }
 
 .testimonialhosting {
   flex: 1;
   max-width: 50%;
-  background-color: #fff;
   padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .quote-iconhosting {
@@ -161,7 +187,6 @@ section {
 }
 
 .testimonial-contenthosting {
-  max-height: 200px;
   overflow-y: auto;
   margin-bottom: 20px;
 }
@@ -169,6 +194,7 @@ section {
 .testimonial-contenthosting p {
   font-style: italic;
   color: #666;
+  font-size: 1.5rem;
 }
 
 .paginationhosting {
@@ -192,22 +218,19 @@ section {
 /* Success Story Section */
 .success-storyhosting {
   text-align: center;
-  background: linear-gradient(to bottom, #fff, #e6f0fa);
-  padding: 60px 8%;
 }
 
 .success-storyhosting h2 {
-  font-size: 2.2rem;
   color: #040450;
+  font-size: 2.5rem;
   margin-bottom: 20px;
-}
-
-.success-storyhosting span {
-  color: #00b67a;
 }
 
 .success-storyhosting p {
   margin-bottom: 30px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tabshosting {
@@ -224,6 +247,7 @@ section {
   cursor: pointer;
   font-weight: bold;
   color: #040450;
+  font-size: 1.2rem;
   transition: color 0.3s ease;
 }
 
@@ -235,18 +259,23 @@ section {
 .tab-btnhosting.activehosting::after {
   content: "";
   position: absolute;
-  bottom: -10px;
+  bottom: -5px;
   left: 0;
   width: 100%;
   height: 3px;
   background-color: #00b67a;
 }
 
+.tab-contenthosting {
+  background-color: #242bae;
+  padding: 40px;
+  border-radius: 8px;
+}
+
 .cloud-providershosting {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
-  padding: 0 0 20px;
 }
 
 .provider-cardhosting {
@@ -258,25 +287,14 @@ section {
 }
 
 .provider-logohosting {
-  width: 60px;
-  height: 60px;
-  background-color: #f1f1f1;
-  border-radius: 50%;
+  width: 80px;
+  height: 50px;
   margin: 0 auto 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.provider-logohosting img {
-  max-width: 70%;
-  max-height: 70%;
 }
 
 .provider-cardhosting h3 {
   color: #040450;
   margin-bottom: 15px;
-  font-size: 1.5rem;
 }
 
 .provider-cardhosting p {
@@ -290,100 +308,185 @@ section {
   font-weight: bold;
 }
 
-/* SMB Hosting Section */
+.learn-morehosting:hover {
+  text-decoration: underline;
+}
+
+
+
 .smb-hostinghosting {
   background-color: #fff;
-  padding: 0;
 }
 
 .hosting-headerhosting {
   display: flex;
   align-items: center;
-  padding: 60px 8%;
-  background-color: #f5f7fa;
-}
-
-.hosting-imagehosting {
-  flex: 0 0 30%;
-  margin-right: 40px;
-}
-
-.hosting-imagehosting img {
-  border-radius: 50%;
+  justify-content: flex-end;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://weboum.com/wp-content/uploads/2025/04/contact-us-1.jpg);
+  background-position: center;
+  background-size: cover;
   width: 100%;
-  height: auto;
+  height: 500px;
+  padding: 2rem;
+  color: #fff;
+  position: relative;
+}
+
+.hosting-contenthosting {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 2rem;
 }
 
 .hosting-headinghosting {
-  flex: 0 0 65%;
+  text-align: left;
 }
 
 .hosting-headinghosting h2 {
-  color: #333;
-  font-size: 1.8rem;
-  margin-bottom: 30px;
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  line-height: 1.3;
 }
 
 .rating-badgeshosting {
   display: flex;
-  gap: 20px;
+  justify-content: flex-start;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
 .badgehosting {
-  background-color: #fff;
-  padding: 15px;
-  border-radius: 8px;
+  background-color: rgba(40, 40, 40, 0.8);
+  backdrop-filter: blur(5px);
+  padding: 1rem;
+  border-radius: 0.5rem;
   text-align: center;
-  flex: 1;
-  min-width: 120px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  min-width: 150px;
+  max-width: 180px;
 }
 
-.badgehosting i {
-  font-size: 1.5rem;
-  color: #00b67a;
-  margin-bottom: 10px;
+.badgehosting img {
+  margin-bottom: 0.75rem;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .badgehosting strong {
   display: block;
-  font-size: 1.2rem;
+  font-size: 1.75rem;
+  margin-bottom: 0.25rem;
 }
 
+.badgehosting span {
+  font-size: 0.875rem;
+  color: #d1d5db;
+  display: block;
+  line-height: 1.2;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .hosting-headerhosting {
+    height: auto;
+    min-height: 500px;
+    padding: 3rem 1rem;
+    justify-content: center;
+  }
+  
+  .hosting-contenthosting {
+    width: 100%;
+    padding-right: 0;
+  }
+  
+  .hosting-headinghosting {
+    text-align: center;
+  }
+  
+  .rating-badgeshosting {
+    justify-content: center;
+  }
+}
+
+
+/* Statistics Section */
+/* Statistics Section */
 .stats-sectionhosting {
   display: flex;
-  justify-content: space-around;
-  padding: 40px 8%;
-  background-color: #fff;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0f5ff;
   text-align: center;
+  padding: 2rem 1rem;
+  color: #333;
+}
+
+.stats-headinghosting {
+  margin-bottom: 2rem;
+  max-width: 700px;
+}
+
+.stats-headinghosting h2 {
+  font-size: 2rem;
+  color: #333;
+  margin: 0;
+  text-align: start;
+}
+
+.stats-containerhosting {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
 }
 
 .stat-itemhosting {
-  margin: 0 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.stat-itemhosting img {
+  margin-bottom: 0.75rem;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .stat-itemhosting strong {
-  font-size: 2rem;
-  color: #040450;
-  margin-bottom: 10px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #000;
+  margin: 0.5rem 0;
+  display: block;
 }
 
 .stat-itemhosting span {
-  color: #666;
-  font-size: 0.9rem;
+  color: #333;
+  font-size: 1rem;
 }
 
 .app-selectionhosting {
   display: flex;
   align-items: center;
-  padding: 60px 8%;
   background-color: #e6e7eb;
+  padding: 40px;
+  border-radius: 8px;
+  max-width: 1000px;
+  margin: 30px auto; /* Center horizontally */
 }
+
 
 .app-technologieshosting {
   flex: 1;
   margin-right: 40px;
+}
+
+.app-technologieshosting img {
+  max-width: 100%;
+  height: auto;
 }
 
 .app-contenthosting {
@@ -391,44 +494,78 @@ section {
 }
 
 .app-contenthosting h2 {
-  color: #1f2937;
+  color: #1f2937; 
   font-size: 2rem;
+  font-weight: bold;
   margin-bottom: 20px;
+  text-align: start;
 }
 
 .app-contenthosting p {
   color: #4b5563;
+  font-size: 1.2rem;
+  line-height: 1.5;
   margin-bottom: 20px;
+  text-align: start;
 }
+
+.btnhosting.primary-btnhosting {
+  background-color: #00c4b4; /* Teal color for the button */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btnhosting.primary-btnhosting:hover {
+  background-color: #00a89a; /* Slightly darker teal on hover */
+}
+
 
 .featureshosting {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
-  padding: 60px 8%;
-  background-color: #fff;
+  padding: 2rem;
+  background-color: #ffffff;
 }
 
 .feature-cardhosting {
   text-align: center;
   padding: 20px;
-  background-color: #e6f0fa;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f5faff;
+  border: 2px solid #dceeff;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
 }
 
-.feature-cardhosting img {
+.feature-cardhosting:hover {
+  transform: translateY(-5px);
+}
+
+.feature-imghosting {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
   margin-bottom: 20px;
 }
 
 .feature-cardhosting h3 {
-  color: #1e40af;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1e3a8a;
   margin-bottom: 15px;
-  font-size: 1.5rem;
 }
 
 .feature-cardhosting p {
   color: #4b5563;
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
 /* Responsive Design */

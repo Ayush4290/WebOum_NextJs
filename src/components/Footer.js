@@ -93,7 +93,7 @@ export default function Footer() {
             <button type="submit">SUBMIT</button>
           </div>
           <div className="social-section">
-            <p>Follow us on:</p>
+            <p>Get the latest news & updates</p>
             <div className="social-icons">
               <a
                 href="https://facebook.com"

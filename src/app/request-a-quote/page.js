@@ -4,7 +4,6 @@ import { useState } from "react";
 import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
 import "./request_a_quote.css";
 
-
 const steps = [
   {
     title: "",
@@ -99,12 +98,12 @@ const steps = [
       },
     ],
   },
-  // Contact page remains as the final step
+  
   {
     title: "",
     fields: [
-      { label: "Name*", name: "name", type: "text" },
-      { label: "Email*", name: "email", type: "email" },
+      { label: "Name*", name: "name", type: "text", required: true },
+      { label: "Email*", name: "email", type: "email", required: true },
       { label: "Phone", name: "phone", type: "tel" },
       { label: "Company", name: "company", type: "text" },
       { label: "Website URL", name: "website", type: "url" },
@@ -116,6 +115,9 @@ const steps = [
 export default function RequestaQuote() {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formError, setFormError] = useState("");
+  const [formSuccess, setFormSuccess] = useState("");
 
   const handleNext = () => {
     if (currentStep < steps.length - 1) {
@@ -126,12 +128,104 @@ export default function RequestaQuote() {
   const handleBack = () => {
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1);
+    
+      setFormError("");
+      setFormSuccess("");
     }
   };
 
-  const handleSubmit = () => {
-    alert("Form submitted");
-    console.log(formData);
+  const validateForm = () => {
+    // For the final step with required fields
+    if (currentStep === steps.length - 1) {
+      const requiredFields = steps[currentStep].fields.filter(
+        (field) => field.required
+      );
+
+      for (const field of requiredFields) {
+        if (!formData[field.name] || formData[field.name].trim() === "") {
+          setFormError(`${field.label.replace("*", "")} is required.`);
+          return false;
+        }
+      }
+
+      // Validate email format
+      if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) {
+        setFormError("Please enter a valid email address.");
+        return false;
+      }
+    }
+
+    return true;
+  };
+
+  const handleSubmit = async (e) => {
+    if (e) e.preventDefault();
+
+    // Reset form status
+    setFormError("");
+    setFormSuccess("");
+
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Prepare the message content by compiling all form data
+      const messageContent = Object.entries(formData)
+        .map(([key, value]) => {
+          // Format the key to be more readable
+          const formattedKey = key
+            .split("_")
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ");
+
+          return `${formattedKey}: ${value}`;
+        })
+        .join("\n\n");
+
+      // Create FormData object for API request
+      const apiFormData = new FormData();
+      apiFormData.append("wxmail", "true");
+      apiFormData.append("email", formData.email || "");
+      apiFormData.append(
+        "subject",
+        `Quote Request from ${formData.name || "Website Visitor"}`
+      );
+      apiFormData.append("message", messageContent);
+
+      // Make the API request
+      const response = await fetch("https://weboum.com/email-api/", {
+        method: "POST",
+        body: apiFormData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      if (result.success) {
+        setFormSuccess(
+          "Your quote request has been submitted successfully. We'll get back to you soon!"
+        );
+
+        setFormData({});
+
+        setCurrentStep(0);
+      } else {
+        setFormError(
+          result.message || "Failed to submit your request. Please try again."
+        );
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setFormError("Failed to submit your request. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleOptionChange = (sectionName, value) => {
@@ -147,6 +241,11 @@ export default function RequestaQuote() {
       ...formData,
       [name]: value,
     });
+
+    // Clear errors when user starts typing
+    if (formError) {
+      setFormError("");
+    }
   };
 
   const currentStepData = steps[currentStep];
@@ -240,10 +339,14 @@ export default function RequestaQuote() {
                   </div>
                 ))
               ) : currentStepData.fields ? (
-                <form
-                  className="requestaQuote-form"
-                  onSubmit={(e) => e.preventDefault()}
-                >
+                <form className="requestaQuote-form" onSubmit={handleSubmit}>
+                  {formError && (
+                    <div className="requestaQuote-error">{formError}</div>
+                  )}
+                  {formSuccess && (
+                    <div className="requestaQuote-success">{formSuccess}</div>
+                  )}
+
                   {currentStepData.fields.map((field, fieldIndex) => (
                     <div className="requestaQuote-field" key={fieldIndex}>
                       <label htmlFor={field.name}>{field.label}</label>
@@ -254,6 +357,7 @@ export default function RequestaQuote() {
                           placeholder={field.label}
                           onChange={handleInputChange}
                           value={formData[field.name] || ""}
+                          required={field.required}
                         ></textarea>
                       ) : (
                         <input
@@ -263,17 +367,18 @@ export default function RequestaQuote() {
                           placeholder={field.label}
                           onChange={handleInputChange}
                           value={formData[field.name] || ""}
+                          required={field.required}
                         />
                       )}
                     </div>
                   ))}
                   <div className="requestaQuote-button-container">
                     <button
-                      type="button"
+                      type="submit"
                       className="requestaQuote-button"
-                      onClick={handleSubmit}
+                      disabled={isSubmitting}
                     >
-                      SUBMIT
+                      {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
                     </button>
                   </div>
                 </form>
@@ -284,12 +389,17 @@ export default function RequestaQuote() {
                 <button
                   className="requestaQuote-button back"
                   onClick={handleBack}
+                  disabled={isSubmitting}
                 >
                   BACK
                 </button>
               )}
               {currentStep < steps.length - 1 ? (
-                <button className="requestaQuote-button" onClick={handleNext}>
+                <button
+                  className="requestaQuote-button"
+                  onClick={handleNext}
+                  disabled={isSubmitting}
+                >
                   CONTINUE
                 </button>
               ) : null}

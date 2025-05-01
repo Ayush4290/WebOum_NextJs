@@ -19,6 +19,10 @@ const Careers = () => {
     notRobot: false,
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formError, setFormError] = useState("");
+  const [formSuccess, setFormSuccess] = useState("");
+
   const handleInputChange = (e) => {
     const { name, value, type, checked, files } = e.target;
     setFormData((prev) => ({
@@ -26,28 +30,133 @@ const Careers = () => {
       [name]:
         type === "checkbox" ? checked : type === "file" ? files[0] : value,
     }));
+
+    // Clear any error messages when user starts typing
+    if (formError) {
+      setFormError("");
+    }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const validateForm = () => {
+    // Validate required fields
+    const requiredFields = [
+      "firstName",
+      "lastName",
+      "email",
+      "phone",
+      "post",
+      "experience",
+    ];
+    for (const field of requiredFields) {
+      if (
+        !formData[field] ||
+        (typeof formData[field] === "string" && formData[field].trim() === "")
+      ) {
+        setFormError(`Please fill in all required fields.`);
+        return false;
+      }
+    }
+
+    // Validate email format
+    if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) {
+      setFormError("Please enter a valid email address.");
+      return false;
+    }
+
+    // Check if the user has checked the "not a robot" checkbox
     if (!formData.notRobot) {
-      alert("Please verify that you are not a robot.");
+      setFormError("Please verify that you are not a robot.");
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Reset form status
+    setFormError("");
+    setFormSuccess("");
+
+    if (!validateForm()) {
       return;
     }
 
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
 
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      post: "",
-      experience: "",
-      message: "",
-      resume: null,
-      notRobot: false,
-    });
+    try {
+      // Prepare the message content by compiling all form data
+      const messageContent = `
+Job Application Details:
+------------------------
+Name: ${formData.firstName} ${formData.lastName}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Position: ${formData.post}
+Experience: ${formData.experience}
+Message: ${formData.message || "No additional message provided."}
+Resume: ${formData.resume ? "Attached" : "Not provided"}
+      `;
+
+      // Create FormData object for API request
+      const apiFormData = new FormData();
+      apiFormData.append("wxmail", "true");
+      apiFormData.append("email", formData.email);
+      apiFormData.append(
+        "subject",
+        `Job Application for ${formData.post} from ${formData.firstName} ${formData.lastName}`
+      );
+      apiFormData.append("message", messageContent);
+
+      // Append resume file if provided
+      if (formData.resume) {
+        apiFormData.append("attachment", formData.resume);
+      }
+
+      // Make the API request
+      const response = await fetch("https://weboum.com/email-api/", {
+        method: "POST",
+        body: apiFormData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+
+      // Parse the response
+      const result = await response.json();
+
+      if (result.success) {
+        setFormSuccess(
+          "Your application has been submitted successfully! We'll review your information and get back to you soon."
+        );
+        // Reset form data after successful submission
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          post: "",
+          experience: "",
+          message: "",
+          resume: null,
+          notRobot: false,
+        });
+      } else {
+        setFormError(
+          result.message ||
+            "Failed to submit your application. Please try again."
+        );
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setFormError(
+        "Failed to submit your application. Please try again later."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -58,6 +167,13 @@ const Careers = () => {
           <div className="careers-row">
             <div className="careers-col-lg-7">
               <div className="careers-application-form">
+                {formError && (
+                  <div className="careers-error-message">{formError}</div>
+                )}
+                {formSuccess && (
+                  <div className="careers-success-message">{formSuccess}</div>
+                )}
+
                 <form onSubmit={handleSubmit}>
                   <div className="careers-row">
                     <div className="careers-col-md-6">
@@ -69,6 +185,7 @@ const Careers = () => {
                         value={formData.firstName}
                         onChange={handleInputChange}
                         required
+                        disabled={isSubmitting}
                       />
                     </div>
                     <div className="careers-col-md-6">
@@ -80,6 +197,7 @@ const Careers = () => {
                         value={formData.lastName}
                         onChange={handleInputChange}
                         required
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
@@ -94,6 +212,7 @@ const Careers = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
+                        disabled={isSubmitting}
                       />
                     </div>
                     <div className="careers-col-md-6">
@@ -105,6 +224,7 @@ const Careers = () => {
                         value={formData.phone}
                         onChange={handleInputChange}
                         required
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
@@ -119,6 +239,7 @@ const Careers = () => {
                         value={formData.post}
                         onChange={handleInputChange}
                         required
+                        disabled={isSubmitting}
                       />
                     </div>
                     <div className="careers-col-md-6">
@@ -130,6 +251,7 @@ const Careers = () => {
                         value={formData.experience}
                         onChange={handleInputChange}
                         required
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
@@ -144,6 +266,8 @@ const Careers = () => {
                       className="careers-form-control"
                       id="resume"
                       onChange={handleInputChange}
+                      disabled={isSubmitting}
+                      accept=".pdf,.doc,.docx"
                     />
                   </div>
 
@@ -154,6 +278,7 @@ const Careers = () => {
                     placeholder="Message"
                     value={formData.message}
                     onChange={handleInputChange}
+                    disabled={isSubmitting}
                   ></textarea>
 
                   <div className="careers-captcha-box">
@@ -163,6 +288,7 @@ const Careers = () => {
                       name="notRobot"
                       checked={formData.notRobot}
                       onChange={handleInputChange}
+                      disabled={isSubmitting}
                     />
                     <label htmlFor="robot-check">I&apos;m not a robot</label>
                     <Image
@@ -174,8 +300,12 @@ const Careers = () => {
                     />
                   </div>
 
-                  <button type="submit" className="careers-btn-submit">
-                    SUBMIT
+                  <button
+                    type="submit"
+                    className="careers-btn-submit"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
                   </button>
                 </form>
               </div>

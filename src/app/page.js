@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import homeData from "../data/home.json";
 import HeroSection from "./herosection/page";
+import { sendContactForm } from "../utils/api"; // Import the API utility
 
 const Home = () => {
   const [currentPortfolioIndex, setCurrentPortfolioIndex] = useState(0);
@@ -12,9 +13,12 @@ const Home = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
+    phoneNumber: "",
+    company: "",
+    website: "",
     message: "",
   });
+  const [formStatus, setFormStatus] = useState(null);
 
   const portfolioRef = useRef(null);
   const testimonialRef = useRef(null);
@@ -43,7 +47,7 @@ const Home = () => {
   // Testimonial auto-scrolling
   useEffect(() => {
     const testimonialInterval = setInterval(() => {
-      setActiveTestimonial((prev) => 
+      setActiveTestimonial((prev) =>
         prev === homeData.testimonials.length - 1 ? 0 : prev + 1
       );
     }, 5000);
@@ -54,10 +58,11 @@ const Home = () => {
   // Update scroll position when active testimonial changes
   useEffect(() => {
     if (testimonialRef.current) {
-      const scrollPosition = activeTestimonial * testimonialRef.current.children[0].offsetWidth;
+      const scrollPosition =
+        activeTestimonial * testimonialRef.current.children[0].offsetWidth;
       testimonialRef.current.scrollTo({
         left: scrollPosition,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
   }, [activeTestimonial]);
@@ -70,16 +75,43 @@ const Home = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    });
-    alert("Form submitted successfully!");
+    setFormStatus("submitting");
+
+    try {
+      // Prepare the message object
+      const messageObj = {
+        name: formData.name,
+        email: formData.email,
+        phoneNumber: formData.phoneNumber,
+        company: formData.company,
+        website: formData.website,
+        message: formData.message,
+      };
+
+      // Send form data to the API
+      await sendContactForm({
+        email: formData.email,
+        subject: "New Contact Form Submission",
+        message: JSON.stringify(messageObj),
+      });
+
+      setFormStatus("success");
+      setFormData({
+        name: "",
+        email: "",
+        phoneNumber: "",
+        company: "",
+        website: "",
+        message: "",
+      });
+      alert("Form submitted successfully!");
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setFormStatus("error");
+      alert("Failed to submit form. Please try again.");
+    }
   };
 
   const scrollPortfolioToTop = () => {
@@ -219,10 +251,10 @@ const Home = () => {
             Trusted software design, develop and digital marketing company
           </h5>
           <p className="why-lead">
-            In today&apos;s digital landscape, a strong online presence is no
-            longer a luxury—it&apos;s a necessity. Choosing the right partner to
-            guide you through this complex world is crucial. Here&apos;s why
-            Weboum is the perfect choice for your business:
+            In today's digital landscape, a strong online presence is no longer
+            a luxury—it's a necessity. Choosing the right partner to guide you
+            through this complex world is crucial. Here's why Weboum is the
+            perfect choice for your business:
           </p>
 
           <div className="why-card-grid">
@@ -306,14 +338,15 @@ const Home = () => {
                   <div className="form-group">
                     <input
                       type="tel"
-                      name="phone"
+                      name="phoneNumber"
                       className="form-control"
-                      placeholder="Phone"
-                      value={formData.phone}
+                      placeholder="Phone Number"
+                      value={formData.phoneNumber}
                       onChange={handleInputChange}
                       required
                     />
                   </div>
+
                   <div className="form-group">
                     <textarea
                       name="message"
@@ -325,10 +358,24 @@ const Home = () => {
                       required
                     ></textarea>
                   </div>
-                  <button type="submit" className="btn-submit">
-                    Submit Now
+                  <button
+                    type="submit"
+                    className="btn-submit"
+                    disabled={formStatus === "submitting"}
+                  >
+                    {formStatus === "submitting"
+                      ? "Submitting..."
+                      : "Submit Now"}
                   </button>
                 </form>
+                {formStatus === "success" && (
+                  <p className="form-success">Form submitted successfully!</p>
+                )}
+                {formStatus === "error" && (
+                  <p className="form-error">
+                    Failed to submit form. Please try again.
+                  </p>
+                )}
               </div>
             </div>
           </div>
@@ -341,13 +388,12 @@ const Home = () => {
 
         <div className="testimonial-container">
           <div className="auto-scroll-wrapper">
-            <div 
-              className="testimonial-carousel" 
-              ref={testimonialRef}
-            >
+            <div className="testimonial-carousel" ref={testimonialRef}>
               {homeData.testimonials.map((testimonial, index) => (
-                <div 
-                  className={`testimonial-item ${index === activeTestimonial ? 'active' : ''}`} 
+                <div
+                  className={`testimonial-item ${
+                    index === activeTestimonial ? "active" : ""
+                  }`}
                   key={index}
                 >
                   <p className="testimonial-text">"{testimonial.text}"</p>
@@ -373,7 +419,9 @@ const Home = () => {
           <div className="scroll-indicator">
             {homeData.testimonials.map((_, index) => (
               <div
-                className={`scroll-dot ${index === activeTestimonial ? "active" : ""}`}
+                className={`scroll-dot ${
+                  index === activeTestimonial ? "active" : ""
+                }`}
                 key={index}
                 onClick={() => handleDotClick(index)}
               />
@@ -388,9 +436,8 @@ const Home = () => {
           <div className="cta-left">
             <h2 className="cta-heading">Contact Us to Grow Your Business!</h2>
             <p className="cta-text">
-              Let&apos;s discuss how we can help you achieve your goals.
-              Schedule a consultation to explore the best solutions for your
-              needs.
+              Let's discuss how we can help you achieve your goals. Schedule a
+              consultation to explore the best solutions for your needs.
             </p>
           </div>
           <div className="cta-right">
