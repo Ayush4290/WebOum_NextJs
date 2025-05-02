@@ -693,9 +693,10 @@ textarea.form-control {
   .cta-section {
     padding: 40px 15px;
   }
-  .sidebar-col {
+  .sidebar-col{
     display: none;
-}
+  }
+
 .portfolio-carousel {
   height: 270px;
 }

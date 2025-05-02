@@ -93,7 +93,6 @@ textarea.careers-form-control {
 }
 
 .careers-captcha-image {
- 
   height: 40px;
   width: 80px;
 }
@@ -113,5 +112,95 @@ textarea.careers-form-control {
 
   .careers-application-form {
     padding: 20px;
+  }
+}
+
+/* Additional Mobile-Responsive Styles */
+@media (max-width: 576px) {
+  .careers-application-section {
+    padding: 30px 10px;
+  }
+
+  .careers-container {
+    padding: 0 10px;
+  }
+
+  .careers-row {
+    margin: 0 -10px;
+  }
+
+  .careers-col-lg-7,
+  .careers-col-lg-5,
+  .careers-col-md-6 {
+    padding: 0 10px;
+  }
+
+  .careers-application-form {
+    padding: 15px;
+    border-radius: 4px;
+  }
+
+  .careers-form-control {
+    font-size: 0.9rem;
+    padding: 8px;
+    margin-bottom: 15px;
+  }
+
+  .careers-form-label {
+    font-size: 0.9rem;
+  }
+
+  .careers-btn-submit {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .careers-captcha-box {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .careers-captcha-image {
+    height: 35px;
+    width: 70px;
+  }
+
+  .careers-form-image img {
+    border-radius: 4px;
+  }
+}
+
+@media (max-width: 768px) {
+  .careers-application-section {
+    padding: 20px 8px;
+  }
+
+  .careers-container {
+    padding: 0 5px;
+  }
+
+  .careers-form-control {
+    font-size: 0.85rem;
+    padding: 7px;
+  }
+
+  .careers-form-label {
+    font-size: 0.85rem;
+  }
+
+  .careers-btn-submit {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+
+  .careers-captcha-box {
+    padding: 6px;
+  }
+
+  .careers-captcha-image {
+    height: 30px;
+    width: 60px;
   }
 }
