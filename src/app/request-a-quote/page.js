@@ -196,7 +196,7 @@ export default function RequestaQuote() {
       apiFormData.append("message", messageContent);
 
       // Make the API request
-      const response = await fetch("https://weboum.com/email-api/", {
+      const response = await fetch("https://stage.weboum.com/email-api/", {
         method: "POST",
         body: apiFormData,
       });

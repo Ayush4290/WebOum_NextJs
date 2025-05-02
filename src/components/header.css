@@ -39,8 +39,6 @@
   transition: border-color 0.3s;
 }
 
-
-
 .logo-img {
   width: 180px;
   height: auto;
@@ -72,7 +70,6 @@
   transition: background 0.3s;
 }
 
-/* Menu item content with centered icons */
 .menu-item-content {
   display: flex;
   align-items: center;
@@ -81,7 +78,7 @@
 }
 
 .menu-icon {
-  margin-left: 5px; /* Small spacing between text and icon */
+  margin-left: 5px;
 }
 
 /* Dropdown */
@@ -89,7 +86,6 @@
   position: relative;
 }
 
-/* Add bridge between menu item and dropdown */
 .menu-dropdown::after {
   content: '';
   position: absolute;
@@ -102,20 +98,35 @@
 .dropdown {
   position: absolute;
   background: white;
-  top: calc(100% + 10px); /* Position dropdown a bit lower */
+  top: calc(100% + 10px);
   left: 0;
   opacity: 0;
   visibility: hidden;
-  min-width: 240px;
+  min-width: 250px;
   z-index: 10;
   border-radius: 4px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  padding: 0.5rem 0;
-  transition: opacity 0.2s, visibility 0.2s; /* Smooth transition */
+  padding: 1rem;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+
+/* Specific styles for Services dropdown with two columns */
+.menu-dropdown.services .dropdown {
+  min-width: 500px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+}
+
+
+
+.dropdown-column {
+  width: 50%;
+  box-sizing: border-box;
+  padding: 0.5rem;
 }
 
 .dropdown.active {
-  display: block;
   opacity: 1;
   visibility: visible;
 }
@@ -126,11 +137,14 @@
 
 .dropdown li a {
   color: #333;
-  padding: 0.5rem 1rem;
+  padding: 0.8rem;
   display: block;
   text-decoration: none;
   transition: background 0.2s;
-  font-size: 14px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  border-radius: 4px;
 }
 
 .dropdown li a:hover {
@@ -242,6 +256,7 @@
     position: static;
     width: 100%;
     min-width: 100%;
+    max-width: 100%;
     box-shadow: none;
     background: transparent;
     margin-top: 0;
@@ -251,6 +266,20 @@
     opacity: 1;
     visibility: visible;
     display: none;
+  }
+
+  /* Mobile specific for services dropdown */
+  .menu-dropdown.services .dropdown {
+    display: none;
+    flex-direction: column;
+  }
+
+  .menu-dropdown.services .dropdown::before {
+    display: none;
+  }
+
+  .dropdown-column {
+    width: 100%;
   }
 
   .dropdown.active {
@@ -267,6 +296,7 @@
     padding: 0.8rem 1rem;
     font-size: 16px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    white-space: normal;
   }
 
   .dropdown li:last-child a {

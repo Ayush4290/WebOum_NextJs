@@ -4,7 +4,8 @@ import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import homeData from "../data/home.json";
 import HeroSection from "./herosection/page";
-import { sendContactForm } from "../utils/api"; // Import the API utility
+import { sendContactForm } from "../utils/api";
+import Link from "next/link";
 
 const Home = () => {
   const [currentPortfolioIndex, setCurrentPortfolioIndex] = useState(0);
@@ -158,19 +159,21 @@ const Home = () => {
 
               <div className="services-grid">
                 {homeData.services.map((service, index) => (
-                  <div className="service-card" key={index}>
-                    <Image
-                      src={service.img}
-                      alt={service.alt}
-                      className="service-icon"
-                      width={64}
-                      height={64}
-                    />
-                    <div>
-                      <div className="service-title">{service.title}</div>
-                      <div className="service-desc">{service.desc}</div>
+                  <Link href={service.href} key={index} passHref>
+                    <div className="service-card" style={{ cursor: "pointer" }}>
+                      <Image
+                        src={service.img}
+                        alt={service.alt}
+                        className="service-icon"
+                        width={64}
+                        height={64}
+                      />
+                      <div>
+                        <div className="service-title">{service.title}</div>
+                        <div className="service-desc">{service.desc}</div>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
 

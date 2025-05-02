@@ -1,0 +1,227 @@
+.cybersecurity {
+  font-family: "Roboto", sans-serif;
+
+  color: #e0e0e0;
+  line-height: 1.7;
+  padding: 30px;
+}
+
+.cybersecurity-intro,
+.cybersecurity-services-section,
+.cybersecurity-offers,
+.cybersecurity-results {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 50px 20px;
+}
+
+
+.cybersecurity-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+
+}
+
+.cybersecurity-text,
+.cybersecurity-text-box {
+  flex: 1;
+  min-width: 320px;
+}
+
+.cybersecurity-image,
+.cybersecurity-image-box {
+  flex: 1;
+  min-width: 320px;
+  text-align: center;
+}
+
+.cybersecurity-image img,
+.cybersecurity-image-box img {
+  border-radius: 15px;
+  transition: box-shadow 0.3s ease;
+  width: 100%;
+  height: auto;
+}
+
+.cybersecurity-image img:hover,
+.cybersecurity-image-box img:hover {
+  box-shadow: 0 0 20px rgba(162, 0, 255, 0.5);
+}
+
+.cybersecurity-text h2,
+.cybersecurity-text-box h2 {
+  font-size: 2.5rem;
+  margin-bottom: 25px;
+  color: black;
+}
+
+.cybersecurity-text h2 strong,
+.cybersecurity-text-box h2 strong {
+  color: black;
+}
+
+.cybersecurity-text p,
+.cybersecurity-text-box p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.cybersecurity-more-info h3 {
+  font-size: 2rem;
+  margin: 25px 0;
+  color: black;
+}
+
+.cybersecurity-more-info p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: black;
+}
+
+.cybersecurity-text-box ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+.cybersecurity-text-box ul li {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  position: relative;
+  padding-left: 25px;
+}
+
+.cybersecurity-text-box ul li::before {
+  content: "▹";
+  color: black;
+  position: absolute;
+  left: 0;
+  font-size: 1.4rem;
+}
+
+.cybersecurity-services-section {
+  
+  border-radius: 15px;
+}
+
+.cybersecurity-offers h2,
+.cybersecurity-results h2 {
+  font-size: 2.3rem;
+  text-align: center;
+  margin-bottom: 25px;
+  color: black;
+}
+.cybersecurity-offers p{
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: black;
+}
+
+.cybersecurity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.cybersecurity-box {
+  background-color: #f6f8fb;
+  padding: 25px;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cybersecurity-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(162, 0, 255, 0.4);
+}
+
+.cybersecurity-box h4 {
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: black;
+}
+
+.cybersecurity-box p {
+  font-size: 1.1rem;
+  color: black;
+}
+
+.cybersecurity-box ul li {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: black;
+}
+
+.cybersecurity-result-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.cybersecurity-result-card {
+  background-color: #e5e9ed;
+  padding: 30px;
+  border-radius: 12px;
+  width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.cybersecurity-result-card:hover {
+  transform: translateY(-10px);
+}
+
+.cybersecurity-result-card h3 {
+  font-size: 1.5rem;
+  margin: 15px 0;
+  color: black;
+}
+
+.cybersecurity-icon {
+  margin-bottom: 20px;
+}
+
+.cybersecurity-icon p{
+    font-size: 1.2rem;
+    color: black;
+}
+
+.cybersecurity-note {
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 40px;
+  font-style: italic;
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .cybersecurity-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cybersecurity-text h2,
+  .cybersecurity-text-box h2 {
+    font-size: 2rem;
+  }
+
+  .cybersecurity-more-info h3 {
+    font-size: 1.7rem;
+  }
+
+  .cybersecurity-offers h2,
+  .cybersecurity-results h2 {
+    font-size: 2rem;
+  }
+
+  .cybersecurity-result-card {
+    width: 100%;
+    max-width: 320px;
+  }
+}

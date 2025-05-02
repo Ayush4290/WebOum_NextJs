@@ -96,7 +96,7 @@ export default function Footer() {
             <p>Get the latest news & updates</p>
             <div className="social-icons">
               <a
-                href="https://facebook.com"
+               href="https://www.facebook.com/webxtechnology"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-icon"
@@ -104,7 +104,7 @@ export default function Footer() {
                 <FaFacebook />
               </a>
               <a
-                href="https://twitter.com"
+                href="https://x.com/weboum"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-icon"
@@ -112,7 +112,7 @@ export default function Footer() {
                 <FaTwitter />
               </a>
               <a
-                href="https://youtube.com"
+               href="https://www.youtube.com/@WeboumTechnologyPvt.Ltd."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-icon"

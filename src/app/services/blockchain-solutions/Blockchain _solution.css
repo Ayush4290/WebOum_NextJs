@@ -1,0 +1,163 @@
+.blockchainSolution {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+  }
+  
+  .blockchainSolution-intro,
+  .blockchainSolution-services-section,
+  .blockchainSolution-offers,
+  .blockchainSolution-results {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  
+  .blockchainSolution-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+  }
+  
+  .blockchainSolution-text,
+  .blockchainSolution-text-box {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .blockchainSolution-image,
+  .blockchainSolution-image-box {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+  }
+  
+  .blockchainSolution-image img,
+  .blockchainSolution-image-box img {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: auto;
+  }
+  
+  .blockchainSolution-text h2,
+  .blockchainSolution-text-box h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color:black;
+  }
+  
+  .blockchainSolution-text h2 strong,
+  .blockchainSolution-text-box h2 strong {
+    color:black;
+  }
+  
+  .blockchainSolution-text p,
+  .blockchainSolution-text-box p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+  }
+  
+  .blockchainSolution-more-info h3 {
+    font-size: 1.8rem;
+    margin: 20px 0;
+    color:black;
+  }
+  
+  .blockchainSolution-text-box ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .blockchainSolution-text-box ul li {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  
+  .blockchainSolution-services-section.light {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+  }
+  
+  .blockchainSolution-offers h2,
+  .blockchainSolution-results h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color:black;
+  }
+  
+  .blockchainSolution-grid,
+  .blockchainSolution-result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+  }
+  
+  .blockchainSolution-box,
+  .blockchainSolution-result-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .blockchainSolution-box:hover,
+  .blockchainSolution-result-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .blockchainSolution-box h4 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color:black;
+  }
+  
+  .blockchainSolution-box p {
+    font-size: 1rem;
+  }
+  
+  .blockchainSolution-result-card h3 {
+    font-size: 1.4rem;
+    margin: 15px 0;
+    color:black;
+  }
+  
+  .blockchainSolution-icon {
+    margin-bottom: 15px;
+  }
+  
+  .blockchainSolution-note {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-top: 30px;
+    font-style: italic;
+    color: #555;
+  }
+  
+  @media (max-width: 768px) {
+    .blockchainSolution-row {
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .blockchainSolution-text h2,
+    .blockchainSolution-text-box h2 {
+      font-size: 1.8rem;
+    }
+  
+    .blockchainSolution-more-info h3 {
+      font-size: 1.5rem;
+    }
+  
+    .blockchainSolution-offers h2,
+    .blockchainSolution-results h2 {
+      font-size: 1.8rem;
+    }
+  }

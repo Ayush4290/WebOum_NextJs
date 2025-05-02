@@ -19,21 +19,21 @@ const Header = () => {
   };
 
   const handleMouseEnter = (menuKey) => {
-    setActiveDropdown(menuKey); 
+    setActiveDropdown(menuKey);
   };
 
   const handleMouseLeave = () => {
-    setActiveDropdown(null); 
+    setActiveDropdown(null);
   };
 
   const handleMenuItemClick = (menuKey, event) => {
-    event.preventDefault(); 
+    event.preventDefault();
     setActiveDropdown((prev) => (prev === menuKey ? null : menuKey));
   };
 
   const handleDropdownItemClick = () => {
-    setActiveDropdown(null); 
-    setMobileMenuOpen(false); 
+    setActiveDropdown(null);
+    setMobileMenuOpen(false);
     document.body.style.overflow = "auto";
   };
 
@@ -101,7 +101,7 @@ const Header = () => {
               {menuData.map((menu, index) =>
                 menu.items ? (
                   <li
-                    className="menu-dropdown"
+                    className={`menu-dropdown ${menu.dropdownKey}`}
                     key={index}
                     onMouseEnter={() => handleMouseEnter(menu.dropdownKey)}
                     onMouseLeave={handleMouseLeave}
@@ -123,17 +123,53 @@ const Header = () => {
                           activeDropdown === menu.dropdownKey ? "active" : ""
                         }`}
                       >
-                        {menu.items.map((item, subIndex) => (
-                          <li key={subIndex}>
-                            <Link
-                              href={item.href}
-                              onClick={handleDropdownItemClick}
-                              className="dropdown-link"
-                            >
-                              {item.label}
-                            </Link>
-                          </li>
-                        ))}
+                        {menu.dropdownKey === "services"
+                          ? (() => {
+                              const midPoint = Math.ceil(menu.items.length / 2);
+                              const leftColumn = menu.items.slice(0, midPoint);
+                              const rightColumn = menu.items.slice(midPoint);
+                              return (
+                                <>
+                                  <div className="dropdown-column">
+                                    {leftColumn.map((item, subIndex) => (
+                                      <li key={subIndex}>
+                                        <Link
+                                          href={item.href}
+                                          onClick={handleDropdownItemClick}
+                                          className="dropdown-link"
+                                        >
+                                          {item.label}
+                                        </Link>
+                                      </li>
+                                    ))}
+                                  </div>
+                                  <div className="dropdown-column">
+                                    {rightColumn.map((item, subIndex) => (
+                                      <li key={subIndex}>
+                                        <Link
+                                          href={item.href}
+                                          onClick={handleDropdownItemClick}
+                                          className="dropdown-link"
+                                        >
+                                          {item.label}
+                                        </Link>
+                                      </li>
+                                    ))}
+                                  </div>
+                                </>
+                              );
+                            })()
+                          : menu.items.map((item, subIndex) => (
+                              <li key={subIndex}>
+                                <Link
+                                  href={item.href}
+                                  onClick={handleDropdownItemClick}
+                                  className="dropdown-link"
+                                >
+                                  {item.label}
+                                </Link>
+                              </li>
+                            ))}
                       </ul>
                     )}
                   </li>

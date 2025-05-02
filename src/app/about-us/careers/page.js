@@ -5,6 +5,7 @@ import "./careers.css";
 import Days from "../days/page";
 import SubHeader from "@/app/sub-header/page";
 import Image from "next/image";
+import { sendContactForm } from "@/utils/api";
 
 const Careers = () => {
   const [formData, setFormData] = useState({
@@ -30,15 +31,10 @@ const Careers = () => {
       [name]:
         type === "checkbox" ? checked : type === "file" ? files[0] : value,
     }));
-
-    // Clear any error messages when user starts typing
-    if (formError) {
-      setFormError("");
-    }
+    if (formError) setFormError("");
   };
 
   const validateForm = () => {
-    // Validate required fields
     const requiredFields = [
       "firstName",
       "lastName",
@@ -48,22 +44,34 @@ const Careers = () => {
       "experience",
     ];
     for (const field of requiredFields) {
-      if (
-        !formData[field] ||
-        (typeof formData[field] === "string" && formData[field].trim() === "")
-      ) {
-        setFormError(`Please fill in all required fields.`);
+      if (!formData[field] || formData[field].trim() === "") {
+        setFormError("Please fill in all required fields.");
         return false;
       }
     }
 
-    // Validate email format
-    if (formData.email && !/\S+@\S+\.\S+/.test(formData.email)) {
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
       setFormError("Please enter a valid email address.");
       return false;
     }
 
-    // Check if the user has checked the "not a robot" checkbox
+    if (formData.resume) {
+      const allowedTypes = [
+        "application/pdf",
+        "application/msword",
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      ];
+      const maxSize = 5 * 1024 * 1024; // 5MB
+      if (!allowedTypes.includes(formData.resume.type)) {
+        setFormError("Please upload a PDF or Word document.");
+        return false;
+      }
+      if (formData.resume.size > maxSize) {
+        setFormError("Resume file size must be less than 5MB.");
+        return false;
+      }
+    }
+
     if (!formData.notRobot) {
       setFormError("Please verify that you are not a robot.");
       return false;
@@ -74,20 +82,86 @@ const Careers = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Reset form status
     setFormError("");
     setFormSuccess("");
 
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm()) return;
 
     setIsSubmitting(true);
 
     try {
-      // Prepare the message content by compiling all form data
+      // Sanitize the message field to prevent HTML injection
+      const sanitizeInput = (input) => {
+        return input
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      };
+      const sanitizedMessage = sanitizeInput(
+        formData.message || "No additional message provided."
+      );
+
+      // Basic HTML email template embedded directly in the function
       const messageContent = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Application</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f0f0f0;">
+  <div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #e0e0e0;">
+    <!-- Header -->
+    <div style="background-color: #4a90e2; padding: 15px; text-align: center;">
+      <h2 style="color: #ffffff; margin: 0; font-size: 20px;">New Job Application</h2>
+    </div>
+    <!-- Body -->
+    <div style="padding: 20px;">
+      <p style="color: #333333; font-size: 16px; margin: 0 0 15px;">
+        A new candidate has submitted an application for a position at Weboum Technology.
+      </p>
+      <div style="border-top: 1px solid #e0e0e0; padding-top: 15px;">
+        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
+          <strong>Name:</strong> ${formData.firstName} ${formData.lastName}
+        </p>
+        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
+          <strong>Email:</strong> <a href="mailto:${
+            formData.email
+          }" style="color: #4a90e2; text-decoration: none;">${
+        formData.email
+      }</a>
+        </p>
+        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
+          <strong>Phone:</strong> ${formData.phone}
+        </p>
+        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
+          <strong>Position:</strong> ${formData.post}
+        </p>
+        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
+          <strong>Experience:</strong> ${formData.experience}
+        </p>
+        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
+          <strong>Message:</strong> ${sanitizedMessage}
+        </p>
+        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
+          <strong>Resume:</strong> ${
+            formData.resume ? "Attached" : "Not provided"
+          }
+        </p>
+      </div>
+    </div>
+    <!-- Footer -->
+    <div style="background-color: #f5f5f5; padding: 10px; text-align: center; font-size: 12px; color: #666666;">
+      <p style="margin: 0;">© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>
+      `;
+
+      // Plain text fallback in case the API or email client doesn't support HTML
+      const plainTextFallback = `
 Job Application Details:
 ------------------------
 Name: ${formData.firstName} ${formData.lastName}
@@ -99,39 +173,17 @@ Message: ${formData.message || "No additional message provided."}
 Resume: ${formData.resume ? "Attached" : "Not provided"}
       `;
 
-      // Create FormData object for API request
-      const apiFormData = new FormData();
-      apiFormData.append("wxmail", "true");
-      apiFormData.append("email", formData.email);
-      apiFormData.append(
-        "subject",
-        `Job Application for ${formData.post} from ${formData.firstName} ${formData.lastName}`
-      );
-      apiFormData.append("message", messageContent);
-
-      // Append resume file if provided
-      if (formData.resume) {
-        apiFormData.append("attachment", formData.resume);
-      }
-
-      // Make the API request
-      const response = await fetch("https://weboum.com/email-api/", {
-        method: "POST",
-        body: apiFormData,
+      const result = await sendContactForm({
+        email: formData.email,
+        subject: `Job Application for ${formData.post} from ${formData.firstName} ${formData.lastName}`,
+        message: messageContent,
+        attachment: formData.resume,
       });
-
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status}`);
-      }
-
-      // Parse the response
-      const result = await response.json();
 
       if (result.success) {
         setFormSuccess(
           "Your application has been submitted successfully! We'll review your information and get back to you soon."
         );
-        // Reset form data after successful submission
         setFormData({
           firstName: "",
           lastName: "",
@@ -143,6 +195,7 @@ Resume: ${formData.resume ? "Attached" : "Not provided"}
           resume: null,
           notRobot: false,
         });
+        document.getElementById("resume").value = "";
       } else {
         setFormError(
           result.message ||
@@ -258,7 +311,7 @@ Resume: ${formData.resume ? "Attached" : "Not provided"}
 
                   <div className="careers-mb-3">
                     <label htmlFor="resume" className="careers-form-label">
-                      Attached Resume
+                      Attach Resume
                     </label>
                     <input
                       type="file"
@@ -290,10 +343,10 @@ Resume: ${formData.resume ? "Attached" : "Not provided"}
                       onChange={handleInputChange}
                       disabled={isSubmitting}
                     />
-                    <label htmlFor="robot-check">I&apos;m not a robot</label>
+                    <label htmlFor="robot-check">I'm not a robot</label>
                     <Image
-                      src="https://www.gstatic.com/recaptcha/api2/logo_48.png"
-                      alt="Captcha"
+                      src="/images/captcha-logo.png"
+                      alt="Verification"
                       className="careers-captcha-image"
                       width={48}
                       height={48}
@@ -305,7 +358,7 @@ Resume: ${formData.resume ? "Attached" : "Not provided"}
                     className="careers-btn-submit"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
+                    {isSubmitting ? "Submitting..." : "Submit"}
                   </button>
                 </form>
               </div>
@@ -314,7 +367,7 @@ Resume: ${formData.resume ? "Attached" : "Not provided"}
             <div className="careers-col-lg-5 careers-form-image">
               <Image
                 src="/image/Careers.jpg"
-                alt="HR Image or Graphic"
+                alt="Careers Image"
                 width={500}
                 height={500}
               />

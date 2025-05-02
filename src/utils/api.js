@@ -5,7 +5,7 @@ export const sendContactForm = async ({ email, subject, message }) => {
     formData.append("subject", subject);
     formData.append("message", message);
   
-    const response = await fetch("https://weboum.com/email-api/", {
+    const response = await fetch("https://stage.weboum.com/email-api/" ,{
       method: "POST",
       body: formData,
     });

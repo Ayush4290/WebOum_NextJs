@@ -4,73 +4,85 @@
       "img": "/image/service/MVP.png",
       "alt": "MVP",
       "title": "MVP/ Product Development",
-      "desc": "Streamline development for rapid innovation and sustainable growth."
+      "desc": "Streamline development for rapid innovation and sustainable growth.",
+      "href": "/solutions/product-lifecycle-management"
     },
     {
       "img": "/image/service/Cloud-Services.png",
       "alt": "Cloud",
       "title": "Cloud Services",
-      "desc": "Scalable, secure solutions for seamless business operations."
+      "desc": "Scalable, secure solutions for seamless business operations.",
+      "href": "/solutions/devops"
     },
     {
       "img": "/image/service/Cybersecurity.png",
       "alt": "Cybersecurity",
       "title": "Cybersecurity",
-      "desc": "Robust security solutions to safeguard data and prevent threats."
+      "desc": "Robust security solutions to safeguard data and prevent threats.",
+      "href": "/services/cybersecurity"
     },
     {
       "img": "/image/service/Web-Development.png",
       "alt": "Web Dev",
       "title": "Web Development",
-      "desc": "Custom solutions for high performance and scalability."
+      "desc": "Custom solutions for high performance and scalability.",
+      "href": "/services/web-developer"
     },
     {
       "img": "/image/service/Mobile-App.png",
       "alt": "Mobile",
       "title": "Mobile App Development",
-      "desc": "Custom android and iOS apps for seamless performance."
+      "desc": "Custom android and iOS apps for seamless performance.",
+      "href": "/services/application-developer"
     },
     {
       "img": "/image/service/Blockchain-Solutions.png",
       "alt": "Blockchain",
       "title": "Blockchain Solution",
-      "desc": "Secure and scalable blockchain solutions for next-gen innovation."
+      "desc": "Secure and scalable blockchain solutions for next-gen innovation.",
+      "href": "/services/blockchain-solutions"
     },
     {
       "img": "/image/service/IT-Consulting.png",
       "alt": "IT",
       "title": "IT Consulting",
-      "desc": "Expert solutions for strategic growth and digital transformation."
+      "desc": "Expert solutions for strategic growth and digital transformation.",
+      "href": "/services/it-consulting"
     },
     {
       "img": "/image/service/UI-UX-Designing-1.png",
       "alt": "UI/UX Designing",
       "title": "UI/UX Designing",
-      "desc": "Intuitive and engaging design for seamless user experiences."
+      "desc": "Intuitive and engaging design for seamless user experiences.",
+      "href": "/services/web-designing"
     },
     {
       "img": "/image/service/Data-Analytics.png",
       "alt": "Data",
       "title": "Data Analytics",
-      "desc": "Advanced insights for smarter decisions and business growth."
+      "desc": "Advanced insights for smarter decisions and business growth.",
+      "href": "/services/data-analytics"
     },
     {
       "img": "/image/service/eCommerce.png",
       "alt": "E-Commerce",
       "title": "eCommerce Solutions",
-      "desc": "Scalable solutions for effortless shopping experiences and business growth."
+      "desc": "Scalable solutions for effortless shopping experiences and business growth.",
+      "href": "/services/web-developer"
     },
     {
       "img": "/image/service/Mobile-App.png",
       "alt": "DevOps",
       "title": "DevOps Services",
-      "desc": "Efficient solutions for automation, scalability, and accelerated delivery."
+      "desc": "Efficient solutions for automation, scalability, and accelerated delivery.",
+      "href": "/solutions/devops"
     },
     {
       "img": "/image/service/SEO-and-PPC-Mareting.png",
       "alt": "Digital Marketing",
       "title": "Digital Marketing",
-      "desc": "SEO, social media, and PPC strategies for maximum traffic, leads, and conversions."
+      "desc": "SEO, social media, and PPC strategies for maximum traffic, leads, and conversions.",
+      "href": "/services/digital-marketing"
     }
   ],
   "cards": [
