@@ -345,11 +345,11 @@ Resume: ${formData.resume ? "Attached" : "Not provided"}
                     />
                     <label htmlFor="robot-check">I'm not a robot</label>
                     <Image
-                      src="/images/captcha-logo.png"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzz6tIILsCKIN0knMR9sTn5Shad52WNMNpuw&s"
                       alt="Verification"
                       className="careers-captcha-image"
-                      width={48}
-                      height={48}
+                      width={80}
+                      height={40}
                     />
                   </div>
 

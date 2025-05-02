@@ -93,7 +93,9 @@ textarea.careers-form-control {
 }
 
 .careers-captcha-image {
+ 
   height: 40px;
+  width: 80px;
 }
 
 .careers-form-image img {

@@ -372,7 +372,7 @@ export default function QualityAssuranceServices() {
             <div className="qa-prevention-image">
               <div className="qa-image-container">
                 <Image
-                  src="https://weboum.com/wp-content/uploads/2021/07/quality-assurance-2.jpg"
+                  src="https://stage.weboum.com/wp-content/uploads/2021/07/quality-assurance-2.jpg"
                   alt="Mobile phone with QA icons"
                   width={320}
                   height={340}

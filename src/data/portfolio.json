@@ -1,30 +1,30 @@
 {
     "all": [
-      { "src": "https://weboum.com/wp-content/uploads/2024/03/Bolster.jpg", "alt": "Portfolio 1" },
-      { "src": "https://weboum.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-17-at-15.36.26_d394359d.jpg", "alt": "Portfolio 2" },
-      { "src": "https://weboum.com/wp-content/uploads/2024/09/creative-version2-design.png", "alt": "Software 1" },
-      { "src": "https://weboum.com/wp-content/uploads/2024/09/ngaging-Experiences-and-Curated-apps.jpg", "alt": "Software 2" },
-      { "src": "https://weboum.com/wp-content/uploads/2024/03/Log-Me-Once.jpg", "alt": "Apps 1" },
-      { "src": "https://weboum.com/wp-content/uploads/2024/03/Hyleys.jpg", "alt": "Apps 2" },
-      { "src": "https://weboum.com/wp-content/uploads/2024/03/muskilongue-landing-page-V-1.jpg", "alt": "Graphics 1" },
-      { "src": "https://weboum.com/wp-content/uploads/2021/05/phone-tab-lapitop.jpg", "alt": "Graphics 2" },
-      { "src": "https://weboum.com/wp-content/uploads/2024/03/Georgynity.jpg", "alt": "Marketing 1" },
-      { "src": "https://weboum.com/wp-content/uploads/2024/09/Children-s-Therapy-website.png", "alt": "Marketing 2" }
+      { "src": "https://stage.weboum.com/wp-content/uploads/2024/03/Bolster.jpg", "alt": "Portfolio 1" },
+      { "src": "https://stage.weboum.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-17-at-15.36.26_d394359d.jpg", "alt": "Portfolio 2" },
+      { "src": "https://stage.weboum.com/wp-content/uploads/2024/09/creative-version2-design.png", "alt": "Software 1" },
+      { "src": "https://stage.weboum.com/wp-content/uploads/2024/09/ngaging-Experiences-and-Curated-apps.jpg", "alt": "Software 2" },
+      { "src": "https://stage.weboum.com/wp-content/uploads/2024/03/Log-Me-Once.jpg", "alt": "Apps 1" },
+      { "src": "https://stage.weboum.com/wp-content/uploads/2024/03/Hyleys.jpg", "alt": "Apps 2" },
+      { "src": "https://stage.weboum.com/wp-content/uploads/2024/03/muskilongue-landing-page-V-1.jpg", "alt": "Graphics 1" },
+      { "src": "https://stage.weboum.com/wp-content/uploads/2021/05/phone-tab-lapitop.jpg", "alt": "Graphics 2" },
+      { "src": "https://stage.weboum.com/wp-content/uploads/2024/03/Georgynity.jpg", "alt": "Marketing 1" },
+      { "src": "https://stage.weboum.com/wp-content/uploads/2024/09/Children-s-Therapy-website.png", "alt": "Marketing 2" }
     ],
     "software": [
-      { "src": "https://weboum.com/wp-content/uploads/2024/09/creative-version2-design.png", "alt": "Software 1" },
-      { "src": "https://weboum.com/wp-content/uploads/2024/09/ngaging-Experiences-and-Curated-apps.jpg", "alt": "Software 2" }
+      { "src": "https://stage.weboum.com/wp-content/uploads/2024/09/creative-version2-design.png", "alt": "Software 1" },
+      { "src": "https://stage.weboum.com/wp-content/uploads/2024/09/ngaging-Experiences-and-Curated-apps.jpg", "alt": "Software 2" }
     ],
     "apps": [
-      { "src": "https://weboum.com/wp-content/uploads/2024/03/Log-Me-Once.jpg", "alt": "Apps 1" },
-      { "src": "https://weboum.com/wp-content/uploads/2024/03/Hyleys.jpg", "alt": "Apps 2" }
+      { "src": "https://stage.weboum.com/wp-content/uploads/2024/03/Log-Me-Once.jpg", "alt": "Apps 1" },
+      { "src": "https://stage.weboum.com/wp-content/uploads/2024/03/Hyleys.jpg", "alt": "Apps 2" }
     ],
     "graphics": [
-      { "src": "https://weboum.com/wp-content/uploads/2024/03/muskilongue-landing-page-V-1.jpg", "alt": "Graphics 1" },
-      { "src": "https://weboum.com/wp-content/uploads/2021/05/phone-tab-lapitop.jpg", "alt": "Graphics 2" }
+      { "src": "https://stage.weboum.com/wp-content/uploads/2024/03/muskilongue-landing-page-V-1.jpg", "alt": "Graphics 1" },
+      { "src": "https://stage.weboum.com/wp-content/uploads/2021/05/phone-tab-lapitop.jpg", "alt": "Graphics 2" }
     ],
     "marketing": [
-      { "src": "https://weboum.com/wp-content/uploads/2024/03/Georgynity.jpg", "alt": "Marketing 1" },
-      { "src": "https://weboum.com/wp-content/uploads/2024/09/Children-s-Therapy-website.png", "alt": "Marketing 2" }
+      { "src": "https://stage.weboum.com/wp-content/uploads/2024/03/Georgynity.jpg", "alt": "Marketing 1" },
+      { "src": "https://stage.weboum.com/wp-content/uploads/2024/09/Children-s-Therapy-website.png", "alt": "Marketing 2" }
     ]
   }

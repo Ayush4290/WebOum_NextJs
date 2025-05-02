@@ -10,19 +10,19 @@ export default function WebHosting() {
 
   const cloudServerProviders = [
     {
-      logo: "https://weboum.com/wp-content/uploads/2024/11/Aws.png",
+      logo: "https://stage.weboum.com/wp-content/uploads/2024/11/Aws.png",
       name: "AWS (Amazon Web Services)",
       description:
         "Since launching in 2006, Amazon Web Services has been providing world-leading cloud technologies that help any organization and any individual build solutions to transform industries, communities, and lives for the better.",
     },
     {
-      logo: "https://weboum.com/wp-content/uploads/2024/11/Azure.png",
+      logo: "https://stage.weboum.com/wp-content/uploads/2024/11/Azure.png",
       name: "Azure",
       description:
         "Microsoft created the cloud computing platform known as Microsoft Azure, or just Azure. Through its worldwide infrastructure, it manages, provides access to, and develops applications and services for people, businesses, and governments.",
     },
     {
-      logo: "https://weboum.com/wp-content/uploads/2024/11/Google.png",
+      logo: "https://stage.weboum.com/wp-content/uploads/2024/11/Google.png",
       name: "(GCP) Google Cloud Platform",
       description:
         "Google Cloud Platform (GCP) is Google’s suite of cloud computing services, offering a range of modular options like computing power, data storage, data analytics, and machine learning, as well as management tools.",
@@ -31,37 +31,37 @@ export default function WebHosting() {
 
   const vpsProviders = [
     {
-      logo: "https://weboum.com/wp-content/uploads/2024/11/Knownhost.png",
+      logo: "https://stage.weboum.com/wp-content/uploads/2024/11/Knownhost.png",
       name: "Knownhost",
       description:
         "Since our founding in 2006, we’ve been dedicated to delivering premium hosting services to customers in over 150 countries. Our mission is simple: to offer high-quality, fully managed hosting backed by exceptional, personalized support that exceeds expectations.",
     },
     {
-      logo: "https://weboum.com/wp-content/uploads/2024/11/Bluehost.png",
+      logo: "https://stage.weboum.com/wp-content/uploads/2024/11/Bluehost.png",
       name: "Bluehost",
       description:
         "Bluehost is a top web hosting solutions provider, committed to empowering users to make the most of the web since our founding in 2003. We continuously innovate to deliver on our mission, equipping millions of users worldwide with comprehensive tools and resources.",
     },
     {
-      logo: "https://weboum.com/wp-content/uploads/2024/11/Veerotech.png",
+      logo: "https://stage.weboum.com/wp-content/uploads/2024/11/Veerotech.png",
       name: "Veerotech",
       description:
         "Founded in 2010 and headquartered in Raleigh, NC, VeeroTech Hosting is a fully independent web hosting provider, remaining privately owned without any external influence from parent companies. VeeroTech offers a variety of services, including Shared, Reseller, WordPress, VPS, and fully managed hosting solutions.",
     },
     {
-      logo: "https://weboum.com/wp-content/uploads/2024/11/HostGator.png",
+      logo: "https://stage.weboum.com/wp-content/uploads/2024/11/HostGator.png",
       name: "HostGator",
       description:
         "Web hosting is in our DNA, and we’ve been mastering it since the early days of the internet. Over the years, we’ve expanded globally, driven by our dedication to helping people worldwide build their websites their way.",
     },
     {
-      logo: "https://weboum.com/wp-content/uploads/2024/11/Godaddy.png",
+      logo: "https://stage.weboum.com/wp-content/uploads/2024/11/Godaddy.png",
       name: "GoDaddy",
       description:
         "GoDaddy does more than just sell domain names—we empower millions of small businesses worldwide to accelerate their growth. By providing entrepreneurs with confidence at every stage of their journey, we help them build and expand their businesses.",
     },
     {
-      logo: "https://weboum.com/wp-content/uploads/2024/11/Hostinger.png",
+      logo: "https://stage.weboum.com/wp-content/uploads/2024/11/Hostinger.png",
       name: "Hostinger",
       description:
         "Hostinger is dedicated to empowering anyone to achieve online success—whether you’re a developer, an aspiring blogger, or a business owner. With lightning-fast hosting, an AI-driven Website Builder, and an intuitive hPanel, creating and growing your website has never been easier.",
@@ -70,25 +70,25 @@ export default function WebHosting() {
 
   const dedicatedProviders = [
     {
-      logo: "https://weboum.com/wp-content/uploads/2024/11/Knownhost.png",
+      logo: "https://stage.weboum.com/wp-content/uploads/2024/11/Knownhost.png",
       name: "Knownhost",
       description:
         "Since our founding in 2006, we’ve been dedicated to delivering premium hosting services to customers in over 150 countries. Our mission is simple: to offer high-quality, fully managed hosting backed by exceptional, personalized support that exceeds expectations.",
     },
     {
-      logo: "https://weboum.com/wp-content/uploads/2024/11/Bluehost.png",
+      logo: "https://stage.weboum.com/wp-content/uploads/2024/11/Bluehost.png",
       name: "Bluehost",
       description:
         "Bluehost is a top web hosting solutions provider, committed to empowering users to make the most of the web since our founding in 2003. We continuously innovate to deliver on our mission, equipping millions of users worldwide with comprehensive tools and resources.",
     },
     {
-      logo: "https://weboum.com/wp-content/uploads/2024/11/HostGator.png",
+      logo: "https://stage.weboum.com/wp-content/uploads/2024/11/HostGator.png",
       name: "HostGator",
       description:
         "Web hosting is in our DNA, and we’ve been mastering it since the early days of the internet. Over the years, we’ve expanded globally, driven by our dedication to helping people worldwide build their websites their way.",
     },
     {
-      logo: "https://weboum.com/wp-content/uploads/2024/11/Godaddy.png",
+      logo: "https://stage.weboum.com/wp-content/uploads/2024/11/Godaddy.png",
       name: "GoDaddy",
       description:
         "GoDaddy does more than just sell domain names—we empower millions of small businesses worldwide to accelerate their growth. By providing entrepreneurs with confidence at every stage of their journey, we help them build and expand their businesses.",
@@ -128,7 +128,7 @@ export default function WebHosting() {
         </div>
         <div className="herohosting-image">
           <Image
-            src="https://weboum.com/wp-content/uploads/2024/11/web-hosting-1.jpg"
+            src="https://stage.weboum.com/wp-content/uploads/2024/11/web-hosting-1.jpg"
             alt="Web Hosting Concept"
             width={500}
             height={500}
@@ -142,31 +142,31 @@ export default function WebHosting() {
         <div className="client-logoshosting-wrapper">
           <div className="client-logoshosting">
             <Image
-              src="https://weboum.com/wp-content/uploads/2024/11/Siteground-1.png"
+              src="https://stage.weboum.com/wp-content/uploads/2024/11/Siteground-1.png"
               alt="SiteGround"
               width={100}
               height={50}
             />
             <Image
-              src="https://weboum.com/wp-content/uploads/2024/11/Wordpress-1.png"
+              src="https://stage.weboum.com/wp-content/uploads/2024/11/Wordpress-1.png"
               alt="WordPress"
               width={100}
               height={50}
             />
             <Image
-              src="https://weboum.com/wp-content/uploads/2024/11/Knownhost-1.png"
+              src="https://stage.weboum.com/wp-content/uploads/2024/11/Knownhost-1.png"
               alt="Knownhost"
               width={100}
               height={50}
             />
             <Image
-              src="https://weboum.com/wp-content/uploads/2024/11/Godaddy-1.png"
+              src="https://stage.weboum.com/wp-content/uploads/2024/11/Godaddy-1.png"
               alt="GoDaddy"
               width={100}
               height={50}
             />
             <Image
-              src="https://weboum.com/wp-content/uploads/2024/11/Hostgator.png"
+              src="https://stage.weboum.com/wp-content/uploads/2024/11/Hostgator.png"
               alt="HostGator"
               width={100}
               height={50}
@@ -279,7 +279,7 @@ export default function WebHosting() {
             <div className="rating-badgeshosting">
               <div className="badgehosting">
                 <Image
-                  src="https://weboum.com/wp-content/uploads/2024/11/watch-2.png"
+                  src="https://stage.weboum.com/wp-content/uploads/2024/11/watch-2.png"
                   alt="Average Response Time"
                   width={44}
                   height={44}
@@ -289,7 +289,7 @@ export default function WebHosting() {
               </div>
               <div className="badgehosting">
                 <Image
-                  src="https://weboum.com/wp-content/uploads/2024/11/smile.png"
+                  src="https://stage.weboum.com/wp-content/uploads/2024/11/smile.png"
                   alt="CSAT Score"
                   width={44}
                   height={44}
@@ -299,7 +299,7 @@ export default function WebHosting() {
               </div>
               <div className="badgehosting">
                 <Image
-                  src="https://weboum.com/wp-content/uploads/2024/11/Support-1-1.png"
+                  src="https://stage.weboum.com/wp-content/uploads/2024/11/Support-1-1.png"
                   alt="Expert Support"
                   width={44}
                   height={44}
@@ -322,7 +322,7 @@ export default function WebHosting() {
         <div class="stats-containerhosting">
           <div class="stat-itemhosting">
             <img
-              src="https://weboum.com/wp-content/uploads/2024/11/Industry-Leading-NPS.png"
+              src="https://stage.weboum.com/wp-content/uploads/2024/11/Industry-Leading-NPS.png"
               alt="Industry-Leading NPS"
             />
             <strong>73</strong>
@@ -330,7 +330,7 @@ export default function WebHosting() {
           </div>
           <div class="stat-itemhosting">
             <img
-              src="https://weboum.com/wp-content/uploads/2024/11/Global-Data-Centers.png"
+              src="https://stage.weboum.com/wp-content/uploads/2024/11/Global-Data-Centers.png"
               alt="Global Data Centers"
             />
             <strong>50+</strong>
@@ -338,7 +338,7 @@ export default function WebHosting() {
           </div>
           <div class="stat-itemhosting">
             <img
-              src="https://weboum.com/wp-content/uploads/2024/11/Turbocharged-Websites.png"
+              src="https://stage.weboum.com/wp-content/uploads/2024/11/Turbocharged-Websites.png"
               alt="Turbocharged Websites"
             />
             <strong>840k+</strong>
@@ -350,7 +350,7 @@ export default function WebHosting() {
       <section className="app-selectionhosting">
         <div className="app-technologieshosting">
           <Image
-            src="https://weboum.com/wp-content/uploads/2024/11/Choose-Your-App-293x300.png"
+            src="https://stage.weboum.com/wp-content/uploads/2024/11/Choose-Your-App-293x300.png"
             alt="Technology Icons"
             width={293}
             height={300}
@@ -372,7 +372,7 @@ export default function WebHosting() {
       <section className="featureshosting">
         <div className="feature-cardhosting">
           <img
-            src="https://weboum.com/wp-content/uploads/2024/11/Level-Security.jpg"
+            src="https://stage.weboum.com/wp-content/uploads/2024/11/Level-Security.jpg"
             alt="Security Icon"
             className="feature-imghosting"
           />
@@ -385,7 +385,7 @@ export default function WebHosting() {
         </div>
         <div className="feature-cardhosting">
           <img
-            src="https://weboum.com/wp-content/uploads/2024/11/Team-collaboration.jpg"
+            src="https://stage.weboum.com/wp-content/uploads/2024/11/Team-collaboration.jpg"
             alt="Collaboration Icon"
             className="feature-imghosting"
           />
@@ -398,7 +398,7 @@ export default function WebHosting() {
         </div>
         <div className="feature-cardhosting">
           <img
-            src="https://weboum.com/wp-content/uploads/2024/11/Real-Time-Server-Monitoring-1.jpg"
+            src="https://stage.weboum.com/wp-content/uploads/2024/11/Real-Time-Server-Monitoring-1.jpg"
             alt="Monitoring Icon"
             className="feature-imghosting"
           />

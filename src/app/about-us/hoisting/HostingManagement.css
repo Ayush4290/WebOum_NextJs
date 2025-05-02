@@ -322,7 +322,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://weboum.com/wp-content/uploads/2025/04/contact-us-1.jpg);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://stage.weboum.com/wp-content/uploads/2025/04/contact-us-1.jpg);
   background-position: center;
   background-size: cover;
   width: 100%;
