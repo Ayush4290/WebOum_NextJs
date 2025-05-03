@@ -22,23 +22,30 @@
   }
 }
 
-about-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-top: 180px;
-
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
+
+.about-wrapper {
+  width: 100%;
+  font-family: var(--primary-font);
+}
+
 .about-container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 20px;
   margin-top: 10px;
-
 }
 
 .about-content-section {
   padding: 20px 0;
-  
-  
+  animation: fadeIn 1s ease-in-out forwards;
 }
 
 .about-columns {
@@ -53,20 +60,30 @@ about-container {
   flex: 1;
   min-width: 300px;
   font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--text-color);
 }
 
 .about-image-column {
   flex: 1;
   min-width: 300px;
-  animation: slideInFromRight 3s ease forwards;
+  animation: slideInFromRight 1.5s ease-out forwards;
+  display: flex;
+  justify-content: center;
 }
 
 .about-image {
   width: 100%;
   max-width: 500px;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-image:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
 }
 
 .about-abbreviation {
@@ -77,32 +94,65 @@ about-container {
   font-size: 1.4rem;
   color: var(--primary-color);
   margin-bottom: 20px;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+  display: inline-block;
 }
 
-.about-abbreviation b {
+.abbr-item {
+  margin-bottom: 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #eee;
+}
+
+.abbr-item:last-child {
+  border-bottom: none;
+}
+
+.abbr-item b {
   display: block;
-  margin-top: 20px;
+  margin-bottom: 8px;
   color: #000;
   font-weight: bold;
+  font-size: 1.1rem;
 }
 
-.about-abbreviation i {
+.abbr-item p {
+  margin: 8px 0 0 0;
+  font-size: 1.05rem;
+}
+
+.abbr-item i {
   font-weight: bold;
   font-style: italic;
   color: var(--primary-color);
 }
 
 .about-missionrow {
-  
-  padding: 60px 20px;
-  border-radius: 8px;
+  background-color: #f9f9f9;
+  padding: 60px 30px;
+  border-radius: 12px;
   margin-top: 60px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .mission-vision-content h4 {
   font-size: 1.5rem;
   color: var(--primary-color);
   margin-bottom: 15px;
+  position: relative;
+  padding-left: 15px;
+}
+
+.mission-vision-content h4::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background-color: var(--primary-color);
+  border-radius: 4px;
 }
 
 .mission-vision-content p {
@@ -111,16 +161,35 @@ about-container {
   margin-bottom: 20px;
 }
 
-.mission-vision-content ul {
-  list-style-type: disc;
-  padding-left: 20px;
-  margin-bottom: 20px;
+.principles-list {
+  list-style-type: none;
+  padding-left: 10px;
+  margin-bottom: 30px;
 }
 
-.mission-vision-content ul li {
+.principles-list li {
   font-size: 1.1rem;
   line-height: 1.6;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  position: relative;
+  padding-left: 25px;
+}
+
+.principles-list li::before {
+  content: "•";
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: -2px;
+}
+
+.quality-statement {
+  font-size: 1.2rem;
+  font-style: italic;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+  margin-top: 30px;
 }
 
 /* Chat Button */
@@ -136,8 +205,8 @@ about-container {
   height: 60px;
   border-radius: 50%;
   background-color: white;
-  border: 2px solid #eee;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -146,7 +215,8 @@ about-container {
 }
 
 .chat-btn:hover {
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
 }
 
 .chat-icon {
@@ -154,10 +224,26 @@ about-container {
   height: 30px;
 }
 
-/* Responsive */
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .about-container {
+    max-width: 960px;
+  }
+
+  .about-text-column,
+  .about-image-column {
+    min-width: 280px;
+  }
+}
+
 @media (max-width: 992px) {
+  .about-container {
+    max-width: 720px;
+  }
+
   .about-columns {
     flex-direction: column;
+    gap: 30px;
   }
 
   .about-text-column,
@@ -166,22 +252,142 @@ about-container {
   }
 
   .about-image-column {
-    display: flex;
-    justify-content: center;
+    order: -1; /* Move image to the top on medium screens */
   }
 
-  .about-image {
-    margin: 0 auto;
+  .about-abbreviation h5 {
+    font-size: 1.3rem;
   }
 }
 
 @media (max-width: 768px) {
-  .about-content-section {
-    margin-top: 50px;
+  .about-container {
+    padding: 15px;
   }
-  
+
+  .about-content-section {
+    padding: 15px 0;
+  }
+
+  .about-text-column {
+    font-size: 1.1rem;
+  }
+
+  .about-abbreviation h5 {
+    font-size: 1.2rem;
+  }
+
+  .abbr-item b {
+    font-size: 1rem;
+  }
+
+  .abbr-item p {
+    font-size: 1rem;
+  }
+
   .about-missionrow {
-    padding: 40px 15px;
+    padding: 40px 20px;
     margin-top: 40px;
+    border-radius: 8px;
+  }
+
+  .mission-vision-content h4 {
+    font-size: 1.3rem;
+  }
+
+  .mission-vision-content p {
+    font-size: 1.1rem;
+  }
+
+  .principles-list li {
+    font-size: 1rem;
+    padding-left: 20px;
+  }
+
+  .quality-statement {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .about-container {
+    padding: 10px;
+  }
+
+  .about-content-section {
+    padding: 10px 0;
+  }
+
+  .about-text-column {
+    font-size: 1rem;
+    min-width: 100%;
+  }
+
+  .about-image-column {
+    min-width: 100%;
+  }
+
+  .about-image {
+    border-radius: 8px;
+    max-width: 100%;
+  }
+
+  .about-abbreviation h5 {
+    font-size: 1.1rem;
+  }
+
+  .abbr-item {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+  }
+
+  .abbr-item b {
+    font-size: 0.95rem;
+  }
+
+  .abbr-item p {
+    font-size: 0.95rem;
+  }
+
+  .about-missionrow {
+    padding: 30px 15px;
+    margin-top: 30px;
+  }
+
+  .mission-vision-content h4 {
+    font-size: 1.2rem;
+    padding-left: 12px;
+  }
+
+  .mission-vision-content p {
+    font-size: 1rem;
+  }
+
+  .principles-list {
+    padding-left: 5px;
+  }
+
+  .principles-list li {
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    padding-left: 18px;
+  }
+
+  .quality-statement {
+    font-size: 1rem;
+    padding-top: 15px;
+    margin-top: 20px;
+  }
+
+  .chat-btn {
+    width: 50px;
+    height: 50px;
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .chat-icon {
+    width: 25px;
+    height: 25px;
   }
 }

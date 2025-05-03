@@ -10,8 +10,20 @@ import Image from "next/image";
 const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const menuRef = useRef(null);
   const toggleButtonRef = useRef(null);
+
+  // Check if we're in mobile view on initial load and window resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 992);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen((prev) => !prev);
@@ -19,16 +31,27 @@ const Header = () => {
   };
 
   const handleMouseEnter = (menuKey) => {
-    setActiveDropdown(menuKey);
+    if (!isMobile) {
+      setActiveDropdown(menuKey);
+    }
   };
 
   const handleMouseLeave = () => {
-    setActiveDropdown(null);
+    if (!isMobile) {
+      setActiveDropdown(null);
+    }
   };
 
   const handleMenuItemClick = (menuKey, event) => {
     event.preventDefault();
+    event.stopPropagation();
     setActiveDropdown((prev) => (prev === menuKey ? null : menuKey));
+  };
+
+  // New function to handle icon click
+  const handleIconClick = (menuKey, event) => {
+    event.stopPropagation();
+    handleMenuItemClick(menuKey, event);
   };
 
   const handleDropdownItemClick = () => {
@@ -60,6 +83,72 @@ const Header = () => {
       document.body.style.overflow = "auto";
     };
   }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 992 && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+        document.body.style.overflow = "auto";
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [mobileMenuOpen]);
+
+  const renderDropdownItems = (items, isServicesMenu = false) => {
+    if (isMobile || !isServicesMenu) {
+      return items.map((item, subIndex) => (
+        <li key={subIndex}>
+          <Link
+            href={item.href}
+            onClick={handleDropdownItemClick}
+            className="dropdown-link"
+          >
+            {item.label}
+          </Link>
+        </li>
+      ));
+    }
+
+    const midPoint = Math.ceil(items.length / 2);
+    const leftColumn = items.slice(0, midPoint);
+    const rightColumn = items.slice(midPoint);
+
+    return (
+      <>
+        <div className="dropdown-column">
+          {leftColumn.map((item, subIndex) => (
+            <li key={subIndex}>
+              <Link
+                href={item.href}
+                onClick={handleDropdownItemClick}
+                className="dropdown-link"
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </div>
+        <div className="dropdown-column">
+          {rightColumn.map((item, subIndex) => (
+            <li key={subIndex}>
+              <Link
+                href={item.href}
+                onClick={handleDropdownItemClick}
+                className="dropdown-link"
+              >
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </div>
+      </>
+    );
+  };
 
   return (
     <div className="main-container">
@@ -114,7 +203,14 @@ const Header = () => {
                     >
                       <span className="menu-item-content">
                         {menu.label}
-                        <BiCaretDown className="menu-icon" />
+                        <BiCaretDown
+                          className={`menu-icon ${
+                            activeDropdown === menu.dropdownKey ? "rotate" : ""
+                          }`}
+                          onClick={(event) =>
+                            handleIconClick(menu.dropdownKey, event)
+                          } // Add icon click handler
+                        />
                       </span>
                     </div>
                     {menu.dropdownKey && (
@@ -123,53 +219,10 @@ const Header = () => {
                           activeDropdown === menu.dropdownKey ? "active" : ""
                         }`}
                       >
-                        {menu.dropdownKey === "services"
-                          ? (() => {
-                              const midPoint = Math.ceil(menu.items.length / 2);
-                              const leftColumn = menu.items.slice(0, midPoint);
-                              const rightColumn = menu.items.slice(midPoint);
-                              return (
-                                <>
-                                  <div className="dropdown-column">
-                                    {leftColumn.map((item, subIndex) => (
-                                      <li key={subIndex}>
-                                        <Link
-                                          href={item.href}
-                                          onClick={handleDropdownItemClick}
-                                          className="dropdown-link"
-                                        >
-                                          {item.label}
-                                        </Link>
-                                      </li>
-                                    ))}
-                                  </div>
-                                  <div className="dropdown-column">
-                                    {rightColumn.map((item, subIndex) => (
-                                      <li key={subIndex}>
-                                        <Link
-                                          href={item.href}
-                                          onClick={handleDropdownItemClick}
-                                          className="dropdown-link"
-                                        >
-                                          {item.label}
-                                        </Link>
-                                      </li>
-                                    ))}
-                                  </div>
-                                </>
-                              );
-                            })()
-                          : menu.items.map((item, subIndex) => (
-                              <li key={subIndex}>
-                                <Link
-                                  href={item.href}
-                                  onClick={handleDropdownItemClick}
-                                  className="dropdown-link"
-                                >
-                                  {item.label}
-                                </Link>
-                              </li>
-                            ))}
+                        {renderDropdownItems(
+                          menu.items,
+                          menu.dropdownKey === "services"
+                        )}
                       </ul>
                     )}
                   </li>

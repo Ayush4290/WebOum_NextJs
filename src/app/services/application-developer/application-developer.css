@@ -12,25 +12,25 @@
 }
 
 /* Animation */
-@keyframes slideFadeLeft {
+@keyframes slideFadeUp {
   0% {
     opacity: 0;
-    transform: translateX(-40px);
+    transform: translateY(40px);
   }
   100% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
-@keyframes slideFadeRight {
+@keyframes slideFadeDown {
   0% {
     opacity: 0;
-    transform: translateX(40px);
+    transform: translateY(-40px);
   }
   100% {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
@@ -59,7 +59,7 @@
   width: 100%;
   max-width: 600px;
   margin-bottom: 20px;
-  animation: slideFadeRight 1s ease-in-out both;
+  animation: slideFadeUp 1s ease-in-out both;
 }
 
 .Application-section-content .Application-section-text {
@@ -67,7 +67,7 @@
   max-width: 600px;
   text-align: center;
   padding-bottom: 20px;
-  animation: slideFadeLeft 1s ease-in-out both;
+  animation: slideFadeDown 1s ease-in-out both;
 }
 
 .Application-section-content .Application-section-image img {
@@ -127,18 +127,18 @@
 
   /* Flip animation directions based on order */
   .Application-order-1.Application-section-image {
-    animation: slideFadeRight 1s ease-in-out both;
+    animation: slideFadeUp 1s ease-in-out both;
   }
 
   .Application-order-2.Application-section-text {
-    animation: slideFadeLeft 1s ease-in-out both;
+    animation: slideFadeDown 1s ease-in-out both;
   }
 
   .Application-order-md-2.Application-section-image {
-    animation: slideFadeLeft 1s ease-in-out both;
+    animation: slideFadeDown 1s ease-in-out both;
   }
 
   .Application-order-md-1.Application-section-text {
-    animation: slideFadeRight 1s ease-in-out both;
+    animation: slideFadeUp 1s ease-in-out both;
   }
 }

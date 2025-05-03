@@ -11,6 +11,29 @@
   --connect-hover: #0055aa;
 }
 
+/* Animation */
+@keyframes slideFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideFadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .offer-section {
   padding: 60px 20px;
   background: url("/image/background.jpeg") no-repeat center center/cover;
@@ -33,6 +56,7 @@
 .support-text {
   flex: 1 1 50%;
   padding: 20px;
+  animation: slideFadeUp 1s ease-in-out both;
 }
 
 .support-text h6 {
@@ -121,6 +145,7 @@
 .image-container {
   flex: 1 1 40%;
   text-align: center;
+  animation: slideFadeDown 1s ease-in-out both;
 }
 
 .image-container img {
@@ -153,6 +178,7 @@
 
 .DigitalMarketing-connect-container div {
   flex: 1;
+  animation: slideFadeUp 1s ease-in-out both;
 }
 
 .DigitalMarketing-connect-container h2 {
@@ -184,6 +210,7 @@
   letter-spacing: 1px;
   transition: background-color 0.3s ease, transform 0.3s ease;
   white-space: nowrap;
+  animation: slideFadeDown 1s ease-in-out both;
 }
 
 .connect-btn:hover {

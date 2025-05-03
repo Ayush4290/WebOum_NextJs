@@ -92,6 +92,7 @@
   margin-bottom: 15px;
   position: relative;
   padding-left: 25px;
+  color: black;
 }
 
 .cybersecurity-text-box ul li::before {
@@ -180,6 +181,11 @@
 .cybersecurity-result-card h3 {
   font-size: 1.5rem;
   margin: 15px 0;
+  color: black;
+}
+
+.cybersecurity-result-card p {
+  font-size: 1.1rem;
   color: black;
 }
 

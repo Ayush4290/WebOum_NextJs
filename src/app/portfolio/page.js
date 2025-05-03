@@ -1,16 +1,10 @@
 "use client";
-
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import "./portfolio.css";
 import portfolioImages from "@/data/Portfolio.json";
 import SubHeader from "../sub-header/page";
 import Days from "../about-us/days/page";
-
-// export const metadata = {
-//   title: "Portfolio – Weboum Technology",
-//   description: "Explore Weboum Technology’s portfolio showcasing software, apps, graphics, and digital marketing projects.",
-// };
 
 export default function Portfolio() {
   const [activeTab, setActiveTab] = useState("all");
@@ -24,12 +18,17 @@ export default function Portfolio() {
   const openLightbox = (src) => {
     setCurrentImage(src);
     setLightboxOpen(true);
+    // Prevent scrolling when lightbox is open
+    document.body.style.overflow = "hidden";
   };
 
   const closeLightbox = () => {
     setLightboxOpen(false);
+    // Re-enable scrolling
+    document.body.style.overflow = "auto";
   };
 
+  // Close lightbox with escape key
   useEffect(() => {
     const handleEscapeKey = (e) => {
       if (e.key === "Escape" && lightboxOpen) {
@@ -43,76 +42,86 @@ export default function Portfolio() {
     };
   }, [lightboxOpen]);
 
-  return (
-   <>
-   <SubHeader title="portfolio"/>
-   <div className="portfolio-container">
-      <div className="tabs">
-        <div
-          className={`tab ${activeTab === "all" ? "active" : ""}`}
-          onClick={() => showTab("all")}
-          data-category="all"
-        >
-          All
-        </div>
-        <div
-          className={`tab ${activeTab === "software" ? "active" : ""}`}
-          onClick={() => showTab("software")}
-        >
-          Software
-        </div>
-        <div
-          className={`tab ${activeTab === "apps" ? "active" : ""}`}
-          onClick={() => showTab("apps")}
-        >
-          Apps
-        </div>
-        <div
-          className={`tab ${activeTab === "graphics" ? "active" : ""}`}
-          onClick={() => showTab("graphics")}
-        >
-          Graphics
-        </div>
-        <div
-          className={`tab ${activeTab === "marketing" ? "active" : ""}`}
-          onClick={() => showTab("marketing")}
-        >
-          Digital Marketing
-        </div>
-      </div>
+  // Close lightbox when clicking outside the image
+  const handleLightboxClick = (e) => {
+    if (e.target.classList.contains("lightbox")) {
+      closeLightbox();
+    }
+  };
 
-      <div className={`portfolio active`}>
-        {portfolioImages[activeTab].map((image, index) => (
-          <div className="item" key={index}>
+  return (
+    <>
+      <SubHeader title="Portfolio" />
+      <div className="portfolio-container">
+        <div className="tabs">
+          <div
+            className={`tab ${activeTab === "all" ? "active" : ""}`}
+            onClick={() => showTab("all")}
+          >
+            All
+          </div>
+          <div
+            className={`tab ${activeTab === "software" ? "active" : ""}`}
+            onClick={() => showTab("software")}
+          >
+            Software
+          </div>
+          <div
+            className={`tab ${activeTab === "apps" ? "active" : ""}`}
+            onClick={() => showTab("apps")}
+          >
+            Apps
+          </div>
+          <div
+            className={`tab ${activeTab === "graphics" ? "active" : ""}`}
+            onClick={() => showTab("graphics")}
+          >
+            Graphics
+          </div>
+          <div
+            className={`tab ${activeTab === "marketing" ? "active" : ""}`}
+            onClick={() => showTab("marketing")}
+          >
+            Digital Marketing
+          </div>
+        </div>
+
+        <div className="portfolio">
+          {portfolioImages[activeTab] &&
+            portfolioImages[activeTab].map((image, index) => (
+              <div className="item" key={index}>
+                <Image
+                  src={image.src}
+                  alt={image.alt || "Portfolio item"}
+                  width={300}
+                  height={200}
+                  layout="responsive"
+                  objectFit="cover"
+                  onClick={() => openLightbox(image.src)}
+                  priority={index < 6}
+                />
+              </div>
+            ))}
+        </div>
+
+        {lightboxOpen && (
+          <div className="lightbox" onClick={handleLightboxClick}>
+            <span className="close-lightbox" onClick={closeLightbox}>
+              ×
+            </span>
             <Image
-              src={image.src}
-              alt={image.alt}
-              width={300}
-              height={200}
+              className="lightbox-img"
+              src={currentImage}
+              alt="Full size image"
+              width={1200}
+              height={800}
+              objectFit="contain"
               unoptimized
-              onClick={() => openLightbox(image.src)}
             />
           </div>
-        ))}
+        )}
       </div>
-
-      {lightboxOpen && (
-        <div className="lightbox">
-          <span className="close-lightbox" onClick={closeLightbox}>
-            ×
-          </span>
-          <Image
-            className="lightbox-img"
-            src={currentImage}
-            alt="Full Image"
-            width={800}
-            height={600}
-            unoptimized
-          />
-        </div>
-      )}
-    </div>
-    <Days/>
-   </>
+      <Days />
+    </>
   );
 }

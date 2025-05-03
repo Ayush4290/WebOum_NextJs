@@ -8,7 +8,7 @@ import Image from "next/image";
 const WebsiteDesign = () => {
   return (
     <>
-      <SubHeader title="Website Designing" />
+      <SubHeader title="Web Designing" />
       <section className="design-section">
         <div className="container">
           {/* First Block */}

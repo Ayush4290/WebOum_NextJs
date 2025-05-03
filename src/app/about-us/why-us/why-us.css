@@ -9,12 +9,14 @@
   --bg-white: #fff;
 }
 
+
 /* Section layout */
 .whyus-section-wrapper {
-  padding: 40px 100px;
+  padding: 20px 15px;
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
+  gap: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Row */
@@ -22,30 +24,30 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  gap: 40px;
+  gap: 20px;
 }
 
 /* Left content */
 .whyus-left-content {
-  flex: 1 1 50%;
- 
+  flex: 1 1 100%;
 }
 
 .whyus-left-content h6 {
   color: var(--text-color);
   text-transform: uppercase;
   font-weight: 600;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .whyus-highlight-line {
-  width: 400px;
+  width: 100%;
+  max-width: 300px;
   border-top: 3px solid var(--primary-color);
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .whyus-left-content h2 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 600;
 }
 
@@ -55,61 +57,66 @@
 
 .whyus-left-content p {
   color: var(--text-color);
-  margin-bottom: 15px;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
 }
 
 /* Feature list */
 .whyus-feature {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .whyus-feature img {
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
   object-fit: contain;
 }
 
 .whyus-feature h6 {
   margin: 0;
   font-weight: bold;
+  font-size: 0.9rem;
 }
 
 /* Form box */
 .whyus-form-box {
-  flex: 1 1 40%;
+  flex: 1 1 100%;
   background-color: var(--bg-white);
-  padding: 30px;
+  padding: 20px;
   border-radius: 6px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   text-align: center;
 }
 
 .whyus-form-box img {
   max-width: 100%;
   height: auto;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   border-radius: 6px;
 }
 
 .whyus-form-box h5 {
   font-weight: 700;
+  font-size: 1.1rem;
 }
 
 .whyus-form-box small {
   color: var(--light-text);
+  font-size: 0.85rem;
 }
 
 .whyus-form-control,
 .whyus-form-select,
 .whyus-form-box textarea {
   width: 100%;
-  margin-bottom: 15px;
-  padding: 10px;
+  margin-bottom: 12px;
+  padding: 8px;
   border-radius: 4px;
   border: 1px solid #ccc;
+  font-size: 0.9rem;
 }
 
 /* Submit button */
@@ -117,10 +124,11 @@
   background-color: var(--button-bg);
   color: white;
   font-weight: bold;
-  padding: 10px;
+  padding: 8px;
   width: 100%;
   border: none;
   cursor: pointer;
+  font-size: 0.9rem;
 }
 
 .whyus-btn-submit:hover {
@@ -129,7 +137,7 @@
 
 /* Offer Section */
 .whyus-offer-section {
-  padding: 60px 20px;
+  padding: 30px 15px;
   background: url("/image/background.jpeg") no-repeat center center/cover;
   width: 100%;
 }
@@ -138,26 +146,27 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 40px;
+  gap: 20px;
 }
 
 /* Offer text */
 .whyus-support-text {
-  flex: 1 1 50%;
+  flex: 1 1 100%;
 }
 
 .whyus-support-text h6 {
   text-transform: uppercase;
   color: var(--text-color);
+  font-size: 1.1rem;
 }
 
 .whyus-support-text h2 {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
 }
 
 .whyus-support-text h3 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: black;
   font-weight: bold;
 }
@@ -165,6 +174,10 @@
 .whyus-support-text ul {
   list-style: none;
   padding-left: 0;
+}
+
+.whyus-support-text ul li {
+  font-size: 0.9rem;
 }
 
 .whyus-support-text ul li::before {
@@ -176,12 +189,13 @@
 .whyus-quote-btn {
   background-color: var(--quote-bg);
   color: white;
-  padding: 12px 20px;
+  padding: 10px 15px;
   font-weight: bold;
   border-radius: 5px;
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 15px;
   text-decoration: none;
+  font-size: 0.9rem;
 }
 
 .whyus-quote-btn:hover {
@@ -191,28 +205,143 @@
 
 /* Offer image */
 .whyus-image-container {
-  flex: 1 1 40%;
+  flex: 1 1 100%;
   text-align: center;
 }
 
 .whyus-image-container img {
-  max-height: 400px;
+  max-height: 300px;
   width: 100%;
   object-fit: contain;
   padding-top: 10px;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Responsive Styles */
+@media (min-width: 576px) {
+  .whyus-section-wrapper {
+    padding: 30px 20px;
+  }
+
+  .whyus-left-content h2 {
+    font-size: 2rem;
+  }
+
+  .whyus-form-box {
+    padding: 25px;
+  }
+
+  .whyus-offer-section {
+    padding: 40px 20px;
+  }
+}
+
+@media (min-width: 768px) {
   .whyus-left-content,
   .whyus-form-box,
   .whyus-support-text,
   .whyus-image-container {
-    flex: 1 1 100%;
+    flex: 1 1 50%;
   }
 
   .whyus-image-container img {
-    width: 100%;
+    max-height: 350px;
+  }
+
+  .whyus-highlight-line {
+    max-width: 350px;
+  }
+
+  .whyus-left-content p {
+    font-size: 1rem;
+  }
+
+  .whyus-support-text h2 {
+    font-size: 2.2rem;
+  }
+
+  .whyus-support-text h3 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .whyus-section-wrapper {
+    padding: 40px 100px;
+    gap: 40px;
+  }
+
+  .whyus-row {
+    gap: 40px;
+  }
+
+  .whyus-left-content {
+    flex: 1 1 50%;
+  }
+
+  .whyus-form-box {
+    flex: 1 1 40%;
+    padding: 30px;
+  }
+
+  .whyus-highlight-line {
+    width: 400px;
+  }
+
+  .whyus-left-content h2 {
+    font-size: 2rem;
+  }
+
+  .whyus-feature img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .whyus-feature h6 {
+    font-size: 1rem;
+  }
+
+  .whyus-form-control,
+  .whyus-form-select,
+  .whyus-form-box textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+
+  .whyus-btn-submit {
+    padding: 10px;
+  }
+
+  .whyus-offer-section {
+    padding: 60px 20px;
+  }
+
+  .whyus-support-text {
+    flex: 1 1 50%;
+  }
+
+  .whyus-image-container {
+    flex: 1 1 40%;
+  }
+
+  .whyus-image-container img {
+    max-height: 400px;
+  }
+
+  .whyus-support-text h2 {
+    font-size: 2.5rem;
+  }
+
+  .whyus-support-text h3 {
+    font-size: 2rem;
+  }
+
+  .whyus-support-text ul li {
+    font-size: 1rem;
+  }
+
+  .whyus-quote-btn {
+    padding: 12px 20px;
+    margin-top: 20px;
   }
 }

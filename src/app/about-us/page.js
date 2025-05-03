@@ -4,11 +4,12 @@ import SubHeader from "../sub-header/page";
 import Days from "./days/page";
 import "./about-us.css";
 import Image from "next/image";
+
 export default function AboutUs() {
   return (
     <>
       <SubHeader title="About Us" />
-      <div>
+      <div className="about-wrapper">
         <div className="about-container">
           <div className="about-content-section">
             <div className="about-columns">
@@ -24,42 +25,67 @@ export default function AboutUs() {
                   <h5>
                     <strong>WEBOUM abbreviation is used for:</strong>
                   </h5>
-                  <b>
-                    W: <i>Web Applications</i>
-                  </b>
-                  ;develop and maintain web applications tailored to your
-                  specific needs, whether for personal use, business operations,
-                  or any other purpose.
-                  <b>
-                    E: <i>e-Commerce</i>
-                  </b>
-                  ; we provide comprehensive e-commerce solutions to help you
-                  sell products and services online efficiently and effectively.
-                  <b>
-                    B: <i>Branding</i>
-                  </b>
-                  ; we create and enhance your brand identity, making your
-                  business stand out in the market through logos, marketing
-                  materials, and brand strategies.
-                  <b>
-                    O: <i>Optimization</i>
-                  </b>
-                  ; we improve the performance, security, and efficiency of your
-                  business systems and applications to ensure they run smoothly
-                  and effectively.
-                  <b>
-                    U: <i>UI/UX</i>
-                  </b>
-                  ; we design user-friendly and attractive interfaces to enhance
-                  user experiences and satisfaction, ensuring that your
-                  applications are both intuitive and enjoyable to use.
-                  <b>
-                    M: <i>Marketing</i>
-                  </b>
-                  ; we help your business grow through effective marketing
-                  strategies, including SEO, digital marketing, and promotional
-                  campaigns, as well as providing ongoing support and
-                  maintenance.
+                  <div className="abbr-item">
+                    <b>
+                      W: <i>Web Applications</i>
+                    </b>
+                    <p>
+                      Develop and maintain web applications tailored to your
+                      specific needs, whether for personal use, business
+                      operations, or any other purpose.
+                    </p>
+                  </div>
+                  <div className="abbr-item">
+                    <b>
+                      E: <i>e-Commerce</i>
+                    </b>
+                    <p>
+                      We provide comprehensive e-commerce solutions to help you
+                      sell products and services online efficiently and
+                      effectively.
+                    </p>
+                  </div>
+                  <div className="abbr-item">
+                    <b>
+                      B: <i>Branding</i>
+                    </b>
+                    <p>
+                      We create and enhance your brand identity, making your
+                      business stand out in the market through logos, marketing
+                      materials, and brand strategies.
+                    </p>
+                  </div>
+                  <div className="abbr-item">
+                    <b>
+                      O: <i>Optimization</i>
+                    </b>
+                    <p>
+                      We improve the performance, security, and efficiency of
+                      your business systems and applications to ensure they run
+                      smoothly and effectively.
+                    </p>
+                  </div>
+                  <div className="abbr-item">
+                    <b>
+                      U: <i>UI/UX</i>
+                    </b>
+                    <p>
+                      We design user-friendly and attractive interfaces to
+                      enhance user experiences and satisfaction, ensuring that
+                      your applications are both intuitive and enjoyable to use.
+                    </p>
+                  </div>
+                  <div className="abbr-item">
+                    <b>
+                      M: <i>Marketing</i>
+                    </b>
+                    <p>
+                      We help your business grow through effective marketing
+                      strategies, including SEO, digital marketing, and
+                      promotional campaigns, as well as providing ongoing
+                      support and maintenance.
+                    </p>
+                  </div>
                 </div>
               </div>
               <div className="about-image-column">
@@ -67,14 +93,15 @@ export default function AboutUs() {
                   src="/image/development-about.jpg"
                   alt="Technology Graphic"
                   className="about-image"
-                  width={500} 
-                  height={500} 
+                  width={500}
+                  height={500}
+                  priority
                 />
               </div>
             </div>
 
             {/* Mission & Vision Section */}
-            <div className="about-missionrow about-content-section">
+            <div className="about-missionrow">
               <div className="mission-vision-content">
                 <h4>
                   <strong>Our Mission:</strong>
@@ -105,7 +132,7 @@ export default function AboutUs() {
                     following principles:
                   </strong>
                 </p>
-                <ul>
+                <ul className="principles-list">
                   <li>
                     <strong>Integrity</strong> – Honesty in how we deal with our
                     clients, each other, and with the world.
@@ -137,7 +164,7 @@ export default function AboutUs() {
                     wealth, skills, influence, and our client&apos;s business.
                   </li>
                 </ul>
-                <p>
+                <p className="quality-statement">
                   It&apos;s the quality which matters, not the quantity of work
                   for us. We are the{" "}
                   <strong>leading providers of high-quality designs</strong>.
@@ -152,7 +179,7 @@ export default function AboutUs() {
 
       {/* Chat button */}
       <div className="fixed-chat-button">
-        <button className="chat-btn">
+        <button className="chat-btn" aria-label="Chat with us">
           <div className="chat-icon">
             <svg
               viewBox="0 0 24 24"

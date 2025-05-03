@@ -36,18 +36,24 @@
   position: relative;
   padding-bottom: 3px;
   border-bottom: 2px solid transparent;
-  transition: border-color 0.3s;
+  transition: border-color 0.8s; /* Slowed down transition */
 }
 
 .logo-img {
   width: 180px;
   height: auto;
+  transition: transform 0.8s ease; /* Slowed down transition */
+}
+
+.logo:hover .logo-img {
+  transform: scale(1.03);
 }
 
 /* Menu */
 .menu {
   display: flex;
   align-items: center;
+  transition: all 0.8s ease; /* Slowed down transition */
 }
 
 .menu-list {
@@ -67,7 +73,24 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.8s, color 0.8s; /* Slowed down transition */
+  position: relative;
+}
+
+.menu-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 1rem;
+  right: 1rem;
+  height: 2px;
+  background: rgb(16, 203, 182);
+  transform: scaleX(0);
+  transition: transform 1s ease;
+}
+
+.menu-link:hover::after {
+  transform: scaleX(1);
 }
 
 .menu-item-content {
@@ -79,6 +102,11 @@
 
 .menu-icon {
   margin-left: 5px;
+  transition: transform 0.8s ease; /* Slowed down transition */
+}
+
+.menu-icon.rotate {
+  transform: rotate(180deg);
 }
 
 /* Dropdown */
@@ -87,7 +115,7 @@
 }
 
 .menu-dropdown::after {
-  content: '';
+  content: "";
   position: absolute;
   height: 20px;
   width: 100%;
@@ -107,7 +135,7 @@
   border-radius: 4px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   padding: 1rem;
-  transition: opacity 0.2s, visibility 0.2s;
+  transition: opacity 0.6s ease, visibility 0.6s ease; /* Slowed down transition */
 }
 
 /* Specific styles for Services dropdown with two columns */
@@ -117,8 +145,6 @@
   flex-wrap: nowrap;
   gap: 1rem;
 }
-
-
 
 .dropdown-column {
   width: 50%;
@@ -133,6 +159,7 @@
 
 .dropdown li {
   list-style: none;
+  margin-bottom: 0.3rem;
 }
 
 .dropdown li a {
@@ -140,7 +167,7 @@
   padding: 0.8rem;
   display: block;
   text-decoration: none;
-  transition: background 0.2s;
+  transition: background 0.5s ease;
   font-size: 13px;
   font-weight: 500;
   white-space: nowrap;
@@ -157,7 +184,7 @@
   padding: 0.7rem 1.5rem;
   border-radius: 30px;
   text-decoration: none;
-  transition: background 0.3s, color 0.3s;
+  transition: all 0.8s ease;
   font-weight: 600;
   margin-left: 1.5rem;
   white-space: nowrap;
@@ -165,7 +192,9 @@
 
 .btn-contact:hover {
   background-color: var(--contact-btn-hover);
-  color: white;
+  color: rgb(255, 255, 255);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(230, 0, 115, 0.3);
 }
 
 .menu-toggle {
@@ -186,7 +215,6 @@
   float: right;
 }
 
-/* Overlay for mobile menu */
 .menu-overlay {
   display: none;
   position: fixed;
@@ -196,13 +224,15 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1500;
+  opacity: 0;
+  transition: opacity 0.8s ease;
 }
 
 .menu-overlay.active {
   display: block;
+  opacity: 1;
 }
 
-/* Media queries for responsive design */
 @media (max-width: 992px) {
   .navbar-inner {
     flex-direction: row;
@@ -221,7 +251,7 @@
     width: 80%;
     height: 100vh;
     flex-direction: column;
-    transition: right 0.3s ease;
+    transition: right 0.8s ease; /* Slowed down transition */
     z-index: 2000;
     padding: 80px 20px 20px 20px;
     box-sizing: border-box;
@@ -244,6 +274,16 @@
     width: 100%;
   }
 
+  /* Add hover functionality to mobile menu */
+  .menu-dropdown:hover .dropdown,
+  .menu-dropdown:focus-within .dropdown {
+    opacity: 1;
+    visibility: visible;
+    max-height: 1000px;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
   .menu-link {
     padding: 1rem;
     justify-content: space-between;
@@ -263,15 +303,30 @@
     padding: 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     top: auto;
-    opacity: 1;
-    visibility: visible;
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    overflow-y: auto; /* Enable scrolling for dropdown content */
+    max-height: calc(100vh - 200px); /* Limit height to fit within viewport */
+    transition: max-height 0.8s ease, padding 0.8s ease, opacity 0.5s ease,
+      visibility 0.5s ease;
   }
 
   /* Mobile specific for services dropdown */
   .menu-dropdown.services .dropdown {
-    display: none;
+    display: block;
     flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  /* Make services dropdown appear on hover */
+  .menu-dropdown.services:hover .dropdown,
+  .menu-dropdown.services:focus-within .dropdown {
+    display: block;
+    max-height: 1000px;
+    opacity: 1;
+    visibility: visible;
   }
 
   .menu-dropdown.services .dropdown::before {
@@ -284,7 +339,17 @@
 
   .dropdown.active {
     display: block;
+    max-height: calc(100vh - 200px);
+    padding: 0.5rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 1;
+    visibility: visible;
+    overflow-y: auto;
+  }
+
+  .menu-dropdown.services .dropdown.active {
+    display: block;
+    max-height: 1000px;
   }
 
   .dropdown li {
@@ -308,7 +373,7 @@
   }
 
   .btn-contact {
-    margin: 0;
+    margin: 1rem 0 0 0;
     border-radius: 4px;
     width: 100%;
     text-align: center;
@@ -326,9 +391,26 @@
   .menu-icon {
     margin-left: auto;
   }
-  
+
   .menu-item-content {
     justify-content: space-between;
     width: 100%;
+  }
+
+  /* Add a highlight effect to menu items on hover */
+  .menu-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Improve touch targets */
+  .menu-link,
+  .dropdown li a {
+    padding: 1rem 1.2rem;
+  }
+
+  /* Visual hover indicator */
+  .menu-dropdown:hover .menu-link::after,
+  .menu-dropdown:focus-within .menu-link::after {
+    transform: scaleX(1);
   }
 }

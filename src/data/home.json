@@ -82,7 +82,7 @@
       "alt": "Digital Marketing",
       "title": "Digital Marketing",
       "desc": "SEO, social media, and PPC strategies for maximum traffic, leads, and conversions.",
-      "href": "/services/digital-marketing"
+      "href": "/services/digital-marketing-3"
     }
   ],
   "cards": [
@@ -125,52 +125,59 @@
   ],
   "testimonials": [
     {
-      "name": "Jill Cabana",
+      "name": "Jill Caruana",
       "title": "CEO, Jill Melissa Corp, NY",
-      "text": "I would highly recommend using Guru and for your web design needs. He offers a reliable and affordable service that never compromises quality.",
+      "text": "I would highly recommend using Guru and for your web design needs. He offers a reliable and affordable service that never compromises quality. He is very knowledgeable, trustworthy, and responds to questions in a timely fashion.",
       "image": "https://stage.weboum.com/wp-content/uploads/2025/04/T-5.jpg",
       "stars": 5
     },
     {
-      "name": "Mohamed Albastaki",
-      "title": "Founder, Equilibria Digital Solutions, Bahrain",
-      "text": "Guru and his team have been an invaluable partner, working with us on multiple long-term projects with exceptional professionalism.",
-      "image": "https://stage.weboum.com/wp-content/uploads/2025/04/T-3.jpg",
-      "stars": 5
-    },
-    {
-      "name": "Andrea Houston",
-      "title": "CEO, Lead Like a Woman, USA",
-      "text": "Pawna and team was wonderful to work with! Very responsive and asking for details when needed. I really appreciated her outstanding work on this project.",
-      "image": "https://stage.weboum.com/wp-content/uploads/2025/02/Client-EricHaleshorst.jpeg",
-      "stars": 5
-    },
-    {
-      "name": "Jill Cabana",
-      "title": "CEO, Jill Melissa Corp, NY",
-      "text": "I would highly recommend using Guru and for your web design needs. He offers a reliable and affordable service that never compromises quality.",
-      "image": "https://stage.weboum.com/wp-content/uploads/2025/04/T-1.jpg",
-      "stars": 5
-    },
-    {
-      "name": "Mohamed Albastaki",
-      "title": "Founder, Equilibria Digital Solutions, Bahrain",
-      "text": "Guru and his team have been an invaluable partner, working with us on multiple long-term projects with exceptional professionalism.",
+      "name": "Elizabeth Alcala",
+      "title": "Director of Strategic Marketing, Mekor LLC ,USA",
+      "text": "I have worked with Gurbachan & his team for the last 5 years with excellent work and customer service. They have clear understanding of guidelines and deadlines.",
       "image": "https://stage.weboum.com/wp-content/uploads/2025/04/T-4.jpg",
       "stars": 5
     },
     {
-      "name": "Jill Cabana",
-      "title": "CEO, Jill Melissa Corp, NY",
-      "text": "I would highly recommend using Guru and for your web design needs. He offers a reliable and affordable service that never compromises quality.",
+      "name": "Eric Haselhorst",
+      "title": "Owner, Rockin H Farm Toys.",
+      "text": "Weboum has been incredibly supportive, Quick with edits. Did what I asked and it was great. ",
+      "image": "https://stage.weboum.com/wp-content/uploads/2025/02/Client-EricHaleshorst.jpeg",
+      "stars": 5
+    },
+    {
+      "name": "Tom Buford",
+      "title": "Founder & CEO, BuildoutAI",
+      "text": "Pawna was able to successfully complete a job that's been haunting me for months. I have tried to get a custom plugin created for a website and Pawna was the first person that knew exactly what to do and jumped right in with a solid solution. This makes all the difference when you're running a business. I would highly recommend working with Pawna and team. She was responsive and communicated clearly throughout the project.",
+      "image": "https://stage.weboum.com/wp-content/uploads/2025/04/T-1.jpg",
+      "stars": 5
+    },
+    {
+      "name": "Mohamed Albastaki",
+      "title": "Founder, Equilibria Digital Solutions, Bahrain",
+      "text": "Guru and his team have been an invaluable partner, working with us on multiple long-term projects with exceptional professionalism. Their expertise in custom software and web application development and server setup—delivered seamlessly in both English and Arabic—has greatly contributed to our success. Highly recommended!",
+      "image": "https://stage.weboum.com/wp-content/uploads/2025/04/T-3.jpg",
+      "stars": 5
+    },
+    {
+      "name": "Andrea Heuston",
+      "title": "CEO, Lead Like a Woman, USA",
+      "text": "Pawna and team was wonderful to work with! Very responsive and asking for details when needed. I really appreciated her outstanding work on this project.",
       "image": "https://stage.weboum.com/wp-content/uploads/2025/04/T-6.jpg",
       "stars": 5
     },
     {
-      "name": "Jill Cabana",
-      "title": "CEO, Jill Melissa Corp, NY",
-      "text": "I would highly recommend using Guru and for your web design needs. He offers a reliable and affordable service that never compromises quality.",
-      "image": "https://stage.weboum.com/wp-content/uploads/2025/04/T-1.jpg",
+      "name": "Klaus Holzapfel",
+      "title": "Co-Founder, Conceptbakery, Germany",
+      "text": "These Guys are a seasoned professional that met our deadline and took over an advanced Project that the original developer could not complete due to a lack of skills. He communicates very well in writing and we also had video calls on Skype which sometimes makes things easier. We trust and recommend weboum team",
+      "image": "https://weboum.com/wp-content/uploads/2025/04/T-2.jpg",
+      "stars": 5
+    },
+    {
+      "name": "Amani",
+      "title": "CEO, WineCountryTour",
+      "text": "Team is very good at what they do. They are very responsive and was able to not only meet my tight deadline but was also able to understand what is important to me without me explicitly having to explain everything to them from the start. I would definitely recommend weboum to anyone who needs to have good quality, creative work done and digital marketing for them. Thank you weboum! Until my next job for you 🙂",
+      "image": "https://weboum.com/wp-content/uploads/2025/02/Napavalley-wine-e1739983402808.png",
       "stars": 5
     }
   ],
