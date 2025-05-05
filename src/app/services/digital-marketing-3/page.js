@@ -117,7 +117,7 @@ export default function DigitalMarketing() {
                   to react to the feedback received. Reacting to negative
                   feedback promptly is essential to maintain a brand image. We
                   address all potential issues and try to fix them for your
-                  business before it&apos;s  too late.
+                  business before it&apos;s too late.
                 </p>
               </div>
               <div className="DigitalMarketing-benefit-box">
@@ -238,7 +238,9 @@ export default function DigitalMarketing() {
 
             <div className="DigitalMarketing-cta">
               <p>Are you looking for best packages click:</p>
-              <a href="#">Digital Marketing Packages</a>
+              <a href="/services/Digital-Marketing-Packages">
+                Packages for Digital
+              </a>
             </div>
           </div>
         </section>

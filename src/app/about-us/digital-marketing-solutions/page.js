@@ -247,9 +247,12 @@ export default function Digital() {
               <p>
                 <strong>To find the best packages, click here:</strong>
               </p>
-              <button className="digital-cta-button">
+              <a
+                href="/services/Digital-Marketing-Packages"
+                className="digital-cta-button"
+              >
                 Packages for Digital
-              </button>
+              </a>
             </div>
           </div>
         </section>

@@ -399,6 +399,7 @@ const Home = () => {
                   }`}
                   key={index}
                 >
+                <div className="testimonial-quote">
                   <p className="testimonial-text">"{testimonial.text}"</p>
 
                   <div className="stars">
@@ -414,6 +415,7 @@ const Home = () => {
 
                   <h4 className="testimonial-name">{testimonial.name}</h4>
                   <p className="testimonial-position">{testimonial.title}</p>
+                </div>
                 </div>
               ))}
             </div>
@@ -444,7 +446,7 @@ const Home = () => {
             </p>
           </div>
           <div className="cta-right">
-            <a href="#contact" className="cta-button">
+            <a href="/about-us/contact" className="cta-button">
               Get Free Consultation
             </a>
           </div>

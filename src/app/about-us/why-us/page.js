@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useEffect, useState } from "react";
 import SubHeader from "@/app/sub-header/page";
@@ -75,16 +75,18 @@ export default function WhyUs() {
       // Sanitize inputs to prevent HTML injection
       const sanitizeInput = (input) => {
         return input
-          .replace(/</g, "<")
-          .replace(/>/g, ">")
-          .replace(/"/g, "");
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
       };
 
       const sanitizedName = sanitizeInput(formData.name);
       const sanitizedEmail = sanitizeInput(formData.email);
       const sanitizedPhone = sanitizeInput(formData.phone);
       const sanitizedProject = sanitizeInput(formData.project);
-      const sanitizedMessage = formData.message ? sanitizeInput(formData.message) : "No message provided";
+      const sanitizedMessage = formData.message
+        ? sanitizeInput(formData.message)
+        : "No message provided";
 
       // Construct the subject
       const subject = `Free Consultation Request from ${sanitizedName}`;
@@ -151,7 +153,7 @@ Message: ${sanitizedMessage}
       const result = await sendContactForm({
         email: sanitizedEmail,
         subject,
-        message: messageContent, // Use HTML content
+        message: messageContent,
       });
 
       if (result.success) {
@@ -164,12 +166,12 @@ Message: ${sanitizedMessage}
           message: "",
           notRobot: false,
         });
-        e.target.reset(); // Reset form inputs
+        e.target.reset();
       } else {
         setFormError("Failed to submit your request. Please try again.");
       }
     } catch (error) {
-      console.error("Form submission error:", error);
+      // console.error("Form submission error:", error);
       setFormError("Failed to submit your request. Please try again later.");
     } finally {
       setIsSubmitting(false);
@@ -183,90 +185,158 @@ Message: ${sanitizedMessage}
         <div className="whyus-row">
           {/* Left Content */}
           <div className="whyus-left-content" data-aos="fade-up">
-            <h6 data-aos="fade-right" data-aos-delay="100">Weboum – Customized IT Solutions</h6>
-            <div className="whyus-highlight-line" data-aos="width" data-aos-delay="200"></div>
+            <h6 data-aos="fade-right" data-aos-delay="100">
+              Weboum – Customized IT Solutions
+            </h6>
+            <div
+              className="whyus-highlight-line"
+              data-aos="width"
+              data-aos-delay="200"
+            ></div>
             <h2 data-aos="fade-up" data-aos-delay="300">
               Why Choose <strong>us</strong>
             </h2>
-            <p data-aos="fade-up" data-aos-delay="400">We Are Trusted Web Development, Web Design & Digital Marketing Company</p>
-            <p data-aos="fade-up" data-aos-delay="500">
-              WTPL, (Weboum Technology Pvt. Ltd.) is one of the best digital marketing agencies in Chandigarh & Mohali, India. Our unique mix of experts, from developers to digital marketers, deliver results that drive growth.
+            <p data-aos="fade-up" data-aos-delay="400">
+              We Are Trusted Web Development, Web Design & Digital Marketing
+              Company
             </p>
-            <p data-aos="fade-up" data-aos-delay="600">Our web design and development with digital marketing services will transform your marketing approach.</p>
+            <p data-aos="fade-up" data-aos-delay="500">
+              WTPL, (Weboum Technology Pvt. Ltd.) is one of the best digital
+              marketing agencies in Chandigarh & Mohali, India. Our unique mix
+              of experts, from developers to digital marketers, deliver results
+              that drive growth.
+            </p>
+            <p data-aos="fade-up" data-aos-delay="600">
+              Our web design and development with digital marketing services
+              will transform your marketing approach.
+            </p>
             <p data-aos="fade-up" data-aos-delay="700">
-              So, get through one of the best Web development, Web design and Digital marketing companies and experience the digital transformation of your business.
+              So, get through one of the best Web development, Web design and
+              Digital marketing companies and experience the digital
+              transformation of your business.
             </p>
 
-            <div className="whyus-feature" data-aos="fade-right" data-aos-delay="800">
-              <Image src="/image/background.jpeg" alt="Check" width={50} height={50} className="feature-icon" />
+            <div
+              className="whyus-feature"
+              data-aos="fade-right"
+              data-aos-delay="800"
+            >
+              <Image
+                src="/image/background.jpeg"
+                alt="Check"
+                width={50}
+                height={50}
+                className="feature-icon"
+              />
               <div>
                 <h6>High Customer Retention Rate</h6>
-                <p>We have a 100% retention rate due to our exceptional services and client satisfaction focus.</p>
+                <p>
+                  We have a 100% retention rate due to our exceptional services
+                  and client satisfaction focus.
+                </p>
               </div>
             </div>
-            <div className="whyus-feature" data-aos="fade-right" data-aos-delay="900">
-              <Image src="/image/background.jpeg" alt="Check" width={50} height={50} className="feature-icon" />
+            <div
+              className="whyus-feature"
+              data-aos="fade-right"
+              data-aos-delay="900"
+            >
+              <Image
+                src="/image/background.jpeg"
+                alt="Check"
+                width={50}
+                height={50}
+                className="feature-icon"
+              />
               <div>
                 <h6>Ability To Meet Deadlines</h6>
-                <p>We are 100% clear on when work needs to be completed and have a system to ensure it happens.</p>
+                <p>
+                  We are 100% clear on when work needs to be completed and have
+                  a system to ensure it happens.
+                </p>
               </div>
             </div>
-            <div className="whyus-feature" data-aos="fade-right" data-aos-delay="1000">
-              <Image src="/image/background.jpeg" alt="Check" width={50} height={50} className="feature-icon" />
+            <div
+              className="whyus-feature"
+              data-aos="fade-right"
+              data-aos-delay="1000"
+            >
+              <Image
+                src="/image/background.jpeg"
+                alt="Check"
+                width={50}
+                height={50}
+                className="feature-icon"
+              />
               <div>
                 <h6>Professional Team Member</h6>
-                <p>We have focused, creative team members with expert technical knowledge and practical experience.</p>
+                <p>
+                  We have focused, creative team members with expert technical
+                  knowledge and practical experience.
+                </p>
               </div>
             </div>
           </div>
 
           {/* Right Form */}
-          <div className="whyus-form-box" data-aos="zoom-in" data-aos-delay="300">
-            <Image 
-              src="/image/featured-image.jpg" 
-              alt="Featured" 
-              width={300} 
-              height={200} 
+          <div
+            className="whyus-form-box"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+          >
+            <Image
+              src="/image/featured-image.jpg"
+              alt="Featured"
+              width={300}
+              height={200}
               className="form-featured-image"
               data-aos="fade-in"
               data-aos-delay="400"
             />
-            <h5 data-aos="fade-up" data-aos-delay="500">Request A Free Consultation</h5>
-            <small data-aos="fade-up" data-aos-delay="600">We Help Customers Digital Transformation By IT Solutions</small>
-            <form onSubmit={handleSubmit} data-aos="fade-up" data-aos-delay="700">
-              <input 
-                type="text" 
-                name="name" 
-                className="whyus-form-control" 
-                placeholder="Name" 
+            <h5 data-aos="fade-up" data-aos-delay="500">
+              Request A Free Consultation
+            </h5>
+            <small data-aos="fade-up" data-aos-delay="600">
+              We Help Customers Digital Transformation By IT Solutions
+            </small>
+            <form
+              onSubmit={handleSubmit}
+              data-aos="fade-up"
+              data-aos-delay="700"
+            >
+              <input
+                type="text"
+                name="name"
+                className="whyus-form-control"
+                placeholder="Name"
                 value={formData.name}
                 onChange={handleInputChange}
-                required 
+                required
                 disabled={isSubmitting}
               />
-              <input 
-                type="tel" 
-                name="phone" 
-                className="whyus-form-control" 
-                placeholder="000-000-0000" 
+              <input
+                type="tel"
+                name="phone"
+                className="whyus-form-control"
+                placeholder="000-000-0000"
                 value={formData.phone}
                 onChange={handleInputChange}
-                required 
+                required
                 disabled={isSubmitting}
               />
-              <input 
-                type="email" 
-                name="email" 
-                className="whyus-form-control" 
-                placeholder="Email" 
+              <input
+                type="email"
+                name="email"
+                className="whyus-form-control"
+                placeholder="Email"
                 value={formData.email}
                 onChange={handleInputChange}
-                required 
+                required
                 disabled={isSubmitting}
               />
-              <select 
-                name="project" 
-                className="whyus-form-select" 
+              <select
+                name="project"
+                className="whyus-form-select"
                 value={formData.project}
                 onChange={handleInputChange}
                 required
@@ -277,19 +347,19 @@ Message: ${sanitizedMessage}
                 <option value="App Development">App Development</option>
                 <option value="Digital Marketing">Digital Marketing</option>
               </select>
-              <textarea 
-                name="message" 
-                className="whyus-form-control" 
-                rows="4" 
+              <textarea
+                name="message"
+                className="whyus-form-control"
+                rows="4"
                 placeholder="Your Query / Message"
                 value={formData.message}
                 onChange={handleInputChange}
                 disabled={isSubmitting}
               ></textarea>
               <div className="whyus-captcha-box">
-                <input 
-                  type="checkbox" 
-                  id="captcha" 
+                <input
+                  type="checkbox"
+                  id="captcha"
                   name="notRobot"
                   checked={formData.notRobot}
                   onChange={handleInputChange}
@@ -304,12 +374,16 @@ Message: ${sanitizedMessage}
                   className="whyus-captcha-image"
                 />
               </div>
-              {formError && <div className="whyus-error-message">{formError}</div>}
-              {formSuccess && <div className="whyus-success-message">{formSuccess}</div>}
-              <button 
-                type="submit" 
-                className="whyus-btn-submit" 
-                data-aos="pulse" 
+              {formError && (
+                <div className="whyus-error-message">{formError}</div>
+              )}
+              {formSuccess && (
+                <div className="whyus-success-message">{formSuccess}</div>
+              )}
+              <button
+                type="submit"
+                className="whyus-btn-submit"
+                data-aos="pulse"
                 data-aos-delay="800"
                 disabled={isSubmitting}
               >

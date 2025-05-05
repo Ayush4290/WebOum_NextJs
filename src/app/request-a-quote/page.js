@@ -6,7 +6,7 @@ import "./request_a_quote.css";
 
 const steps = [
   {
-    title: "Project Information",
+    title: "",
     sections: [
       {
         subtitle: "Stage",
@@ -43,7 +43,7 @@ const steps = [
   },
   // Second page: Project Scope and Budget
   {
-    title: "Project Scope & Budget",
+    title: "",
     sections: [
       {
         subtitle:
@@ -73,7 +73,7 @@ const steps = [
   },
   // Third page: Timeframe and Start
   {
-    title: "Timeline",
+    title: "",
     sections: [
       {
         subtitle: "Timeframe",
@@ -120,13 +120,9 @@ export default function RequestaQuote() {
   const [selectedOptions, setSelectedOptions] = useState({});
 
   const handleNext = () => {
-    // Validate current step before proceeding
-    if (validateCurrentStep()) {
-      if (currentStep < steps.length - 1) {
-        setCurrentStep(currentStep + 1);
-        // Clear any previous error messages
-        setFormError("");
-      }
+    if (currentStep < steps.length - 1) {
+      setCurrentStep(currentStep + 1);
+      setFormError(""); // Clear any previous error messages
     }
   };
 
@@ -139,7 +135,7 @@ export default function RequestaQuote() {
 
   const validateCurrentStep = () => {
     const currentStepData = steps[currentStep];
-    
+
     // For steps with radio button options
     if (currentStepData.sections) {
       // Check if at least one option is selected for each section
@@ -151,7 +147,7 @@ export default function RequestaQuote() {
         }
       }
     }
-    
+
     return true;
   };
 
@@ -229,23 +225,60 @@ export default function RequestaQuote() {
             </div>
             <div style="padding: 20px;">
               <h2 style="font-size: 20px; color: #333333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">Contact Information</h2>
-              <p style="margin: 10px 0; color: #555555;"><strong>Name:</strong> ${formData.name || "Not provided"}</p>
-              <p style="margin: 10px 0; color: #555555;"><strong>Email:</strong> ${formData.email || "Not provided"}</p>
-              <p style="margin: 10px 0; color: #555555;"><strong>Phone:</strong> ${formData.phone || "Not provided"}</p>
-              <p style="margin: 10px 0; color: #555555;"><strong>Company:</strong> ${formData.company || "Not provided"}</p>
-              <p style="margin: 10px 0; color: #555555;"><strong>Website:</strong> ${formData.website || "Not provided"}</p>
+              <p style="margin: 10px 0; color: #555555;"><strong>Name:</strong> ${
+                formData.name || "Not provided"
+              }</p>
+              <p style="margin: 10px 0; color: #555555;"><strong>Email:</strong> ${
+                formData.email || "Not provided"
+              }</p>
+              <p style="margin: 10px 0; color: #555555;"><strong>Phone:</strong> ${
+                formData.phone || "Not provided"
+              }</p>
+              <p style="margin: 10px 0; color: #555555;"><strong>Company:</strong> ${
+                formData.company || "Not provided"
+              }</ GYp>
+              <p style="margin: 10px 0; color: #555555;"><strong>Website:</strong> ${
+                formData.website || "Not provided"
+              }</p>
 
               <h2 style="font-size: 20px; color: #333333; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-top: 20px;">Project Details</h2>
-              <p style="margin: 10px 0; color: #555555;"><strong>Stage:</strong> ${getOptionLabel("stage", formData.stage) || "Not selected"}</p>
-              <p style="margin: 10px 0; color: #555555;"><strong>Services Needed:</strong> ${getOptionLabel("services_needed", formData.services_needed) || "Not selected"}</p>
-              <p style="margin: 10px 0; color: #555555;"><strong>Development Stages Needed:</strong> ${getOptionLabel("development_stages_needed", formData.development_stages_needed) || "Not selected"}</p>
-              <p style="margin: 10px 0; color: #555555;"><strong>Project Scope:</strong> ${getOptionLabel("project_scope:_do_you_want_us_to_identify_and_suggest_more_advanced_functionality_options?", formData["project_scope:_do_you_want_us_to_identify_and_suggest_more_advanced_functionality_options?"]) || "Not selected"}</p>
-              <p style="margin: 10px 0; color: #555555;"><strong>Expected Budget:</strong> ${getOptionLabel("expected_budget", formData.expected_budget) || "Not selected"}</p>
-              <p style="margin: 10px 0; color: #555555;"><strong>Timeframe:</strong> ${getOptionLabel("timeframe", formData.timeframe) || "Not selected"}</p>
-              <p style="margin: 10px 0; color: #555555;"><strong>Start:</strong> ${getOptionLabel("start", formData.start) || "Not selected"}</p>
+              <p style="margin: 10px 0; color: #555555;"><strong>Stage:</strong> ${
+                getOptionLabel("stage", formData.stage) || "Not selected"
+              }</p>
+              <p style="margin: 10px 0; color: #555555;"><strong>Services Needed:</strong> ${
+                getOptionLabel("services_needed", formData.services_needed) ||
+                "Not selected"
+              }</p>
+              <p style="margin: 10px 0; color: #555555;"><strong>Development Stages Needed:</strong> ${
+                getOptionLabel(
+                  "development_stages_needed",
+                  formData.development_stages_needed
+                ) || "Not selected"
+              }</p>
+              <p style="margin: 10px 0; color: #555555;"><strong>Project Scope:</strong> ${
+                getOptionLabel(
+                  "project_scope:_do_you_want_us_to_identify_and_suggest_more_advanced_functionality_options?",
+                  formData[
+                    "project_scope:_do_you_want_us_to_identify_and_suggest_more_advanced_functionality_options?"
+                  ]
+                ) || "Not selected"
+              }</p>
+              <p style="margin: 10px 0; color: #555555;"><strong>Expected Budget:</strong> ${
+                getOptionLabel("expected_budget", formData.expected_budget) ||
+                "Not selected"
+              }</p>
+              <p style="margin: 10px 0; color: #555555;"><strong>Timeframe:</strong> ${
+                getOptionLabel("timeframe", formData.timeframe) ||
+                "Not selected"
+              }</p>
+              <p style="margin: 10px 0; color: #555555;"><strong>Start:</strong> ${
+                getOptionLabel("start", formData.start) || "Not selected"
+              }</p>
 
               <h2 style="font-size: 20px; color: #333333; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-top: 20px;">Additional Message</h2>
-              <p style="margin: 10px 0; color: #555555;">${formData.message || "No message provided"}</p>
+              <p style="margin: 10px 0; color: #555555;">${
+                formData.message || "No message provided"
+              }</p>
             </div>
             <div style="background-color: #f8f9fa; padding: 15px; text-align: center; border-radius: 0 0 8px 8px;">
               <p style="margin: 0; color: #777777; font-size: 14px;">Sent from Weboum Quote Request Form</p>
@@ -303,12 +336,12 @@ export default function RequestaQuote() {
       ...formData,
       [sectionName]: value,
     });
-    
+
     setSelectedOptions({
       ...selectedOptions,
       [sectionName]: value,
     });
-    
+
     // Clear errors when user makes a selection
     if (formError) {
       setFormError("");
@@ -334,16 +367,14 @@ export default function RequestaQuote() {
   return (
     <div className="requestaQuote-wrapper">
       <div className="requestaQuote-progress-bar">
-        <div 
-          className="requestaQuote-progress" 
+        <div
+          className="requestaQuote-progress"
           style={{ width: `${progress}%` }}
         ></div>
       </div>
       <div className="requestaQuote-container">
         <div className="requestaQuote-left">
-          <h4 className="requestaQuote-subtitle">
-            Weboum – Send Us A Message
-          </h4>
+          <h4 className="requestaQuote-subtitle">Weboum – Send Us A Message</h4>
           <div className="requestaQuote-line"></div>
           <h2 className="requestaQuote-title">
             Do You Have Any Questions? We'll Be Happy To Assist!
@@ -391,13 +422,11 @@ export default function RequestaQuote() {
                 {formSuccess}
               </div>
             )}
-            
+
             {currentStepData.sections ? (
               currentStepData.sections.map((section, secIndex) => (
                 <div key={secIndex} className="requestaQuote-section">
-                  <h5 className="requestaQuote-heading">
-                    {section.subtitle}
-                  </h5>
+                  <h5 className="requestaQuote-heading">{section.subtitle}</h5>
                   <div className="requestaQuote-options">
                     {section.options.map((option, optIndex) => {
                       const sectionId = section.subtitle
@@ -415,10 +444,7 @@ export default function RequestaQuote() {
                             name={sectionId}
                             value={option.value}
                             onChange={() =>
-                              handleOptionChange(
-                                sectionId,
-                                option.value
-                              )
+                              handleOptionChange(sectionId, option.value)
                             }
                             checked={formData[sectionId] === option.value}
                           />

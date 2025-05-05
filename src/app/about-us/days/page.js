@@ -63,7 +63,7 @@ const Days = () => {
             </p>
           </div>
           <Link
-            href="#contact-form"
+            href="/about-us/contact"
             className="connect-btn"
             data-aos="fade-up"
             data-aos-delay="200"

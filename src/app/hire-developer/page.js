@@ -142,7 +142,7 @@ export default function HireDeveloper() {
     );
     const startTags = document.querySelectorAll("#tag-container-start .tag");
 
-    skillTags.forEach((tag) =>
+    skillTags.forEach((tag) =>  
       tag.addEventListener("click", (e) => handleTagSelection(e, "skills"))
     );
     techTags.forEach((tag) =>
