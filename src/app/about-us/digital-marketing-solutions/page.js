@@ -24,7 +24,7 @@ export default function Digital() {
         <section className="digital-benefits-section digital-content-box">
           <div className="digital-benefits-image">
             <Image
-              src="https://stage.weboum.com/wp-content/uploads/2024/11/images-2.png"
+              src="https://weboum.com/wp-content/uploads/2024/11/images-2.png"
               alt="Digital Illustration"
               width={500}
               height={400}
@@ -79,7 +79,7 @@ export default function Digital() {
           </div>
           <div className="digital-social-media-image">
             <Image
-              src="https://stage.weboum.com/wp-content/uploads/2024/11/images-1-1.jpg"
+              src="https://weboum.com/wp-content/uploads/2024/11/images-1-1.jpg"
               alt="Social Media"
               width={600}
               height={500}
@@ -92,7 +92,7 @@ export default function Digital() {
         <section className="digital-services-section digital-content-box">
           <div className="digital-services-image">
             <Image
-              src="https://stage.weboum.com/wp-content/uploads/2024/11/What-is-Digital-Marketing-768x512-1.jpg"
+              src="https://weboum.com/wp-content/uploads/2024/11/What-is-Digital-Marketing-768x512-1.jpg"
               alt="Digital Services"
               width={500}
               height={400}

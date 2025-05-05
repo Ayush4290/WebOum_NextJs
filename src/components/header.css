@@ -6,6 +6,7 @@
   --contact-btn-color: #ffffff;
   --contact-btn-bg: #ff007f;
   --contact-btn-hover: #e60073;
+  --transition-speed: 0.4s;
 }
 
 .main-container {
@@ -14,10 +15,11 @@
   min-height: 9vh;
   font-family: Arial, sans-serif;
   position: relative;
+  width: 100%;
 }
 
 .navbar {
-  padding: 1rem 2rem;
+  padding: 1rem;
 }
 
 .navbar-inner {
@@ -36,13 +38,13 @@
   position: relative;
   padding-bottom: 3px;
   border-bottom: 2px solid transparent;
-  transition: border-color 0.8s; /* Slowed down transition */
+  transition: border-color var(--transition-speed);
 }
 
 .logo-img {
-  width: 180px;
+  width: 150px;
   height: auto;
-  transition: transform 0.8s ease; /* Slowed down transition */
+  transition: transform var(--transition-speed) ease;
 }
 
 .logo:hover .logo-img {
@@ -53,7 +55,7 @@
 .menu {
   display: flex;
   align-items: center;
-  transition: all 0.8s ease; /* Slowed down transition */
+  transition: all var(--transition-speed) ease;
 }
 
 .menu-list {
@@ -73,7 +75,7 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  transition: background 0.8s, color 0.8s; /* Slowed down transition */
+  transition: background var(--transition-speed), color var(--transition-speed);
   position: relative;
 }
 
@@ -86,7 +88,7 @@
   height: 2px;
   background: rgb(16, 203, 182);
   transform: scaleX(0);
-  transition: transform 1s ease;
+  transition: transform var(--transition-speed) ease;
 }
 
 .menu-link:hover::after {
@@ -102,7 +104,7 @@
 
 .menu-icon {
   margin-left: 5px;
-  transition: transform 0.8s ease; /* Slowed down transition */
+  transition: transform var(--transition-speed) ease;
 }
 
 .menu-icon.rotate {
@@ -131,16 +133,18 @@
   opacity: 0;
   visibility: hidden;
   min-width: 250px;
+  max-width: 100vw;
   z-index: 10;
   border-radius: 4px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   padding: 1rem;
-  transition: opacity 0.6s ease, visibility 0.6s ease; /* Slowed down transition */
+  transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
 }
 
 /* Specific styles for Services dropdown with two columns */
 .menu-dropdown.services .dropdown {
   min-width: 500px;
+  max-width: 90vw;
   display: flex;
   flex-wrap: nowrap;
   gap: 1rem;
@@ -184,9 +188,9 @@
   padding: 0.7rem 1.5rem;
   border-radius: 30px;
   text-decoration: none;
-  transition: all 0.8s ease;
+  transition: all var(--transition-speed) ease;
   font-weight: 600;
-  margin-left: 1.5rem;
+  margin-left: 1rem;
   white-space: nowrap;
 }
 
@@ -206,13 +210,16 @@
   cursor: pointer;
   z-index: 2500;
   position: relative;
+  padding: 0.5rem;
 }
 
 .hamburger-icon,
 .close-icon {
   font-size: 28px;
   color: white;
-  float: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .menu-overlay {
@@ -225,7 +232,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1500;
   opacity: 0;
-  transition: opacity 0.8s ease;
+  transition: opacity var(--transition-speed) ease;
 }
 
 .menu-overlay.active {
@@ -234,13 +241,22 @@
 }
 
 @media (max-width: 992px) {
+  .navbar {
+    padding: 0.75rem;
+  }
+
   .navbar-inner {
     flex-direction: row;
     align-items: center;
   }
 
   .menu-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-right: 0.5rem;
   }
 
   .menu {
@@ -249,9 +265,10 @@
     right: -100%;
     background: var(--primary-gradient);
     width: 80%;
+    max-width: 350px;
     height: 100vh;
     flex-direction: column;
-    transition: right 0.8s ease; /* Slowed down transition */
+    transition: right var(--transition-speed) ease;
     z-index: 2000;
     padding: 80px 20px 20px 20px;
     box-sizing: border-box;
@@ -272,16 +289,6 @@
 
   .menu-dropdown {
     width: 100%;
-  }
-
-  /* Add hover functionality to mobile menu */
-  .menu-dropdown:hover .dropdown,
-  .menu-dropdown:focus-within .dropdown {
-    opacity: 1;
-    visibility: visible;
-    max-height: 1000px;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .menu-link {
@@ -306,40 +313,28 @@
     opacity: 0;
     visibility: hidden;
     max-height: 0;
-    overflow-y: auto; /* Enable scrolling for dropdown content */
-    max-height: calc(100vh - 200px); /* Limit height to fit within viewport */
-    transition: max-height 0.8s ease, padding 0.8s ease, opacity 0.5s ease,
-      visibility 0.5s ease;
+    overflow: hidden;
+    transition: max-height var(--transition-speed) ease, 
+                padding var(--transition-speed) ease, 
+                opacity var(--transition-speed) ease,
+                visibility var(--transition-speed) ease;
   }
 
   /* Mobile specific for services dropdown */
   .menu-dropdown.services .dropdown {
     display: block;
     flex-direction: column;
-    max-height: 0;
-    overflow: hidden;
-  }
-
-  /* Make services dropdown appear on hover */
-  .menu-dropdown.services:hover .dropdown,
-  .menu-dropdown.services:focus-within .dropdown {
-    display: block;
-    max-height: 1000px;
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .menu-dropdown.services .dropdown::before {
-    display: none;
+    min-width: 100%;
   }
 
   .dropdown-column {
     width: 100%;
+    padding: 0;
   }
 
   .dropdown.active {
     display: block;
-    max-height: calc(100vh - 200px);
+    max-height: 70vh;
     padding: 0.5rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     opacity: 1;
@@ -349,7 +344,8 @@
 
   .menu-dropdown.services .dropdown.active {
     display: block;
-    max-height: 1000px;
+    padding: 0.5rem 0;
+    overflow-y: auto;
   }
 
   .dropdown li {
@@ -406,11 +402,29 @@
   .menu-link,
   .dropdown li a {
     padding: 1rem 1.2rem;
+    min-height: 44px;
+  }
+}
+
+/* Additional small mobile optimization */
+@media (max-width: 576px) {
+  .logo-img {
+    width: 120px;
   }
 
-  /* Visual hover indicator */
-  .menu-dropdown:hover .menu-link::after,
-  .menu-dropdown:focus-within .menu-link::after {
-    transform: scaleX(1);
+  .menu {
+    width: 85%;
+  }
+
+  .navbar {
+    padding: 0.5rem;
+  }
+
+  .dropdown {
+    max-width: 100%;
+  }
+
+  .menu-dropdown.services .dropdown {
+    max-width: 100%;
   }
 }

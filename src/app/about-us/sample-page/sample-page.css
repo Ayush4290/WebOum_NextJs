@@ -213,8 +213,6 @@
   margin: 0 auto;
 }
 
-
-
 .samplePage_left-content h6 {
   color: #333;
   text-transform: uppercase;
@@ -615,11 +613,10 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between;
   gap: 40px;
   box-sizing: border-box;
 }
-
 
 @media (min-width: 576px) {
   .container {

@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import "./Header.css";
 import { BiCaretDown } from "react-icons/bi";
-import menuData from "../data/Header.json";
 import Link from "next/link";
 import Image from "next/image";
+import menuData from "../data/Header.json";
+import "./Header.css";
 
 const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -27,7 +27,8 @@ const Header = () => {
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen((prev) => !prev);
-    document.body.style.overflow = mobileMenuOpen ? "auto" : "hidden";
+    // Toggle body scroll when menu is opened/closed
+    document.body.style.overflow = !mobileMenuOpen ? "hidden" : "auto";
   };
 
   const handleMouseEnter = (menuKey) => {
@@ -43,23 +44,28 @@ const Header = () => {
   };
 
   const handleMenuItemClick = (menuKey, event) => {
-    event.preventDefault();
-    event.stopPropagation();
-    setActiveDropdown((prev) => (prev === menuKey ? null : menuKey));
+    if (isMobile) {
+      event.preventDefault();
+      event.stopPropagation();
+      setActiveDropdown((prev) => (prev === menuKey ? null : menuKey));
+    }
   };
 
-  // New function to handle icon click
   const handleIconClick = (menuKey, event) => {
     event.stopPropagation();
-    handleMenuItemClick(menuKey, event);
+    if (isMobile) {
+      setActiveDropdown((prev) => (prev === menuKey ? null : menuKey));
+    }
   };
 
   const handleDropdownItemClick = () => {
+    // Close everything when a dropdown item is clicked
     setActiveDropdown(null);
     setMobileMenuOpen(false);
     document.body.style.overflow = "auto";
   };
 
+  // Handle clicks outside the menu
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (
@@ -84,6 +90,7 @@ const Header = () => {
     };
   }, []);
 
+  // Reset mobile menu on window resize
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 992 && mobileMenuOpen) {
@@ -161,6 +168,7 @@ const Header = () => {
               className="logo-img"
               width={150}
               height={50}
+              priority
             />
           </Link>
 
@@ -170,17 +178,18 @@ const Header = () => {
             aria-label="Toggle navigation"
             ref={toggleButtonRef}
           >
-            {mobileMenuOpen ? (
-              <span className="close-icon">✕</span>
-            ) : (
-              <span className="hamburger-icon">≡</span>
-            )}
+            <span className={mobileMenuOpen ? "close-icon" : "hamburger-icon"}>
+              {mobileMenuOpen ? "✕" : "≡"}
+            </span>
           </button>
 
-          <div
-            className={`menu-overlay ${mobileMenuOpen ? "active" : ""}`}
-            onClick={toggleMobileMenu}
-          ></div>
+          {/* Menu overlay for mobile */}
+          {isMobile && (
+            <div
+              className={`menu-overlay ${mobileMenuOpen ? "active" : ""}`}
+              onClick={toggleMobileMenu}
+            ></div>
+          )}
 
           <nav
             className={`menu ${mobileMenuOpen ? "menu-open" : ""}`}
@@ -196,7 +205,7 @@ const Header = () => {
                     onMouseLeave={handleMouseLeave}
                   >
                     <div
-                      className="menu-link cursor-pointer"
+                      className="menu-link"
                       onClick={(event) =>
                         handleMenuItemClick(menu.dropdownKey, event)
                       }
@@ -209,7 +218,7 @@ const Header = () => {
                           }`}
                           onClick={(event) =>
                             handleIconClick(menu.dropdownKey, event)
-                          } // Add icon click handler
+                          }
                         />
                       </span>
                     </div>

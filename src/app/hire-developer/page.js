@@ -210,59 +210,70 @@ export default function HireDeveloper() {
           ? `Contact Request from ${name} - ${company}`
           : `Contact Request from ${name}`;
 
-        // Create a detailed message with all form data
+        // Create a detailed HTML email template
         const message = `
-          Contact Information:
-          -------------------
-          Name: ${name}
-          Email: ${email}
-          Phone: ${phone}
-          Company: ${company || "Not provided"}
-          Website: ${website || "Not provided"}
-          
-          Skills Selected:
-          ---------------
-          ${
-            selectedSkills.length > 0
-              ? selectedSkills.join(", ")
-              : "None selected"
-          }
-          
-          Technologies Selected:
-          --------------------
-          ${
-            selectedTechnologies.length > 0
-              ? selectedTechnologies.join(", ")
-              : "None selected"
-          }
-          
-          Work Time Preference:
-          -------------------
-          ${
-            selectedWorkTime.length > 0
-              ? selectedWorkTime.join(", ")
-              : "None selected"
-          }
-          
-          Project Timeframe:
-          ----------------
-          ${
-            selectedTimeframe.length > 0
-              ? selectedTimeframe.join(", ")
-              : "None selected"
-          }
-          
-          Preferred Start:
-          --------------
-          ${
-            selectedStart.length > 0
-              ? selectedStart.join(", ")
-              : "None selected"
-          }
-          
-          Additional Comments:
-          -----------------
-          ${comment || "No comments provided"}
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Contact Request</title>
+          </head>
+          <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4;">
+            <div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 20px;">
+              <div style="background-color: #007bff; color: #ffffff; padding: 15px; text-align: center; border-radius: 8px 8px 0 0;">
+                <h1 style="margin: 0; font-size: 24px;">New Contact Request</h1>
+              </div>
+              <div style="padding: 20px;">
+                <h2 style="font-size: 20px; color: #333333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">Contact Information</h2>
+                <p style="margin: 10px 0; color: #555555;"><strong>Name:</strong> ${name}</p>
+                <p style="margin: 10px 0; color: #555555;"><strong>Email:</strong> ${email}</p>
+                <p style="margin: 10px 0; color: #555555;"><strong>Phone:</strong> ${phone}</p>
+                <p style="margin: 10px 0; color: #555555;"><strong>Company:</strong> ${
+                  company || "Not provided"
+                }</p>
+                <p style="margin: 10px 0; color: #555555;"><strong>Website:</strong> ${
+                  website || "Not provided"
+                }</p>
+
+                <h2 style="font-size: 20px; color: #333333; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-top: 20px;">Project Details</h2>
+                <p style="margin: 10px 0; color: #555555;"><strong>Skills Selected:</strong> ${
+                  selectedSkills.length > 0
+                    ? selectedSkills.join(", ")
+                    : "None selected"
+                }</p>
+                <p style="margin: 10px 0; color: #555555;"><strong>Technologies Selected:</strong> ${
+                  selectedTechnologies.length > 0
+                    ? selectedTechnologies.join(", ")
+                    : "None selected"
+                }</p>
+                <p style="margin: 10px 0; color: #555555;"><strong>Work Time Preference:</strong> ${
+                  selectedWorkTime.length > 0
+                    ? selectedWorkTime.join(", ")
+                    : "None selected"
+                }</p>
+                <p style="margin: 10px 0; color: #555555;"><strong>Project Timeframe:</strong> ${
+                  selectedTimeframe.length > 0
+                    ? selectedTimeframe.join(", ")
+                    : "None selected"
+                }</p>
+                <p style="margin: 10px 0; color: #555555;"><strong>Preferred Start:</strong> ${
+                  selectedStart.length > 0
+                    ? selectedStart.join(", ")
+                    : "None selected"
+                }</p>
+
+                <h2 style="font-size: 20px; color: #333333; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-top: 20px;">Additional Comments</h2>
+                <p style="margin: 10px 0; color: #555555;">${
+                  comment || "No comments provided"
+                }</p>
+              </div>
+              <div style="background-color: #f8f9fa; padding: 15px; text-align: center; border-radius: 0 0 8px 8px;">
+                <p style="margin: 0; color: #777777; font-size: 14px;">Sent from Weboum Contact Form</p>
+              </div>
+            </div>
+          </body>
+          </html>
         `.trim();
 
         // Send the form data to the API
