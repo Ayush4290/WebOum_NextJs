@@ -3,17 +3,14 @@ import SubHeader from "@/app/sub-header/page";
 import Image from "next/image";
 import "./backup-disaster-recovery.css";
 
-// Metadata for SEO
-export const metadata = {
-  title: "Backup and Disaster Recovery – WebOum Technology",
-  description:
-    "Safeguard your business with WebOum Technology's cost-effective, secure, and scalable data backup and disaster recovery solutions.",
-};
 
 export default function BackupDisasterRecovery() {
   return (
     <>
-      <SubHeader title="Backup and Disaster Recovery" />
+      <SubHeader
+        title="
+Data backup and Recovery Services"
+      />
       <div className="data-backup">
         <h1>
           Data Backup and Disaster Recovery Strategies to Avoid Loss from

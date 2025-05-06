@@ -1,11 +1,10 @@
-/* DigitalMarketingPackages.css */
 .package_container {
-  max-width: 1200px;
+  max-width: 100%; /* change from 1400px */
+  overflow-x: auto; /* allow scroll only if necessary */
   margin: 40px auto;
   padding: 30px;
   font-family: "Arial", sans-serif;
-  border-radius: 12px;
-  
+  box-sizing: border-box;
 }
 
 .subtitle {
@@ -19,22 +18,36 @@
   border-radius: 8px;
 }
 
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
 .pricingTable {
   width: 100%;
-  border-collapse: collapse;
+  min-width: 100%;
+  overflow-x: auto;
+  border: 2px solid #000;
   background: #fff;
-  border-radius: 12px;
- 
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  padding: 10px;
+  box-sizing: border-box;
+  table-layout: fixed;
 }
 
 .row {
   display: flex;
   border-bottom: 1px solid #d1d9e0;
   transition: background 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+  flex: nowrap;
+  overflow: auto;
 }
 
+.row.header {
+  width: 100%;
+  background: #0d6efd;
+}
 .row:hover {
   background: #e9ecef;
 }
@@ -43,20 +56,92 @@
   flex: 1;
   padding: 12px;
   text-align: center;
-  border-right: 1px solid #d1d9e0;
+  border-right: 1px solid #000;
+  font-size: 18px;
+  color: #1a2527;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cell-text {
+  flex: 1;
+  padding: 12px;
+  text-align: center;
+  border-right: 1px solid #000;
+  font-size: 16px;
+  color: #1a2527;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.numberCell {
+  flex: 0 0 5%;
+  padding: 12px;
+  text-align: center;
+  border-right: 1px solid #000;
   font-size: 14px;
   color: #1a2527;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 500;
+  font-weight: bold;
+  box-sizing: border-box;
 }
 
-.cell:first-child {
-  text-align: left;
-  justify-content: flex-start;
+.sn {
+  background-color: #f5a623;
+  color: white;
+}
+
+.particulars {
+  background-color: #f8c124;
+  color: white;
+}
+
+.starter {
+  background-color: #a2c94f;
+  color: white;
+}
+
+.standard {
+  background-color: #16c2b1;
+  color: white;
+}
+
+.professional {
+  background-color: #189bfa;
+  color: white;
+}
+
+.price-sn {
+  background-color: #f5a623;
+}
+
+.price-label {
+  background-color: #f8c124;
+  font-weight: bold;
+}
+
+.category {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.cell:first-child:not(.numberCell) {
   font-weight: 600;
-  color: #1a3c5e;
+  font-size: 20px;
+  color: #eef1f3;
   flex: 1.5;
   padding-left: 20px;
 }
@@ -66,31 +151,17 @@
 }
 
 .header .cell {
-  font-weight: 800;
-  padding: 16px;
+  font-weight: bold;
+  padding: 12px;
   font-size: 15px;
   text-transform: uppercase;
   color: white;
 }
 
-.orange {
-  background: #f9a826;
-}
-
-.blue {
-  background: #4caf50;
-}
-
-.green {
-  background: #29b6f6;
-}
-
 .sectionTitle .cell {
-  font-weight: 800;
-  padding: 12px;
+  font-weight: bold;
   font-size: 14px;
   text-transform: uppercase;
-  color: rgb(13, 12, 12);
 }
 
 .section .row:nth-child(odd) {
@@ -99,6 +170,12 @@
 
 .section .row:nth-child(even) {
   background: #ffffff;
+}
+
+.sectionTitle .cell[colspan="5"] {
+  flex: 5;
+  justify-content: center;
+  padding-left: 20px;
 }
 
 .yes {
@@ -134,16 +211,71 @@
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
-.footer {
-  text-align: center;
-  margin-top: 30px;
-  font-size: 14px;
-  color: #1a3c5e;
+/* Support Table Styles */
+.support-table {
+  width: 100%;
+  border: 1px solid #242020;
+  border-collapse: collapse;
 }
 
-.footer p {
-  margin: 8px 0;
-  font-weight: 600;
+.support-header {
+  background-color: #0d6efd;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 16px;
+  width: 100%;
+}
+
+.support-row {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+.support-cell {
+  padding: 10px;
+  border-right: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.number-cell {
+  width: 5%;
+  color: #666;
+  font-weight: normal;
+}
+
+.description-cell {
+  width: 25%;
+  justify-content: flex-start;
+  color: black;
+  font-size: 18px;
+}
+
+.yes-cell {
+  width: 23.33%;
+  color: #198754;
+  font-weight: bold;
+}
+
+/* Marketing Footer */
+.marketing-footer {
+  margin-top: 24px;
+  text-align: start;
+  color: #666;
+}
+
+.mail-icon {
+  color: #000;
+  margin: 0 5px;
+  font-size: 18px;
+}
+
+.ask-quotes {
+  color: #000;
+  font-weight: bold;
 }
 
 /* Media Queries for Responsiveness */

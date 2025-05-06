@@ -16,11 +16,24 @@ import {
   Quote,
 } from "lucide-react";
 import Days from "../days/page";
-import { useEffect, useRef } from "react";
-import Image from "next/image"; // Import Next.js Image component
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import "./sample-page.css";
+import { sendContactForm } from "@/utils/api";
 
 export default function SamplePage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    project: "",
+    message: "",
+    notRobot: false,
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formError, setFormError] = useState("");
+  const [formSuccess, setFormSuccess] = useState("");
+
   const showTab = (tabId) => {
     document
       .querySelectorAll(".samplePage_portfolio")
@@ -62,6 +75,141 @@ export default function SamplePage() {
     };
   }, []);
 
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+    if (formError) setFormError("");
+  };
+
+  const validateForm = () => {
+    const requiredFields = ["name", "phone", "email", "project"];
+    for (const field of requiredFields) {
+      if (!formData[field] || formData[field].trim() === "") {
+        setFormError("Please fill in all required fields.");
+        return false;
+      }
+    }
+
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      setFormError("Please enter a valid email address.");
+      return false;
+    }
+
+    if (!formData.notRobot) {
+      setFormError("Please verify that you are not a robot.");
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormError("");
+    setFormSuccess("");
+
+    if (!validateForm()) return;
+
+    setIsSubmitting(true);
+
+    try {
+      const sanitizeInput = (input) => {
+        return input.replace(/</g, "<").replace(/>/g, ">").replace(/"/g, "");
+      };
+
+      const sanitizedName = sanitizeInput(formData.name);
+      const sanitizedEmail = sanitizeInput(formData.email);
+      const sanitizedPhone = sanitizeInput(formData.phone);
+      const sanitizedProject = sanitizeInput(formData.project);
+      const sanitizedMessage = formData.message
+        ? sanitizeInput(formData.message)
+        : "No message provided";
+
+      const subject = `Free Consultation Request from ${sanitizedName}`;
+
+      const messageContent = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Consultation Request</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f0f0f0;">
+  <div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #e0e0e0;">
+    <div style="background-color: #4a90e2; padding: 15px; text-align: center;">
+      <h2 style="color: #ffffff; margin: 0; font-size: 20px;">New Consultation Request</h2>
+    </div>
+    <div style="padding: 20px;">
+      <p style="color: #333333; font-size: 16px; margin: 0 0 15px;">
+        A new consultation request has been submitted to Weboum Technology.
+      </p>
+      <div style="border-top: 1px solid #e0e0e0; padding-top: 15px;">
+        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
+          <strong>Name:</strong> ${sanitizedName}
+        </p>
+        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
+          <strong>Email:</strong> <a href="mailto:${sanitizedEmail}" style="color: #4a90e2; text-decoration: none;">${sanitizedEmail}</a>
+        </p>
+        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
+          <strong>Phone:</strong> ${sanitizedPhone}
+        </p>
+        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
+          <strong>Project Type:</strong> ${sanitizedProject}
+        </p>
+        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
+          <strong>Message:</strong> ${sanitizedMessage}
+        </p>
+      </div>
+    </div>
+    <div style="background-color: #f5f5f5; padding: 10px; text-align: center; font-size: 12px; color: #666666;">
+      <p style="margin: 0;">© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>
+      `;
+
+      const plainTextFallback = `
+Free Consultation Request Details:
+--------------------------------
+Name: ${sanitizedName}
+Email: ${sanitizedEmail}
+Phone: ${sanitizedPhone}
+Project Type: ${sanitizedProject}
+Message: ${sanitizedMessage}
+      `.trim();
+
+      const result = await sendContactForm({
+        email: sanitizedEmail,
+        subject,
+        message: messageContent,
+      });
+
+      if (result.success) {
+        setFormSuccess("Your request has been submitted successfully!");
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          project: "",
+          message: "",
+          notRobot: false,
+        });
+        e.target.reset();
+      } else {
+        setFormError("Failed to submit your request. Please try again.");
+      }
+    } catch (error) {
+      setFormError("Failed to submit your request. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <>
       <div className="samplePage">
@@ -73,7 +221,7 @@ export default function SamplePage() {
               for your Business
             </h1>
             <p>
-              In today&apos;s digital world, having a professional and efficient
+              In today's digital world, having a professional and efficient
               website is essential for business growth. We specialize in
               creating modern, fast, and responsive websites that help you reach
               your target audience effectively.
@@ -82,7 +230,7 @@ export default function SamplePage() {
               <a href="#" className="samplePage_btn-primary">
                 Read More
               </a>
-              <a href="#" className="samplePage_btn-outline">
+              <a href="/about-us/contact" className="samplePage_btn-outline">
                 <span>✉</span> Contact Us
               </a>
             </div>
@@ -91,55 +239,65 @@ export default function SamplePage() {
             <Image
               src="/image/samplePage/development-about.jpg"
               alt="Digital Marketing"
-              width={400} // Placeholder width
-              height={300} // Placeholder height
+              width={400}
+              height={300}
             />
           </div>
         </section>
 
-        {/* Services icons section */}
         <section className="samplePage_servicess-section">
           <div className="samplePage_servicess-container">
             <div className="samplePage_servicess-box samplePage_webapps-dev">
               <div className="samplePage_icon-circle">
-                <Laptop size={24} />
+                <a href="/services/application-developer">
+                  <Laptop size={24} />
+                </a>
               </div>
               <p>Webapps Development</p>
             </div>
             <div className="samplePage_servicess-box samplePage_ecommerce-sol">
               <div className="samplePage_icon-circle">
-                <ShoppingCart size={24} />
+                <a href="/solutions/shopify-developer">
+                  <ShoppingCart size={24} />
+                </a>
               </div>
               <p>E-Commerce Solutions</p>
             </div>
             <div className="samplePage_servicess-box samplePage_branding-sol">
               <div className="samplePage_icon-circle">
-                <Tags size={24} />
+                <a href="/services/graphic-design">
+                  <Tags size={24} />
+                </a>
               </div>
               <p>Branding Solutions</p>
             </div>
             <div className="samplePage_servicess-box samplePage_optimization-sol">
               <div className="samplePage_icon-circle">
-                <Settings size={24} />
+                <a href="/solutions/backup-disaster-recovery">
+                  <Settings size={24} />
+                </a>
               </div>
               <p>Optimization Solutions</p>
             </div>
             <div className="samplePage_servicess-box samplePage_uiux-sol">
               <div className="samplePage_icon-circle">
-                <Users size={24} />
+                <a href="/services/web-designing">
+                  <Users size={24} />
+                </a>
               </div>
               <p>UI/UX Solutions</p>
             </div>
             <div className="samplePage_servicess-box samplePage_marketing-sol">
               <div className="samplePage_icon-circle">
-                <Map size={24} />
+                <a href="/services/digital-marketing-3">
+                  <Map size={24} />
+                </a>
               </div>
               <p>Marketing Solutions</p>
             </div>
           </div>
         </section>
 
-        {/* Portfolio tabs section */}
         <div className="samplePage_tabs">
           <div
             className="samplePage_tab samplePage_active"
@@ -178,86 +336,85 @@ export default function SamplePage() {
           </div>
         </div>
 
-        {/* Portfolio items */}
         <div id="all" className="samplePage_portfolio samplePage_active">
           <div className="samplePage_item">
             <Image
               src="/image/samplePage/portfolio1.jpg"
               alt="Portfolio 1"
-              width={200} // Placeholder width
-              height={150} // Placeholder height
+              width={200}
+              height={150}
             />
           </div>
           <div className="samplePage_item">
             <Image
               src="/image/samplePage/portfolio2.png"
               alt="Portfolio 2"
-              width={200} // Placeholder width
-              height={150} // Placeholder height
+              width={200}
+              height={150}
             />
           </div>
           <div className="samplePage_item">
             <Image
               src="/image/samplePage/portfolio4.jpg"
               alt="Software 1"
-              width={200} // Placeholder width
-              height={150} // Placeholder height
+              width={200}
+              height={150}
             />
           </div>
           <div className="samplePage_item">
             <Image
               src="/image/samplePage/portfolio5.jpg"
               alt="Software 2"
-              width={200} // Placeholder width
-              height={150} // Placeholder height
+              width={200}
+              height={150}
             />
           </div>
           <div className="samplePage_item">
             <Image
               src="/image/samplePage/portfolio6.jpg"
               alt="Apps 1"
-              width={200} // Placeholder width
-              height={150} // Placeholder height
+              width={200}
+              height={150}
             />
           </div>
           <div className="samplePage_item">
             <Image
               src="/image/samplePage/portfolio7.jpg"
               alt="Apps 2"
-              width={200} // Placeholder width
-              height={150} // Placeholder height
+              width={200}
+              height={150}
             />
           </div>
           <div className="samplePage_item">
             <Image
               src="/image/samplePage/portfolio8.jpg"
               alt="Graphics 1"
-              width={200} // Placeholder width
-              height={150} // Placeholder height
+              width={200}
+              height={150}
             />
           </div>
           <div className="samplePage_item">
             <Image
               src="/image/samplePage/portfolio9.jpg"
               alt="Graphics 2"
-              width={200} // Placeholder width
-              height={150} // Placeholder height
+              width={200}
+              height={150}
             />
           </div>
           <div className="samplePage_item">
             <Image
               src="/image/samplePage/portfolio10.jpg"
               alt="Marketing 1"
-              width={200} // Placeholder width
-              height={150} // Placeholder height
+              width={200}
+              height={150}
             />
           </div>
           <div className="samplePage_item">
             <Image
               src="/image/samplePage/portfolio12.jpg"
               alt="Marketing 2"
-              width={200} // Placeholder width
-              height={150} // Placeholder height
+              width={200}
+              height={150}
             />
           </div>
         </div>
@@ -267,16 +424,16 @@ export default function SamplePage() {
             <Image
               src="/image/samplePage/portfolio15.jpg"
               alt="Software 1"
-              width={200} // Placeholder width
-              height={150} // Placeholder height
+              width={200}
+              height={150}
             />
           </div>
           <div className="samplePage_item">
             <Image
               src="/image/samplePage/portfolio14.jpg"
               alt="Software 2"
-              width={200} // Placeholder width
-              height={150} // Placeholder height
+              width={200}
+              height={150}
             />
           </div>
         </div>
@@ -286,16 +443,16 @@ export default function SamplePage() {
             <Image
               src="/image/samplePage/portfolio15.jpg"
               alt="Apps 1"
-              width={200} // Placeholder width
-              height={150} // Placeholder height
+              width={200}
+              height={150}
             />
           </div>
           <div className="samplePage_item">
             <Image
               src="/image/samplePage/portfolio17.jpg"
               alt="Apps 2"
-              width={200} // Placeholder width
-              height={150} // Placeholder height
+              width={200}
+              height={150}
             />
           </div>
         </div>
@@ -305,16 +462,16 @@ export default function SamplePage() {
             <Image
               src="/image/samplePage/portfolio19.jpg"
               alt="Graphics 1"
-              width={200} // Placeholder width
-              height={150} // Placeholder height
+              width={200}
+              height={150}
             />
           </div>
           <div className="samplePage_item">
             <Image
               src="/image/samplePage/portfolio20.jpg"
               alt="Graphics 2"
-              width={200} // Placeholder width
-              height={150} // Placeholder height
+              width={200}
+              height={150}
             />
           </div>
         </div>
@@ -324,21 +481,20 @@ export default function SamplePage() {
             <Image
               src="/image/samplePage/portfolio4.jpg"
               alt="Marketing 1"
-              width={200} // Placeholder width
-              height={150} // Placeholder height
+              width={200}
+              height={150}
             />
           </div>
           <div className="samplePage_item">
             <Image
               src="/image/samplePage/portfolio7.jpg"
               alt="Marketing 2"
-              width={200} // Placeholder width
-              height={150} // Placeholder height
+              width={200}
+              height={150}
             />
           </div>
         </div>
 
-        {/* Lightbox */}
         <div
           id="samplePage_lightbox"
           className="samplePage_lightbox"
@@ -353,18 +509,16 @@ export default function SamplePage() {
             alt="Full Image"
             className="samplePage_lightbox-img"
             ref={lightboxImgRef}
-            width={800} // Placeholder width
-            height={600} // Placeholder height
+            width={800}
+            height={600}
           />
         </div>
 
-        {/* Why choose us section with form */}
-        <section className="samplePage_section-wrapper container">
-          <div className="row align-items-start">
-            {/* Left Content */}
-            <div className="col-lg-6 samplePage_left-content">
+        <section className="whyus-section-wrapper">
+          <div className="whyus-row">
+            <div className="whyus-left-content">
               <h6>Weboum – Customized IT Solutions</h6>
-              <div className="samplePage_highlight-line"></div>
+              <div className="whyus-highlight-line"></div>
               <h2>
                 Why Choose <strong>us</strong>
               </h2>
@@ -374,8 +528,9 @@ export default function SamplePage() {
               </p>
               <p>
                 WTPL, (Weboum Technology Pvt. Ltd.) is one of the best digital
-                marketing agencies in Chandigarh & Mohali, India, with the
-                aspiration to create value for your business.
+                marketing agencies in Chandigarh & Mohali, India. Our unique mix
+                of experts, from developers to digital marketers, deliver
+                results that drive growth.
               </p>
               <p>
                 Our web design and development with digital marketing services
@@ -383,109 +538,182 @@ export default function SamplePage() {
               </p>
               <p>
                 So, get through one of the best Web development, Web design and
-                Digital marketing companies. WTPL, named as one of the best
-                digital marketing agencies and a great web development service
-                provider.
+                Digital marketing companies and experience the digital
+                transformation of your business.
               </p>
 
-              {/* Features */}
-              <div className="samplePage_feature">
-                <CheckCircle size={30} />
+              <div className="whyus-feature">
+                <Image
+                  src="/image/background.jpeg"
+                  alt="Check"
+                  width={50}
+                  height={50}
+                  className="feature-icon"
+                />
                 <div>
                   <h6>High Customer Retention Rate</h6>
                   <p>
-                    We have a 100% retention rate. Customer loyalty is
-                    priceless. We are earning our customers loyalty day by day.
+                    We have a 100% retention rate due to our exceptional
+                    services and client satisfaction focus.
                   </p>
                 </div>
               </div>
-              <div className="samplePage_feature">
-                <CheckCircle size={30} />
+              <div className="whyus-feature">
+                <Image
+                  src="/image/background.jpeg"
+                  alt="Check"
+                  width={50}
+                  height={50}
+                  className="feature-icon"
+                />
                 <div>
                   <h6>Ability To Meet Deadlines</h6>
                   <p>
-                    We are 100% clear on when work needs to be completed.
-                    Deadlines help us achieve shared goals.
+                    We are 100% clear on when work needs to be completed and
+                    have a system to ensure it happens.
                   </p>
                 </div>
               </div>
-              <div className="samplePage_feature">
-                <CheckCircle size={30} />
+              <div className="whyus-feature">
+                <Image
+                  src="/image/background.jpeg"
+                  alt="Check"
+                  width={50}
+                  height={50}
+                  className="feature-icon"
+                />
                 <div>
                   <h6>Professional Team Member</h6>
                   <p>
-                    We have focused, creative team members passionate about
-                    growing professionally for your business.
+                    We have focused, creative team members with expert technical
+                    knowledge and practical experience.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Right Form */}
-            <div className="col-lg-6 mt-4 mt-lg-0">
-              <div className="samplePage_form-box">
-                <Image
-                  src="/image/featured-image.jpg"
-                  alt="Featured"
-                  width={400} // Placeholder width
-                  height={200} // Placeholder height
+            <div className="whyus-form-box">
+              <Image
+                src="/image/featured-image.jpg"
+                alt="Featured"
+                width={300}
+                height={200}
+                className="form-featured-image"
+              />
+              <h5>Request A Free Consultation</h5>
+              <small>
+                We Help Customers Digital Transformation By IT Solutions
+              </small>
+              <form onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  name="name"
+                  className="whyus-form-control"
+                  placeholder="Name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  disabled={isSubmitting}
                 />
-                <h5>Request A Free Consultation</h5>
-                <small>
-                  We Help Customers Digital Transformation By IT Solutions
-                </small>
-
-                <form>
+                <input
+                  type="tel"
+                  name="phone"
+                  className="whyus-form-control"
+                  placeholder="000-000-0000"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  required
+                  disabled={isSubmitting}
+                />
+                <input
+                  type="email"
+                  name="email"
+                  className="whyus-form-control"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  disabled={isSubmitting}
+                />
+                <select
+                  name="project"
+                  className="whyus-form-select"
+                  value={formData.project}
+                  onChange={handleInputChange}
+                  required
+                  disabled={isSubmitting}
+                >
+                  <option value="Project Development">
+                    Project Development
+                  </option>
+                  <option value="Web Development">Web Development</option>
+                  <option value="App Development">
+                    Mobile App Development
+                  </option>
+                  <option value="Digital Marketing">Digital Marketing</option>
+                  <option value="Product Development">
+                    Product Development
+                  </option>
+                  <option value="e-Commerce / Shopping">
+                    e-Commerce / Shopping
+                  </option>
+                  <option value="Graphic Designing">Graphic Designing</option>
+                  <option value="Hosting / Migration">
+                    Hosting / Migration
+                  </option>
+                  <option value="Other">Other</option>
+                </select>
+                <textarea
+                  name="message"
+                  className="whyus-form-control"
+                  rows="4"
+                  placeholder="Your Query / Message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  disabled={isSubmitting}
+                ></textarea>
+                <div className="whyus-captcha-box">
                   <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Name"
-                    required
+                    type="checkbox"
+                    id="captcha"
+                    name="notRobot"
+                    checked={formData.notRobot}
+                    onChange={handleInputChange}
+                    disabled={isSubmitting}
                   />
-                  <input
-                    type="tel"
-                    className="form-control"
-                    placeholder="000-000-0000"
-                    required
+                  <label htmlFor="captcha">I'm not a robot</label>
+                  <Image
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzz6tIILsCKIN0knMR9sTn5Shad52WNMNpuw&s"
+                    alt="Verification"
+                    width={80}
+                    height={40}
+                    className="whyus-captcha-image"
                   />
-                  <input
-                    type="email"
-                    className="form-control"
-                    placeholder="Email"
-                    required
-                  />
-                  <select className="form-select" required>
-                    <option selected>Project Development</option>
-                    <option value="1">Web Development</option>
-                    <option value="2">App Development</option>
-                    <option value="3">Digital Marketing</option>
-                  </select>
-                  <textarea
-                    className="form-control"
-                    rows="4"
-                    placeholder="Your Query / Message"
-                  ></textarea>
-
-                  {/* Simulated CAPTCHA box */}
-                  <div className="my-3">
-                    <input type="checkbox" id="captcha" />
-                    <label htmlFor="captcha"> I&apos;m not a robot</label>
-                  </div>
-
-                  <button type="submit" className="btn samplePage_btn-submit">
-                    MAKE A REQUEST
-                  </button>
-                </form>
-              </div>
+                </div>
+                {formError && (
+                  <div className="whyus-error-message">{formError}</div>
+                )}
+                {formSuccess && (
+                  <div className="whyus-success-message">{formSuccess}</div>
+                )}
+                <button
+                  type="submit"
+                  className="whyus-btn-submit"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Submitting..." : "MAKE A REQUEST"}
+                </button>
+              </form>
             </div>
           </div>
         </section>
 
-        {/* Services section */}
         <section className="samplePage_services-section">
           <div className="samplePage_service-box">
-            <Code size={56} className="samplePage_icon-blue" />
-            <h3>App Design & Development</h3>
+            <a href="/services/application-developer">
+              <Code size={56} className="samplePage_icon-blue" />
+              <h3>App Design & Development</h3>
+            </a>
             <p>
               Our team of expert software developers focused on delivering
               best-in-class, user friendly top-notch applications that perform
@@ -494,8 +722,10 @@ export default function SamplePage() {
           </div>
 
           <div className="samplePage_service-box">
-            <UserCog size={56} className="samplePage_icon-orange" />
-            <h3>On-Demand Developers</h3>
+            <a href="/services/on-demand-developers">
+              <UserCog size={56} className="samplePage_icon-orange" />
+              <h3>On-Demand Developers</h3>
+            </a>
             <p>
               Everything under one roof, give you peace of mind. We are happy to
               hire skilled cum industry experience developers and on-premise IT
@@ -504,8 +734,10 @@ export default function SamplePage() {
           </div>
 
           <div className="samplePage_service-box">
-            <Wrench size={56} className="samplePage_icon-green" />
-            <h3>Product Support</h3>
+            <a href="/services/product-support">
+              <Wrench size={56} className="samplePage_icon-green" />
+              <h3>Product Support</h3>
+            </a>
             <p>
               Our global strategic partner enables us to create next generation
               robust products and IT consulting, efficiently and make us quickly
@@ -514,7 +746,6 @@ export default function SamplePage() {
           </div>
         </section>
 
-        {/* Stats section */}
         <section className="samplePage_stats-section">
           <div className="samplePage_stats">
             <div className="samplePage_stat-box">
@@ -536,7 +767,6 @@ export default function SamplePage() {
           </div>
         </section>
 
-        {/* Testimonial section */}
         <section className="samplePage_testimonial-section">
           <h5>Our Testimonials</h5>
           <h2>
@@ -571,8 +801,8 @@ export default function SamplePage() {
                     <Image
                       src="/image/contact.jpeg"
                       alt="author"
-                      width={50} // Placeholder width
-                      height={50} // Placeholder height
+                      width={50}
+                      height={50}
                     />
                     <strong>Klaus Holzapfel</strong>
                   </div>
@@ -603,8 +833,8 @@ export default function SamplePage() {
                     <Image
                       src="/image/contact.jpeg"
                       alt="author"
-                      width={50} // Placeholder width
-                      height={50} // Placeholder height
+                      width={50}
+                      height={50}
                     />
                     <strong>Jill Cabana</strong>
                   </div>

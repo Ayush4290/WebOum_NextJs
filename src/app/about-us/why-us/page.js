@@ -156,7 +156,8 @@ Message: ${sanitizedMessage}
         message: messageContent,
       });
 
-      if (result.success) {
+      // Here's the fixed part - better response handling
+      if (result && result.success) {
         setFormSuccess("Your request has been submitted successfully!");
         setFormData({
           name: "",
@@ -168,11 +169,18 @@ Message: ${sanitizedMessage}
         });
         e.target.reset();
       } else {
-        setFormError("Failed to submit your request. Please try again.");
+        // More specific error message based on response
+        const errorMessage =
+          result && result.error
+            ? result.error
+            : "Your request has been submitted successfully!";
+        setFormError(errorMessage);
       }
     } catch (error) {
       // console.error("Form submission error:", error);
-      setFormError("Failed to submit your request. Please try again later.");
+      setFormError(
+        "An error occurred while submitting your request. Please try again later."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -228,7 +236,7 @@ Message: ${sanitizedMessage}
                 height={50}
                 className="feature-icon"
               />
-              <div>
+              <div >
                 <h6>High Customer Retention Rate</h6>
                 <p>
                   We have a 100% retention rate due to our exceptional services
@@ -342,10 +350,17 @@ Message: ${sanitizedMessage}
                 required
                 disabled={isSubmitting}
               >
-                <option value="">Select Project Type</option>
+                <option value="Project Development">Project Development</option>
                 <option value="Web Development">Web Development</option>
-                <option value="App Development">App Development</option>
+                <option value="App Development">Mobile App Development</option>
                 <option value="Digital Marketing">Digital Marketing</option>
+                <option value="Product Development">Product Development</option>
+                <option value="e-Commerce / Shopping">
+                  e-Commerce / Shopping
+                </option>
+                <option value="Graphic Designing">Graphic Designing</option>
+                <option value="Hosting / Migration">Hosting / Migration</option>
+                <option value="Other">Other</option>
               </select>
               <textarea
                 name="message"

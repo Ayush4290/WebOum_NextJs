@@ -17,7 +17,7 @@ export default function GraphicDesign() {
             <div className="graphicDesign-text">
               <h2>
                 Take your business to the next level with <br />
-                <strong>Creatively Designed Graphics!</strong>
+                Creatively Designed Graphics!
               </h2>
               <p>
                 There is a reason why graphics work like magic for a website.

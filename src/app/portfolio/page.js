@@ -10,25 +10,28 @@ export default function Portfolio() {
   const [activeTab, setActiveTab] = useState("all");
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState("");
+  const [showMore, setShowMore] = useState(false);
 
   const showTab = (tabId) => {
     setActiveTab(tabId);
+    setShowMore(false);
+  };
+
+  const handleLearnMore = () => {
+    setShowMore(true);
   };
 
   const openLightbox = (src) => {
     setCurrentImage(src);
     setLightboxOpen(true);
-    // Prevent scrolling when lightbox is open
     document.body.style.overflow = "hidden";
   };
 
   const closeLightbox = () => {
     setLightboxOpen(false);
-    // Re-enable scrolling
     document.body.style.overflow = "auto";
   };
 
-  // Close lightbox with escape key
   useEffect(() => {
     const handleEscapeKey = (e) => {
       if (e.key === "Escape" && lightboxOpen) {
@@ -42,12 +45,17 @@ export default function Portfolio() {
     };
   }, [lightboxOpen]);
 
-  // Close lightbox when clicking outside the image
   const handleLightboxClick = (e) => {
     if (e.target.classList.contains("lightbox")) {
       closeLightbox();
     }
   };
+
+  const displayedImages = portfolioImages[activeTab]
+    ? showMore
+      ? portfolioImages[activeTab]
+      : portfolioImages[activeTab].slice(0, 4)
+    : [];
 
   return (
     <>
@@ -87,22 +95,29 @@ export default function Portfolio() {
         </div>
 
         <div className="portfolio">
-          {portfolioImages[activeTab] &&
-            portfolioImages[activeTab].map((image, index) => (
-              <div className="item" key={index}>
-                <Image
-                  src={image.src}
-                  alt={image.alt || "Portfolio item"}
-                  width={300}
-                  height={200}
-                  layout="responsive"
-                  objectFit="cover"
-                  onClick={() => openLightbox(image.src)}
-                  priority={index < 6}
-                />
-              </div>
-            ))}
+          {displayedImages.map((image, index) => (
+            <div className="item" key={index}>
+              <Image
+                src={image.src}
+                alt={image.alt || "Portfolio item"}
+                width={300}
+                height={200}
+                layout="responsive"
+                objectFit="cover"
+                onClick={() => openLightbox(image.src)}
+                priority={index < 4}
+              />
+            </div>
+          ))}
         </div>
+
+        {!showMore && portfolioImages[activeTab]?.length > 4 && (
+          <div className="learn-more-container">
+            <button className="learn-more-btn" onClick={handleLearnMore}>
+              Learn More
+            </button>
+          </div>
+        )}
 
         {lightboxOpen && (
           <div className="lightbox" onClick={handleLightboxClick}>
@@ -112,7 +127,7 @@ export default function Portfolio() {
             <Image
               className="lightbox-img"
               src={currentImage}
-              alt="Full size image"
+              alt=" helyez Full size image"
               width={1200}
               height={800}
               objectFit="contain"

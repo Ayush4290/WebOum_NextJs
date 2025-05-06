@@ -10,6 +10,7 @@
 
 .graphicDesign {
   width: 100%;
+  font-family: "Poppins", Sans-serif;
 }
 
 .graphicDesign-row {
@@ -40,18 +41,22 @@
 }
 
 h2 {
-  font-size: 28px;
+  font-size: 29px;
   margin-bottom: 20px;
+  color: black;
 }
 
 h3 {
   font-size: 22px;
   margin-top: 60px;
   margin-bottom: 16px;
+  color: black;
 }
 
 p {
   margin-bottom: 16px;
+  font-size: 20px;
+  color: black;
 }
 
 .graphicDesign-intro,
@@ -64,7 +69,8 @@ p {
 }
 
 .graphicDesign-services-section.light {
-  background-color: var(--color-light-bg);
+  background-color: rgb(240, 232, 232);
+  max-width: 1700px;
 }
 
 .graphicDesign-more-info {
