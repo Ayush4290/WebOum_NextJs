@@ -1,11 +1,10 @@
-/* DigitalMarketingPackages.css */
+/* styles/DigitalMarketingPackages.css */
 .package_container {
   max-width: 1200px;
   margin: 40px auto;
   padding: 30px;
   font-family: "Arial", sans-serif;
   border-radius: 12px;
-  
 }
 
 .subtitle {
@@ -24,7 +23,6 @@
   border-collapse: collapse;
   background: #fff;
   border-radius: 12px;
- 
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   padding: 10px;
 }
@@ -90,7 +88,6 @@
   padding: 12px;
   font-size: 14px;
   text-transform: uppercase;
-  color: rgb(13, 12, 12);
 }
 
 .section .row:nth-child(odd) {
@@ -99,6 +96,12 @@
 
 .section .row:nth-child(even) {
   background: #ffffff;
+}
+
+.sectionTitle .cell[colspan="4"] {
+  flex: 4;
+  justify-content: center;
+  padding-left: 20px;
 }
 
 .yes {
@@ -134,16 +137,76 @@
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
-.footer {
-  text-align: center;
-  margin-top: 30px;
-  font-size: 14px;
-  color: #1a3c5e;
+/* Footer Container */
+.footer-container {
+  width: 100%;
+  font-family: Arial, sans-serif;
+  background-color: white;
 }
 
-.footer p {
-  margin: 8px 0;
-  font-weight: 600;
+/* Support Table Styles */
+.support-table {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+}
+
+.support-header {
+  background-color: #0d6efd;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.support-row {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+.support-cell {
+  padding: 10px;
+  border-right: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.number-cell {
+  width: 5%;
+  color: #666;
+  font-weight: normal;
+}
+
+.description-cell {
+  width: 25%;
+  justify-content: flex-start;
+  color: #666;
+}
+
+.yes-cell {
+  width: 23.33%;
+  color: #198754;
+  font-weight: bold;
+}
+
+/* Marketing Footer */
+.marketing-footer {
+  margin-top: 24px;
+  text-align: center;
+  color: #666;
+}
+
+.mail-icon {
+  color: #000;
+  margin: 0 5px;
+  font-size: 16px;
+}
+
+.ask-quotes {
+  color: #000;
+  font-weight: bold;
 }
 
 /* Media Queries for Responsiveness */

@@ -21,12 +21,12 @@ export default function DigitalMarketingPackages() {
               USD 450
             </div>
             <div className="cell blue">
-              PRO
+              STANDARD
               <br />
               USD 750
             </div>
             <div className="cell green">
-              PREMIUM
+              PROFESSIONAL
               <br />
               USD 1500
             </div>
@@ -89,12 +89,9 @@ export default function DigitalMarketingPackages() {
           {/* Facebook Promotion */}
           <div className="section">
             <div className="row sectionTitle">
-              <div className="cell" colspan="4" style={{ background: "#3b5998", color: "white" }}>
+              <div className="cell" colSpan="4" style={{ background: "#3b5998", color: "white" }}>
                 FACEBOOK PROMOTION
               </div>
-              <div className="cell"></div>
-              <div className="cell"></div>
-              <div className="cell"></div>
             </div>
             <div className="row">
               <div className="cell">1. Profile Optimization</div>
@@ -133,16 +130,16 @@ export default function DigitalMarketingPackages() {
               <div className="cell">2</div>
             </div>
             <div className="row">
-              <div className="cell">7. Groups Join</div>
+              <div className="cell">7. Group Join</div>
               <div className="cell no">NO</div>
               <div className="cell">3</div>
               <div className="cell">5</div>
             </div>
             <div className="row">
-              <div className="cell">8. Targeted FB Likes</div>
-              <div className="cell">8 to 10%</div>
-              <div className="cell">10% to 12%</div>
-              <div className="cell">13% to 15%</div>
+              <div className="cell">8. Targeted Page Likes</div>
+              <div className="cell">8 to 10%**</div>
+              <div className="cell">10% to 12%**</div>
+              <div className="cell">13%+**</div>
             </div>
             <div className="row">
               <div className="cell">9. Video Sharing(provided by client)</div>
@@ -159,7 +156,7 @@ export default function DigitalMarketingPackages() {
             <div className="row">
               <div className="cell">11. Facebook Review Postings</div>
               <div className="cell no">NO</div>
-              <div className="cell yes">YES</div>
+              <div className="cell no">NO</div>
               <div className="cell yes">YES</div>
             </div>
             <div className="row">
@@ -197,12 +194,9 @@ export default function DigitalMarketingPackages() {
           {/* Twitter Promotion */}
           <div className="section">
             <div className="row sectionTitle">
-              <div className="cell" style={{ background: "#1DA1F2", color: "white" }}>
+              <div className="cell" colSpan="4" style={{ background: "#1DA1F2", color: "white" }}>
                 TWITTER PROMOTION
               </div>
-              <div className="cell"></div>
-              <div className="cell"></div>
-              <div className="cell"></div>
             </div>
             <div className="row">
               <div className="cell">1. Profile Optimization</div>
@@ -217,26 +211,50 @@ export default function DigitalMarketingPackages() {
               <div className="cell">40</div>
             </div>
             <div className="row">
-              <div className="cell">3. Targeted Twitter Followers</div>
+              <div className="cell">3. Targeted Twitter Followers Increase</div>
               <div className="cell yes">YES</div>
               <div className="cell yes">YES</div>
               <div className="cell yes">YES</div>
             </div>
             <div className="row">
               <div className="cell">4. Retweets</div>
-              <div className="cell no">NO</div>
+              <div className="cell yes">YES</div>
               <div className="cell yes">YES</div>
               <div className="cell yes">YES</div>
             </div>
             <div className="row">
-              <div className="cell">5. Cover Photo</div>
-              <div className="cell no">NO</div>
+              <div className="cell">5. Background Image Creative and Upload</div>
+              <div className="cell">1</div>
               <div className="cell">1</div>
               <div className="cell">2</div>
             </div>
             <div className="row">
-              <div className="cell">6. Twitter Analytics Monitoring</div>
+              <div className="cell">6. Cover Photo Creative and Upload</div>
+              <div className="cell">1</div>
+              <div className="cell">1</div>
+              <div className="cell">2</div>
+            </div>
+            <div className="row">
+              <div className="cell">7. Lists Creation</div>
               <div className="cell no">NO</div>
+              <div className="cell no">NO</div>
+              <div className="cell yes">YES</div>
+            </div>
+            <div className="row">
+              <div className="cell">8. Sponsored Tweets(Additional Cost)</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+            </div>
+            <div className="row">
+              <div className="cell">9. Hashtag Trend Research</div>
+              <div className="cell no">NO</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+            </div>
+            <div className="row">
+              <div className="cell">10. Twitter Analytics Monitoring</div>
+              <div className="cell yes">YES</div>
               <div className="cell yes">YES</div>
               <div className="cell yes">YES</div>
             </div>
@@ -245,12 +263,9 @@ export default function DigitalMarketingPackages() {
           {/* Instagram Promotion */}
           <div className="section">
             <div className="row sectionTitle">
-              <div className="cell" style={{ background: "#E1306C", color: "white" }}>
+              <div className="cell" colSpan="4" style={{ background: "#E1306C", color: "white" }}>
                 INSTAGRAM PROMOTION
               </div>
-              <div className="cell"></div>
-              <div className="cell"></div>
-              <div className="cell"></div>
             </div>
             <div className="row">
               <div className="cell">1. Profile Optimization</div>
@@ -265,20 +280,176 @@ export default function DigitalMarketingPackages() {
               <div className="cell">30</div>
             </div>
             <div className="row">
-              <div className="cell">3. Targeted Instagram Followers</div>
+              <div className="cell">3. Targeted Instagram Followers Increase</div>
               <div className="cell yes">YES</div>
               <div className="cell yes">YES</div>
               <div className="cell yes">YES</div>
             </div>
             <div className="row">
-              <div className="cell">4. Instagram Analytics Monitoring</div>
+              <div className="cell">4. Hashtag Trend Research</div>
               <div className="cell no">NO</div>
               <div className="cell yes">YES</div>
               <div className="cell yes">YES</div>
             </div>
             <div className="row">
-              <div className="cell">5. Comments & Likes Management (provided by client)</div>
+              <div className="cell">5. Comments & Likes Management [Engagement Strategy]</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+            </div>
+            <div className="row">
+              <div className="cell">6. Image Tagging to Friends/Followers [Increase Reach]</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+            </div>
+            <div className="row">
+              <div className="cell">7. Instagram Analytics Monitoring</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+            </div>
+          </div>
+
+          {/* LinkedIn Promotion */}
+          <div className="section">
+            <div className="row sectionTitle">
+              <div className="cell" colSpan="4" style={{ background: "#0077B5", color: "white" }}>
+                LINKEDIN PROMOTION
+              </div>
+            </div>
+            <div className="row">
+              <div className="cell">1. Profile Optimization</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+            </div>
+            <div className="row">
+              <div className="cell">2. LinkedIn Post Sharing</div>
+              <div className="cell">15</div>
+              <div className="cell">20</div>
+              <div className="cell">30</div>
+            </div>
+            <div className="row">
+              <div className="cell">3. Targeted LinkedIn Connection</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+            </div>
+            <div className="row">
+              <div className="cell">4. Company Page Creation</div>
+              <div className="cell">One Time</div>
+              <div className="cell">One Time</div>
+              <div className="cell">One Time</div>
+            </div>
+            <div className="row">
+              <div className="cell">5. Company Page Follower Increase</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+            </div>
+            <div className="row">
+              <div className="cell">6. Company page creative banner</div>
+              <div className="cell">1</div>
+              <div className="cell">1</div>
+              <div className="cell">2</div>
+            </div>
+            <div className="row">
+              <div className="cell">7. Profile Connection Build up</div>
               <div className="cell no">NO</div>
+              <div className="cell no">NO</div>
+              <div className="cell yes">YES</div>
+            </div>
+            <div className="row">
+              <div className="cell">8. Relevant Group Joining</div>
+              <div className="cell no">NO</div>
+              <div className="cell">3</div>
+              <div className="cell">5</div>
+            </div>
+            <div className="row">
+              <div className="cell">9. Post Sharing in Groups</div>
+              <div className="cell no">NO</div>
+              <div className="cell">15</div>
+              <div className="cell">20</div>
+            </div>
+            <div className="row">
+              <div className="cell">10. LinkedIn Performance Review</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+            </div>
+            <div className="row">
+              <div className="cell">11. LinkedIn Pulse Posting</div>
+              <div className="cell no">NO</div>
+              <div className="cell">1</div>
+              <div className="cell">2</div>
+            </div>
+          </div>
+
+          {/* Google+ Promotion */}
+          <div className="section">
+            <div className="row sectionTitle">
+              <div className="cell" colSpan="4" style={{ background: "#DB4437", color: "white" }}>
+                GOOGLE+ PROMOTION
+              </div>
+            </div>
+            <div className="row">
+              <div className="cell">4. Group Creation</div>
+              <div className="cell no">NO</div>
+              <div className="cell">1</div>
+              <div className="cell">3</div>
+            </div>
+            <div className="row">
+              <div className="cell">5. Community Join</div>
+              <div className="cell">1</div>
+              <div className="cell">3</div>
+              <div className="cell">5</div>
+            </div>
+            <div className="row">
+              <div className="cell">6. Targeted Followers</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+            </div>
+            <div className="row">
+              <div className="cell">7. Post Sharing in Groups</div>
+              <div className="cell no">NO</div>
+              <div className="cell">30</div>
+              <div className="cell">45</div>
+            </div>
+            <div className="row">
+              <div className="cell">8. Website Verification</div>
+              <div className="cell no">NO</div>
+              <div className="cell no">NO</div>
+              <div className="cell yes">YES</div>
+            </div>
+            <div className="row">
+              <div className="cell">9. Video Sharing(provided by client)</div>
+              <div className="cell no">NO</div>
+              <div className="cell no">NO</div>
+              <div className="cell yes">YES</div>
+            </div>
+            <div className="row">
+              <div className="cell">10. Google Review Postings</div>
+              <div className="cell no">NO</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+            </div>
+            <div className="row">
+              <div className="cell">11. Polls Creation & Management</div>
+              <div className="cell no">NO</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+            </div>
+            <div className="row">
+              <div className="cell">12. Google Insight Monitoring</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+            </div>
+            <div className="row">
+              <div className="cell">13. Traffic Monitoring Through Google Analytics</div>
+              <div className="cell yes">YES</div>
               <div className="cell yes">YES</div>
               <div className="cell yes">YES</div>
             </div>
@@ -287,12 +458,9 @@ export default function DigitalMarketingPackages() {
           {/* YouTube Promotion */}
           <div className="section">
             <div className="row sectionTitle">
-              <div className="cell" style={{ background: "#FF0000", color: "white" }}>
+              <div className="cell" colSpan="4" style={{ background: "#FF0000", color: "white" }}>
                 YOUTUBE PROMOTION
               </div>
-              <div className="cell"></div>
-              <div className="cell"></div>
-              <div className="cell"></div>
             </div>
             <div className="row">
               <div className="cell">1. YouTube Channel Optimization</div>
@@ -307,31 +475,49 @@ export default function DigitalMarketingPackages() {
               <div className="cell yes">YES</div>
             </div>
             <div className="row">
-              <div className="cell">3. Video Uploads (provided by client)</div>
-              <div className="cell">8</div>
+              <div className="cell">3. Video Uploads(provided by client)</div>
+              <div className="cell">5</div>
               <div className="cell">10</div>
               <div className="cell">15</div>
             </div>
-            <div className="row" colspan="4">
-              <div className="cell">4. Video Title & Meta Optimization</div>
-              <div className="cell no">NO</div>
+            <div className="row">
+              <div className="cell">4. Video Promotion</div>
+              <div className="cell">10</div>
               <div className="cell">20</div>
               <div className="cell">30</div>
             </div>
             <div className="row">
-              <div className="cell">5. Thumbnail     Creative for Videos</div>
+              <div className="cell">5. Video Title & Meta Optimization</div>
+              <div className="cell no">NO</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+            </div>
+            <div className="row">
+              <div className="cell">6. Thumbnail Creative for Videos</div>
               <div className="cell no">NO</div>
               <div className="cell no">NO</div>
               <div className="cell yes">YES</div>
             </div>
             <div className="row">
-              <div className="cell">6. YouTube Subscribers</div>
-              <div className="cell no">NO</div>
-              <div className="cell no">NO</div>
+              <div className="cell">7. YouTube Subscribers</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
               <div className="cell yes">YES</div>
             </div>
             <div className="row">
-              <div className="cell">7. YouTube Analytics Monitoring</div>
+              <div className="cell">8. YouTube Discussion Posting</div>
+              <div className="cell">10</div>
+              <div className="cell">20</div>
+              <div className="cell">30</div>
+            </div>
+            <div className="row">
+              <div className="cell">9. YouTube Video Views</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+              <div className="cell yes">YES</div>
+            </div> 
+            <div className="row">
+              <div className="cell">10. Comment Moderation</div>
               <div className="cell no">NO</div>
               <div className="cell yes">YES</div>
               <div className="cell yes">YES</div>
@@ -341,12 +527,9 @@ export default function DigitalMarketingPackages() {
           {/* Pinterest Promotion */}
           <div className="section">
             <div className="row sectionTitle">
-              <div className="cell" style={{ background: "#E60023", color: "white" }}>
+              <div className="cell" colSpan="4" style={{ background: "#E60023", color: "white" }}>
                 PINTEREST PROMOTION
               </div>
-              <div className="cell"></div>
-              <div className="cell"></div>
-              <div className="cell"></div>
             </div>
             <div className="row">
               <div className="cell">1. Profile Optimization</div>
@@ -402,11 +585,39 @@ export default function DigitalMarketingPackages() {
         </div>
 
         {/* Footer */}
-        <div className="footer">
-          <p>1. Customer Support</p>
-          <p>EMAIL, CHAT, PHONE</p>
-          <p>FOR CUSTOM DIGITAL MARKETING PACKAGES - ASK FOR QUOTES</p>
+        <div className="footer-container">
+      {/* Customer Support Table */}
+      <div className="support-table">
+        <div className="support-header">
+          CUSTOMER SUPPORT
         </div>
+        <div className="support-row">
+          <div className="support-cell number-cell">
+            <span>1</span>
+          </div>
+          <div className="support-cell description-cell">
+            <span>Email, Chat, Phone</span>
+          </div>
+          <div className="support-cell yes-cell">
+            <span>YES</span>
+          </div>
+          <div className="support-cell yes-cell">
+            <span>YES</span>
+          </div>
+          <div className="support-cell yes-cell">
+            <span>YES</span>
+          </div>
+        </div>
+      </div>
+      
+      {/* For Custom Digital Marketing */}
+      <div className="marketing-footer">
+        <p>
+          FOR CUSTOM DIGITAL MARKETING <span className="mail-icon">✉</span> 
+          <span className="ask-quotes">ASK FOR QUOTES</span>
+        </p>
+      </div>
+    </div>
       </div>
       <Days />
     </>

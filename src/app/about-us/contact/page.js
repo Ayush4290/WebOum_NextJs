@@ -13,192 +13,6 @@ import "./contact.css";
 import { useState } from "react";
 import { sendContactForm } from "@/utils/api";
 
-// Optimized HTML Email Template with dynamic form data placeholders
-const emailTemplate = (formData) => `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="x-apple-disable-message-reformatting">
-  <title>Contact Us - Weboum Technology</title>
-  <style>
-    /* Reset styles */
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-      background-color: #f4f4f4;
-    }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-    }
-    td {
-      box-sizing: border-box;
-    }
-    a[x-apple-data-detectors] {
-      color: inherit !important;
-      text-decoration: none !important;
-    }
-    .container {
-      width: 100%;
-      max-width: 600px;
-      margin: 0 auto;
-      background-color: #ffffff;
-      border: 1px solid #e0e0e0;
-    }
-    .header {
-      background-color: #1a73e8;
-      padding: 20px;
-      text-align: center;
-    }
-    .header h1 {
-      color: #ffffff;
-      margin: 0;
-      font-size: 24px;
-      line-height: 1.3;
-    }
-    .content {
-      padding: 30px 20px;
-      text-align: center;
-    }
-    .content h2 {
-      color: #333333;
-      font-size: 20px;
-      margin: 0 0 20px;
-      line-height: 1.4;
-    }
-    .content p {
-      color: #555555;
-      font-size: 16px;
-      line-height: 1.6;
-      margin: 0 0 20px;
-    }
-    .contact-details {
-      background-color: #f9f9f9;
-      padding: 20px;
-      margin: 20px 0;
-      border-radius: 5px;
-    }
-    .contact-details p {
-      margin: 10px 0;
-      color: #555555;
-      font-size: 14px;
-    }
-    .social-links {
-      margin: 20px 0;
-    }
-    .social-links a {
-      margin: 0 10px;
-      color: #1a73e8;
-      text-decoration: none;
-      font-size: 14px;
-    }
-    .footer {
-      background-color: #f4f4f4;
-      padding: 20px;
-      text-align: center;
-      font-size: 12px;
-      color: #777777;
-    }
-    .button {
-      display: inline-block;
-      padding: 12px 25px;
-      background-color: #1a73e8;
-      color: #ffffff !important;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 16px;
-      margin-top: 20px;
-    }
-    @media only screen and (max-width: 600px) {
-      .container {
-        width: 100% !important;
-        border: none;
-      }
-      .content {
-        padding: 20px;
-      }
-      .header h1, .content h2 {
-        font-size: 18px;
-      }
-      .content p, .contact-details p, .social-links a {
-        font-size: 14px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#f4f4f4">
-    <tr>
-      <td align="center">
-        <table class="container" role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-          <tr>
-            <td class="header">
-              <h1>Weboum Technology - Contact Us</h1>
-            </td>
-          </tr>
-          <tr>
-            <td class="content">
-              <h2>New Contact Form Submission</h2>
-              <p>
-                You have received a new message from ${
-                  formData.name || "a user"
-                } via the Weboum Technology contact form.
-              </p>
-              <table class="contact-details" role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                  <td>
-                    <p><strong>Name:</strong> ${
-                      formData.name || "Not provided"
-                    }</p>
-                    <p><strong>Email:</strong> ${
-                      formData.email || "Not provided"
-                    }</p>
-                    <p><strong>Phone:</strong> ${
-                      formData.phone || "Not provided"
-                    }</p>
-                    <p><strong>Subject:</strong> ${
-                      formData.subject || "Not provided"
-                    }</p>
-                    <p><strong>Message:</strong> ${
-                      formData.message || "Not provided"
-                    }</p>
-                  </td>
-                </tr>
-              </table>
-              <p>
-                You can also connect with us on social media:
-              </p>
-              <div class="social-links">
-                <a href="https://www.facebook.com/people/Weboum-Technology-PvtLtd/100091375563554/">Facebook</a> |
-                <a href="https://x.com/weboumtech33587">X</a> |
-                <a href="https://www.youtube.com/@WeboumTechnologyPvt.Ltd.">YouTube</a> |
-                <a href="https://www.linkedin.com/in/weboum-technology-pvt-76090626b">LinkedIn</a> |
-                <a href="https://www.instagram.com/weboumtechnolgy/">Instagram</a>
-              </div>
-              <a href="https://weboum.com/contact" class="button">Visit Our Contact Page</a>
-            </td>
-          </tr>
-          <tr>
-            <td class="footer">
-              <p>© 2025 Weboum Technology Pvt. Ltd. All rights reserved.</p>
-              <p>
-                <a href="https://weboum.com/privacy" style="color: #777777; text-decoration: none;">Privacy Policy</a> | 
-                <a href="https://weboum.com/terms" style="color: #777777; text-decoration: none;">Terms of Service</a>
-              </p>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-  </table>
-</body>
-</html>
-`;
-
 export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
@@ -206,6 +20,7 @@ export default function Contact() {
     phone: "",
     subject: "",
     message: "",
+    notRobot: false,
   });
   const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -216,8 +31,11 @@ export default function Contact() {
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -238,46 +56,138 @@ export default function Contact() {
       return;
     }
 
-    try {
-      // Generate the email content with form data
-      const emailContent = emailTemplate(formData);
+    if (!formData.notRobot) {
+      setStatus("Please verify that you are not a robot.");
+      setIsSubmitting(false);
+      return;
+    }
 
-      const response = await sendContactForm({
-        ...formData,
-        html: emailContent, // Pass the HTML content explicitly
+    try {
+      // Sanitize the message field to prevent HTML injection
+      const sanitizeInput = (input) => {
+        return input
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      };
+      
+      const sanitizedMessage = sanitizeInput(
+        formData.message || "No message provided."
+      );
+      
+      // HTML email template
+      const messageContent = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Contact Form Submission</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f0f0f0;">
+  <div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+    <!-- Header -->
+    <div style="background-color: #4a90e2; padding: 20px; text-align: center; border-radius: 5px 5px 0 0;">
+      <h2 style="color: #ffffff; margin: 0; font-size: 24px;">New Contact Form Submission</h2>
+    </div>
+    
+    <!-- Body -->
+    <div style="padding: 30px 20px;">
+      <p style="color: #333333; font-size: 16px; margin: 0 0 20px;">
+        Someone has reached out through the Weboum Technology contact form.
+      </p>
+      
+      <div style="background-color: #f9f9f9; padding: 20px; margin: 15px 0; border-radius: 5px; border-left: 4px solid #4a90e2;">
+        <table style="width: 100%; border-collapse: collapse;">
+          <tr>
+            <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+              <strong style="color: #333333;">Name:</strong>
+            </td>
+            <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0; color: #555555;">
+              ${formData.name}
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+              <strong style="color: #333333;">Email:</strong>
+            </td>
+            <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0; color: #555555;">
+              <a href="mailto:${formData.email}" style="color: #4a90e2; text-decoration: none;">${formData.email}</a>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+              <strong style="color: #333333;">Phone:</strong>
+            </td>
+            <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0; color: #555555;">
+              ${formData.phone || "Not provided"}
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+              <strong style="color: #333333;">Subject:</strong>
+            </td>
+            <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0; color: #555555;">
+              ${formData.subject || "No subject"}
+            </td>
+          </tr>
+        </table>
+        
+        <div style="margin-top: 20px;">
+          <h3 style="color: #333333; margin: 0 0 10px; font-size: 16px;">Message:</h3>
+          <p style="color: #555555; line-height: 1.5; background-color: #ffffff; padding: 15px; border-radius: 5px; margin: 0;">
+            ${sanitizedMessage}
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Footer -->
+    <div style="background-color: #f5f5f5; padding: 15px; text-align: center; font-size: 12px; color: #666666; border-radius: 0 0 5px 5px; border-top: 1px solid #e0e0e0;">
+      <p style="margin: 0;">© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>
+      `;
+      
+      // Plain text fallback
+      const plainTextFallback = `
+Contact Form Submission:
+------------------------
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone || "Not provided"}
+Subject: ${formData.subject || "No subject"}
+Message: ${formData.message || "No message provided."}
+      `;
+
+      const result = await sendContactForm({
+        email: formData.email,
+        subject: formData.subject || `Contact Form: ${formData.name}`,
+        message: messageContent,
       });
 
-      // Check if response is valid
-      if (!response || typeof response.ok !== "boolean") {
-        throw new Error("Invalid response from server.");
-      }
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(
-          `Server error: ${response.status} - ${errorText || "Unknown error"}`
-        );
-      }
-
-      const responseData = await response.json();
-
-      // Check for success status in response
-      if (responseData.status === "success") {
-        setStatus("Message sent successfully!");
+      if (result.success) {
+        setStatus("Message sent successfully! We'll get back to you soon.");
         setFormData({
           name: "",
           email: "",
           phone: "",
           subject: "",
           message: "",
+          notRobot: false,
         });
       } else {
-        throw new Error(responseData.message || "Failed to send message.");
+        setStatus(
+          result.message || "Failed to send your message. Please try again."
+        );
       }
     } catch (error) {
-      console.error("Form submission error:", error);
+      console.error("Error submitting form:", error);
       setStatus(
-        `Failed to send message: ${error.message}. Please try again or contact support@weboum.com.`
+        "Failed to send your message. Please try again later or contact support@weboum.com directly."
       );
     } finally {
       setIsSubmitting(false);
@@ -301,27 +211,40 @@ export default function Contact() {
               <a
                 href="https://www.facebook.com/people/Weboum-Technology-PvtLtd/100091375563554/"
                 aria-label="Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <FaFacebookF />
               </a>
-              <a href="https://x.com/weboumtech33587" aria-label="Twitter">
+              <a 
+                href="https://x.com/weboumtech33587" 
+                aria-label="Twitter"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <FaTwitter />
               </a>
               <a
                 href="https://www.youtube.com/@WeboumTechnologyPvt.Ltd."
                 aria-label="YouTube"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <FaYoutube />
               </a>
               <a
                 href="https://www.linkedin.com/in/weboum-technology-pvt-76090626b"
                 aria-label="LinkedIn"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <FaLinkedinIn />
               </a>
               <a
                 href="https://www.instagram.com/weboumtechnolgy/"
                 aria-label="Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <FaInstagram />
               </a>
@@ -340,6 +263,7 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 aria-required="true"
+                disabled={isSubmitting}
               />
 
               <label htmlFor="email">Email</label>
@@ -351,6 +275,7 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 aria-required="true"
+                disabled={isSubmitting}
               />
 
               <label htmlFor="phone">Phone</label>
@@ -360,6 +285,7 @@ export default function Contact() {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
+                disabled={isSubmitting}
               />
 
               <label htmlFor="subject">Subject</label>
@@ -369,6 +295,7 @@ export default function Contact() {
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
+                disabled={isSubmitting}
               />
 
               <label htmlFor="message">Message</label>
@@ -380,14 +307,19 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 aria-required="true"
+                disabled={isSubmitting}
               ></textarea>
 
               <div className="captcha-box">
                 <input
                   type="checkbox"
                   id="captcha"
+                  name="notRobot"
+                  checked={formData.notRobot}
+                  onChange={handleChange}
                   required
                   aria-required="true"
+                  disabled={isSubmitting}
                 />
                 <label htmlFor="captcha">I'm not a robot</label>
               </div>
@@ -399,7 +331,7 @@ export default function Contact() {
               {status && (
                 <p
                   className={`form-status ${
-                    status.includes("Failed") ? "error" : "success"
+                    status.includes("Failed") || status.includes("Please") ? "error" : "success"
                   }`}
                   role="alert"
                 >

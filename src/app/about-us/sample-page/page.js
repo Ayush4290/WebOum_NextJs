@@ -16,11 +16,25 @@ import {
   Quote,
 } from "lucide-react";
 import Days from "../days/page";
-import { useEffect, useRef } from "react";
-import Image from "next/image"; // Import Next.js Image component
+import { useEffect, useRef, useState } from "react"; // Added useState
+import Image from "next/image";
 import "./sample-page.css";
+import { sendContactForm } from "@/utils/api"; // Added import for API function
 
 export default function SamplePage() {
+  // Added form state handling from why-us page
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    project: "",
+    message: "",
+    notRobot: false,
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formError, setFormError] = useState("");
+  const [formSuccess, setFormSuccess] = useState("");
+
   const showTab = (tabId) => {
     document
       .querySelectorAll(".samplePage_portfolio")
@@ -61,6 +75,154 @@ export default function SamplePage() {
       });
     };
   }, []);
+
+  // Form handling functions from why-us page
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "checkbox" ? checked : value,
+    }));
+    if (formError) setFormError("");
+  };
+
+  const validateForm = () => {
+    const requiredFields = ["name", "phone", "email", "project"];
+    for (const field of requiredFields) {
+      if (!formData[field] || formData[field].trim() === "") {
+        setFormError("Please fill in all required fields.");
+        return false;
+      }
+    }
+
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      setFormError("Please enter a valid email address.");
+      return false;
+    }
+
+    if (!formData.notRobot) {
+      setFormError("Please verify that you are not a robot.");
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setFormError("");
+    setFormSuccess("");
+
+    if (!validateForm()) return;
+
+    setIsSubmitting(true);
+
+    try {
+      // Sanitize inputs to prevent HTML injection
+      const sanitizeInput = (input) => {
+        return input
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      };
+
+      const sanitizedName = sanitizeInput(formData.name);
+      const sanitizedEmail = sanitizeInput(formData.email);
+      const sanitizedPhone = sanitizeInput(formData.phone);
+      const sanitizedProject = sanitizeInput(formData.project);
+      const sanitizedMessage = formData.message
+        ? sanitizeInput(formData.message)
+        : "No message provided";
+
+      // Construct the subject
+      const subject = `Free Consultation Request from ${sanitizedName}`;
+
+      // HTML email template
+      const messageContent = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Consultation Request</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f0f0f0;">
+  <div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #e0e0e0;">
+    <!-- Header -->
+    <div style="background-color: #4a90e2; padding: 15px; text-align: center;">
+      <h2 style="color: #ffffff; margin: 0; font-size: 20px;">New Consultation Request</h2>
+    </div>
+    <!-- Body -->
+    <div style="padding: 20px;">
+      <p style="color: #333333; font-size: 16px; margin: 0 0 15px;">
+        A new consultation request has been submitted to Weboum Technology.
+      </p>
+      <div style="border-top: 1px solid #e0e0e0; padding-top: 15px;">
+        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
+          <strong>Name:</strong> ${sanitizedName}
+        </p>
+        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
+          <strong>Email:</strong> <a href="mailto:${sanitizedEmail}" style="color: #4a90e2; text-decoration: none;">${sanitizedEmail}</a>
+        </p>
+        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
+          <strong>Phone:</strong> ${sanitizedPhone}
+        </p>
+        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
+          <strong>Project Type:</strong> ${sanitizedProject}
+        </p>
+        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
+          <strong>Message:</strong> ${sanitizedMessage}
+        </p>
+      </div>
+    </div>
+    <!-- Footer -->
+    <div style="background-color: #f5f5f5; padding: 10px; text-align: center; font-size: 12px; color: #666666;">
+      <p style="margin: 0;">© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
+    </div>
+  </div>
+</body>
+</html>
+      `;
+
+      // Plain text fallback
+      const plainTextFallback = `
+Free Consultation Request Details:
+--------------------------------
+Name: ${sanitizedName}
+Email: ${sanitizedEmail}
+Phone: ${sanitizedPhone}
+Project Type: ${sanitizedProject}
+Message: ${sanitizedMessage}
+      `.trim();
+
+      // Send the form data to the API
+      const result = await sendContactForm({
+        email: sanitizedEmail,
+        subject,
+        message: messageContent,
+      });
+
+      if (result.success) {
+        setFormSuccess("Your request has been submitted successfully!");
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          project: "",
+          message: "",
+          notRobot: false,
+        });
+        e.target.reset();
+      } else {
+        setFormError("Failed to submit your request. Please try again.");
+      }
+    } catch (error) {
+      // console.error("Form submission error:", error);
+      setFormError("Failed to submit your request. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <>
@@ -421,7 +583,7 @@ export default function SamplePage() {
               </div>
             </div>
 
-            {/* Right Form */}
+            {/* Right Form - Updated with form functionality from why-us page */}
             <div className="col-lg-6 mt-4 mt-lg-0">
               <div className="samplePage_form-box">
                 <Image
@@ -435,45 +597,86 @@ export default function SamplePage() {
                   We Help Customers Digital Transformation By IT Solutions
                 </small>
 
-                <form>
+                <form onSubmit={handleSubmit}>
                   <input
                     type="text"
+                    name="name"
                     className="form-control"
                     placeholder="Name"
+                    value={formData.name}
+                    onChange={handleInputChange}
                     required
+                    disabled={isSubmitting}
                   />
                   <input
                     type="tel"
+                    name="phone"
                     className="form-control"
                     placeholder="000-000-0000"
+                    value={formData.phone}
+                    onChange={handleInputChange}
                     required
+                    disabled={isSubmitting}
                   />
                   <input
                     type="email"
+                    name="email"
                     className="form-control"
                     placeholder="Email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     required
+                    disabled={isSubmitting}
                   />
-                  <select className="form-select" required>
-                    <option selected>Project Development</option>
-                    <option value="1">Web Development</option>
-                    <option value="2">App Development</option>
-                    <option value="3">Digital Marketing</option>
+                  <select
+                    name="project"
+                    className="form-select"
+                    value={formData.project}
+                    onChange={handleInputChange}
+                    required
+                    disabled={isSubmitting}
+                  >
+                    <option value="">Select Project Type</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="App Development">App Development</option>
+                    <option value="Digital Marketing">Digital Marketing</option>
                   </select>
                   <textarea
+                    name="message"
                     className="form-control"
                     rows="4"
                     placeholder="Your Query / Message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    disabled={isSubmitting}
                   ></textarea>
 
                   {/* Simulated CAPTCHA box */}
                   <div className="my-3">
-                    <input type="checkbox" id="captcha" />
+                    <input 
+                      type="checkbox"
+                      id="captcha"
+                      name="notRobot"
+                      checked={formData.notRobot}
+                      onChange={handleInputChange}
+                      disabled={isSubmitting}
+                    />
                     <label htmlFor="captcha"> I&apos;m not a robot</label>
                   </div>
 
-                  <button type="submit" className="btn samplePage_btn-submit">
-                    MAKE A REQUEST
+                  {formError && (
+                    <div className="alert alert-danger">{formError}</div>
+                  )}
+                  {formSuccess && (
+                    <div className="alert alert-success">{formSuccess}</div>
+                  )}
+
+                  <button 
+                    type="submit" 
+                    className="btn samplePage_btn-submit"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "SUBMITTING..." : "MAKE A REQUEST"}
                   </button>
                 </form>
               </div>
