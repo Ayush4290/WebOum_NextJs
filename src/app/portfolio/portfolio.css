@@ -3,12 +3,11 @@
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
- width: 100%;
+  width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
+  
 }
 
-/* Tabs styling */
 .tabs {
   display: flex;
   flex-wrap: wrap;
@@ -35,7 +34,6 @@
   color: white;
 }
 
-/* Portfolio grid */
 .portfolio {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
@@ -72,7 +70,6 @@
   transform: scale(1.05);
 }
 
-/* Lightbox styling */
 .lightbox {
   display: flex;
   position: fixed;
@@ -121,7 +118,33 @@
   object-fit: contain;
 }
 
-/* Responsive adjustments */
+.learn-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.learn-more-btn {
+  padding: 12px 30px;
+  background-color: #4a89dc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.learn-more-btn:hover {
+  background-color: #357abd;
+  transform: translateY(-2px);
+}
+
+.learn-more-btn:active {
+  transform: translateY(0);
+}
+
 @media (max-width: 992px) {
   .portfolio-container {
     padding: 15px;
@@ -154,6 +177,11 @@
     right: 20px;
     font-size: 35px;
   }
+
+  .learn-more-btn {
+    padding: 10px 25px;
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -176,5 +204,10 @@
 
   .lightbox-img {
     max-width: 95%;
+  }
+
+  .learn-more-btn {
+    padding: 8px 20px;
+    font-size: 13px;
   }
 }

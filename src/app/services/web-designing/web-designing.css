@@ -3,11 +3,11 @@
   --sub-text-color: #4f4f4f;
   --highlight-color: #d11db5;
   --tick-color: #005eff;
-  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-family: "Poppins", Sans-serif;
 }
 
-
-h3, h4 {
+h3,
+h4 {
   color: var(--main-text-color);
 }
 
@@ -21,7 +21,7 @@ h3, h4 {
   color: var(--sub-text-color);
 }
 
-.img-fluid {
+.image-fluid {
   border-radius: 10px;
   max-height: 250px;
   width: 100%;
@@ -47,23 +47,23 @@ h3, h4 {
   margin: 0 -10px;
 }
 
-.align-items-center {
+.align-center {
   align-items: center;
 }
 
-.mb-5 {
+.margin-bottom-5 {
   margin-bottom: 2rem;
 }
 
-.mb-4 {
+.margin-bottom-4 {
   margin-bottom: 1rem;
 }
 
-.mt-3 {
+.margin-top-3 {
   margin-top: 0.75rem;
 }
 
-.col-md-6 {
+.column-md-6 {
   position: relative;
   width: 100%;
   padding: 0 10px;
@@ -73,11 +73,14 @@ h3, h4 {
   text-align: center;
 }
 
-.fst-italic {
+.font-italic {
   font-style: italic;
 }
 
-/* Why Choose Us Section */
+.web-design {
+  /* No additional styles needed as this was just a wrapper class */
+}
+
 .why-choose-us {
   max-width: 100%;
   margin: 40px auto 20px auto;
@@ -112,7 +115,6 @@ h3, h4 {
   padding-bottom: 4px;
 }
 
-/* Mobile Responsive Styles */
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
@@ -128,12 +130,12 @@ h3, h4 {
 }
 
 @media (min-width: 768px) {
-  .col-md-6 {
+  .column-md-6 {
     flex: 0 0 50%;
     max-width: 50%;
   }
 
-  .mb-md-0 {
+  .margin-bottom-md-0 {
     margin-bottom: 0 !important;
   }
 
@@ -145,12 +147,14 @@ h3, h4 {
     padding: 2.5rem 0;
   }
 
-  .img-fluid {
+  .image-fluid {
     max-height: 280px;
   }
 
   .why-choose-us {
     margin: 60px auto 30px auto;
+    background-image: url(https://weboum.com/wp-content/uploads/2021/05/map-pattern.png);
+    max-width: 1200px;
   }
 
   .why-choose-us h2 {
@@ -172,7 +176,7 @@ h3, h4 {
     font-size: 1.8rem;
   }
 
-  .img-fluid {
+  .image-fluid {
     max-height: 300px;
   }
 

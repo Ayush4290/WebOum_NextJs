@@ -17,7 +17,7 @@
   flex-wrap: wrap;
   gap: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  
+  background-image: url("https://stage.weboum.com/wp-content/uploads/2021/04/shape-6.png");
 }
 
 /* Row */
@@ -42,6 +42,12 @@
   margin-bottom: 10px;
 }
 
+.whyus-left-content p {
+  color: var(--text-color);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
 .whyus-highlight-line {
   width: 100%;
   max-width: 250px;
@@ -49,7 +55,8 @@
   margin-bottom: 20px;
   transform: translateY(-20px);
   opacity: 0;
-  transition: transform var(--transition-speed) ease-in-out, opacity var(--transition-speed) ease-in-out;
+  transition: transform var(--transition-speed) ease-in-out,
+    opacity var(--transition-speed) ease-in-out;
 }
 
 .whyus-highlight-line.aos-animate {
@@ -63,7 +70,8 @@
   margin-bottom: 15px;
   transform: translateY(-20px);
   opacity: 0;
-  transition: transform var(--transition-speed) ease-in-out, opacity var(--transition-speed) ease-in-out;
+  transition: transform var(--transition-speed) ease-in-out,
+    opacity var(--transition-speed) ease-in-out;
 }
 
 .whyus-left-content h2.aos-animate {
@@ -83,7 +91,8 @@
   line-height: 1.6;
   transform: translateY(-20px);
   opacity: 0;
-  transition: transform var(--transition-speed) ease-in-out, opacity var(--transition-speed) ease-in-out;
+  transition: transform var(--transition-speed) ease-in-out,
+    opacity var(--transition-speed) ease-in-out;
 }
 
 .whyus-left-content p.aos-animate {
@@ -102,7 +111,8 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   transform: translateY(-20px);
   opacity: 0;
-  transition: transform var(--transition-speed) ease-in-out, opacity var(--transition-speed) ease-in-out;
+  transition: transform var(--transition-speed) ease-in-out,
+    opacity var(--transition-speed) ease-in-out;
 }
 
 .whyus-feature.aos-animate {
@@ -138,6 +148,7 @@
   margin: 0;
   font-size: 0.9rem;
   line-height: 1.5;
+  color: black;
 }
 
 /* Form box */
@@ -150,7 +161,8 @@
   text-align: center;
   transform: translateY(-20px);
   opacity: 0;
-  transition: transform var(--transition-speed) ease-in-out, opacity var(--transition-speed) ease-in-out;
+  transition: transform var(--transition-speed) ease-in-out,
+    opacity var(--transition-speed) ease-in-out;
 }
 
 .whyus-form-box.aos-animate {
@@ -206,6 +218,10 @@
   align-items: center;
   margin-bottom: 15px;
   font-size: 0.9rem;
+}
+
+.textIcons {
+  color: black;
 }
 
 .whyus-captcha-box input {

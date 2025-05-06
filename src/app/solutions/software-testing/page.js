@@ -3,12 +3,6 @@ import "./software-testing.css";
 import SubHeader from "@/app/sub-header/page";
 import Days from "@/app/about-us/days/page";
 
-// Metadata for SEO
-export const metadata = {
-  title: "Software Testing – Weboum Technology",
-  description:
-    "Ensure bug-free applications with Weboum Technology’s full-spectrum quality assurance and software testing solutions for web, desktop, and mobile.",
-};
 
 export default function SoftwareTesting() {
   return (
