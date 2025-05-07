@@ -1,8 +1,16 @@
 .container {
   max-width: 1200px;
   margin: 20px auto;
-  padding: 10px;
+  padding: 15px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Reset box sizing */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
 
 h2 {
@@ -19,7 +27,6 @@ p {
   font-size: 18px;
   margin-bottom: 20px;
   max-width: 90%;
-
   margin-left: auto;
   margin-right: auto;
 }
@@ -42,18 +49,18 @@ button:hover {
 }
 
 .table-wrapper {
-  overflow-x: hidden;
+  overflow-x: auto; /* Changed from hidden to auto for horizontal scrolling on small screens */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  border: #0e0f0f;
-  border-style: black;
   background: #fff;
-  margin: 0 10px;
+  margin: 0 auto;
   border: 2px solid #000;
+  width: 100%;
 }
 
 .table,
 .mobile-view {
   width: 100%;
+  table-layout: fixed;
 }
 
 .header-row {
@@ -97,17 +104,17 @@ button:hover {
   text-align: center;
   font-size: 17px;
   border-right: 2px solid #000;
+  word-wrap: break-word;
 }
 
 .row > div:first-child {
   flex: 0 0 120px;
-
   color: #4a5568;
   background-color: #f8f5f5;
 }
 
 .highlight > div:nth-child(2) {
-  background-color: f8f5f5;
+  background-color: #f8f5f5;
   font-size: 25px;
   text-transform: uppercase;
 }
@@ -224,42 +231,53 @@ button:hover {
   background-color: #c82333;
 }
 
+/* Improved responsive styling */
 @media (max-width: 768px) {
-  .mobile-view,
-  .table {
-    min-width: 100%;
-    display: block;
+  .container {
+    padding: 10px 5px;
   }
 
-  .header-row,
-  .row {
-    display: block;
+  .table-wrapper {
+    margin: 0;
+    overflow-x: auto;
+    border: 2px solid #000;
   }
 
-  .header-row > div,
-  .row > div {
+  /* For true mobile view - stack layout */
+  .mobile-view .header-row,
+  .mobile-view .row {
+    display: block;
+    width: 100%;
+    border: 2px solid #000;
+  }
+
+  .mobile-view .header-row > div,
+  .mobile-view .row > div {
     display: block;
     width: 100%;
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #e2e8f0;
+    border-right: 2px solid #000;
   }
 
-  .header-row > div:first-child,
-  .row > div:first-child {
+  .mobile-view .header-row > div:first-child,
+  .mobile-view .row > div:first-child {
     width: 100%;
     flex: none;
+    font-weight: bold;
+    border-left: 2px solid #000;
   }
 
-  .row > div:nth-child(2) {
+  .mobile-view .row > div:nth-child(2) {
     font-weight: bold;
     background-color: #fefcbf;
   }
 
-  .row > div:nth-child(3),
-  .row > div:nth-child(4),
-  .row > div:nth-child(5) {
-    background-color: #fff;
+  /* For table view on desktop - keep flex layout */
+  .table .header-row,
+  .table .row {
+    display: flex;
   }
 
   .section-header {
@@ -270,20 +288,12 @@ button:hover {
     width: 100%;
   }
 
-  button {
-    display: block;
-  }
-
-  .table-wrapper {
-    overflow-x: hidden;
-  }
-
   h2 {
     font-size: 24px;
   }
 
   p {
-    font-size: 14px;
+    font-size: 19px;
   }
 
   .row button {
@@ -310,5 +320,18 @@ button:hover {
   .row button {
     padding: 6px 12px;
     font-size: 12px;
+  }
+
+  /* Override for very small screens */
+  .table .header-row,
+  .table .row {
+    display: block;
+  }
+
+  .table .header-row > div,
+  .table .row > div {
+    display: block;
+    width: 100%;
+    border-right: none;
   }
 }

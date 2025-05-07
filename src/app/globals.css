@@ -63,7 +63,6 @@
   position: sticky;
   top: 20px;
   max-height: calc(100vh - 40px);
- 
 }
 
 .sidebar a {
@@ -75,7 +74,12 @@
   border-bottom: 1px solid #ddd;
   text-decoration: none;
   font-weight: 500;
-  transition: color var(--transition);
+  transition: font-size 0.3s ease;
+}
+
+.sidebar a:hover {
+  font-size: 23px;
+  text-decoration: none;
 }
 
 .content-col {
@@ -92,10 +96,11 @@
 }
 
 .section-desc {
-  font-size: 19px;
+  font-size: 17px;
   margin-bottom: 30px;
   color: black;
   text-align: start;
+  line-height: 1.6;
 }
 
 /* Services Grid */
@@ -138,6 +143,11 @@
   margin-right: 15px;
   object-fit: contain;
   flex-shrink: 0;
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .service-title {
@@ -151,7 +161,7 @@
 .service-desc {
   font-size: 16px;
   color: black;
-  text-decoration: none;
+  text-align: start;
 }
 
 /* Portfolio Section */
@@ -251,7 +261,7 @@
 }
 
 .why-subtitle {
-  font-size: 18px;
+  font-size: 21px;
   font-weight: 300;
   margin-bottom: 20px;
   color: var(--text-light);
@@ -259,7 +269,7 @@
 }
 
 .why-lead {
-  font-size: 16px;
+  font-size: 19px;
   line-height: 1.6;
   margin-bottom: 40px;
   text-align: start;
@@ -267,7 +277,7 @@
 
 .why-card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   gap: var(--spacing-md);
 }
 
@@ -343,9 +353,6 @@
 
 /* Contact Section */
 .contact-section {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
   padding: 60px 20px;
   min-height: 100vh;
   background-size: cover;
@@ -424,25 +431,6 @@ textarea.form-control {
   background-color: #001f5c;
 }
 
-/* ✅ Mobile & Tablet Responsive */
-@media (max-width: 768px) {
-  .form-container {
-    padding: 20px;
-  }
-
-  .form-heading {
-    font-size: 1rem;
-  }
-
-  .btn-submit {
-    font-size: 0.95rem;
-    padding: 12px;
-  }
-}
-
-
-
-
 /* Testimonial Section */
 .testimonial-section {
   background-color: #6a005f;
@@ -458,7 +446,6 @@ textarea.form-control {
   margin-bottom: 2rem;
   font-weight: bold;
   color: #fff;
-  
 }
 
 .testimonial-container {
@@ -481,7 +468,8 @@ textarea.form-control {
 .testimonial-carousel::-webkit-scrollbar {
   display: none;
 }
-.testimonial-quote{
+
+.testimonial-quote {
   background: #fff;
   border-radius: 20px;
   padding: 15px;
@@ -569,16 +557,6 @@ textarea.form-control {
   width: 100%;
 }
 
-
-
-
-
-
-
-
-
-
-
 /* CTA Section */
 .cta-section {
   padding: 64px 20px;
@@ -656,8 +634,8 @@ textarea.form-control {
   }
 }
 
-/* Media Queries for Responsive Design */
-@media (min-width: 768px) {
+/* Responsive Design */
+@media (min-width: 769px) {
   .cta-container {
     flex-direction: row;
     align-items: center;
@@ -682,7 +660,20 @@ textarea.form-control {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
+  .form-container {
+    padding: 20px;
+  }
+
+  .form-heading {
+    font-size: 1rem;
+  }
+
+  .btn-submit {
+    font-size: 0.95rem;
+    padding: 12px;
+  }
+
   .cta-heading {
     font-size: 28px;
   }
@@ -697,23 +688,67 @@ textarea.form-control {
     width: 100%;
     max-width: 250px;
   }
+
   .contact-col-form {
     flex: auto;
     max-width: 100%;
-}
+  }
+
+  .sidebar-col {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .content-col {
+    flex: 1 1 100%;
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  .why-card-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+
+  .portfolio-carousel {
+    height: 400px;
+  }
+
+  .why-title {
+    font-size: 28px;
+  }
+
+  .why-subtitle {
+    font-size: 18px;
+  }
+
+  .why-lead {
+    font-size: 16px;
+  }
+
+  .process-heading {
+    font-size: 28px;
+  }
+
+  .testimonial-item {
+    flex: 0 0 calc(50% - 20px);
+    min-width: 280px;
+  }
 }
 
 @media (max-width: 575px) {
   .cta-section {
     padding: 40px 15px;
   }
-  .sidebar-col{
+
+  .sidebar-col {
     display: none;
   }
 
-.portfolio-carousel {
-  height: 270px;
-}
+  .portfolio-carousel {
+    height: 270px;
+  }
 
   .cta-heading {
     font-size: 24px;
@@ -722,5 +757,127 @@ textarea.form-control {
   .cta-button {
     font-size: 16px;
     padding: 10px 20px;
+  }
+
+  .services-section {
+    padding: 40px 15px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .section-desc {
+    font-size: 15px;
+  }
+
+  .service-card {
+    padding: var(--spacing-sm);
+  }
+
+  .service-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .service-title {
+    font-size: 18px;
+  }
+
+  .service-desc {
+    font-size: 14px;
+  }
+
+  .why-choose-section {
+    padding: 40px 15px;
+  }
+
+  .why-title {
+    font-size: 24px;
+  }
+
+  .why-subtitle {
+    font-size: 16px;
+  }
+
+  .why-lead {
+    font-size: 14px;
+  }
+
+  .why-card {
+    padding: var(--spacing-sm);
+  }
+
+  .why-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .why-card-title {
+    font-size: 16px;
+  }
+
+  .why-card-text {
+    font-size: 13px;
+  }
+
+  .process-section {
+    padding: 40px 15px;
+  }
+
+  .process-heading {
+    font-size: 24px;
+  }
+
+  .process-description {
+    font-size: 14px;
+  }
+
+  .contact-section {
+    padding: 40px 15px;
+  }
+
+  .form-container {
+    padding: 15px;
+  }
+
+  .form-control {
+    padding: 12px;
+    font-size: 0.9rem;
+  }
+
+  .btn-submit {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .testimonial-section {
+    padding: 2rem 1rem;
+  }
+
+  .testimonial-title {
+    font-size: 1.5rem;
+  }
+
+  .testimonial-item {
+    flex: 0 0 calc(100% - 20px);
+    min-width: 250px;
+  }
+
+  .testimonial-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .testimonial-text {
+    font-size: 0.9rem;
+  }
+
+  .testimonial-name {
+    font-size: 1rem;
+  }
+
+  .testimonial-position {
+    font-size: 0.8rem;
   }
 }
