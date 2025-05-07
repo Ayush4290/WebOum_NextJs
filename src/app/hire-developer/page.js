@@ -79,112 +79,48 @@ export default function HireDeveloper() {
   ];
 
   // Function to handle tag selection
-  const handleTagSelection = (e, category) => {
-    if (e.target.classList.contains("tag")) {
-      e.target.classList.toggle("selected");
-
-      const value = e.target.getAttribute("data-value");
-
-      // Update the appropriate state based on category
-      switch (category) {
-        case "skills":
-          setSelectedSkills((prev) =>
-            e.target.classList.contains("selected")
-              ? [...prev, value]
-              : prev.filter((item) => item !== value)
-          );
-          break;
-        case "technologies":
-          setSelectedTechnologies((prev) =>
-            e.target.classList.contains("selected")
-              ? [...prev, value]
-              : prev.filter((item) => item !== value)
-          );
-          break;
-        case "workTime":
-          setSelectedWorkTime((prev) =>
-            e.target.classList.contains("selected")
-              ? [...prev, value]
-              : prev.filter((item) => item !== value)
-          );
-          break;
-        case "timeframe":
-          setSelectedTimeframe((prev) =>
-            e.target.classList.contains("selected")
-              ? [...prev, value]
-              : prev.filter((item) => item !== value)
-          );
-          break;
-        case "start":
-          setSelectedStart((prev) =>
-            e.target.classList.contains("selected")
-              ? [...prev, value]
-              : prev.filter((item) => item !== value)
-          );
-          break;
-        default:
-          break;
-      }
+  const handleTagSelection = (value, category) => {
+    // Update the appropriate state based on category
+    switch (category) {
+      case "skills":
+        setSelectedSkills((prev) =>
+          prev.includes(value)
+            ? prev.filter((item) => item !== value)
+            : [...prev, value]
+        );
+        break;
+      case "technologies":
+        setSelectedTechnologies((prev) =>
+          prev.includes(value)
+            ? prev.filter((item) => item !== value)
+            : [...prev, value]
+        );
+        break;
+      case "workTime":
+        setSelectedWorkTime((prev) =>
+          prev.includes(value)
+            ? prev.filter((item) => item !== value)
+            : [...prev, value]
+        );
+        break;
+      case "timeframe":
+        setSelectedTimeframe((prev) =>
+          prev.includes(value)
+            ? prev.filter((item) => item !== value)
+            : [...prev, value]
+        );
+        break;
+      case "start":
+        setSelectedStart((prev) =>
+          prev.includes(value)
+            ? prev.filter((item) => item !== value)
+            : [...prev, value]
+        );
+        break;
+      default:
+        break;
     }
   };
-
-  useEffect(() => {
-    // Add event listeners for each category
-    const skillTags = document.querySelectorAll("#tag-container-skills .tag");
-    const techTags = document.querySelectorAll(
-      "#tag-container-technology .tag"
-    );
-    const workTimeTags = document.querySelectorAll(
-      "#tag-container-worktime .tag"
-    );
-    const timeframeTags = document.querySelectorAll(
-      "#tag-container-timeframe .tag"
-    );
-    const startTags = document.querySelectorAll("#tag-container-start .tag");
-
-    skillTags.forEach((tag) =>  
-      tag.addEventListener("click", (e) => handleTagSelection(e, "skills"))
-    );
-    techTags.forEach((tag) =>
-      tag.addEventListener("click", (e) =>
-        handleTagSelection(e, "technologies")
-      )
-    );
-    workTimeTags.forEach((tag) =>
-      tag.addEventListener("click", (e) => handleTagSelection(e, "workTime"))
-    );
-    timeframeTags.forEach((tag) =>
-      tag.addEventListener("click", (e) => handleTagSelection(e, "timeframe"))
-    );
-    startTags.forEach((tag) =>
-      tag.addEventListener("click", (e) => handleTagSelection(e, "start"))
-    );
-
-    // Cleanup function
-    return () => {
-      skillTags.forEach((tag) =>
-        tag.removeEventListener("click", (e) => handleTagSelection(e, "skills"))
-      );
-      techTags.forEach((tag) =>
-        tag.removeEventListener("click", (e) =>
-          handleTagSelection(e, "technologies")
-        )
-      );
-      workTimeTags.forEach((tag) =>
-        tag.removeEventListener("click", (e) =>
-          handleTagSelection(e, "workTime")
-        )
-      );
-      timeframeTags.forEach((tag) =>
-        tag.removeEventListener("click", (e) =>
-          handleTagSelection(e, "timeframe")
-        )
-      );
-      startTags.forEach((tag) =>
-        tag.removeEventListener("click", (e) => handleTagSelection(e, "start"))
-      );
-    };
-  }, [currentStep]);
 
   const nextStep = () => {
     if (currentStep < 3) setCurrentStep(currentStep + 1);
@@ -365,7 +301,11 @@ export default function HireDeveloper() {
                 <div id="section-title-skills">Skills</div>
                 <div id="tag-container-skills">
                   {skills.map((skill) => (
-                    <div key={skill} className="tag" data-value={skill}>
+                    <div 
+                      key={skill} 
+                      className={`tag ${selectedSkills.includes(skill) ? 'selected' : ''}`} 
+                      onClick={() => handleTagSelection(skill, "skills")}
+                    >
                       {skill}
                     </div>
                   ))}
@@ -374,7 +314,11 @@ export default function HireDeveloper() {
                 <div id="section-title-technology">Technology</div>
                 <div id="tag-container-technology">
                   {technologies.map((tech) => (
-                    <div key={tech} className="tag" data-value={tech}>
+                    <div 
+                      key={tech} 
+                      className={`tag ${selectedTechnologies.includes(tech) ? 'selected' : ''}`} 
+                      onClick={() => handleTagSelection(tech, "technologies")}
+                    >
                       {tech}
                     </div>
                   ))}
@@ -383,7 +327,11 @@ export default function HireDeveloper() {
                 <div id="section-title-worktime">Work Time</div>
                 <div id="tag-container-worktime">
                   {workTimes.map((time) => (
-                    <div key={time} className="tag" data-value={time}>
+                    <div 
+                      key={time} 
+                      className={`tag ${selectedWorkTime.includes(time) ? 'selected' : ''}`} 
+                      onClick={() => handleTagSelection(time, "workTime")}
+                    >
                       {time}
                     </div>
                   ))}
@@ -402,7 +350,11 @@ export default function HireDeveloper() {
                 <div id="section-title-timeframe">Timeframe</div>
                 <div id="tag-container-timeframe">
                   {timeframes.map((timeframe) => (
-                    <div key={timeframe} className="tag" data-value={timeframe}>
+                    <div 
+                      key={timeframe} 
+                      className={`tag ${selectedTimeframe.includes(timeframe) ? 'selected' : ''}`} 
+                      onClick={() => handleTagSelection(timeframe, "timeframe")}
+                    >
                       {timeframe}
                     </div>
                   ))}
@@ -411,7 +363,11 @@ export default function HireDeveloper() {
                 <div id="section-title-start">Start</div>
                 <div id="tag-container-start">
                   {starts.map((start) => (
-                    <div key={start} className="tag" data-value={start}>
+                    <div 
+                      key={start} 
+                      className={`tag ${selectedStart.includes(start) ? 'selected' : ''}`} 
+                      onClick={() => handleTagSelection(start, "start")}
+                    >
                       {start}
                     </div>
                   ))}

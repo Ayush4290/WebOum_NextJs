@@ -15,7 +15,7 @@
   --spacing-sm: 10px;
   --spacing-md: 20px;
   --spacing-lg: 40px;
-  --font-family: "Roboto", sans-serif;
+  --font-family: Arial, "Roboto", sans-serif;
   --portfolio-border-color: #f8f2f2;
 }
 
@@ -33,6 +33,7 @@
   font-family: var(--font-family);
   color: black;
   box-sizing: border-box;
+
 }
 
 /* Services Section */

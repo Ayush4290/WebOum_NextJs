@@ -2,7 +2,7 @@
   --primary-color: #6a005f;
   --primary-color-dark: #4b0043;
   --secondary-color: #005f6a;
-   --text-color: #000;
+  --text-color: #000;
   --tag-border: #ccc;
   --social-bg: #fff;
   --social-border: #6a005f;
@@ -138,8 +138,7 @@
   height: 0;
 }
 
-.requestaQuote-option:has(input[type="radio"]:checked),
-.requestaQuote-option input[type="radio"]:checked + label {
+.requestaQuote-option:has(input[type="radio"]:checked) {
   border-color: var(--selected-border);
   background-color: #f0f8ff;
 }
@@ -231,7 +230,6 @@
   height: 50px;
   margin: 0 auto;
 }
-
 
 .requestaQuote-button.back {
   background-color: var(--secondary-color);
