@@ -1,6 +1,6 @@
 /* Base styles */
-.samplePage {
-  font-family: "Segoe UI", sans-serif;
+.samplePageContainer {
+  font-family: Arial, "Roboto", sans-serif;
   background-color: #e0e7ea;
 }
 
@@ -16,6 +16,7 @@
   gap: 40px;
 }
 
+
 .samplePage_content {
   flex: 1;
   min-width: 300px;
@@ -29,7 +30,7 @@
 }
 
 .samplePage_content p {
-  font-size: 1rem;
+  font-size: 1.4rem;
   margin-bottom: 30px;
   line-height: 1.6;
   color: #f0f0f0;
@@ -120,6 +121,10 @@
   margin-bottom: 10px;
 }
 
+.samplePage_icon-circle:hover {
+  transform: scale(1.1);
+}
+
 .samplePage_servicess-box p {
   font-weight: 600;
   color: #333;
@@ -154,7 +159,7 @@
   gap: 20px;
   max-width: 1000px;
   margin: auto;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .samplePage_portfolio.samplePage_active {
@@ -205,6 +210,91 @@
   transform: scale(1.03);
 }
 
+/* view more button */
+.viewMoreWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+  background-color: #e9eef2;
+}
+
+.viewMoreButton {
+  display: inline-block;
+  background-color: #007bff;
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 14px 30px;
+  border-radius: 6px;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.viewMoreButton:hover {
+  background-color: #0056d2;
+}
+
+.arrow {
+  margin-left: 10px;
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+.ma {
+  background-color: #001728;
+  padding: 60px 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  text-align: center;
+}
+
+.ma-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.ma-icon {
+  background: white;
+  color: #001728;
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.ma-text h3,
+.ma-text p {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+  text-align: start;
+}
+
+.buttonAsk {
+  background-color: #007bff;
+  color: white;
+  padding: 18px 30px;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-left: 90px;
+}
+
+.buttonAsk:hover {
+  background-color: #0056d2;
+}
+
 /* Why us section styles */
 .whyus-section-wrapper {
   padding: 40px 15px;
@@ -214,6 +304,8 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-image: url("https://stage.weboum.com/wp-content/uploads/2021/04/shape-6.png");
   background-color: white;
+  opacity: 1; /* Ensure visibility */
+  visibility: visible; /* Ensure visibility */
 }
 
 /* Row */
@@ -399,7 +491,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 40px;
+  gap: 171px;
   padding: 60px 5%;
   background: linear-gradient(to bottom, #f2f8fc, #dcebf4);
   flex-wrap: wrap;
@@ -410,10 +502,6 @@
   flex: 1;
   min-width: 290px;
   max-width: 3000px;
-  background-color: white;
-  padding: 30px 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s;
 }
 
@@ -441,9 +529,9 @@
   align-items: center;
   justify-content: center;
   color: white;
-  width: 90px;
-  height: 80px;
-  border-radius: 50%;
+  width: 125px;
+  height: 85px;
+  border-radius: 47%;
   font-size: 32px;
   margin: 0 auto;
 }
@@ -461,13 +549,15 @@
 }
 
 .samplePage_service-box h3 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 800;
   margin-bottom: 15px;
+  white-space: nowrap;
+  color: black;
 }
 
 .samplePage_service-box p {
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   color: #444;
   line-height: 1.6;
 }
@@ -494,7 +584,7 @@
 }
 
 .samplePage_stat-box h2 {
-  font-size: 32px;
+  font-size: 32px !important;
   font-weight: 500;
   margin-bottom: 10px;
   color: white;
@@ -533,25 +623,48 @@
 
 .samplePage_testimonial-slider {
   display: flex;
-  overflow: hidden;
-  position: relative;
-  transition: transform 0.5s ease-in-out;
-  gap: 30px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 20px 0;
+  scrollbar-width: thin;
+  scrollbar-color: #007bff #e0e0e0;
+}
+
+.samplePage_testimonial-slider::-webkit-scrollbar {
+  height: 8px;
+}
+
+.samplePage_testimonial-slider::-webkit-scrollbar-track {
+  background: #e0e0e0;
+  border-radius: 4px;
+}
+
+.samplePage_testimonial-slider::-webkit-scrollbar-thumb {
+  background: #007bff;
+  border-radius: 4px;
+}
+
+.samplePage_testimonial-slider::-webkit-scrollbar-thumb:hover {
+  background: #0056b3;
 }
 
 .samplePage_testimonial-card {
-  flex: 0 0 100%;
-  padding: 30px;
+  flex: 0 0 300px; /* Fixed width for cards */
+  padding: 20px;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .samplePage_testimonial-inner {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 15px;
 }
 
 .samplePage_stars {
@@ -589,6 +702,11 @@
 .samplePage_quote {
   font-size: 28px;
   color: #d1cde5;
+}
+
+.samplePage_testimonial-text{
+  font-size: 18px;
+
 }
 
 /* My-3 utility class */
@@ -672,6 +790,8 @@
     padding: 40px 5%;
   }
 
+
+ 
   .samplePage_service-box {
     min-width: 100%;
     max-width: 100%;
@@ -686,11 +806,11 @@
   }
 
   .samplePage_stat-box h2 {
-    font-size: 24px;
+    font-size: 32px;
   }
 
   .samplePage_stat-box p {
-    font-size: 14px;
+    font-size: 19px;
   }
 
   .samplePage_testimonial-section {
@@ -698,12 +818,13 @@
   }
 
   .samplePage_testimonial-slider {
-    flex-direction: column;
+    flex-direction: row; /* Keep horizontal scrolling */
+    padding: 10px;
   }
 
   .samplePage_testimonial-card {
-    flex: 0 0 100%;
-    margin-bottom: 20px;
+    flex: 0 0 280px; /* Slightly smaller for mobile */
+    margin-right: 15px;
   }
 
   .samplePage_portfolio {
@@ -800,7 +921,8 @@
   }
 
   .samplePage_testimonial-card {
-    flex: 0 0 48%;
+    flex: 0 0 300px;
+    margin-right: 20px;
   }
 
   .samplePage_portfolio {

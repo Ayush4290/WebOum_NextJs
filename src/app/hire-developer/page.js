@@ -301,9 +301,11 @@ export default function HireDeveloper() {
                 <div id="section-title-skills">Skills</div>
                 <div id="tag-container-skills">
                   {skills.map((skill) => (
-                    <div 
-                      key={skill} 
-                      className={`tag ${selectedSkills.includes(skill) ? 'selected' : ''}`} 
+                    <div
+                      key={skill}
+                      className={`tag ${
+                        selectedSkills.includes(skill) ? "selected" : ""
+                      }`}
                       onClick={() => handleTagSelection(skill, "skills")}
                     >
                       {skill}
@@ -314,9 +316,11 @@ export default function HireDeveloper() {
                 <div id="section-title-technology">Technology</div>
                 <div id="tag-container-technology">
                   {technologies.map((tech) => (
-                    <div 
-                      key={tech} 
-                      className={`tag ${selectedTechnologies.includes(tech) ? 'selected' : ''}`} 
+                    <div
+                      key={tech}
+                      className={`tag ${
+                        selectedTechnologies.includes(tech) ? "selected" : ""
+                      }`}
                       onClick={() => handleTagSelection(tech, "technologies")}
                     >
                       {tech}
@@ -327,9 +331,11 @@ export default function HireDeveloper() {
                 <div id="section-title-worktime">Work Time</div>
                 <div id="tag-container-worktime">
                   {workTimes.map((time) => (
-                    <div 
-                      key={time} 
-                      className={`tag ${selectedWorkTime.includes(time) ? 'selected' : ''}`} 
+                    <div
+                      key={time}
+                      className={`tag ${
+                        selectedWorkTime.includes(time) ? "selected" : ""
+                      }`}
                       onClick={() => handleTagSelection(time, "workTime")}
                     >
                       {time}
@@ -350,9 +356,11 @@ export default function HireDeveloper() {
                 <div id="section-title-timeframe">Timeframe</div>
                 <div id="tag-container-timeframe">
                   {timeframes.map((timeframe) => (
-                    <div 
-                      key={timeframe} 
-                      className={`tag ${selectedTimeframe.includes(timeframe) ? 'selected' : ''}`} 
+                    <div
+                      key={timeframe}
+                      className={`tag ${
+                        selectedTimeframe.includes(timeframe) ? "selected" : ""
+                      }`}
                       onClick={() => handleTagSelection(timeframe, "timeframe")}
                     >
                       {timeframe}
@@ -363,9 +371,11 @@ export default function HireDeveloper() {
                 <div id="section-title-start">Start</div>
                 <div id="tag-container-start">
                   {starts.map((start) => (
-                    <div 
-                      key={start} 
-                      className={`tag ${selectedStart.includes(start) ? 'selected' : ''}`} 
+                    <div
+                      key={start}
+                      className={`tag ${
+                        selectedStart.includes(start) ? "selected" : ""
+                      }`}
                       onClick={() => handleTagSelection(start, "start")}
                     >
                       {start}

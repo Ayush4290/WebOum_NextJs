@@ -411,6 +411,7 @@
 /* Additional small mobile optimization */
 @media (max-width: 576px) {
   .logo-img {
+    padding-top: 7px;
     width: 120px;
   }
 

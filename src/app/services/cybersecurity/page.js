@@ -9,7 +9,7 @@ import { FaShieldAlt, FaLock, FaNetworkWired } from "react-icons/fa";
 export default function Cybersecurity() {
   return (
     <>
-      <SubHeader title="Cybersecurity Solutions" />
+      <SubHeader title="Cyber Security Solutions" />
       <div className="cybersecurity">
         <section className="cybersecurity-intro">
           <div className="cybersecurity-row">

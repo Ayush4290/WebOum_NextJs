@@ -13,7 +13,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
-  font-family: "Poppins", sans-serif;
+  font-family: Arial, "Roboto", sans-serif;
 }
 
 .web-container em {
@@ -101,6 +101,7 @@
   display: flex;
   gap: 12px;
   margin-bottom: 20px;
+  padding: 20px;
 }
 
 .feature-icon {

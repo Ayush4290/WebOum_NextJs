@@ -17,7 +17,7 @@
   flex-wrap: wrap;
   gap: 20px;
   font-family: Arial, "Roboto", sans-serif;
-  background-image: url("https://stage.weboum.com/wp-content/uploads/2021/04/shape-6.png");
+  background-image: url("https://weboum.com/wp-content/uploads/2021/04/shape-6.png");
 }
 
 /* Row */
@@ -206,12 +206,20 @@
     box-shadow var(--transition-speed) ease-in-out;
 }
 
+
 .whyus-form-control:focus,
 .whyus-form-select:focus,
 .whyus-form-box textarea:focus {
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(170, 0, 170, 0.2);
+}
+
+
+.whyus-form-select {
+  max-height: 150px;
+  overflow-y: auto;        
+  
 }
 
 .whyus-captcha-box {

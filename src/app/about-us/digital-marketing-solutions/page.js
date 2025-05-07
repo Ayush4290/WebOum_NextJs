@@ -251,7 +251,7 @@ export default function Digital() {
                 href="/services/Digital-Marketing-Packages"
                 className="digital-cta-button"
               >
-                Packages for Digital
+                Packages for Digital Marketing
               </a>
             </div>
           </div>

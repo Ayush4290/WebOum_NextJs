@@ -8,7 +8,7 @@
   background-color: #800080;
   color: var(--white);
   padding: 3rem 5rem 1rem;
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: Arial, "Roboto", sans-serif;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -164,8 +164,8 @@
 .footer-copyright {
   text-align: center;
   padding-top: 2rem;
-  margin-top: 4rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 1rem;
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
   font-size: 1rem;
   color: white;
 }

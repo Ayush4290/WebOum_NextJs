@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaFacebook , FaYoutube } from "react-icons/fa";
+import { BsTwitterX } from "react-icons/bs";
 import "./request_a_quote.css";
 
 const steps = [
@@ -122,7 +123,7 @@ export default function RequestaQuote() {
   const handleNext = () => {
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
-      setFormError(""); // Clear any previous error messages
+      setFormError("");
     }
   };
 
@@ -390,13 +391,13 @@ export default function RequestaQuote() {
               <FaFacebook />
             </a>
             <a
-              href="https://twitter.com"
+              href="https://x.com/weboumtech33587"
               target="_blank"
               rel="noopener noreferrer"
               className="requestaQuote-social-icon"
               aria-label="Twitter"
             >
-              <FaTwitter />
+              <BsTwitterX  />
             </a>
             <a
               href="https://youtube.com"
@@ -432,9 +433,13 @@ export default function RequestaQuote() {
                       const sectionId = section.subtitle
                         .toLowerCase()
                         .replace(/\s+/g, "_");
+                      const isSelected = formData[sectionId] === option.value;
+
                       return (
                         <label
-                          className="requestaQuote-option"
+                          className={`requestaQuote-option ${
+                            isSelected ? "selected" : ""
+                          }`}
                           key={optIndex}
                           htmlFor={`${sectionId}_${option.value}`}
                         >
@@ -446,7 +451,7 @@ export default function RequestaQuote() {
                             onChange={() =>
                               handleOptionChange(sectionId, option.value)
                             }
-                            checked={formData[sectionId] === option.value}
+                            checked={isSelected}
                           />
                           {option.label}
                         </label>
