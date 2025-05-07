@@ -122,7 +122,7 @@ export default function RequestaQuote() {
   const handleNext = () => {
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
-      setFormError(""); // Clear any previous error messages
+      setFormError("");
     }
   };
 
@@ -432,9 +432,13 @@ export default function RequestaQuote() {
                       const sectionId = section.subtitle
                         .toLowerCase()
                         .replace(/\s+/g, "_");
+                      const isSelected = formData[sectionId] === option.value;
+
                       return (
                         <label
-                          className="requestaQuote-option"
+                          className={`requestaQuote-option ${
+                            isSelected ? "selected" : ""
+                          }`}
                           key={optIndex}
                           htmlFor={`${sectionId}_${option.value}`}
                         >
@@ -446,7 +450,7 @@ export default function RequestaQuote() {
                             onChange={() =>
                               handleOptionChange(sectionId, option.value)
                             }
-                            checked={formData[sectionId] === option.value}
+                            checked={isSelected}
                           />
                           {option.label}
                         </label>

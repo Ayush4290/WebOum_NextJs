@@ -20,6 +20,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import "./sample-page.css";
 import { sendContactForm } from "@/utils/api";
+import { FiPhoneCall } from "react-icons/fi";
 
 export default function SamplePage() {
   const [formData, setFormData] = useState({
@@ -212,6 +213,7 @@ Message: ${sanitizedMessage}
 
   return (
     <>
+      <div className="samplePageContainer">
       <div className="samplePage">
         <section className="samplePage_business-section samplePage_conta">
           <div className="samplePage_content container">
@@ -512,6 +514,26 @@ Message: ${sanitizedMessage}
             width={800}
             height={600}
           />
+        </div>
+        <div className="viewMoreWrapper">
+          <a className="viewMoreButton" href="/portfolio">
+            View More <span className="arrow">→</span>
+          </a>
+        </div>
+
+        <div className="ma">
+          <div className="ma-content">
+            <div className="ma-icon">
+              <FiPhoneCall size={40} />
+            </div>
+            <div className="ma-text">
+              <h3>Discuss Your Product / Project</h3>
+              <p>Development Ideas With Our Experts Now</p>
+            </div>
+          </div>
+          <a href="/request-a-quote" className="buttonAsk">
+            ASK AN EXPERT
+          </a>
         </div>
 
         <section className="whyus-section-wrapper">
@@ -846,6 +868,7 @@ Message: ${sanitizedMessage}
             </div>
           </div>
         </section>
+      </div>
       </div>
       <Days />
     </>

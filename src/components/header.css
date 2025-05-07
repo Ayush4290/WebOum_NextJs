@@ -13,7 +13,7 @@
   background: var(--primary-gradient);
   color: white;
   min-height: 9vh;
-  font-family: Arial, sans-serif;
+  font-family: Arial, "Roboto", sans-serif;
   position: relative;
   width: 100%;
 }

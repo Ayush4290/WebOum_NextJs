@@ -16,7 +16,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Arial, "Roboto", sans-serif;
   background-image: url("https://stage.weboum.com/wp-content/uploads/2021/04/shape-6.png");
 }
 
@@ -42,10 +42,24 @@
   margin-bottom: 10px;
 }
 
-.whyus-left-content p {
+.whyus-left-content > p {
   color: var(--text-color);
+  margin-bottom: 15px;
+  font-size: 1rem;
+  line-height: 1.6;
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: transform var(--transition-speed) ease-in-out,
+    opacity var(--transition-speed) ease-in-out;
+}
+
+.whyus-left-content > p:first-of-type {
   text-transform: uppercase;
-  margin-bottom: 10px;
+}
+
+.whyus-left-content > p.aos-animate {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .whyus-highlight-line {
@@ -82,22 +96,6 @@
 .whyus-left-content h2 strong {
   font-weight: 800;
   color: black;
-}
-
-.whyus-left-content p {
-  color: black;
-  margin-bottom: 15px;
-  font-size: 1rem;
-  line-height: 1.6;
-  transform: translateY(-20px);
-  opacity: 0;
-  transition: transform var(--transition-speed) ease-in-out,
-    opacity var(--transition-speed) ease-in-out;
-}
-
-.whyus-left-content p.aos-animate {
-  transform: translateY(0);
-  opacity: 1;
 }
 
 /* Feature list */
@@ -149,6 +147,9 @@
   font-size: 0.9rem;
   line-height: 1.5;
   color: black;
+  text-transform: none;
+  opacity: 1;
+  transform: none;
 }
 
 /* Form box */
@@ -226,6 +227,27 @@
 
 .whyus-captcha-box input {
   margin-right: 8px;
+}
+
+/* Error and success messages */
+.whyus-error-message,
+.whyus-success-message {
+  margin-bottom: 15px;
+  padding: 8px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.whyus-error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
+}
+
+.whyus-success-message {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
 }
 
 /* Submit button */
