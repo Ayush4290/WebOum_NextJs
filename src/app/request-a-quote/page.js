@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaFacebook , FaYoutube } from "react-icons/fa";
+import { BsTwitterX } from "react-icons/bs";
 import "./request_a_quote.css";
 
 const steps = [
@@ -390,13 +391,13 @@ export default function RequestaQuote() {
               <FaFacebook />
             </a>
             <a
-              href="https://twitter.com"
+              href="https://x.com/weboumtech33587"
               target="_blank"
               rel="noopener noreferrer"
               className="requestaQuote-social-icon"
               aria-label="Twitter"
             >
-              <FaTwitter />
+              <BsTwitterX  />
             </a>
             <a
               href="https://youtube.com"

@@ -3,11 +3,12 @@
 import SubHeader from "@/app/sub-header/page";
 import {
   FaFacebookF,
-  FaTwitter,
+  
   FaYoutube,
   FaLinkedinIn,
   FaInstagram,
 } from "react-icons/fa";
+import { BsTwitterX } from "react-icons/bs";
 import Days from "../days/page";
 import "./contact.css";
 import { useState } from "react";
@@ -222,7 +223,7 @@ Message: ${formData.message || "No message provided."}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaTwitter />
+                <BsTwitterX />
               </a>
               <a
                 href="https://www.youtube.com/@WeboumTechnologyPvt.Ltd."

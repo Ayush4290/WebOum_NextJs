@@ -2,7 +2,8 @@
 
 import "./footer.css";
 import Link from "next/link";
-import { FaFacebook, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaYoutube } from "react-icons/fa";
+import { BsTwitterX } from "react-icons/bs";
 import Image from "next/image";
 
 export default function Footer() {
@@ -104,12 +105,12 @@ export default function Footer() {
                 <FaFacebook />
               </a>
               <a
-                href="https://x.com/weboum"
+                href="https://x.com/weboumtech33587"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-icon"
               >
-                <FaTwitter />
+                <BsTwitterX />
               </a>
               <a
                href="https://www.youtube.com/@WeboumTechnologyPvt.Ltd."
