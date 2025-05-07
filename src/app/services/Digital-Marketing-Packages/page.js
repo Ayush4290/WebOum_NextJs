@@ -664,25 +664,8 @@ const DigitalMarketingPackages = () => {
           </p>
         </div>
       </div>
-
-      <div className="support-section">
-        <div>CUSTOMER SUPPORT</div>
-        <div className="row">
-          <div>1</div>
-          <div>Email, Chat, Phone</div>
-          <div>YES</div>
-          <div>YES</div>
-          <div>YES</div>
-        </div>
-      </div>
-
-      <div className="footer">
-        <p>
-          FOR CUSTOM DIGITAL MARKETING ✉
-          <a href="/request-a-quote">ASK FOR QUOTES</a>
-        </p>
-      </div>
-    </div>
+      <Days />
+    </>
   );
 };
 
