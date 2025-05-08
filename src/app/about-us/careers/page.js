@@ -160,7 +160,7 @@ const Careers = () => {
 </html>
       `;
 
-      // Plain text fallback in case the API or email client doesn't support HTML
+      
       const plainTextFallback = `
 Job Application Details:
 ------------------------

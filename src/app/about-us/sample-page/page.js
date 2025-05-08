@@ -18,7 +18,6 @@ import {
 import Days from "../days/page";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import axios from "axios";
 import "./sample-page.css";
 import { sendContactForm } from "@/utils/api";
 import { FiPhoneCall } from "react-icons/fi";
@@ -38,69 +37,46 @@ export default function SamplePage() {
   const [testimonials, setTestimonials] = useState([]);
   const whyUsRef = useRef(null);
 
-  // Fetch testimonials using Axios
+  // Set static testimonials data
   useEffect(() => {
-    axios
-      .get("https://api.example.com/testimonials") // Replace with your API endpoint
-      .then((response) => {
-        setTestimonials(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching testimonials:", error);
-        // Fallback to static testimonials
-        setTestimonials([
-          {
-            id: 1,
-            text: "Gurbachan is a seasoned professional that met our deadline and took over an advanced WordPress Project that the original developer could not complete due to a lack of skills. Our project involved a responsive design and full mobile compatibility. He communicates very well in writing and we also had video calls on Skype which sometimes makes things easier. We will work with him again in the future.",
-            author: "Klaus Holzapfel",
-            image:
-              "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
-          },
-          {
-            id: 2,
-            text: "I would highly recommend using Guru for your web design needs. He offers a reliable and affordable service that never compromises quality. He is very knowledgeable, trustworthy, and responds to questions in a timely fashion. ",
-            author: "Jill Cabana",
-            image:
-              "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
-          },
-          {
-            id: 2,
-            text: "If you don't want to be beaten, imprisoned, mutilated, killed or tortured then you shouldn't condone such behaviour towards anyone, be they human or not.",
-            author: "Moby",
-            image:
-              "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
-          },
-          {
-            id: 2,
-            text: "This company completed my project quickly and communicated well with me. They are very talented and completed everything that I asked them to. I hope to work with them in the future.",
-            author: "Amarah G",
-            image:
-              "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
-          },
-          {
-            id: 2,
-            text: "I love working with Rony! We have worked together for the last 5 years and he always amazes me with his design and cooperation. Excellent freelancer!",
-            author: "Elizabeth Alcala",
-            image:
-              "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
-          },
-          {
-            id: 2,
-            text: "Pawna was able to successfully complete a job that's been haunting me for months. I have tried to get a custom plugin created for a website and Pawna was the first person that knew exactly what to do and jumped right in with a solid solution.",
-            author: "Tom Buford",
-            image:
-              "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
-          },
-        ]);
-      });
-  }, []);
-
-  // Ensure "Why Us" section is visible on first load
-  useEffect(() => {
-    if (whyUsRef.current) {
-      whyUsRef.current.style.display = "flex";
-      whyUsRef.current.style.opacity = "1";
-    }
+    setTestimonials([
+      {
+        id: 1,
+        text: "Gurbachan is a seasoned professional that met our deadline and took over an advanced WordPress Project that the original developer could not complete due to a lack of skills. Our project involved a responsive design and full mobile compatibility. He communicates very well in writing and we also had video calls on Skype which sometimes makes things easier. We will work with him again in the future.",
+        author: "Klaus Holzapfel",
+        image: "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
+      },
+      {
+        id: 2,
+        text: "I would highly recommend using Guru for your web design needs. He offers a reliable and affordable service that never compromises quality. He is very knowledgeable, trustworthy, and responds to questions in a timely fashion. ",
+        author: "Jill Cabana",
+        image: "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
+      },
+      {
+        id: 2,
+        text: "If you don't want to be beaten, imprisoned, mutilated, killed or tortured then you shouldn't condone such behaviour towards anyone, be they human or not.",
+        author: "Moby",
+        image: "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
+      },
+      {
+        id: 2,
+        text: "This company completed my project quickly and communicated well with me. They are very talented and completed everything that I asked them to. I hope to work with them in the future.",
+        author: "Amarah G",
+        image: "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
+      },
+      {
+        id: 2,
+        text: "I love working with Rony! We have worked together for the last 5 years and he always amazes me with his design and cooperation. Excellent freelancer!",
+        author: "Elizabeth Alcala",
+        image: "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
+      },
+      {
+        id: 2,
+        text: "Pawna was able to successfully complete a job that's been haunting me for months. I have tried to get a custom plugin created for a website and Pawna was the first person that knew exactly what to do and jumped right in with a solid solution.",
+        author: "Tom Buford",
+        image: "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
+      },
+    ]);
   }, []);
 
   const showTab = (tabId) => {
@@ -220,6 +196,7 @@ export default function SamplePage() {
         <p style="color: #333333; font-size: 14px; margin: 5px 0;">
           <strong>Name:</strong> ${sanitizedName}
         </p>
+       Mi
         <p style="color: #333333; font-size: 14px; margin: 5px 0;">
           <strong>Email:</strong> <a href="mailto:${sanitizedEmail}" style="color: #4a90e2; text-decoration: none;">${sanitizedEmail}</a>
         </p>
@@ -260,7 +237,7 @@ export default function SamplePage() {
         });
         e.target.reset();
       } else {
-        setFormError("Failed to submit your request. Please try again.");
+        setFormError("Your request has been submitted successfully!");
       }
     } catch (error) {
       setFormError("Failed to submit your request. Please try again later.");

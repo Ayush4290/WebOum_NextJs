@@ -81,21 +81,61 @@ const Home = () => {
     setFormStatus("submitting");
 
     try {
-      // Prepare the message object
-      const messageObj = {
-        name: formData.name,
-        email: formData.email,
-        phoneNumber: formData.phoneNumber,
-        company: formData.company,
-        website: formData.website,
-        message: formData.message,
+      // Sanitize the message field to prevent HTML injection
+      const sanitizeInput = (input) => {
+        return input.replace(/</g, "<").replace(/>/g, ">").replace(/"/g, " ");
       };
+      const sanitizedMessage = sanitizeInput(
+        formData.message || "No message provided."
+      );
+
+      // HTML email template matching the provided style
+      const messageContent = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Contact Form Submission</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f0f0f0;">
+  <div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #e0e0e0;">
+    <!-- Header -->
+    <div style="background-color: #4682b4; padding: 15px; text-align: center;">
+      <h2 style="color: #ffffff; margin: 0; font-size: 20px;">New Contact Form Submission</h2>
+    </div>
+    <!-- Body -->
+    <div style="padding: 20px;">
+      <p style="color: #333333; font-size: 16px; margin: 0 0 15px;">
+        Someone has reached out through the Weboum Technology contact form.
+      </p>
+      <div style="border-top: 1px solid #e0e0e0; padding-top: 15px;">
+        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
+          <strong>Name:</strong> ${formData.name}
+        </p>
+        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
+          <strong>Email:</strong> <a href="mailto:${formData.email}" style="color: #4682b4; text-decoration: none;">${formData.email}</a>
+        </p>
+        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
+          <strong>Phone:</strong> ${formData.phoneNumber}
+        </p>
+        
+       
+        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
+          <strong>Message:</strong> ${sanitizedMessage}
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+      `;
 
       // Send form data to the API
       await sendContactForm({
         email: formData.email,
         subject: "New Contact Form Submission",
-        message: JSON.stringify(messageObj),
+        message: messageContent,
       });
 
       setFormStatus("success");
@@ -399,23 +439,23 @@ const Home = () => {
                   }`}
                   key={index}
                 >
-                <div className="testimonial-quote">
-                  <p className="testimonial-text">"{testimonial.text}"</p>
+                  <div className="testimonial-quote">
+                    <p className="testimonial-text">"{testimonial.text}"</p>
 
-                  <div className="stars">
-                    {"★".repeat(testimonial.stars)}
-                    {"☆".repeat(5 - testimonial.stars)}
+                    <div className="stars">
+                      {"★".repeat(testimonial.stars)}
+                      {"☆".repeat(5 - testimonial.stars)}
+                    </div>
+
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      className="testimonial-image"
+                    />
+
+                    <h4 className="testimonial-name">{testimonial.name}</h4>
+                    <p className="testimonial-position">{testimonial.title}</p>
                   </div>
-
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="testimonial-image"
-                  />
-
-                  <h4 className="testimonial-name">{testimonial.name}</h4>
-                  <p className="testimonial-position">{testimonial.title}</p>
-                </div>
                 </div>
               ))}
             </div>

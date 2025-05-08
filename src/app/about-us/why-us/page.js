@@ -23,7 +23,7 @@ export default function WhyUs() {
   const [formSuccess, setFormSuccess] = useState("");
 
   useEffect(() => {
-    // Initialize AOS
+    
     AOS.init({
       duration: 1000,
       once: false,
@@ -72,7 +72,7 @@ export default function WhyUs() {
     setIsSubmitting(true);
 
     try {
-      // Sanitize inputs to prevent HTML injection
+     
       const sanitizeInput = (input) => {
         return input
           .replace(/</g, "&lt;")
@@ -88,10 +88,10 @@ export default function WhyUs() {
         ? sanitizeInput(formData.message)
         : "No message provided";
 
-      // Construct the subject
+    
       const subject = `Free Consultation Request from ${sanitizedName}`;
 
-      // HTML email template
+   
       const messageContent = `
 <!DOCTYPE html>
 <html lang="en">
@@ -230,13 +230,13 @@ Message: ${sanitizedMessage}
               data-aos-delay="800"
             >
               <Image
-                src="/image/background.jpeg"
+                src="https://weboum.com/wp-content/uploads/2024/04/icon1.png"
                 alt="Check"
                 width={50}
                 height={50}
                 className="feature-icon"
               />
-              <div >
+              <div>
                 <h6>High Customer Retention Rate</h6>
                 <p>
                   We have a 100% retention rate due to our exceptional services
@@ -250,7 +250,7 @@ Message: ${sanitizedMessage}
               data-aos-delay="900"
             >
               <Image
-                src="/image/background.jpeg"
+                src="https://weboum.com/wp-content/uploads/2024/04/icon2.png"
                 alt="Check"
                 width={50}
                 height={50}
@@ -270,7 +270,7 @@ Message: ${sanitizedMessage}
               data-aos-delay="1000"
             >
               <Image
-                src="/image/background.jpeg"
+                src="https://weboum.com/wp-content/uploads/2024/04/icon3.png"
                 alt="Check"
                 width={50}
                 height={50}
