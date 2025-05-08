@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { FaFacebook , FaYoutube } from "react-icons/fa";
+import { useState, useRef } from "react";
+import { FaFacebook, FaYoutube } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import "./request_a_quote.css";
+import Days from "../about-us/days/page";
+import SubHeader from "../sub-header/page";
 
 const steps = [
   {
@@ -42,7 +44,6 @@ const steps = [
       },
     ],
   },
-  // Second page: Project Scope and Budget
   {
     title: "",
     sections: [
@@ -72,7 +73,6 @@ const steps = [
       },
     ],
   },
-  // Third page: Timeframe and Start
   {
     title: "",
     sections: [
@@ -118,7 +118,18 @@ export default function RequestaQuote() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState("");
   const [formSuccess, setFormSuccess] = useState("");
-  const [selectedOptions, setSelectedOptions] = useState({});
+  const formRef = useRef(null);
+
+  // State for multi-selected options
+  const [selectedOptions, setSelectedOptions] = useState({
+    stage: [],
+    services_needed: [],
+    development_stages_needed: [],
+    project_scope: [],
+    expected_budget: [],
+    timeframe: [],
+    start: [],
+  });
 
   const handleNext = () => {
     if (currentStep < steps.length - 1) {
@@ -134,26 +145,7 @@ export default function RequestaQuote() {
     }
   };
 
-  const validateCurrentStep = () => {
-    const currentStepData = steps[currentStep];
-
-    // For steps with radio button options
-    if (currentStepData.sections) {
-      // Check if at least one option is selected for each section
-      for (const section of currentStepData.sections) {
-        const sectionName = section.subtitle.toLowerCase().replace(/\s+/g, "_");
-        if (!formData[sectionName]) {
-          setFormError(`Please select an option for "${section.subtitle}"`);
-          return false;
-        }
-      }
-    }
-
-    return true;
-  };
-
   const validateFinalForm = () => {
-    // For the final step with required fields
     if (currentStep === steps.length - 1) {
       const requiredFields = steps[currentStep].fields.filter(
         (field) => field.required
@@ -166,7 +158,6 @@ export default function RequestaQuote() {
         }
       }
 
-      // Validate email format
       if (formData.email && !/^\S+@\S+\.\S+$/.test(formData.email)) {
         setFormError("Please enter a valid email address.");
         return false;
@@ -177,9 +168,8 @@ export default function RequestaQuote() {
   };
 
   const handleSubmit = async (e) => {
-    if (e) e.preventDefault();
+    e.preventDefault();
 
-    // Reset form status
     setFormError("");
     setFormSuccess("");
 
@@ -190,34 +180,37 @@ export default function RequestaQuote() {
     setIsSubmitting(true);
 
     try {
-      // Helper function to get label from value
-      const getOptionLabel = (sectionSubtitle, value) => {
+      const getOptionLabels = (sectionName, values) => {
         for (const step of steps) {
           if (step.sections) {
             for (const section of step.sections) {
-              if (
-                section.subtitle.toLowerCase().replace(/\s+/g, "_") ===
-                sectionSubtitle
-              ) {
-                const option = section.options.find(
-                  (opt) => opt.value === value
-                );
-                return option ? option.label : value;
+              const normalizedSectionName = section.subtitle
+                .toLowerCase()
+                .replace(/[\s:]+/g, "_")
+                .replace(/[^a-z0-9_]/g, "");
+              if (normalizedSectionName === sectionName) {
+                return values
+                  .map((value) => {
+                    const option = section.options.find(
+                      (opt) => opt.value === value
+                    );
+                    return option ? option.label : value;
+                  })
+                  .join(", ");
               }
             }
           }
         }
-        return value;
+        return values.join(", ");
       };
 
-      // Create HTML email template
       const message = `
         <!DOCTYPE html>
         <html lang="en">
         <head>
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Quote Request</title>
+          <title>Quote Request درمانی</title>
         </head>
         <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4;">
           <div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 20px;">
@@ -237,43 +230,55 @@ export default function RequestaQuote() {
               }</p>
               <p style="margin: 10px 0; color: #555555;"><strong>Company:</strong> ${
                 formData.company || "Not provided"
-              }</ GYp>
+              }</p>
               <p style="margin: 10px 0; color: #555555;"><strong>Website:</strong> ${
                 formData.website || "Not provided"
               }</p>
 
               <h2 style="font-size: 20px; color: #333333; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-top: 20px;">Project Details</h2>
               <p style="margin: 10px 0; color: #555555;"><strong>Stage:</strong> ${
-                getOptionLabel("stage", formData.stage) || "Not selected"
+                selectedOptions.stage.length > 0
+                  ? getOptionLabels("stage", selectedOptions.stage)
+                  : "Not selected"
               }</p>
               <p style="margin: 10px 0; color: #555555;"><strong>Services Needed:</strong> ${
-                getOptionLabel("services_needed", formData.services_needed) ||
-                "Not selected"
+                selectedOptions.services_needed.length > 0
+                  ? getOptionLabels(
+                      "services_needed",
+                      selectedOptions.services_needed
+                    )
+                  : "Not selected"
               }</p>
               <p style="margin: 10px 0; color: #555555;"><strong>Development Stages Needed:</strong> ${
-                getOptionLabel(
-                  "development_stages_needed",
-                  formData.development_stages_needed
-                ) || "Not selected"
+                selectedOptions.development_stages_needed.length > 0
+                  ? getOptionLabels(
+                      "development_stages_needed",
+                      selectedOptions.development_stages_needed
+                    )
+                  : "Not selected"
               }</p>
               <p style="margin: 10px 0; color: #555555;"><strong>Project Scope:</strong> ${
-                getOptionLabel(
-                  "project_scope:_do_you_want_us_to_identify_and_suggest_more_advanced_functionality_options?",
-                  formData[
-                    "project_scope:_do_you_want_us_to_identify_and_suggest_more_advanced_functionality_options?"
-                  ]
-                ) || "Not selected"
+                selectedOptions.project_scope.length > 0
+                  ? getOptionLabels("project_scope", selectedOptions.project_scope)
+                  : "Not selected"
               }</p>
               <p style="margin: 10px 0; color: #555555;"><strong>Expected Budget:</strong> ${
-                getOptionLabel("expected_budget", formData.expected_budget) ||
-                "Not selected"
+                selectedOptions.expected_budget.length > 0
+                  ? getOptionLabels(
+                      "expected_budget",
+                      selectedOptions.expected_budget
+                    )
+                  : "Not selected"
               }</p>
               <p style="margin: 10px 0; color: #555555;"><strong>Timeframe:</strong> ${
-                getOptionLabel("timeframe", formData.timeframe) ||
-                "Not selected"
+                selectedOptions.timeframe.length > 0
+                  ? getOptionLabels("timeframe", selectedOptions.timeframe)
+                  : "Not selected"
               }</p>
               <p style="margin: 10px 0; color: #555555;"><strong>Start:</strong> ${
-                getOptionLabel("start", formData.start) || "Not selected"
+                selectedOptions.start.length > 0
+                  ? getOptionLabels("start", selectedOptions.start)
+                  : "Not selected"
               }</p>
 
               <h2 style="font-size: 20px; color: #333333; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-top: 20px;">Additional Message</h2>
@@ -289,7 +294,6 @@ export default function RequestaQuote() {
         </html>
       `.trim();
 
-      // Create FormData object for API request
       const apiFormData = new FormData();
       apiFormData.append("wxmail", "true");
       apiFormData.append("email", formData.email || "");
@@ -299,7 +303,6 @@ export default function RequestaQuote() {
       );
       apiFormData.append("message", message);
 
-      // Make the API request
       const response = await fetch("https://weboum.com/email-api/", {
         method: "POST",
         body: apiFormData,
@@ -315,10 +318,22 @@ export default function RequestaQuote() {
         setFormSuccess(
           "Your quote request has been submitted successfully. We'll get back to you soon!"
         );
-        // Reset form after successful submission
+
         setFormData({});
-        setSelectedOptions({});
+        setSelectedOptions({
+          stage: [],
+          services_needed: [],
+          development_stages_needed: [],
+          project_scope: [],
+          expected_budget: [],
+          timeframe: [],
+          start: [],
+        });
         setCurrentStep(0);
+        formRef.current?.reset();
+        document
+          .querySelectorAll(".tag")
+          .forEach((tag) => tag.classList.remove("selected"));
       } else {
         setFormError(
           result.message || "Failed to submit your request. Please try again."
@@ -332,18 +347,17 @@ export default function RequestaQuote() {
     }
   };
 
-  const handleOptionChange = (sectionName, value) => {
-    setFormData({
-      ...formData,
-      [sectionName]: value,
+  const handleTagSelection = (sectionName, value) => {
+    setSelectedOptions((prev) => {
+      const currentSelections = prev[sectionName] || [];
+      return {
+        ...prev,
+        [sectionName]: currentSelections.includes(value)
+          ? currentSelections.filter((item) => item !== value)
+          : [...currentSelections, value],
+      };
     });
 
-    setSelectedOptions({
-      ...selectedOptions,
-      [sectionName]: value,
-    });
-
-    // Clear errors when user makes a selection
     if (formError) {
       setFormError("");
     }
@@ -356,7 +370,6 @@ export default function RequestaQuote() {
       [name]: value,
     });
 
-    // Clear errors when user starts typing
     if (formError) {
       setFormError("");
     }
@@ -366,164 +379,169 @@ export default function RequestaQuote() {
   const progress = ((currentStep + 1) / steps.length) * 100;
 
   return (
-    <div className="requestaQuote-wrapper">
-      <div className="requestaQuote-progress-bar">
-        <div
-          className="requestaQuote-progress"
-          style={{ width: `${progress}%` }}
-        ></div>
-      </div>
-      <div className="requestaQuote-container">
-        <div className="requestaQuote-left">
-          <h4 className="requestaQuote-subtitle">Weboum – Send Us A Message</h4>
-          <div className="requestaQuote-line"></div>
-          <h2 className="requestaQuote-title">
-            Do You Have Any Questions? We'll Be Happy To Assist!
-          </h2>
-          <div className="requestaQuote-social">
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="requestaQuote-social-icon"
-              aria-label="Facebook"
-            >
-              <FaFacebook />
-            </a>
-            <a
-              href="https://x.com/weboumtech33587"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="requestaQuote-social-icon"
-              aria-label="Twitter"
-            >
-              <BsTwitterX  />
-            </a>
-            <a
-              href="https://youtube.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="requestaQuote-social-icon"
-              aria-label="YouTube"
-            >
-              <FaYoutube />
-            </a>
-          </div>
+    <>
+      <SubHeader title="Request a quote" />
+      <div className="requestaQuote-wrapper">
+        <div className="requestaQuote-progress-bar">
+          <div
+            className="requestaQuote-progress"
+            style={{ width: `${progress}%` }}
+          ></div>
         </div>
-        <div className="requestaQuote-right">
-          <div className="requestaQuote-section">
-            <h3 className="requestaQuote-heading">{currentStepData.title}</h3>
-            {formError && (
-              <div className="requestaQuote-error" role="alert">
-                {formError}
-              </div>
-            )}
-            {formSuccess && (
-              <div className="requestaQuote-success" role="alert">
-                {formSuccess}
-              </div>
-            )}
+        <div className="requestaQuote-container">
+          <div className="requestaQuote-left">
+            <h4 className="requestaQuote-subtitle">
+              Weboum – Send Us A Message
+            </h4>
+            <div className="requestaQuote-line"></div>
+            <h2 className="requestaQuote-title">
+              Do You Have Any Questions? We'll Be Happy To Assist!
+            </h2>
+            <div className="requestaQuote-social">
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="requestaQuote-social-icon"
+                aria-label="Facebook"
+              >
+                <FaFacebook />
+              </a>
+              <a
+                href="https://x.com/weboumtech33587"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="requestaQuote-social-icon"
+                aria-label="Twitter"
+              >
+                <BsTwitterX />
+              </a>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="requestaQuote-social-icon"
+                aria-label="YouTube"
+              >
+                <FaYoutube />
+              </a>
+            </div>
+          </div>
+          <div className="requestaQuote-right">
+            <div className="requestaQuote-section">
+              <h3 className="requestaQuote-heading">{currentStepData.title}</h3>
+              {formError && (
+                <div className="requestaQuote-error" role="alert">
+                  {formError}
+                </div>
+              )}
+              {formSuccess && (
+                <div className="requestaQuote-success" role="alert">
+                  {formSuccess}
+                </div>
+              )}
 
-            {currentStepData.sections ? (
-              currentStepData.sections.map((section, secIndex) => (
-                <div key={secIndex} className="requestaQuote-section">
-                  <h5 className="requestaQuote-heading">{section.subtitle}</h5>
-                  <div className="requestaQuote-options">
-                    {section.options.map((option, optIndex) => {
-                      const sectionId = section.subtitle
-                        .toLowerCase()
-                        .replace(/\s+/g, "_");
-                      const isSelected = formData[sectionId] === option.value;
-
-                      return (
-                        <label
-                          className={`requestaQuote-option ${
-                            isSelected ? "selected" : ""
-                          }`}
-                          key={optIndex}
-                          htmlFor={`${sectionId}_${option.value}`}
-                        >
-                          <input
-                            type="radio"
-                            id={`${sectionId}_${option.value}`}
-                            name={sectionId}
-                            value={option.value}
-                            onChange={() =>
-                              handleOptionChange(sectionId, option.value)
+              {currentStepData.sections ? (
+                currentStepData.sections.map((section, secIndex) => {
+                  const sectionId = section.subtitle
+                    .toLowerCase()
+                    .replace(/[\s:]+/g, "_")
+                    .replace(/[^a-z0-9_]/g, "");
+                  return (
+                    <div key={secIndex} className="requestaQuote-section">
+                      <h5 className="requestaQuote-heading">
+                        {section.subtitle}
+                      </h5>
+                      <div className="requestaQuote-options">
+                        {section.options.map((option, optIndex) => (
+                          <div
+                            key={optIndex}
+                            className={`tag ${
+                              selectedOptions[sectionId]?.includes(option.value)
+                                ? "selected"
+                                : ""
+                            }`}
+                            onClick={() =>
+                              handleTagSelection(sectionId, option.value)
                             }
-                            checked={isSelected}
-                          />
-                          {option.label}
-                        </label>
-                      );
-                    })}
+                          >
+                            {option.label}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })
+              ) : currentStepData.fields ? (
+                <form
+                  className="requestaQuote-form"
+                  onSubmit={handleSubmit}
+                  ref={formRef}
+                >
+                  {currentStepData.fields.map((field, fieldIndex) => (
+                    <div className="requestaQuote-field" key={fieldIndex}>
+                      <label htmlFor={field.name}>{field.label}</label>
+                      {field.type === "textarea" ? (
+                        <textarea
+                          id={field.name}
+                          name={field.name}
+                          placeholder={field.label}
+                          onChange={handleInputChange}
+                          value={formData[field.name] || ""}
+                          required={field.required}
+                          rows={5}
+                        ></textarea>
+                      ) : (
+                        <input
+                          type={field.type}
+                          id={field.name}
+                          name={field.name}
+                          placeholder={field.label}
+                          onChange={handleInputChange}
+                          value={formData[field.name] || ""}
+                          required={field.required}
+                        />
+                      )}
+                    </div>
+                  ))}
+                  <div className="requestaQuote-button-container">
+                    <button
+                      type="submit"
+                      className="requestaQuote-button"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
+                    </button>
                   </div>
-                </div>
-              ))
-            ) : currentStepData.fields ? (
-              <form className="requestaQuote-form" onSubmit={handleSubmit}>
-                {currentStepData.fields.map((field, fieldIndex) => (
-                  <div className="requestaQuote-field" key={fieldIndex}>
-                    <label htmlFor={field.name}>{field.label}</label>
-                    {field.type === "textarea" ? (
-                      <textarea
-                        id={field.name}
-                        name={field.name}
-                        placeholder={field.label}
-                        onChange={handleInputChange}
-                        value={formData[field.name] || ""}
-                        required={field.required}
-                        rows={5}
-                      ></textarea>
-                    ) : (
-                      <input
-                        type={field.type}
-                        id={field.name}
-                        name={field.name}
-                        placeholder={field.label}
-                        onChange={handleInputChange}
-                        value={formData[field.name] || ""}
-                        required={field.required}
-                      />
-                    )}
-                  </div>
-                ))}
-                <div className="requestaQuote-button-container">
-                  <button
-                    type="submit"
-                    className="requestaQuote-button"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
-                  </button>
-                </div>
-              </form>
-            ) : null}
-          </div>
-          <div className="requestaQuote-button-container">
-            {currentStep > 0 && (
-              <button
-                className="requestaQuote-button back"
-                onClick={handleBack}
-                disabled={isSubmitting}
-                type="button"
-              >
-                BACK
-              </button>
-            )}
-            {currentStep < steps.length - 1 ? (
-              <button
-                className="requestaQuote-button"
-                onClick={handleNext}
-                disabled={isSubmitting}
-                type="button"
-              >
-                CONTINUE
-              </button>
-            ) : null}
+                </form>
+              ) : null}
+            </div>
+            <div className="requestaQuote-button-container">
+              {currentStep > 0 && (
+                <button
+                  className="requestaQuote-button back"
+                  onClick={handleBack}
+                  disabled={isSubmitting}
+                  type="button"
+                >
+                  BACK
+                </button>
+              )}
+              {currentStep < steps.length - 1 ? (
+                <button
+                  className="requestaQuote-button"
+                  onClick={handleNext}
+                  disabled={isSubmitting}
+                  type="button"
+                >
+                  CONTINUE
+                </button>
+              ) : null}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <Days />
+    </>
   );
 }

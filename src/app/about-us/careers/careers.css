@@ -1,6 +1,10 @@
 .careers-application-section {
-  padding: 60px 20px;
+ 
   background-color: #fff;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 10px;
 }
 
 .careers-container {

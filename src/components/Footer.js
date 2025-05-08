@@ -235,7 +235,7 @@ export default function Footer() {
             </p>
           )}
           <div className="social-section">
-            <p>Get the latest news & updates</p>
+            <p>Follow us on:</p>
             <div className="social-icons">
               <a
                 href="https://www.facebook.com/webxtechnology"

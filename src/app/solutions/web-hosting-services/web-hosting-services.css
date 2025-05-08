@@ -4,16 +4,16 @@
   --background-color: #fff;
   --radius: 0.5rem;
   --spacing: 1rem;
-  --max-width: 1400px;
+  --max-width: 1700px;
 }
 
 /* General Page Styling */
 .webhosting-page {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  padding: 0;
-  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* Container Common Styling */

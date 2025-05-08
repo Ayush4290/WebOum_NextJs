@@ -160,7 +160,6 @@ const Careers = () => {
 </html>
       `;
 
-      
       const plainTextFallback = `
 Job Application Details:
 ------------------------

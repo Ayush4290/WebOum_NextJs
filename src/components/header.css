@@ -184,6 +184,7 @@
   background-color: #f5f5f5;
 }
 
+/* Fix for contact button */
 .btn-contact {
   background-color: white;
   color: black;
@@ -194,6 +195,7 @@
   font-weight: 600;
   margin-left: 1rem;
   white-space: nowrap;
+  display: inline-block; /* Ensure it's displayed correctly */
 }
 
 .btn-contact:hover {
@@ -201,6 +203,11 @@
   color: rgb(255, 255, 255);
   transform: translateY(-3px);
   box-shadow: 0 4px 10px rgba(230, 0, 115, 0.3);
+}
+
+/* Special case for when btn-contact is in a menu-link */
+.menu-link.btn-contact::after {
+  display: none; /* Remove the underline effect */
 }
 
 .menu-toggle {
@@ -241,6 +248,8 @@
   display: block;
   opacity: 1;
 }
+
+
 
 @media (max-width: 992px) {
   .navbar {
@@ -316,10 +325,9 @@
     visibility: hidden;
     max-height: 0;
     overflow: hidden;
-    transition: max-height var(--transition-speed) ease, 
-                padding var(--transition-speed) ease, 
-                opacity var(--transition-speed) ease,
-                visibility var(--transition-speed) ease;
+    transition: max-height var(--transition-speed) ease,
+      padding var(--transition-speed) ease, opacity var(--transition-speed) ease,
+      visibility var(--transition-speed) ease;
   }
 
   /* Mobile specific for services dropdown */
@@ -370,16 +378,18 @@
     background-color: rgba(255, 255, 255, 0.1);
   }
 
+  /* Fix for mobile contact button */
   .btn-contact {
     margin: 1rem 0 0 0;
     border-radius: 4px;
     width: 100%;
     text-align: center;
-    padding: 1.2rem;
+    padding: -1.8rem;
     background-color: white;
     color: black;
     font-size: 18px;
-  }
+    display: flex
+}
 
   li:last-child .btn-contact {
     position: relative;

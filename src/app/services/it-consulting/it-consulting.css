@@ -1,27 +1,37 @@
 .it-consulting-page {
-  background-color: #fff;
-  color: #000;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  padding: 0;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  font-family: Arial, sans-serif;
   margin: 0;
+  padding: 0;
+  line-height: 1.5;
 }
 
 .it-consulting-container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 1.5rem;
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0;
 }
 
 .it-consulting-row {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+}
+
+.it-consulting-reverse {
+  flex-direction: row-reverse;
+}
+
+.it-consulting-center {
+  text-align: center;
+  align-items: center;
 }
 
 .it-consulting-image-section {
@@ -29,86 +39,123 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0;
 }
 
-.it-consulting-image-section img {
+.it-consulting-image {
   max-width: 100%;
   height: auto;
-  border-radius: 0.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
 }
 
 .it-consulting-text-section {
   flex: 1 1 500px;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
 }
 
 .it-consulting-text-section h1,
 .it-consulting-container h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 1rem;
+  line-height: 1.2;
+}
+
+.it-consulting-container h2 {
   font-size: 1.75rem;
-  color: #000;
-  margin-bottom: 1rem;
-  padding-top: 6rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 1.5rem 0 1rem;
+}
+
+.it-consulting-container h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 1rem 0 0.75rem;
 }
 
 .it-consulting-text-section p,
 .it-consulting-container p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  color: #000;
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #333333;
+  margin: 0 0 1rem;
 }
 
-.it-consulting-container h2 {
-  font-size: 1.5rem;
-  color: #000;
-  margin-top: 1rem;
-  margin-bottom: 0.75rem;
-}
-
-.it-consulting-container h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #000;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.it-consulting-container ul {
+.it-consulting-list {
   padding-left: 1.5rem;
   list-style-type: disc;
-  margin-top: 0.5rem;
+  margin: 0.75rem 0;
 }
 
-.it-consulting-container ul li {
+.it-consulting-list li {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #333333;
   margin-bottom: 0.5rem;
-  font-size: 1.05rem;
-  line-height: 1.5;
-  color: #000;
 }
 
-.it-consulting-pt-24 {
-  padding-top: 100px;
+.it-consulting-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
 }
 
-/* Responsive Media Queries */
+.it-consulting-feature {
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.it-consulting-feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.it-consulting-feature h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.it-consulting-feature p {
+  font-size: 1rem;
+  color: #4a4a4a;
+}
+
+/* Responsive Design */
 @media (max-width: 1024px) {
   .it-consulting-text-section h1,
   .it-consulting-container h1 {
-    font-size: 1.5rem;
-    padding-top: 4rem;
+    font-size: 1.75rem;
   }
 
   .it-consulting-container h2 {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 
   .it-consulting-container h3 {
-    font-size: 1.1rem;
+    font-size: 1.25rem;
+  }
+
+  .it-consulting-text-section p,
+  .it-consulting-container p {
+    font-size: 1.05rem;
   }
 }
 
 @media (max-width: 768px) {
   .it-consulting-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .it-consulting-reverse {
     flex-direction: column;
   }
 
@@ -120,8 +167,16 @@
 
   .it-consulting-text-section h1,
   .it-consulting-container h1 {
-    padding-top: 2rem;
+    font-size: 1.5rem;
     text-align: center;
+  }
+
+  .it-consulting-container h2 {
+    font-size: 1.3rem;
+  }
+
+  .it-consulting-container h3 {
+    font-size: 1.15rem;
   }
 
   .it-consulting-text-section p,
@@ -141,14 +196,19 @@
   }
 
   .it-consulting-container h2 {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
   }
 
   .it-consulting-container h3 {
     font-size: 1rem;
   }
 
-  .it-consulting-container ul li {
-    font-size: 1rem;
+  .it-consulting-text-section p,
+  .it-consulting-container p {
+    font-size: 0.95rem;
+  }
+
+  .it-consulting-list li {
+    font-size: 0.95rem;
   }
 }

@@ -151,7 +151,7 @@
 .image-container img {
   max-height: 500px;
   object-fit: contain;
-  border-radius: 8px;
+  border-radius: 10px;
   background: #fff;
   margin: 0;
   padding: 0;

@@ -10,11 +10,16 @@
 
 .graphicDesign {
   width: 100%;
-  font-family: "Poppins", Sans-serif;
+
+  font-family: Arial, sans-serif;
+  color: #333;
+  line-height: 1.4;
+ 
+  margin: 0 auto;
 }
 
 .graphicDesign-row {
-  max-width: 1100px;
+  max-width: 1230px;
   margin: 10px auto;
   padding: 0 20px;
   display: flex;
@@ -64,10 +69,9 @@ p {
 .graphicDesign-offers,
 .graphicDesign-results {
   padding: 60px 20px;
-  max-width: 1100px;
+  max-width: 1225px;
   margin: auto;
 }
-
 .graphicDesign-services-section.light {
   background-color: rgb(240, 232, 232);
   max-width: 1700px;

@@ -9,14 +9,15 @@ const WebsiteDesign = () => {
   return (
     <>
       <SubHeader title="Web Designing" />
-      <section className="design-section">
-        <div className="container">
+     <divc className="webContainer">
+     <section className="design-section">
+        <div className="webContainer">
           {/* First Block */}
           <div className="row align-center margin-bottom-5">
             <div className="column-md-6">
               <h3 className="section-title">
                 Entice your website visitors with
-                <br /> jaw-dropping website designs!
+                jaw-dropping website designs!
               </h3>
               <p className="font-italic margin-top-3">
                 Hire web design experts to create compelling website designs and
@@ -154,6 +155,7 @@ const WebsiteDesign = () => {
           ))}
         </ul>
       </div>
+      </divc>
       <Days />
     </>
   );

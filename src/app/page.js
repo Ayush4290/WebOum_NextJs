@@ -9,7 +9,6 @@ import Link from "next/link";
 
 const Home = () => {
   const [currentPortfolioIndex, setCurrentPortfolioIndex] = useState(0);
-  const [startScrolling, setStartScrolling] = useState(false);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [formData, setFormData] = useState({
     name: "",
@@ -24,26 +23,28 @@ const Home = () => {
   const portfolioRef = useRef(null);
   const testimonialRef = useRef(null);
 
+  // Portfolio auto-scrolling
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setStartScrolling(true);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  // Portfolio scrolling effect
-  useEffect(() => {
-    if (!startScrolling) return;
-
-    const interval = setInterval(() => {
+    const portfolioInterval = setInterval(() => {
       setCurrentPortfolioIndex((prev) =>
         prev === homeData.portfolio.all.length - 1 ? 0 : prev + 1
       );
-    }, 3000);
+    }, 5000);
 
-    return () => clearInterval(interval);
-  }, [startScrolling]);
+    return () => clearInterval(portfolioInterval);
+  }, []);
+
+  // Update scroll position when active portfolio changes
+  useEffect(() => {
+    if (portfolioRef.current) {
+      const scrollPosition =
+        currentPortfolioIndex * portfolioRef.current.children[0].offsetHeight;
+      portfolioRef.current.scrollTo({
+        top: scrollPosition,
+        behavior: "smooth",
+      });
+    }
+  }, [currentPortfolioIndex]);
 
   // Testimonial auto-scrolling
   useEffect(() => {
@@ -81,7 +82,6 @@ const Home = () => {
     setFormStatus("submitting");
 
     try {
-      // Sanitize the message field to prevent HTML injection
       const sanitizeInput = (input) => {
         return input.replace(/</g, "<").replace(/>/g, ">").replace(/"/g, " ");
       };
@@ -89,7 +89,6 @@ const Home = () => {
         formData.message || "No message provided."
       );
 
-      // HTML email template matching the provided style
       const messageContent = `
 <!DOCTYPE html>
 <html lang="en">
@@ -100,11 +99,9 @@ const Home = () => {
 </head>
 <body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f0f0f0;">
   <div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #e0e0e0;">
-    <!-- Header -->
     <div style="background-color: #4682b4; padding: 15px; text-align: center;">
       <h2 style="color: #ffffff; margin: 0; font-size: 20px;">New Contact Form Submission</h2>
     </div>
-    <!-- Body -->
     <div style="padding: 20px;">
       <p style="color: #333333; font-size: 16px; margin: 0 0 15px;">
         Someone has reached out through the Weboum Technology contact form.
@@ -119,8 +116,6 @@ const Home = () => {
         <p style="color: #333333; font-size: 14px; margin: 5px 0;">
           <strong>Phone:</strong> ${formData.phoneNumber}
         </p>
-        
-       
         <p style="color: #333333; font-size: 14px; margin: 5px 0;">
           <strong>Message:</strong> ${sanitizedMessage}
         </p>
@@ -131,7 +126,6 @@ const Home = () => {
 </html>
       `;
 
-      // Send form data to the API
       await sendContactForm({
         email: formData.email,
         subject: "New Contact Form Submission",
@@ -155,10 +149,8 @@ const Home = () => {
     }
   };
 
-  const scrollPortfolioToTop = () => {
-    if (portfolioRef.current) {
-      portfolioRef.current.scrollTo({ top: 0, behavior: "smooth" });
-    }
+  const handlePortfolioDotClick = (index) => {
+    setCurrentPortfolioIndex(index);
   };
 
   const handleDotClick = (index) => {
@@ -167,14 +159,11 @@ const Home = () => {
 
   return (
     <div className="home-page">
-      {/* Hero Section */}
       <HeroSection />
 
-      {/* Our Services */}
       <section id="services" className="services-section">
         <div className="container">
           <div className="row">
-            {/* Sidebar */}
             <div className="sidebar-col">
               <div className="sidebar">
                 <a href="#services">Our Services</a>
@@ -186,7 +175,6 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Main Content */}
             <div className="content-col">
               <h2 className="section-title">OUR SERVICES</h2>
               <p className="section-desc">
@@ -217,68 +205,52 @@ const Home = () => {
                 ))}
               </div>
 
-              {/* Portfolio Section */}
               <div id="portfolio" className="portfolio-section">
                 <h2 className="section-title">OUR PORTFOLIO</h2>
-                <div className="portfolio-carousel" ref={portfolioRef}>
-                  {homeData.portfolio.all &&
-                  homeData.portfolio.all.length > 0 ? (
-                    <div className="portfolio-stack">
-                      {/* Bottom Image */}
-                      <div className="portfolio-item bottom-image">
-                        <Image
-                          src={
-                            homeData.portfolio.all[
-                              currentPortfolioIndex === 0
-                                ? homeData.portfolio.all.length - 1
-                                : currentPortfolioIndex - 1
-                            ]?.src || "/image/placeholder.jpg"
-                          }
-                          alt={
-                            homeData.portfolio.all[
-                              currentPortfolioIndex === 0
-                                ? homeData.portfolio.all.length - 1
-                                : currentPortfolioIndex - 1
-                            ]?.alt || "Portfolio Image"
-                          }
-                          className="portfolio-image"
-                          width={500}
-                          height={300}
-                        />
-                        <div className="portfolio-text">
-                          {homeData.portfolio.all[
-                            currentPortfolioIndex === 0
-                              ? homeData.portfolio.all.length - 1
-                              : currentPortfolioIndex - 1
-                          ]?.title || "Portfolio Item"}
-                        </div>
-                      </div>
+                <div className="portfolio-container">
+                  <div className="portfolio-auto-scroll-wrapper">
 
-                      {/* Top Image (Scrolling) */}
-                      <div className="portfolio-item top-image">
-                        <Image
-                          src={
-                            homeData.portfolio.all[currentPortfolioIndex]
-                              ?.src || "/image/placeholder.jpg"
-                          }
-                          alt={
-                            homeData.portfolio.all[currentPortfolioIndex]
-                              ?.alt || "Portfolio Image"
-                          }
-                          className="portfolio-image"
-                          width={500}
-                          height={300}
-                          onClick={scrollPortfolioToTop}
-                        />
-                        <div className="portfolio-text">
-                          {homeData.portfolio.all[currentPortfolioIndex]
-                            ?.title || "Portfolio Item"}
+
+
+
+                    <div className="portfolio-carousel" ref={portfolioRef}>
+                      {homeData.portfolio.all.map((portfolio, index) => (
+                        <div
+                          className={`portfolio-item ${
+                            index === currentPortfolioIndex ? "active" : ""
+                          }`}
+                          key={index}
+                        >
+                          <div className="portfolio-image-container">
+                            <Image
+                              src={portfolio.src || "/image/placeholder.jpg"}
+                              alt={portfolio.alt || "Portfolio Image"}
+                              className="portfolio-image"
+                              width={800}
+                              height={400}
+                            />
+                          </div>
+                          <div className="portfolio-text">
+                            {portfolio.title}
+                          </div>
                         </div>
-                      </div>
+                      ))}
                     </div>
-                  ) : (
-                    <p>No portfolio images available.</p>
-                  )}
+                  </div>
+                  <div className="portfolio-scroll-indicator">
+                    {homeData.portfolio.all.map((_, dotIndex) => (
+                      <div
+                        className={`portfolio-scroll-dot ${
+                          dotIndex === currentPortfolioIndex ? "active" : ""
+                        }`}
+                        key={dotIndex}
+                        onClick={() => handlePortfolioDotClick(dotIndex)}
+                      />
+                    ))}
+                  </div>
+
+
+
                 </div>
               </div>
             </div>
@@ -286,7 +258,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Why Choose Us */}
       <section id="why-choose-us" className="why-choose-section">
         <div className="why-container">
           <h2 className="why-title">Why Choose Us</h2>
@@ -320,7 +291,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Process We Follow */}
       <section id="process" className="process-section">
         <div className="process-container">
           <h2 className="process-heading">Process We Follow</h2>
@@ -340,7 +310,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Contact Us */}
       <section
         id="contact"
         className="contact-section"
@@ -425,7 +394,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
       <section id="testimonials" className="testimonial-section">
         <h2 className="testimonial-title">OUR TESTIMONIALS</h2>
 
@@ -475,7 +443,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="cta-section">
         <div className="cta-container">
           <div className="cta-left">

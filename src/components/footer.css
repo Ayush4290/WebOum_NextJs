@@ -12,7 +12,6 @@
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-
 .footer-content {
   display: flex;
   justify-content: space-between;
@@ -52,7 +51,6 @@
   margin-top: 1rem;
   color: white;
 }
-
 
 .footer-links-section,
 .footer-services-section {
@@ -137,7 +135,6 @@
   background-color: rgb(47, 20, 52);
 }
 
-
 .social-section p {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
@@ -169,7 +166,6 @@
   font-size: 1rem;
   color: white;
 }
-
 
 @media (max-width: 1024px) {
   .footer-content {

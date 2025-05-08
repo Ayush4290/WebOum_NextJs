@@ -249,9 +249,10 @@ export default function SamplePage() {
   return (
     <>
       <div className="samplePageContainer">
-        <div className="samplePage">
+       
           <section className="samplePage_business-section samplePage_conta">
-            <div className="samplePage_content container">
+<div className="sampleHeader">
+              <div className="samplePage_content container">
               <h1>
                 Build efficient Website
                 <br />
@@ -283,6 +284,7 @@ export default function SamplePage() {
                 height={300}
               />
             </div>
+</div>
           </section>
 
           <section className="samplePage_servicess-section">
@@ -878,7 +880,7 @@ export default function SamplePage() {
             </div>
           </section>
         </div>
-      </div>
+      
       <Days />
     </>
   );

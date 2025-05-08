@@ -1,5 +1,6 @@
 body {
   font-family: Arial, sans-serif;
+  margin: 0;
 }
 
 img {
@@ -82,6 +83,8 @@ section {
   flex: 1;
   padding-right: 40px;
   max-width: 50%;
+  padding: 32px;
+  margin-top: 10px;
 }
 
 .herohosting-content h1 {
@@ -380,30 +383,6 @@ section {
   line-height: 1.2;
 }
 
-/* Responsive styles */
-@media (max-width: 768px) {
-  .hosting-headerhosting {
-    height: auto;
-    min-height: 500px;
-    padding: 3rem 1rem;
-    justify-content: center;
-  }
-
-  .hosting-contenthosting {
-    width: 100%;
-    padding-right: 0;
-  }
-
-  .hosting-headinghosting {
-    text-align: center;
-  }
-
-  .rating-badgeshosting {
-    justify-content: center;
-  }
-}
-
-/* Statistics Section */
 /* Statistics Section */
 .stats-sectionhosting {
   display: flex;
@@ -467,7 +446,7 @@ section {
   padding: 40px;
   border-radius: 8px;
   max-width: 1000px;
-  margin: 30px auto; /* Center horizontally */
+  margin: 30px auto;
 }
 
 .app-technologieshosting {
@@ -501,7 +480,7 @@ section {
 }
 
 .btnhosting.primary-btnhosting {
-  background-color: #00c4b4; /* Teal color for the button */
+  background-color: #00c4b4;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -513,7 +492,7 @@ section {
 }
 
 .btnhosting.primary-btnhosting:hover {
-  background-color: #00a89a; /* Slightly darker teal on hover */
+  background-color: #00a89a;
 }
 
 .featureshosting {
@@ -559,6 +538,25 @@ section {
 }
 
 /* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .herohosting-content,
+  .wordpress-contenthosting,
+  .herohosting-image,
+  .testimonialhosting {
+    max-width: 100%;
+    padding-right: 0;
+  }
+
+  .herohosting {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .herohosting-image img {
+    max-height: 350px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .herohosting,
   .wordpress-hostinghosting,
@@ -609,5 +607,60 @@ section {
 
   .featureshosting {
     grid-template-columns: 1fr;
+  }
+
+  .hosting-headerhosting {
+    height: auto;
+    min-height: 500px;
+    padding: 3rem 1rem;
+    justify-content: center;
+  }
+
+  .hosting-contenthosting {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  .hosting-headinghosting {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .btnhosting {
+    padding: 10px 20px;
+   
+  }
+
+  section {
+    padding: 40px 5%;
+  }
+
+  .herohosting-image img {
+    max-height: 250px;
+  }
+
+  .testimonial-contenthosting p {
+    font-size: 1.2rem;
+  }
+
+  .stat-itemhosting strong {
+    font-size: 2rem;
   }
 }

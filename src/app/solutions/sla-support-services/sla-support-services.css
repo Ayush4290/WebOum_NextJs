@@ -11,9 +11,11 @@
 /* Base Page */
 .support-page {
   font-family: var(--font-family);
-  padding: var(--spacing);
-  background-color: #fff;
   color: var(--text-color);
+  line-height: 1.6;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
 /* Row Layout */
@@ -62,7 +64,6 @@
   border-radius: var(--radius);
   margin-top: 3rem;
   margin-bottom: 3rem;
- 
 }
 
 .support-benefits ul {
@@ -77,13 +78,13 @@
 
 /* Dot Section */
 .support-dot {
-  
   padding: var(--spacing);
   border-radius: var(--radius);
   margin-top: 3rem;
   margin-bottom: 3rem;
-  gap:10px;
-  
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .support-dot-2 {
@@ -91,12 +92,11 @@
   font-weight: bold;
   color: var(--heading-color);
   text-align: start;
- 
-  
 }
-.support-dot p{
+
+.support-dot p {
   font-size: 1.3rem;
-  margin: 10px;
+  margin: 10px 0;
   text-align: start;
 }
 
@@ -104,6 +104,16 @@
 .support-call-to-action {
   text-align: center;
   margin-top: var(--spacing);
+  padding: 2rem;
+
+  color: #fff;
+  border-radius: var(--radius);
+}
+
+.support-call-to-action a {
+  color: #fff;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 .support-section-p {
@@ -114,6 +124,22 @@
 }
 
 /* Responsive Layout */
+@media (max-width: 1024px) {
+  .support-section-row {
+    gap: 20px;
+  }
+
+  .support-section-text,
+  .support-section-image {
+    flex: 1 1 100%;
+    padding-top: 20px;
+  }
+
+  .support-section-heading {
+    font-size: 1.85rem;
+  }
+}
+
 @media (max-width: 768px) {
   .support-section-row {
     flex-direction: column;
@@ -135,5 +161,55 @@
 
   .support-section-image img {
     max-width: 90%;
+  }
+
+  .support-dot-2 {
+    font-size: 1.75rem;
+  }
+
+  .support-dot p {
+    font-size: 1.2rem;
+  }
+
+  .support-call-to-action {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .support-page {
+    padding: 0 1rem;
+  }
+
+  .support-section-heading {
+    font-size: 1.5rem;
+  }
+
+  .support-section-text {
+    font-size: 1rem;
+  }
+
+  .support-section-p {
+    font-size: 1rem;
+  }
+
+  .support-benefits {
+    padding: 1.5rem;
+  }
+
+  .support-dot {
+    padding: 1.5rem;
+  }
+
+  .support-dot-2 {
+    font-size: 1.5rem;
+  }
+
+  .support-dot p {
+    font-size: 1.1rem;
+  }
+
+  .support-call-to-action {
+    padding: 1rem;
   }
 }

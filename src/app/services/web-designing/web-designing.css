@@ -2,6 +2,15 @@ h3,
 h4 {
   color: #212529;
   font-size: 16px;
+  margin-bottom: 1rem; /* Added gap below headings */
+}
+
+.webContainer {
+  font-family: Arial, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .design-section {
@@ -12,6 +21,8 @@ h4 {
   font-size: 16px;
   line-height: 1.6;
   color: #212529;
+  margin-top: 0.5rem; /* Added gap above paragraphs */
+  margin-bottom: 1rem; /* Added gap below paragraphs */
 }
 
 .image-fluid {
@@ -19,6 +30,7 @@ h4 {
   max-height: 250px;
   width: 100%;
   object-fit: cover;
+  margin-bottom: 1.5rem; /* Added gap below images */
 }
 
 .section-title {
@@ -59,7 +71,7 @@ h4 {
 .column-md-6 {
   position: relative;
   width: 100%;
-  padding: 0 10px;
+  padding: 0 15px; /* Increased padding for gap between columns */
 }
 
 .text-center {
@@ -97,11 +109,12 @@ h4 {
   display: flex;
   align-items: flex-start;
   color: #212529;
+  padding-left: 10px; /* Added gap on the left side of list items */
 }
 
 .why-choose-us .tick {
   color: #212529;
-  margin-right: 8px;
+  margin-right: 12px; /* Increased gap between tick and text */
   font-size: 1.2rem;
 }
 
@@ -128,6 +141,7 @@ h4 {
   .column-md-6 {
     flex: 0 0 50%;
     max-width: 50%;
+    padding: 0 20px; /* Increased padding for medium screens */
   }
 
   .margin-bottom-md-0 {
@@ -144,6 +158,7 @@ h4 {
 
   .image-fluid {
     max-height: 280px;
+    margin-bottom: 2rem; /* Larger gap for medium screens */
   }
 
   .why-choose-us {
@@ -173,6 +188,11 @@ h4 {
 
   .image-fluid {
     max-height: 300px;
+    margin-bottom: 2.5rem; /* Larger gap for large screens */
+  }
+
+  .column-md-6 {
+    padding: 0 25px; /* Increased padding for large screens */
   }
 
   .why-choose-us {

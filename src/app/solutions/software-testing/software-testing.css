@@ -69,13 +69,13 @@
 
 .software-services-list li b {
   margin-right: 10px;
-  color: #3498db;
+  color: #161718;
 }
 
 .software-bottom-note {
   text-align: left;
   margin-top: 30px;
-  color: #3498db;
+  color: #161718;
 }
 
 @media screen and (max-width: 768px) {

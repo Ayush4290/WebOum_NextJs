@@ -157,6 +157,19 @@ const Header = () => {
     );
   };
 
+  // Render contact button separately for clarity
+  const renderContactButton = (menu) => {
+    return (
+      <Link
+        href={menu.href}
+        className="btn-contact"
+        onClick={handleDropdownItemClick}
+      >
+        {menu.label}
+      </Link>
+    );
+  };
+
   return (
     <div className="main-container">
       <header className="navbar">
@@ -196,59 +209,72 @@ const Header = () => {
             ref={menuRef}
           >
             <ul className="menu-list">
-              {menuData.map((menu, index) =>
-                menu.items ? (
-                  <li
-                    className={`menu-dropdown ${menu.dropdownKey}`}
-                    key={index}
-                    onMouseEnter={() => handleMouseEnter(menu.dropdownKey)}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    <div
-                      className="menu-link"
-                      onClick={(event) =>
-                        handleMenuItemClick(menu.dropdownKey, event)
-                      }
+              {menuData.map((menu, index) => {
+                // Handle the contact button separately
+                if (menu.isButton) {
+                  return (
+                    <li key={index}>
+                      {renderContactButton(menu)}
+                    </li>
+                  );
+                }
+                
+                // Handle dropdown menus
+                if (menu.items) {
+                  return (
+                    <li
+                      className={`menu-dropdown ${menu.dropdownKey}`}
+                      key={index}
+                      onMouseEnter={() => handleMouseEnter(menu.dropdownKey)}
+                      onMouseLeave={handleMouseLeave}
                     >
-                      <span className="menu-item-content">
-                        {menu.label}
-                        <BiCaretDown
-                          className={`menu-icon ${
-                            activeDropdown === menu.dropdownKey ? "rotate" : ""
-                          }`}
-                          onClick={(event) =>
-                            handleIconClick(menu.dropdownKey, event)
-                          }
-                        />
-                      </span>
-                    </div>
-                    {menu.dropdownKey && (
-                      <ul
-                        className={`dropdown ${
-                          activeDropdown === menu.dropdownKey ? "active" : ""
-                        }`}
+                      <div
+                        className="menu-link"
+                        onClick={(event) =>
+                          handleMenuItemClick(menu.dropdownKey, event)
+                        }
                       >
-                        {renderDropdownItems(
-                          menu.items,
-                          menu.dropdownKey === "services"
-                        )}
-                      </ul>
-                    )}
-                  </li>
-                ) : (
+                        <span className="menu-item-content">
+                          {menu.label}
+                          <BiCaretDown
+                            className={`menu-icon ${
+                              activeDropdown === menu.dropdownKey ? "rotate" : ""
+                            }`}
+                            onClick={(event) =>
+                              handleIconClick(menu.dropdownKey, event)
+                            }
+                          />
+                        </span>
+                      </div>
+                      {menu.dropdownKey && (
+                        <ul
+                          className={`dropdown ${
+                            activeDropdown === menu.dropdownKey ? "active" : ""
+                          }`}
+                        >
+                          {renderDropdownItems(
+                            menu.items,
+                            menu.dropdownKey === "services"
+                          )}
+                        </ul>
+                      )}
+                    </li>
+                  );
+                }
+                
+                // Handle regular menu items
+                return (
                   <li key={index}>
                     <Link
                       href={menu.href}
-                      className={`menu-link ${
-                        menu.isButton ? "btn-contact" : ""
-                      }`}
+                      className="menu-link"
                       onClick={handleDropdownItemClick}
                     >
                       {menu.label}
                     </Link>
                   </li>
-                )
-              )}
+                );
+              })}
             </ul>
           </nav>
         </div>

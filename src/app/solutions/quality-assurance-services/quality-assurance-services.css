@@ -31,17 +31,26 @@
 
 .qa-hero p {
   margin-bottom: 10px;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   line-height: 1.5;
 }
 
 /* QA Diagram Section */
 .qa-diagram-section {
   margin-bottom: 40px;
+  font-size: 2rem;
 }
 
 .qa-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
   width: 100%;
+}
+
+.qa-info-text {
+  flex: 1;
 }
 
 .qa-info h2 {
@@ -54,11 +63,11 @@
 .qa-info p {
   margin-bottom: 12px;
   line-height: 1.5;
+  font-size: 1.2rem;
 }
 
 .qa-info-image {
-  display: block;
-  margin: 15px 0 15px auto;
+  flex: 1;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
@@ -86,6 +95,7 @@
   margin-left: auto;
   margin-right: auto;
   line-height: 1.5;
+  font-size: 1.2rem;
 }
 
 .qa-services-grid {
@@ -125,6 +135,7 @@
 
 .qa-service-content p {
   line-height: 1.5;
+  font-size: 1.2rem;
 }
 
 .qa-services-footer {
@@ -165,6 +176,7 @@
 .qa-prevention-content p {
   margin-bottom: 12px;
   line-height: 1.5;
+  font-size: 1.2rem;
 }
 
 .qa-prevention-image {
@@ -312,12 +324,18 @@
     font-size: 0.85rem;
   }
 
-  .qa-info h2 {
-    font-size: 1.4rem;
+  .qa-info {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .qa-info-image {
     max-width: 100%;
+    order: -1; /* Moves image above text on mobile */
+  }
+
+  .qa-info h2 {
+    font-size: 1.4rem;
   }
 
   .qa-services h2 {

@@ -86,203 +86,148 @@
 
 .requestaQuote-options {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 10px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color:white;
   font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
+  color: #333;
+  transition: all 0.3s ease;
 }
 
-.requestaQuote-option {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-  border: 1px solid var(--tag-border);
-  border-radius: 999px;
-  background-color: #fff;
-  transition: background-color 0.3s, border-color 0.3s;
-  flex: 0 0 auto;
-  box-sizing: border-box;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  position: relative;
+.tag:hover {
+  background-color: #e0e0e0;
 }
 
-.requestaQuote-section:has(h5:contains("Stage")) .requestaQuote-options {
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.requestaQuote-section:has(h5:contains("Stage")) .requestaQuote-option {
-  min-width: 300px;
-  max-width: 350px;
-}
-
-/* .requestaQuote-section:has(h5:contains("Services needed"))
-  .requestaQuote-option,
-.requestaQuote-section:has(h5:contains("Development stages needed"))
-  .requestaQuote-option {
-  min-width: 200px;
-  max-width: 220px;
-} */
-
-.requestaQuote-option input[type="radio"] {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-  margin: 0;
-  cursor: pointer;
-}
-
-.requestaQuote-option.selected {
-  border-color: var(--selected-border);
-  background-color: #f0f8ff;
-}
-
-.requestaQuote-option:not(.selected) {
-  border-color: var(--tag-border);
-  background-color: #fff;
-}
-
-/* Fix for error and success messages */
-.requestaQuote-error {
-  color: #dc3545;
-  background-color: #f8d7da;
-  border: 1px solid #f5c6cb;
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 1rem;
-  border-radius: 5px;
-}
-
-.requestaQuote-success {
-  color: #28a745;
-  background-color: #d4edda;
-  border: 1px solid #c3e6cb;
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 1rem;
-  border-radius: 5px;
-}
-/* .requestaQuote-option:has(input[type="radio"]:checked),
-.requestaQuote-option input[type="radio"]:checked + label {
-  border-color: var(--selected-border);
-  background-color: #f0f8ff;
-}
-
-.requestaQuote-option:not(:has(input[type="radio"]:checked)) {
-  border-color: var(--tag-border);
-  background-color: #fff;
-} */
-
-.requestaQuote-option:hover {
-  background-color: #f5f5f5;
-  border-color: #0b0b0b;
-}
-
-@media (max-width: 768px) {
-  .requestaQuote-option {
-    min-width: 100%;
-    max-width: 100%;
-  }
-
-  .requestaQuote-section:has(h5:contains("Stage")) .requestaQuote-option {
-    min-width: 100%;
-    max-width: 100%;
-  }
-
-  .requestaQuote-section:has(h5:contains("Services needed"))
-    .requestaQuote-option,
-  .requestaQuote-section:has(h5:contains("Development stages needed"))
-    .requestaQuote-option {
-    min-width: 100%;
-    max-width: 100%;
-  }
+.tag.selected {
+  background-color: #007bff;
+  color: #131313;
+  border-color: #007bff;
 }
 
 .requestaQuote-form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 20px;
 }
 
 .requestaQuote-field {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
 }
 
 .requestaQuote-field label {
-  font-weight: 600;
-  text-align: left;
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 5px;
 }
 
 .requestaQuote-field input,
 .requestaQuote-field textarea {
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--tag-border);
-  border-radius: 5px;
-  font-size: 0.9rem;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #333;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.requestaQuote-field input:focus,
+.requestaQuote-field textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
 }
 
 .requestaQuote-field textarea {
-  height: 100px;
   resize: vertical;
+  min-height: 100px;
 }
 
 .requestaQuote-button-container {
-  text-align: center;
-  margin-top: 2rem;
   display: flex;
-  justify-content: center;
-  gap: 1rem;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .requestaQuote-button {
-  background-color: var(--primary-color);
-  color: white;
-  padding: 0.8rem 2rem;
+  padding: 10px 20px;
   border: none;
-  border-radius: 30px;
-  font-weight: bold;
+  border-radius: 10px;
+  background-color: #da228d;
+  color: #fff;
+  font-size: 1.3rem;
   cursor: pointer;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  min-width: 160px;
-  height: 50px;
-  margin: 0 auto;
-}
-
-.requestaQuote-button.back {
-  background-color: var(--secondary-color);
+  transition: background-color 0.3s ease;
 }
 
 .requestaQuote-button:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #0056b3;
 }
 
+.requestaQuote-button.back {
+  background-color: #1d9329;
+  font-size: 1.2rem;
+}
+
+.requestaQuote-button.back:hover {
+  background-color: #68605a;
+}
+
+.requestaQuote-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.requestaQuote-error {
+  color: #dc3545;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.requestaQuote-success {
+  color: #28a745;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .requestaQuote-container {
     flex-direction: column;
-  }
-
-  .requestaQuote-option {
-    flex: 1 1 100%;
+    padding: 20px;
   }
 
   .requestaQuote-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
+  }
+
+  .requestaQuote-heading {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .requestaQuote-title {
+    font-size: 1.5rem;
+  }
+
+  .requestaQuote-button {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+
+  .tag {
+    padding: 6px 12px;
+    font-size: 0.8rem;
   }
 }

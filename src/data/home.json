@@ -183,60 +183,52 @@
   ],
   "portfolio": {
     "all": [
-      {
-        "src": "/image/portfolio/portfolio1.jpg",
-        "alt": "Bolster",
-        "title": "Bolster Project"
-      },
+      
       {
         "src": "/image/portfolio/portfolio2.png",
-        "alt": "SaaS",
-        "title": "SaaS Application"
+        "alt": "SaaS"
+        
       },
       {
         "src": "/image/portfolio/portfolio3.jpg",
-        "alt": "E-commerce",
-        "title": "E-commerce Platform"
+        "alt": "E-commerce"
+        
       },
       {
         "src": "/image/portfolio/portfolio4.jpg",
-        "alt": "Mobile App",
-        "title": "Mobile App"
+        "alt": "Mobile App"
+       
       },
       {
         "src": "/image/portfolio/portfolio5.jpg",
-        "alt": "Web App",
-        "title": "Web Application"
+        "alt": "Web App"
+        
       },
-      {
-        "src": "/image/portfolio/portfolio6.jpg",
-        "alt": "Blockchain",
-        "title": "Blockchain Solution"
-      },
+      
       {
         "src": "/image/portfolio/portfolio7.jpg",
-        "alt": "Healthcare",
-        "title": "Healthcare Platform"
+        "alt": "Healthcare"
+       
       },
       {
         "src": "/image/portfolio/portfolio8.jpg",
-        "alt": "E-learning",
-        "title": "E-learning Platform"
+        "alt": "E-learning"
+        
       },
       {
         "src": "/image/portfolio/portfolio9.jpg",
-        "alt": "Fintech",
-        "title": "Fintech Solution"
+        "alt": "Fintech"
+       
       },
       {
         "src": "/image/portfolio/portfolio10.jpg",
-        "alt": "Travel",
-        "title": "Travel Booking System"
+        "alt": "Travel"
+        
       },
       {
         "src": "/image/portfolio/portfolio12.jpg",
-        "alt": "Social Media",
-        "title": "Social Media Platform"
+        "alt": "Social Media"
+        
       }
     ]
   }

@@ -41,27 +41,29 @@ export default function QualityAssuranceServices() {
           {/* QA Diagram Section */}
           <section className="qa-diagram-section">
             <div className="qa-info">
-              <h2>Let's Build and Deploy bug-free software products!</h2>
-              <p>
-                Our quality assurance and software testing services are based on
-                the metrics-driven approach along with automation testing.
-              </p>
-              <Image 
+              <Image
                 src="https://weboum.com/wp-content/uploads/2021/06/quality-assurance.png"
                 alt="Quality Assurance Metrics"
                 width={500}
                 height={300}
                 className="qa-info-image"
               />
-              <p>
-                Our team of highly qualified testers ensures testing every
-                application developed to ensure the seamless performance of the
-                developed applications.
-              </p>
-              <p>
-                We help organizations release bug-free applications and at the
-                same time reduce time to market.
-              </p>
+              <div className="qa-info-text">
+                <h2>Let's Build and Deploy bug-free software products!</h2>
+                <p>
+                  Our quality assurance and software testing services are based
+                  on the metrics-driven approach along with automation testing.
+                </p>
+                <p>
+                  Our team of highly qualified testers ensures testing every
+                  application developed to ensure the seamless performance of
+                  the developed applications.
+                </p>
+                <p>
+                  We help organizations release bug-free applications and at the
+                  same time reduce time to market.
+                </p>
+              </div>
             </div>
           </section>
 
@@ -92,7 +94,6 @@ export default function QualityAssuranceServices() {
                   width={280}
                   height={300}
                 />
-               
               </div>
             </div>
           </section>
@@ -159,10 +160,10 @@ export default function QualityAssuranceServices() {
                 <div className="qa-service-content">
                   <h3>Mobile Testing:</h3>
                   <p>
-                    Mobile devices are becoming more dominant in today's
-                    world. Our team, hence, emphasizes more on mobile testing
-                    services to make sure that testing services for mobile
-                    devices are efficiently performed.
+                    Mobile devices are becoming more dominant in today's world.
+                    Our team, hence, emphasizes more on mobile testing services
+                    to make sure that testing services for mobile devices are
+                    efficiently performed.
                   </p>
                 </div>
               </div>
@@ -292,7 +293,6 @@ export default function QualityAssuranceServices() {
         </main>
 
         {/* Chat Button */}
-       
       </div>
       <Days />
     </>

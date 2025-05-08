@@ -12,12 +12,15 @@
 
 /* Section layout */
 .whyus-section-wrapper {
-  padding: 40px 15px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   font-family: Arial, "Roboto", sans-serif;
   background-image: url("https://weboum.com/wp-content/uploads/2021/04/shape-6.png");
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 10px;
 }
 
 /* Row */
@@ -206,7 +209,6 @@
     box-shadow var(--transition-speed) ease-in-out;
 }
 
-
 .whyus-form-control:focus,
 .whyus-form-select:focus,
 .whyus-form-box textarea:focus {
@@ -215,11 +217,9 @@
   box-shadow: 0 0 0 3px rgba(170, 0, 170, 0.2);
 }
 
-
 .whyus-form-select {
   max-height: 150px;
-  overflow-y: auto;        
-  
+  overflow-y: auto;
 }
 
 .whyus-captcha-box {

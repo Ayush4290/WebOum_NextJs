@@ -1,7 +1,7 @@
 /* Base styles */
 .samplePageContainer {
   font-family: Arial, "Roboto", sans-serif;
-  background-color: #e0e7ea;
+  background: white;
 }
 
 /* Business section styles */
@@ -10,10 +10,26 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: 60px 5%;
   background: linear-gradient(to right, #2c3e50, #bdc3c7);
   color: white;
   gap: 40px;
+  
+}
+
+.sampleHeader{
+  
+  width: 100%;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 10px;
 }
 
 
@@ -302,10 +318,17 @@
   flex-wrap: wrap;
   gap: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-image: url("https://stage.weboum.com/wp-content/uploads/2021/04/shape-6.png");
   background-color: white;
-  opacity: 1; /* Ensure visibility */
-  visibility: visible; /* Ensure visibility */
+
+  background-size: cover;
+  background-position: center;
+  min-height: 400px;
+  opacity: 1;
+  visibility: visible;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 10px;
 }
 
 /* Row */
@@ -491,11 +514,11 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 171px;
   padding: 60px 5%;
   background: linear-gradient(to bottom, #f2f8fc, #dcebf4);
   flex-wrap: wrap;
   text-align: center;
+ 
 }
 
 .samplePage_service-box {
@@ -503,6 +526,7 @@
   min-width: 290px;
   max-width: 3000px;
   transition: transform 0.3s;
+  
 }
 
 .samplePage_service-box:hover {
@@ -623,7 +647,7 @@
 
 .samplePage_testimonial-slider {
   display: flex;
-  overflow-x: auto;
+  overflow-x: hidden;
   scroll-behavior: smooth;
   gap: 20px;
   padding: 20px 0;
@@ -704,9 +728,8 @@
   color: #d1cde5;
 }
 
-.samplePage_testimonial-text{
+.samplePage_testimonial-text {
   font-size: 18px;
-
 }
 
 /* My-3 utility class */
@@ -741,15 +764,17 @@
 /* Container class */
 .container {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px 30px;
+
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 40px;
   box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 10px;
 }
 
 /* Mobile view (max-width: 767px) */
@@ -790,8 +815,6 @@
     padding: 40px 5%;
   }
 
-
- 
   .samplePage_service-box {
     min-width: 100%;
     max-width: 100%;
@@ -843,14 +866,23 @@
 
   .whyus-section-wrapper {
     padding: 30px 10px;
+    background-image: none;
+    background-color: white;
+    min-height: auto;
+    display: block;
   }
 
-  .whyus-left-content h2 {
-    font-size: 1.8rem;
+  .whyus-row {
+    display: block;
+  }
+
+  .whyus-left-content {
+    width: 100%;
   }
 
   .whyus-form-box {
-    padding: 20px;
+    width: 100%;
+    margin-top: 20px;
   }
 
   .container {
