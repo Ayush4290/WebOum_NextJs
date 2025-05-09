@@ -58,12 +58,20 @@
 }
 
 /* Container for content and image */
+.back-wrapper {
+  width: 100%;
+  background-color: rgb(240, 237, 237); /* Full-width red background */
+}
+
 .back-container {
   display: flex;
   flex-direction: row;
   gap: 30px;
-  margin: 40px 0;
   align-items: center;
+  max-width: 1200px;       /* Optional: to center content */
+  margin: 0 auto;          /* Center inside full-width */
+  padding: 40px 20px;
+  box-sizing: border-box;
 }
 
 .content {

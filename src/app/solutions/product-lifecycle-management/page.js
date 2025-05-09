@@ -19,9 +19,9 @@ export default function ProductLifecycleManagement() {
           <div className="section-image">
             <Image
               src="/image/ProductLifecycleManagement/productlifecycle 1.png"
-              alt="DevOps Technology Illustration"
-              width={400}
-              height={250}
+              alt="Product Lifecycle Illustration"
+              width={500}
+              height={300}
               priority
             />
           </div>
@@ -45,124 +45,137 @@ export default function ProductLifecycleManagement() {
           </div>
         </div>
 
+        <div className="full-width section-row-2">
+          <div className="full-width-inner">
+            <div className="SectionPoint">
+              <div className="section-text">
+                <h2 className="section-heading">
+                  Our PLM Solutions Are More Than Just Enabling Technical
+                  Capabilities!
+                </h2>
+                <p>
+                  The product lifecycle management solutions offered by our
+                  dedicated team of developers at WebOum are focused on
+                  providing enhanced visibility of the product and its
+                  performance.
+                </p>
+                <p>
+                  A vast range of PLM solutions is established to manage and
+                  digitize the entire product lifecycle. The steps include
+                  everything right from the conceptualization, to design,
+                  installation, manufacturing, maintenance, and finally
+                  retirement.
+                </p>
+                <p>
+                  Our development team also works on cutting-edge PLM products
+                  to offer services and several other solutions across
+                  industries including, aerospace, automotive, retail, hi-tech,
+                  and life sciences verticals.
+                </p>
+              </div>
+              <div className="section-image">
+                <Image
+                  src="/image/ProductLifecycleManagement/product-lifecycle-mangement.jpg"
+                  alt="PLM Illustration"
+                  width={500}
+                  height={300}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="full-width benefits">
+          <div className="full-width-inner">
+            <h2 className="section-heading">
+              Let’s Check Out A Few Of The Many Benefits Of Our Product
+              Lifecycle Management!
+            </h2>
+            <ul className="list">
+              <li>Increased Operational Efficiency.</li>
+              <li>Reduced Design and Production Rework.</li>
+              <li>Reduced Execution Time.</li>
+              <li>Reduced Design and Production Rework.</li>
+            </ul>
+          </div>
+        </div>
+
         <div className="section-row">
           <div className="section-text">
             <h2 className="section-heading">
-              Our PLM Solutions Are More Than Just Enabling Technical
-              Capabilities!
+              Enter into The Product Market Quickly With Our PL Services!
             </h2>
             <p>
-              The product lifecycle management solutions offered by our
-              dedicated team of developers at WebOum are focused on providing
-              enhanced visibility of the product and its performance.
+              As a manufacturing company, you are already aware of the time that
+              you may have to spend managing the design processes of your
+              product. Right? With the introduction of PLM services, you can
+              easily get away from the hassle of working with custom
+              spreadsheets, homegrown forms, and emails.
             </p>
             <p>
-              A vast range of PLM solutions is established to manage and
-              digitize the entire product lifecycle. The steps include
-              everything right from the conceptualization, to design,
-              installation, manufacturing, maintenance, and finally retirement.
+              Our Product Lifecycle Management services let manufacturers easily
+              connect people, processes, and data across the lifecycle of the
+              product. You are missing out on greater benefits if you have not
+              yet implemented PLM in your processes.
             </p>
             <p>
-              Our development team also works on cutting-edge PLM products to
-              offer services and several other solutions across industries
-              including, aerospace, automotive, retail, hi-tech, and life
-              sciences verticals.
+              Businesses that have already implemented PLM realized enhanced
+              profitability, better quality product, sustained growth, and quick
+              turnaround time to the market.
             </p>
           </div>
-          <div className="section-image">
-            <Image
-              src="/image/ProductLifecycleManagement/product-lifecycle-mangement.jpg"
-              alt="DevOps Infinity Loop"
-              width={500}
-              height={300}
-            />
-          </div>
         </div>
 
-        <div className="benefits">
-          <h2 className="section-heading">
-            Let’s Check Out A Few Of The Many Benefits Of Our Product Lifecycle
-            Management!
-          </h2>
-          <ul className="list">
-            <li>Increased Operational Efficiency.</li>
-            <li>Reduced Design and Production Rework.</li>
-            <li>Reduced Execution Time.</li>
-            <li>Reduce Design and Production Rework.</li>
-          </ul>
-        </div>
-
-        <div className="section-text">
-          <h2 className="section-heading">
-            Enter into The Product Market Quickly With Our PL Services!
-          </h2>
-          <p>
-            As a manufacturing company, you are already aware of the time that
-            you may have to spend managing the design processes of your product.
-            Right? With the introduction of PLM services, you can easily get
-            away from the hassle of working with custom spreadsheets, homegrown
-            forms, and emails.
-          </p>
-          <p>
-            Our Product Lifecycle Management services let manufacturers easily
-            connect people, processes, and data across the lifecycle of the
-            product. You are missing out on greater benefits if you have not yet
-            implemented PLM in your processes.
-          </p>
-          <p>
-            Businesses that have already implemented PLM realized enhanced
-            profitability, better quality product, sustained growth, and quick
-            turnaround time to the market.
-          </p>
-        </div>
-
-        <div className="container">
-          <h1 className="main-title">
-            PLM Is A Proven Approach And We Know How To Ace It!
-          </h1>
-          <p className="subtitle">
-            With the help of our PLM services, your company can reach higher
-            levels of productivity.
-          </p>
-          <div className="grid">
-            <div className="card">
-              <Image
-                src="/image/ProductLifecycleManagement/add-searching.png"
-                alt="icon"
-                width={40}
-                height={40}
-              />
-              <div>
-                <div className="card-title">Rapid Deployment</div>
-                <p>
-                  Our PLM services help businesses realize quick and efficient
-                  development. When you partner with our team, it will help you
-                  craft and analyze the areas in your process that need
-                  attention and define a solution.
-                </p>
+        <div className="full-width container">
+          <div className="full-width-inner">
+            <h1 className="main-title">
+              PLM Is A Proven Approach And We Know How To Ace It!
+            </h1>
+            <p className="subtitle">
+              With the help of our PLM services, your company can reach higher
+              levels of productivity.
+            </p>
+            <div className="grid">
+              <div className="card">
+                <Image
+                  src="/image/ProductLifecycleManagement/add-searching.png"
+                  alt="Rapid Deployment Icon"
+                  width={60}
+                  height={60}
+                />
+                <div>
+                  <div className="card-title">Rapid Deployment</div>
+                  <p>
+                    Our PLM services help businesses realize quick and efficient
+                    development. When you partner with our team, it will help
+                    you craft and analyze the areas in your process that need
+                    attention and define a solution.
+                  </p>
+                </div>
+              </div>
+              <div className="card">
+                <Image
+                  src="/image/ProductLifecycleManagement/allocation.png"
+                  alt="Elimination of Bottlenecks Icon"
+                  width={60}
+                  height={60}
+                />
+                <div>
+                  <div className="card-title">Elimination of Bottlenecks</div>
+                  <p>
+                    Our team will ensure that all project lifecycle systems work
+                    cohesively to share all necessary information to provide
+                    continuity and visibility.
+                  </p>
+                </div>
               </div>
             </div>
-            <div className="card">
-              <Image
-                src="/image/ProductLifecycleManagement/allocation.png"
-                alt="icon"
-                width={40}
-                height={40}
-              />
-              <div>
-                <div className="card-title">Elimination of Bottlenecks</div>
-                <p>
-                  Our team will ensure that all project lifecycle systems work
-                  cohesively to share all necessary information to provide
-                  continuity and visibility.
-                </p>
-              </div>
-            </div>
+            <p className="bottom-note">
+              Get ready to stay on top of product development projects and
+              connect with business systems. Contact our team today to get
+              started!
+            </p>
           </div>
-          <p className="bottom-note">
-            Get ready to stay on top of product development projects and connect
-            with business systems. Contact our team today to get started!
-          </p>
         </div>
       </div>
       <Days />

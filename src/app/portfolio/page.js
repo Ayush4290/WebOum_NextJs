@@ -1,142 +1,242 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import "./portfolio.css";
-import portfolioImages from "@/data/Portfolio.json";
-import SubHeader from "../sub-header/page";
-import Days from "../about-us/days/page";
 
-export default function Portfolio() {
+const Portfolio = () => {
   const [activeTab, setActiveTab] = useState("all");
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [currentImage, setCurrentImage] = useState("");
-  const [showMore, setShowMore] = useState(false);
+  const [displayedItems, setDisplayedItems] = useState([]);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItemIndex, setSelectedItemIndex] = useState(null);
+  const [showLightbox, setShowLightbox] = useState(false);
+  const [visibleItems, setVisibleItems] = useState(4);
+  const [portfolioData, setPortfolioData] = useState(null);
 
-  const showTab = (tabId) => {
-    setActiveTab(tabId);
-    setShowMore(false);
+  // Categories for tabs
+  const categories = [
+    { key: "all", label: "All" },
+    { key: "software", label: "Software" },
+    { key: "apps", label: "Mobile Apps" },
+    { key: "graphics", label: "Graphics" },
+    { key: "marketing", label: "Marketing" },
+  ];
+
+  // Load portfolio data
+  useEffect(() => {
+    // Normally you would import the data directly or fetch it
+    // This assumes your JSON file is imported elsewhere
+    import("../../data/portfolio.json")
+      .then((data) => {
+        setPortfolioData(data.default);
+        setDisplayedItems(data.default.all);
+      })
+      .catch((error) => console.error("Error loading portfolio data:", error));
+  }, []);
+
+  // Update displayed items when tab changes
+  useEffect(() => {
+    if (portfolioData && portfolioData[activeTab]) {
+      setDisplayedItems(portfolioData[activeTab]);
+      setVisibleItems(4); // Reset visible items when changing tabs
+    }
+  }, [activeTab, portfolioData]);
+
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
   };
 
-  const handleLearnMore = () => {
-    setShowMore(true);
-  };
-
-  const openLightbox = (src) => {
-    setCurrentImage(src);
-    setLightboxOpen(true);
-    document.body.style.overflow = "hidden";
+  const handleItemClick = (item, index) => {
+    setSelectedItem(item);
+    setSelectedItemIndex(index);
+    setShowLightbox(true);
+    document.body.style.overflow = "hidden"; // Prevent scrolling when lightbox is open
   };
 
   const closeLightbox = () => {
-    setLightboxOpen(false);
-    document.body.style.overflow = "auto";
+    setShowLightbox(false);
+    setSelectedItem(null);
+    setSelectedItemIndex(null);
+    document.body.style.overflow = "auto"; // Enable scrolling again
   };
 
-  useEffect(() => {
-    const handleEscapeKey = (e) => {
-      if (e.key === "Escape" && lightboxOpen) {
-        closeLightbox();
-      }
-    };
+  const loadMore = () => {
+    setVisibleItems((prev) => Math.min(prev + 4, displayedItems.length));
+  };
 
-    document.addEventListener("keydown", handleEscapeKey);
-    return () => {
-      document.removeEventListener("keydown", handleEscapeKey);
-    };
-  }, [lightboxOpen]);
+  // Navigate to previous image
+  const prevImage = () => {
+    if (selectedItemIndex > 0) {
+      const newIndex = selectedItemIndex - 1;
+      setSelectedItemIndex(newIndex);
+      setSelectedItem(displayedItems[newIndex]);
+    }
+  };
 
+  // Navigate to next image
+  const nextImage = () => {
+    if (selectedItemIndex < displayedItems.length - 1) {
+      const newIndex = selectedItemIndex + 1;
+      setSelectedItemIndex(newIndex);
+      setSelectedItem(displayedItems[newIndex]);
+    }
+  };
+
+  // Close lightbox when clicking outside content
   const handleLightboxClick = (e) => {
     if (e.target.classList.contains("lightbox")) {
       closeLightbox();
     }
   };
 
-  const displayedImages = portfolioImages[activeTab]
-    ? showMore
-      ? portfolioImages[activeTab]
-      : portfolioImages[activeTab].slice(0, 4)
-    : [];
+  // Handle wheel event for scrolling through images
+  const handleWheel = (e) => {
+    if (showLightbox) {
+      e.preventDefault();
+      if (e.deltaY > 0) {
+        nextImage();
+      } else {
+        prevImage();
+      }
+    }
+  };
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (showLightbox) {
+        if (e.key === "Escape") {
+          closeLightbox();
+        } else if (e.key === "ArrowRight") {
+          nextImage();
+        } else if (e.key === "ArrowLeft") {
+          prevImage();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "auto"; // Ensure scrolling is re-enabled on unmount
+    };
+  }, [showLightbox, selectedItemIndex, displayedItems]);
+
+  // Add wheel event listener when lightbox is open
+  useEffect(() => {
+    const lightboxElement = document.querySelector(".lightbox");
+    if (lightboxElement && showLightbox) {
+      lightboxElement.addEventListener("wheel", handleWheel, { passive: false });
+      return () => {
+        lightboxElement.removeEventListener("wheel", handleWheel);
+      };
+    }
+  }, [showLightbox, selectedItemIndex]);
+
+  if (!portfolioData) {
+    return <div className="portfolio-container">Loading...</div>;
+  }
 
   return (
-    <>
-      <SubHeader title="Portfolio" />
-      <div className="portfolio-container">
-        <div className="tabs">
+    <div className="portfolio-container">
+      <div className="tabs">
+        {categories.map((category) => (
           <div
-            className={`tab ${activeTab === "all" ? "active" : ""}`}
-            onClick={() => showTab("all")}
+            key={category.key}
+            className={`tab ${activeTab === category.key ? "active" : ""}`}
+            onClick={() => handleTabClick(category.key)}
           >
-            All
+            {category.label}
           </div>
-          <div
-            className={`tab ${activeTab === "software" ? "active" : ""}`}
-            onClick={() => showTab("software")}
-          >
-            Software
-          </div>
-          <div
-            className={`tab ${activeTab === "apps" ? "active" : ""}`}
-            onClick={() => showTab("apps")}
-          >
-            Apps
-          </div>
-          <div
-            className={`tab ${activeTab === "graphics" ? "active" : ""}`}
-            onClick={() => showTab("graphics")}
-          >
-            Graphics
-          </div>
-          <div
-            className={`tab ${activeTab === "marketing" ? "active" : ""}`}
-            onClick={() => showTab("marketing")}
-          >
-            Digital Marketing
-          </div>
-        </div>
+        ))}
+      </div>
 
-        <div className="portfolio">
-          {displayedImages.map((image, index) => (
-            <div className="item" key={index}>
+      <div className="portfolio-grid">
+        {displayedItems.slice(0, visibleItems).map((item, index) => (
+          <div className="portfolio-item" key={index}>
+            <div className="item-image" onClick={() => handleItemClick(item, index)}>
               <Image
-                src={image.src}
-                alt={image.alt || "Portfolio item"}
-                width={300}
-                height={200}
-                layout="responsive"
-                objectFit="cover"
-                onClick={() => openLightbox(image.src)}
-                priority={index < 4}
+                src={item.src}
+                alt={item.alt}
+                width={600}
+                height={400}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  objectFit: "cover",
+                }}
+                quality={90}
               />
             </div>
-          ))}
-        </div>
+            <div className="item-info">
+              <h3 className="item-title">{item.title}</h3>
+              <div className="item-description">
+                <p>{item.description[0]}</p>
+                <p>{item.description[1]}</p>
+                <p>{item.description[2]}</p>
+                <p>{item.description[3]}</p>
+                <p>{item.description[4]}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
 
-        {!showMore && portfolioImages[activeTab]?.length > 4 && (
-          <div className="learn-more-container">
-            <button className="learn-more-btn" onClick={handleLearnMore}>
-              Learn More
+      {visibleItems < displayedItems.length && (
+        <div className="learn-more-container">
+          <button className="learn-more-btn" onClick={loadMore}>
+            View More Portfolio
+          </button>
+        </div>
+      )}
+
+      {showLightbox && selectedItem && (
+        <div className="lightbox" onClick={handleLightboxClick}>
+          <div className="close-lightbox" onClick={closeLightbox}>
+            ✕
+          </div>
+          <div className="navigation-controls">
+            <button 
+              className="nav-button prev-button" 
+              onClick={(e) => {
+                e.stopPropagation();
+                prevImage();
+              }}
+              disabled={selectedItemIndex === 0}
+            >
+              &#10094;
+            </button>
+            <button 
+              className="nav-button next-button" 
+              onClick={(e) => {
+                e.stopPropagation();
+                nextImage();
+              }}
+              disabled={selectedItemIndex === displayedItems.length - 1}
+            >
+              &#10095;
             </button>
           </div>
-        )}
-
-        {lightboxOpen && (
-          <div className="lightbox" onClick={handleLightboxClick}>
-            <span className="close-lightbox" onClick={closeLightbox}>
-              ×
-            </span>
+          <div className="lightbox-content">
             <Image
+              src={selectedItem.src}
+              alt={selectedItem.alt}
+              width={800}
+              height={600}
               className="lightbox-img"
-              src={currentImage}
-              alt=" helyez Full size image"
-              width={1200}
-              height={800}
-              objectFit="contain"
-              unoptimized
+              style={{
+                maxWidth: "100%",
+                height: "auto",
+              }}
             />
+            <div className="image-counter">
+              {selectedItemIndex + 1} / {displayedItems.length}
+            </div>
           </div>
-        )}
-      </div>
-      <Days />
-    </>
+        </div>
+      )}
+    </div>
   );
-}
+};
+
+export default Portfolio;

@@ -10,11 +10,9 @@
 
 .graphicDesign {
   width: 100%;
-
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", Sans-serif;
   color: #333;
   line-height: 1.4;
- 
   margin: 0 auto;
 }
 
@@ -37,6 +35,8 @@
 .graphicDesign-image-box {
   flex: 1 1 350px;
   text-align: center;
+  border: 0.5px solid #e7d3d3;
+  border-radius: 13px;
 }
 
 .graphicDesign-image img,
@@ -52,7 +52,7 @@ h2 {
 }
 
 h3 {
-  font-size: 22px;
+  font-size: 30px;
   margin-top: 60px;
   margin-bottom: 16px;
   color: black;
@@ -61,19 +61,25 @@ h3 {
 p {
   margin-bottom: 16px;
   font-size: 20px;
-  color: black;
 }
 
 .graphicDesign-intro,
 .graphicDesign-services-section,
-.graphicDesign-offers,
-.graphicDesign-results {
+.graphicDesign-offers {
   padding: 60px 20px;
   max-width: 1225px;
   margin: auto;
 }
+
+.graphicDesign-offers h2 {
+  text-align: center;
+}
+.graphicDesign-offers h6 {
+  text-align: center;
+  font-size: 20px;
+}
 .graphicDesign-services-section.light {
-  background-color: rgb(240, 232, 232);
+  background-color: #edf5f8;
   max-width: 1700px;
 }
 
@@ -115,6 +121,15 @@ li {
   line-height: 1.6;
 }
 
+.graphicDesign-results {
+  padding: 60px 20px;
+  max-width: 1650px;
+  margin: auto;
+  background-color: #edf5f8;
+}
+.graphicDesign-results h2 {
+  text-align: center;
+}
 .graphicDesign-result-grid {
   display: flex;
   flex-wrap: wrap;

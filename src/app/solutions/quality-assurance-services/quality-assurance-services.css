@@ -68,16 +68,16 @@
 
 .qa-info-image {
   flex: 1;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+ 
   width: 100%;
-  height: auto;
+  height: 400px;
   max-width: 400px;
 }
 
 /* Services Section */
 .qa-services {
   margin-bottom: 40px;
+  padding: 20px;
 }
 
 .qa-services h2 {
@@ -148,56 +148,62 @@
   color: #555;
 }
 
-/* Prevention Section */
-.qa-prevention {
+
+
+
+/* Fixes for Prevention Section */
+.qa-prevention-wrapper {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
   background-color: #f2f7fb;
-  padding: 30px;
-  border-radius: 8px;
+}
+
+.qa-prevention {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-  margin-bottom: 40px;
-  width: 100%;
-  max-width: none;
+  flex-wrap: wrap;
+  max-width: 1350px;
+  margin: auto 230px;
+  padding: 40px 80px;
+  gap: 2rem;
+  align-items: center;
   box-sizing: border-box;
 }
 
 .qa-prevention-content {
-  width: 100%;
+  flex: 1;
+  min-width: 300px;
 }
 
 .qa-prevention-content h2 {
-  font-size: 1.6rem;
-  font-weight: bold;
-  margin-bottom: 15px;
-  color: #222022;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
 }
 
 .qa-prevention-content p {
-  margin-bottom: 12px;
-  line-height: 1.5;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: #555;
 }
 
 .qa-prevention-image {
-  width: 100%;
+  flex: 1;
+  min-width: 300px;
   display: flex;
   justify-content: center;
 }
 
-.qa-image-container {
-  position: relative;
-  width: 240px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+.qa-image-container img {
+  max-width: 100%;
+  height: 400px;
+  width: 400px;
+  display: block;
+  border-radius: 10px;
 }
 
-.qa-image-container img {
-  width: 100%;
-  display: block;
-  border-radius: 12px;
-}
+
+
 
 .qa-image-overlay {
   position: absolute;
@@ -333,7 +339,7 @@
     max-width: 100%;
     order: -1; /* Moves image above text on mobile */
   }
-
+  
   .qa-info h2 {
     font-size: 1.4rem;
   }
@@ -412,7 +418,7 @@
   .qa-prevention-content {
     width: 60%;
   }
-
+  
   .qa-prevention-image {
     width: 40%;
   }
@@ -420,7 +426,7 @@
   .qa-hero h2 {
     font-size: 2rem;
   }
-
+  
   .qa-info h2 {
     font-size: 1.8rem;
   }
@@ -435,7 +441,7 @@
 
   .qa-prevention-content h2 {
     font-size: 1.8rem;
-  }
+}
 
   .qa-overlay-content h3 {
     font-size: 1.5rem;

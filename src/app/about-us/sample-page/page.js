@@ -73,28 +73,13 @@ export default function SamplePage() {
     ]);
   }, []);
 
-  const showTab = (tabId) => {
-    document
-      .querySelectorAll(".samplePage_portfolio")
-      .forEach((p) => p.classList.remove("samplePage_active"));
-
-    document.getElementById(tabId).classList.add("samplePage_active");
-
-    document
-      .querySelectorAll(".samplePage_tab")
-      .forEach((t) => t.classList.remove("samplePage_active"));
-    document
-      .querySelector(`[data-category="${tabId}"]`)
-      .classList.add("samplePage_active");
-  };
-
   const openLightbox = (src) => {
     document.getElementById("samplePage_lightbox-img").src = src;
-    document.getElementById("samplePage_lightbox").style.display = "flex";
+    document.getElementById("samplePage_lightbox").classList.add("active");
   };
 
   const closeLightbox = () => {
-    document.getElementById("samplePage_lightbox").style.display = "none";
+    document.getElementById("samplePage_lightbox").classList.remove("active");
   };
 
   const imageRefs = useRef([]);
@@ -102,7 +87,7 @@ export default function SamplePage() {
   const lightboxImgRef = useRef(null);
 
   useEffect(() => {
-    imageRefs.current = document.querySelectorAll(".samplePage_item img");
+    imageRefs.current = document.querySelectorAll(".samplePage_item img.default-img");
     imageRefs.current.forEach((img) => {
       img.addEventListener("click", () => openLightbox(img.src));
     });
@@ -160,10 +145,10 @@ export default function SamplePage() {
         const div = document.createElement("div");
         div.textContent = input;
         return div.innerHTML
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;");
+          .replace(/&/g, "&")
+          .replace(/</g, "<")
+          .replace(/>/g, ">")
+          .replace(/"/g, "")
       };
 
       const sanitizedName = sanitizeInput(formData.name);
@@ -286,6 +271,7 @@ Message: ${sanitizedMessage}
       <div className="samplePageContainer">
         <section className="samplePage_business-section samplePage_conta">
           <div className="sampleHeader">
+            
             <div className="samplePage_content container">
               <h1>
                 Build efficient Website
@@ -374,45 +360,7 @@ Message: ${sanitizedMessage}
           </div>
         </section>
 
-        <div className="samplePage_tabs">
-          <div
-            className="samplePage_tab samplePage_active"
-            onClick={() => showTab("all")}
-            data-category="all"
-          >
-            All
-          </div>
-          <div
-            className="samplePage_tab"
-            onClick={() => showTab("software")}
-            data-category="software"
-          >
-            Software
-          </div>
-          <div
-            className="samplePage_tab"
-            onClick={() => showTab("apps")}
-            data-category="apps"
-          >
-            Apps
-          </div>
-          <div
-            className="samplePage_tab"
-            onClick={() => showTab("graphics")}
-            data-category="graphics"
-          >
-            Graphics
-          </div>
-          <div
-            className="samplePage_tab"
-            onClick={() => showTab("marketing")}
-            data-category="marketing"
-          >
-            Digital Marketing
-          </div>
-        </div>
-
-        <div id="all" className="samplePage_portfolio samplePage_active">
+        <div className="samplePage_portfolio">
           <div className="samplePage_item">
             <Image
               src="/image/samplePage/portfolio1.jpg"
@@ -420,8 +368,6 @@ Message: ${sanitizedMessage}
               width={200}
               height={150}
             />
-          </div>
-          <div className="samplePage_item">
             <Image
               src="/image/samplePage/portfolio2.png"
               alt="Portfolio 2"
@@ -436,8 +382,6 @@ Message: ${sanitizedMessage}
               width={200}
               height={150}
             />
-          </div>
-          <div className="samplePage_item">
             <Image
               src="/image/samplePage/portfolio5.jpg"
               alt="Software 2"
@@ -452,8 +396,6 @@ Message: ${sanitizedMessage}
               width={200}
               height={150}
             />
-          </div>
-          <div className="samplePage_item">
             <Image
               src="/image/samplePage/portfolio7.jpg"
               alt="Apps 2"
@@ -468,8 +410,6 @@ Message: ${sanitizedMessage}
               width={200}
               height={150}
             />
-          </div>
-          <div className="samplePage_item">
             <Image
               src="/image/samplePage/portfolio9.jpg"
               alt="Graphics 2"
@@ -484,8 +424,6 @@ Message: ${sanitizedMessage}
               width={200}
               height={150}
             />
-          </div>
-          <div className="samplePage_item">
             <Image
               src="/image/samplePage/portfolio12.jpg"
               alt="Marketing 2"

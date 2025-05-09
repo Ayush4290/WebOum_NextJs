@@ -50,6 +50,21 @@
   
 }
 
+.full-width-section {
+  width: 100%;
+  background-color: #f5f5f5;
+  padding: var(--spacing) 0;
+  margin: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow */
+  border-radius: var(--radius); /* Optional rounded corners */
+}
+
+@media (max-width: 768px) {
+  .full-width-section {
+    padding: 1rem 0;
+  }
+}
+
 .shopify-text-section {
   flex: 1 1 500px;
   padding: 0 1rem;

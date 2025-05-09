@@ -24,20 +24,20 @@
 }
 
 .devops-content h2 {
-  color: #2c3e50;
+  color: black;
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 
 .devops-italic {
   font-style: italic;
-  color: #555;
+  color: black;
   margin-bottom: 1rem;
   line-height: 1.6;
 }
 
 .devops-content p {
-  color: #555;
+  color: black;
   line-height: 1.6;
   margin-bottom: 1rem;
 }
@@ -53,21 +53,26 @@
 .devops-image-container img {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: block; /* removes bottom whitespace */
+  margin: 0;
+  padding: 0;
 }
 
 /* Section with image on left, text on right */
 .devops-section {
   display: flex;
   flex-wrap: wrap;
-  max-width: 1200px;
+  max-width: 1700px;
   margin: 40px auto;
   padding: 30px;
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  gap: 2rem;
+}
+.devopsSection {
+  display: flex;
+  margin: 40px 125px;
+  padding: 30px;
 }
 
 .devops-image-box {
@@ -76,7 +81,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
 }
 
 .devops-image-box img {
@@ -89,17 +93,16 @@
 .devops-text-box {
   flex: 1;
   min-width: 300px;
-  padding: 10px 30px;
 }
 
 .devops-text-box h2 {
-  color: #2c3e50;
+  color: black;
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 
 .devops-text-box p {
-  color: #555;
+  color: black;
   line-height: 1.6;
   margin-bottom: 1rem;
 }
@@ -114,7 +117,7 @@
 .devops-benefits-section h2 {
   text-align: center;
   margin-bottom: 30px;
-  color: #2c3e50;
+  color: black;
   font-size: 1.8rem;
 }
 
@@ -126,17 +129,12 @@
 
 .devops-benefit-item {
   display: flex;
-  background-color: #fff;
-  border-radius: 8px;
   padding: 25px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  border: 1px solid #eee;
 }
 
 .devops-benefit-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .devops-benefit-item img {
@@ -154,13 +152,13 @@
 .devops-benefit-content h3 {
   margin-top: 0;
   font-size: 1.1rem;
-  color: #2c3e50;
+  color: #495ea9;
   margin-bottom: 0.8rem;
 }
 
 .devops-benefit-content p {
   font-size: 0.95rem;
-  color: #666;
+  color: black;
   line-height: 1.6;
   margin: 0;
 }
@@ -174,13 +172,13 @@
 }
 
 .devops-center-text-section h1 {
-  color: rgb(54, 44, 64);
-  font-size: 1.8rem;
+  color: black;
+  font-size: 1.4rem;
   margin-bottom: 1.5rem;
 }
 
 .devops-center-text-section p {
-  color: #555;
+  color: black;
   line-height: 1.6;
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
@@ -218,17 +216,17 @@
   .devops-center-text {
     font-size: 1.3rem;
   }
-  
+
   .devops-content h2,
   .devops-text-box h2 {
     font-size: 1.3rem;
   }
-  
+
   .devops-benefit-item {
     flex-direction: column;
     text-align: center;
   }
-  
+
   .devops-benefit-item img {
     margin-right: 0;
     margin-bottom: 15px;

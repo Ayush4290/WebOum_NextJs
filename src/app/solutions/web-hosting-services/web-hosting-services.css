@@ -5,9 +5,9 @@
   --radius: 0.5rem;
   --spacing: 1rem;
   --max-width: 1700px;
+  --red-background: #EDF5F8; /* Added red color for full-width backgrounds */
 }
 
-/* General Page Styling */
 .webhosting-page {
   font-family: Arial, sans-serif;
   color: #333;
@@ -16,7 +16,6 @@
   margin: 0 auto;
 }
 
-/* Container Common Styling */
 .webhosting-container,
 .webhosting-container-reverse {
   display: flex;
@@ -28,13 +27,27 @@
   margin: auto;
 }
 
-/* Special background for reverse container */
+/* Modified for full-width red background */
 .webhosting-container-reverse {
-  background-color: #f5f5f5;
-  max-width: 1600px;
+  background-color: var(--red-background);
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
-/* Image Section */
+/* Constrain inner content */
+.webhosting-container-reverse-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
 .webhosting-image-section,
 .webhosting-container-reverse-image {
   flex: 1 1 400px;
@@ -51,7 +64,6 @@
   object-fit: cover;
 }
 
-/* Text Section */
 .webhosting-text-section {
   flex: 1 1 500px;
   padding: 20px;
@@ -71,7 +83,6 @@
   color: black;
 }
 
-/* Section Center Text */
 .webhosting-section {
   padding: 3rem 1rem;
   background-color: var(--background-color);
@@ -94,13 +105,28 @@
   font-weight: 500;
 }
 
-/* Apart Container */
+/* Modified for full-width red background */
 .webhosting-container-Apart {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 40px 20px;
-  background-color: #f5f5f5;
+  background-color: var(--red-background);
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+/* Constrain inner content */
+.webhosting-container-Apart-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .webhosting-container-Apart h3 {
@@ -111,13 +137,13 @@
   max-width: 900px;
 }
 
-/* Hosting Types */
 .webhosting-hosting-type {
   padding: 20px;
   border-radius: var(--radius);
   max-width: 800px;
   width: 100%;
   margin-bottom: 1.5rem;
+   /* White background for content boxes */
 }
 
 .webhosting-hosting-type h4 {
@@ -133,7 +159,6 @@
   color: black;
 }
 
-/* Grid Section */
 .webhosting-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -147,7 +172,6 @@
   }
 }
 
-/* Card inside Grid */
 .webhosting-card {
   display: flex;
   gap: 1.2rem;
@@ -171,7 +195,6 @@
   margin-bottom: 0.5rem;
 }
 
-/* Bottom Note */
 .webhosting-bottom-note {
   text-align: center;
   font-size: 1.1rem;
@@ -179,7 +202,6 @@
   margin-top: 2rem;
 }
 
-/* Padding Utilities */
 .webhosting-pt-20 {
   padding-top: 70px;
 }
@@ -192,7 +214,6 @@
   padding-bottom: 40px;
 }
 
-/* Small fixes */
 .webhosting-container h1.webhosting-pb-10 {
   font-size: 2rem;
   text-align: center;
@@ -200,12 +221,15 @@
   margin-bottom: 20px;
 }
 
-/* Mobile View Adjustments */
 @media (max-width: 767px) {
   .webhosting-container,
   .webhosting-container-reverse {
     flex-direction: column;
     padding: 20px 10px;
+  }
+
+  .webhosting-container-reverse-inner {
+    flex-direction: column;
   }
 
   .webhosting-image-section,

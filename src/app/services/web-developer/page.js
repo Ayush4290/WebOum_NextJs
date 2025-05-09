@@ -52,11 +52,8 @@ export default function WebDevelopment() {
                   <FaExpandArrowsAlt className="icons" />
                   <h5>Refreshingly Unique Model:</h5>
                   <p>
-                    Transparent & Local Interaction
-                    <br />
-                    Real-time Collaboration & Accountability
-                    <br />
-                    Full-time, Dedicated Developers
+                    Transparent & Local Interaction Real-time Collaboration &
+                    Accountability Full-time, Dedicated Developers
                   </p>
                 </div>
               </div>
@@ -94,11 +91,8 @@ export default function WebDevelopment() {
                   <FaBolt className="icons" />
                   <h5>Work for Hire Services:</h5>
                   <p>
-                    Start Your Project Within 48 Hours
-                    <br />
-                    We Foster Long Term Relationships
-                    <br />
-                    Over 21 Years in Service to Our Customers
+                    Start Your Project Within 48 Hours We Foster Long Term
+                    Relationships Over 21 Years in Service to Our Customers
                   </p>
                 </div>
               </div>
@@ -119,7 +113,7 @@ export default function WebDevelopment() {
             {/* Left Column */}
             <div className="features-column">
               <div className="feature-box">
-                <FaLaptop className="feature-icon" />
+                <FaLaptop className="feature-icon" size={50} />
                 <div>
                   <div className="feature-title">
                     Custom Web Application Development
@@ -136,7 +130,7 @@ export default function WebDevelopment() {
               </div>
 
               <div className="feature-box">
-                <FaCodeBranch className="feature-icon" />
+                <FaCodeBranch className="feature-icon"  size={50}/>
                 <div>
                   <div className="feature-title">Diverse Coding Experience</div>
                   <p className="feature-text">
@@ -152,7 +146,7 @@ export default function WebDevelopment() {
             {/* Right Column */}
             <div className="features-column">
               <div className="feature-box">
-                <FaProjectDiagram className="feature-icon" />
+                <FaProjectDiagram className="feature-icon"  size={50} />
                 <div>
                   <div className="feature-title">
                     No Cookie-Cutter Solutions
@@ -167,7 +161,7 @@ export default function WebDevelopment() {
               </div>
 
               <div className="feature-box">
-                <FaCog className="feature-icon" />
+                <FaCog className="feature-icon"  size={50}/>
                 <div>
                   <div className="feature-title">
                     Maintenance, Monitoring, & Support
@@ -448,7 +442,11 @@ export default function WebDevelopment() {
             <div className="tech-grid">
               {/* JS */}
               <div className="tech-card-wrapper">
-                <FaJs className="tech-logo" style={{ color: "#f7df1e" }} />
+                <img
+                  src="https://weboum.com/wp-content/uploads/2021/05/javascript.png"
+                  alt="JavaScript Logo"
+                  className="tech-logo"
+                />
                 <div className="tech-title">Javascript</div>
                 <p className="tech-description">
                   Our software developers use JavaScript to calculate,
@@ -459,7 +457,11 @@ export default function WebDevelopment() {
 
               {/* HTML */}
               <div className="tech-card-wrapper">
-                <FaHtml5 className="tech-logo" style={{ color: "red" }} />
+                 <img
+                  src="https://weboum.com/wp-content/uploads/2021/05/html.png"
+                  alt="JavaScript Logo"
+                  className="tech-logo"
+                />
                 <div className="tech-title">HTML</div>
                 <p className="tech-description">
                   Our Software Development Team has many years of experience
@@ -470,7 +472,11 @@ export default function WebDevelopment() {
 
               {/* JSON */}
               <div className="tech-card-wrapper">
-                <SiJsonwebtokens className="tech-logo" />
+               <img
+                  src="https://weboum.com/wp-content/uploads/2021/05/json.png"
+                  alt="JavaScript Logo"
+                  className="tech-logo"
+                />
                 <div className="tech-title">JSON</div>
                 <p className="tech-description">
                   We use JSON for transmitting web application data in a
@@ -481,18 +487,26 @@ export default function WebDevelopment() {
 
               {/* ELM */}
               <div className="tech-card-wrapper">
-                <SiElm className="tech-logo" />
+                <img
+                  src="https://weboum.com/wp-content/uploads/2021/05/elm.png"
+                  alt="JavaScript Logo"
+                  className="tech-logo"
+                />
                 <div className="tech-title">ELM</div>
                 <p className="tech-description">
-                  Our team uses ELM&apos;s fast compilation, user-friendliness, and
-                  safety benefits to build, integrate, and customize your
+                  Our team uses ELM&apos;s fast compilation, user-friendliness,
+                  and safety benefits to build, integrate, and customize your
                   website or app.
                 </p>
               </div>
 
               {/* AngularJS */}
               <div className="tech-card-wrapper">
-                <SiAngular className="tech-logo" style={{ color: "red" }} />
+               <img
+                  src="https://weboum.com/wp-content/uploads/2021/05/angularjs.png"
+                  alt="JavaScript Logo"
+                  className="tech-logo"
+                />
                 <div className="tech-title">AngularJS</div>
                 <p className="tech-description">
                   We use AngularJS for creating dynamic web applications,
@@ -503,7 +517,11 @@ export default function WebDevelopment() {
 
               {/* jQuery */}
               <div className="tech-card-wrapper">
-                <SiJquery className="tech-logo" style={{ color: "red" }} />
+               <img
+                  src="https://weboum.com/wp-content/uploads/2021/05/jquery.png"
+                  alt="JavaScript Logo"
+                  className="tech-logo"
+                />
                 <div className="tech-title">jQuery</div>
                 <p className="tech-description">
                   We use jQuery to create animations, AJAX apps, and plug-ins on
@@ -524,7 +542,11 @@ export default function WebDevelopment() {
             <div className="tech-grid">
               {/* PHP */}
               <div className="tech-card-wrapper">
-                <FaPhp className="tech-logo" />
+                <img
+                  src="https://weboum.com/wp-content/uploads/2021/05/php.png"
+                  alt="JavaScript Logo"
+                  className="tech-logo"
+                />
                 <div className="tech-title">PHP</div>
                 <p className="tech-description">
                   Our Software Development Team uses PHP frameworks to
@@ -535,7 +557,11 @@ export default function WebDevelopment() {
 
               {/* Express.js */}
               <div className="tech-card-wrapper">
-                <SiExpress className="tech-logo" style={{ color: "green" }} />
+                 <img
+                  src="https://weboum.com/wp-content/uploads/2021/05/expressjs.png"
+                  alt="JavaScript Logo"
+                  className="tech-logo"
+                />
                 <div className="tech-title">Express.js</div>
                 <p className="tech-description">
                   Our developers utilize Express.js to simplify web app
@@ -546,7 +572,11 @@ export default function WebDevelopment() {
 
               {/* Node.js */}
               <div className="tech-card-wrapper">
-                <FaNode className="tech-logo" style={{ color: "green" }} />
+                 <img
+                  src="https://weboum.com/wp-content/uploads/2021/05/node-js.png"
+                  alt="JavaScript Logo"
+                  className="tech-logo"
+                />
                 <div className="tech-title">Node.js</div>
                 <p className="tech-description">
                   We use Node.js to build traditional websites, back-end APIs,
@@ -556,7 +586,11 @@ export default function WebDevelopment() {
 
               {/* Java */}
               <div className="tech-card-wrapper">
-                <FaJava className="tech-logo" style={{ color: "4584b6" }} />
+                 <img
+                  src="https://weboum.com/wp-content/uploads/2021/05/java.png"
+                  alt="JavaScript Logo"
+                  className="tech-logo"
+                />
                 <div className="tech-title">JAVA</div>
                 <p className="tech-description">
                   We use Java as a general-purpose language to develop
@@ -567,7 +601,11 @@ export default function WebDevelopment() {
 
               {/* Python */}
               <div className="tech-card-wrapper">
-                <FaPython className="tech-logo" />
+                 <img
+                  src="https://weboum.com/wp-content/uploads/2021/05/python.png"
+                  alt="JavaScript Logo"
+                  className="tech-logo"
+                />
                 <div className="tech-title">Python</div>
                 <p className="tech-description">
                   We use Python for mobile and web dev, games, operating
@@ -577,7 +615,11 @@ export default function WebDevelopment() {
 
               {/* MongoDB */}
               <div className="tech-card-wrapper">
-                <DiMongodb className="tech-logo" style={{ color: "green" }} />
+                <img
+                  src="https://weboum.com/wp-content/uploads/2021/05/mongo-db.png"
+                  alt="JavaScript Logo"
+                  className="tech-logo"
+                />
                 <div className="tech-title">MongoDB</div>
                 <p className="tech-description">
                   Our developers use MongoDB to optimize performance in

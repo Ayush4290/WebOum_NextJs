@@ -82,9 +82,23 @@ h4 {
   font-style: italic;
 }
 
+
+/* Main container */
 .web-design {
-  /* No additional styles needed as this was just a wrapper class */
+ 
+  padding: 60px 20px;
+  max-width:1355px;
+  width: 100%;
+  margin: auto;
+  box-sizing: border-box;
 }
+
+/* Optional: Apply same width rules to children if needed */
+.web-design > * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 
 .why-choose-us {
   max-width: 100%;

@@ -39,40 +39,46 @@ export default function ShopifyDevelopment() {
         </div>
 
         {/* Section 2 */}
-        <div className="shopify-container shopify-row">
-          <div className="shopify-image-section">
-            <Image
-              src="/image/ShopifyDevelopment/multi-screens-v5-1024x682.jpg"
-              alt="Multi Screens"
-              width={1024}
-              height={682}
-            />
-          </div>
-          <div className="shopify-text-section">
-            <h1>Launch A Successful Ecommerce Store Today With Shopify 2025</h1>
-            <p>
-              Shopify, a SaaS (Software as a Service) platform, has aided many
-              business professionals in quickly establishing and operating an
-              online store without worrying about technology. It provides a
-              versatile and strong feature-rich experience that can precisely
-              meet the diverse online marketplace requirements of current SMEs
-              and major corporations. Without question, the Shopify e-Commerce
-              platform has gone a long way and proven to be a sophisticated and
-              strong e-Commerce platform.
-            </p>
-            <p>
-              Our Shopify development business will assist you with developing a
-              one-of-a-kind product display or a comprehensive sales channel,
-              translating it into responsive HTML, deploying it as a Shopify
-              theme, executing adjustments, and subsequently managing
-              maintenance, among other things. You may rely on our well-regarded
-              Shopify Development Agency to handle everything from the initial
-              setup of an online store to its ongoing management.
-            </p>
-            <p>
-              In addition, we provide a one-day 'free' Shopify development trial
-              job to give you a taste of our proven abilities.
-            </p>
+        {/* Section 2 */}
+        <div className="full-width-section">
+          <div className="shopify-container shopify-row">
+            <div className="shopify-image-section">
+              <Image
+                src="/image/ShopifyDevelopment/multi-screens-v5-1024x682.jpg"
+                alt="Multi Screens"
+                width={1024}
+                height={682}
+              />
+            </div>
+            <div className="shopify-text-section">
+              <h1>
+                Launch A Successful Ecommerce Store Today With Shopify 2025
+              </h1>
+              <p>
+                Shopify, a SaaS (Software as a Service) platform, has aided many
+                business professionals in quickly establishing and operating an
+                online store without worrying about technology. It provides a
+                versatile and strong feature-rich experience that can precisely
+                meet the diverse online marketplace requirements of current SMEs
+                and major corporations. Without question, the Shopify e-Commerce
+                platform has gone a long way and proven to be a sophisticated
+                and strong e-Commerce platform.
+              </p>
+              <p>
+                Our Shopify development business will assist you with developing
+                a one-of-a-kind product display or a comprehensive sales
+                channel, translating it into responsive HTML, deploying it as a
+                Shopify theme, executing adjustments, and subsequently managing
+                maintenance, among other things. You may rely on our
+                well-regarded Shopify Development Agency to handle everything
+                from the initial setup of an online store to its ongoing
+                management.
+              </p>
+              <p>
+                In addition, we provide a one-day 'free' Shopify development
+                trial job to give you a taste of our proven abilities.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -106,59 +112,62 @@ export default function ShopifyDevelopment() {
         </div>
 
         {/* Section 4 */}
-        <div className="shopify-container">
-          <h2>
-            Why Should You Hire Our Shopify Development Company For Your Shopify
-            Ecommerce?
-          </h2>
-          <h3>Workflow with a Purpose</h3>
-          <p>
-            Our Shopify development company provides a customizable and
-            user-friendly approach that is suited to the client's needs. We
-            constantly prefer to provide the greatest e-Commerce solutions for
-            your company. Our in-house specialists follow an agile workflow for
-            all Shopify web development services and provide bespoke web portal
-            solutions with a strong focus on customer requirements.
-          </p>
-          <h3>Shopify's Dedicated Team</h3>
-          <p>
-            Our in-house experts are the driving force behind our success. They
-            are active Shopify certified specialists with extensive e-Commerce
-            expertise in Custom Shopify design and development. We have 25+
-            in-house Shopify theme developers and Shopify app developers at our
-            Shopify Development firm. They are constantly working hard to give
-            you the finest Shopify services and keep in touch with you
-            regularly.
-          </p>
-          <h3>Quality Control</h3>
-          <p>
-            Our Shopify development services have a proven track record of
-            producing quality work in Shopify web design services and will
-            continue to do so. In addition, we rigorously adhere to
-            international coding principles and regulations and the required
-            quality. We have all of the most recent mobile devices accessible to
-            evaluate the orientation of our supplied shop. Before handling the
-            final product, our Quality Analyst always re-tests it.
-          </p>
-          <h3>Model of Competitive Pricing</h3>
-          <p>
-            Our Shopify development services are always offered at a reasonable
-            price. We believe in openness and always provide honest and fair
-            pricing. We do not believe in hidden costs or additional charges at
-            our Shopify Development firm. Our Shopify web development business
-            may be hired on a part-time/full-time, or hourly basis.
-          </p>
-          <h3>Maintenance and Support</h3>
-          <p>
-            Hire our staff to assist you with real-time maintenance and
-            assistance during project execution. We offer all-inclusive updates
-            and maintenance of your website with our offhand support as a
-            dedicated and experienced Shopify development agency. This will
-            enable you to make ongoing amendments related to Website layout,
-            HTML/CSS tweaks, Feature enhancements, and Social media updates,
-            among other things, as required.
-          </p>
-        </div>
+        {/* Section 4 */}
+<div className="full-width-section">
+  <div className="shopify-container">
+    <h2>
+      Why Should You Hire Our Shopify Development Company For Your Shopify
+      Ecommerce?
+    </h2>
+    <h3>Workflow with a Purpose</h3>
+    <p>
+      Our Shopify development company provides a customizable and
+      user-friendly approach that is suited to the client's needs. We
+      constantly prefer to provide the greatest e-Commerce solutions for
+      your company. Our in-house specialists follow an agile workflow for
+      all Shopify web development services and provide bespoke web portal
+      solutions with a strong focus on customer requirements.
+    </p>
+    <h3>Shopify's Dedicated Team</h3>
+    <p>
+      Our in-house experts are the driving force behind our success. They
+      are active Shopify certified specialists with extensive e-Commerce
+      expertise in Custom Shopify design and development. We have 25+
+      in-house Shopify theme developers and Shopify app developers at our
+      Shopify Development firm. They are constantly working hard to give
+      you the finest Shopify services and keep in touch with you
+      regularly.
+    </p>
+    <h3>Quality Control</h3>
+    <p>
+      Our Shopify development services have a proven track record of
+      producing quality work in Shopify web design services and will
+      continue to do so. In addition, we rigorously adhere to
+      international coding principles and regulations and the required
+      quality. We have all of the most recent mobile devices accessible to
+      evaluate the orientation of our supplied shop. Before handling the
+      final product, our Quality Analyst always re-tests it.
+    </p>
+    <h3>Model of Competitive Pricing</h3>
+    <p>
+      Our Shopify development services are always offered at a reasonable
+      price. We believe in openness and always provide honest and fair
+      pricing. We do not believe in hidden costs or additional charges at
+      our Shopify Development firm. Our Shopify web development business
+      may be hired on a part-time/full-time, or hourly basis.
+    </p>
+    <h3>Maintenance and Support</h3>
+    <p>
+      Hire our staff to assist you with real-time maintenance and
+      assistance during project execution. We offer all-inclusive updates
+      and maintenance of your website with our offhand support as a
+      dedicated and experienced Shopify development agency. This will
+      enable you to make ongoing amendments related to Website layout,
+      HTML/CSS tweaks, Feature enhancements, and Social media updates,
+      among other things, as required.
+    </p>
+  </div>
+</div>
 
         {/* Section 5 */}
         <div className="shopify-container">

@@ -2,7 +2,7 @@
   --primary-gradient: linear-gradient(to right, #85005f, #1b0d1e);
   --primary-color: #85005f;
   --secondary-color: #1b0d1e;
-  --accent-color: #14c84a;
+  --accent-color: #14c84 resolve this issue a;
   --contact-btn-color: #ffffff;
   --contact-btn-bg: #ff007f;
   --contact-btn-hover: #e60073;
@@ -119,16 +119,17 @@
 .menu-dropdown::after {
   content: "";
   position: absolute;
-  height: 20px;
+  height: 10px; /* Reduced height to minimize gap */
   width: 100%;
-  bottom: -10px;
+  bottom: -5px; /* Adjusted to overlap with dropdown */
   left: 0;
+  z-index: 11; /* Ensure it’s above dropdown */
 }
 
 .dropdown {
   position: absolute;
   background: white;
-  top: calc(100% + 10px);
+  top: 100%; /* Removed extra 10px gap to make dropdown touch parent */
   left: 0;
   opacity: 0;
   visibility: hidden;
@@ -138,7 +139,8 @@
   border-radius: 4px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   padding: 1rem;
-  transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease;
+  transition: opacity var(--transition-speed) ease,
+    visibility var(--transition-speed) ease;
 }
 
 /* Specific styles for Services dropdown with two columns */
@@ -235,7 +237,7 @@
   display: none;
   position: fixed;
   top: 0;
-  left: 0;
+  leftüstek: 0;
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
@@ -248,8 +250,6 @@
   display: block;
   opacity: 1;
 }
-
-
 
 @media (max-width: 992px) {
   .navbar {
@@ -388,8 +388,8 @@
     background-color: white;
     color: black;
     font-size: 18px;
-    display: flex
-}
+    display: flex;
+  }
 
   li:last-child .btn-contact {
     position: relative;

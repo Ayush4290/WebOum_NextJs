@@ -2,269 +2,804 @@
   "all": [
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Bolster.jpg",
-      "alt": "Portfolio 1"
+      "alt": "Bolster - Web Application",
+      "category": "software",
+      "title": "Bolster AI",
+      "description": [
+        "Cyber Security Application Company.",
+        "UI/UX Designs",
+        "Customize functionality",
+        "CRM API integration",
+        "Responsive Devices.",
+        "SEO & Digital Marketing integration.",
+        "AWS Deployment",
+        "Technical Support & Maintenance"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-17-at-15.36.26_d394359d.jpg",
-      "alt": "Portfolio 2"
+      "alt": "UI/UX Design Project",
+      "category": "graphics",
+      "title": "WhatsApp UX Redesign",
+      "description": [
+        "Mobile UI/UX Design Project",
+        "User Interface Enhancements",
+        "Interactive Prototypes",
+        "User Flow Optimization",
+        "Color Scheme Updates",
+        "Usability Testing",
+        "Customer Feedback Implementation"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/09/creative-version2-design.png",
-      "alt": "Software 1"
+      "alt": "Creative Dashboard Interface",
+      "category": "software",
+      "title": "Creative Dashboard",
+      "description": [
+        "Real-time Analytics Dashboard",
+        "Data Visualization Components",
+        "Interactive Charts & Graphs",
+        "Custom Admin Controls",
+        "User Permission Management",
+        "Dark/Light Mode Toggle",
+        "Performance Optimization"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/09/ngaging-Experiences-and-Curated-apps.jpg",
-      "alt": "Software 2"
+      "alt": "Engaging Experiences Platform",
+      "category": "software",
+      "title": "Engaging Experiences",
+      "description": [
+        "Interactive User Platform",
+        "Gamification Elements",
+        "Social Integration Features",
+        "Custom Animation Effects",
+        "User Achievement System",
+        "Content Management System",
+        "Mobile-First Design"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Log-Me-Once.jpg",
-      "alt": "Apps 1"
+      "alt": "LogMeOnce Mobile App",
+      "category": "apps",
+      "title": "LogMeOnce",
+      "description": [
+        "Secure Password Management App",
+        "Biometric Authentication",
+        "Cross-platform Synchronization",
+        "Zero-knowledge Architecture",
+        "Password Generator",
+        "Security Dashboard",
+        "Breach Monitoring"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Hyleys.jpg",
-      "alt": "Apps 2"
+      "alt": "Hyleys eCommerce App",
+      "category": "apps",
+      "title": "Hyleys Tea",
+      "description": [
+        "eCommerce Mobile Application",
+        "Product Catalog System",
+        "Secure Payment Gateway",
+        "User Account Management",
+        "Order Tracking Feature",
+        "Wishlist & Favorites",
+        "Push Notifications"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/muskilongue-landing-page-V-1.jpg",
-      "alt": "Graphics 1"
+
+      "alt": "Muskilongue Landing Page",
+      "category": "graphics",
+      "title": "Muskilongue Landing Page",
+      "description": [
+        "Conversion-focused Design",
+        "Custom Illustrations",
+        "Animated Elements",
+        "Lead Generation Forms",
+        "Performance Optimization",
+        "A/B Testing Setup",
+        "Analytics Integration"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2021/05/phone-tab-lapitop.jpg",
-      "alt": "Graphics 2"
+      "alt": "Responsive Design Showcase",
+      "category": "graphics",
+      "title": "Multi-Device Responsive Design",
+      "description": [
+        "Cross-platform Compatibility",
+        "Mobile-First Approach",
+        "Adaptive Layouts",
+        "Custom Breakpoints",
+        "Performance Optimization",
+        "Accessibility Compliance",
+        "Browser Compatibility"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Georgynity.jpg",
-      "alt": "Marketing 1"
+      "alt": "Georgynity Brand Campaign",
+      "category": "marketing",
+      "title": "Georgynity",
+      "description": [
+        "Comprehensive Brand Campaign",
+        "Social Media Strategy",
+        "Content Marketing",
+        "Email Marketing Automation",
+        "PPC Advertising",
+        "Analytics & Reporting",
+        "Conversion Rate Optimization"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/09/Children-s-Therapy-website.png",
-      "alt": "Marketing 2"
+      "alt": "Children's Therapy Website",
+      "category": "marketing",
+      "title": "Children's Therapy Center",
+      "description": [
+        "Healthcare-focused Website",
+        "Appointment Booking System",
+        "Resource Library",
+        "Parent Portal",
+        "Therapist Profiles",
+        "Accessibility Features",
+        "HIPAA Compliance"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Master-Wine-Tours.jpg",
-      "alt": "app3"
+
+      "alt": "Master Wine Tours App",
+      "category": "apps",
+      "title": "Master Wine Tours",
+      "description": [
+        "Tourism & Booking Application",
+        "Interactive Tour Maps",
+        "Reservation System",
+        "Payment Processing",
+        "Reviews & Ratings",
+        "Offline Content Access",
+        "Event Calendar"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Whereyoueat.jpg",
-      "alt": "app4"
+      "alt": "WhereYouEat Restaurant Finder",
+      "category": "apps",
+      "title": "WhereYouEat",
+      "description": [
+        "Restaurant Discovery App",
+        "Geolocation Features",
+        "Menu Browsing",
+        "User Reviews System",
+        "Reservation Integration",
+        "Dietary Filter Options",
+        "Favorite Restaurant Lists"
+      ]
     }
   ],
   "software": [
     {
-      "src": "https://weboum.com/wp-content/uploads/2024/03/Georgynity.jpg",
-      "alt": "Marketing 1"
-    },
-    {
-      "src": "https://weboum.com/wp-content/uploads/2024/09/Children-s-Therapy-website.png",
-      "alt": "Marketing 2"
-    },
-    {
-      "src": "https://weboum.com/wp-content/uploads/2024/03/Master-Wine-Tours.jpg",
-      "alt": "app3"
-    },
-    {
-      "src": "https://weboum.com/wp-content/uploads/2024/03/Whereyoueat.jpg",
-      "alt": "app4"
-    },
-
-    {
       "src": "https://weboum.com/wp-content/uploads/2024/09/creative-version2-design.png",
-      "alt": "Software 1"
+      "alt": "Creative Dashboard Interface",
+      "category": "software",
+      "title": "Creative Dashboard",
+      "description": [
+        "Real-time Analytics Dashboard",
+        "Data Visualization Components",
+        "Interactive Charts & Graphs",
+        "Custom Admin Controls",
+        "User Permission Management",
+        "Dark/Light Mode Toggle",
+        "Performance Optimization"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/09/ngaging-Experiences-and-Curated-apps.jpg",
-      "alt": "Software 2"
+      "alt": "Engaging Experiences Platform",
+      "category": "software",
+      "title": "Engaging Experiences",
+      "description": [
+        "Interactive User Platform",
+        "Gamification Elements",
+        "Social Integration Features",
+        "Custom Animation Effects",
+        "User Achievement System",
+        "Content Management System",
+        "Mobile-First Design"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Log-Me-Once.jpg",
-      "alt": "Apps 1"
+      "alt": "LogMeOnce Mobile App",
+      "category": "apps",
+      "title": "LogMeOnce",
+      "description": [
+        "Secure Password Management App",
+        "Biometric Authentication",
+        "Cross-platform Synchronization",
+        "Zero-knowledge Architecture",
+        "Password Generator",
+        "Security Dashboard",
+        "Breach Monitoring"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Hyleys.jpg",
-      "alt": "Apps 2"
+      "alt": "Hyleys eCommerce App",
+      "category": "apps",
+      "title": "Hyleys Tea",
+      "description": [
+        "eCommerce Mobile Application",
+        "Product Catalog System",
+        "Secure Payment Gateway",
+        "User Account Management",
+        "Order Tracking Feature",
+        "Wishlist & Favorites",
+        "Push Notifications"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/muskilongue-landing-page-V-1.jpg",
-      "alt": "Graphics 1"
+
+      "alt": "Muskilongue Landing Page",
+      "category": "graphics",
+      "title": "Muskilongue Landing Page",
+      "description": [
+        "Conversion-focused Design",
+        "Custom Illustrations",
+        "Animated Elements",
+        "Lead Generation Forms",
+        "Performance Optimization",
+        "A/B Testing Setup",
+        "Analytics Integration"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2021/05/phone-tab-lapitop.jpg",
-      "alt": "Graphics 2"
+      "alt": "Responsive Design Showcase",
+      "category": "graphics",
+      "title": "Multi-Device Responsive Design",
+      "description": [
+        "Cross-platform Compatibility",
+        "Mobile-First Approach",
+        "Adaptive Layouts",
+        "Custom Breakpoints",
+        "Performance Optimization",
+        "Accessibility Compliance",
+        "Browser Compatibility"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Georgynity.jpg",
-      "alt": "Marketing 1"
+      "alt": "Georgynity Brand Campaign",
+      "category": "marketing",
+      "title": "Georgynity",
+      "description": [
+        "Comprehensive Brand Campaign",
+        "Social Media Strategy",
+        "Content Marketing",
+        "Email Marketing Automation",
+        "PPC Advertising",
+        "Analytics & Reporting",
+        "Conversion Rate Optimization"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/09/Children-s-Therapy-website.png",
-      "alt": "Marketing 2"
+      "alt": "Children's Therapy Website",
+      "category": "marketing",
+      "title": "Children's Therapy Center",
+      "description": [
+        "Healthcare-focused Website",
+        "Appointment Booking System",
+        "Resource Library",
+        "Parent Portal",
+        "Therapist Profiles",
+        "Accessibility Features",
+        "HIPAA Compliance"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Master-Wine-Tours.jpg",
+
+      "alt": "Master Wine Tours App",
+      "category": "apps",
+      "title": "Master Wine Tours",
+      "description": [
+        "Tourism & Booking Application",
+        "Interactive Tour Maps",
+        "Reservation System",
+        "Payment Processing",
+        "Reviews & Ratings",
+        "Offline Content Access",
+        "Event Calendar"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Whereyoueat.jpg",
+      "alt": "WhereYouEat Restaurant Finder",
+      "category": "apps",
+      "title": "WhereYouEat",
+      "description": [
+        "Restaurant Discovery App",
+        "Geolocation Features",
+        "Menu Browsing",
+        "User Reviews System",
+        "Reservation Integration",
+        "Dietary Filter Options",
+        "Favorite Restaurant Lists"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Bolster.jpg",
+      "alt": "Bolster - Web Application",
+      "category": "software",
+      "title": "Bolster AI",
+      "description": [
+        "Cyber Security Application Company.",
+        "UI/UX Designs",
+        "Customize functionality",
+        "CRM API integration",
+        "Responsive Devices.",
+        "SEO & Digital Marketing integration.",
+        "AWS Deployment",
+        "Technical Support & Maintenance"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-17-at-15.36.26_d394359d.jpg",
+      "alt": "UI/UX Design Project",
+      "category": "graphics",
+      "title": "WhatsApp UX Redesign",
+      "description": [
+        "Mobile UI/UX Design Project",
+        "User Interface Enhancements",
+        "Interactive Prototypes",
+        "User Flow Optimization",
+        "Color Scheme Updates",
+        "Usability Testing",
+        "Customer Feedback Implementation"
+      ]
     }
   ],
   "apps": [
     {
-      "src": "https://weboum.com/wp-content/uploads/2024/03/Log-Me-Once.jpg",
-      "alt": "Apps 1"
-    },
-    {
-      "src": "https://weboum.com/wp-content/uploads/2024/03/Hyleys.jpg",
-      "alt": "Apps 2"
-    },
-    {
-      "src": "https://weboum.com/wp-content/uploads/2024/03/Log-Me-Once.jpg",
-      "alt": "Apps 1"
-    },
-    {
-      "src": "https://weboum.com/wp-content/uploads/2024/03/Hyleys.jpg",
-      "alt": "Apps 2"
+      "src": "https://weboum.com/wp-content/uploads/2021/05/phone-tab-lapitop.jpg",
+      "alt": "Responsive Design Showcase",
+      "category": "graphics",
+      "title": "Multi-Device Responsive Design",
+      "description": [
+        "Cross-platform Compatibility",
+        "Mobile-First Approach",
+        "Adaptive Layouts",
+        "Custom Breakpoints",
+        "Performance Optimization",
+        "Accessibility Compliance",
+        "Browser Compatibility"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Georgynity.jpg",
-      "alt": "Marketing 1"
+      "alt": "Georgynity Brand Campaign",
+      "category": "marketing",
+      "title": "Georgynity",
+      "description": [
+        "Comprehensive Brand Campaign",
+        "Social Media Strategy",
+        "Content Marketing",
+        "Email Marketing Automation",
+        "PPC Advertising",
+        "Analytics & Reporting",
+        "Conversion Rate Optimization"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/09/Children-s-Therapy-website.png",
-      "alt": "Marketing 2"
+      "alt": "Children's Therapy Website",
+      "category": "marketing",
+      "title": "Children's Therapy Center",
+      "description": [
+        "Healthcare-focused Website",
+        "Appointment Booking System",
+        "Resource Library",
+        "Parent Portal",
+        "Therapist Profiles",
+        "Accessibility Features",
+        "HIPAA Compliance"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Master-Wine-Tours.jpg",
-      "alt": "app3"
+
+      "alt": "Master Wine Tours App",
+      "category": "apps",
+      "title": "Master Wine Tours",
+      "description": [
+        "Tourism & Booking Application",
+        "Interactive Tour Maps",
+        "Reservation System",
+        "Payment Processing",
+        "Reviews & Ratings",
+        "Offline Content Access",
+        "Event Calendar"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Whereyoueat.jpg",
-      "alt": "app4"
-    },
-
-    {
-      "src": "https://weboum.com/wp-content/uploads/2024/03/muskilongue-landing-page-V-1.jpg",
-      "alt": "Graphics 1"
-    },
-    {
-      "src": "https://weboum.com/wp-content/uploads/2021/05/phone-tab-lapitop.jpg",
-      "alt": "Graphics 2"
-    },
-    {
-      "src": "https://weboum.com/wp-content/uploads/2024/03/Georgynity.jpg",
-      "alt": "Marketing 1"
-    },
-    {
-      "src": "https://weboum.com/wp-content/uploads/2024/09/Children-s-Therapy-website.png",
-      "alt": "Marketing 2"
-    }
-  ],
-  "graphics": [
-    {
-      "src": "https://weboum.com/wp-content/uploads/2024/03/muskilongue-landing-page-V-1.jpg",
-      "alt": "Graphics 1"
-    },
-    {
-      "src": "https://weboum.com/wp-content/uploads/2021/05/phone-tab-lapitop.jpg",
-      "alt": "Graphics 2"
+      "alt": "WhereYouEat Restaurant Finder",
+      "category": "apps",
+      "title": "WhereYouEat",
+      "description": [
+        "Restaurant Discovery App",
+        "Geolocation Features",
+        "Menu Browsing",
+        "User Reviews System",
+        "Reservation Integration",
+        "Dietary Filter Options",
+        "Favorite Restaurant Lists"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Bolster.jpg",
-      "alt": "Portfolio 1"
+      "alt": "Bolster - Web Application",
+      "category": "software",
+      "title": "Bolster AI",
+      "description": [
+        "Cyber Security Application Company.",
+        "UI/UX Designs",
+        "Customize functionality",
+        "CRM API integration",
+        "Responsive Devices.",
+        "SEO & Digital Marketing integration.",
+        "AWS Deployment",
+        "Technical Support & Maintenance"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-17-at-15.36.26_d394359d.jpg",
-      "alt": "Portfolio 2"
+      "alt": "UI/UX Design Project",
+      "category": "graphics",
+      "title": "WhatsApp UX Redesign",
+      "description": [
+        "Mobile UI/UX Design Project",
+        "User Interface Enhancements",
+        "Interactive Prototypes",
+        "User Flow Optimization",
+        "Color Scheme Updates",
+        "Usability Testing",
+        "Customer Feedback Implementation"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/09/creative-version2-design.png",
-      "alt": "Software 1"
+      "alt": "Creative Dashboard Interface",
+      "category": "software",
+      "title": "Creative Dashboard",
+      "description": [
+        "Real-time Analytics Dashboard",
+        "Data Visualization Components",
+        "Interactive Charts & Graphs",
+        "Custom Admin Controls",
+        "User Permission Management",
+        "Dark/Light Mode Toggle",
+        "Performance Optimization"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/09/ngaging-Experiences-and-Curated-apps.jpg",
-      "alt": "Software 2"
+      "alt": "Engaging Experiences Platform",
+      "category": "software",
+      "title": "Engaging Experiences",
+      "description": [
+        "Interactive User Platform",
+        "Gamification Elements",
+        "Social Integration Features",
+        "Custom Animation Effects",
+        "User Achievement System",
+        "Content Management System",
+        "Mobile-First Design"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Log-Me-Once.jpg",
-      "alt": "Apps 1"
+      "alt": "LogMeOnce Mobile App",
+      "category": "apps",
+      "title": "LogMeOnce",
+      "description": [
+        "Secure Password Management App",
+        "Biometric Authentication",
+        "Cross-platform Synchronization",
+        "Zero-knowledge Architecture",
+        "Password Generator",
+        "Security Dashboard",
+        "Breach Monitoring"
+      ]
+    }
+  ],
+  "graphics": [
+    
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-17-at-15.36.26_d394359d.jpg",
+      "alt": "UI/UX Design Project",
+      "category": "graphics",
+      "title": "WhatsApp UX Redesign",
+      "description": [
+        "Mobile UI/UX Design Project",
+        "User Interface Enhancements",
+        "Interactive Prototypes",
+        "User Flow Optimization",
+        "Color Scheme Updates",
+        "Usability Testing",
+        "Customer Feedback Implementation"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/09/creative-version2-design.png",
+      "alt": "Creative Dashboard Interface",
+      "category": "software",
+      "title": "Creative Dashboard",
+      "description": [
+        "Real-time Analytics Dashboard",
+        "Data Visualization Components",
+        "Interactive Charts & Graphs",
+        "Custom Admin Controls",
+        "User Permission Management",
+        "Dark/Light Mode Toggle",
+        "Performance Optimization"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/09/ngaging-Experiences-and-Curated-apps.jpg",
+      "alt": "Engaging Experiences Platform",
+      "category": "software",
+      "title": "Engaging Experiences",
+      "description": [
+        "Interactive User Platform",
+        "Gamification Elements",
+        "Social Integration Features",
+        "Custom Animation Effects",
+        "User Achievement System",
+        "Content Management System",
+        "Mobile-First Design"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Log-Me-Once.jpg",
+      "alt": "LogMeOnce Mobile App",
+      "category": "apps",
+      "title": "LogMeOnce",
+      "description": [
+        "Secure Password Management App",
+        "Biometric Authentication",
+        "Cross-platform Synchronization",
+        "Zero-knowledge Architecture",
+        "Password Generator",
+        "Security Dashboard",
+        "Breach Monitoring"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Hyleys.jpg",
-      "alt": "Apps 2"
+      "alt": "Hyleys eCommerce App",
+      "category": "apps",
+      "title": "Hyleys Tea",
+      "description": [
+        "eCommerce Mobile Application",
+        "Product Catalog System",
+        "Secure Payment Gateway",
+        "User Account Management",
+        "Order Tracking Feature",
+        "Wishlist & Favorites",
+        "Push Notifications"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/muskilongue-landing-page-V-1.jpg",
-      "alt": "Graphics 1"
+
+      "alt": "Muskilongue Landing Page",
+      "category": "graphics",
+      "title": "Muskilongue Landing Page",
+      "description": [
+        "Conversion-focused Design",
+        "Custom Illustrations",
+        "Animated Elements",
+        "Lead Generation Forms",
+        "Performance Optimization",
+        "A/B Testing Setup",
+        "Analytics Integration"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2021/05/phone-tab-lapitop.jpg",
-      "alt": "Graphics 2"
+      "alt": "Responsive Design Showcase",
+      "category": "graphics",
+      "title": "Multi-Device Responsive Design",
+      "description": [
+        "Cross-platform Compatibility",
+        "Mobile-First Approach",
+        "Adaptive Layouts",
+        "Custom Breakpoints",
+        "Performance Optimization",
+        "Accessibility Compliance",
+        "Browser Compatibility"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Georgynity.jpg",
-      "alt": "Marketing 1"
+      "alt": "Georgynity Brand Campaign",
+      "category": "marketing",
+      "title": "Georgynity",
+      "description": [
+        "Comprehensive Brand Campaign",
+        "Social Media Strategy",
+        "Content Marketing",
+        "Email Marketing Automation",
+        "PPC Advertising",
+        "Analytics & Reporting",
+        "Conversion Rate Optimization"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/09/Children-s-Therapy-website.png",
-      "alt": "Marketing 2"
+      "alt": "Children's Therapy Website",
+      "category": "marketing",
+      "title": "Children's Therapy Center",
+      "description": [
+        "Healthcare-focused Website",
+        "Appointment Booking System",
+        "Resource Library",
+        "Parent Portal",
+        "Therapist Profiles",
+        "Accessibility Features",
+        "HIPAA Compliance"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Master-Wine-Tours.jpg",
-      "alt": "app3"
+
+      "alt": "Master Wine Tours App",
+      "category": "apps",
+      "title": "Master Wine Tours",
+      "description": [
+        "Tourism & Booking Application",
+        "Interactive Tour Maps",
+        "Reservation System",
+        "Payment Processing",
+        "Reviews & Ratings",
+        "Offline Content Access",
+        "Event Calendar"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Whereyoueat.jpg",
-      "alt": "app4"
+      "alt": "WhereYouEat Restaurant Finder",
+      "category": "apps",
+      "title": "WhereYouEat",
+      "description": [
+        "Restaurant Discovery App",
+        "Geolocation Features",
+        "Menu Browsing",
+        "User Reviews System",
+        "Reservation Integration",
+        "Dietary Filter Options",
+        "Favorite Restaurant Lists"
+      ]
     }
   ],
   "marketing": [
     {
+      "src": "https://weboum.com/wp-content/uploads/2021/05/phone-tab-lapitop.jpg",
+      "alt": "Responsive Design Showcase",
+      "category": "graphics",
+      "title": "Multi-Device Responsive Design",
+      "description": [
+        "Cross-platform Compatibility",
+        "Mobile-First Approach",
+        "Adaptive Layouts",
+        "Custom Breakpoints",
+        "Performance Optimization",
+        "Accessibility Compliance",
+        "Browser Compatibility"
+      ]
+    },
+    {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Georgynity.jpg",
-      "alt": "Marketing 1"
+      "alt": "Georgynity Brand Campaign",
+      "category": "marketing",
+      "title": "Georgynity",
+      "description": [
+        "Comprehensive Brand Campaign",
+        "Social Media Strategy",
+        "Content Marketing",
+        "Email Marketing Automation",
+        "PPC Advertising",
+        "Analytics & Reporting",
+        "Conversion Rate Optimization"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/09/Children-s-Therapy-website.png",
-      "alt": "Marketing 2"
-    },
-    {
-      "src": "https://weboum.com/wp-content/uploads/2024/03/Bolster.jpg",
-      "alt": "Portfolio 1"
-    },
-    {
-      "src": "https://weboum.com/wp-content/uploads/2024/03/Georgynity.jpg",
-      "alt": "Marketing 1"
-    },
-    {
-      "src": "https://weboum.com/wp-content/uploads/2024/09/Children-s-Therapy-website.png",
-      "alt": "Marketing 2"
+      "alt": "Children's Therapy Website",
+      "category": "marketing",
+      "title": "Children's Therapy Center",
+      "description": [
+        "Healthcare-focused Website",
+        "Appointment Booking System",
+        "Resource Library",
+        "Parent Portal",
+        "Therapist Profiles",
+        "Accessibility Features",
+        "HIPAA Compliance"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Master-Wine-Tours.jpg",
-      "alt": "app3"
+
+      "alt": "Master Wine Tours App",
+      "category": "apps",
+      "title": "Master Wine Tours",
+      "description": [
+        "Tourism & Booking Application",
+        "Interactive Tour Maps",
+        "Reservation System",
+        "Payment Processing",
+        "Reviews & Ratings",
+        "Offline Content Access",
+        "Event Calendar"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Whereyoueat.jpg",
-      "alt": "app4"
+      "alt": "WhereYouEat Restaurant Finder",
+      "category": "apps",
+      "title": "WhereYouEat",
+      "description": [
+        "Restaurant Discovery App",
+        "Geolocation Features",
+        "Menu Browsing",
+        "User Reviews System",
+        "Reservation Integration",
+        "Dietary Filter Options",
+        "Favorite Restaurant Lists"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Bolster.jpg",
+      "alt": "Bolster - Web Application",
+      "category": "software",
+      "title": "Bolster AI",
+      "description": [
+        "Cyber Security Application Company.",
+        "UI/UX Designs",
+        "Customize functionality",
+        "CRM API integration",
+        "Responsive Devices.",
+        "SEO & Digital Marketing integration.",
+        "AWS Deployment",
+        "Technical Support & Maintenance"
+      ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-17-at-15.36.26_d394359d.jpg",
-      "alt": "Portfolio 2"
-    },
-    {
-      "src": "https://weboum.com/wp-content/uploads/2024/09/creative-version2-design.png",
-      "alt": "Software 1"
-    },
-    {
-      "src": "https://weboum.com  /wp-content/uploads/2024/09/ngaging-Experiences-and-Curated-apps.jpg",
-      "alt": "Software 2"
-    },
-    {
-      "src": "https://weboum.com/wp-content/uploads/2024/03/Log-Me-Once.jpg",
-      "alt": "Apps 1"
-    },
-    {
-      "src": "https://weboum.com/wp-content/uploads/2024/03/Hyleys.jpg",
-      "alt": "Apps 2"
-    },
-    {
-      "src": "https://weboum.com/wp-content/uploads/2024/03/muskilongue-landing-page-V-1.jpg",
-      "alt": "Graphics 1"
-    },
-    {
-      "src": "https://weboum.com/wp-content/uploads/2021/05/phone-tab-lapitop.jpg",
-      "alt": "Graphics 2"
+      "alt": "UI/UX Design Project",
+      "category": "graphics",
+      "title": "WhatsApp UX Redesign",
+      "description": [
+        "Mobile UI/UX Design Project",
+        "User Interface Enhancements",
+        "Interactive Prototypes",
+        "User Flow Optimization",
+        "Color Scheme Updates",
+        "Usability Testing",
+        "Customer Feedback Implementation"
+      ]
     }
   ]
 }

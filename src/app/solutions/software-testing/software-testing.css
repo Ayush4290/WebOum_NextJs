@@ -1,13 +1,13 @@
 .software-testing {
   font-family: Arial, sans-serif;
   color: #333;
-  line-height: 1.6;
+  line-height: 1.4; /* Reduced from 1.6 for tighter text */
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .software-container {
-  padding: 40px 20px;
+  padding: 20px; /* Reduced from 40px 20px */
   display: flex;
   flex-direction: column;
   max-width: 100%;
@@ -19,10 +19,26 @@
   flex-wrap: wrap;
 }
 
+/* Full-width background for Weboum’s Software Testing Solutions section */
+.full-width-section {
+  width: 100%;
+  background-color: #f5f5f5; /* Light gray, consistent with Shopify page */
+  padding: 20px 0; /* Reduced from 40px */
+  margin: 0;
+}
+
+/* Constrain inner content */
+.software-container-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
 .software-image-section {
   flex: 1;
   min-width: 300px;
-  padding-top: 100px;
+  padding-top: 20px; /* Reduced from 100px */
   display: flex;
   justify-content: center;
 }
@@ -35,35 +51,33 @@
 .software-text-section {
   flex: 1;
   min-width: 300px;
-  padding: 0 20px;
+  padding: 0 10px; /* Reduced from 20px */
 }
 
 .software-h1 {
   color: #2c3e50;
-  margin-bottom: 20px;
+  margin-bottom: 10px; /* Reduced from 20px */
   font-size: 28px;
 }
 
 .software-p {
-  margin-bottom: 15px;
+  margin-bottom: 8px; /* Reduced from 15px */
   font-size: 16px;
 }
 
-
-
 .software-section-header {
   text-align: left;
-  margin-bottom: 30px;
+  margin-bottom: 15px; /* Reduced from 30px */
 }
 
 .software-services-list {
   list-style-type: none;
   padding-left: 0;
-  margin: 20px 0;
+  margin: 10px 0; /* Reduced from 20px 0 */
 }
 
 .software-services-list li {
-  padding-bottom: 20px;
+  padding-bottom: 10px; /* Reduced from 20px */
   text-align: left;
 }
 
@@ -74,7 +88,7 @@
 
 .software-bottom-note {
   text-align: left;
-  margin-top: 30px;
+  margin-top: 15px; /* Reduced from 30px */
   color: #161718;
 }
 
@@ -84,7 +98,7 @@
   }
 
   .software-image-section {
-    padding-top: 20px;
+    padding-top: 10px; /* Reduced from 20px */
     order: 2;
   }
 

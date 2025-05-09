@@ -45,62 +45,43 @@ export default function SLASupportServices() {
           </div>
         </div>
 
-        <div className="support-section-row">
-          <div className="support-section-text">
-            <h2 className="support-section-heading">
-              Manage the expectations of your consumers with expert SLA Support
-              Services
-            </h2>
-            <p>
-              Outsource your SLA support needs to WebOum Technology and exceed
-              expectations. <br />
-              We offer personalised SLA support services that align with the
-              specific requirements of your business. <br />
-              Our skilled providers ensure you get top-tier support. <br />
-              By hiring our skilled service providers, you stay rest assured
-              about working with the best. <br />
-              Our specialists align end-to-end communications and managed
-              agreement services to make sure that results-driven service
-              agreement services are provided. <br />
-              WebOum Technology has certified professionals offering scalable
-              SLA solutions to remote locations and onsite as well. <br />
-              Customised SLA support plans are crafted keeping specific
-              requirements in mind. We do this to ensure your business obtains
-              the best value.
-            </p>
+        <div className="support-wrapper">
+          <div className="supportManger">
+            <div className="support-section-row">
+              <div className="support-section-text">
+                <h2 className="support-section-heading">
+                  Manage the expectations of your consumers with expert SLA
+                  Support Services
+                </h2>
+                <p>
+                  Outsource your SLA support needs to WebOum Technology and
+                  exceed expectations. <br />
+                  We offer personalised SLA support services that align with the
+                  specific requirements of your business. <br />
+                  Our skilled providers ensure you get top-tier support. <br />
+                  By hiring our skilled service providers, you stay rest assured
+                  about working with the best. <br />
+                  Our specialists align end-to-end communications and managed
+                  agreement services to make sure that results-driven service
+                  agreement services are provided. <br />
+                  WebOum Technology has certified professionals offering
+                  scalable SLA solutions to remote locations and onsite as well.{" "}
+                  <br />
+                  Customised SLA support plans are crafted keeping specific
+                  requirements in mind. We do this to ensure your business
+                  obtains the best value.
+                </p>
+              </div>
+              <div className="support-section-image">
+                <Image
+                  src="/image/SLA/SLA-2.png"
+                  alt="SLA Flow"
+                  width={500}
+                  height={300}
+                />
+              </div>
+            </div>
           </div>
-          <div className="support-section-image">
-            <Image
-              src="/image/SLA/SLA-2.png"
-              alt="SLA Flow"
-              width={500}
-              height={300}
-            />
-          </div>
-        </div>
-
-        <div className="support-benefits">
-          <h2 className="support-section-heading">
-            Let’s Check Out A Few Of The Many Benefits Of Our SLA Services!
-          </h2>
-          <ul className="support-list">
-            <li>The service deliverables are all described in detail.</li>
-            <li>
-              Our SLAs represent the promise of dealing with your ICT issues and
-              the requests within a short turnaround time.
-            </li>
-            <li>
-              We run our monitoring services with the help of our out-of-hour
-              incident team.
-            </li>
-            <li>
-              We aim to be flexible and understand the demand of a situation.
-            </li>
-            <li>
-              Our team is equipped with industry leading tools and systems to
-              achieve goals.
-            </li>
-          </ul>
         </div>
 
         <div className="support-dot">
@@ -108,8 +89,8 @@ export default function SLASupportServices() {
             Remote and Reliable 24-hour SLA Support Services
           </h2>
           <p>
-            Outsource your IT support needs to WebOum Technology and exceed
-            the expectation of your consumers.
+            Outsource your IT support needs to WebOum Technology and exceed the
+            expectation of your consumers.
           </p>
           <ul className="support-list">
             <li>The service deliverables are all described in detail.</li>

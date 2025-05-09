@@ -41,7 +41,8 @@ export default function DevOps() {
       </div>
 
       <div className="devops-section">
-        <div className="devops-image-box">
+        <div className="devopsSection">
+          <div className="devops-image-box">
           <Image
             src="/image/devops/devOps2.jpg"
             alt="DevOps Innovation Illustration"
@@ -62,6 +63,7 @@ export default function DevOps() {
           <p>
             DevOps enables profitability for an embedded or scalable business for only 10% reliability of operation, as it is the main tool that development of applications can discover, understand time.
           </p>
+        </div>
         </div>
       </div>
 

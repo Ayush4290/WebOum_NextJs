@@ -131,10 +131,10 @@ export default function GraphicDesign() {
 
         <section className="graphicDesign-offers">
           <h2>Graphics Design Services We Offer!</h2>
-          <p>
+          <h6>
             Weboum Technology offers a host of designing services for unique
             business needs.
-          </p>
+          </h6>
           <div className="graphicDesign-grid">
             <div className="graphicDesign-box">
               <h4>🖐️ Social Media Design</h4>

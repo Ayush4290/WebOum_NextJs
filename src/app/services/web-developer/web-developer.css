@@ -2,7 +2,7 @@
 
 .web-development {
   width: 100%;
- color: #000000;
+  color: #000000;
   font-family: "Poppins", Sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -13,7 +13,7 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
-  font-family: Arial, "Roboto", sans-serif;
+  font-family: "Poppins", Sans-serif;
 }
 
 .web-container em {
@@ -62,7 +62,7 @@
 
 .feature-card p {
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.8;
   margin: 0;
 }
 
@@ -74,7 +74,7 @@
 
 /* Features Section */
 .features-section {
-  padding: 40px 0;
+  padding: 70px 139px;
 }
 
 .features-intro {
@@ -119,7 +119,7 @@
 }
 
 .feature-text {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #555;
   margin-bottom: 0;
 }
@@ -132,7 +132,8 @@
 
 .container-process-section {
   background-color: white;
-  padding: 15px;
+  padding: 112px;
+  padding-top: 20px;
 }
 
 .section-title-web {
@@ -229,13 +230,13 @@
 
 .process-title {
   font-weight: 700;
-  color:black;
+  color: #0d0dac;
   font-size: 1.2rem;
   margin-bottom: 5px;
 }
 
 .process-text {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #555;
   margin-bottom: 0;
 }
@@ -243,10 +244,8 @@
 .process-item {
   display: flex;
   align-items: flex-start;
-  background-color: #f9f9ff;
   padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  gap:12px;
   margin-bottom: 20px;
 }
 
@@ -287,8 +286,9 @@
 .tech-logo {
   display: block;
   margin: 0 auto;
-  height: 50px;
-  width: 50px;
+  width: 100%;
+    height: 29.17%;
+    max-width: 103px
 }
 
 .tech-title {
