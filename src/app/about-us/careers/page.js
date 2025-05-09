@@ -85,23 +85,36 @@ const Careers = () => {
     setFormError("");
     setFormSuccess("");
 
-    if (!validateForm()) return;
+    if (!validateForm()) {
+      setIsSubmitting(false);
+      return;
+    }
 
     setIsSubmitting(true);
 
     try {
-      // Sanitize the message field to prevent HTML injection
+      // Sanitize inputs to prevent XSS and ensure proper encoding
       const sanitizeInput = (input) => {
-        return input
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;");
+        const div = document.createElement("div");
+        div.textContent = input || "";
+        return div.innerHTML
+          .replace(/&/g, "&")
+          .replace(/</g, "<")
+          .replace(/>/g, ">")
+          .replace(/"/g, "");
       };
-      const sanitizedMessage = sanitizeInput(
-        formData.message || "No additional message provided."
-      );
 
-      // Basic HTML email template embedded directly in the function
+      const sanitizedFormData = {
+        firstName: sanitizeInput(formData.firstName),
+        lastName: sanitizeInput(formData.lastName),
+        email: sanitizeInput(formData.email),
+        phone: sanitizeInput(formData.phone),
+        post: sanitizeInput(formData.post),
+        experience: sanitizeInput(formData.experience),
+        message: sanitizeInput(formData.message || "No additional message provided"),
+      };
+
+      // HTML email template
       const messageContent = `
 <!DOCTYPE html>
 <html lang="en">
@@ -110,71 +123,74 @@ const Careers = () => {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Job Application</title>
 </head>
-<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f0f0f0;">
-  <div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #e0e0e0;">
-    <!-- Header -->
-    <div style="background-color: #4a90e2; padding: 15px; text-align: center;">
-      <h2 style="color: #ffffff; margin: 0; font-size: 20px;">New Job Application</h2>
-    </div>
-    <!-- Body -->
-    <div style="padding: 20px;">
-      <p style="color: #333333; font-size: 16px; margin: 0 0 15px;">
-        A new candidate has submitted an application for a position at Weboum Technology.
-      </p>
-      <div style="border-top: 1px solid #e0e0e0; padding-top: 15px;">
-        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
-          <strong>Name:</strong> ${formData.firstName} ${formData.lastName}
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #e0e0e0;">
+    <tr>
+      <td style="background-color: #4a90e2; padding: 15px; text-align: center;">
+        <h2 style="color: #ffffff; margin: 0; font-size: 20px;">New Job Application</h2>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 20px;">
+        <p style="color: #333333; font-size: 16px; margin: 0 0 15px;">
+          A new candidate has submitted an application for a position at Weboum Technology.
         </p>
-        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
-          <strong>Email:</strong> <a href="mailto:${
-            formData.email
-          }" style="color: #4a90e2; text-decoration: none;">${
-        formData.email
-      }</a>
-        </p>
-        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
-          <strong>Phone:</strong> ${formData.phone}
-        </p>
-        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
-          <strong>Position:</strong> ${formData.post}
-        </p>
-        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
-          <strong>Experience:</strong> ${formData.experience}
-        </p>
-        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
-          <strong>Message:</strong> ${sanitizedMessage}
-        </p>
-        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
-          <strong>Resume:</strong> ${
-            formData.resume ? "Attached" : "Not provided"
-          }
-        </p>
-      </div>
-    </div>
-    <!-- Footer -->
-    <div style="background-color: #f5f5f5; padding: 10px; text-align: center; font-size: 12px; color: #666666;">
-      <p style="margin: 0;">© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
-    </div>
-  </div>
+        <table width="100%" cellpadding="5" cellspacing="0" style="border-top: 1px solid #e0e0e0; padding-top: 15px;">
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Name:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedFormData.firstName} ${sanitizedFormData.lastName}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Email:</strong></td>
+            <td style="color: #333333; font-size: 14px;">
+              <a href="mailto:${sanitizedFormData.email}" style="color: #4a90e2; text-decoration: none;">${sanitizedFormData.email}</a>
+            </td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Phone:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedFormData.phone}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Position:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedFormData.post}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Experience:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedFormData.experience}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Message:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedFormData.message}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Resume:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${formData.resume ? "Attached" : "Not provided"}</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td style="background-color: #f5f5f5; padding: 10px; text-align: center; font-size: 12px; color: #666666;">
+        <p style="margin: 0;">© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>
-      `;
+      `.trim();
 
-      const plainTextFallback = `
-Job Application Details:
-------------------------
-Name: ${formData.firstName} ${formData.lastName}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Position: ${formData.post}
-Experience: ${formData.experience}
-Message: ${formData.message || "No additional message provided."}
-Resume: ${formData.resume ? "Attached" : "Not provided"}
-      `;
+      // Log payload for debugging
+      console.log("Submitting form with:", {
+        email: sanitizedFormData.email,
+        subject: `Job Application for ${sanitizedFormData.post} from ${sanitizedFormData.firstName} ${sanitizedFormData.lastName}`,
+        message: messageContent.substring(0, 100) + "...",
+        attachment: formData.resume ? formData.resume.name : "No attachment",
+      });
 
+      // Send the form data to the API
       const result = await sendContactForm({
-        email: formData.email,
-        subject: `Job Application for ${formData.post} from ${formData.firstName} ${formData.lastName}`,
+        email: sanitizedFormData.email,
+        subject: `Job Application for ${sanitizedFormData.post} from ${sanitizedFormData.firstName} ${sanitizedFormData.lastName}`,
         message: messageContent,
         attachment: formData.resume,
       });
@@ -204,7 +220,7 @@ Resume: ${formData.resume ? "Attached" : "Not provided"}
     } catch (error) {
       console.error("Error submitting form:", error);
       setFormError(
-        "Failed to submit your application. Please try again later."
+        "Failed to submit your application. Please try again later or contact support@weboum.com."
       );
     } finally {
       setIsSubmitting(false);

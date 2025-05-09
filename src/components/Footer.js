@@ -6,7 +6,7 @@ import { FaFacebook, FaYoutube } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import Image from "next/image";
 import { useState } from "react";
-import { sendContactForm } from "../utils/api";
+import { sendContactForm } from "@/utils/api";
 
 const EMAIL_TEMPLATE = `
 <!DOCTYPE html>
@@ -15,77 +15,32 @@ const EMAIL_TEMPLATE = `
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome to Weboum's Newsletter</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-    }
-    .container {
-      max-width: 600px;
-      margin: 20px auto;
-      background: #ffffff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    .header {
-      text-align: center;
-      padding: 20px 0;
-      border-bottom: 1px solid #eee;
-    }
-    .header img {
-      max-width: 150px;
-    }
-    .content {
-      padding: 20px;
-      text-align: center;
-    }
-    .content h1 {
-      color: #2c3e50;
-      margin-bottom: 20px;
-    }
-    .content p {
-      margin: 10px 0;
-    }
-    .footer {
-      text-align: center;
-      padding: 20px;
-      border-top: 1px solid #eee;
-      font-size: 12px;
-      color: #666;
-    }
-    .button {
-      display: inline-block;
-      padding: 10px 20px;
-      background: #3498db;
-      color: #fff !important;
-      text-decoration: none;
-      border-radius: 5px;
-      margin: 20px 0;
-    }
-  </style>
 </head>
-<body>
-  <div class="container">
-    <div class="header">
-      <img src="https://weboum.com/image/logo-1.png" alt="Weboum Logo">
-    </div>
-    <div class="content">
-      <h1>Welcome to Weboum's Newsletter!</h1>
-      <p>Thank you for subscribing to our newsletter!</p>
-      <p>You'll now receive the latest updates, tips, and exclusive offers from Weboum Technology.</p>
-      <p>If you wish to unsubscribe, please click the link below.</p>
-      <p><a href="https://weboum.com/unsubscribe">Unsubscribe</a></p>
-    </div>
-    <div class="footer">
-      <p>© 2025 Weboum Technology Private Limited. All rights reserved.</p>
-      <p>Weboum Technology Pvt Ltd, 123 Tech Street, Innovation City, IN 12345</p>
-    </div>
-  </div>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f4f4f4;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #e0e0e0;">
+    <tr>
+      <td style="text-align: center; padding: 20px 0; border-bottom: 1px solid #eee;">
+        <img src="https://weboum.com/image/logo-1.png" alt="Weboum Logo" style="max-width: 150px;" />
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 20px; text-align: center;">
+        <h1 style="color: #2c3e50; margin-bottom: 20px;">Welcome to Weboum's Newsletter!</h1>
+        <p style="margin: 10px 0;">Thank you for subscribing to our newsletter!</p>
+        <p style="margin: 10px 0;">You'll now receive the latest updates, tips, and exclusive offers from Weboum Technology.</p>
+        <p style="margin: 10px 0;">If you wish to unsubscribe, please click the link below.</p>
+        <p style="margin: 10px 0;">
+          <a href="https://weboum.com/unsubscribe" style="display: inline-block; padding: 10px 20px; background-color: #3498db; color: #ffffff; text-decoration: none; border-radius: 5px;">Unsubscribe</a>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: center; padding: 20px; border-top: 1px solid #eee; font-size: 12px; color: #666;">
+        <p style="margin: 0;">© 2025 Weboum Technology Private Limited. All rights reserved.</p>
+        <p style="margin: 5px 0;">Weboum Technology Pvt Ltd, 123 Tech Street, Innovation City, IN 12345</p>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>
 `;
@@ -108,19 +63,42 @@ export default function Footer() {
     }
 
     try {
-      console.log("Submitting email:", email);
-      
+      // Sanitize email input to prevent XSS
+      const sanitizeInput = (input) => {
+        const div = document.createElement("div");
+        div.textContent = input || "";
+        return div.innerHTML
+          .replace(/&/g, "&")
+          .replace(/</g, "<")
+          .replace(/>/g, ">")
+          .replace(/"/g, "");
+      };
+
+      const sanitizedEmail = sanitizeInput(email);
+
+      // Log payload for debugging
+      console.log("Submitting email:", {
+        email: sanitizedEmail,
+        subject: "Welcome to Weboum's Newsletter!",
+        message: EMAIL_TEMPLATE.substring(0, 100) + "...",
+      });
+
+      // Send the form data to the API
       const response = await sendContactForm({
-        email,
+        email: sanitizedEmail,
         subject: "Welcome to Weboum's Newsletter!",
         message: EMAIL_TEMPLATE,
       });
-      
-      setSubmitMessage(
-        "Successfully subscribed! Check your inbox or spam folder."
-      );
-      setEmail("");
-      console.log("Subscription response:", response);
+
+      if (response.success) {
+        setSubmitMessage(
+          "Successfully subscribed! Check your inbox or spam folder."
+        );
+        setEmail("");
+        console.log("Subscription response:", response);
+      } else {
+        throw new Error(response.message || "Failed to subscribe");
+      }
     } catch (error) {
       console.error("Subscription error:", error.message, error.stack);
       setSubmitMessage(

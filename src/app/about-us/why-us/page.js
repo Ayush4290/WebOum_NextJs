@@ -23,7 +23,6 @@ export default function WhyUs() {
   const [formSuccess, setFormSuccess] = useState("");
 
   useEffect(() => {
-    
     AOS.init({
       duration: 1000,
       once: false,
@@ -72,9 +71,12 @@ export default function WhyUs() {
     setIsSubmitting(true);
 
     try {
-     
+      // Sanitize inputs to prevent XSS and ensure proper encoding
       const sanitizeInput = (input) => {
-        return input
+        const div = document.createElement("div");
+        div.textContent = input;
+        return div.innerHTML
+          .replace(/&/g, "&amp;")
           .replace(/</g, "&lt;")
           .replace(/>/g, "&gt;")
           .replace(/"/g, "&quot;");
@@ -88,10 +90,9 @@ export default function WhyUs() {
         ? sanitizeInput(formData.message)
         : "No message provided";
 
-    
       const subject = `Free Consultation Request from ${sanitizedName}`;
 
-   
+      // Simplified and robust email template
       const messageContent = `
 <!DOCTYPE html>
 <html lang="en">
@@ -100,43 +101,53 @@ export default function WhyUs() {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Free Consultation Request</title>
 </head>
-<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f0f0f0;">
-  <div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #e0e0e0;">
-    <!-- Header -->
-    <div style="background-color: #4a90e2; padding: 15px; text-align: center;">
-      <h2 style="color: #ffffff; margin: 0; font-size: 20px;">New Consultation Request</h2>
-    </div>
-    <!-- Body -->
-    <div style="padding: 20px;">
-      <p style="color: #333333; font-size: 16px; margin: 0 0 15px;">
-        A new consultation request has been submitted to Weboum Technology.
-      </p>
-      <div style="border-top: 1px solid #e0e0e0; padding-top: 15px;">
-        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
-          <strong>Name:</strong> ${sanitizedName}
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #e0e0e0;">
+    <tr>
+      <td style="background-color: #4a90e2; padding: 15px; text-align: center;">
+        <h2 style="color: #ffffff; margin: 0; font-size: 20px;">New Consultation Request</h2>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 20px;">
+        <p style="color: #333333; font-size: 16px; margin: 0 0 15px;">
+          A new consultation request has been submitted to Weboum Technology.
         </p>
-        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
-          <strong>Email:</strong> <a href="mailto:${sanitizedEmail}" style="color: #4a90e2; text-decoration: none;">${sanitizedEmail}</a>
-        </p>
-        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
-          <strong>Phone:</strong> ${sanitizedPhone}
-        </p>
-        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
-          <strong>Project Type:</strong> ${sanitizedProject}
-        </p>
-        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
-          <strong>Message:</strong> ${sanitizedMessage}
-        </p>
-      </div>
-    </div>
-    <!-- Footer -->
-    <div style="background-color: #f5f5f5; padding: 10px; text-align: center; font-size: 12px; color: #666666;">
-      <p style="margin: 0;">© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
-    </div>
-  </div>
+        <table width="100%" cellpadding="5" cellspacing="0" style="border-top: 1px solid #e0e0e0; padding-top: 15px;">
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Name:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedName}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Email:</strong></td>
+            <td style="color: #333333; font-size: 14px;">
+              <a href="mailto:${sanitizedEmail}" style="color: #4a90e2; text-decoration: none;">${sanitizedEmail}</a>
+            </td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Phone:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedPhone}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Project Type:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedProject}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Message:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedMessage}</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td style="background-color: #f5f5f5; padding: 10px; text-align: center; font-size: 12px; color: #666666;">
+        <p style="margin: 0;">© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>
-      `;
+      `.trim();
 
       // Plain text fallback
       const plainTextFallback = `
@@ -149,15 +160,22 @@ Project Type: ${sanitizedProject}
 Message: ${sanitizedMessage}
       `.trim();
 
-      // Send the form data to the API
+      // Log payload for debugging
+      console.log("Submitting form with:", {
+        email: sanitizedEmail,
+        subject,
+        html: messageContent.substring(0, 100) + "...", // Log partial HTML
+        message: plainTextFallback,
+      });
+
+      // Send form data to API
       const result = await sendContactForm({
         email: sanitizedEmail,
         subject,
         message: messageContent,
       });
 
-      // Here's the fixed part - better response handling
-      if (result && result.success) {
+      if (result.success) {
         setFormSuccess("Your request has been submitted successfully!");
         setFormData({
           name: "",
@@ -169,18 +187,11 @@ Message: ${sanitizedMessage}
         });
         e.target.reset();
       } else {
-        // More specific error message based on response
-        const errorMessage =
-          result && result.error
-            ? result.error
-            : "Your request has been submitted successfully!";
-        setFormError(errorMessage);
+        setFormError(result.message || "Failed to send email. Please try again.");
       }
     } catch (error) {
-      // console.error("Form submission error:", error);
-      setFormError(
-        "An error occurred while submitting your request. Please try again later."
-      );
+      console.error("Form submission error:", error);
+      setFormError(`An error occurred: ${error.message}. Please try again later.`);
     } finally {
       setIsSubmitting(false);
     }
@@ -350,6 +361,7 @@ Message: ${sanitizedMessage}
                 required
                 disabled={isSubmitting}
               >
+                
                 <option value="Project Development">Project Development</option>
                 <option value="Web Development">Web Development</option>
                 <option value="App Development">Mobile App Development</option>
@@ -380,7 +392,7 @@ Message: ${sanitizedMessage}
                   onChange={handleInputChange}
                   disabled={isSubmitting}
                 />
-                <label htmlFor="captcha">I&apos;m not a robot</label>
+                <label htmlFor="captcha">I'm not a robot</label>
                 <Image
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzz6tIILsCKIN0knMR9sTn5Shad52WNMNpuw&s"
                   alt="Verification"

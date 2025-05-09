@@ -6,6 +6,7 @@ import { BsTwitterX } from "react-icons/bs";
 import "./request_a_quote.css";
 import Days from "../about-us/days/page";
 import SubHeader from "../sub-header/page";
+import { sendContactForm } from "@/utils/api";
 
 const steps = [
   {
@@ -180,6 +181,22 @@ export default function RequestaQuote() {
     setIsSubmitting(true);
 
     try {
+      // Sanitize inputs to prevent XSS and ensure proper encoding
+      const sanitizeInput = (input) => {
+        const div = document.createElement("div");
+        div.textContent = input || "";
+        return div.innerHTML
+          .replace(/&/g, "&")
+          .replace(/</g, "<")
+          .replace(/>/g, ">")
+          .replace(/"/g, "");
+      };
+
+      const sanitizedFormData = {};
+      Object.keys(formData).forEach((key) => {
+        sanitizedFormData[key] = sanitizeInput(formData[key]);
+      });
+
       const getOptionLabels = (sectionName, values) => {
         for (const step of steps) {
           if (step.sections) {
@@ -204,115 +221,108 @@ export default function RequestaQuote() {
         return values.join(", ");
       };
 
+      // Create a simplified and robust HTML email template
       const message = `
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Quote Request درمانی</title>
-        </head>
-        <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4;">
-          <div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 20px;">
-            <div style="background-color: #007bff; color: #ffffff; padding: 15px; text-align: center; border-radius: 8px 8px 0 0;">
-              <h1 style="margin: 0; font-size: 24px;">New Quote Request</h1>
-            </div>
-            <div style="padding: 20px;">
-              <h2 style="font-size: 20px; color: #333333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">Contact Information</h2>
-              <p style="margin: 10px 0; color: #555555;"><strong>Name:</strong> ${
-                formData.name || "Not provided"
-              }</p>
-              <p style="margin: 10px 0; color: #555555;"><strong>Email:</strong> ${
-                formData.email || "Not provided"
-              }</p>
-              <p style="margin: 10px 0; color: #555555;"><strong>Phone:</strong> ${
-                formData.phone || "Not provided"
-              }</p>
-              <p style="margin: 10px 0; color: #555555;"><strong>Company:</strong> ${
-                formData.company || "Not provided"
-              }</p>
-              <p style="margin: 10px 0; color: #555555;"><strong>Website:</strong> ${
-                formData.website || "Not provided"
-              }</p>
-
-              <h2 style="font-size: 20px; color: #333333; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-top: 20px;">Project Details</h2>
-              <p style="margin: 10px 0; color: #555555;"><strong>Stage:</strong> ${
-                selectedOptions.stage.length > 0
-                  ? getOptionLabels("stage", selectedOptions.stage)
-                  : "Not selected"
-              }</p>
-              <p style="margin: 10px 0; color: #555555;"><strong>Services Needed:</strong> ${
-                selectedOptions.services_needed.length > 0
-                  ? getOptionLabels(
-                      "services_needed",
-                      selectedOptions.services_needed
-                    )
-                  : "Not selected"
-              }</p>
-              <p style="margin: 10px 0; color: #555555;"><strong>Development Stages Needed:</strong> ${
-                selectedOptions.development_stages_needed.length > 0
-                  ? getOptionLabels(
-                      "development_stages_needed",
-                      selectedOptions.development_stages_needed
-                    )
-                  : "Not selected"
-              }</p>
-              <p style="margin: 10px 0; color: #555555;"><strong>Project Scope:</strong> ${
-                selectedOptions.project_scope.length > 0
-                  ? getOptionLabels("project_scope", selectedOptions.project_scope)
-                  : "Not selected"
-              }</p>
-              <p style="margin: 10px 0; color: #555555;"><strong>Expected Budget:</strong> ${
-                selectedOptions.expected_budget.length > 0
-                  ? getOptionLabels(
-                      "expected_budget",
-                      selectedOptions.expected_budget
-                    )
-                  : "Not selected"
-              }</p>
-              <p style="margin: 10px 0; color: #555555;"><strong>Timeframe:</strong> ${
-                selectedOptions.timeframe.length > 0
-                  ? getOptionLabels("timeframe", selectedOptions.timeframe)
-                  : "Not selected"
-              }</p>
-              <p style="margin: 10px 0; color: #555555;"><strong>Start:</strong> ${
-                selectedOptions.start.length > 0
-                  ? getOptionLabels("start", selectedOptions.start)
-                  : "Not selected"
-              }</p>
-
-              <h2 style="font-size: 20px; color: #333333; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-top: 20px;">Additional Message</h2>
-              <p style="margin: 10px 0; color: #555555;">${
-                formData.message || "No message provided"
-              }</p>
-            </div>
-            <div style="background-color: #f8f9fa; padding: 15px; text-align: center; border-radius: 0 0 8px 8px;">
-              <p style="margin: 0; color: #777777; font-size: 14px;">Sent from Weboum Quote Request Form</p>
-            </div>
-          </div>
-        </body>
-        </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quote Request</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #e0e0e0;">
+    <tr>
+      <td style="background-color: #4a90e2; padding: 15px; text-align: center;">
+        <h2 style="color: #ffffff; margin: 0; font-size: 20px;">New Quote Request</h2>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 20px;">
+        <p style="color: #333333; font-size: 16px; margin: 0 0 15px;">
+          A new quote request has been submitted to Weboum Technology.
+        </p>
+        <table width="100%" cellpadding="5" cellspacing="0" style="border-top: 1px solid #e0e0e0; padding-top: 15px;">
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Name:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedFormData.name || "Not provided"}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Email:</strong></td>
+            <td style="color: #333333; font-size: 14px;">
+              <a href="mailto:${sanitizedFormData.email || "Not provided"}" style="color: #4a90e2; text-decoration: none;">${sanitizedFormData.email || "Not provided"}</a>
+            </td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Phone:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedFormData.phone || "Not provided"}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Company:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedFormData.company || "Not provided"}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Website:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedFormData.website || "Not provided"}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Stage:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${selectedOptions.stage.length > 0 ? getOptionLabels("stage", selectedOptions.stage) : "Not selected"}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Services Needed:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${selectedOptions.services_needed.length > 0 ? getOptionLabels("services_needed", selectedOptions.services_needed) : "Not selected"}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Development Stages Needed:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${selectedOptions.development_stages_needed.length > 0 ? getOptionLabels("development_stages_needed", selectedOptions.development_stages_needed) : "Not selected"}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Project Scope:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${selectedOptions.project_scope.length > 0 ? getOptionLabels("project_scope", selectedOptions.project_scope) : "Not selected"}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Expected Budget:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${selectedOptions.expected_budget.length > 0 ? getOptionLabels("expected_budget", selectedOptions.expected_budget) : "Not selected"}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Timeframe:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${selectedOptions.timeframe.length > 0 ? getOptionLabels("timeframe", selectedOptions.timeframe) : "Not selected"}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Start:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${selectedOptions.start.length > 0 ? getOptionLabels("start", selectedOptions.start) : "Not selected"}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Message:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedFormData.message || "No message provided"}</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td style="background-color: #f5f5f5; padding: 10px; text-align: center; font-size: 12px; color: #666666;">
+        <p style="margin: 0;">© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
       `.trim();
 
-      const apiFormData = new FormData();
-      apiFormData.append("wxmail", "true");
-      apiFormData.append("email", formData.email || "");
-      apiFormData.append(
-        "subject",
-        `Quote Request from ${formData.name || "Website Visitor"}`
-      );
-      apiFormData.append("message", message);
-
-      const response = await fetch("https://weboum.com/email-api/", {
-        method: "POST",
-        body: apiFormData,
+      // Log payload for debugging
+      console.log("Submitting form with:", {
+        email: sanitizedFormData.email,
+        subject: `Quote Request from ${sanitizedFormData.name || "Website Visitor"}`,
+        message: message.substring(0, 100) + "...",
       });
 
-      if (!response.ok) {
-        throw new Error(`Error: ${response.status}`);
-      }
-
-      const result = await response.json();
+      // Send the form data to the API
+      const result = await sendContactForm({
+        email: sanitizedFormData.email || "",
+        subject: `Quote Request from ${sanitizedFormData.name || "Website Visitor"}`,
+        message,
+      });
 
       if (result.success) {
         setFormSuccess(

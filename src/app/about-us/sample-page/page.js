@@ -53,25 +53,19 @@ export default function SamplePage() {
         image: "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
       },
       {
-        id: 2,
-        text: "If you don't want to be beaten, imprisoned, mutilated, killed or tortured then you shouldn't condone such behaviour towards anyone, be they human or not.",
-        author: "Moby",
-        image: "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
-      },
-      {
-        id: 2,
+        id: 3,
         text: "This company completed my project quickly and communicated well with me. They are very talented and completed everything that I asked them to. I hope to work with them in the future.",
         author: "Amarah G",
         image: "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
       },
       {
-        id: 2,
+        id: 4,
         text: "I love working with Rony! We have worked together for the last 5 years and he always amazes me with his design and cooperation. Excellent freelancer!",
         author: "Elizabeth Alcala",
         image: "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
       },
       {
-        id: 2,
+        id: 5,
         text: "Pawna was able to successfully complete a job that's been haunting me for months. I have tried to get a custom plugin created for a website and Pawna was the first person that knew exactly what to do and jumped right in with a solid solution.",
         author: "Tom Buford",
         image: "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
@@ -161,8 +155,15 @@ export default function SamplePage() {
     setIsSubmitting(true);
 
     try {
+      // Sanitize inputs to prevent XSS and ensure proper encoding
       const sanitizeInput = (input) => {
-        return input.replace(/</g, "<").replace(/>/g, ">").replace(/"/g, "");
+        const div = document.createElement("div");
+        div.textContent = input;
+        return div.innerHTML
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
       };
 
       const sanitizedName = sanitizeInput(formData.name);
@@ -175,6 +176,7 @@ export default function SamplePage() {
 
       const subject = `Free Consultation Request from ${sanitizedName}`;
 
+      // Simplified and robust email template
       const messageContent = `
 <!DOCTYPE html>
 <html lang="en">
@@ -183,42 +185,74 @@ export default function SamplePage() {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Free Consultation Request</title>
 </head>
-<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f0f0f0;">
-  <div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #e0e0e0;">
-    <div style="background-color: #4a90e2; padding: 15px; text-align: center;">
-      <h2 style="color: #ffffff; margin: 0; font-size: 20px;">New Consultation Request</h2>
-    </div>
-    <div style="padding: 20px;">
-      <p style="color: #333333; font-size: 16px; margin: 0 0 15px;">
-        A new consultation request has been submitted to Weboum Technology.
-      </p>
-      <div style="border-top: 1px solid #e0e0e0; padding-top: 15px;">
-        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
-          <strong>Name:</strong> ${sanitizedName}
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #e0e0e0;">
+    <tr>
+      <td style="background-color: #4a90e2; padding: 15px; text-align: center;">
+        <h2 style="color: #ffffff; margin: 0; font-size: 20px;">New Consultation Request</h2>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 20px;">
+        <p style="color: #333333; font-size: 16px; margin: 0 0 15px;">
+          A new consultation request has been submitted to Weboum Technology.
         </p>
-       Mi
-        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
-          <strong>Email:</strong> <a href="mailto:${sanitizedEmail}" style="color: #4a90e2; text-decoration: none;">${sanitizedEmail}</a>
-        </p>
-        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
-          <strong>Phone:</strong> ${sanitizedPhone}
-        </p>
-        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
-          <strong>Project Type:</strong> ${sanitizedProject}
-        </p>
-        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
-          <strong>Message:</strong> ${sanitizedMessage}
-        </p>
-      </div>
-    </div>
-    <div style="background-color: #f5f5f5; padding: 10px; text-align: center; font-size: 12px; color: #666666;">
-      <p style="margin: 0;">© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
-    </div>
-  </div>
+        <table width="100%" cellpadding="5" cellspacing="0" style="border-top: 1px solid #e0e0e0; padding-top: 15px;">
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Name:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedName}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Email:</strong></td>
+            <td style="color: #333333; font-size: 14px;">
+              <a href="mailto:${sanitizedEmail}" style="color: #4a90e2; text-decoration: none;">${sanitizedEmail}</a>
+            </td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Phone:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedPhone}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Project Type:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedProject}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Message:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedMessage}</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td style="background-color: #f5f5f5; padding: 10px; text-align: center; font-size: 12px; color: #666666;">
+        <p style="margin: 0;">© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>
-      `;
+      `.trim();
 
+      // Plain text fallback
+      const plainTextFallback = `
+Free Consultation Request Details:
+--------------------------------
+Name: ${sanitizedName}
+Email: ${sanitizedEmail}
+Phone: ${sanitizedPhone}
+Project Type: ${sanitizedProject}
+Message: ${sanitizedMessage}
+      `.trim();
+
+      // Log payload for debugging
+      console.log("Submitting form with:", {
+        email: sanitizedEmail,
+        subject,
+        html: messageContent.substring(0, 100) + "...", // Log partial HTML
+        message: plainTextFallback,
+      });
+
+      // Send form data to API
       const result = await sendContactForm({
         email: sanitizedEmail,
         subject,
@@ -237,10 +271,11 @@ export default function SamplePage() {
         });
         e.target.reset();
       } else {
-        setFormError("Your request has been submitted successfully!");
+        setFormError(result.message || "Failed to send email. Please try again.");
       }
     } catch (error) {
-      setFormError("Failed to submit your request. Please try again later.");
+      console.error("Form submission error:", error);
+      setFormError(`An error occurred: ${error.message}. Please try again later.`);
     } finally {
       setIsSubmitting(false);
     }
@@ -320,7 +355,7 @@ export default function SamplePage() {
               </a>
               <p>Optimization Solutions</p>
             </div>
-            <div className="samplePage_servicess-box samplePage_uiux-sol">
+            <div className="sample6Page_servicess-box samplePage_uiux-sol">
               <a href="/services/web-designing">
                 <div className="samplePage_icon-circle">
                   <Users size={45} />
@@ -704,24 +739,17 @@ export default function SamplePage() {
                   required
                   disabled={isSubmitting}
                 >
-                  <option value="Project Development">
-                    Project Development
-                  </option>
+                  
+                  <option value="Project Development">Project Development</option>
                   <option value="Web Development">Web Development</option>
-                  <option value="App Development">
-                    Mobile App Development
-                  </option>
+                  <option value="App Development">Mobile App Development</option>
                   <option value="Digital Marketing">Digital Marketing</option>
-                  <option value="Product Development">
-                    Product Development
-                  </option>
+                  <option value="Product Development">Product Development</option>
                   <option value="e-Commerce / Shopping">
                     e-Commerce / Shopping
                   </option>
                   <option value="Graphic Designing">Graphic Designing</option>
-                  <option value="Hosting / Migration">
-                    Hosting / Migration
-                  </option>
+                  <option value="Hosting / Migration">Hosting / Migration</option>
                   <option value="Other">Other</option>
                 </select>
                 <textarea

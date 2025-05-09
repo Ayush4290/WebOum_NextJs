@@ -4,26 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import "./hire-developer.css";
 import SubHeader from "../sub-header/page";
 import Days from "../about-us/days/page";
-
-// API function to send form data
-const sendContactForm = async ({ email, subject, message }) => {
-  const formData = new FormData();
-  formData.append("wxmail", "true");
-  formData.append("email", email);
-  formData.append("subject", subject);
-  formData.append("message", message);
-
-  const response = await fetch("https://weboum.com/email-api/", {
-    method: "POST",
-    body: formData,
-  });
-
-  if (!response.ok) {
-    throw new Error(`API request failed with status ${response.status}`);
-  }
-
-  return response.json();
-};
+import { sendContactForm } from "@/utils/api";
 
 export default function HireDeveloper() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -141,99 +122,142 @@ export default function HireDeveloper() {
 
     if (name && email && phone) {
       try {
-        // Construct the subject and message for the API
-        const subject = company
-          ? `Contact Request from ${name} - ${company}`
-          : `Contact Request from ${name}`;
+        // Sanitize inputs to prevent XSS and ensure proper encoding
+        const sanitizeInput = (input) => {
+          const div = document.createElement("div");
+          div.textContent = input || "";
+          return div.innerHTML
+            .replace(/&/g, "&")
+            .replace(/</g, "<")
+            .replace(/>/g, ">")
+            .replace(/"/g, "");
+        };
 
-        // Create a detailed HTML email template
+        const sanitizedName = sanitizeInput(name);
+        const sanitizedEmail = sanitizeInput(email);
+        const sanitizedPhone = sanitizeInput(phone);
+        const sanitizedCompany = sanitizeInput(company);
+        const sanitizedWebsite = sanitizeInput(website);
+        const sanitizedComment = sanitizeInput(comment);
+
+        // Construct the subject
+        const subject = sanitizedCompany
+          ? `Contact Request from ${sanitizedName} - ${sanitizedCompany}`
+          : `Contact Request from ${sanitizedName}`;
+
+        // Create a simplified and robust HTML email template
         const message = `
-          <!DOCTYPE html>
-          <html lang="en">
-          <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Contact Request</title>
-          </head>
-          <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4;">
-            <div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 20px;">
-              <div style="background-color: #007bff; color: #ffffff; padding: 15px; text-align: center; border-radius: 8px 8px 0 0;">
-                <h1 style="margin: 0; font-size: 24px;">New Contact Request</h1>
-              </div>
-              <div style="padding: 20px;">
-                <h2 style="font-size: 20px; color: #333333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">Contact Information</h2>
-                <p style="margin: 10px 0; color: #555555;"><strong>Name:</strong> ${name}</p>
-                <p style="margin: 10px 0; color: #555555;"><strong>Email:</strong> ${email}</p>
-                <p style="margin: 10px 0; color: #555555;"><strong>Phone:</strong> ${phone}</p>
-                <p style="margin: 10px 0; color: #555555;"><strong>Company:</strong> ${
-                  company || "Not provided"
-                }</p>
-                <p style="margin: 10px 0; color: #555555;"><strong>Website:</strong> ${
-                  website || "Not provided"
-                }</p>
-
-                <h2 style="font-size: 20px; color: #333333; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-top: 20px;">Project Details</h2>
-                <p style="margin: 10px 0; color: #555555;"><strong>Skills Selected:</strong> ${
-                  selectedSkills.length > 0
-                    ? selectedSkills.join(", ")
-                    : "None selected"
-                }</p>
-                <p style="margin: 10px 0; color: #555555;"><strong>Technologies Selected:</strong> ${
-                  selectedTechnologies.length > 0
-                    ? selectedTechnologies.join(", ")
-                    : "None selected"
-                }</p>
-                <p style="margin: 10px 0; color: #555555;"><strong>Work Time Preference:</strong> ${
-                  selectedWorkTime.length > 0
-                    ? selectedWorkTime.join(", ")
-                    : "None selected"
-                }</p>
-                <p style="margin: 10px 0; color: #555555;"><strong>Project Timeframe:</strong> ${
-                  selectedTimeframe.length > 0
-                    ? selectedTimeframe.join(", ")
-                    : "None selected"
-                }</p>
-                <p style="margin: 10px 0; color: #555555;"><strong>Preferred Start:</strong> ${
-                  selectedStart.length > 0
-                    ? selectedStart.join(", ")
-                    : "None selected"
-                }</p>
-
-                <h2 style="font-size: 20px; color: #333333; border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-top: 20px;">Additional Comments</h2>
-                <p style="margin: 10px 0; color: #555555;">${
-                  comment || "No comments provided"
-                }</p>
-              </div>
-              <div style="background-color: #f8f9fa; padding: 15px; text-align: center; border-radius: 0 0 8px 8px;">
-                <p style="margin: 0; color: #777777; font-size: 14px;">Sent from Weboum Contact Form</p>
-              </div>
-            </div>
-          </body>
-          </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Request</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #e0e0e0;">
+    <tr>
+      <td style="background-color: #4a90e2; padding: 15px; text-align: center;">
+        <h2 style="color: #ffffff; margin: 0; font-size: 20px;">New Contact Request</h2>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 20px;">
+        <p style="color: #333333; font-size: 16px; margin: 0 0 15px;">
+          A new contact request has been submitted to Weboum Technology.
+        </p>
+        <table width="100%" cellpadding="5" cellspacing="0" style="border-top: 1px solid #e0e0e0; padding-top: 15px;">
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Name:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedName}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Email:</strong></td>
+            <td style="color: #333333; font-size: 14px;">
+              <a href="mailto:${sanitizedEmail}" style="color: #4a90e2; text-decoration: none;">${sanitizedEmail}</a>
+            </td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Phone:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedPhone}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Company:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedCompany || "Not provided"}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Website:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedWebsite || "Not provided"}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Skills Selected:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${selectedSkills.length > 0 ? selectedSkills.join(", ") : "None selected"}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Technologies Selected:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${selectedTechnologies.length > 0 ? selectedTechnologies.join(", ") : "None selected"}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Work Time Preference:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${selectedWorkTime.length > 0 ? selectedWorkTime.join(", ") : "None selected"}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Project Timeframe:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${selectedTimeframe.length > 0 ? selectedTimeframe.join(", ") : "None selected"}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Preferred Start:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${selectedStart.length > 0 ? selectedStart.join(", ") : "None selected"}</td>
+          </tr>
+          <tr>
+            <td style="color: #333333; font-size: 14px;"><strong>Comment:</strong></td>
+            <td style="color: #333333; font-size: 14px;">${sanitizedComment || "No comments provided"}</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td style="background-color: #f5f5f5; padding: 10px; text-align: center; font-size: 12px; color: #666666;">
+        <p style="margin: 0;">© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
         `.trim();
 
+        // Log payload for debugging
+        console.log("Submitting form with:", {
+          email: sanitizedEmail,
+          subject,
+          message: message.substring(0, 100) + "...",
+        });
+
         // Send the form data to the API
-        await sendContactForm({ email, subject, message });
+        const result = await sendContactForm({ email: sanitizedEmail, subject, message });
 
-        // On success, show alert and reset the form
-        alert("Form submitted successfully!");
-        setCurrentStep(1);
-        formRef.current?.reset();
+        if (result.success) {
+          alert("Form submitted successfully!");
+          setCurrentStep(1);
+          formRef.current?.reset();
 
-        // Reset all selected items
-        setSelectedSkills([]);
-        setSelectedTechnologies([]);
-        setSelectedWorkTime([]);
-        setSelectedTimeframe([]);
-        setSelectedStart([]);
+          // Reset all selected items
+          setSelectedSkills([]);
+          setSelectedTechnologies([]);
+          setSelectedWorkTime([]);
+          setSelectedTimeframe([]);
+          setSelectedStart([]);
 
-        // Remove selected class from all tags
-        document
-          .querySelectorAll(".tag")
-          .forEach((tag) => tag.classList.remove("selected"));
+          // Remove selected class from all tags
+          document
+            .querySelectorAll(".tag")
+            .forEach((tag) => tag.classList.remove("selected"));
+        } else {
+          alert(`Failed to submit the form: ${result.message}`);
+        }
       } catch (error) {
-        alert("Failed to submit the form. Please try again later.");
         console.error("Form submission error:", error);
+        alert(`Failed to submit the form: ${error.message}. Please try again later.`);
       }
     } else {
       alert("Please fill in all required fields.");
