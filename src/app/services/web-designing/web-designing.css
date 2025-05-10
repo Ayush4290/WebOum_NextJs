@@ -74,6 +74,11 @@ h4 {
   padding: 0 15px; /* Increased padding for gap between columns */
 }
 
+.column-md-6 p{
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
 .text-center {
   text-align: center;
 }
@@ -82,23 +87,22 @@ h4 {
   font-style: italic;
 }
 
-
-/* Main container */
+/* Main container for the full-width section */
 .web-design {
- 
-  padding: 60px 20px;
-  max-width:1355px;
-  width: 100%;
-  margin: auto;
+  background-color: #EDF5F8; /* Red background */
+  width: 100%; /* Full viewport width */
+  margin: 0; /* Remove margins to ensure full width */
+  padding: 60px 0; /* Adjusted padding to only affect top and bottom */
   box-sizing: border-box;
 }
 
-/* Optional: Apply same width rules to children if needed */
-.web-design > * {
-  max-width: 100%;
+/* Inner content container to match the max-width of other sections */
+.web-design-content {
+  max-width: 1355px; /* Match the max-width of webContainer */
+  margin: 0 auto; /* Center the content */
+  padding: 0 20px; /* Match padding for consistency */
   box-sizing: border-box;
 }
-
 
 .why-choose-us {
   max-width: 100%;

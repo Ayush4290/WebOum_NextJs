@@ -7,8 +7,7 @@ export default function BackupDisasterRecovery() {
   return (
     <>
       <SubHeader
-        title="
-Data backup and Recovery Services"
+        title="Data backup and Recovery Services"
       />
       <div className="data-backup">
         <h1>
@@ -75,34 +74,34 @@ Data backup and Recovery Services"
           </div>
         </div>
 
+        {/* Full-width background section */}
         <div className="back-wrapper">
-  <div className="back-container">
-    <div className="content">
-      <h2>Backup and Recovery IT Services You Can Rely On</h2>
-      <p>
-        We offer design, storage, monitoring, testing, failover,
-        restoration assistance, reporting and much more. All your data
-        needs are covered and we ensure the complete safety of your
-        valuable data.
-      </p>
-      <p>
-        Preparing against disasters requires an in-depth understanding of
-        the policies, backup procedures, and tools to assist in the smooth
-        recovery of data and the continuation of the business.
-      </p>
-    </div>
-    <div className="image-container">
-      <Image
-        src="/image/BackupDisasterRecovery/backup-2.jpg"
-        alt="DevOps Infinity Loop"
-        width={500}
-        height={300}
-        priority
-      />
-    </div>
-  </div>
-</div>
-
+          <div className="back-container">
+            <div className="content">
+              <h2>Backup and Recovery IT Services You Can Rely On</h2>
+              <p>
+                We offer design, storage, monitoring, testing, failover,
+                restoration assistance, reporting and much more. All your data
+                needs are covered and we ensure the complete safety of your
+                valuable data.
+              </p>
+              <p>
+                Preparing against disasters requires an in-depth understanding of
+                the policies, backup procedures, and tools to assist in the smooth
+                recovery of data and the continuation of the business.
+              </p>
+            </div>
+            <div className="image-container">
+              <Image
+                src="/image/BackupDisasterRecovery/backup-2.jpg"
+                alt="DevOps Infinity Loop"
+                width={500}
+                height={300}
+                priority
+              />
+            </div>
+          </div>
+        </div>
 
         <div className="container features-container">
           <h1>

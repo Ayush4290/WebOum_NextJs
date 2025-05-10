@@ -2,15 +2,14 @@
   font-family: Arial, sans-serif;
   color: #333;
   line-height: 1.4; /* Reduced from 1.6 for tighter text */
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
 .software-container {
   padding: 20px; /* Reduced from 40px 20px */
   display: flex;
   flex-direction: column;
-  max-width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .software-container:first-child {
@@ -22,17 +21,21 @@
 /* Full-width background for Weboum’s Software Testing Solutions section */
 .full-width-section {
   width: 100%;
-  background-color: #f5f5f5; /* Light gray, consistent with Shopify page */
+  background-color:#EDF5F8; /* Changed to red background */
   padding: 20px 0; /* Reduced from 40px */
   margin: 0;
+  box-sizing: border-box;
+  line-height: 1.6;
 }
 
 /* Constrain inner content */
 .software-container-inner {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 20px; /* Match padding with software-container */
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 .software-image-section {

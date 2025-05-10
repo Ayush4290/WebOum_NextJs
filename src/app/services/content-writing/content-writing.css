@@ -24,8 +24,11 @@ img {
   padding: 60px 0;
 }
 
+.content-bg-light-red{
+  background-color:#EDF5F8;
+}
 .content-bg-light-blue {
-  background-color: var(--bg-light-blue);
+  background-image: url(https://weboum.com/wp-content/uploads/2021/05/map-pattern.png);
 }
 
 .content-container {
@@ -67,6 +70,7 @@ h4,
 h5 {
   font-weight: bold;
   margin-bottom: var(--spacing-md);
+  font-size: 27px;
   
 }
 
@@ -92,10 +96,10 @@ p {
   text-align: left;
 }
 
-.content-icon {
+content-icon {
   font-size: 24px;
-  min-width: 40px;
-  height: 40px;
+  min-width: 54px;
+  height: 13px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,19 +107,24 @@ p {
 
 /* Icon colors */
 .content-text-purple {
-  color: var(--purple);
+  color:#7F005B;
+  font-size: 20px;
 }
 
 .content-text-pink {
-  color: var(--pink);
+  color: #7F005B;
+  font-size: 20px;
+
 }
 
 .content-text-danger {
-  color: var(--danger);
+  color: #7F005B;
+  font-size: 20px;
 }
 
 .content-text-muted {
-  color: var(--muted);
+  color: #7F005B;
+  font-size: 20px;
 }
 
 /* Margin utilities */
@@ -125,6 +134,7 @@ p {
 
 .content-mb-5 {
   margin-bottom: var(--spacing-xl);
+  font-size: 20px;
 }
 
 .content-mt-3 {

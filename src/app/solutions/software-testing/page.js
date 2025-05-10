@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import "./software-testing.css";
 import SubHeader from "@/app/sub-header/page";
@@ -48,52 +50,53 @@ export default function SoftwareTesting() {
             </p>
           </div>
         </div>
+      </div>
 
-        <div className="full-width-section">
-          <div className="software-container">
-            <div className="software-container-inner">
-              <div className="software-section-header">
-                <h1 className="software-h1">
-                  Weboum's Software Testing Solutions
-                </h1>
-                <p className="software-p">
-                  Get your software development team augmented with Weboum's
-                  software development solutions that are custom-tailored to
-                  suit different needs. We are software geeks who will test your
-                  software in painstakingly in the best possible way.
-                </p>
-              </div>
-              <ul className="software-services-list">
-                <li>
-                  <b>Manual Testing:-</b>Our team of software testers will get
-                  your desktop and mobile application tested manually so that
-                  bugs and errors are easily detected. We will ensure that your
-                  software complies with regulatory standards.
-                </li>
-                <li>
-                  <b>Automated Testing:-</b>We deliver a full-cycle automated
-                  software testing model for desktop and mobile applications. At
-                  the same time, we ensure that the product quality is enhanced,
-                  test coverage gets improved, productivity is boosted and the
-                  overall testing times are decreased as well.
-                </li>
-                <li>
-                  <b>Usability Testing:-</b> Our team designs platforms to test
-                  the usability of an application that incorporates specific
-                  tools to test usability and research methods that focus on how
-                  user-friendly a particular application is.
-                </li>
-                <li>
-                  <b>Functional Testing:-</b>Weboum offers next-level functional
-                  testing that focuses on preventing problems faced in the
-                  functionality of an application and detecting them earlier, if
-                  any.
-                </li>
-              </ul>
-            </div>
+      {/* Full-width section */}
+      <div className="full-width-section">
+        <div className="software-container-inner">
+          <div className="software-section-header">
+            <h1 className="software-h1">
+              Weboum's Software Testing Solutions
+            </h1>
+            <p className="software-p">
+              Get your software development team augmented with Weboum's
+              software development solutions that are custom-tailored to
+              suit different needs. We are software geeks who will test your
+              software in painstakingly in the best possible way.
+            </p>
           </div>
+          <ul className="software-services-list">
+            <li>
+              <b>Manual Testing:-</b>Our team of software testers will get
+              your desktop and mobile application tested manually so that
+              bugs and errors are easily detected. We will ensure that your
+              software complies with regulatory standards.
+            </li>
+            <li>
+              <b>Automated Testing:-</b>We deliver a full-cycle automated
+              software testing model for desktop and mobile applications. At
+              the same time, we ensure that the product quality is enhanced,
+              test coverage gets improved, productivity is boosted and the
+              overall testing times are decreased as well.
+            </li>
+            <li>
+              <b>Usability Testing:-</b> Our team designs platforms to test
+              the usability of an application that incorporates specific
+              tools to test usability and research methods that focus on how
+              user-friendly a particular application is.
+            </li>
+            <li>
+              <b>Functional Testing:-</b>Weboum offers next-level functional
+              testing that focuses on preventing problems faced in the
+              functionality of an application and detecting them earlier, if
+              any.
+            </li>
+          </ul>
         </div>
+      </div>
 
+      <div className="software-testing">
         <div className="software-container">
           <div className="software-section-header">
             <h1 className="software-h1">Custom Quality Assurance Services!</h1>

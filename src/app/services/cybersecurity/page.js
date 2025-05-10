@@ -11,61 +11,37 @@ export default function Cybersecurity() {
     <>
       <SubHeader title="Cyber Security Solutions" />
       <div className="cybersecurity">
-        <section className="cybersecurity-intro">
-          <div className="cybersecurity-row">
-            <div className="cybersecurity-text">
-              <h2>
-                Safeguard your business with <br />
-                <strong>Advanced Cybersecurity Solutions!</strong>
-              </h2>
-              <p>
-                In today’s digital landscape, cybersecurity is critical to
-                protecting your business from evolving threats. At Weboum
-                Technology, we provide robust cybersecurity solutions to ensure
-                your data, systems, and reputation remain secure.
-              </p>
-              <p>
-                From threat detection to incident response, our services are
-                designed to fortify your defenses and keep your business ahead
-                of cyber risks. Trust us to deliver cutting-edge protection
-                tailored to your needs.
-              </p>
+        <section className="cybersecurity-expert">
+          <div className="cybersecurity-expert-container">
+            <div className="cybersecurity-row">
+              <div className="cybersecurity-image">
+                <Image
+                  src="https://www.westchester-il.org/getattachment/841b7e75-e364-4c1e-9649-280cc92dba32/Cyber-Security-Tips.aspx?width=1000"
+                  alt="Cybersecurity Protection"
+                  width={600}
+                  height={400}
+                  priority
+                />
+              </div>
+              <div className="cybersecurity-text">
+                <h2>
+                  Secure Your Business with{" "}
+                  <strong>Expert Cybersecurity</strong>
+                </h2>
+                <p>
+                  In today’s digital landscape, cybersecurity is critical to
+                  protecting your business from evolving threats. At Weboum
+                  Technology, we provide robust cybersecurity solutions to
+                  ensure your data, systems, and reputation remain secure.
+                </p>
+                <p>
+                  From threat detection to incident response, our services are
+                  designed to fortify your defenses and keep your business ahead
+                  of cyber risks. Trust us to deliver cutting-edge protection
+                  tailored to your needs.
+                </p>
+              </div>
             </div>
-            <div className="cybersecurity-image">
-              <Image
-                src="https://www.westchester-il.org/getattachment/841b7e75-e364-4c1e-9649-280cc92dba32/Cyber-Security-Tips.aspx?width=1000"
-                alt="Cybersecurity Protection"
-                width={600}
-                height={400}
-                priority
-              />
-            </div>
-          </div>
-
-          <div className="cybersecurity-more-info">
-            <h3>Secure Your Digital Future</h3>
-            <p>
-              At Weboum Technology, we offer comprehensive cybersecurity
-              services to protect your business from cyber threats. Our team of
-              experts implements proactive strategies to safeguard your assets
-              and ensure compliance with industry standards.
-            </p>
-            <h3>Cybersecurity: Your First Line of Defense</h3>
-            <p>
-              Our cybersecurity solutions provide a competitive advantage by
-              mitigating risks, ensuring data integrity, and enhancing customer
-              trust. Whether you’re a small business or a large enterprise, we
-              deliver tailored protection to meet your unique challenges.
-            </p>
-            <p>
-              We provide end-to-end cybersecurity services, from risk
-              assessments to ongoing monitoring, empowering your business to
-              thrive in a secure environment.
-            </p>
-            <p>
-              Contact Weboum Technology today to strengthen your cybersecurity
-              posture and protect your business.
-            </p>
           </div>
         </section>
 
@@ -114,7 +90,7 @@ export default function Cybersecurity() {
               </p>
             </div>
             <div className="cybersecurity-box">
-              <h4>� 🔒 Data Encryption Solutions</h4>
+              <h4>🔒 Data Encryption Solutions</h4>
               <p>
                 We implement robust encryption protocols to safeguard your
                 sensitive data, ensuring confidentiality and compliance.

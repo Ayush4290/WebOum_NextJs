@@ -6,7 +6,7 @@ import Days from "../days/page";
 export default function Digital() {
   return (
     <>
-      <SubHeader title="Digital Solutions" />
+      <SubHeader title="Digital Marketing Solutions" />
       <div className="digital-container">
         {/* Hero Section */}
         <section className="digital-hero-section digital-content-box">
@@ -14,47 +14,49 @@ export default function Digital() {
           <p>
             At Weboum, we understand the power of digital presence. Our expert
             team helps businesses expand their reach, engage their audience, and
-            boost conversions through customized strategies. Whether you’re a
+            boost conversions through customized strategies. Whether you're a
             small startup or an established brand, we offer the tools and
             expertise you need to succeed online.
           </p>
         </section>
 
-        {/* Digital Benefits Section */}
-        <section className="digital-benefits-section digital-content-box">
-          <div className="digital-benefits-image">
-            <Image
-              src="https://weboum.com/wp-content/uploads/2024/11/images-2.png"
-              alt="Digital Illustration"
-              width={500}
-              height={400}
-              style={{ objectFit: "cover" }}
-            />
-          </div>
-          <div className="digital-benefits-content">
-            <h2>
-              Digital Investment Without Multiples of Return? You’re Not Doing
-              it Correctly!
-            </h2>
-            <p>
-              Social media has the power to transform your business. But if
-              you’re not seeing results, your campaign may not be reaching its
-              potential. Partnering with experts ensures a proven strategy can
-              elevate your brand, leveraging the full benefits of social
-              platforms. With our tailored social media services, watch your
-              business rise above the competition and become a major social
-              media player.
-            </p>
-            <p>
-              If your digital investment isn’t yielding substantial returns,
-              it’s likely due to ineffective strategies or poor execution.
-              Successful digital isn’t just about spending—it’s about reaching
-              the right audience, optimizing campaigns, and measuring results.
-              Using the right mix of SEO, PPC, content creation, and social
-              media can significantly amplify your returns. Continuous
-              monitoring and adjustment are key to ensuring your strategy stays
-              on track and drives growth.
-            </p>
+        {/* Digital Benefits Section - UPDATED */}
+        <section className="digital-benefits-section">
+          <div className="digital-benefits-wrapper">
+            <div className="digital-benefits-image">
+              <Image
+                src="https://weboum.com/wp-content/uploads/2024/11/images-2.png"
+                alt="Digital Illustration"
+                width={500}
+                height={400}
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+            <div className="digital-benefits-content">
+              <h2>
+                Digital Investment Without Multiples of Return? You're Not Doing
+                it Correctly!
+              </h2>
+              <p>
+                Social media has the power to transform your business. But if
+                you're not seeing results, your campaign may not be reaching its
+                potential. Partnering with experts ensures a proven strategy can
+                elevate your brand, leveraging the full benefits of social
+                platforms. With our tailored social media services, watch your
+                business rise above the competition and become a major social
+                media player.
+              </p>
+              <p>
+                If your digital investment isn't yielding substantial returns,
+                it's likely due to ineffective strategies or poor execution.
+                Successful digital isn't just about spending—it's about reaching
+                the right audience, optimizing campaigns, and measuring results.
+                Using the right mix of SEO, PPC, content creation, and social
+                media can significantly amplify your returns. Continuous
+                monitoring and adjustment are key to ensuring your strategy
+                stays on track and drives growth.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -70,7 +72,7 @@ export default function Digital() {
             </p>
             <p>
               We recognize that every business has unique needs, which is why we
-              offer customized social media services. Whether you’re focused on
+              offer customized social media services. Whether you're focused on
               one platform or multiple, our experts will create a strategy
               tailored specifically to your goals. This approach ensures that
               your business gets the most effective social media plan to
@@ -88,34 +90,36 @@ export default function Digital() {
           </div>
         </section>
 
-        {/* Services Section */}
-        <section className="digital-services-section digital-content-box">
-          <div className="digital-services-image">
-            <Image
-              src="https://weboum.com/wp-content/uploads/2024/11/What-is-Digital-Marketing-768x512-1.jpg"
-              alt="Digital Services"
-              width={500}
-              height={400}
-              style={{ objectFit: "cover" }}
-            />
-          </div>
-          <div className="digital-services-content">
-            <h2>How Services for Digital Promote Business Development</h2>
-            <p>
-              Digital services empower businesses of all sizes to promote their
-              brands 24/7 at minimal costs. Whether you’re a startup, mid-sized
-              company, or multi-location enterprise, digital enables you to
-              expand your reach, connect with target audiences, and offer
-              products and services anytime, anywhere, overcoming time and
-              location barriers.
-            </p>
-            <p>
-              Partnering with an internet agency is an excellent way to connect
-              with new prospects while nurturing strong relationships with
-              existing customers. A solid digital presence ensures your business
-              remains visible and accessible, allowing customers to find and
-              engage with you easily.
-            </p>
+        {/* Services Section - UPDATED */}
+        <section className="digital-services-section">
+          <div className="digital-services-wrapper">
+            <div className="digital-services-image">
+              <Image
+                src="https://weboum.com/wp-content/uploads/2024/11/What-is-Digital-Marketing-768x512-1.jpg"
+                alt="Digital Services"
+                width={500}
+                height={400}
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+            <div className="digital-services-content">
+              <h2>How Services for Digital Promote Business Development</h2>
+              <p>
+                Digital services empower businesses of all sizes to promote
+                their brands 24/7 at minimal costs. Whether you're a startup,
+                mid-sized company, or multi-location enterprise, digital enables
+                you to expand your reach, connect with target audiences, and
+                offer products and services anytime, anywhere, overcoming time
+                and location barriers.
+              </p>
+              <p>
+                Partnering with an internet agency is an excellent way to
+                connect with new prospects while nurturing strong relationships
+                with existing customers. A solid digital presence ensures your
+                business remains visible and accessible, allowing customers to
+                find and engage with you easily.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -177,7 +181,7 @@ export default function Digital() {
                 <p>
                   By harnessing the power of influencer, product posts, and
                   features like Instagram Shop, Weboum Technology can help drive
-                  your business’s sales growth. Our strategies leverage these
+                  your business's sales growth. Our strategies leverage these
                   tools to increase visibility, engagement, and conversion,
                   ensuring your brand connects with the right audience
                   effectively.
@@ -193,13 +197,13 @@ export default function Digital() {
             <h2>On Social Media, Give Your Brand a Voice!</h2>
             <p>
               We specialize in creating social media pages that align with your
-              business’s core objectives. After thoroughly understanding your
+              business's core objectives. After thoroughly understanding your
               brand, we design tailored campaigns that are unique to your
               business, ensuring they capture attention and drive results.
               Research shows that nearly 74% of people turn to social media when
-              making purchase decisions. If your business isn’t active on these
-              platforms, you’re missing a significant opportunity. Connect with
-              Weboum Technology’s social media managers to learn how we can
+              making purchase decisions. If your business isn't active on these
+              platforms, you're missing a significant opportunity. Connect with
+              Weboum Technology's social media managers to learn how we can
               integrate social media into your strategy for better results.
             </p>
           </div>
@@ -209,7 +213,7 @@ export default function Digital() {
             <ul>
               <li>
                 <span className="digital-check-icon">✔</span>
-                Solutions that are specifically tailored to our clients’
+                Solutions that are specifically tailored to our clients'
                 requirements and tastes.
               </li>
               <li>
@@ -239,7 +243,7 @@ export default function Digital() {
             </ul>
             <div className="digital-weboum-note">
               <p>
-                It’s time to enhance your social media with powerful strategies
+                It's time to enhance your social media with powerful strategies
                 from Weboum Technology. Our team can help you leverage the best
                 tools and techniques to grow your online presence and drive real
                 results. We are available to assist you at any moment.

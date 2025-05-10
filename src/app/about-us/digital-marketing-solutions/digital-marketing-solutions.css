@@ -41,18 +41,38 @@
   margin: 0 auto;
 }
 
-/* Benefits Section */
+/* Benefits Section - UPDATED FOR FULL WIDTH */
 .digital-benefits-section {
+  position: relative;
+  margin-bottom: 40px;
+  padding: 0;
+  background-color:#EDF5F8;
+  box-shadow: none;
+  max-width: none; /* Remove max-width constraint */
+  width: 100%;
+}
+
+.digital-benefits-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f1f5f9;
+  z-index: -1;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
+.digital-benefits-wrapper {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 30px;
-  background-color: #f1f5f9;
-  border-radius: 10px;
   padding: 40px 30px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin: 0 auto 40px;
   max-width: 1200px;
+  margin: 0 auto;
 }
 
 .digital-benefits-image {
@@ -116,6 +136,7 @@
   line-height: 1.7;
   color: #475569;
   margin-bottom: 18px;
+  text-align: start;
 }
 
 .digital-social-media-image {
@@ -131,18 +152,38 @@
   max-width: 450px;
 }
 
-/* Services Section */
+/* Services Section - UPDATED FOR FULL WIDTH */
 .digital-services-section {
+  position: relative;
+  margin-bottom: 50px;
+  padding: 0;
+  background-color: #EDF5F8;
+  box-shadow: none;
+  max-width: none; /* Remove max-width constraint */
+  width: 100%;
+}
+
+.digital-services-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f1f5f9;
+  z-index: -1;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
+.digital-services-wrapper {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 40px;
-  background-color: #f1f5f9;
-  border-radius: 12px;
   padding: 50px 40px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  margin: 0 auto 50px;
   max-width: 1200px;
+  margin: 0 auto;
 }
 
 .digital-services-image {
@@ -329,9 +370,9 @@
 
 /* Media Queries for Responsive Design */
 @media (max-width: 768px) {
-  .digital-benefits-section,
+  .digital-benefits-wrapper,
   .digital-social-media-section,
-  .digital-services-section {
+  .digital-services-wrapper {
     flex-direction: column;
     text-align: center;
     padding: 30px 20px;
@@ -374,6 +415,7 @@
   .digital-social-media-content p,
   .digital-services-content p {
     font-size: 0.95rem;
+   
   }
 
   .digital-weboum-why ul li {

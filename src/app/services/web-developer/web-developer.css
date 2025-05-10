@@ -81,8 +81,9 @@
   max-width: 100%;
   margin: 0 auto 2rem auto;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #201b1b;
+  line-height: 1.7;
 }
 
 .features-row {
@@ -114,7 +115,7 @@
 .feature-title {
   font-weight: 700;
   color: #3b3b98;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   margin-bottom: 5px;
 }
 
@@ -150,6 +151,7 @@
   margin: 0 auto 1.5rem auto;
   color: #392929;
   font-size: 1.2rem;
+  line-height:1.5;
 }
 
 .solutions-grid {
@@ -194,7 +196,7 @@
 .card-title {
   font-weight: 700;
   color: #3b3b98;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-bottom: 8px;
 }
 

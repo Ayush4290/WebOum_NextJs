@@ -1,9 +1,70 @@
 .cybersecurity {
   font-family: "Roboto", sans-serif;
-
   color: #e0e0e0;
   line-height: 1.7;
   padding: 30px;
+}
+
+.cybersecurity-expert {
+  background-color:white; /* Full-width red background */
+  width: 100vw; /* Ensures full viewport width */
+  position: relative; /* Breaks out of parent constraints */
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 50px 0;
+}
+
+.cybersecurity-expert-container {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.cybersecurity-expert .cybersecurity-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+}
+
+.cybersecurity-expert .cybersecurity-image {
+  flex: 1;
+  min-width: 320px;
+  text-align: center;
+}
+
+.cybersecurity-expert .cybersecurity-image img {
+  border-radius: 15px;
+  transition: box-shadow 0.3s ease;
+  width: 100%;
+  height: auto;
+}
+
+.cybersecurity-expert .cybersecurity-image img:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.cybersecurity-expert .cybersecurity-text {
+  flex: 1;
+  min-width: 320px;
+}
+
+.cybersecurity-expert .cybersecurity-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 25px;
+  color: black; /* White text for contrast */
+}
+
+.cybersecurity-expert .cybersecurity-text h2 strong {
+  color: black;
+}
+
+.cybersecurity-expert .cybersecurity-text p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: black;
 }
 
 .cybersecurity-intro,
@@ -15,13 +76,11 @@
   padding: 50px 20px;
 }
 
-
 .cybersecurity-row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 30px;
-
 }
 
 .cybersecurity-text,
@@ -104,7 +163,6 @@
 }
 
 .cybersecurity-services-section {
-  
   border-radius: 15px;
 }
 
@@ -115,10 +173,11 @@
   margin-bottom: 25px;
   color: black;
 }
-.cybersecurity-offers p{
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    color: black;
+
+.cybersecurity-offers p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: black;
 }
 
 .cybersecurity-grid {
@@ -193,9 +252,9 @@
   margin-bottom: 20px;
 }
 
-.cybersecurity-icon p{
-    font-size: 1.2rem;
-    color: black;
+.cybersecurity-icon p {
+  font-size: 1.2rem;
+  color: black;
 }
 
 .cybersecurity-note {
@@ -207,6 +266,15 @@
 }
 
 @media (max-width: 768px) {
+  .cybersecurity-expert .cybersecurity-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .cybersecurity-expert .cybersecurity-text h2 {
+    font-size: 2rem;
+  }
+
   .cybersecurity-row {
     flex-direction: column;
     gap: 20px;

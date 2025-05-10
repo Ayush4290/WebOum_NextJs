@@ -42,35 +42,24 @@ export default function SamplePage() {
     setTestimonials([
       {
         id: 1,
-        text: "Gurbachan is a seasoned professional that met our deadline and took over an advanced WordPress Project that the original developer could not complete due to a lack of skills. Our project involved a responsive design and full mobile compatibility. He communicates very well in writing and we also had video calls on Skype which sometimes makes things easier. We will work with him again in the future.",
-        author: "Klaus Holzapfel",
-        image: "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
-      },
-      {
-        id: 2,
-        text: "I would highly recommend using Guru for your web design needs. He offers a reliable and affordable service that never compromises quality. He is very knowledgeable, trustworthy, and responds to questions in a timely fashion. ",
+        text: "I would highly recommend using Guru for your web design needs. He offers a reliable and affordable service that never compromises quality. He is very knowledgeable, trustworthy, and responds to questions in a timely fashion.",
         author: "Jill Cabana",
         image: "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
       },
       {
-        id: 3,
-        text: "This company completed my project quickly and communicated well with me. They are very talented and completed everything that I asked them to. I hope to work with them in the future.",
-        author: "Amarah G",
-        image: "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
-      },
-      {
-        id: 4,
-        text: "I love working with Rony! We have worked together for the last 5 years and he always amazes me with his design and cooperation. Excellent freelancer!",
-        author: "Elizabeth Alcala",
-        image: "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
-      },
-      {
-        id: 5,
-        text: "Pawna was able to successfully complete a job that's been haunting me for months. I have tried to get a custom plugin created for a website and Pawna was the first person that knew exactly what to do and jumped right in with a solid solution.",
-        author: "Tom Buford",
+        id: 2,
+        text: "If you don’t want to be beaten, imprisoned, mutilated, killed or tortured then you shouldn’t condone such behaviour towards anyone, be they human or not.",
+        author: "Moby",
         image: "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
       },
     ]);
+  }, []);
+
+  // Scroll to "Why Us" section on initial load
+  useEffect(() => {
+    if (whyUsRef.current) {
+      whyUsRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   }, []);
 
   const openLightbox = (src) => {
@@ -87,14 +76,20 @@ export default function SamplePage() {
   const lightboxImgRef = useRef(null);
 
   useEffect(() => {
-    imageRefs.current = document.querySelectorAll(".samplePage_item img.default-img");
+    imageRefs.current = document.querySelectorAll(
+      ".samplePage_item img.default-img"
+    );
+    const handleImageClick = (src) => openLightbox(src);
+
     imageRefs.current.forEach((img) => {
-      img.addEventListener("click", () => openLightbox(img.src));
+      const src = img.src;
+      img.addEventListener("click", () => handleImageClick(src));
     });
 
     return () => {
       imageRefs.current.forEach((img) => {
-        img.removeEventListener("click", () => openLightbox(img.src));
+        const src = img.src;
+        img.removeEventListener("click", () => handleImageClick(src));
       });
     };
   }, []);
@@ -140,7 +135,6 @@ export default function SamplePage() {
     setIsSubmitting(true);
 
     try {
-      // Sanitize inputs to prevent XSS and ensure proper encoding
       const sanitizeInput = (input) => {
         const div = document.createElement("div");
         div.textContent = input;
@@ -148,7 +142,7 @@ export default function SamplePage() {
           .replace(/&/g, "&")
           .replace(/</g, "<")
           .replace(/>/g, ">")
-          .replace(/"/g, "")
+          .replace(/"/g, "");
       };
 
       const sanitizedName = sanitizeInput(formData.name);
@@ -161,7 +155,6 @@ export default function SamplePage() {
 
       const subject = `Free Consultation Request from ${sanitizedName}`;
 
-      // Simplified and robust email template
       const messageContent = `
 <!DOCTYPE html>
 <html lang="en">
@@ -218,7 +211,6 @@ export default function SamplePage() {
 </html>
       `.trim();
 
-      // Plain text fallback
       const plainTextFallback = `
 Free Consultation Request Details:
 --------------------------------
@@ -229,15 +221,13 @@ Project Type: ${sanitizedProject}
 Message: ${sanitizedMessage}
       `.trim();
 
-      // Log payload for debugging
       console.log("Submitting form with:", {
         email: sanitizedEmail,
         subject,
-        html: messageContent.substring(0, 100) + "...", // Log partial HTML
+        html: messageContent.substring(0, 100) + "...",
         message: plainTextFallback,
       });
 
-      // Send form data to API
       const result = await sendContactForm({
         email: sanitizedEmail,
         subject,
@@ -256,11 +246,15 @@ Message: ${sanitizedMessage}
         });
         e.target.reset();
       } else {
-        setFormError(result.message || "Failed to send email. Please try again.");
+        setFormError(
+          result.message || "Failed to send email. Please try again."
+        );
       }
     } catch (error) {
       console.error("Form submission error:", error);
-      setFormError(`An error occurred: ${error.message}. Please try again later.`);
+      setFormError(
+        `An error occurred: ${error.message}. Please try again later.`
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -271,7 +265,6 @@ Message: ${sanitizedMessage}
       <div className="samplePageContainer">
         <section className="samplePage_business-section samplePage_conta">
           <div className="sampleHeader">
-            
             <div className="samplePage_content container">
               <h1>
                 Build efficient Website
@@ -298,10 +291,10 @@ Message: ${sanitizedMessage}
             </div>
             <div className="samplePage_image">
               <Image
-                src="/image/samplePage/development-about.jpg"
+                src="https://weboum.com/wp-content/uploads/2024/11/What-is-Digital-Marketing-768x512-1.jpg"
                 alt="Digital Marketing"
-                width={400}
-                height={300}
+                width={500}
+                height={400}
               />
             </div>
           </div>
@@ -341,7 +334,7 @@ Message: ${sanitizedMessage}
               </a>
               <p>Optimization Solutions</p>
             </div>
-            <div className="sample6Page_servicess-box samplePage_uiux-sol">
+            <div className="samplePage_servicess-box samplePage_uiux-sol">
               <a href="/services/web-designing">
                 <div className="samplePage_icon-circle">
                   <Users size={45} />
@@ -360,178 +353,132 @@ Message: ${sanitizedMessage}
           </div>
         </section>
 
-        <div className="samplePage_portfolio">
-          <div className="samplePage_item">
-            <Image
-              src="/image/samplePage/portfolio1.jpg"
-              alt="Portfolio 1"
-              width={200}
-              height={150}
-            />
-            <Image
-              src="/image/samplePage/portfolio2.png"
-              alt="Portfolio 2"
-              width={200}
-              height={150}
-            />
+        <section className="samplePage_portfolio-section">
+          <h5>Weboum – Customized IT Solutions</h5>
+          <div className="portfolio-highlight-line"></div>
+          <h2>
+            Our <strong>Portfolio</strong>
+          </h2>
+          <div className="samplePage_portfolio">
+            <div className="samplePage_item">
+              <Image
+                src="https://weboum.com/wp-content/uploads/2021/05/phone-tab-lapitop.jpg"
+                alt="Kiosk and POS System"
+                width={300}
+                height={200}
+                className="default-img"
+              />
+              <div className="portfolio-overlay">
+                <h3>Kiosk & POS System</h3>
+                <p>Comprehensive Restaurant Self Ordering Kiosk, POS</p>
+                <ul>
+                  <li>Created graphic UI layer</li>
+                  <li>Developed with MVC framework and API</li>
+                  <li>Digital marketing, SEO, and PPC</li>
+                  <li>Technical support & maintenance</li>
+                </ul>
+              </div>
+            </div>
+            <div className="samplePage_item">
+              <Image
+                src="https://weboum.com/wp-content/uploads/2024/03/segundaa.jpg"
+                alt="Segunda Quimbamba Folkloric Center"
+                width={300}
+                height={200}
+                className="default-img"
+              />
+              <div className="portfolio-overlay">
+                <h3>Segunda Quimbamba Folkloric Center</h3>
+                <ul>
+                  <li>– Created UI / UX Design </li>
+                  <li>– Complete Development</li>
+                  <li>– Technical Support and Maintenance</li>
+                </ul>
+              </div>
+            </div>
+            <div className="samplePage_item">
+              <Image
+                src="https://weboum.com/wp-content/uploads/2021/05/log-me-once.jpg"
+                alt="Smart Password Management Application"
+                width={300}
+                height={200}
+                className="default-img"
+              />
+              <div className="portfolio-overlay">
+                <h3>smart Password Management Application</h3>
+                <ul>
+                  <li>Next Generation Password Management Application.</li>
+                  <li>
+                    – Advance Development with API, Complex Coding and security.
+                  </li>
+                  <li>– Reputation Management</li>
+                  <li>– Technical Support and Maintenance</li>
+                </ul>
+              </div>
+            </div>
+            <div className="samplePage_item">
+              <Image
+                src="https://weboum.com/wp-content/uploads/2021/05/Imperial-China.png"
+                alt="Online Shopping Mall"
+                width={300}
+                height={200}
+                className="default-img"
+              />
+              <div className="portfolio-overlay">
+                <h3>Online Shopping Mall</h3>
+                <ul>
+                  <li>– Created UI / UX Design </li>
+                  <li>– Advance Development with API and payment solutions.</li>
+                  <li>– Product and Stock management</li>
+                  <li>– Support and Maintenance</li>
+                </ul>
+              </div>
+            </div>
+            <div className="samplePage_item">
+              <Image
+                src="https://weboum.com/wp-content/uploads/2024/03/Forrest-Family-Outdoor-Adventures-New-V-1.jpg"
+                alt="Outdoor Accessories and Kids Sunscreen"
+                width={300}
+                height={200}
+                className="default-img"
+              />
+              <div className="portfolio-overlay">
+                <h3>
+                  Outdoor accessories and kids-safe sunscreen and blams to the
+                  online market,
+                </h3>
+                <ul>
+                  <li>– Creative from scratch, graphics, UI/UX </li>
+                  <li>– Developed with WordPress and WooCommerce</li>
+                  <li>– Online Shopping</li>
+                  <li>– Fully customized section settings.</li>
+                </ul>
+              </div>
+            </div>
+            <div className="samplePage_item">
+              <Image
+                src="https://weboum.com/wp-content/uploads/2024/03/sstp.jpg"
+                alt="South Shore Test Prep"
+                width={300}
+                height={200}
+                className="default-img"
+              />
+              <div className="portfolio-overlay">
+                <h3>South Shore Test Prep</h3>
+                <ul>
+                  <li>– Design From Scratch </li>
+                  <li>– WordPress Development</li>
+                  <li>– Online Class Booking System</li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <div className="samplePage_item">
-            <Image
-              src="/image/samplePage/portfolio4.jpg"
-              alt="Software 1"
-              width={200}
-              height={150}
-            />
-            <Image
-              src="/image/samplePage/portfolio5.jpg"
-              alt="Software 2"
-              width={200}
-              height={150}
-            />
+          <div className="viewMoreWrapper">
+            <a className="viewMoreButton" href="/portfolio">
+              View More <span className="arrow">→</span>
+            </a>
           </div>
-          <div className="samplePage_item">
-            <Image
-              src="/image/samplePage/portfolio6.jpg"
-              alt="Apps 1"
-              width={200}
-              height={150}
-            />
-            <Image
-              src="/image/samplePage/portfolio7.jpg"
-              alt="Apps 2"
-              width={200}
-              height={150}
-            />
-          </div>
-          <div className="samplePage_item">
-            <Image
-              src="/image/samplePage/portfolio8.jpg"
-              alt="Graphics 1"
-              width={200}
-              height={150}
-            />
-            <Image
-              src="/image/samplePage/portfolio9.jpg"
-              alt="Graphics 2"
-              width={200}
-              height={150}
-            />
-          </div>
-          <div className="samplePage_item">
-            <Image
-              src="/image/samplePage/portfolio10.jpg"
-              alt="Marketing 1"
-              width={200}
-              height={150}
-            />
-            <Image
-              src="/image/samplePage/portfolio12.jpg"
-              alt="Marketing 2"
-              width={200}
-              height={150}
-            />
-          </div>
-        </div>
-
-        <div id="software" className="samplePage_portfolio">
-          <div className="samplePage_item">
-            <Image
-              src="/image/samplePage/portfolio15.jpg"
-              alt="Software 1"
-              width={200}
-              height={150}
-            />
-          </div>
-          <div className="samplePage_item">
-            <Image
-              src="/image/samplePage/portfolio14.jpg"
-              alt="Software 2"
-              width={200}
-              height={150}
-            />
-          </div>
-        </div>
-
-        <div id="apps" className="samplePage_portfolio">
-          <div className="samplePage_item">
-            <Image
-              src="/image/samplePage/portfolio15.jpg"
-              alt="Apps 1"
-              width={200}
-              height={150}
-            />
-          </div>
-          <div className="samplePage_item">
-            <Image
-              src="/image/samplePage/portfolio17.jpg"
-              alt="Apps 2"
-              width={200}
-              height={150}
-            />
-          </div>
-        </div>
-
-        <div id="graphics" className="samplePage_portfolio">
-          <div className="samplePage_item">
-            <Image
-              src="/image/samplePage/portfolio19.jpg"
-              alt="Graphics 1"
-              width={200}
-              height={150}
-            />
-          </div>
-          <div className="samplePage_item">
-            <Image
-              src="/image/samplePage/portfolio20.jpg"
-              alt="Graphics 2"
-              width={200}
-              height={150}
-            />
-          </div>
-        </div>
-
-        <div id="marketing" className="samplePage_portfolio">
-          <div className="samplePage_item">
-            <Image
-              src="/image/samplePage/portfolio4.jpg"
-              alt="Marketing 1"
-              width={200}
-              height={150}
-            />
-          </div>
-          <div className="samplePage_item">
-            <Image
-              src="/image/samplePage/portfolio7.jpg"
-              alt="Marketing 2"
-              width={200}
-              height={150}
-            />
-          </div>
-        </div>
-
-        <div
-          id="samplePage_lightbox"
-          className="samplePage_lightbox"
-          ref={lightboxRef}
-        >
-          <span className="samplePage_close-btn" onClick={closeLightbox}>
-            <X size={24} />
-          </span>
-          <Image
-            id="samplePage_lightbox-img"
-            src="/image/samplePage/portfolio4.jpg"
-            alt="Full Image"
-            className="samplePage_lightbox-img"
-            ref={lightboxImgRef}
-            width={800}
-            height={600}
-          />
-        </div>
-        <div className="viewMoreWrapper">
-          <a className="viewMoreButton" href="/portfolio">
-            View More <span className="arrow">→</span>
-          </a>
-        </div>
+        </section>
 
         <div className="ma">
           <div className="ma-content">
@@ -579,7 +526,7 @@ Message: ${sanitizedMessage}
               <div className="whyus-feature">
                 <Image
                   src="https://weboum.com/wp-content/uploads/2024/04/icon1.png"
-                  alt="Check"
+                  alt="High Customer Retention Icon"
                   width={50}
                   height={50}
                   className="feature-icon"
@@ -595,7 +542,7 @@ Message: ${sanitizedMessage}
               <div className="whyus-feature">
                 <Image
                   src="https://weboum.com/wp-content/uploads/2024/04/icon2.png"
-                  alt="Check"
+                  alt="Meeting Deadlines Icon"
                   width={50}
                   height={50}
                   className="feature-icon"
@@ -611,7 +558,7 @@ Message: ${sanitizedMessage}
               <div className="whyus-feature">
                 <Image
                   src="https://weboum.com/wp-content/uploads/2024/04/icon3.png"
-                  alt="Check"
+                  alt="Professional Team Icon"
                   width={50}
                   height={50}
                   className="feature-icon"
@@ -629,7 +576,7 @@ Message: ${sanitizedMessage}
             <div className="whyus-form-box">
               <Image
                 src="/image/featured-image.jpg"
-                alt="Featured"
+                alt="Free Consultation"
                 width={300}
                 height={200}
                 className="form-featured-image"
@@ -677,17 +624,24 @@ Message: ${sanitizedMessage}
                   required
                   disabled={isSubmitting}
                 >
-                  
-                  <option value="Project Development">Project Development</option>
+                  <option value="Project Development">
+                    Project Development
+                  </option>
                   <option value="Web Development">Web Development</option>
-                  <option value="App Development">Mobile App Development</option>
+                  <option value="App Development">
+                    Mobile App Development
+                  </option>
                   <option value="Digital Marketing">Digital Marketing</option>
-                  <option value="Product Development">Product Development</option>
+                  <option value="Product Development">
+                    Product Development
+                  </option>
                   <option value="e-Commerce / Shopping">
                     e-Commerce / Shopping
                   </option>
                   <option value="Graphic Designing">Graphic Designing</option>
-                  <option value="Hosting / Migration">Hosting / Migration</option>
+                  <option value="Hosting / Migration">
+                    Hosting / Migration
+                  </option>
                   <option value="Other">Other</option>
                 </select>
                 <textarea
@@ -711,7 +665,7 @@ Message: ${sanitizedMessage}
                   <label htmlFor="captcha">I'm not a robot</label>
                   <Image
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzz6tIILsCKIN0knMR9sTn5Shad52WNMNpuw&s"
-                    alt="Verification"
+                    alt="reCAPTCHA Verification"
                     width={80}
                     height={40}
                   />
@@ -792,48 +746,176 @@ Message: ${sanitizedMessage}
             </div>
           </div>
         </section>
+        <div className="tech-logos-container">
+          <div className="tech-logos">
+            <Image
+              src="https://weboum.com/wp-content/uploads/2021/05/html.png"
+              alt="HTML5 Logo"
+              width={50}
+              height={50}
+            />
+            <Image
+              src="https://weboum.com/wp-content/uploads/2021/05/opengl-logo.png"
+              alt="OpenGL Logo"
+              width={50}
+              height={50}
+            />
+            <Image
+              src="https://weboum.com/wp-content/uploads/2021/05/javascript.png"
+              alt="JavaScript Logo"
+              width={50}
+              height={50}
+            />
+            <Image
+              src="https://weboum.com/wp-content/uploads/2021/05/rest-api-logo.png"
+              alt="REST API Logo"
+              width={50}
+              height={50}
+            />
+            <Image
+              src="https://weboum.com/wp-content/uploads/2021/05/soap-api-logo.png"
+              alt="SOAP API Logo"
+              width={50}
+              height={50}
+            />
+            <Image
+              src="https://weboum.com/wp-content/uploads/2021/05/html.png"
+              alt="HTML5 Logo"
+              width={50}
+              height={50}
+            />
+            <Image
+              src="https://weboum.com/wp-content/uploads/2021/05/opengl-logo.png"
+              alt="OpenGL Logo"
+              width={50}
+              height={50}
+            />
+            <Image
+              src="https://weboum.com/wp-content/uploads/2021/05/javascript.png"
+              alt="JavaScript Logo"
+              width={50}
+              height={50}
+            />
+            <Image
+              src="https://weboum.com/wp-content/uploads/2021/05/rest-api-logo.png"
+              alt="REST API Logo"
+              width={50}
+              height={50}
+            />
+            <Image
+              src="https://weboum.com/wp-content/uploads/2021/05/soap-api-logo.png"
+              alt="SOAP API Logo"
+              width={50}
+              height={50}
+            />
+          </div>
+        </div>
 
         <section className="samplePage_testimonial-section">
           <h5>Our Testimonials</h5>
+          <div className="portfolio-highlight-line"></div>
           <h2>What Clients Say About Us</h2>
           <p className="samplePage_subtitle">
             Our clients are delighted with our services, and most of them come
             again to us.
           </p>
 
-          <div className="samplePage_testimonial-slider" id="testimonialSlider">
-            {testimonials.map((testimonial) => (
-              <div className="samplePage_testimonial-card" key={testimonial.id}>
-                <div className="samplePage_testimonial-inner">
-                  <div className="samplePage_stars">
-                    <Star size={26} />
-                    <Star size={26} />
-                    <Star size={26} />
-                    <Star size={26} />
-                    <Star size={26} />
-                  </div>
-                  <div className="samplePage_testimonial-text">
-                    {testimonial.text}
-                  </div>
-                  <div className="samplePage_author">
-                    <div className="samplePage_author-info">
-                      <Image
-                        src={testimonial.image}
-                        alt="author"
-                        width={50}
-                        height={50}
-                      />
-                      <strong>{testimonial.author}</strong>
+          <div className="samplePage_testimonial-section">
+            <div className="samplePage_testimonial-slider-container">
+              <div
+                className="samplePage_testimonial-slider"
+                id="testimonialSlider"
+              >
+                {testimonials.map((testimonial) => (
+                  <div
+                    className="samplePage_testimonial-card"
+                    key={testimonial.id}
+                  >
+                    <div className="samplePage_testimonial-inner">
+                      <div className="samplePage_stars">
+                        <Star size={26} />
+                        <Star size={26} />
+                        <Star size={26} />
+                        <Star size={26} />
+                        <Star size={26} />
+                      </div>
+                      <div className="samplePage_testimonial-text">
+                        {testimonial.text}
+                      </div>
+                      <div className="samplePage_author">
+                        <div className="samplePage_author-info">
+                          <Image
+                            src={testimonial.image}
+                            alt={`Testimonial author ${testimonial.author}`}
+                            width={50}
+                            height={50}
+                          />
+                          <strong>{testimonial.author}</strong>
+                        </div>
+                        <div className="samplePage_quote">
+                          <Quote size={16} />
+                        </div>
+                      </div>
                     </div>
-                    <div className="samplePage_quote">
-                      <Quote size={16} />
+                  </div>
+                ))}
+                {testimonials.map((testimonial) => (
+                  <div
+                    className="samplePage_testimonial-card"
+                    key={`duplicate-${testimonial.id}`}
+                  >
+                    <div className="samplePage_testimonial-inner">
+                      <div className="samplePage_stars">
+                        <Star size={26} />
+                        <Star size={26} />
+                        <Star size={26} />
+                        <Star size={26} />
+                        <Star size={26} />
+                      </div>
+                      <div className="samplePage_testimonial-text">
+                        {testimonial.text}
+                      </div>
+                      <div className="samplePage_author">
+                        <div className="samplePage_author-info">
+                          <Image
+                            src={testimonial.image}
+                            alt={`Testimonial author ${testimonial.author}`}
+                            width={50}
+                            height={50}
+                          />
+                          <strong>{testimonial.author}</strong>
+                        </div>
+                        <div className="samplePage_quote">
+                          <Quote size={16} />
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </section>
+
+        <div
+          className="samplePage_lightbox"
+          id="samplePage_lightbox"
+          ref={lightboxRef}
+        >
+          <span
+            className="samplePage_close-btn"
+            onClick={closeLightbox}
+            aria-label="Close lightbox"
+          >
+            <X size={30} />
+          </span>
+          <img
+            className="samplePage_lightbox-img"
+            id="samplePage_lightbox-img"
+            alt="Enlarged portfolio image"
+            ref={lightboxImgRef}
+          />
+        </div>
       </div>
 
       <Days />

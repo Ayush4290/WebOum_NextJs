@@ -50,8 +50,16 @@
 }
 
 .qa-info-text {
-  flex: 1;
+  flex: 1 1;
+  font-size: 1rem;
+  color: #333333;
+  line-height: 1.6;
+  margin-bottom: 2.2rem;
+  padding: 20px 57px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
+
 
 .qa-info h2 {
   font-size: 1.6rem;
@@ -162,7 +170,7 @@
   display: flex;
   flex-wrap: wrap;
   max-width: 1350px;
-  margin: auto 230px;
+  margin: auto 140px;
   padding: 40px 80px;
   gap: 2rem;
   align-items: center;
@@ -170,7 +178,7 @@
 }
 
 .qa-prevention-content {
-  flex: 1;
+  flex: 2;
   min-width: 300px;
 }
 
