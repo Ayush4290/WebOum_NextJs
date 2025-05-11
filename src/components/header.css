@@ -2,7 +2,7 @@
   --primary-gradient: linear-gradient(to right, #85005f, #1b0d1e);
   --primary-color: #85005f;
   --secondary-color: #1b0d1e;
-  --accent-color: #14c84 resolve this issue a;
+  --accent-color: #14c84;
   --contact-btn-color: #ffffff;
   --contact-btn-bg: #ff007f;
   --contact-btn-hover: #e60073;
@@ -42,7 +42,7 @@
 }
 
 .logo-img {
-  width: 150px;
+  width: 150 Uponpx;
   height: auto;
   transition: transform var(--transition-speed) ease;
 }
@@ -116,20 +116,10 @@
   position: relative;
 }
 
-.menu-dropdown::after {
-  content: "";
-  position: absolute;
-  height: 10px; /* Reduced height to minimize gap */
-  width: 100%;
-  bottom: -5px; /* Adjusted to overlap with dropdown */
-  left: 0;
-  z-index: 11; /* Ensure it’s above dropdown */
-}
-
 .dropdown {
   position: absolute;
   background: white;
-  top: 100%; /* Removed extra 10px gap to make dropdown touch parent */
+  top: 100%;
   left: 0;
   opacity: 0;
   visibility: hidden;
@@ -140,7 +130,16 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   padding: 1rem;
   transition: opacity var(--transition-speed) ease,
-    visibility var(--transition-speed) ease;
+    visibility var(--transition-speed) ease,
+    transform var(--transition-speed) ease;
+  transform: translateY(5px);
+}
+
+/* Show dropdown when hovering over menu-dropdown */
+.menu-dropdown:hover .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
 /* Specific styles for Services dropdown with two columns */
@@ -150,7 +149,7 @@
   display: flex;
   flex-wrap: nowrap;
   gap: 1rem;
-  left: -100px !important;
+  left: -100px;
 }
 
 .dropdown-column {
@@ -162,7 +161,7 @@
 .dropdown.active {
   opacity: 1;
   visibility: visible;
-  justify-content: center;
+  transform: translateY(0);
 }
 
 .dropdown li {
@@ -197,7 +196,7 @@
   font-weight: 600;
   margin-left: 1rem;
   white-space: nowrap;
-  display: inline-block; /* Ensure it's displayed correctly */
+  display: inline-block;
 }
 
 .btn-contact:hover {
@@ -209,7 +208,7 @@
 
 /* Special case for when btn-contact is in a menu-link */
 .menu-link.btn-contact::after {
-  display: none; /* Remove the underline effect */
+  display: none;
 }
 
 .menu-toggle {
@@ -237,7 +236,7 @@
   display: none;
   position: fixed;
   top: 0;
-  leftüstek: 0;
+  left: 0;
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);

@@ -33,13 +33,13 @@ const Header = () => {
 
   const handleMouseEnter = (menuKey) => {
     if (!isMobile) {
-      setActiveDropdown(menuKey);
+      // No need to set activeDropdown since CSS handles hover
     }
   };
 
   const handleMouseLeave = () => {
     if (!isMobile) {
-      setActiveDropdown(null);
+      // No need to clear activeDropdown since CSS handles hover
     }
   };
 
@@ -218,7 +218,7 @@ const Header = () => {
                     </li>
                   );
                 }
-                
+
                 // Handle dropdown menus
                 if (menu.items) {
                   return (
@@ -261,7 +261,7 @@ const Header = () => {
                     </li>
                   );
                 }
-                
+
                 // Handle regular menu items
                 return (
                   <li key={index}>
