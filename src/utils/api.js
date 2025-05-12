@@ -1,4 +1,4 @@
-// In utils/api.js
+
 export const sendContactForm = async ({ email, subject, message }) => {
   console.log("Sending contact form submission:", { email, subject });
 
@@ -7,13 +7,13 @@ export const sendContactForm = async ({ email, subject, message }) => {
     const jsonData = {
       wxmail: true,
       to: "support@weboum.com",
-      cc: "yourpersonalemail@gmail.com", // Using CC for the second recipient
+      cc: "yourpersonalemail@gmail.com", 
       from: "no-reply@weboum.com",
       replyTo: email,
       email: email,
       subject: subject,
       html: message,
-      // Convert HTML message to plain text
+     
       message: message
         .replace(/<[^>]*>/g, " ")
         .replace(/\s+/g, " ")
@@ -22,7 +22,7 @@ export const sendContactForm = async ({ email, subject, message }) => {
       contentType: "text/html"
     };
 
-    // Log the data being sent to the API for debugging
+    
     console.log("Sending to API with data:", jsonData);
     
     // Make the API request with JSON

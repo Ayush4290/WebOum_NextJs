@@ -20,7 +20,7 @@
   padding: 2rem;
   display: flex;
   gap: 2rem;
-  background-image: url("https://stage.weboum.com/wp-content/uploads/2021/04/shape-6.png");
+  background-image: url("https://weboum.com/wp-content/uploads/2021/04/shape-6.png");
 }
 
 .requestaQuote-left {
@@ -53,27 +53,34 @@
 }
 
 .requestaQuote-social {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
+display: flex;
+  gap: 15px;
+  margin-top: 1.5rem;
 }
 
 .requestaQuote-social-icon {
-  width: 40px;
-  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 42px;
+  height: 42px;
   border: 2px solid var(--social-border);
   border-radius: 50%;
-  background-color: var(--social-bg);
-  color: var(--social-border);
-  font-weight: bold;
+  color: var(--primary-color);
+  font-size: 18px;
   text-decoration: none;
+  background-color: var(--social-bg);
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+
+.requestaQuote-social-icon:hover {
+ background: linear-gradient(to right, #c1088c, #1b0d1e); /* Gradient on hover */
+  color: white;
+  transform: scale(1.1);
 }
 
 .requestaQuote-section {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .requestaQuote-heading {
@@ -108,9 +115,9 @@
 }
 
 .tag.selected {
-  background-color: #007bff;
-  color: #131313;
-  border-color: #007bff;
+  background-color: #151516;
+  color: #f0eded;
+  border-color: #111111;
 }
 
 .requestaQuote-form {

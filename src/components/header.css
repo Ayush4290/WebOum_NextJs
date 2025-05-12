@@ -7,6 +7,7 @@
   --contact-btn-bg: #ff007f;
   --contact-btn-hover: #e60073;
   --transition-speed: 0.4s;
+  --submenu-hold-time: 0.5s; /* Added delay time for submenu display */
 }
 
 .main-container {
@@ -42,7 +43,7 @@
 }
 
 .logo-img {
-  width: 150 Uponpx;
+  width: 150px; /* Fixed typo: was 150 Uponpx */
   height: auto;
   transition: transform var(--transition-speed) ease;
 }
@@ -116,6 +117,7 @@
   position: relative;
 }
 
+/* FIXED: Added a small delay before hiding dropdown on mouseout */
 .dropdown {
   position: absolute;
   background: white;
@@ -129,10 +131,11 @@
   border-radius: 4px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   padding: 1rem;
-  transition: opacity var(--transition-speed) ease,
-    visibility var(--transition-speed) ease,
-    transform var(--transition-speed) ease;
+  transition: opacity var(--submenu-hold-time) ease,
+    visibility var(--submenu-hold-time) ease,
+    transform var(--submenu-hold-time) ease;
   transform: translateY(5px);
+  pointer-events: none; /* FIXED: Initially disable pointer events */
 }
 
 /* Show dropdown when hovering over menu-dropdown */
@@ -140,6 +143,16 @@
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+  pointer-events: auto; /* FIXED: Enable pointer events when visible */
+  transition-delay: 0.1s; /* FIXED: Add delay for showing */
+}
+
+/* FIXED: Added this to keep dropdown visible when hovering on dropdown itself */
+.dropdown:hover {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 /* Specific styles for Services dropdown with two columns */
@@ -162,6 +175,7 @@
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+  pointer-events: auto; /* FIXED: Enable pointer events when active */
 }
 
 .dropdown li {
@@ -324,6 +338,7 @@
     visibility: hidden;
     max-height: 0;
     overflow: hidden;
+    pointer-events: none; /* FIXED: Ensure pointer events are set correctly in mobile */
     transition: max-height var(--transition-speed) ease,
       padding var(--transition-speed) ease, opacity var(--transition-speed) ease,
       visibility var(--transition-speed) ease;
@@ -349,6 +364,7 @@
     opacity: 1;
     visibility: visible;
     overflow-y: auto;
+    pointer-events: auto; /* FIXED: Enable pointer events when active on mobile */
   }
 
   .menu-dropdown.services .dropdown.active {
@@ -383,11 +399,12 @@
     border-radius: 4px;
     width: 100%;
     text-align: center;
-    padding: -1.8rem;
+    padding: 0.8rem; /* FIXED: Removed negative padding (-1.8rem) */
     background-color: white;
     color: black;
     font-size: 18px;
     display: flex;
+    justify-content: center; /* FIXED: Added to center text */
   }
 
   li:last-child .btn-contact {

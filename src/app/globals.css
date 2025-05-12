@@ -305,6 +305,8 @@
   height: 40px;
   margin-top: 4px;
   object-fit: contain;
+  image-rendering: auto;
+  filter: none !important; /* Ensure no blur */
 }
 
 .why-card-title {
@@ -351,6 +353,8 @@
   height: auto;
   display: block;
   margin: 0 auto;
+  image-rendering: auto;
+  filter: none !important; /* Ensure no blur */
 }
 
 /* Contact Section */

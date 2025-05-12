@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { FaFacebook, FaYoutube } from "react-icons/fa";
+import { FaFacebookF, FaYoutube } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import "./request_a_quote.css";
 import Days from "../about-us/days/page";
@@ -328,7 +328,6 @@ export default function RequestaQuote() {
         setFormSuccess(
           "Your quote request has been submitted successfully. We'll get back to you soon!"
         );
-
         setFormData({});
         setSelectedOptions({
           stage: [],
@@ -369,7 +368,7 @@ export default function RequestaQuote() {
     });
 
     if (formError) {
-      setFormError("");
+    setFormError("");
     }
   };
 
@@ -381,7 +380,7 @@ export default function RequestaQuote() {
     });
 
     if (formError) {
-      setFormError("");
+    setFormError("");
     }
   };
 
@@ -390,12 +389,13 @@ export default function RequestaQuote() {
 
   return (
     <>
-      <SubHeader title="Request a quote" />
+      <SubHeader title="Request A Quote" />
       <div className="requestaQuote-wrapper">
         <div className="requestaQuote-progress-bar">
           <div
             className="requestaQuote-progress"
             style={{ width: `${progress}%` }}
+            aria-label={`Progress: ${progress}%`}
           ></div>
         </div>
         <div className="requestaQuote-container">
@@ -409,29 +409,29 @@ export default function RequestaQuote() {
             </h2>
             <div className="requestaQuote-social">
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/people/Weboum-Technology-PvtLtd/100091375563554/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="requestaQuote-social-icon"
-                aria-label="Facebook"
+                aria-label="Visit our Facebook page"
               >
-                <FaFacebook />
+                <FaFacebookF />
               </a>
               <a
                 href="https://x.com/weboumtech33587"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="requestaQuote-social-icon"
-                aria-label="Twitter"
+                aria-label="Visit our Twitter page"
               >
                 <BsTwitterX />
               </a>
               <a
-                href="https://youtube.com"
+                href="https://www.youtube.com/@WeboumTechnologyPvt.Ltd."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="requestaQuote-social-icon"
-                aria-label="YouTube"
+                aria-label="Visit our YouTube channel"
               >
                 <FaYoutube />
               </a>
@@ -487,6 +487,7 @@ export default function RequestaQuote() {
                   className="requestaQuote-form"
                   onSubmit={handleSubmit}
                   ref={formRef}
+                  noValidate
                 >
                   {currentStepData.fields.map((field, fieldIndex) => (
                     <div className="requestaQuote-field" key={fieldIndex}>
