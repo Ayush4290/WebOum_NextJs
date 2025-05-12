@@ -13,6 +13,9 @@ const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
   const menuRef = useRef(null);
   const toggleButtonRef = useRef(null);
+  // FIXED: Added refs for each dropdown to handle hover delays
+  const dropdownRefs = useRef({});
+  const timeoutRefs = useRef({});
 
   // Check if we're in mobile view on initial load and window resize
   useEffect(() => {
@@ -31,15 +34,50 @@ const Header = () => {
     document.body.style.overflow = !mobileMenuOpen ? "hidden" : "auto";
   };
 
+  // FIXED: Added proper hover handling with delays
   const handleMouseEnter = (menuKey) => {
     if (!isMobile) {
-      // No need to set activeDropdown since CSS handles hover
+      // Clear any existing timeout for this menu item
+      if (timeoutRefs.current[menuKey]) {
+        clearTimeout(timeoutRefs.current[menuKey]);
+        timeoutRefs.current[menuKey] = null;
+      }
+      
+      // Set the active dropdown immediately
+      setActiveDropdown(menuKey);
     }
   };
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = (menuKey) => {
     if (!isMobile) {
-      // No need to clear activeDropdown since CSS handles hover
+      // Set a timeout before closing the dropdown
+      timeoutRefs.current[menuKey] = setTimeout(() => {
+        // Only close if not hovering the dropdown itself
+        const dropdownElement = dropdownRefs.current[menuKey];
+        if (dropdownElement && !dropdownElement.matches(':hover')) {
+          setActiveDropdown(null);
+        }
+      }, 300); // 300ms delay before closing - adjust as needed
+    }
+  };
+
+  // FIXED: Added handler for when hovering the dropdown itself
+  const handleDropdownMouseEnter = (menuKey) => {
+    if (!isMobile) {
+      if (timeoutRefs.current[menuKey]) {
+        clearTimeout(timeoutRefs.current[menuKey]);
+        timeoutRefs.current[menuKey] = null;
+      }
+      setActiveDropdown(menuKey);
+    }
+  };
+
+  // FIXED: Added handler for when leaving the dropdown itself
+  const handleDropdownMouseLeave = (menuKey) => {
+    if (!isMobile) {
+      timeoutRefs.current[menuKey] = setTimeout(() => {
+        setActiveDropdown(null);
+      }, 300); // 300ms delay before closing - adjust as needed
     }
   };
 
@@ -87,6 +125,15 @@ const Header = () => {
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
       document.body.style.overflow = "auto";
+    };
+  }, []);
+
+  // FIXED: Clear all timeouts when component unmounts
+  useEffect(() => {
+    return () => {
+      Object.values(timeoutRefs.current).forEach(timeout => {
+        if (timeout) clearTimeout(timeout);
+      });
     };
   }, []);
 
@@ -226,7 +273,7 @@ const Header = () => {
                       className={`menu-dropdown ${menu.dropdownKey}`}
                       key={index}
                       onMouseEnter={() => handleMouseEnter(menu.dropdownKey)}
-                      onMouseLeave={handleMouseLeave}
+                      onMouseLeave={() => handleMouseLeave(menu.dropdownKey)}
                     >
                       <div
                         className="menu-link"
@@ -251,6 +298,9 @@ const Header = () => {
                           className={`dropdown ${
                             activeDropdown === menu.dropdownKey ? "active" : ""
                           }`}
+                          ref={(el) => (dropdownRefs.current[menu.dropdownKey] = el)}
+                          onMouseEnter={() => handleDropdownMouseEnter(menu.dropdownKey)}
+                          onMouseLeave={() => handleDropdownMouseLeave(menu.dropdownKey)}
                         >
                           {renderDropdownItems(
                             menu.items,

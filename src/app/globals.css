@@ -42,6 +42,8 @@
   position: sticky;
   top: 20px;
   max-height: calc(100vh - 40px);
+  overflow-y: auto; /* Allow scrolling for long content */
+  box-sizing: border-box;
 }
 
 .sidebar a {
@@ -745,7 +747,7 @@ textarea.form-control {
   }
 
   .sidebar-col {
-    display: none;
+    display: none !important;
   }
 
   .portfolio-carousel {
