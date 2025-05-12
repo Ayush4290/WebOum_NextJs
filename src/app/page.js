@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation"; // Updated import for App Router
+import { useRouter } from "next/navigation";
 import homeData from "../data/home.json";
 import HeroSection from "./herosection/page";
 import { sendContactForm } from "../utils/api";
@@ -23,6 +23,14 @@ const Home = () => {
 
   const portfolioRef = useRef(null);
   const testimonialRef = useRef(null);
+  const router = useRouter();
+
+  // Reset scroll and states on mount or route change
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top
+    setCurrentPortfolioIndex(0); // Reset portfolio carousel
+    setActiveTestimonial(0); // Reset testimonial carousel
+  }, [router.pathname]); // Trigger on route change
 
   // Reset scroll and states on mount
   useEffect(() => {
@@ -46,7 +54,8 @@ const Home = () => {
   useEffect(() => {
     if (portfolioRef.current) {
       const scrollPosition =
-        currentPortfolioIndex * portfolioRef.current.children[0]?.offsetHeight || 0;
+        currentPortfolioIndex *
+          portfolioRef.current.children[0]?.offsetHeight || 0;
       portfolioRef.current.scrollTo({
         top: scrollPosition,
         behavior: "smooth",
@@ -69,7 +78,8 @@ const Home = () => {
   useEffect(() => {
     if (testimonialRef.current) {
       const scrollPosition =
-        activeTestimonial * testimonialRef.current.children[0]?.offsetWidth || 0;
+        activeTestimonial * testimonialRef.current.children[0]?.offsetWidth ||
+        0;
       testimonialRef.current.scrollTo({
         left: scrollPosition,
         behavior: "smooth",
@@ -91,7 +101,10 @@ const Home = () => {
 
     try {
       const sanitizeInput = (input) => {
-        return input.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+        return input
+          .replace(/</g, "<")
+          .replace(/>/g, ">")
+          .replace(/"/g, "");
       };
       const sanitizedMessage = sanitizeInput(
         formData.message || "No message provided."
@@ -203,6 +216,7 @@ const Home = () => {
                         className="service-icon"
                         width={64}
                         height={64}
+                        onError={(e) => (e.target.src = "/image/placeholder.jpg")} // Fallback on error
                       />
                       <div>
                         <div className="service-title">{service.title}</div>
@@ -232,6 +246,9 @@ const Home = () => {
                               className="portfolio-image"
                               width={800}
                               height={400}
+                              onError={(e) =>
+                                (e.target.src = "/image/placeholder.jpg")
+                              } // Fallback on error
                             />
                           </div>
                           <div className="portfolio-text">
@@ -281,6 +298,7 @@ const Home = () => {
                   className="why-icon"
                   width={64}
                   height={64}
+                  onError={(e) => (e.target.src = "/image/placeholder.jpg")} // Fallback on error
                 />
                 <div>
                   <div className="why-card-title">{card.title}</div>
@@ -307,6 +325,7 @@ const Home = () => {
             className="process-image"
             width={1200}
             height={400}
+            onError={(e) => (e.target.src = "/image/placeholder.jpg")} // Fallback on error
           />
         </div>
       </section>
@@ -420,6 +439,7 @@ const Home = () => {
                       src={testimonial.image}
                       alt={testimonial.name}
                       className="testimonial-image"
+                      onError={(e) => (e.target.src = "/image/placeholder.jpg")} // Fallback on error
                     />
                     <h4 className="testimonial-name">{testimonial.name}</h4>
                     <p className="testimonial-position">{testimonial.title}</p>

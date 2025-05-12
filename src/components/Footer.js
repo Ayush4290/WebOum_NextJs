@@ -2,7 +2,7 @@
 
 import "./footer.css";
 import Link from "next/link";
-import { FaFacebook, FaYoutube } from "react-icons/fa";
+import { FaFacebookF, FaYoutube } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import Image from "next/image";
 import { useState } from "react";
@@ -63,7 +63,6 @@ export default function Footer() {
     }
 
     try {
-      // Sanitize email input to prevent XSS
       const sanitizeInput = (input) => {
         const div = document.createElement("div");
         div.textContent = input || "";
@@ -76,14 +75,12 @@ export default function Footer() {
 
       const sanitizedEmail = sanitizeInput(email);
 
-      // Log payload for debugging
       console.log("Submitting email:", {
         email: sanitizedEmail,
         subject: "Welcome to Weboum's Newsletter!",
         message: EMAIL_TEMPLATE.substring(0, 100) + "...",
       });
 
-      // Send the form data to the API
       const response = await sendContactForm({
         email: sanitizedEmail,
         subject: "Welcome to Weboum's Newsletter!",
@@ -216,26 +213,26 @@ export default function Footer() {
             <p>Follow us on:</p>
             <div className="social-icons">
               <a
-                href="https://www.facebook.com/webxtechnology"
+                href="https://www.facebook.com/people/Weboum-Technology-PvtLtd/100091375563554/"
+                aria-label="Facebook"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-icon"
               >
-                <FaFacebook />
+                <FaFacebookF />
               </a>
               <a
                 href="https://x.com/weboumtech33587"
+                aria-label="Twitter"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-icon"
               >
                 <BsTwitterX />
               </a>
               <a
                 href="https://www.youtube.com/@WeboumTechnologyPvt.Ltd."
+                aria-label="YouTube"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-icon"
               >
                 <FaYoutube />
               </a>

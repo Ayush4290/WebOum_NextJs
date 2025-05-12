@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import "./portfolio.css";
+import SubHeader from "../sub-header/page";
+import Days from "../about-us/days/page";
 
 const Portfolio = () => {
   const [activeTab, setActiveTab] = useState("all");
@@ -138,6 +140,8 @@ const Portfolio = () => {
   }
 
   return (
+   <>
+   <SubHeader title="Portfolio"></SubHeader>
     <div className="portfolio-container">
       <div className="tabs">
         {categories.map((category) => (
@@ -236,6 +240,9 @@ const Portfolio = () => {
         </div>
       )}
     </div>
+    <Days/>
+   </>
+
   );
 };
 

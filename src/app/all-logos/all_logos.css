@@ -1,34 +1,40 @@
 .logos-page {
   min-height: 100vh;
-  background-color: #f8f9fa;
+  background-image: url(https://weboum.com/wp-content/uploads/2021/05/map-pattern.png);
+  background-position: center;
+  background-repeat: repeat;
 }
 
 .logo-grid {
-  background-image: url(https://stage.weboum.com/wp-content/uploads/2021/05/map-pattern.png);
-  background-size: cover;
+  background-image: url(https://weboum.com/wp-content/uploads/2021/05/map-pattern.png);
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  padding: 40px;
+  padding: 190px;
   background-color: #fff;
   justify-items: center;
   max-width: 1700px;
   margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 30px;
 }
 
 .logo-item {
   width: 100%;
-  max-width: 700px;
+  max-width: 500px;
   background: #fff;
   padding: 12px;
-  border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  cursor: pointer;
+  border-radius: 10px;
 }
 
 .logo-item:hover {
@@ -41,7 +47,34 @@
   max-width: 850px;
   height: 350px;
   object-fit: contain;
+}
+
+.logo-item-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
   border-radius: 10px;
+}
+
+.logo-item:hover .logo-item-overlay {
+  opacity: 1;
+  font-size: 10px;
+}
+
+.logo-item-overlay span {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+  padding: 10px;
 }
 
 .learn-more-container {
@@ -50,7 +83,8 @@
 }
 
 .learn-more-btn {
-  background-color: #007bff;
+  background-color: #7f005b;
+  content: "\f103";
   color: #ffffff;
   padding: 12px 24px;
   border: none;
@@ -71,6 +105,92 @@
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
 }
 
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9); /* Darker overlay like in the image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-main-image {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.modal-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.modal-nav-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-nav-button.prev {
+  left: 20px;
+}
+
+.modal-nav-button.next {
+  right: 20px;
+}
+
+.modal-nav-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 @media (max-width: 768px) {
   .logo-grid {
     padding: 20px;
@@ -78,7 +198,7 @@
   }
 
   .logo-image {
-    height: 300px;
+    height: 200px;
     max-width: 300px;
   }
 
@@ -89,5 +209,26 @@
   .learn-more-btn {
     padding: 10px 20px;
     font-size: 14px;
+  }
+
+  .logo-item-overlay span {
+    font-size: 14px;
+  }
+
+  .modal-main-image {
+    max-width: 90%;
+    max-height: 70%;
+  }
+
+  .modal-nav-button {
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+  }
+
+  .modal-close {
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
   }
 }

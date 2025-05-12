@@ -1,3 +1,7 @@
+"use client";
+
+import Image from "next/image";
+
 export default function DemandDeveloper() {
   return (
     <div
@@ -5,7 +9,7 @@ export default function DemandDeveloper() {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: "50px",
+        padding: "10px 189px 189px 189px", // Consolidated padding (top: 10px, others: 189px)
         background: "linear-gradient(180deg, #4B0082 0%, #FFFFFF 100%)",
         minHeight: "400px",
       }}
@@ -42,15 +46,18 @@ export default function DemandDeveloper() {
           maxWidth: "45%",
         }}
       >
-        <img
+        <Image
           src="https://weboum.com/wp-content/uploads/2021/04/mobile-application.jpg"
           alt="Developer Illustration"
+          width={600} // Adjust based on your image's aspect ratio
+          height={400} // Adjust based on your image's aspect ratio
           style={{
             width: "100%",
             height: "auto",
             borderRadius: "15px",
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
           }}
+          priority // Optional: for above-the-fold images
         />
       </div>
     </div>

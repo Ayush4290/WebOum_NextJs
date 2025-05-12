@@ -2,7 +2,7 @@
   --primary-color: #6a005f;
   --text-color: #333;
   --heading-color: #111;
-  --spacing: 2rem;
+  --spacing: 6rem;
   --radius: 0.5rem;
   --card-bg: #f9f9f9;
   --section-bg: #f4f8fb;
@@ -91,7 +91,7 @@
 }
 
 .section-image img {
-  width: 100%;
+  width: 150%;
   max-width: 400px;
   height: 400px;
   border-radius: var(--radius);

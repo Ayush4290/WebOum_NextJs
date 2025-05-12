@@ -13,11 +13,10 @@ const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
   const menuRef = useRef(null);
   const toggleButtonRef = useRef(null);
-  // FIXED: Added refs for each dropdown to handle hover delays
   const dropdownRefs = useRef({});
   const timeoutRefs = useRef({});
+  const hoverTimeoutRefs = useRef({});
 
-  // Check if we're in mobile view on initial load and window resize
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 992);
@@ -30,54 +29,69 @@ const Header = () => {
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen((prev) => !prev);
-    // Toggle body scroll when menu is opened/closed
     document.body.style.overflow = !mobileMenuOpen ? "hidden" : "auto";
   };
 
   // FIXED: Added proper hover handling with delays
   const handleMouseEnter = (menuKey) => {
     if (!isMobile) {
-      // Clear any existing timeout for this menu item
+      // Clear any existing timeouts
       if (timeoutRefs.current[menuKey]) {
         clearTimeout(timeoutRefs.current[menuKey]);
-        timeoutRefs.current[menuKey] = null;
       }
       
-      // Set the active dropdown immediately
-      setActiveDropdown(menuKey);
+      // Clear any previous hover timeout
+      if (hoverTimeoutRefs.current[menuKey]) {
+        clearTimeout(hoverTimeoutRefs.current[menuKey]);
+      }
+
+      // Set a timeout to show dropdown after a short delay
+      hoverTimeoutRefs.current[menuKey] = setTimeout(() => {
+        setActiveDropdown(menuKey);
+      }, 200); // Slight delay to prevent accidental triggering
     }
   };
 
   const handleMouseLeave = (menuKey) => {
     if (!isMobile) {
-      // Set a timeout before closing the dropdown
+      // Clear the hover timeout if it exists
+      if (hoverTimeoutRefs.current[menuKey]) {
+        clearTimeout(hoverTimeoutRefs.current[menuKey]);
+      }
+
+      // Set a timeout to close dropdown
       timeoutRefs.current[menuKey] = setTimeout(() => {
-        // Only close if not hovering the dropdown itself
         const dropdownElement = dropdownRefs.current[menuKey];
         if (dropdownElement && !dropdownElement.matches(':hover')) {
           setActiveDropdown(null);
         }
-      }, 300); // 300ms delay before closing - adjust as needed
+      }, 300);
     }
   };
 
-  // FIXED: Added handler for when hovering the dropdown itself
   const handleDropdownMouseEnter = (menuKey) => {
     if (!isMobile) {
+      // Clear any existing timeouts
       if (timeoutRefs.current[menuKey]) {
         clearTimeout(timeoutRefs.current[menuKey]);
-        timeoutRefs.current[menuKey] = null;
       }
+      
+      // Clear any hover timeout
+      if (hoverTimeoutRefs.current[menuKey]) {
+        clearTimeout(hoverTimeoutRefs.current[menuKey]);
+      }
+
+      // Keep dropdown open
       setActiveDropdown(menuKey);
     }
   };
 
-  // FIXED: Added handler for when leaving the dropdown itself
   const handleDropdownMouseLeave = (menuKey) => {
     if (!isMobile) {
+      // Set a timeout to close dropdown
       timeoutRefs.current[menuKey] = setTimeout(() => {
         setActiveDropdown(null);
-      }, 300); // 300ms delay before closing - adjust as needed
+      }, 300);
     }
   };
 
@@ -97,13 +111,11 @@ const Header = () => {
   };
 
   const handleDropdownItemClick = () => {
-    // Close everything when a dropdown item is clicked
     setActiveDropdown(null);
     setMobileMenuOpen(false);
     document.body.style.overflow = "auto";
   };
 
-  // Handle clicks outside the menu
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (
@@ -128,16 +140,18 @@ const Header = () => {
     };
   }, []);
 
-  // FIXED: Clear all timeouts when component unmounts
   useEffect(() => {
     return () => {
+      // Clear all timeouts on unmount
       Object.values(timeoutRefs.current).forEach(timeout => {
+        if (timeout) clearTimeout(timeout);
+      });
+      Object.values(hoverTimeoutRefs.current).forEach(timeout => {
         if (timeout) clearTimeout(timeout);
       });
     };
   }, []);
 
-  // Reset mobile menu on window resize
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 992 && mobileMenuOpen) {
@@ -204,7 +218,6 @@ const Header = () => {
     );
   };
 
-  // Render contact button separately for clarity
   const renderContactButton = (menu) => {
     return (
       <Link
@@ -257,7 +270,6 @@ const Header = () => {
           >
             <ul className="menu-list">
               {menuData.map((menu, index) => {
-                // Handle the contact button separately
                 if (menu.isButton) {
                   return (
                     <li key={index}>
@@ -266,7 +278,6 @@ const Header = () => {
                   );
                 }
 
-                // Handle dropdown menus
                 if (menu.items) {
                   return (
                     <li
@@ -312,7 +323,6 @@ const Header = () => {
                   );
                 }
 
-                // Handle regular menu items
                 return (
                   <li key={index}>
                     <Link

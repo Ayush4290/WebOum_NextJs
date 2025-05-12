@@ -1,5 +1,5 @@
 :root {
-  --primary-color: linear-gradient(to right, #c1088c, #1b0d1e);
+  --primary-color: #c1088c; /* Changed to a solid color for border and text */
   --secondary-color: #14c84a;
   --white: #ffffff;
 }
@@ -124,7 +124,7 @@
   border-radius: 30px;
   border: none;
   background-color: white;
-  color: var(--primary-color);
+  color: #c1088c; /* Using solid color from --primary-color */
   font-weight: 600;
   font-size: 0.9rem;
   cursor: pointer;
@@ -142,20 +142,28 @@
 
 .social-icons {
   display: flex;
-  gap: 1rem;
+  gap: 15px;
+  margin-top: 20px;
 }
 
-.social-icon {
+.social-icons a {
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 50px;
-  height: 40px;
-  background-color: white;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 2px solid var(--primary-color);
   border-radius: 50%;
-  color: #800080;
-  font-size: 1.1rem;
+  color: var(--primary-color);
+  font-size: 18px;
+  text-decoration: none;
   transition: all 0.3s;
+  background-color: white;
+}
+
+.social-icons a:hover {
+  background: linear-gradient(to right, #c1088c, #1b0d1e); /* Gradient on hover */
+  color: var(--white);
 }
 
 .footer-copyright {
@@ -167,7 +175,7 @@
   color: white;
 }
 
-.footer-copyright p{
+.footer-copyright p {
   color: white;
 }
 

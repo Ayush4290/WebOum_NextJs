@@ -5,7 +5,7 @@ export default function productSupport() {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: "50px",
+        padding: "10px 189px 189px 189px",
         background: "linear-gradient(180deg, #4B0082 0%, #FFFFFF 100%)",
         minHeight: "400px",
       }}
@@ -23,7 +23,7 @@ export default function productSupport() {
             color: "#333",
           }}
         >
-          product Support
+          Product Support
         </h2>
         <p
           style={{
