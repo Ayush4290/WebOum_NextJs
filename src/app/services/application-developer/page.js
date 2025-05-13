@@ -8,7 +8,7 @@ import Image from "next/image";
 export default function AppSections() {
   return (
     <>
-      <SubHeader title="Application Development" />
+        <SubHeader title="Application Development" />
       <div>
         <div className="Application-section">
           <div className="Application-section-content">

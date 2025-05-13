@@ -76,15 +76,14 @@
 }
 
 .support-text h2 {
-  font-size: 3.5rem;
-  font-weight: 900;
+  font-size: 2.1rem;
   color: var(--text-color);
   line-height: 1.2;
   margin-bottom: 10px;
 }
 
 .support-text h3 {
-  font-size: 2.5rem;
+  font-size: 2.1rem;
   color: var(--text-color);
   font-weight: 800;
   line-height: 1.2;
@@ -94,17 +93,17 @@
 .support-text hr {
   border: none;
   border-top: 2px solid var(--text-color);
-  width: 80px;
+  width: 300px;
   margin: 20px 0;
 }
 
 .support-text p {
-  font-size: 1rem;
-  color: var(--light-text);
-  line-height: 1.8;
-  margin-bottom: 24px;
+    font-size: 1rem;
+    color: #0b0a0a;
+    line-height: 1.8;
+    margin-bottom: 24px;
+    font-weight: bold;
 }
-
 .support-text ul {
   list-style: none;
   padding-left: 0;
@@ -118,10 +117,11 @@
 }
 
 .support-text ul li {
-  margin-bottom: 12px;
-  font-size: 1rem;
-  color: var(--text-color);
-  line-height: 1.6;
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+    color: #040404;
+    line-height: 1.6;
+    font-weight: bold;
 }
 
 .quote-btn {
@@ -160,7 +160,7 @@
 
 /* CONNECT SECTION */
 .DigitalMarketing-connect-section {
-  background-color: #1a2e44;
+  background-color: black;
   color: white;
   padding: 50px 24px;
 }
@@ -182,21 +182,25 @@
 }
 
 .DigitalMarketing-connect-container h2 {
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 800;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   color: white;
   line-height: 1.2;
   text-transform: uppercase;
 }
 
 .DigitalMarketing-connect-container p {
-  font-size: 1rem;
+  font-size: 1.6rem;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.9);
   line-height: 1.6;
   margin-bottom: 0;
+  white-space: nowrap;        
+  overflow: hidden;           
+  text-overflow: ellipsis;    
 }
+
 
 .connect-btn {
   background-color: var(--connect-bg);
@@ -211,6 +215,7 @@
   transition: background-color 0.3s ease, transform 0.3s ease;
   white-space: nowrap;
   animation: slideFadeDown 1s ease-in-out both;
+  margin: 0px 0px 57px -91px;
 }
 
 .connect-btn:hover {
