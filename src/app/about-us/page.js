@@ -86,6 +86,16 @@ export default function AboutUs() {
                       support and maintenance.
                     </p>
                   </div>
+                  <div >
+                    <p>
+                      We utilizes in-house capabilities and third party tools to
+                      provide implementation, customization, and support
+                      services. We provide end-to-end, affordable, high quality
+                      customer satisfaction solutions. Since our inception, we
+                      are committed to deliver solutions on time, cost
+                      effectively and satisfactory.
+                    </p>
+                  </div>
                 </div>
               </div>
               <div className="about-image-column">
