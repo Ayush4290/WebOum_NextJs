@@ -15,7 +15,7 @@ const Header = () => {
   const toggleButtonRef = useRef(null);
   const dropdownRefs = useRef({});
   const timeoutRefs = useRef({});
-  const hoverTimeoutRefs = useRef({});
+  const clickTimeoutRef = useRef(null); // Added for debouncing
 
   useEffect(() => {
     const checkMobile = () => {
@@ -32,81 +32,75 @@ const Header = () => {
     document.body.style.overflow = !mobileMenuOpen ? "hidden" : "auto";
   };
 
-  // FIXED: Added proper hover handling with delays
   const handleMouseEnter = (menuKey) => {
     if (!isMobile) {
-      // Clear any existing timeouts
       if (timeoutRefs.current[menuKey]) {
         clearTimeout(timeoutRefs.current[menuKey]);
       }
-      
-      // Clear any previous hover timeout
-      if (hoverTimeoutRefs.current[menuKey]) {
-        clearTimeout(hoverTimeoutRefs.current[menuKey]);
-      }
-
-      // Set a timeout to show dropdown after a short delay
-      hoverTimeoutRefs.current[menuKey] = setTimeout(() => {
+      timeoutRefs.current[menuKey] = setTimeout(() => {
         setActiveDropdown(menuKey);
-      }, 200); // Slight delay to prevent accidental triggering
+      }, 300);
     }
   };
 
   const handleMouseLeave = (menuKey) => {
     if (!isMobile) {
-      // Clear the hover timeout if it exists
-      if (hoverTimeoutRefs.current[menuKey]) {
-        clearTimeout(hoverTimeoutRefs.current[menuKey]);
-      }
-
-      // Set a timeout to close dropdown
       timeoutRefs.current[menuKey] = setTimeout(() => {
-        const dropdownElement = dropdownRefs.current[menuKey];
-        if (dropdownElement && !dropdownElement.matches(':hover')) {
-          setActiveDropdown(null);
-        }
-      }, 300);
+        setActiveDropdown(null);
+      }, 400);
     }
   };
 
   const handleDropdownMouseEnter = (menuKey) => {
     if (!isMobile) {
-      // Clear any existing timeouts
       if (timeoutRefs.current[menuKey]) {
         clearTimeout(timeoutRefs.current[menuKey]);
       }
-      
-      // Clear any hover timeout
-      if (hoverTimeoutRefs.current[menuKey]) {
-        clearTimeout(hoverTimeoutRefs.current[menuKey]);
-      }
-
-      // Keep dropdown open
       setActiveDropdown(menuKey);
     }
   };
 
   const handleDropdownMouseLeave = (menuKey) => {
     if (!isMobile) {
-      // Set a timeout to close dropdown
       timeoutRefs.current[menuKey] = setTimeout(() => {
         setActiveDropdown(null);
-      }, 300);
+      }, 400);
     }
+  };
+
+  const debounceClick = (callback, menuKey, event) => {
+    if (clickTimeoutRef.current) {
+      clearTimeout(clickTimeoutRef.current);
+    }
+    clickTimeoutRef.current = setTimeout(() => {
+      callback(menuKey, event);
+    }, 300); // 300ms debounce to prevent rapid clicks
   };
 
   const handleMenuItemClick = (menuKey, event) => {
     if (isMobile) {
       event.preventDefault();
       event.stopPropagation();
-      setActiveDropdown((prev) => (prev === menuKey ? null : menuKey));
+      debounceClick(
+        (key) => {
+          setActiveDropdown((prev) => (prev === key ? null : key));
+        },
+        menuKey,
+        event
+      );
     }
   };
 
   const handleIconClick = (menuKey, event) => {
     event.stopPropagation();
     if (isMobile) {
-      setActiveDropdown((prev) => (prev === menuKey ? null : menuKey));
+      debounceClick(
+        (key) => {
+          setActiveDropdown((prev) => (prev === key ? null : key));
+        },
+        menuKey,
+        event
+      );
     }
   };
 
@@ -142,13 +136,12 @@ const Header = () => {
 
   useEffect(() => {
     return () => {
-      // Clear all timeouts on unmount
-      Object.values(timeoutRefs.current).forEach(timeout => {
+      Object.values(timeoutRefs.current).forEach((timeout) => {
         if (timeout) clearTimeout(timeout);
       });
-      Object.values(hoverTimeoutRefs.current).forEach(timeout => {
-        if (timeout) clearTimeout(timeout);
-      });
+      if (clickTimeoutRef.current) {
+        clearTimeout(clickTimeoutRef.current);
+      }
     };
   }, []);
 
@@ -184,6 +177,7 @@ const Header = () => {
 
     const midPoint = Math.ceil(items.length / 2);
     const leftColumn = items.slice(0, midPoint);
+
     const rightColumn = items.slice(midPoint);
 
     return (
@@ -256,7 +250,6 @@ const Header = () => {
             </span>
           </button>
 
-          {/* Menu overlay for mobile */}
           {isMobile && (
             <div
               className={`menu-overlay ${mobileMenuOpen ? "active" : ""}`}
@@ -271,11 +264,7 @@ const Header = () => {
             <ul className="menu-list">
               {menuData.map((menu, index) => {
                 if (menu.isButton) {
-                  return (
-                    <li key={index}>
-                      {renderContactButton(menu)}
-                    </li>
-                  );
+                  return <li key={index}>{renderContactButton(menu)}</li>;
                 }
 
                 if (menu.items) {
@@ -296,7 +285,9 @@ const Header = () => {
                           {menu.label}
                           <BiCaretDown
                             className={`menu-icon ${
-                              activeDropdown === menu.dropdownKey ? "rotate" : ""
+                              activeDropdown === menu.dropdownKey
+                                ? "rotate"
+                                : ""
                             }`}
                             onClick={(event) =>
                               handleIconClick(menu.dropdownKey, event)
@@ -309,9 +300,15 @@ const Header = () => {
                           className={`dropdown ${
                             activeDropdown === menu.dropdownKey ? "active" : ""
                           }`}
-                          ref={(el) => (dropdownRefs.current[menu.dropdownKey] = el)}
-                          onMouseEnter={() => handleDropdownMouseEnter(menu.dropdownKey)}
-                          onMouseLeave={() => handleDropdownMouseLeave(menu.dropdownKey)}
+                          ref={(el) =>
+                            (dropdownRefs.current[menu.dropdownKey] = el)
+                          }
+                          onMouseEnter={() =>
+                            handleDropdownMouseEnter(menu.dropdownKey)
+                          }
+                          onMouseLeave={() =>
+                            handleDropdownMouseLeave(menu.dropdownKey)
+                          }
                         >
                           {renderDropdownItems(
                             menu.items,

@@ -1,28 +1,22 @@
-
-export const sendContactForm = async ({ email, subject, message }) => {
-  console.log("Sending contact form submission:", { email, subject });
+export const sendContactForm = async ({ email, subject, message, text }) => {
+  console.log("Sending contact form submission:", { email, subject, message, text });
 
   try {
-    // Create JSON payload instead of FormData
+    // Create JSON payload
     const jsonData = {
       wxmail: true,
       to: "support@weboum.com",
-      cc: "yourpersonalemail@gmail.com", 
+      cc: "yourpersonalemail@gmail.com",
       from: "no-reply@weboum.com",
       replyTo: email,
       email: email,
       subject: subject,
-      html: message,
-     
-      message: message
-        .replace(/<[^>]*>/g, " ")
-        .replace(/\s+/g, " ")
-        .trim(),
-      isHtml: true,
-      contentType: "text/html"
+      message: text, 
+      html: message, 
+      isHtml: true
+      
     };
 
-    
     console.log("Sending to API with data:", jsonData);
     
     // Make the API request with JSON

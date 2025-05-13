@@ -25,7 +25,7 @@ const Days = () => {
             <h3>100% Satisfaction Guaranteed</h3>
             <hr />
             <p>
-              Since 2012, we delivery 100% project success, with unique products
+              Since 2012, we deliver 100% project success, with unique products
               for startups and small businesses considering their purpose and
               philosophy.
             </p>
@@ -47,7 +47,6 @@ const Days = () => {
             </Link>
           </div>
           <div className="image-container" data-aos="fade-left">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/image/android-app.jpg" alt="Android App Illustration" />
           </div>
         </div>
@@ -58,7 +57,7 @@ const Days = () => {
           <div>
             <h2>What product can we engineer for you?</h2>
             <p>
-              Tell us a little about yourself in the form below and we&apos;ll get in
+              Tell us a little about yourself in the form below and we'll get in
               touch soon for product consultation.
             </p>
           </div>

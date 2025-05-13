@@ -69,7 +69,8 @@
 }
 
 .highlight-line {
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   height: 3px;
   background-color: var(--primary-color);
   margin-bottom: 20px;
@@ -98,12 +99,13 @@
 }
 
 .support-text p {
-    font-size: 1rem;
-    color: #0b0a0a;
-    line-height: 1.8;
-    margin-bottom: 24px;
-    font-weight: bold;
+  font-size: 1rem;
+  color: #0b0a0a;
+  line-height: 1.8;
+  margin-bottom: 24px;
+  font-weight: bold;
 }
+
 .support-text ul {
   list-style: none;
   padding-left: 0;
@@ -117,11 +119,11 @@
 }
 
 .support-text ul li {
-    margin-bottom: 12px;
-    font-size: 1.2rem;
-    color: #040404;
-    line-height: 1.6;
-    font-weight: bold;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+  color: #040404;
+  line-height: 1.6;
+  font-weight: bold;
 }
 
 .quote-btn {
@@ -146,6 +148,8 @@
   flex: 1 1 40%;
   text-align: center;
   animation: slideFadeDown 1s ease-in-out both;
+  position: relative;
+  height: 500px; /* Set a fixed height for the container */
 }
 
 .image-container img {
@@ -156,6 +160,9 @@
   margin: 0;
   padding: 0;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 /* CONNECT SECTION */
@@ -196,11 +203,7 @@
   color: rgba(255, 255, 255, 0.9);
   line-height: 1.6;
   margin-bottom: 0;
-  white-space: nowrap;        
-  overflow: hidden;           
-  text-overflow: ellipsis;    
 }
-
 
 .connect-btn {
   background-color: var(--connect-bg);
@@ -213,9 +216,8 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  white-space: nowrap;
+  margin: 0px -2px 67px -240px;
   animation: slideFadeDown 1s ease-in-out both;
-  margin: 0px 0px 57px -91px;
 }
 
 .connect-btn:hover {
@@ -223,10 +225,9 @@
   transform: scale(1.05);
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Responsive Design */
+@media (max-width: 1024px) {
   .offer-content {
-    flex-direction: column;
     gap: 30px;
   }
 
@@ -234,10 +235,29 @@
     flex: 1 1 100%;
   }
 
-  .support-text h2 {
-    font-size: 2.5rem;
+  .image-container {
+    flex: 1 1 100%;
+    height: 400px; /* Adjusted height for tablets */
   }
 
+  .DigitalMarketing-connect-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .connect-btn {
+    margin: 20px 0 0 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .offer-section {
+    padding: 40px 15px;
+    min-height: 400px;
+  }
+
+  .support-text h2,
   .support-text h3 {
     font-size: 1.8rem;
   }
@@ -247,32 +267,71 @@
     font-size: 0.9rem;
   }
 
+  .support-text hr {
+    width: 200px;
+  }
+
+  .highlight-line {
+    max-width: 300px;
+  }
+
   .image-container {
-    flex: 1 1 100%;
-  }
-
-  .image-container img {
-    max-height: 300px;
-  }
-
-  .DigitalMarketing-connect-container {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    height: 300px; /* Adjusted height for mobile */
   }
 
   .DigitalMarketing-connect-container h2 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   .DigitalMarketing-connect-container p {
-    font-size: 0.9rem;
-    margin-bottom: 20px;
+    font-size: 1.2rem;
   }
 
   .quote-btn,
   .connect-btn {
     padding: 12px 25px;
     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .offer-section {
+    padding: 30px 10px;
+  }
+
+  .support-text h2,
+  .support-text h3 {
+    font-size: 1.5rem;
+  }
+
+  .support-text p,
+  .support-text ul li {
+    font-size: 0.85rem;
+  }
+
+  .support-text hr {
+    width: 150px;
+  }
+
+  .highlight-line {
+    max-width: 200px;
+  }
+
+  .image-container {
+    height: 250px; /* Adjusted height for small mobile */
+  }
+
+  .DigitalMarketing-connect-container h2 {
+    font-size: 1.4rem;
+  }
+
+  .DigitalMarketing-connect-container p {
+    font-size: 1rem;
+  }
+
+  .quote-btn,
+  .connect-btn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
   }
 }
