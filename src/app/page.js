@@ -15,11 +15,12 @@ const Home = () => {
     name: "",
     email: "",
     phoneNumber: "",
-    company: "",
-    website: "",
+
     message: "",
   });
-  const [formStatus, setFormStatus] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formError, setFormError] = useState("");
+  const [formSuccess, setFormSuccess] = useState("");
 
   const portfolioRef = useRef(null);
   const testimonialRef = useRef(null);
@@ -93,23 +94,59 @@ const Home = () => {
       ...prev,
       [name]: value,
     }));
+    if (formError) setFormError("");
+    if (formSuccess) setFormSuccess("");
+  };
+
+  const validateForm = () => {
+    const requiredFields = ["name", "email", "phoneNumber", "message"];
+    for (const field of requiredFields) {
+      if (!formData[field] || formData[field].trim() === "") {
+        setFormError("Please fill in all required fields.");
+        return false;
+      }
+    }
+
+    if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      setFormError("Please enter a valid email address.");
+      return false;
+    }
+
+    return true;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormStatus("submitting");
+    setFormError("");
+    setFormSuccess("");
+
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
+      // Sanitize inputs
       const sanitizeInput = (input) => {
+        if (!input) return "";
         return input
+          .replace(/&/g, "&")
           .replace(/</g, "<")
           .replace(/>/g, ">")
-          .replace(/"/g, "");
+          .replace(/"/g, " ")
+          .replace(/'/g, "'");
       };
-      const sanitizedMessage = sanitizeInput(
-        formData.message || "No message provided."
-      );
 
+      const sanitizedFormData = {
+        name: sanitizeInput(formData.name || "Not provided"),
+        email: sanitizeInput(formData.email || "Not provided"),
+        phoneNumber: sanitizeInput(formData.phoneNumber || "Not provided"),
+
+        message: sanitizeInput(formData.message || "No message provided"),
+      };
+
+      // Plain HTML5 table-based email template without CSS
       const messageContent = `
 <!DOCTYPE html>
 <html lang="en">
@@ -118,55 +155,101 @@ const Home = () => {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>New Contact Form Submission</title>
 </head>
-<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f0f0f0;">
-  <div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #e0e0e0;">
-    <div style="background-color: #4682b4; padding: 15px; text-align: center;">
-      <h2 style="color: #ffffff; margin: 0; font-size: 20px;">New Contact Form Submission</h2>
-    </div>
-    <div style="padding: 20px;">
-      <p style="color: #333333; font-size: 16px; margin: 0 0 15px;">
-        Someone has reached out through the Weboum Technology contact form.
-      </p>
-      <div style="border-top: 1px solid #e0e0e0; padding-top: 15px;">
-        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
-          <strong>Name:</strong> ${formData.name}
-        </p>
-        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
-          <strong>Email:</strong> <a href="mailto:${formData.email}" style="color: #4682b4; text-decoration: none;">${formData.email}</a>
-        </p>
-        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
-          <strong>Phone:</strong> ${formData.phoneNumber}
-        </p>
-        <p style="color: #333333; font-size: 14px; margin: 5px 0;">
-          <strong>Message:</strong> ${sanitizedMessage}
-        </p>
-      </div>
-    </div>
-  </div>
+<body>
+  <table width="100%" border="0" cellpadding="10" cellspacing="0" align="center">
+    <tr>
+      <td align="center">
+        <h2>New Contact Form Submission</h2>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>Someone has reached out through the Weboum Technology contact form.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%" border="1" cellpadding="5" cellspacing="0">
+          <tr>
+            <td width="30%"><strong>Name:</strong></td>
+            <td>${sanitizedFormData.name}</td>
+          </tr>
+          <tr>
+            <td><strong>Email:</strong></td>
+            <td><a href="mailto:${sanitizedFormData.email}">${sanitizedFormData.email}</a></td>
+          </tr>
+          <tr>
+            <td><strong>Phone:</strong></td>
+            <td>${sanitizedFormData.phoneNumber}</td>
+          </tr>
+          
+          <tr>
+            <td><strong>Message:</strong></td>
+            <td>${sanitizedFormData.message.replace(/\n/g, "<br>")}</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td align="center">
+        <p>© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>
-      `;
+      `.trim();
 
-      await sendContactForm({
-        email: formData.email,
+      // Plain text fallback
+      const plainTextContent = `
+Contact Form Submission Details:
+------------------------
+Name: ${sanitizedFormData.name}
+Email: ${sanitizedFormData.email}
+Phone: ${sanitizedFormData.phoneNumber}
+
+Message: ${sanitizedFormData.message}
+      `.trim();
+
+      console.log("Submitting form with:", {
+        email: sanitizedFormData.email,
+        subject: "New Contact Form Submission",
+        message: messageContent.substring(0, 100) + "...",
+        text: plainTextContent.substring(0, 100) + "...",
+        formType: "contact",
+      });
+
+      const result = await sendContactForm({
+        email: sanitizedFormData.email,
         subject: "New Contact Form Submission",
         message: messageContent,
+        text: plainTextContent,
+        formType: "contact",
+        replyTo: sanitizedFormData.email,
       });
 
-      setFormStatus("success");
-      setFormData({
-        name: "",
-        email: "",
-        phoneNumber: "",
-        company: "",
-        website: "",
-        message: "",
-      });
-      alert("Form submitted successfully!");
+      if (result.success) {
+        setFormSuccess("Your message has been submitted successfully!");
+        setFormData({
+          name: "",
+          email: "",
+          phoneNumber: "",
+          company: "",
+          website: "",
+          message: "",
+        });
+      } else {
+        setFormError(
+          result.message || "Failed to send your message. Please try again."
+        );
+      }
     } catch (error) {
-      console.error("Form submission error:", error);
-      setFormStatus("error");
-      alert("Failed to submit form. Please try again.");
+      console.error("Error submitting form:", error);
+      setFormError(
+        "Failed to send your message. Please try again later or contact support@weboum.com."
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -216,7 +299,9 @@ const Home = () => {
                         className="service-icon"
                         width={64}
                         height={64}
-                        onError={(e) => (e.target.src = "/image/placeholder.jpg")} // Fallback on error
+                        onError={(e) =>
+                          (e.target.src = "/image/placeholder.jpg")
+                        } // Fallback on error
                       />
                       <div>
                         <div className="service-title">{service.title}</div>
@@ -354,6 +439,7 @@ const Home = () => {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
+                      disabled={isSubmitting}
                     />
                   </div>
                   <div className="form-group">
@@ -365,6 +451,7 @@ const Home = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
+                      disabled={isSubmitting}
                     />
                   </div>
                   <div className="form-group">
@@ -376,6 +463,7 @@ const Home = () => {
                       value={formData.phoneNumber}
                       onChange={handleInputChange}
                       required
+                      disabled={isSubmitting}
                     />
                   </div>
 
@@ -388,26 +476,27 @@ const Home = () => {
                       value={formData.message}
                       onChange={handleInputChange}
                       required
+                      disabled={isSubmitting}
                     ></textarea>
                   </div>
+                  {formError && (
+                    <div className="form-error" role="alert">
+                      {formError}
+                    </div>
+                  )}
+                  {formSuccess && (
+                    <div className="form-success" role="alert">
+                      {formSuccess}
+                    </div>
+                  )}
                   <button
                     type="submit"
                     className="btn-submit"
-                    disabled={formStatus === "submitting"}
+                    disabled={isSubmitting}
                   >
-                    {formStatus === "submitting"
-                      ? "Submitting..."
-                      : "Submit Now"}
+                    {isSubmitting ? "Submitting..." : "Submit Now"}
                   </button>
                 </form>
-                {formStatus === "success" && (
-                  <p className="form-success">Form submitted successfully!</p>
-                )}
-                {formStatus === "error" && (
-                  <p className="form-error">
-                    Failed to submit form. Please try again.
-                  </p>
-                )}
               </div>
             </div>
           </div>

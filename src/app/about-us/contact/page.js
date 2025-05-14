@@ -1,5 +1,6 @@
 "use client";
 
+import React, { useState } from "react";
 import SubHeader from "@/app/sub-header/page";
 import {
   FaFacebookF,
@@ -9,10 +10,9 @@ import {
 } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import Days from "../days/page";
+import Image from "next/image";
 import "./contact.css";
-import { useState } from "react";
 import { sendContactForm } from "@/utils/api";
-import sanitizeHtml from "sanitize-html";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -25,7 +25,6 @@ export default function Contact() {
   });
   const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [debug, setDebug] = useState(null);
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -38,109 +37,83 @@ export default function Contact() {
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
+    if (status) setStatus(""); // Clear status on input change
   };
 
   const createEmailTemplate = (data) => {
     // Sanitize inputs
-    const sanitizeOptions = {
-      allowedTags: [],
-      allowedAttributes: {},
+    const sanitizeInput = (input) => {
+      if (!input) return "";
+      return input
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#x27;");
     };
-    
-    const sanitizedName = sanitizeHtml(data.name || "", sanitizeOptions);
-    const sanitizedEmail = sanitizeHtml(data.email || "", sanitizeOptions);
-    const sanitizedPhone = sanitizeHtml(data.phone || "Not provided", sanitizeOptions);
-    const sanitizedSubject = sanitizeHtml(data.subject || "Not specified", sanitizeOptions);
-    const sanitizedMessage = sanitizeHtml(data.message || "No message provided.", sanitizeOptions);
-    
-    // Create a current year variable
-    const currentYear = new Date().getFullYear();
-    
-    // FIXED: Using table-based layout for better email client compatibility
+
+    const sanitizedName = sanitizeInput(data.name || "Not provided");
+    const sanitizedEmail = sanitizeInput(data.email || "Not provided");
+    const sanitizedPhone = sanitizeInput(data.phone || "Not provided");
+    const sanitizedSubject = sanitizeInput(data.subject || "Not specified");
+    const sanitizedMessage = sanitizeInput(data.message || "No message provided");
+
+    // Plain HTML5 table-based email template without CSS
     const htmlContent = `
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>New Contact Form Submission</title>
 </head>
-<body style="margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; background-color: #f0f0f0;">
-  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+<body>
+  <table width="100%" border="0" cellpadding="10" cellspacing="0" align="center">
     <tr>
-      <td style="padding: 20px 0;">
-        <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse; background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-          <!-- Header -->
+      <td align="center">
+        <h2>New Contact Form Submission</h2>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <p>You have received a new message from your website contact form.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%" border="1" cellpadding="5" cellspacing="0">
           <tr>
-            <td align="center" style="background-color: #4a90e2; padding: 20px; border-radius: 5px 5px 0 0;">
-              <h2 style="color: #ffffff; margin: 0; font-size: 24px; font-family: Arial, Helvetica, sans-serif;">New Contact Form Submission</h2>
-            </td>
+            <td width="30%"><strong>Name:</strong></td>
+            <td>${sanitizedName}</td>
           </tr>
-          
-          <!-- Content -->
           <tr>
-            <td style="padding: 30px 20px;">
-              <p style="color: #333333; font-size: 16px; margin: 0 0 20px; font-family: Arial, Helvetica, sans-serif;">
-                You have received a new message from your website contact form.
-              </p>
-              
-              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f9f9f9; padding: 20px; margin: 15px 0; border-radius: 5px; border-left: 4px solid #4a90e2;">
-                <tr>
-                  <td width="100" style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
-                    <strong style="color: #333333; font-family: Arial, Helvetica, sans-serif;">Name:</strong>
-                  </td>
-                  <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0; color: #555555; font-family: Arial, Helvetica, sans-serif;">
-                    ${sanitizedName}
-                  </td>
-                </tr>
-                <tr>
-                  <td width="100" style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
-                    <strong style="color: #333333; font-family: Arial, Helvetica, sans-serif;">Email:</strong>
-                  </td>
-                  <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0; color: #555555; font-family: Arial, Helvetica, sans-serif;">
-                    <a href="mailto:${sanitizedEmail}" style="color: #4a90e2; text-decoration: none;">${sanitizedEmail}</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td width="100" style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
-                    <strong style="color: #333333; font-family: Arial, Helvetica, sans-serif;">Phone:</strong>
-                  </td>
-                  <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0; color: #555555; font-family: Arial, Helvetica, sans-serif;">
-                    ${sanitizedPhone}
-                  </td>
-                </tr>
-                <tr>
-                  <td width="100" style="padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
-                    <strong style="color: #333333; font-family: Arial, Helvetica, sans-serif;">Subject:</strong>
-                  </td>
-                  <td style="padding: 10px 0; border-bottom: 1px solid #e0e0e0; color: #555555; font-family: Arial, Helvetica, sans-serif;">
-                    ${sanitizedSubject}
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2" style="padding-top: 20px;">
-                    <h3 style="color: #333333; margin: 0 0 10px; font-size: 16px; font-family: Arial, Helvetica, sans-serif;">Message:</h3>
-                    <p style="color: #555555; line-height: 1.5; background-color: #ffffff; padding: 15px; border-radius: 5px; margin: 0; font-family: Arial, Helvetica, sans-serif;">
-                      ${sanitizedMessage.replace(/\n/g, '<br>')}
-                    </p>
-                  </td>
-                </tr>
-              </table>
-            </td>
+            <td><strong>Email:</strong></td>
+            <td><a href="mailto:${sanitizedEmail}">${sanitizedEmail}</a></td>
           </tr>
-          
-          <!-- Footer -->
           <tr>
-            <td align="center" style="background-color: #f5f5f5; padding: 15px; font-size: 12px; color: #666666; border-radius: 0 0 5px 5px; border-top: 1px solid #e0e0e0;">
-              <p style="margin: 0; font-family: Arial, Helvetica, sans-serif;">© ${currentYear} Weboum Technology. All rights reserved.</p>
-            </td>
+            <td><strong>Phone:</strong></td>
+            <td>${sanitizedPhone}</td>
+          </tr>
+          <tr>
+            <td><strong>Subject:</strong></td>
+            <td>${sanitizedSubject}</td>
+          </tr>
+          <tr>
+            <td><strong>Message:</strong></td>
+            <td>${sanitizedMessage.replace(/\n/g, "<br>")}</td>
           </tr>
         </table>
       </td>
     </tr>
+    <tr>
+      <td align="center">
+        <p>© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
+      </td>
+    </tr>
   </table>
 </body>
-</html>`;
+</html>
+    `.trim();
 
     // Plain text fallback
     const plainTextContent = `
@@ -163,7 +136,6 @@ Message: ${sanitizedMessage}
     e.preventDefault();
     setIsSubmitting(true);
     setStatus("");
-    setDebug(null);
 
     // Validate inputs
     if (!formData.name || !formData.email || !formData.message) {
@@ -185,23 +157,25 @@ Message: ${sanitizedMessage}
     }
 
     try {
-      // Generate email template
       const emailContent = createEmailTemplate(formData);
-      
-      // ADDED: Debug logging to see what's being sent
-      console.log("Email template generated with HTML length:", emailContent.html.length);
-      console.log("HTML content sample:", emailContent.html.substring(0, 200));
-      
-      // Send contact form with explicit parameters
+
+      console.log("Submitting contact form with:", {
+        email: formData.email,
+        subject: formData.subject || `Contact Form: ${formData.name}`,
+        message: emailContent.html.substring(0, 100) + "...",
+        text: emailContent.text.substring(0, 100) + "...",
+        formType: "contact",
+      });
+
       const result = await sendContactForm({
         email: formData.email,
         subject: formData.subject || `Contact Form: ${formData.name}`,
-        message: emailContent.html, // This is the HTML content
-        text: emailContent.text     // This is the plain text
+        message: emailContent.html,
+        text: emailContent.text,
+        formType: "contact",
+        replyTo: formData.email,
       });
 
-      console.log("Email send result:", result);
-      
       if (result.success) {
         setStatus("Message sent successfully! We'll get back to you soon.");
         setFormData({
@@ -212,23 +186,16 @@ Message: ${sanitizedMessage}
           message: "",
           notRobot: false,
         });
-        
-        // Store debug info if available
-        if (result.data) {
-          setDebug(result.data);
-        }
       } else {
-        setStatus(result.message || "Failed to send your message. Please try again.");
-        
-        // Store debug info if available
-        if (result.data) {
-          setDebug(result.data);
-        }
+        setStatus(
+          result.message || "Failed to send your message. Please try again."
+        );
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      setStatus("Failed to send your message. Please try again or contact support@weboum.com.");
-      setDebug(error.message || "Unknown error");
+      setStatus(
+        "Failed to send your message. Please try again or contact support@weboum.com."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -354,6 +321,13 @@ Message: ${sanitizedMessage}
                   disabled={isSubmitting}
                 />
                 <label htmlFor="captcha">I'm not a robot</label>
+                <Image
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzz6tIILsCKIN0knMR9sTn5Shad52WNMNpuw&s"
+                  alt="Verification"
+                  className="captcha-image"
+                  width={80}
+                  height={40}
+                />
               </div>
               <button type="submit" disabled={isSubmitting}>
                 {isSubmitting ? "Submitting..." : "Submit"}
@@ -370,11 +344,10 @@ Message: ${sanitizedMessage}
                   {status}
                 </p>
               )}
-              
             </form>
           </div>
         </div>
-      </section>  
+      </section>
       <Days />
     </>
   );

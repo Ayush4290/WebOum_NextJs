@@ -16,6 +16,9 @@ export default function HireDeveloper() {
   const [selectedWorkTime, setSelectedWorkTime] = useState([]);
   const [selectedTimeframe, setSelectedTimeframe] = useState([]);
   const [selectedStart, setSelectedStart] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formError, setFormError] = useState("");
+  const [formSuccess, setFormSuccess] = useState("");
 
   // Skills section data
   const skills = [
@@ -61,7 +64,6 @@ export default function HireDeveloper() {
 
   // Function to handle tag selection
   const handleTagSelection = (value, category) => {
-    // Update the appropriate state based on category
     switch (category) {
       case "skills":
         setSelectedSkills((prev) =>
@@ -101,6 +103,8 @@ export default function HireDeveloper() {
       default:
         break;
     }
+    if (formError) setFormError("");
+    if (formSuccess) setFormSuccess("");
   };
 
   const nextStep = () => {
@@ -111,8 +115,25 @@ export default function HireDeveloper() {
     if (currentStep > 1) setCurrentStep(currentStep - 1);
   };
 
+  const validateForm = (name, email, phone) => {
+    if (!name || !email || !phone) {
+      setFormError("Please fill in all required fields (Name, Email, Phone).");
+      return false;
+    }
+
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setFormError("Please enter a valid email address.");
+      return false;
+    }
+
+    return true;
+  };
+
   const submitForm = async (e) => {
     e.preventDefault();
+    setFormError("");
+    setFormSuccess("");
+
     const name = formRef.current?.querySelector("#name")?.value;
     const email = formRef.current?.querySelector("#email")?.value;
     const phone = formRef.current?.querySelector("#phone")?.value;
@@ -120,147 +141,180 @@ export default function HireDeveloper() {
     const website = formRef.current?.querySelector("#website")?.value;
     const comment = formRef.current?.querySelector("#comment")?.value;
 
-    if (name && email && phone) {
-      try {
-        // Sanitize inputs to prevent XSS and ensure proper encoding
-        const sanitizeInput = (input) => {
-          const div = document.createElement("div");
-          div.textContent = input || "";
-          return div.innerHTML
-            .replace(/&/g, "&")
-            .replace(/</g, "<")
-            .replace(/>/g, ">")
-            .replace(/"/g, "");
-        };
+    if (!validateForm(name, email, phone)) {
+      return;
+    }
 
-        const sanitizedName = sanitizeInput(name);
-        const sanitizedEmail = sanitizeInput(email);
-        const sanitizedPhone = sanitizeInput(phone);
-        const sanitizedCompany = sanitizeInput(company);
-        const sanitizedWebsite = sanitizeInput(website);
-        const sanitizedComment = sanitizeInput(comment);
+    setIsSubmitting(true);
 
-        // Construct the subject
-        const subject = sanitizedCompany
-          ? `Contact Request from ${sanitizedName} - ${sanitizedCompany}`
-          : `Contact Request from ${sanitizedName}`;
+    try {
+      // Sanitize inputs
+      const sanitizeInput = (input) => {
+        if (!input) return "";
+        return input
+          .replace(/&/g, "&")
+          .replace(/</g, "<")
+          .replace(/>/g, ">")
+          .replace(/"/g, "")
+          .replace(/'/g, "'");
+      };
 
-        // Create a simplified and robust HTML email template
-        const message = `
+      const sanitizedFormData = {
+        name: sanitizeInput(name),
+        email: sanitizeInput(email),
+        phone: sanitizeInput(phone),
+        company: sanitizeInput(company || "Not provided"),
+        website: sanitizeInput(website || "Not provided"),
+        comment: sanitizeInput(comment || "No comments provided"),
+      };
+
+      const subject = sanitizedFormData.company !== "Not provided"
+        ? `Hire Developer Request from ${sanitizedFormData.name} - ${sanitizedFormData.company}`
+        : `Hire Developer Request from ${sanitizedFormData.name}`;
+
+      // Plain HTML5 table-based email template without CSS
+      const messageContent = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Request</title>
+  <title>Hire Developer Request</title>
 </head>
-<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #e0e0e0;">
+<body>
+  <table width="100%" border="0" cellpadding="10" cellspacing="0" align="center">
     <tr>
-      <td style="background-color: #4a90e2; padding: 15px; text-align: center;">
-        <h2 style="color: #ffffff; margin: 0; font-size: 20px;">New Contact Request</h2>
+      <td align="center">
+        <h2>New Hire Developer Request</h2>
       </td>
     </tr>
     <tr>
-      <td style="padding: 20px;">
-        <p style="color: #333333; font-size: 16px; margin: 0 0 15px;">
-          A new contact request has been submitted to Weboum Technology.
-        </p>
-        <table width="100%" cellpadding="5" cellspacing="0" style="border-top: 1px solid #e0e0e0; padding-top: 15px;">
+      <td>
+        <p>A new hire developer request has been submitted to Weboum Technology.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%" border="1" cellpadding="5" cellspacing="0">
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Name:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${sanitizedName}</td>
+            <td width="30%"><strong>Name:</strong></td>
+            <td>${sanitizedFormData.name}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Email:</strong></td>
-            <td style="color: #333333; font-size: 14px;">
-              <a href="mailto:${sanitizedEmail}" style="color: #4a90e2; text-decoration: none;">${sanitizedEmail}</a>
-            </td>
+            <td><strong>Email:</strong></td>
+            <td><a href="mailto:${sanitizedFormData.email}">${sanitizedFormData.email}</a></td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Phone:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${sanitizedPhone}</td>
+            <td><strong>Phone:</strong></td>
+            <td>${sanitizedFormData.phone}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Company:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${sanitizedCompany || "Not provided"}</td>
+            <td><strong>Company:</strong></td>
+            <td>${sanitizedFormData.company}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Website:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${sanitizedWebsite || "Not provided"}</td>
+            <td><strong>Website:</strong></td>
+            <td>${sanitizedFormData.website}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Skills Selected:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${selectedSkills.length > 0 ? selectedSkills.join(", ") : "None selected"}</td>
+            <td><strong>Skills Selected:</strong></td>
+            <td>${selectedSkills.length > 0 ? selectedSkills.join(", ") : "None selected"}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Technologies Selected:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${selectedTechnologies.length > 0 ? selectedTechnologies.join(", ") : "None selected"}</td>
+            <td><strong>Technologies Selected:</strong></td>
+            <td>${selectedTechnologies.length > 0 ? selectedTechnologies.join(", ") : "None selected"}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Work Time Preference:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${selectedWorkTime.length > 0 ? selectedWorkTime.join(", ") : "None selected"}</td>
+            <td><strong>Work Time Preference:</strong></td>
+            <td>${selectedWorkTime.length > 0 ? selectedWorkTime.join(", ") : "None selected"}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Project Timeframe:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${selectedTimeframe.length > 0 ? selectedTimeframe.join(", ") : "None selected"}</td>
+            <td><strong>Project Timeframe:</strong></td>
+            <td>${selectedTimeframe.length > 0 ? selectedTimeframe.join(", ") : "None selected"}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Preferred Start:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${selectedStart.length > 0 ? selectedStart.join(", ") : "None selected"}</td>
+            <td><strong>Preferred Start:</strong></td>
+            <td>${selectedStart.length > 0 ? selectedStart.join(", ") : "None selected"}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Comment:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${sanitizedComment || "No comments provided"}</td>
+            <td><strong>Comment:</strong></td>
+            <td>${sanitizedFormData.comment.replace(/\n/g, "<br>")}</td>
           </tr>
         </table>
       </td>
     </tr>
     <tr>
-      <td style="background-color: #f5f5f5; padding: 10px; text-align: center; font-size: 12px; color: #666666;">
-        <p style="margin: 0;">© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
+      <td align="center">
+        <p>© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
       </td>
     </tr>
   </table>
 </body>
 </html>
-        `.trim();
+      `.trim();
 
-        // Log payload for debugging
-        console.log("Submitting form with:", {
-          email: sanitizedEmail,
-          subject,
-          message: message.substring(0, 100) + "...",
-        });
+      // Plain text fallback
+      const plainTextContent = `
+Hire Developer Request Details:
+------------------------
+Name: ${sanitizedFormData.name}
+Email: ${sanitizedFormData.email}
+Phone: ${sanitizedFormData.phone}
+Company: ${sanitizedFormData.company}
+Website: ${sanitizedFormData.website}
+Skills Selected: ${selectedSkills.length > 0 ? selectedSkills.join(", ") : "None selected"}
+Technologies Selected: ${selectedTechnologies.length > 0 ? selectedTechnologies.join(", ") : "None selected"}
+Work Time Preference: ${selectedWorkTime.length > 0 ? selectedWorkTime.join(", ") : "None selected"}
+Project Timeframe: ${selectedTimeframe.length > 0 ? selectedTimeframe.join(", ") : "None selected"}
+Preferred Start: ${selectedStart.length > 0 ? selectedStart.join(", ") : "None selected"}
+Comment: ${sanitizedFormData.comment}
+      `.trim();
 
-        // Send the form data to the API
-        const result = await sendContactForm({ email: sanitizedEmail, subject, message });
+      console.log("Submitting form with:", {
+        email: sanitizedFormData.email,
+        subject,
+        message: messageContent.substring(0, 100) + "...",
+        text: plainTextContent.substring(0, 100) + "...",
+        formType: "hire-developer",
+      });
 
-        if (result.success) {
-          alert("Form submitted successfully!");
-          setCurrentStep(1);
-          formRef.current?.reset();
+      const result = await sendContactForm({
+        email: sanitizedFormData.email,
+        subject,
+        message: messageContent,
+        text: plainTextContent,
+        formType: "hire-developer",
+        replyTo: sanitizedFormData.email,
+      });
 
-          // Reset all selected items
-          setSelectedSkills([]);
-          setSelectedTechnologies([]);
-          setSelectedWorkTime([]);
-          setSelectedTimeframe([]);
-          setSelectedStart([]);
+      if (result.success) {
+        setFormSuccess("Form submitted successfully!");
+        setCurrentStep(1);
+        formRef.current?.reset();
 
-          // Remove selected class from all tags
-          document
-            .querySelectorAll(".tag")
-            .forEach((tag) => tag.classList.remove("selected"));
-        } else {
-          alert(`Failed to submit the form: ${result.message}`);
-        }
-      } catch (error) {
-        console.error("Form submission error:", error);
-        alert(`Failed to submit the form: ${error.message}. Please try again later.`);
+        // Reset all selected items
+        setSelectedSkills([]);
+        setSelectedTechnologies([]);
+        setSelectedWorkTime([]);
+        setSelectedTimeframe([]);
+        setSelectedStart([]);
+
+        // Remove selected class from all tags
+        document
+          .querySelectorAll(".tag")
+          .forEach((tag) => tag.classList.remove("selected"));
+      } else {
+        setFormError(
+          result.message || "Failed to submit the form. Please try again."
+        );
       }
-    } else {
-      alert("Please fill in all required fields.");
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setFormError(
+        "Failed to submit the form. Please try again later or contact support@weboum.com."
+      );
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -426,40 +480,75 @@ export default function HireDeveloper() {
                 <form id="contact-form" ref={formRef} onSubmit={submitForm}>
                   <div>
                     <label htmlFor="name">Name*</label>
-                    <input type="text" id="name" required />
+                    <input
+                      type="text"
+                      id="name"
+                      required
+                      disabled={isSubmitting}
+                    />
                   </div>
 
                   <div>
                     <label htmlFor="email">Email*</label>
-                    <input type="email" id="email" required />
+                    <input
+                      type="email"
+                      id="email"
+                      required
+                      disabled={isSubmitting}
+                    />
                   </div>
 
                   <div>
                     <label htmlFor="phone">Phone*</label>
-                    <input type="tel" id="phone" required />
+                    <input
+                      type="tel"
+                      id="phone"
+                      required
+                      disabled={isSubmitting}
+                    />
                   </div>
 
                   <div>
                     <label htmlFor="company">Company</label>
-                    <input type="text" id="company" />
+                    <input type="text" id="company" disabled={isSubmitting} />
                   </div>
 
                   <div>
                     <label htmlFor="website">Website URL</label>
-                    <input type="url" id="website" />
+                    <input type="url" id="website" disabled={isSubmitting} />
                   </div>
 
                   <div>
                     <label htmlFor="comment">Comment</label>
-                    <textarea id="comment"></textarea>
+                    <textarea id="comment" disabled={isSubmitting}></textarea>
                   </div>
 
+                  {formError && (
+                    <div className="hire-developer-error-message">
+                      {formError}
+                    </div>
+                  )}
+                  {formSuccess && (
+                    <div className="hire-developer-success-message">
+                      {formSuccess}
+                    </div>
+                  )}
+
                   <div id="button-container">
-                    <button id="back-button" type="button" onClick={prevStep}>
+                    <button
+                      id="back-button"
+                      type="button"
+                      onClick={prevStep}
+                      disabled={isSubmitting}
+                    >
                       BACK
                     </button>
-                    <button id="submit-button" type="submit">
-                      SUBMIT
+                    <button
+                      id="submit-button"
+                      type="submit"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? "Submitting..." : "SUBMIT"}
                     </button>
                   </div>
                 </form>

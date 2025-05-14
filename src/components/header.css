@@ -17,6 +17,7 @@
   font-family: Arial, "Roboto", sans-serif;
   position: relative;
   width: 100%;
+  z-index: 1000; /* Added z-index to ensure menu stays above other content */
 }
 
 .navbar {
@@ -43,7 +44,7 @@
 }
 
 .logo-img {
-  width: 150px;
+  width: 190px;
   height: auto;
   transition: transform var(--transition-speed) ease;
 }
@@ -126,7 +127,7 @@
   visibility: hidden;
   min-width: 250px;
   max-width: 100vw;
-  z-index: 10;
+  z-index: 2001; /* Increased z-index to ensure it stays above other content */
   border-radius: 4px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   padding: 1rem;
@@ -134,15 +135,17 @@
     visibility var(--submenu-hold-time) ease,
     transform var(--submenu-hold-time) ease;
   transform: translateY(5px);
+  pointer-events: none; /* Initially disable pointer events */
 }
 
 .menu-dropdown:hover .dropdown,
-.dropdown:hover {
+.dropdown:hover,
+.dropdown.active {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
-  pointer-events: all;
-  transition-delay: 0.1s;
+  pointer-events: all; /* Enable pointer events when visible */
+  transition-delay: 0s; /* No delay when opening */
 }
 
 /* Specific styles for Services dropdown with two columns */
@@ -152,7 +155,7 @@
   display: flex;
   flex-wrap: nowrap;
   gap: 1rem;
-  left: -100px;
+  left: -100px; /* This positions the services dropdown better */
 }
 
 .dropdown-column {
@@ -378,7 +381,7 @@
   }
 
   .dropdown li a:hover {
-    background-color: rgba(233, 25, 25, 0.1);
+    background-color: rgba(255, 255, 255, 0.1); /* Fixed hover color */
   }
 
   .btn-contact {
@@ -416,28 +419,5 @@
   .dropdown li a {
     padding: 1rem 1.2rem;
     min-height: 44px;
-  }
-}
-
-@media (max-width: 576px) {
-  .logo-img {
-    padding-top: 7px;
-    width: 120px;
-  }
-
-  .menu {
-    width: 85%;
-  }
-
-  .navbar {
-    padding: 0.5rem;
-  }
-
-  .dropdown {
-    max-width: 100%;
-  }
-
-  .menu-dropdown.services .dropdown {
-    max-width: 100%;
   }
 }

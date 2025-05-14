@@ -101,6 +101,7 @@ export default function SamplePage() {
       [name]: type === "checkbox" ? checked : value,
     }));
     if (formError) setFormError("");
+    if (formSuccess) setFormSuccess("");
   };
 
   const validateForm = () => {
@@ -130,31 +131,36 @@ export default function SamplePage() {
     setFormError("");
     setFormSuccess("");
 
-    if (!validateForm()) return;
+    if (!validateForm()) {
+      setIsSubmitting(false);
+      return;
+    }
 
     setIsSubmitting(true);
 
     try {
+      // Sanitize inputs
       const sanitizeInput = (input) => {
-        const div = document.createElement("div");
-        div.textContent = input;
-        return div.innerHTML
+        if (!input) return "";
+        return input
           .replace(/&/g, "&")
           .replace(/</g, "<")
           .replace(/>/g, ">")
-          .replace(/"/g, "");
+          .replace(/"/g, " ")
+          .replace(/'/g, "'");
       };
 
-      const sanitizedName = sanitizeInput(formData.name);
-      const sanitizedEmail = sanitizeInput(formData.email);
-      const sanitizedPhone = sanitizeInput(formData.phone);
-      const sanitizedProject = sanitizeInput(formData.project);
-      const sanitizedMessage = formData.message
-        ? sanitizeInput(formData.message)
-        : "No message provided";
+      const sanitizedFormData = {
+        name: sanitizeInput(formData.name || "Not provided"),
+        email: sanitizeInput(formData.email || "Not provided"),
+        phone: sanitizeInput(formData.phone || "Not provided"),
+        project: sanitizeInput(formData.project || "Not specified"),
+        message: sanitizeInput(formData.message || "No message provided"),
+      };
 
-      const subject = `Free Consultation Request from ${sanitizedName}`;
+      const subject = `Free Consultation Request from ${sanitizedFormData.name}`;
 
+      // Plain HTML5 table-based email template without CSS
       const messageContent = `
 <!DOCTYPE html>
 <html lang="en">
@@ -163,47 +169,47 @@ export default function SamplePage() {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Free Consultation Request</title>
 </head>
-<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #e0e0e0;">
+<body>
+  <table width="100%" border="0" cellpadding="10" cellspacing="0" align="center">
     <tr>
-      <td style="background-color: #4a90e2; padding: 15px; text-align: center;">
-        <h2 style="color: #ffffff; margin: 0; font-size: 20px;">New Consultation Request</h2>
+      <td align="center">
+        <h2>New Consultation Request</h2>
       </td>
     </tr>
     <tr>
-      <td style="padding: 20px;">
-        <p style="color: #333333; font-size: 16px; margin: 0 0 15px;">
-          A new consultation request has been submitted to Weboum Technology.
-        </p>
-        <table width="100%" cellpadding="5" cellspacing="0" style="border-top: 1px solid #e0e0e0; padding-top: 15px;">
+      <td>
+        <p>A new consultation request has been submitted to Weboum Technology.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%" border="1" cellpadding="5" cellspacing="0">
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Name:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${sanitizedName}</td>
+            <td width="30%"><strong>Name:</strong></td>
+            <td>${sanitizedFormData.name}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Email:</strong></td>
-            <td style="color: #333333; font-size: 14px;">
-              <a href="mailto:${sanitizedEmail}" style="color: #4a90e2; text-decoration: none;">${sanitizedEmail}</a>
-            </td>
+            <td><strong>Email:</strong></td>
+            <td><a href="mailto:${sanitizedFormData.email}">${sanitizedFormData.email}</a></td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Phone:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${sanitizedPhone}</td>
+            <td><strong>Phone:</strong></td>
+            <td>${sanitizedFormData.phone}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Project Type:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${sanitizedProject}</td>
+            <td><strong>Project Type:</strong></td>
+            <td>${sanitizedFormData.project}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Message:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${sanitizedMessage}</td>
+            <td><strong>Message:</strong></td>
+            <td>${sanitizedFormData.message.replace(/\n/g, "<br>")}</td>
           </tr>
         </table>
       </td>
     </tr>
     <tr>
-      <td style="background-color: #f5f5f5; padding: 10px; text-align: center; font-size: 12px; color: #666666;">
-        <p style="margin: 0;">© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
+      <td align="center">
+        <p>© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
       </td>
     </tr>
   </table>
@@ -211,27 +217,32 @@ export default function SamplePage() {
 </html>
       `.trim();
 
-      const plainTextFallback = `
+      // Plain text fallback
+      const plainTextContent = `
 Free Consultation Request Details:
---------------------------------
-Name: ${sanitizedName}
-Email: ${sanitizedEmail}
-Phone: ${sanitizedPhone}
-Project Type: ${sanitizedProject}
-Message: ${sanitizedMessage}
+------------------------
+Name: ${sanitizedFormData.name}
+Email: ${sanitizedFormData.email}
+Phone: ${sanitizedFormData.phone}
+Project Type: ${sanitizedFormData.project}
+Message: ${sanitizedFormData.message}
       `.trim();
 
       console.log("Submitting form with:", {
-        email: sanitizedEmail,
+        email: sanitizedFormData.email,
         subject,
-        html: messageContent.substring(0, 100) + "...",
-        message: plainTextFallback,
+        message: messageContent.substring(0, 100) + "...",
+        text: plainTextContent.substring(0, 100) + "...",
+        formType: "consultation",
       });
 
       const result = await sendContactForm({
-        email: sanitizedEmail,
+        email: sanitizedFormData.email,
         subject,
         message: messageContent,
+        text: plainTextContent,
+        formType: "consultation",
+        replyTo: sanitizedFormData.email,
       });
 
       if (result.success) {
@@ -244,16 +255,15 @@ Message: ${sanitizedMessage}
           message: "",
           notRobot: false,
         });
-        e.target.reset();
       } else {
         setFormError(
-          result.message || "Failed to send email. Please try again."
+          result.message || "Failed to send your request. Please try again."
         );
       }
     } catch (error) {
-      console.error("Form submission error:", error);
+      console.error("Error submitting form:", error);
       setFormError(
-        `An error occurred: ${error.message}. Please try again later.`
+        "Failed to send your request. Please try again later or contact support@weboum.com."
       );
     } finally {
       setIsSubmitting(false);
@@ -624,6 +634,7 @@ Message: ${sanitizedMessage}
                   required
                   disabled={isSubmitting}
                 >
+                 
                   <option value="Project Development">
                     Project Development
                   </option>

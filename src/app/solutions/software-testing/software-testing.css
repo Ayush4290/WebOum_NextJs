@@ -1,6 +1,6 @@
 .software-testing {
   font-family: Arial, sans-serif;
-  color: #333;
+ color:black;
   line-height: 1.4; /* Reduced from 1.6 for tighter text */
 }
 
@@ -58,7 +58,7 @@
 }
 
 .software-h1 {
-  color: #2c3e50;
+  color:black;
   margin-bottom: 10px; /* Reduced from 20px */
   font-size: 28px;
 }
@@ -86,13 +86,13 @@
 
 .software-services-list li b {
   margin-right: 10px;
-  color: #161718;
+   color:black;
 }
 
 .software-bottom-note {
   text-align: left;
   margin-top: 15px; /* Reduced from 30px */
-  color: #161718;
+ color:black;
 }
 
 @media screen and (max-width: 768px) {

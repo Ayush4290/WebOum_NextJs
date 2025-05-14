@@ -8,98 +8,134 @@ import Image from "next/image";
 import { useState } from "react";
 import { sendContactForm } from "@/utils/api";
 
-const EMAIL_TEMPLATE = `
+const createEmailTemplate = (data) => {
+  // Sanitize inputs
+  const sanitizeInput = (input) => {
+    if (!input) return "";
+    return input
+      .replace(/&/g, "&")
+      .replace(/</g, "<")
+      .replace(/>/g, ">")
+      .replace(/"/g, "")
+      .replace(/'/g, "'");
+  };
+
+  const sanitizedEmail = sanitizeInput(data.email || "Not provided");
+
+  // Simplified HTML email template (minimal content)
+  const htmlContent = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to Weboum's Newsletter</title>
+  <title>Subscription Confirmation</title>
 </head>
-<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f4f4f4;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #e0e0e0;">
-    <tr>
-      <td style="text-align: center; padding: 20px 0; border-bottom: 1px solid #eee;">
-        <img src="https://weboum.com/image/logo-1.png" alt="Weboum Logo" style="max-width: 150px;" />
-      </td>
-    </tr>
-    <tr>
-      <td style="padding: 20px; text-align: center;">
-        <h1 style="color: #2c3e50; margin-bottom: 20px;">Welcome to Weboum's Newsletter!</h1>
-        <p style="margin: 10px 0;">Thank you for subscribing to our newsletter!</p>
-        <p style="margin: 10px 0;">You'll now receive the latest updates, tips, and exclusive offers from Weboum Technology.</p>
-        <p style="margin: 10px 0;">If you wish to unsubscribe, please click the link below.</p>
-        <p style="margin: 10px 0;">
-          <a href="https://weboum.com/unsubscribe" style="display: inline-block; padding: 10px 20px; background-color: #3498db; color: #ffffff; text-decoration: none; border-radius: 5px;">Unsubscribe</a>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align: center; padding: 20px; border-top: 1px solid #eee; font-size: 12px; color: #666;">
-        <p style="margin: 0;">© 2025 Weboum Technology Private Limited. All rights reserved.</p>
-        <p style="margin: 5px 0;">Weboum Technology Pvt Ltd, 123 Tech Street, Innovation City, IN 12345</p>
-      </td>
-    </tr>
-  </table>
+<body>
+  <p>Email: ${sanitizedEmail}</p>
+  <p>Thank you for subscribing to Weboum updates.</p>
+  <p>© ${new Date().getFullYear()} Weboum Technology Private Limited.</p>
 </body>
 </html>
-`;
+  `.trim();
+
+  // Simplified plain text fallback (no line breaks)
+  const plainTextContent = `Email: ${sanitizedEmail} - Thank you for subscribing to Weboum updates.`.trim();
+
+  return {
+    html: htmlContent,
+    text: plainTextContent,
+  };
+};
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState("");
+  const [formError, setFormError] = useState("");
+  const [formSuccess, setFormSuccess] = useState("");
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validateForm = () => {
+    if (!formData.email) {
+      setFormError("Please enter an email address.");
+      return false;
+    }
+
+    if (!validateEmail(formData.email)) {
+      setFormError("Please enter a valid email address.");
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    if (formError) setFormError("");
+    if (formSuccess) setFormSuccess("");
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitMessage("");
+    setFormError("");
+    setFormSuccess("");
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      setSubmitMessage("Please enter a valid email address");
+    if (!validateForm()) {
       setIsSubmitting(false);
       return;
     }
 
+    setIsSubmitting(true);
+
     try {
-      const sanitizeInput = (input) => {
-        const div = document.createElement("div");
-        div.textContent = input || "";
-        return div.innerHTML
-          .replace(/&/g, "&")
-          .replace(/</g, "<")
-          .replace(/>/g, ">")
-          .replace(/"/g, "");
+      const emailContent = createEmailTemplate(formData);
+
+      const payload = {
+        email: formData.email,
+        subject: "Subscription Confirmation",
+        message: emailContent.html,
+        text: emailContent.text,
+        formType: "contact",
+        replyTo: formData.email,
       };
 
-      const sanitizedEmail = sanitizeInput(email);
-
-      console.log("Submitting email:", {
-        email: sanitizedEmail,
-        subject: "Welcome to Weboum's Newsletter!",
-        message: EMAIL_TEMPLATE.substring(0, 100) + "...",
+      console.log("Submitting subscription:", {
+        email: payload.email,
+        subject: payload.subject,
+        message: payload.message.substring(0, 100) + "...",
+        text: payload.text,
+        formType: payload.formType,
+        replyTo: payload.replyTo,
       });
 
-      const response = await sendContactForm({
-        email: sanitizedEmail,
-        subject: "Welcome to Weboum's Newsletter!",
-        message: EMAIL_TEMPLATE,
-      });
+      const response = await sendContactForm(payload);
+
+      console.log("API Response:", response);
 
       if (response.success) {
-        setSubmitMessage(
+        setFormSuccess(
           "Successfully subscribed! Check your inbox or spam folder."
         );
-        setEmail("");
-        console.log("Subscription response:", response);
+        setFormData({ email: "" });
       } else {
-        throw new Error(response.message || "Failed to subscribe");
+        setFormError(
+          response.message || "Failed to subscribe. Please try again."
+        );
       }
     } catch (error) {
-      console.error("Subscription error:", error.message, error.stack);
-      setSubmitMessage(
-        `Failed to subscribe: ${error.message}. Please try again or contact support at support@weboum.com.`
+      console.error("Subscription error:", error.message || error);
+      setFormError(
+        "Failed to subscribe. Please try again or contact support@weboum.com."
       );
     } finally {
       setIsSubmitting(false);
@@ -188,27 +224,33 @@ export default function Footer() {
 
         <div className="footer-newsletter-section">
           <h3>Subscribe Newsletter</h3>
-          <form className="newsletter-form" onSubmit={handleSubmit}>
+          <form className="newsletter-form" onSubmit={handleSubmit} noValidate>
+         
             <input
               type="email"
-              placeholder="Email Address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              value={formData.email}
+              onChange={handleChange}
               required
+              aria-required="true"
+              disabled={isSubmitting}
             />
+            {formError && (
+              <p className="submit-message error" role="alert">
+                {formError}
+              </p>
+            )}
+            {formSuccess && (
+              <p className="submit-message success" role="alert">
+                {formSuccess}
+              </p>
+            )}
             <button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
+              {isSubmitting ? "Submitting..." : "Submit"}
             </button>
           </form>
-          {submitMessage && (
-            <p
-              className={`submit-message ${
-                submitMessage.includes("Failed") ? "error" : "success"
-              }`}
-            >
-              {submitMessage}
-            </p>
-          )}
           <div className="social-section">
             <p>Follow us on:</p>
             <div className="social-icons">
@@ -243,8 +285,8 @@ export default function Footer() {
 
       <div className="footer-copyright">
         <p>
-          © 2025 Weboum Technology Private Limited. All rights reserved. Terms
-          of services
+          © {new Date().getFullYear()} Weboum Technology Private Limited. All
+          rights reserved. Terms of services
         </p>
       </div>
     </div>

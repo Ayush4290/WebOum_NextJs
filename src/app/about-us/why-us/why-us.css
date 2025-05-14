@@ -284,6 +284,7 @@
   transform: translateY(0);
 }
 
+
 /* Responsive Styles */
 @media (min-width: 576px) {
   .whyus-section-wrapper {

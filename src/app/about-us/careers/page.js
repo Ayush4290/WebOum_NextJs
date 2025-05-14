@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./careers.css";
 import Days from "../days/page";
 import SubHeader from "@/app/sub-header/page";
@@ -23,6 +23,7 @@ const Careers = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState("");
   const [formSuccess, setFormSuccess] = useState("");
+  const fileInputRef = useRef(null);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked, files } = e.target;
@@ -32,6 +33,7 @@ const Careers = () => {
         type === "checkbox" ? checked : type === "file" ? files[0] : value,
     }));
     if (formError) setFormError("");
+    if (formSuccess) setFormSuccess("");
   };
 
   const validateForm = () => {
@@ -93,15 +95,14 @@ const Careers = () => {
     setIsSubmitting(true);
 
     try {
-      // Sanitize inputs to prevent XSS and ensure proper encoding
       const sanitizeInput = (input) => {
-        const div = document.createElement("div");
-        div.textContent = input || "";
-        return div.innerHTML
-          .replace(/&/g, "&")
-          .replace(/</g, "<")
-          .replace(/>/g, ">")
-          .replace(/"/g, "");
+        if (!input) return "";
+        return input
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#x27;");
       };
 
       const sanitizedFormData = {
@@ -111,10 +112,11 @@ const Careers = () => {
         phone: sanitizeInput(formData.phone),
         post: sanitizeInput(formData.post),
         experience: sanitizeInput(formData.experience),
-        message: sanitizeInput(formData.message || "No additional message provided"),
+        message: sanitizeInput(
+          formData.message || "No additional message provided"
+        ),
       };
 
-      // HTML email template
       const messageContent = `
 <!DOCTYPE html>
 <html lang="en">
@@ -123,55 +125,55 @@ const Careers = () => {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Job Application</title>
 </head>
-<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #e0e0e0;">
+<body>
+  <table width="100%" border="0" cellpadding="10" cellspacing="0" align="center">
     <tr>
-      <td style="background-color: #4a90e2; padding: 15px; text-align: center;">
-        <h2 style="color: #ffffff; margin: 0; font-size: 20px;">New Job Application</h2>
+      <td align="center">
+        <h2>New Job Application</h2>
       </td>
     </tr>
     <tr>
-      <td style="padding: 20px;">
-        <p style="color: #333333; font-size: 16px; margin: 0 0 15px;">
-          A new candidate has submitted an application for a position at Weboum Technology.
-        </p>
-        <table width="100%" cellpadding="5" cellspacing="0" style="border-top: 1px solid #e0e0e0; padding-top: 15px;">
+      <td>
+        <p>A new candidate has submitted an application for a position at Weboum Technology.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%" border="1" cellpadding="5" cellspacing="0">
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Name:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${sanitizedFormData.firstName} ${sanitizedFormData.lastName}</td>
+            <td width="30%"><strong>Name:</strong></td>
+            <td>${sanitizedFormData.firstName} ${sanitizedFormData.lastName}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Email:</strong></td>
-            <td style="color: #333333; font-size: 14px;">
-              <a href="mailto:${sanitizedFormData.email}" style="color: #4a90e2; text-decoration: none;">${sanitizedFormData.email}</a>
-            </td>
+            <td><strong>Email:</strong></td>
+            <td><a href="mailto:${sanitizedFormData.email}">${sanitizedFormData.email}</a></td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Phone:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${sanitizedFormData.phone}</td>
+            <td><strong>Phone:</strong></td>
+            <td>${sanitizedFormData.phone}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Position:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${sanitizedFormData.post}</td>
+            <td><strong>Position:</strong></td>
+            <td>${sanitizedFormData.post}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Experience:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${sanitizedFormData.experience}</td>
+            <td><strong>Experience:</strong></td>
+            <td>${sanitizedFormData.experience}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Message:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${sanitizedFormData.message}</td>
+            <td><strong>Message:</strong></td>
+            <td>${sanitizedFormData.message.replace(/\n/g, "<br>")}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Resume:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${formData.resume ? "Attached" : "Not provided"}</td>
+            <td><strong>Resume:</strong></td>
+            <td>${formData.resume ? "formData.resume" : "Not provided"}</td>
           </tr>
         </table>
       </td>
     </tr>
     <tr>
-      <td style="background-color: #f5f5f5; padding: 10px; text-align: center; font-size: 12px; color: #666666;">
-        <p style="margin: 0;">© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
+      <td align="center">
+        <p>© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
       </td>
     </tr>
   </table>
@@ -179,20 +181,35 @@ const Careers = () => {
 </html>
       `.trim();
 
-      // Log payload for debugging
-      console.log("Submitting form with:", {
+      const plainTextContent = `
+Job Application Submission:
+------------------------
+Name: ${sanitizedFormData.firstName} ${sanitizedFormData.lastName}
+Email: ${sanitizedFormData.email}
+Phone: ${sanitizedFormData.phone}
+Position: ${sanitizedFormData.post}
+Experience: ${sanitizedFormData.experience}
+Message: ${sanitizedFormData.message}
+Resume: ${formData.resume ? "Check in my attached PDF under the Email" : "Not provided"}
+
+      `.trim();
+
+      console.log("Submitting careers form with:", {
         email: sanitizedFormData.email,
         subject: `Job Application for ${sanitizedFormData.post} from ${sanitizedFormData.firstName} ${sanitizedFormData.lastName}`,
         message: messageContent.substring(0, 100) + "...",
-        attachment: formData.resume ? formData.resume.name : "No attachment",
+        file: formData.resume ? formData.resume.name : "No attachment",
+        formType: "careers",
       });
 
-      // Send the form data to the API
       const result = await sendContactForm({
         email: sanitizedFormData.email,
         subject: `Job Application for ${sanitizedFormData.post} from ${sanitizedFormData.firstName} ${sanitizedFormData.lastName}`,
         message: messageContent,
-        attachment: formData.resume,
+        text: plainTextContent,
+        file: formData.resume,
+        formType: "careers",
+        replyTo: sanitizedFormData.email,
       });
 
       if (result.success) {
@@ -210,7 +227,9 @@ const Careers = () => {
           resume: null,
           notRobot: false,
         });
-        document.getElementById("resume").value = "";
+        if (fileInputRef.current) {
+          fileInputRef.current.value = "";
+        }
       } else {
         setFormError(
           result.message ||
@@ -333,6 +352,7 @@ const Careers = () => {
                       name="resume"
                       className="careers-form-control"
                       id="resume"
+                      ref={fileInputRef}
                       onChange={handleInputChange}
                       disabled={isSubmitting}
                       accept=".pdf,.doc,.docx"

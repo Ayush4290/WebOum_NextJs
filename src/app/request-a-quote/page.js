@@ -136,6 +136,7 @@ export default function RequestaQuote() {
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
       setFormError("");
+      setFormSuccess("");
     }
   };
 
@@ -143,6 +144,7 @@ export default function RequestaQuote() {
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1);
       setFormError("");
+      setFormSuccess("");
     }
   };
 
@@ -181,15 +183,15 @@ export default function RequestaQuote() {
     setIsSubmitting(true);
 
     try {
-      // Sanitize inputs to prevent XSS and ensure proper encoding
+      // Sanitize inputs
       const sanitizeInput = (input) => {
-        const div = document.createElement("div");
-        div.textContent = input || "";
-        return div.innerHTML
+        if (!input) return "";
+        return input
           .replace(/&/g, "&")
           .replace(/</g, "<")
           .replace(/>/g, ">")
-          .replace(/"/g, "");
+          .replace(/"/g, " ")
+          .replace(/'/g, "'");
       };
 
       const sanitizedFormData = {};
@@ -221,8 +223,8 @@ export default function RequestaQuote() {
         return values.join(", ");
       };
 
-      // Create a simplified and robust HTML email template
-      const message = `
+      // Plain HTML5 table-based email template without CSS
+      const messageContent = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -230,79 +232,79 @@ export default function RequestaQuote() {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quote Request</title>
 </head>
-<body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: 20px auto; background-color: #ffffff; border: 1px solid #e0e0e0;">
+<body>
+  <table width="100%" border="0" cellpadding="10" cellspacing="0" align="center">
     <tr>
-      <td style="background-color: #4a90e2; padding: 15px; text-align: center;">
-        <h2 style="color: #ffffff; margin: 0; font-size: 20px;">New Quote Request</h2>
+      <td align="center">
+        <h2>New Quote Request</h2>
       </td>
     </tr>
     <tr>
-      <td style="padding: 20px;">
-        <p style="color: #333333; font-size: 16px; margin: 0 0 15px;">
-          A new quote request has been submitted to Weboum Technology.
-        </p>
-        <table width="100%" cellpadding="5" cellspacing="0" style="border-top: 1px solid #e0e0e0; padding-top: 15px;">
+      <td>
+        <p>A new quote request has been submitted to Weboum Technology.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <table width="100%" border="1" cellpadding="5" cellspacing="0">
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Name:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${sanitizedFormData.name || "Not provided"}</td>
+            <td width="30%"><strong>Name:</strong></td>
+            <td>${sanitizedFormData.name || "Not provided"}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Email:</strong></td>
-            <td style="color: #333333; font-size: 14px;">
-              <a href="mailto:${sanitizedFormData.email || "Not provided"}" style="color: #4a90e2; text-decoration: none;">${sanitizedFormData.email || "Not provided"}</a>
-            </td>
+            <td><strong>Email:</strong></td>
+            <td><a href="mailto:${sanitizedFormData.email || "Not provided"}">${sanitizedFormData.email || "Not provided"}</a></td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Phone:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${sanitizedFormData.phone || "Not provided"}</td>
+            <td><strong>Phone:</strong></td>
+            <td>${sanitizedFormData.phone || "Not provided"}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Company:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${sanitizedFormData.company || "Not provided"}</td>
+            <td><strong>Company:</strong></td>
+            <td>${sanitizedFormData.company || "Not provided"}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Website:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${sanitizedFormData.website || "Not provided"}</td>
+            <td><strong>Website:</strong></td>
+            <td>${sanitizedFormData.website || "Not provided"}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Stage:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${selectedOptions.stage.length > 0 ? getOptionLabels("stage", selectedOptions.stage) : "Not selected"}</td>
+            <td><strong>Stage:</strong></td>
+            <td>${selectedOptions.stage.length > 0 ? getOptionLabels("stage", selectedOptions.stage) : "Not selected"}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Services Needed:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${selectedOptions.services_needed.length > 0 ? getOptionLabels("services_needed", selectedOptions.services_needed) : "Not selected"}</td>
+            <td><strong>Services Needed:</strong></td>
+            <td>${selectedOptions.services_needed.length > 0 ? getOptionLabels("services_needed", selectedOptions.services_needed) : "Not selected"}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Development Stages Needed:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${selectedOptions.development_stages_needed.length > 0 ? getOptionLabels("development_stages_needed", selectedOptions.development_stages_needed) : "Not selected"}</td>
+            <td><strong>Development Stages Needed:</strong></td>
+            <td>${selectedOptions.development_stages_needed.length > 0 ? getOptionLabels("development_stages_needed", selectedOptions.development_stages_needed) : "Not selected"}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Project Scope:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${selectedOptions.project_scope.length > 0 ? getOptionLabels("project_scope", selectedOptions.project_scope) : "Not selected"}</td>
+            <td><strong>Project Scope:</strong></td>
+            <td>${selectedOptions.project_scope.length > 0 ? getOptionLabels("project_scope", selectedOptions.project_scope) : "Not selected"}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Expected Budget:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${selectedOptions.expected_budget.length > 0 ? getOptionLabels("expected_budget", selectedOptions.expected_budget) : "Not selected"}</td>
+            <td><strong>Expected Budget:</strong></td>
+            <td>${selectedOptions.expected_budget.length > 0 ? getOptionLabels("expected_budget", selectedOptions.expected_budget) : "Not selected"}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Timeframe:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${selectedOptions.timeframe.length > 0 ? getOptionLabels("timeframe", selectedOptions.timeframe) : "Not selected"}</td>
+            <td><strong>Timeframe:</strong></td>
+            <td>${selectedOptions.timeframe.length > 0 ? getOptionLabels("timeframe", selectedOptions.timeframe) : "Not selected"}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Start:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${selectedOptions.start.length > 0 ? getOptionLabels("start", selectedOptions.start) : "Not selected"}</td>
+            <td><strong>Start:</strong></td>
+            <td>${selectedOptions.start.length > 0 ? getOptionLabels("start", selectedOptions.start) : "Not selected"}</td>
           </tr>
           <tr>
-            <td style="color: #333333; font-size: 14px;"><strong>Message:</strong></td>
-            <td style="color: #333333; font-size: 14px;">${sanitizedFormData.message || "No message provided"}</td>
+            <td><strong>Message:</strong></td>
+            <td>${(sanitizedFormData.message || "No message provided").replace(/\n/g, "<br>")}</td>
           </tr>
         </table>
       </td>
     </tr>
     <tr>
-      <td style="background-color: #f5f5f5; padding: 10px; text-align: center; font-size: 12px; color: #666666;">
-        <p style="margin: 0;">© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
+      <td align="center">
+        <p>© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
       </td>
     </tr>
   </table>
@@ -310,18 +312,40 @@ export default function RequestaQuote() {
 </html>
       `.trim();
 
-      // Log payload for debugging
+      // Plain text fallback
+      const plainTextContent = `
+Quote Request Details:
+------------------------
+Name: ${sanitizedFormData.name || "Not provided"}
+Email: ${sanitizedFormData.email || "Not provided"}
+Phone: ${sanitizedFormData.phone || "Not provided"}
+Company: ${sanitizedFormData.company || "Not provided"}
+Website: ${sanitizedFormData.website || "Not provided"}
+Stage: ${selectedOptions.stage.length > 0 ? getOptionLabels("stage", selectedOptions.stage) : "Not selected"}
+Services Needed: ${selectedOptions.services_needed.length > 0 ? getOptionLabels("services_needed", selectedOptions.services_needed) : "Not selected"}
+Development Stages Needed: ${selectedOptions.development_stages_needed.length > 0 ? getOptionLabels("development_stages_needed", selectedOptions.development_stages_needed) : "Not selected"}
+Project Scope: ${selectedOptions.project_scope.length > 0 ? getOptionLabels("project_scope", selectedOptions.project_scope) : "Not selected"}
+Expected Budget: ${selectedOptions.expected_budget.length > 0 ? getOptionLabels("expected_budget", selectedOptions.expected_budget) : "Not selected"}
+Timeframe: ${selectedOptions.timeframe.length > 0 ? getOptionLabels("timeframe", selectedOptions.timeframe) : "Not selected"}
+Start: ${selectedOptions.start.length > 0 ? getOptionLabels("start", selectedOptions.start) : "Not selected"}
+Message: ${sanitizedFormData.message || "No message provided"}
+      `.trim();
+
       console.log("Submitting form with:", {
         email: sanitizedFormData.email,
         subject: `Quote Request from ${sanitizedFormData.name || "Website Visitor"}`,
-        message: message.substring(0, 100) + "...",
+        message: messageContent.substring(0, 100) + "...",
+        text: plainTextContent.substring(0, 100) + "...",
+        formType: "quote-request",
       });
 
-      // Send the form data to the API
       const result = await sendContactForm({
         email: sanitizedFormData.email || "",
         subject: `Quote Request from ${sanitizedFormData.name || "Website Visitor"}`,
-        message,
+        message: messageContent,
+        text: plainTextContent,
+        formType: "quote-request",
+        replyTo: sanitizedFormData.email || "",
       });
 
       if (result.success) {
@@ -350,7 +374,9 @@ export default function RequestaQuote() {
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      setFormError("Failed to submit your request. Please try again later.");
+      setFormError(
+        "Failed to submit your request. Please try again later or contact support@weboum.com."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -368,7 +394,10 @@ export default function RequestaQuote() {
     });
 
     if (formError) {
-    setFormError("");
+      setFormError("");
+    }
+    if (formSuccess) {
+      setFormSuccess("");
     }
   };
 
@@ -380,7 +409,10 @@ export default function RequestaQuote() {
     });
 
     if (formError) {
-    setFormError("");
+      setFormError("");
+    }
+    if (formSuccess) {
+      setFormSuccess("");
     }
   };
 
@@ -501,6 +533,7 @@ export default function RequestaQuote() {
                           value={formData[field.name] || ""}
                           required={field.required}
                           rows={5}
+                          disabled={isSubmitting}
                         ></textarea>
                       ) : (
                         <input
@@ -511,6 +544,7 @@ export default function RequestaQuote() {
                           onChange={handleInputChange}
                           value={formData[field.name] || ""}
                           required={field.required}
+                          disabled={isSubmitting}
                         />
                       )}
                     </div>

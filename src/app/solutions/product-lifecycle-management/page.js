@@ -36,6 +36,7 @@ export default function ProductLifecycleManagement() {
               process of managing the product and the product data during the
               complete lifecycle.
             </p>
+            <br/>
             <p>
               It integrates data, business systems, processes, and provides a
               product information backbone for businesses. That said, you need
@@ -59,6 +60,7 @@ export default function ProductLifecycleManagement() {
                   providing enhanced visibility of the product and its
                   performance.
                 </p>
+                <br/>
                 <p>
                   A vast range of PLM solutions is established to manage and
                   digitize the entire product lifecycle. The steps include
@@ -66,6 +68,7 @@ export default function ProductLifecycleManagement() {
                   installation, manufacturing, maintenance, and finally
                   retirement.
                 </p>
+                <br/>
                 <p>
                   Our development team also works on cutting-edge PLM products
                   to offer services and several other solutions across
@@ -112,12 +115,14 @@ export default function ProductLifecycleManagement() {
               easily get away from the hassle of working with custom
               spreadsheets, homegrown forms, and emails.
             </p>
+            <br/>
             <p>
               Our Product Lifecycle Management services let manufacturers easily
               connect people, processes, and data across the lifecycle of the
               product. You are missing out on greater benefits if you have not
               yet implemented PLM in your processes.
             </p>
+            <br/>
             <p>
               Businesses that have already implemented PLM realized enhanced
               profitability, better quality product, sustained growth, and quick

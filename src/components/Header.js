@@ -15,7 +15,8 @@ const Header = () => {
   const toggleButtonRef = useRef(null);
   const dropdownRefs = useRef({});
   const timeoutRefs = useRef({});
-  const clickTimeoutRef = useRef(null); // Added for debouncing
+  const clickTimeoutRef = useRef(null);
+  const hoverDelayRef = useRef(null);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -34,25 +35,35 @@ const Header = () => {
 
   const handleMouseEnter = (menuKey) => {
     if (!isMobile) {
+      // Clear any existing timeouts
       if (timeoutRefs.current[menuKey]) {
         clearTimeout(timeoutRefs.current[menuKey]);
       }
-      timeoutRefs.current[menuKey] = setTimeout(() => {
+      
+      // Set a shorter delay for opening the dropdown
+      hoverDelayRef.current = setTimeout(() => {
         setActiveDropdown(menuKey);
-      }, 300);
+      }, 100); // Reduced from 300ms to 100ms for faster opening
     }
   };
 
   const handleMouseLeave = (menuKey) => {
     if (!isMobile) {
+      // Clear any existing hover delay
+      if (hoverDelayRef.current) {
+        clearTimeout(hoverDelayRef.current);
+      }
+      
+      // Use a longer delay before closing to give more time to move to the dropdown
       timeoutRefs.current[menuKey] = setTimeout(() => {
         setActiveDropdown(null);
-      }, 400);
+      }, 800); // Increased from 400ms to 800ms for longer hold time
     }
   };
 
   const handleDropdownMouseEnter = (menuKey) => {
     if (!isMobile) {
+      // Clear any existing closing timeout
       if (timeoutRefs.current[menuKey]) {
         clearTimeout(timeoutRefs.current[menuKey]);
       }
@@ -62,9 +73,10 @@ const Header = () => {
 
   const handleDropdownMouseLeave = (menuKey) => {
     if (!isMobile) {
+      // Use a longer delay before closing
       timeoutRefs.current[menuKey] = setTimeout(() => {
         setActiveDropdown(null);
-      }, 400);
+      }, 600); // Increased from 400ms to 600ms
     }
   };
 
@@ -74,7 +86,7 @@ const Header = () => {
     }
     clickTimeoutRef.current = setTimeout(() => {
       callback(menuKey, event);
-    }, 300); // 300ms debounce to prevent rapid clicks
+    }, 300);
   };
 
   const handleMenuItemClick = (menuKey, event) => {
@@ -136,11 +148,15 @@ const Header = () => {
 
   useEffect(() => {
     return () => {
+      // Clear all timeouts on unmount
       Object.values(timeoutRefs.current).forEach((timeout) => {
         if (timeout) clearTimeout(timeout);
       });
       if (clickTimeoutRef.current) {
         clearTimeout(clickTimeoutRef.current);
+      }
+      if (hoverDelayRef.current) {
+        clearTimeout(hoverDelayRef.current);
       }
     };
   }, []);
@@ -177,7 +193,6 @@ const Header = () => {
 
     const midPoint = Math.ceil(items.length / 2);
     const leftColumn = items.slice(0, midPoint);
-
     const rightColumn = items.slice(midPoint);
 
     return (

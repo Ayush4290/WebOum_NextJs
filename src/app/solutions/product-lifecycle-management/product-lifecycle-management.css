@@ -12,7 +12,7 @@
   font-family: Arial, sans-serif;
   color: #333;
   line-height: 1.6;
-  margin: 0 auto;
+  margin: 0 200px;
   padding: 1rem;
   max-width: 1200px;
 }
@@ -104,10 +104,13 @@
 }
 
 .section-heading {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--heading-color);
   margin-bottom: 1rem;
+}
+.section-heading p{
+  font-size:1rem;
 }
 
 @media (min-width: 768px) {
@@ -133,7 +136,7 @@
 }
 
 .main-title {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
   color: var(--primary-color);
