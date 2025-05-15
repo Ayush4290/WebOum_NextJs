@@ -149,20 +149,22 @@
   text-align: center;
   animation: slideFadeDown 1s ease-in-out both;
   position: relative;
-  height: 500px; /* Set a fixed height for the container */
+  min-height: 425px; /* Adjusted to match image size */
+  overflow: visible;
 }
 
 .image-container img {
+  width: 100%;
+  max-width: 415px;
+  height: auto;
   max-height: 425px;
   object-fit: contain;
   border-radius: 10px;
   background: #fff;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  position: absolute;
-  top: 0;
-  left: 0;
+  display: block;
 }
 
 /* CONNECT SECTION */
@@ -170,6 +172,8 @@
   background-color: black;
   color: white;
   padding: 50px 24px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .DigitalMarketing-connect-container {
@@ -191,14 +195,14 @@
 .DigitalMarketing-connect-container h2 {
   font-size: 2rem;
   font-weight: 800;
-  margin-bottom: 30px;
+  margin-bottom: 20px; /* Reduced margin for better spacing */
   color: white;
   line-height: 1.2;
   text-transform: uppercase;
 }
 
 .DigitalMarketing-connect-container p {
-  font-size: 1.6rem;
+  font-size: 1.2rem; /* Adjusted to match image */
   font-weight: 400;
   color: rgba(255, 255, 255, 0.9);
   line-height: 1.6;
@@ -216,7 +220,7 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: background-color 0.3s ease, transform 0.3s ease;
-  margin: 0px -2px 67px -240px;
+  margin-top: 20px;
   animation: slideFadeDown 1s ease-in-out both;
 }
 
@@ -237,7 +241,7 @@
 
   .image-container {
     flex: 1 1 100%;
-    height: 400px; /* Adjusted height for tablets */
+    min-height: 350px;
   }
 
   .DigitalMarketing-connect-container {
@@ -276,7 +280,22 @@
   }
 
   .image-container {
-    height: 300px; /* Adjusted height for mobile */
+    min-height: 300px;
+  }
+
+  .image-container img {
+    max-width: 295px;
+    max-height: 300px;
+  }
+
+  .DigitalMarketing-connect-section {
+    padding: 40px 15px;
+  }
+
+  .DigitalMarketing-connect-container {
+    max-width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
   }
 
   .DigitalMarketing-connect-container h2 {
@@ -284,7 +303,7 @@
   }
 
   .DigitalMarketing-connect-container p {
-    font-size: 1.2rem;
+    font-size: 1rem; /* Adjusted for mobile */
   }
 
   .quote-btn,
@@ -318,7 +337,21 @@
   }
 
   .image-container {
-    height: 250px; /* Adjusted height for small mobile */
+    min-height: 250px;
+  }
+
+  .image-container img {
+    max-width: 245px;
+    max-height: 250px;
+  }
+
+  .DigitalMarketing-connect-section {
+    padding: 30px 10px;
+  }
+
+  .DigitalMarketing-connect-container {
+    max-width: 100%;
+    padding: 0 5px;
   }
 
   .DigitalMarketing-connect-container h2 {
@@ -326,7 +359,7 @@
   }
 
   .DigitalMarketing-connect-container p {
-    font-size: 1rem;
+    font-size: 0.9rem; /* Adjusted for smaller mobile */
   }
 
   .quote-btn,
@@ -334,4 +367,13 @@
     padding: 10px 20px;
     font-size: 0.85rem;
   }
+}
+
+/* Ensure no horizontal overflow */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
 }

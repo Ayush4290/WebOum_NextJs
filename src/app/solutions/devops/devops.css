@@ -1,4 +1,5 @@
-/* DevOps Page Styles */
+/* DevPorts Page Styles */
+/* Desktop Styles (Unchanged) */
 .devops-center-text {
   text-align: center;
   color: rgb(22, 18, 26);
@@ -39,7 +40,8 @@
 .devops-content p {
   color: black;
   line-height: 1.6;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem; /* Adjusted for mobile */
 }
 
 .devops-image-container {
@@ -69,6 +71,7 @@
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
+
 .devopsSection {
   display: flex;
   margin: 40px 125px;
@@ -184,10 +187,10 @@
   font-size: 1.1rem;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .devops-container,
-  .devops-section {
+/* Mobile View Styles */
+@media (max-width: 767px) {
+  /* Styles for other sections (unchanged) */
+  .devops-container {
     flex-direction: column;
     padding: 20px;
   }
@@ -207,30 +210,92 @@
     padding: 0 15px;
   }
 
+  /* Corrected styles for the specific section */
   .devops-section {
-    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Stack vertically */
+    max-width: 100%; /* Full width */
+    margin: 1rem 0; /* Reduced margin */
+    padding: 1rem; /* Reduced padding */
+    background-color: #EDF5F8;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .devopsSection {
+    display: flex;
+    flex-direction: column; /* Stack vertically */
+    margin: 0; /* Removed large side margins */
+    padding: 1rem; /* Reduced padding */
+  }
+
+  .devops-image-box {
+    min-width: 0; /* Prevent overflow */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem; /* Space between image and text */
+  }
+
+  .devops-image-box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .devops-text-box {
+    min-width: 0; /* Prevent overflow */
+    padding: 0; /* Remove extra padding */
+  }
+
+  .devops-text-box h2 {
+    color: black;
+    font-size: 1.4rem; /* Adjusted for mobile */
+    margin-bottom: 0.75rem;
+    text-align: center; /* Centered for better mobile appearance */
+  }
+
+  .devops-text-box p {
+    color: black;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem; /* Adjusted for mobile */
+    text-align: center; /* Centered for better mobile appearance */
   }
 }
 
 @media (max-width: 480px) {
   .devops-center-text {
-    font-size: 1.3rem;
+    font-size: 1.3rem; /* Further reduced for smaller screens */
   }
 
   .devops-content h2,
   .devops-text-box h2 {
-    font-size: 1.3rem;
+    font-size: 1.2rem; /* Further reduced */
   }
 
-  .devops-benefit-item {
-    flex-direction: column;
-    text-align: center;
+  .devops-benefits-section h2 {
+    font-size: 1.3rem; /* Further reduced */
   }
 
-  .devops-benefit-item img {
-    margin-right: 0;
-    margin-bottom: 15px;
-    margin-left: auto;
-    margin-right: auto;
+  .devops-center-text-section h1 {
+    font-size: 1.1rem; /* Further reduced */
   }
+
+  /* Additional adjustments for the specific section */
+  .devops-text-box h2 {
+    font-size: 1.2rem; /* Further reduced */
+  }
+
+  .devops-text-box p {
+    font-size: 0.9rem; /* Further reduced */
+  }
+}
+
+/* Prevent horizontal scrolling (unchanged) */
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }

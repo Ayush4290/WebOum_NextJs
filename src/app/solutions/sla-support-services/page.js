@@ -27,20 +27,20 @@ export default function SLASupportServices() {
               Outsource your IT support needs to WebOum Technology and exceed
               the expectation of your consumers.
             </p>
-            <br/>
+            <br />
             <p>
               You may come across an avalanche of explanations when it comes to
               defining a service-level agreement (SLA). But, at WebOum
               Technologies, we like to keep things simple.
             </p>
-            <br/>
+            <br />
             <p>
               So, let’s simply tell you that SLA is a contract between customers
               and a service provider. It defines the service standards that the
               provider needs to meet. Moreover, it also states the documents
               needed to be furnished by the service provider.
             </p>
-            <br/>
+            <br />
             <p>
               We offer personalized IT support services that align with the
               specific requirements of your business.

@@ -2,7 +2,7 @@
 import Image from "next/image";
 import SubHeader from "@/app/sub-header/page";
 import Days from "@/app/about-us/days/page";
-import "./quality-assurance-services.css"
+import "./quality-assurance-services.css";
 
 // Metadata for SEO
 export const metadata = {
@@ -70,35 +70,36 @@ export default function QualityAssuranceServices() {
 
           {/* Prevention Section - Fixed layout */}
           <div className="qa-prevention-wrapper">
-  <section className="qa-prevention">
-    <div className="qa-prevention-content">
-      <h2>We Don't Just Detect Issues, We Prevent Them!</h2>
-      <p>
-        WebOum Technology is one of the industry's leading software development
-        companies that specialize in building digital experiences.
-      </p>
-      <p>
-        We provide meticulous software testing services to ensure that fully
-        tested, bug-free software goes to the market in less turnaround time.
-      </p>
-      <p>
-        End-to-end testing of infrastructure is conducted to ensure that
-        bug-free software is delivered to the end-users.
-      </p>
-    </div>
-    <div className="qa-prevention-image">
-      <div className="qa-image-container">
-        <Image
-          src="https://weboum.com/wp-content/uploads/2021/07/quality-assurance-2.jpg"
-          alt="Mobile phone with QA icons"
-          width={280}
-          height={300}
-        />
-      </div>
-    </div>
-  </section>
-</div>
-
+            <section className="qa-prevention">
+              <div className="qa-prevention-content">
+                <h2>We Don't Just Detect Issues, We Prevent Them!</h2>
+                <p>
+                  WebOum Technology is one of the industry's leading software
+                  development companies that specialize in building digital
+                  experiences.
+                </p>
+                <p>
+                  We provide meticulous software testing services to ensure that
+                  fully tested, bug-free software goes to the market in less
+                  turnaround time.
+                </p>
+                <p>
+                  End-to-end testing of infrastructure is conducted to ensure
+                  that bug-free software is delivered to the end-users.
+                </p>
+              </div>
+              <div className="qa-prevention-image">
+                <div className="qa-image-container">
+                  <Image
+                    src="https://weboum.com/wp-content/uploads/2021/07/quality-assurance-2.jpg"
+                    alt="Mobile phone with QA icons"
+                    width={280}
+                    height={300}
+                  />
+                </div>
+              </div>
+            </section>
+          </div>
 
           {/* Services Section */}
           <section className="qa-services">
@@ -141,7 +142,7 @@ export default function QualityAssuranceServices() {
                   </p>
                 </div>
               </div>
-              
+
               <div className="qa-service-item">
                 <div className="qa-service-icon">
                   <svg

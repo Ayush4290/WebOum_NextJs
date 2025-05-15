@@ -5,6 +5,8 @@ import "./Days.css";
 import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
+// Uncomment the following if you want to use next/image
+// import Image from "next/image";
 
 const Days = () => {
   useEffect(() => {
@@ -53,18 +55,18 @@ const Days = () => {
       </section>
 
       <section className="DigitalMarketing-connect-section">
-        <div className="DigitalMarketing-connect-container" data-aos="fade-up">
-          <div>
+        <div className="DigitalMarketing-connect-container">
+          <div data-aos="fade-left">
             <h2>What product can we engineer for you?</h2>
             <p>
-              Tell us a little about yourself in the form below and we'll get in
+              Tell us a little about yourself in the form below and we’ll get in
               touch soon for product consultation.
             </p>
           </div>
           <Link
             href="/about-us/contact"
             className="connect-btn"
-            data-aos="fade-up"
+            data-aos="fade-right"
             data-aos-delay="200"
           >
             CONNECT WITH EXPERTS

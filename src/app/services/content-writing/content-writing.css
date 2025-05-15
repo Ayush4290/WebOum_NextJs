@@ -7,12 +7,10 @@
   --bg-light-blue: #f5f9fd;
   --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   --spacing-sm: 0.5rem;
-  --spacing-md: 2rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 3rem;
+  --spacing-md: 1.5rem; /* Reduced for mobile */
+  --spacing-lg: 1rem; /* Reduced for mobile */
+  --spacing-xl: 2rem; /* Reduced for mobile */
 }
-
-
 
 img {
   max-width: 100%;
@@ -21,21 +19,24 @@ img {
 }
 
 .content-section {
-  padding: 60px 0;
+  padding: 2rem 0; /* Reduced padding for mobile */
 }
 
-.content-bg-light-red{
-  background-color:#EDF5F8;
+.content-bg-light-red {
+  background-color: #edf5f8;
 }
+
 .content-bg-light-blue {
   background-image: url(https://weboum.com/wp-content/uploads/2021/05/map-pattern.png);
+  background-size: cover; /* Ensure background scales */
+  background-position: center;
 }
 
 .content-container {
-    max-width: 1260px;
-    margin: 0 191px;
-    padding: 0 29px;
-    box-sizing: border-box;
+  max-width: 1260px;
+  margin: 0 auto; /* Removed large side margins */
+  padding: 0 1rem; /* Reduced padding for mobile */
+  box-sizing: border-box;
 }
 
 .content-custom-row {
@@ -43,14 +44,22 @@ img {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 1.5rem; /* Reduced gap for mobile */
 }
 
 .content-column {
-  flex: 1 1 500px;
-  min-width: 280px;
-  padding: 20px;
+  flex: 1 1 100%; /* Full width on mobile */
+  min-width: 0; /* Prevent overflow */
+  padding: 1rem;
   text-align: left;
+}
+
+@media (min-width: 768px) {
+  .content-column {
+    flex: 1 1 500px;
+    min-width: 280px;
+    padding: 1.5rem;
+  }
 }
 
 .content-center {
@@ -70,61 +79,94 @@ h4,
 h5 {
   font-weight: bold;
   margin-bottom: var(--spacing-md);
-  font-size: 27px;
-  
+  font-size: 1.5rem; /* Smaller for mobile */
+  color: var(--primary-color);
+}
+
+@media (min-width: 768px) {
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-size: 1.8rem; /* Slightly larger for desktop */
+  }
 }
 
 p {
   line-height: 1.7;
-  font-size: 1.1rem;
+  font-size: 1rem; /* Adjusted for mobile */
   margin-bottom: 1rem;
   color: #333;
+}
+
+@media (min-width: 768px) {
+  p {
+    font-size: 1.1rem;
+  }
 }
 
 /* Icon strategy section */
 .content-strategy-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
+  grid-template-columns: 1fr;
+  gap: 1rem; /* Reduced gap for mobile */
   margin-top: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+  .content-strategy-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
 }
 
 .content-strategy-item {
   display: flex;
   align-items: flex-start;
-  gap: 16px;
+  gap: 1rem;
   text-align: left;
 }
 
-content-icon {
-  font-size: 24px;
-  min-width: 54px;
-  height: 13px;
+@media (max-width: 767px) {
+  .content-strategy-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.content-icon {
+  font-size: 1.5rem; /* Adjusted for mobile */
+  min-width: 40px; /* Smaller for mobile */
+  height: auto; /* Flexible height */
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+@media (min-width: 768px) {
+  .content-icon {
+    font-size: 1.8rem;
+    min-width: 54px;
+  }
+}
+
 /* Icon colors */
-.content-text-purple {
-  color:#7F005B;
-  font-size: 20px;
-}
-
-.content-text-pink {
-  color: #7F005B;
-  font-size: 20px;
-
-}
-
-.content-text-danger {
-  color: #7F005B;
-  font-size: 20px;
-}
-
+.content-text-purple,
+.content-text-pink,
+.content-text-danger,
 .content-text-muted {
-  color: #7F005B;
-  font-size: 20px;
+  color: #7f005b;
+  font-size: 1rem; /* Adjusted for mobile */
+}
+
+@media (min-width: 768px) {
+  .content-text-purple,
+  .content-text-pink,
+  .content-text-danger,
+  .content-text-muted {
+    font-size: 1.2rem;
+  }
 }
 
 /* Margin utilities */
@@ -134,33 +176,41 @@ content-icon {
 
 .content-mb-5 {
   margin-bottom: var(--spacing-xl);
-  font-size: 20px;
+  font-size: 1rem; /* Adjusted for mobile */
+}
+
+@media (min-width: 768px) {
+  .content-mb-5 {
+    font-size: 1.2rem;
+  }
 }
 
 .content-mt-3 {
-  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
 }
 
 /* Responsive Layout */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
+  .content-section {
+    padding: 1.5rem 0;
+  }
+
+  .content-container {
+    padding: 0 0.75rem;
+  }
+
   .content-custom-row {
     flex-direction: column;
+    gap: 1rem;
     text-align: center;
   }
 
   .content-column {
-    flex: 1 0 100%;
-    margin-bottom: 30px;
+    margin-bottom: 1rem;
   }
 
   .content-strategy-grid {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .content-strategy-item {
-    flex-direction: column;
-    align-items: center;
     text-align: center;
   }
 }
+

@@ -11,13 +11,16 @@ const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isFixed, setIsFixed] = useState(false); // New state for fixed header
   const menuRef = useRef(null);
   const toggleButtonRef = useRef(null);
+  const headerRef = useRef(null); // Ref for header element
   const dropdownRefs = useRef({});
   const timeoutRefs = useRef({});
   const clickTimeoutRef = useRef(null);
   const hoverDelayRef = useRef(null);
 
+  // Handle mobile detection
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 992);
@@ -28,6 +31,39 @@ const Header = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  // Handle scroll for sticky header
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsFixed(scrollTop > 150); // Fix header after 150px
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Run on mount to handle page refresh
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Update placeholder height on resize
+  useEffect(() => {
+    const updatePlaceholderHeight = () => {
+      if (headerRef.current) {
+        const placeholder = headerRef.current.nextSibling;
+        if (
+          placeholder &&
+          placeholder.classList.contains("header-placeholder")
+        ) {
+          placeholder.style.height = `${headerRef.current.offsetHeight}px`;
+        }
+      }
+    };
+
+    window.addEventListener("resize", updatePlaceholderHeight);
+    updatePlaceholderHeight(); // Run initially
+
+    return () => window.removeEventListener("resize", updatePlaceholderHeight);
+  }, [isFixed]);
+
   const toggleMobileMenu = () => {
     setMobileMenuOpen((prev) => !prev);
     document.body.style.overflow = !mobileMenuOpen ? "hidden" : "auto";
@@ -35,35 +71,28 @@ const Header = () => {
 
   const handleMouseEnter = (menuKey) => {
     if (!isMobile) {
-      // Clear any existing timeouts
       if (timeoutRefs.current[menuKey]) {
         clearTimeout(timeoutRefs.current[menuKey]);
       }
-      
-      // Set a shorter delay for opening the dropdown
       hoverDelayRef.current = setTimeout(() => {
         setActiveDropdown(menuKey);
-      }, 100); // Reduced from 300ms to 100ms for faster opening
+      }, 100);
     }
   };
 
   const handleMouseLeave = (menuKey) => {
     if (!isMobile) {
-      // Clear any existing hover delay
       if (hoverDelayRef.current) {
         clearTimeout(hoverDelayRef.current);
       }
-      
-      // Use a longer delay before closing to give more time to move to the dropdown
       timeoutRefs.current[menuKey] = setTimeout(() => {
         setActiveDropdown(null);
-      }, 800); // Increased from 400ms to 800ms for longer hold time
+      }, 800);
     }
   };
 
   const handleDropdownMouseEnter = (menuKey) => {
     if (!isMobile) {
-      // Clear any existing closing timeout
       if (timeoutRefs.current[menuKey]) {
         clearTimeout(timeoutRefs.current[menuKey]);
       }
@@ -73,10 +102,9 @@ const Header = () => {
 
   const handleDropdownMouseLeave = (menuKey) => {
     if (!isMobile) {
-      // Use a longer delay before closing
       timeoutRefs.current[menuKey] = setTimeout(() => {
         setActiveDropdown(null);
-      }, 600); // Increased from 400ms to 600ms
+      }, 600);
     }
   };
 
@@ -148,7 +176,6 @@ const Header = () => {
 
   useEffect(() => {
     return () => {
-      // Clear all timeouts on unmount
       Object.values(timeoutRefs.current).forEach((timeout) => {
         if (timeout) clearTimeout(timeout);
       });
@@ -240,118 +267,129 @@ const Header = () => {
   };
 
   return (
-    <div className="main-container">
-      <header className="navbar">
-        <div className="navbar-inner">
-          <Link href="/" className="logo">
-            <Image
-              src="/image/logo-1.png"
-              alt="Weboum Logo"
-              className="logo-img"
-              width={150}
-              height={50}
-              priority
-            />
-          </Link>
+    <>
+      <div
+        className={`main-container ${isFixed ? "fixed" : ""}`}
+        ref={headerRef}
+      >
+        <header className="navbar">
+          <div className="navbar-inner">
+            <Link href="/" className="logo">
+              <Image
+                src="/image/logo-1.png"
+                alt="Weboum Logo"
+                className="logo-img"
+                width={150}
+                height={50}
+                priority
+              />
+            </Link>
 
-          <button
-            className="menu-toggle"
-            onClick={toggleMobileMenu}
-            aria-label="Toggle navigation"
-            ref={toggleButtonRef}
-          >
-            <span className={mobileMenuOpen ? "close-icon" : "hamburger-icon"}>
-              {mobileMenuOpen ? "✕" : "≡"}
-            </span>
-          </button>
-
-          {isMobile && (
-            <div
-              className={`menu-overlay ${mobileMenuOpen ? "active" : ""}`}
+            <button
+              className="menu-toggle"
               onClick={toggleMobileMenu}
-            ></div>
-          )}
+              aria-label="Toggle navigation"
+              ref={toggleButtonRef}
+            >
+              <span
+                className={mobileMenuOpen ? "close-icon" : "hamburger-icon"}
+              >
+                {mobileMenuOpen ? "✕" : "≡"}
+              </span>
+            </button>
 
-          <nav
-            className={`menu ${mobileMenuOpen ? "menu-open" : ""}`}
-            ref={menuRef}
-          >
-            <ul className="menu-list">
-              {menuData.map((menu, index) => {
-                if (menu.isButton) {
-                  return <li key={index}>{renderContactButton(menu)}</li>;
-                }
+            {isMobile && (
+              <div
+                className={`menu-overlay ${mobileMenuOpen ? "active" : ""}`}
+                onClick={toggleMobileMenu}
+              ></div>
+            )}
 
-                if (menu.items) {
-                  return (
-                    <li
-                      className={`menu-dropdown ${menu.dropdownKey}`}
-                      key={index}
-                      onMouseEnter={() => handleMouseEnter(menu.dropdownKey)}
-                      onMouseLeave={() => handleMouseLeave(menu.dropdownKey)}
-                    >
-                      <div
-                        className="menu-link"
-                        onClick={(event) =>
-                          handleMenuItemClick(menu.dropdownKey, event)
-                        }
+            <nav
+              className={`menu ${mobileMenuOpen ? "menu-open" : ""}`}
+              ref={menuRef}
+            >
+              <ul className="menu-list">
+                {menuData.map((menu, index) => {
+                  if (menu.isButton) {
+                    return <li key={index}>{renderContactButton(menu)}</li>;
+                  }
+
+                  if (menu.items) {
+                    return (
+                      <li
+                        className={`menu-dropdown ${menu.dropdownKey}`}
+                        key={index}
+                        onMouseEnter={() => handleMouseEnter(menu.dropdownKey)}
+                        onMouseLeave={() => handleMouseLeave(menu.dropdownKey)}
                       >
-                        <span className="menu-item-content">
-                          {menu.label}
-                          <BiCaretDown
-                            className={`menu-icon ${
-                              activeDropdown === menu.dropdownKey
-                                ? "rotate"
-                                : ""
-                            }`}
-                            onClick={(event) =>
-                              handleIconClick(menu.dropdownKey, event)
-                            }
-                          />
-                        </span>
-                      </div>
-                      {menu.dropdownKey && (
-                        <ul
-                          className={`dropdown ${
-                            activeDropdown === menu.dropdownKey ? "active" : ""
-                          }`}
-                          ref={(el) =>
-                            (dropdownRefs.current[menu.dropdownKey] = el)
-                          }
-                          onMouseEnter={() =>
-                            handleDropdownMouseEnter(menu.dropdownKey)
-                          }
-                          onMouseLeave={() =>
-                            handleDropdownMouseLeave(menu.dropdownKey)
+                        <div
+                          className="menu-link"
+                          onClick={(event) =>
+                            handleMenuItemClick(menu.dropdownKey, event)
                           }
                         >
-                          {renderDropdownItems(
-                            menu.items,
-                            menu.dropdownKey === "services"
-                          )}
-                        </ul>
-                      )}
+                          <span className="menu-item-content">
+                            {menu.label}
+                            <BiCaretDown
+                              className={`menu-icon ${
+                                activeDropdown === menu.dropdownKey
+                                  ? "rotate"
+                                  : ""
+                              }`}
+                              onClick={(event) =>
+                                handleIconClick(menu.dropdownKey, event)
+                              }
+                            />
+                          </span>
+                        </div>
+                        {menu.dropdownKey && (
+                          <ul
+                            className={`dropdown ${
+                              activeDropdown === menu.dropdownKey
+                                ? "active"
+                                : ""
+                            }`}
+                            ref={(el) =>
+                              (dropdownRefs.current[menu.dropdownKey] = el)
+                            }
+                            onMouseEnter={() =>
+                              handleDropdownMouseEnter(menu.dropdownKey)
+                            }
+                            onMouseLeave={() =>
+                              handleDropdownMouseLeave(menu.dropdownKey)
+                            }
+                          >
+                            {renderDropdownItems(
+                              menu.items,
+                              menu.dropdownKey === "services"
+                            )}
+                          </ul>
+                        )}
+                      </li>
+                    );
+                  }
+
+                  return (
+                    <li key={index}>
+                      <Link
+                        href={menu.href}
+                        className="menu-link"
+                        onClick={handleDropdownItemClick}
+                      >
+                        {menu.label}
+                      </Link>
                     </li>
                   );
-                }
-
-                return (
-                  <li key={index}>
-                    <Link
-                      href={menu.href}
-                      className="menu-link"
-                      onClick={handleDropdownItemClick}
-                    >
-                      {menu.label}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
-        </div>
-      </header>
-    </div>
+                })}
+              </ul>
+            </nav>
+          </div>
+        </header>
+      </div>
+      {/* Placeholder div to prevent content jump */}
+      {isFixed && <div className="header-placeholder"></div>}
+    </>
   );
 };
 

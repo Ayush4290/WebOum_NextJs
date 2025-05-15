@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="https://stage.weboum.com/wp-content/uploads/2024/10/icon-weboum.png" />
+        <link rel="icon" href="https://weboum.com/wp-content/uploads/2024/10/icon-weboum.png" />
       </head>
       <body>
         <Header />

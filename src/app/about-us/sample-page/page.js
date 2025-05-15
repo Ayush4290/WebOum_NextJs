@@ -8,13 +8,12 @@ import {
   Users,
   Map,
   X,
-  Code,
   UserCog,
-  Wrench,
   CheckCircle,
   Star,
   Quote,
 } from "lucide-react";
+import { FaTools, FaCode, FaUserCog } from "react-icons/fa";
 import Days from "../days/page";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
@@ -56,12 +55,12 @@ export default function SamplePage() {
   }, []);
 
   // Scroll to "Why Us" section on initial load
+  // Scroll to "Why Us" section on initial load, but not in mobile view
   useEffect(() => {
-    if (whyUsRef.current) {
+    if (whyUsRef.current && window.innerWidth >= 768) {
       whyUsRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, []);
-
   const openLightbox = (src) => {
     document.getElementById("samplePage_lightbox-img").src = src;
     document.getElementById("samplePage_lightbox").classList.add("active");
@@ -634,7 +633,6 @@ Message: ${sanitizedFormData.message}
                   required
                   disabled={isSubmitting}
                 >
-                 
                   <option value="Project Development">
                     Project Development
                   </option>
@@ -699,43 +697,44 @@ Message: ${sanitizedFormData.message}
           </div>
         </section>
 
-        <section className="samplePage_services-section">
-          <div className="samplePage_service-box">
-            <a href="/services/application-developer">
-              <Code size={56} className="samplePage_icon-blue" />
-              <h3>App Design & Development</h3>
-            </a>
-            <p>
-              Our team of expert software developers focused on delivering
-              best-in-class, user friendly top-notch applications that perform
-              better across multiple platforms to achieve long term success.
-            </p>
-          </div>
+       <section className="samplePage_services-section">
+      <div className="samplePage_service-box">
+        <a href="/services/application-developer">
+        
+          <FaCode className="samplePage_icon-blue"/>
+          <h3>App Design & Development</h3>
+        </a>
+        <p>
+          Our team of expert software developers focused on delivering
+          best-in-class, user-friendly top-notch applications that perform
+          better across multiple platforms to achieve long-term success.
+        </p>
+      </div>
 
-          <div className="samplePage_service-box">
-            <a href="/services/on-demand-developers">
-              <UserCog size={56} className="samplePage_icon-orange" />
-              <h3>On-Demand Developers</h3>
-            </a>
-            <p>
-              Everything under one roof, give you peace of mind. We are happy to
-              hire skilled cum industry experience developers and on-premise IT
-              infrastructure flexibility to accelerate your performance.
-            </p>
-          </div>
+      <div className="samplePage_service-box">
+        <a href="/services/on-demand-developers">
+          <FaUserCog className="samplePage_icon-orange" />
+          <h3>On-Demand Developers</h3>
+        </a>
+        <p>
+          Everything under one roof, giving you peace of mind. We are happy to
+          hire skilled, industry-experienced developers and provide on-premise IT
+          infrastructure flexibility to accelerate your performance.
+        </p>
+      </div>
 
-          <div className="samplePage_service-box">
-            <a href="/services/product-support">
-              <Wrench size={56} className="samplePage_icon-green" />
-              <h3>Product Support</h3>
-            </a>
-            <p>
-              Our global strategic partner enables us to create next generation
-              robust products and IT consulting, efficiently and make us quickly
-              technical support solutions for any upcoming complexity.
-            </p>
-          </div>
-        </section>
+      <div className="samplePage_service-box">
+        <a href="/services/product-support">
+          <FaTools className="samplePage_icon-green" />
+          <h3>Product Support</h3>
+        </a>
+        <p>
+          Our global strategic partners enable us to create next-generation
+          robust products and IT consulting, efficiently providing quick
+          technical support solutions for any upcoming complexity.
+        </p>
+      </div>
+    </section>
 
         <section className="samplePage_stats-section">
           <div className="samplePage_stats">

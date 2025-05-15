@@ -18,7 +18,7 @@
 /* Hero Section */
 .qa-hero {
   text-align: center;
-  margin: 30px 0;
+  margin: 5px 0;
 }
 
 .qa-hero h2 {
@@ -52,20 +52,18 @@
 .qa-info-text {
   flex: 1 1;
   font-size: 1rem;
-  color: #333333;
+  color:black;
   line-height: 1.6;
   margin-bottom: 2.2rem;
   padding: 20px 57px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
 }
-
 
 .qa-info h2 {
   font-size: 1.6rem;
   font-weight: bold;
   margin-bottom: 15px;
-  color: #0d0c0d;
+   color:black;
 }
 
 .qa-info p {
@@ -76,7 +74,6 @@
 
 .qa-info-image {
   flex: 1;
- 
   width: 100%;
   height: 400px;
   max-width: 400px;
@@ -93,7 +90,7 @@
   font-weight: bold;
   text-align: center;
   margin-bottom: 15px;
-  color: #110f11;
+    color:black;
 }
 
 .qa-services-description {
@@ -135,7 +132,7 @@
 }
 
 .qa-service-content h3 {
-  color: #0f1011;
+    color:black;
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 8px;
@@ -153,11 +150,8 @@
   margin-right: auto;
   line-height: 1.5;
   font-style: italic;
-  color: #555;
+  color:black;
 }
-
-
-
 
 /* Fixes for Prevention Section */
 .qa-prevention-wrapper {
@@ -185,14 +179,14 @@
 .qa-prevention-content h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: #333;
+    color:black;
 }
 
 .qa-prevention-content p {
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 1rem;
-  color: #555;
+    color:black;
 }
 
 .qa-prevention-image {
@@ -209,9 +203,6 @@
   display: block;
   border-radius: 10px;
 }
-
-
-
 
 .qa-image-overlay {
   position: absolute;
@@ -374,16 +365,54 @@
     font-size: 1rem;
   }
 
+  /* Corrected styles for the specific section */
+  .qa-prevention-wrapper {
+    width: 100%; /* Avoid viewport width to prevent overflow */
+    margin-left: 0; /* Remove negative margin */
+    background-color: #f2f7fb;
+  }
+
   .qa-prevention {
-    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Stack vertically */
+    max-width: 100%; /* Full width */
+    margin: 0; /* Remove large side margins */
+    padding: 1rem; /* Reduced padding */
+    gap: 1rem; /* Reduced gap */
+  }
+
+  .qa-prevention-content {
+    min-width: 0; /* Prevent overflow */
   }
 
   .qa-prevention-content h2 {
-    font-size: 1.4rem;
+    font-size: 1.4rem; /* Adjusted for mobile */
+    margin-bottom: 0.75rem;
+    text-align: center; /* Centered for better mobile appearance */
+  }
+
+  .qa-prevention-content p {
+    font-size: 0.95rem; /* Adjusted for mobile */
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+    text-align: center; /* Centered for better mobile appearance */
+  }
+
+  .qa-prevention-image {
+    min-width: 0; /* Prevent overflow */
+    display: flex;
+    justify-content: center;
   }
 
   .qa-image-container {
-    width: 200px;
+    width: auto; /* Remove fixed width */
+  }
+
+  .qa-image-container img {
+    max-width: 100%;
+    height: auto; /* Flexible height for scaling */
+    width: 100%; /* Full width within container */
+    border-radius: 10px;
   }
 
   .qa-overlay-content h3 {
@@ -409,6 +438,40 @@
   .qa-chat-button button svg {
     width: 18px;
     height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .qa-prevention-content h2 {
+    font-size: 1.2rem; /* Further reduced */
+  }
+
+  .qa-prevention-content p {
+    font-size: 0.9rem; /* Further reduced */
+  }
+
+  .qa-hero h2 {
+    font-size: 1.3rem;
+  }
+
+  .qa-hero p {
+    font-size: 0.8rem;
+  }
+
+  .qa-info h2 {
+    font-size: 1.2rem;
+  }
+
+  .qa-services h2 {
+    font-size: 1.3rem;
+  }
+
+  .qa-service-content h3 {
+    font-size: 0.95rem;
+  }
+
+  .qa-overlay-content h3 {
+    font-size: 1rem;
   }
 }
 
@@ -454,4 +517,11 @@
   .qa-overlay-content h3 {
     font-size: 1.5rem;
   }
+}
+
+/* Prevent horizontal scrolling */
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }

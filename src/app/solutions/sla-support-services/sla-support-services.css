@@ -1,6 +1,6 @@
 :root {
   --primary-color: #6a005f;
-  --text-color: #333;
+  --text-color:black;
   --heading-color: #111;
   --background-light: #f4f8fb;
   --font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -93,16 +93,9 @@
   border-radius: 10px;
 }
 
-
-
-
-
-
 /* Benefits Block */
 .support-benefits {
-
   padding: var(--spacing);
- 
   margin-top: 3rem;
   margin-bottom: 3rem;
 }
@@ -146,7 +139,6 @@
   text-align: center;
   margin-top: var(--spacing);
   padding: 2rem;
-
   color: #fff;
   border-radius: var(--radius);
 }
@@ -215,6 +207,47 @@
   .support-call-to-action {
     padding: 1.5rem;
   }
+
+  /* Corrected styles for the specific section */
+  .support-wrapper {
+    width: 100%; /* Avoid viewport width to prevent overflow */
+    margin-left: 0; /* Remove negative margin */
+    background-color: #f0f6fa;
+  }
+
+  .supportManger {
+    max-width: 100%; /* Full width */
+    margin: 0; /* Remove large side margins */
+    padding: 1rem; /* Reduced padding */
+  }
+
+  .support-section-row {
+    gap: 1rem; /* Reduced gap */
+  }
+
+  .support-section-text {
+    min-width: 0; /* Prevent overflow */
+  }
+
+  .support-section-heading {
+    font-size: 1.4rem; /* Adjusted for mobile */
+    text-align: center; /* Centered for better mobile appearance */
+  }
+
+  .support-section-text p {
+    font-size: 0.95rem; /* Adjusted for mobile */
+    text-align: center; /* Centered for better mobile appearance */
+  }
+
+  .support-section-image {
+    min-width: 0; /* Prevent overflow */
+  }
+
+  .support-section-image img {
+    max-width: 100%;
+    height: auto; /* Flexible height for scaling */
+    border-radius: 10px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -223,11 +256,11 @@
   }
 
   .support-section-heading {
-    font-size: 1.5rem;
+    font-size: 1.2rem; /* Further reduced */
   }
 
   .support-section-text {
-    font-size: 1rem;
+    font-size: 0.9rem; /* Further reduced */
   }
 
   .support-section-p {
@@ -252,5 +285,10 @@
 
   .support-call-to-action {
     padding: 1rem;
+  }
+
+  /* Additional adjustments for the specific section */
+  .support-section-text p {
+    font-size: 0.9rem; /* Further reduced */
   }
 }

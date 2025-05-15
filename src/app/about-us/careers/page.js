@@ -134,7 +134,7 @@ const Careers = () => {
     </tr>
     <tr>
       <td>
-        <p>A new candidate has submitted an application for a position at Weboum Technology.</p>
+        <p>A new candidate has submitted an application for ${sanitizedFormData.post} at Weboum Technology.</p>
       </td>
     </tr>
     <tr>

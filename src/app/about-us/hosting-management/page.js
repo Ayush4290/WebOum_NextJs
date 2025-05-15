@@ -142,7 +142,7 @@ export default function WebHosting() {
         <div className="client-logoshosting-wrapper">
           <div className="client-logoshosting">
             <Image
-              src="https://stage.weboum.com/wp-content/uploads/2024/11/Siteground-1.png"
+              src="https://weboum.com/wp-content/uploads/2024/11/Siteground-1.png"
               alt="SiteGround"
               width={100}
               height={50}

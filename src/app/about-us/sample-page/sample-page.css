@@ -63,7 +63,9 @@
   color: white;
   font-weight: 600;
   text-decoration: none;
-  transition: background-color 0.3s, transform 0.3s;
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
 }
 
 .samplePage_btn-primary:hover {
@@ -81,7 +83,10 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    transform 0.3s;
 }
 
 .samplePage_btn-outline:hover {
@@ -145,7 +150,9 @@
   color: #2c7be5;
   font-size: 32px;
   margin-bottom: 10px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
 }
 
 .samplePage_icon-circle:hover {
@@ -315,7 +322,9 @@
   padding: 14px 30px;
   border-radius: 6px;
   font-size: 18px;
-  transition: background-color 0.3s ease, transform 0.3s;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s;
 }
 
 .viewMoreButton:hover {
@@ -374,7 +383,9 @@
   font-weight: bold;
   text-decoration: none;
   border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.3s;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s;
   margin-left: 90px;
 }
 
@@ -455,7 +466,9 @@
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
 }
 
 .whyus-feature:hover {
@@ -529,7 +542,9 @@
   border-radius: 6px;
   border: 1px solid #ddd;
   font-size: 1rem;
-  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  transition:
+    border-color 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
 }
 
 .whyus-form-control:focus,
@@ -576,7 +591,9 @@
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transition:
+    background-color 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
 }
 
 .whyus-btn-submit:hover {
@@ -588,7 +605,17 @@
   transform: translateY(0);
 }
 
-/* Services boxes styles */
+
+
+
+
+
+
+
+
+
+
+
 .samplePage_services-section {
   display: flex;
   justify-content: center;
@@ -613,15 +640,6 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.samplePage_service-box i {
-  font-size: 40px;
-  margin-bottom: 10px;
-  padding: 20px;
-  border-radius: 50%;
-  color: white;
-  display: inline-block;
-}
-
 .samplePage_service-box a {
   text-decoration: none !important;
 }
@@ -632,13 +650,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  width: 125px;
-  height: 85px;
-  border-radius: 47%;
-  font-size: 32px;
-  margin: 0 auto;
-  transition: transform 0.3s;
+  width: 64px; /* Matches the image's icon size */
+  height: 64px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  color: #fff;
+  font-size: 32px; /* Matches the image's icon scale */
+  transition: transform 0.3s ease;
 }
 
 .samplePage_icon-blue:hover,
@@ -672,6 +690,14 @@
   color: #444;
   line-height: 1.6;
 }
+
+
+
+
+
+
+
+
 
 /* Stats section styles */
 .samplePage_stats-section {
@@ -913,9 +939,14 @@
 /* Mobile view (max-width: 767px) */
 @media (max-width: 767px) {
   .samplePage_business-section {
+    display: flex;
     flex-direction: column;
     text-align: center;
     padding: 30px 5%;
+    min-height: auto;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
   }
 
   .samplePage_content h1 {
@@ -932,10 +963,16 @@
 
   .samplePage_image {
     margin-top: 20px;
+    width: 100%;
   }
 
   .samplePage_servicess-section {
+    display: block;
     padding: 40px 7%;
+    min-height: auto;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
   }
 
   .samplePage_servicess-container {
@@ -943,9 +980,14 @@
   }
 
   .samplePage_services-section {
+    display: flex;
     flex-direction: column;
     align-items: center;
     padding: 40px 5%;
+    min-height: auto;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
   }
 
   .samplePage_service-box {
@@ -954,7 +996,12 @@
   }
 
   .samplePage_stats-section {
+    display: block;
     padding: 20px 10px;
+    min-height: auto;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
   }
 
   .samplePage_stats {
@@ -970,7 +1017,12 @@
   }
 
   .samplePage_testimonial-section {
+    display: block;
     padding: 40px 10px;
+    min-height: auto;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
   }
 
   .samplePage_testimonial-slider {
@@ -983,20 +1035,35 @@
     margin-right: 15px;
   }
 
+  .samplePage_portfolio-section {
+    display: block;
+    min-height: auto;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+  }
+
   .samplePage_portfolio {
     grid-template-columns: 1fr;
   }
 
   .whyus-section-wrapper {
+    display: block !important; /* Force visibility */
     padding: 30px 10px;
     background-image: none;
     background-color: white;
     min-height: auto;
-    display: block;
+    overflow: visible;
+    position: relative;
+    z-index: 2; /* Ensure it’s above other elements */
+    width: 100%;
+    margin: 0 auto;
+    visibility: visible;
   }
 
   .whyus-row {
     display: block;
+    width: 100%;
   }
 
   .whyus-left-content {
@@ -1008,9 +1075,46 @@
     margin-top: 20px;
   }
 
+  .ma {
+    display: flex !important; /* Force visibility */
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 10px;
+    min-height: auto;
+    overflow: visible;
+    position: relative;
+    z-index: 2; /* Ensure it’s above other elements */
+    width: 100%;
+    visibility: visible;
+  }
+
+  .ma-content {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .buttonAsk {
+    margin-left: 0; /* Center button in mobile */
+  }
+
+  .tech-logos-container {
+    display: block;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+  }
+
   .container {
     max-width: 100%;
     padding: 0 10px;
+  }
+
+  /* Ensure parent container doesn’t hide sections */
+  .samplePageContainer {
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+    width: 100%;
   }
 }
 

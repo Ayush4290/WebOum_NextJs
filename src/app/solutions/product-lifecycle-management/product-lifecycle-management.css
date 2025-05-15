@@ -10,11 +10,12 @@
 
 .page {
   font-family: Arial, sans-serif;
-  color: #333;
+  color: var(--text-color);
   line-height: 1.6;
-  margin: 0 200px;
+  margin: 0 auto;
   padding: 1rem;
   max-width: 1200px;
+  box-sizing: border-box;
 }
 
 .full-width {
@@ -79,7 +80,7 @@
 
 @media (min-width: 768px) {
   .section-text {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
 }
 
@@ -127,7 +128,13 @@
 
 .list li {
   margin-bottom: 0.5rem;
-  font-size: 1rem;
+  font-size: 0.95rem;
+}
+
+@media (min-width: 768px) {
+  .list li {
+    font-size: 1rem;
+  }
 }
 
 .container {
@@ -180,13 +187,21 @@
 
 .card {
   background: var(--card-bg);
-  padding: 1.5rem;
+  padding: 1rem;
   border-radius: var(--radius);
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.5rem;
   align-items: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .card {
+    flex-direction: row;
+    padding: 1.5rem;
+  }
 }
 
 .card:hover {
@@ -195,18 +210,67 @@
 
 .card img {
   flex-shrink: 0;
-  max-width: 60px;
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  .card img {
+    width: 60px;
+    height: 60px;
+  }
 }
 
 .card-title {
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-bottom: 0.5rem;
   color: var(--primary-color);
 }
 
+@media (min-width: 768px) {
+  .card-title {
+    font-size: 1.2rem;
+  }
+}
+
+.card p {
+  font-size: 0.95rem;
+}
+
+@media (min-width: 768px) {
+  .card p {
+    font-size: 1rem;
+  }
+}
+
 .bottom-note {
   text-align: center;
-  margin-top: 2rem;
-  font-size: 1rem;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+  .bottom-note {
+    margin-top: 2rem;
+    font-size: 1rem;
+  }
+}
+
+.benefits {
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .benefits {
+    padding: 2rem;
+  }
+}
+
+/* Prevent horizontal scrolling */
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }

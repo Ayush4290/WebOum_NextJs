@@ -41,31 +41,18 @@ export default function DevOps() {
       </div>
 
       <div className="devops-section">
-        <div className="devopsSection">
-          <div className="devops-image-box">
-          <Image
-            src="/image/devops/devOps2.jpg"
-            alt="DevOps Innovation Illustration"
-            width={400}
-            height={250}
-          />
-        </div>
-        <div className="devops-text-box">
-          <h2>
-            Our DevOps Expertise Has Led DevOps Innovation For Many Businesses!
-          </h2>
-          <p>
-            We have made a huge difference in accelerating the growth of numerous businesses through our DevOps advisory services and their successful improvements.
-          </p>
-          <p>
-            We help businesses streamline and automate the work flow of their private behavior, right from the design, development, deployment and other operations.
-          </p>
-          <p>
-            DevOps enables profitability for an embedded or scalable business for only 10% reliability of operation, as it is the main tool that development of applications can discover, understand time.
-          </p>
-        </div>
-        </div>
-      </div>
+  <div className="devopsSection">
+    <div className="devops-image-box">
+      <Image src="/image/devops/devOps2.jpg" alt="DevOps Innovation Illustration" width={400} height={250} />
+    </div>
+    <div className="devops-text-box">
+      <h2>Our DevOps Expertise Has Led DevOps Innovation For Many Businesses!</h2>
+      <p>We have made a huge difference in accelerating the growth of numerous businesses through our DevOps advisory services and their successful improvements.</p>
+      <p>We help businesses streamline and automate the work flow of their private behavior, right from the design, development, deployment and other operations.</p>
+      <p>DevOps enables profitability for an embedded or scalable business for only 10% reliability of operation, as it is the main tool that development of applications can discover, understand time.</p>
+    </div>
+  </div>
+</div>
 
       <div className="devops-benefits-section">
         <h2>Avail Our DevelopServices And Enjoy Several Benefits!</h2>
