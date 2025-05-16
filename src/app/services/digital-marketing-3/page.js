@@ -1,7 +1,5 @@
-"use client";
-
-import Days from "@/app/about-us/days/page";
-import SubHeader from "@/app/sub-header/page";
+import Days from "../../about-us/days/page";
+import SubHeader from "../../sub-header/page";
 import "./digital-marketing-3.css";
 import Image from "next/image";
 
@@ -12,6 +10,10 @@ import {
   FaCloudSunRain,
   FaCheckCircle,
 } from "react-icons/fa";
+
+export const metadata = {
+  title: "Digital Marketing - Weboum Technology Pvt. Ltd",
+};
 
 export default function DigitalMarketing() {
   return (

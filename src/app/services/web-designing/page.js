@@ -1,9 +1,11 @@
-"use client";
-
-import Days from "@/app/about-us/days/page";
-import SubHeader from "@/app/sub-header/page";
+import Days from "../../about-us/days/page";
+import SubHeader from "../../sub-header/page";
 import Image from "next/image";
 import "./web-designing.css";
+
+export const metadata = {
+  title: "Web Designing - Weboum Technology Pvt. Ltd",
+};
 
 const WebsiteDesign = () => {
   return (
@@ -15,8 +17,7 @@ const WebsiteDesign = () => {
           <div className="row align-center margin-bottom-5">
             <div className="column-md-6">
               <h3 className="section-title">
-                Entice your website visitors with
-                jaw-dropping website designs!
+                Entice your website visitors with jaw-dropping website designs!
               </h3>
               <p className="font-italic margin-top-3">
                 Hire web design experts to create compelling website designs and
@@ -75,19 +76,19 @@ const WebsiteDesign = () => {
                 evolving continuously, and in an ever-changing world, it is
                 crucial to stay on top.
               </p>
-              <br/>
+              <br />
               <p>
                 Avail of our responsive website and mobile application design
-                services to take your business to the next level. We
-                understand that no two businesses are alike, and hence offer
-                services that are most suitable for your business.
+                services to take your business to the next level. We understand
+                that no two businesses are alike, and hence offer services that
+                are most suitable for your business.
               </p>
               <p>
                 With years of experience in the industry, we are well-aware of
                 what works and what doesn't. Our extensive expertise helps us
-                deliver results-driven design services. We offer bespoke
-                designs and have the best consultants, UI/UX designers,
-                experts in our team to cater to varied needs.
+                deliver results-driven design services. We offer bespoke designs
+                and have the best consultants, UI/UX designers, experts in our
+                team to cater to varied needs.
               </p>
             </div>
           </div>
@@ -138,7 +139,8 @@ const WebsiteDesign = () => {
         </section>
 
         {/* Why Choose Us Section */}
-        <div className="why-choose-us">
+       <div className="webPoint">
+         <div className="why-choose-us">
           <h2>Why Choose Weboum Technology As Your Website Design Partner?</h2>
           <ul>
             {[
@@ -160,6 +162,7 @@ const WebsiteDesign = () => {
             ))}
           </ul>
         </div>
+       </div>
       </div>
       <Days />
     </>

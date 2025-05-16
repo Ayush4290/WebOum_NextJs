@@ -1,11 +1,11 @@
-import Days from "@/app/about-us/days/page";
+import Days from "../../about-us/days/page";
 import SubHeader from "@/app/sub-header/page";
 import Image from "next/image";
 import "./product-lifecycle-management.css";
 
 // Metadata for SEO
 export const metadata = {
-  title: "Product Lifecycle Management – WebOum Technology",
+  title: "Product Lifecycle Management – Weboum Technology Pvt. Ltd",
   description:
     "Streamline your product lifecycle with WebOum Technology's PLM solutions, integrating data, processes, and systems for enhanced efficiency and faster market entry.",
 };

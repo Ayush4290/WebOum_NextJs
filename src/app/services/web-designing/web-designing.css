@@ -27,9 +27,8 @@ h4 {
 
 .image-fluid {
   border-radius: 10px;
-  max-height: 250px;
+  height: 100%;
   width: 100%;
-  object-fit: cover;
   margin-bottom: 1.5rem; /* Added gap below images */
 }
 
@@ -74,7 +73,7 @@ h4 {
   padding: 0 15px; /* Increased padding for gap between columns */
 }
 
-.column-md-6 p{
+.column-md-6 p {
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -89,7 +88,7 @@ h4 {
 
 /* Main container for the full-width section */
 .web-design {
-  background-color: #EDF5F8; /* Red background */
+  background-color: #EDF5F8; /* Light background */
   width: 100%; /* Full viewport width */
   margin: 0; /* Remove margins to ensure full width */
   padding: 60px 0; /* Adjusted padding to only affect top and bottom */
@@ -104,17 +103,27 @@ h4 {
   box-sizing: border-box;
 }
 
+.webPoint {
+  background-color: red; /* Red background */
+  width: 100%; /* Full viewport width */
+  margin: 0; /* Remove margins to ensure full width */
+  padding: 60px 0; /* Padding for top and bottom */
+  box-sizing: border-box; /* Ensure padding is included in width */
+}
+
 .why-choose-us {
-  max-width: 100%;
-  margin: 40px auto 20px auto;
-  padding: 0 10px;
+  max-width: 1200px; /* Match the max-width of webContainer for consistency */
+  margin: 0 auto; /* Center the content */
+  padding: 0 20px; /* Consistent padding with other sections */
+  box-sizing: border-box;
 }
 
 .why-choose-us h2 {
   text-align: center;
   margin-bottom: 20px;
-  font-size: 1.8rem;
-  color: #212529;
+  font-size: 2rem; /* Slightly larger for better readability */
+  color: #ffffff; /* White color to contrast with red background */
+  font-weight: 700; /* Ensure bold text */
 }
 
 .why-choose-us ul {
@@ -126,18 +135,18 @@ h4 {
   margin-bottom: 15px;
   display: flex;
   align-items: flex-start;
-  color: #212529;
+  color: #ffffff; /* White color for list items to contrast with red background */
   padding-left: 10px; /* Added gap on the left side of list items */
 }
 
 .why-choose-us .tick {
-  color: #212529;
+  color: #ffffff; /* White color for ticks to contrast with red background */
   margin-right: 12px; /* Increased gap between tick and text */
   font-size: 1.2rem;
 }
 
 .why-choose-us .highlight {
-  border-bottom: 2px solid #212529;
+  border-bottom: 2px solid #ffffff; /* White underline to match text color */
   padding-bottom: 4px;
 }
 
@@ -186,7 +195,7 @@ h4 {
   }
 
   .why-choose-us h2 {
-    font-size: 2rem;
+    font-size: 2.2rem; /* Slightly larger for medium screens */
   }
 }
 

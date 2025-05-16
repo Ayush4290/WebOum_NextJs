@@ -1,6 +1,10 @@
-"use client";
+
 
 import Image from "next/image";
+
+export const metadata = {
+  title: "On Demand Developers - Weboum Technology Pvt. Ltd",
+};
 
 export default function DemandDeveloper() {
   return (
@@ -9,7 +13,7 @@ export default function DemandDeveloper() {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: "10px 189px 189px 189px", // Consolidated padding (top: 10px, others: 189px)
+        padding: "10px 189px 189px 189px", 
         background: "linear-gradient(180deg, #4B0082 0%, #FFFFFF 100%)",
         minHeight: "400px",
       }}

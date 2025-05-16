@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
-/* Root variables for consistent colors */
 :root {
   --primary-purple: #800080;
   --primary-blue: #3b3b98;
@@ -12,12 +11,11 @@
   --shadow-hover: 0 5px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* Base styles (Mobile-first) */
 .web-development {
   width: 100%;
   color: #000000;
   font-family: "Poppins", Sans-serif;
-  font-size: 14px; /* Smaller base font for mobile */
+  font-size: 14px;
   font-weight: 400;
   line-height: 1.6;
 }
@@ -26,25 +24,25 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 10px; /* Reduced padding for mobile */
+  padding: 0 10px;
   font-family: "Poppins", Sans-serif;
   box-sizing: border-box;
 }
 
 .web-container em {
-  font-size: 1.1rem; /* Slightly smaller for mobile */
+  font-size: 1.1rem;
 }
 
 /* Feature Section */
 .feature-bg-section {
   background-color: var(--bg-light);
-  padding: 20px 0; /* Reduced padding for mobile */
+  padding: 20px 0;
 }
 
 .feature-row {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -8px; /* Tighter margins for mobile */
+  margin: 0 -8px;
 }
 
 .feature-column {
@@ -59,7 +57,9 @@
   padding: 16px;
   text-align: center;
   box-shadow: var(--shadow-light);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   height: 100%;
 }
 
@@ -69,14 +69,14 @@
 }
 
 .feature-card i {
-  font-size: 32px; /* Slightly smaller for mobile */
+  font-size: 32px;
   color: var(--primary-purple);
   margin-bottom: 12px;
 }
 
 .feature-card h5 {
   font-weight: 600;
-  font-size: 14px; /* Smaller for mobile */
+  font-size: 14px;
   color: var(--primary-blue);
   margin-bottom: 8px;
 }
@@ -90,13 +90,13 @@
 
 .icons {
   color: var(--primary-purple);
-  width: 120px; /* Smaller for mobile */
+  width: 120px;
   height: 32px;
 }
 
 /* Features Section */
 .features-section {
-  padding: 40px 10px; /* Reduced and flexible padding */
+  padding: 40px 10px;
 }
 
 .features-intro {
@@ -154,7 +154,7 @@
 
 .container-process-section {
   background-color: #fff;
-  padding: 30px 10px; /* Reduced padding */
+  padding: 30px 10px;
   padding-top: 16px;
 }
 
@@ -162,7 +162,7 @@
   font-weight: 700;
   text-align: center;
   margin-bottom: 0.5rem;
-  font-size: 1.6rem; /* Smaller for mobile */
+  font-size: 1.6rem;
   color: var(--primary-blue);
 }
 
@@ -184,7 +184,7 @@
 
 .solution-card-wrapper {
   width: 100%;
-  max-width: 300px; /* Slightly smaller for mobile */
+  max-width: 300px;
   padding: 8px;
   box-sizing: border-box;
 }
@@ -196,7 +196,9 @@
   height: 100%;
   text-align: center;
   box-shadow: var(--shadow-light);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .solution-card:hover {
@@ -211,7 +213,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 120px;
+  width: 260px;
   height: 32px;
 }
 
@@ -271,6 +273,25 @@
   padding: 12px;
   gap: 10px;
   margin-bottom: 16px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+/* Ensure icon and text stack properly on mobile */
+@media (max-width: 767px) {
+  .process-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .process-icon {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .process-row {
+    margin: 0 10px; /* Reduce margin on mobile for better spacing */
+  }
 }
 
 /* Tech Section */
@@ -311,8 +332,8 @@
   display: block;
   margin: 0 auto;
   width: 100%;
-  max-width: 80px; /* Smaller for mobile */
-  height: auto; /* Replaced percentage with auto for consistency */
+  max-width: 80px;
+  height: auto;
   object-fit: contain;
 }
 
@@ -334,7 +355,7 @@
 /* Responsive Styles */
 @media (min-width: 480px) {
   .web-development {
-    font-size: 15px; /* Slightly larger for small tablets */
+    font-size: 15px;
   }
 
   .web-container {
@@ -360,7 +381,7 @@
 
 @media (min-width: 768px) {
   .web-development {
-    font-size: 16px; /* Standard font size for tablets/desktops */
+    font-size: 16px;
   }
 
   .web-container {
@@ -445,7 +466,7 @@
 
 @media (min-width: 1200px) {
   .features-section {
-    padding: 70px 30px; /* More spacious for large desktops */
+    padding: 70px 30px;
   }
 
   .container-process-section {

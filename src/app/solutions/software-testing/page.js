@@ -1,9 +1,11 @@
-"use client";
-
 import Image from "next/image";
 import "./software-testing.css";
-import SubHeader from "@/app/sub-header/page";
-import Days from "@/app/about-us/days/page";
+import SubHeader from "../../sub-header/page";
+import Days from "../../about-us/days/page";
+
+export const metadata = {
+  title: "Software Testing - Weboum Technology Pvt. Ltd",
+};
 
 export default function SoftwareTesting() {
   return (
@@ -32,18 +34,21 @@ export default function SoftwareTesting() {
               satisfaction and website success in the absence of quality
               assurance.
             </p>
+            <br/>
             <p className="software-p">
               Weboum Technology brings highly professional software testers to
               make sure that the application developed functions properly. It
               provides agile aligned and high-quality QA services that business
               owners can completely rely on.
             </p>
+            <br/>
             <p className="software-p">
               Our testing team is completely equipped with the required
               technologies and tools to get the task done. The test architects
               are all seasoned with the latest updates to ensure that the
               software developed is fully compliant and high in quality.
             </p>
+            <br/>
             <p className="software-p">
               Our QA team leverages the power of IoT, AI, and RPA technologies
               so that they can easily perform web and mobile app testing.
@@ -56,36 +61,37 @@ export default function SoftwareTesting() {
       <div className="full-width-section">
         <div className="software-container-inner">
           <div className="software-section-header">
-            <h1 className="software-h1">
-              Weboum's Software Testing Solutions
-            </h1>
+            <h1 className="software-h1">Weboum's Software Testing Solutions</h1>
             <p className="software-p">
               Get your software development team augmented with Weboum's
-              software development solutions that are custom-tailored to
-              suit different needs. We are software geeks who will test your
-              software in painstakingly in the best possible way.
+              software development solutions that are custom-tailored to suit
+              different needs. We are software geeks who will test your software
+              in painstakingly in the best possible way.
             </p>
           </div>
           <ul className="software-services-list">
             <li>
-              <b>Manual Testing:-</b>Our team of software testers will get
-              your desktop and mobile application tested manually so that
-              bugs and errors are easily detected. We will ensure that your
-              software complies with regulatory standards.
+              <b>Manual Testing:-</b>Our team of software testers will get your
+              desktop and mobile application tested manually so that bugs and
+              errors are easily detected. We will ensure that your software
+              complies with regulatory standards.
             </li>
+            <br/>
             <li>
               <b>Automated Testing:-</b>We deliver a full-cycle automated
-              software testing model for desktop and mobile applications. At
-              the same time, we ensure that the product quality is enhanced,
-              test coverage gets improved, productivity is boosted and the
-              overall testing times are decreased as well.
+              software testing model for desktop and mobile applications. At the
+              same time, we ensure that the product quality is enhanced, test
+              coverage gets improved, productivity is boosted and the overall
+              testing times are decreased as well.
             </li>
+            <br/>
             <li>
-              <b>Usability Testing:-</b> Our team designs platforms to test
-              the usability of an application that incorporates specific
-              tools to test usability and research methods that focus on how
+              <b>Usability Testing:-</b> Our team designs platforms to test the
+              usability of an application that incorporates specific tools to
+              test usability and research methods that focus on how
               user-friendly a particular application is.
             </li>
+            <br/>
             <li>
               <b>Functional Testing:-</b>Weboum offers next-level functional
               testing that focuses on preventing problems faced in the
@@ -116,10 +122,12 @@ export default function SoftwareTesting() {
               by our experts to perform third-party testing based on the
               specific projects so that successful results are delivered.
             </li>
+            <br/>
             <li>
               <b>Managed Testing:-</b>End to end managed testing solutions are
               offered to ensure the best possible outcomes.
             </li>
+            <br/>
             <li>
               <b>Quality Assessment:-</b> Software auditing solutions are
               engineered so that detailed reports of the issues detected are
@@ -136,6 +144,7 @@ export default function SoftwareTesting() {
             highly qualified testers ensures testing every application developed
             to ensure the seamless performance of the developed applications.
           </p>
+          <br/>
           <p className="software-p">
             If your organization has ever experienced a failure and you were not
             able to comprehend what can be done, maybe performance testing could

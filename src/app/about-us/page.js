@@ -1,9 +1,14 @@
-"use client";
+
+
 
 import SubHeader from "../sub-header/page";
 import Days from "./days/page";
 import "./about-us.css";
 import Image from "next/image";
+
+export const metadata = {
+  title: "About Us - Weboum Technology Pvt. Ltd",
+};
 
 export default function AboutUs() {
   return (

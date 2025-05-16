@@ -1,12 +1,12 @@
 // QualityAssuranceServices.jsx
 import Image from "next/image";
-import SubHeader from "@/app/sub-header/page";
-import Days from "@/app/about-us/days/page";
+import SubHeader from "../../sub-header/page";
+import Days from "../../about-us/days/page";
 import "./quality-assurance-services.css";
 
 // Metadata for SEO
 export const metadata = {
-  title: "Quality Assurance Services – WebOum Technology",
+  title: "Quality Assurance Services –Weboum Technology Pvt. Ltd",
   description:
     "Ensure bug-free web, desktop, and mobile applications with WebOum Technology's full-spectrum quality assurance and testing solutions.",
 };

@@ -1,11 +1,11 @@
 import Image from "next/image";
 import "./data_analytices.css";
-import SubHeader from "@/app/sub-header/page";
-import Days from "@/app/about-us/days/page";
+import SubHeader from "../../sub-header/page";
+import Days from "../../about-us/days/page";
 
 // Metadata for SEO
 export const metadata = {
-  title: "Data Analytics – Weboum Technology",
+  title: "Data Analytics - Weboum Technology Pvt. Ltd",
   description:
     "Unlock actionable insights with Weboum Technology’s comprehensive data analytics solutions for businesses, leveraging AI, visualization, and data integration.",
 };

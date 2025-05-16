@@ -1,11 +1,13 @@
-"use client";
-
-import Days from "@/app/about-us/days/page";
-import SubHeader from "@/app/sub-header/page";
+import Days from "../../about-us/days/page";
+import SubHeader from "../../sub-header/page";
 import "./content-writing.css";
 import Image from "next/image";
 // Import icons from react-icons
 import { FaKeyboard, FaBinoculars, FaPencilAlt, FaBook } from "react-icons/fa";
+
+export const metadata = {
+  title: "Content Writing - Weboum Technology Pvt. Ltd",
+};
 
 export default function ContentWriting() {
   return (

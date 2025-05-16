@@ -1,7 +1,11 @@
-import Days from "@/app/about-us/days/page";
+import Days from "../../about-us/days/page";
 import SubHeader from "@/app/sub-header/page";
 import Image from "next/image";
 import "./sla-support-services.css";
+
+export const metadata = {
+  title: "SLA Support Services - Weboum Technology Pvt. Ltd",
+};
 
 export default function SLASupportServices() {
   return (

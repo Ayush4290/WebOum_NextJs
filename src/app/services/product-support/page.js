@@ -1,3 +1,8 @@
+
+export const metadata = {
+  title: "Product Support  - Weboum Technology Pvt. Ltd",
+};
+
 export default function productSupport() {
   return (
     <div

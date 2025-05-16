@@ -1,10 +1,12 @@
-"use client";
-
 import "./Blockchain _solution.css";
-import Days from "@/app/about-us/days/page";
-import SubHeader from "@/app/sub-header/page";
+import Days from "../../about-us/days/page";
+import SubHeader from "../../sub-header/page";
 import Image from "next/image";
 import { FaCubes, FaLock, FaNetworkWired } from "react-icons/fa";
+
+export const metadata = {
+  title: "Blockchain Solutions - Weboum Technology Pvt. Ltd",
+};
 
 export default function BlockchainSolutionSection() {
   return (

@@ -3,6 +3,10 @@ import "./digital-marketing-solutions.css";
 import SubHeader from "@/app/sub-header/page";
 import Days from "../days/page";
 
+export const metadata = {
+  title: "Digital Marketing Solutions - Weboum Technology Pvt. Ltd",
+};
+
 export default function Digital() {
   return (
     <>

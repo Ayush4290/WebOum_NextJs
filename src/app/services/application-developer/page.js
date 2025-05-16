@@ -1,14 +1,16 @@
-"use client";
-
-import Days from "@/app/about-us/days/page";
-import SubHeader from "@/app/sub-header/page";
+import Days from "../../about-us/days/page";
+import SubHeader from "../../sub-header/page";
 import "./application-developer.css";
 import Image from "next/image";
+
+export const metadata = {
+  title: "Application Development - Weboum Technology Pvt. Ltd",
+};
 
 export default function AppSections() {
   return (
     <>
-        <SubHeader title="Application Development" />
+      <SubHeader title="Application Development" />
       <div>
         <div className="Application-section">
           <div className="Application-section-content">

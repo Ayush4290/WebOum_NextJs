@@ -1,10 +1,12 @@
-"use client";
-
 import "./Cybersecurity.css";
-import Days from "@/app/about-us/days/page";
-import SubHeader from "@/app/sub-header/page";
+import Days from "../../about-us/days/page";
+import SubHeader from "../../sub-header/page";
 import Image from "next/image";
 import { FaShieldAlt, FaLock, FaNetworkWired } from "react-icons/fa";
+
+export const metadata = {
+  title: "Cyber Security - Weboum Technology Pvt. Ltd",
+};
 
 export default function Cybersecurity() {
   return (
@@ -49,7 +51,7 @@ export default function Cybersecurity() {
           <div className="cybersecurity-row">
             <div className="cybersecurity-image-box">
               <Image
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJGoV4-fHEZ7zDD4HbCUMltCI-zzBrJu18ZA&s"
+                src="https://emeritus.org/in/wp-content/uploads/sites/3/2022/06/cybersecurity-master.jpg.optimal.jpg"
                 alt="Cybersecurity Services"
                 width={600}
                 height={400}

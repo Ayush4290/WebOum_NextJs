@@ -1,11 +1,13 @@
-"use client";
-
-import Days from "@/app/about-us/days/page";
-import SubHeader from "@/app/sub-header/page";
+import Days from "../../about-us/days/page";
+import SubHeader from "../../sub-header/page";
 import "./graphic-design.css";
 import Image from "next/image";
 
 import { FaCubes, FaCompressArrowsAlt, FaVectorSquare } from "react-icons/fa";
+
+export const metadata = {
+  title: "Graphic Design - Weboum Technology Pvt. Ltd",
+};
 
 export default function GraphicDesign() {
   return (
@@ -217,8 +219,8 @@ export default function GraphicDesign() {
           </div>
           <p className="graphicDesign-note">
             Need someone who can use their creative skills to make a design that
-            you desire? Weboum Technology is what you&rsquo;re looking for. Feel free
-            to contact us!
+            you desire? Weboum Technology is what you&rsquo;re looking for. Feel
+            free to contact us!
           </p>
         </section>
       </div>

@@ -1,7 +1,12 @@
-import Days from "@/app/about-us/days/page";
+import Days from "../../about-us/days/page";
 import SubHeader from "@/app/sub-header/page";
 import Image from "next/image";
 import "./backup-disaster-recovery.css";
+
+
+export const metadata = {
+  title: "Data backup and Recovery Services - Weboum Technology Pvt. Ltd",
+};
 
 export default function BackupDisasterRecovery() {
   return (

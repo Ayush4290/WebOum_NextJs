@@ -11,32 +11,22 @@ import {
   FaCog,
   FaSignInAlt,
   FaMobileAlt,
-  FaDatabase,
   FaServer,
   FaWindowMaximize,
   FaTh,
   FaShoppingCart,
   FaArrowsAlt,
   FaCheckCircle,
-  FaJs,
-  FaHtml5,
-  FaJava,
-  FaPython,
-  FaNode,
-  FaPhp,
 } from "react-icons/fa";
-import { DiMongodb } from "react-icons/di";
-import {
-  SiJsonwebtokens,
-  SiElm,
-  SiAngular,
-  SiJquery,
-  SiExpress,
-} from "react-icons/si";
+
 import SubHeader from "@/app/sub-header/page";
 
 import "./web-developer.css";
-import Days from "@/app/about-us/days/page";
+import Days from "../../about-us/days/page";
+
+export const metadata = {
+  title: "Web Development - Weboum Technology Pvt. Ltd",
+};
 
 export default function WebDevelopment() {
   return (
@@ -130,7 +120,7 @@ export default function WebDevelopment() {
               </div>
 
               <div className="feature-box">
-                <FaCodeBranch className="feature-icon"  size={50}/>
+                <FaCodeBranch className="feature-icon" size={50} />
                 <div>
                   <div className="feature-title">Diverse Coding Experience</div>
                   <p className="feature-text">
@@ -146,7 +136,7 @@ export default function WebDevelopment() {
             {/* Right Column */}
             <div className="features-column">
               <div className="feature-box">
-                <FaProjectDiagram className="feature-icon"  size={50} />
+                <FaProjectDiagram className="feature-icon" size={50} />
                 <div>
                   <div className="feature-title">
                     No Cookie-Cutter Solutions
@@ -161,7 +151,7 @@ export default function WebDevelopment() {
               </div>
 
               <div className="feature-box">
-                <FaCog className="feature-icon"  size={50}/>
+                <FaCog className="feature-icon" size={50} />
                 <div>
                   <div className="feature-title">
                     Maintenance, Monitoring, & Support
@@ -457,7 +447,7 @@ export default function WebDevelopment() {
 
               {/* HTML */}
               <div className="tech-card-wrapper">
-                 <img
+                <img
                   src="https://weboum.com/wp-content/uploads/2021/05/html.png"
                   alt="JavaScript Logo"
                   className="tech-logo"
@@ -472,7 +462,7 @@ export default function WebDevelopment() {
 
               {/* JSON */}
               <div className="tech-card-wrapper">
-               <img
+                <img
                   src="https://weboum.com/wp-content/uploads/2021/05/json.png"
                   alt="JavaScript Logo"
                   className="tech-logo"
@@ -502,7 +492,7 @@ export default function WebDevelopment() {
 
               {/* AngularJS */}
               <div className="tech-card-wrapper">
-               <img
+                <img
                   src="https://weboum.com/wp-content/uploads/2021/05/angularjs.png"
                   alt="JavaScript Logo"
                   className="tech-logo"
@@ -517,7 +507,7 @@ export default function WebDevelopment() {
 
               {/* jQuery */}
               <div className="tech-card-wrapper">
-               <img
+                <img
                   src="https://weboum.com/wp-content/uploads/2021/05/jquery.png"
                   alt="JavaScript Logo"
                   className="tech-logo"
@@ -557,7 +547,7 @@ export default function WebDevelopment() {
 
               {/* Express.js */}
               <div className="tech-card-wrapper">
-                 <img
+                <img
                   src="https://weboum.com/wp-content/uploads/2021/05/expressjs.png"
                   alt="JavaScript Logo"
                   className="tech-logo"
@@ -572,7 +562,7 @@ export default function WebDevelopment() {
 
               {/* Node.js */}
               <div className="tech-card-wrapper">
-                 <img
+                <img
                   src="https://weboum.com/wp-content/uploads/2021/05/node-js.png"
                   alt="JavaScript Logo"
                   className="tech-logo"
@@ -586,7 +576,7 @@ export default function WebDevelopment() {
 
               {/* Java */}
               <div className="tech-card-wrapper">
-                 <img
+                <img
                   src="https://weboum.com/wp-content/uploads/2021/05/java.png"
                   alt="JavaScript Logo"
                   className="tech-logo"
@@ -601,7 +591,7 @@ export default function WebDevelopment() {
 
               {/* Python */}
               <div className="tech-card-wrapper">
-                 <img
+                <img
                   src="https://weboum.com/wp-content/uploads/2021/05/python.png"
                   alt="JavaScript Logo"
                   className="tech-logo"

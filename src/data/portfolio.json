@@ -6,14 +6,14 @@
       "category": "software",
       "title": "Bolster AI",
       "description": [
-        "Cyber Security Application Company.",
-        "UI/UX Designs",
-        "Customize functionality",
-        "CRM API integration",
-        "Responsive Devices.",
-        "SEO & Digital Marketing integration.",
-        "AWS Deployment",
-        "Technical Support & Maintenance"
+        "-Cyber Security Application Company.",
+        "-UI/UX Designs",
+        "-Customize functionality",
+        "-CRM API integration",
+        "-Responsive Devices.",
+        "-SEO & Digital Marketing integration.",
+        "-AWS Deployment",
+        "-Technical Support & Maintenance"
       ]
     },
     {
@@ -22,13 +22,13 @@
       "category": "graphics",
       "title": "WhatsApp UX Redesign",
       "description": [
-        "Mobile UI/UX Design Project",
-        "User Interface Enhancements",
-        "Interactive Prototypes",
-        "User Flow Optimization",
-        "Color Scheme Updates",
-        "Usability Testing",
-        "Customer Feedback Implementation"
+        "-Mobile UI/UX Design Project",
+        "-User Interface Enhancements",
+        "-Interactive Prototypes",
+        "-User Flow Optimization",
+        "-Color Scheme Updates",
+        "-Usability Testing",
+        "-Customer Feedback Implementation"
       ]
     },
     {
@@ -37,13 +37,13 @@
       "category": "software",
       "title": "Creative Dashboard",
       "description": [
-        "Real-time Analytics Dashboard",
-        "Data Visualization Components",
-        "Interactive Charts & Graphs",
-        "Custom Admin Controls",
-        "User Permission Management",
-        "Dark/Light Mode Toggle",
-        "Performance Optimization"
+        "-Real-time Analytics Dashboard",
+        "-Data Visualization Components",
+        "-Interactive Charts & Graphs",
+        "-Custom Admin Controls",
+        "-User Permission Management",
+        "-Dark/Light Mode Toggle",
+        "-Performance Optimization"
       ]
     },
     {
@@ -52,13 +52,13 @@
       "category": "software",
       "title": "Engaging Experiences",
       "description": [
-        "Interactive User Platform",
-        "Gamification Elements",
-        "Social Integration Features",
-        "Custom Animation Effects",
-        "User Achievement System",
-        "Content Management System",
-        "Mobile-First Design"
+        "-Interactive User Platform",
+        "-Gamification Elements",
+        "-Social Integration Features",
+        "-Custom Animation Effects",
+        "-User Achievement System",
+        "-Content Management System",
+        "-Mobile-First Design"
       ]
     },
     {
@@ -67,13 +67,13 @@
       "category": "apps",
       "title": "LogMeOnce",
       "description": [
-        "Secure Password Management App",
-        "Biometric Authentication",
-        "Cross-platform Synchronization",
-        "Zero-knowledge Architecture",
-        "Password Generator",
-        "Security Dashboard",
-        "Breach Monitoring"
+        "-Secure Password Management App",
+        "-Biometric Authentication",
+        "-Cross-platform Synchronization",
+        "-Zero-knowledge Architecture",
+        "-Password Generator",
+        "-Security Dashboard",
+        "-Breach Monitoring"
       ]
     },
     {
@@ -82,29 +82,28 @@
       "category": "apps",
       "title": "Hyleys Tea",
       "description": [
-        "eCommerce Mobile Application",
-        "Product Catalog System",
-        "Secure Payment Gateway",
-        "User Account Management",
-        "Order Tracking Feature",
-        "Wishlist & Favorites",
-        "Push Notifications"
+        "-eCommerce Mobile Application",
+        "-Product Catalog System",
+        "-Secure Payment Gateway",
+        "-User Account Management",
+        "-Order Tracking Feature",
+        "-Wishlist & Favorites",
+        "-Push Notifications"
       ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/muskilongue-landing-page-V-1.jpg",
-
       "alt": "Muskilongue Landing Page",
       "category": "graphics",
       "title": "Muskilongue Landing Page",
       "description": [
-        "Conversion-focused Design",
-        "Custom Illustrations",
-        "Animated Elements",
-        "Lead Generation Forms",
-        "Performance Optimization",
-        "A/B Testing Setup",
-        "Analytics Integration"
+        "-Conversion-focused Design",
+        "-Custom Illustrations",
+        "-Animated Elements",
+        "-Lead Generation Forms",
+        "-Performance Optimization",
+        "-A/B Testing Setup",
+        "-Analytics Integration"
       ]
     },
     {
@@ -113,13 +112,13 @@
       "category": "graphics",
       "title": "Multi-Device Responsive Design",
       "description": [
-        "Cross-platform Compatibility",
-        "Mobile-First Approach",
-        "Adaptive Layouts",
-        "Custom Breakpoints",
-        "Performance Optimization",
-        "Accessibility Compliance",
-        "Browser Compatibility"
+        "-Cross-platform Compatibility",
+        "-Mobile-First Approach",
+        "-Adaptive Layouts",
+        "-Custom Breakpoints",
+        "-Performance Optimization",
+        "-Accessibility Compliance",
+        "-Browser Compatibility"
       ]
     },
     {
@@ -128,13 +127,13 @@
       "category": "marketing",
       "title": "Georgynity",
       "description": [
-        "Comprehensive Brand Campaign",
-        "Social Media Strategy",
-        "Content Marketing",
-        "Email Marketing Automation",
-        "PPC Advertising",
-        "Analytics & Reporting",
-        "Conversion Rate Optimization"
+        "-Comprehensive Brand Campaign",
+        "-Social Media Strategy",
+        "-Content Marketing",
+        "-Email Marketing Automation",
+        "-PPC Advertising",
+        "-Analytics & Reporting",
+        "-Conversion Rate Optimization"
       ]
     },
     {
@@ -143,29 +142,28 @@
       "category": "marketing",
       "title": "Children's Therapy Center",
       "description": [
-        "Healthcare-focused Website",
-        "Appointment Booking System",
-        "Resource Library",
-        "Parent Portal",
-        "Therapist Profiles",
-        "Accessibility Features",
-        "HIPAA Compliance"
+        "-Healthcare-focused Website",
+        "-Appointment Booking System",
+        "-Resource Library",
+        "-Parent Portal",
+        "-Therapist Profiles",
+        "-Accessibility Features",
+        "-HIPAA Compliance"
       ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Master-Wine-Tours.jpg",
-
       "alt": "Master Wine Tours App",
       "category": "apps",
       "title": "Master Wine Tours",
       "description": [
-        "Tourism & Booking Application",
-        "Interactive Tour Maps",
-        "Reservation System",
-        "Payment Processing",
-        "Reviews & Ratings",
-        "Offline Content Access",
-        "Event Calendar"
+        "-Tourism & Booking Application",
+        "-Interactive Tour Maps",
+        "-Reservation System",
+        "-Payment Processing",
+        "-Reviews & Ratings",
+        "-Offline Content Access",
+        "-Event Calendar"
       ]
     },
     {
@@ -174,13 +172,215 @@
       "category": "apps",
       "title": "WhereYouEat",
       "description": [
-        "Restaurant Discovery App",
-        "Geolocation Features",
-        "Menu Browsing",
-        "User Reviews System",
-        "Reservation Integration",
-        "Dietary Filter Options",
-        "Favorite Restaurant Lists"
+        "-Restaurant Discovery App",
+        "-Geolocation Features",
+        "-Menu Browsing",
+        "-User Reviews System",
+        "-Reservation Integration",
+        "-Dietary Filter Options",
+        "-Favorite Restaurant Lists"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Catalina-Shopb-V4.-new.jpg",
+      "alt": "Catalina's Shop",
+      "category": "apps",
+      "title": "Catalina's Shop",
+      "description": [
+        "– Online Shopping ",
+        "– Customize Graphic Designing ",
+        "– Responsive Device",
+        "– Customer Support "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/DH2.jpg",
+      "alt": "DH2",
+      "category": "apps",
+      "title": "DH2",
+      "description": [
+        "– Provide Security ",
+        "– UI/UX Design",
+        "– Responsive Device",
+        "– Customize graphics ",
+        "– Technical support and maintenance"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/09/North-Cab-Zone-images.jpg",
+      "alt": "North Cab Zone",
+      "category": "apps",
+      "title": "North Cab Zone",
+      "description": [
+        "– Custom  Ride Booking ",
+        "– Mobile app Development ",
+        "– GPS and Real time Tracking ",
+        "– Customer Payment Gateway",
+        "– Analytics and reporting "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Its-Been-Tranding.jpg",
+      "alt": "Its Been Trending",
+      "category": "apps",
+      "title": "Its Been Trending",
+      "description": [
+        "– Customize functionality ",
+        "– Innovative Digital Presence",
+        "– Social and Market Trends",
+        "– User Experience (UX) and Accessibility",
+        "– Security and Privacy "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Web-Design-You.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Web Design You",
+      "description": [
+        "– Custom Web Design Services ",
+        "– Responsive Design ",
+        "– UI/UX optimization ",
+        "– SEO- friendly  Design",
+        "– Content management system ",
+        "– Security Features"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/09/MAPTOONS-2.jpg",
+      "alt": "Advance Discounts Coupon",
+      "category": "apps",
+      "title": "Advance Discounts Coupon",
+      "description": [
+        "– Created both sites from scratch",
+        "– Advance Map integration system",
+        "– Responsive web solution",
+        "– Discount Coupon and management",
+        "– Maintenance and Support "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2021/07/alpha.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Alpha Antibiotics",
+      "description": [
+        "– Supply chain management",
+        "– Pharmacy management system ",
+        "– Customer and suppliers portals",
+        "– Quality Assurance ",
+        "– Training and support "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Asian.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Asian Maditech",
+      "description": [
+        "– Healthcare and development",
+        "– Medical device integration ",
+        "– User Friendly Interface",
+        "– Mobile and Web Applications ",
+        "– Training and Support  "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Freewill.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Freewill",
+      "description": [
+        "– Social Platform ",
+        "– Related to Hobbies ",
+        "– Earning According to Hobbies",
+        "– Networking"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Ridhi-Travels.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Ridhi Travels",
+      "description": [
+        "– Personalized Travel Services",
+        "– Destination Variety",
+        "– Quality and Reliability",
+        "– Special  Offer and Discounts"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Guru-Nanak-Service.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Guru Nanak Service",
+      "description": [
+        "– Crane Rental Services ",
+        "– Expertise and Safety",
+        "– Range of  Equipment ",
+        "– Timely and Reliable Services ",
+        "– Technical support and Maintenance "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Roxy-hall-1.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Roxy Hall",
+      "description": [
+        "– Custom Website Design ",
+        "– Online Booking and Reservations",
+        "– Content Management system ",
+        "– SEO and digital Marketing "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Bankruptcy.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Bankruptcy",
+      "description": [
+        "– Bankruptcy Filling Assistance ",
+        "– Financial Analysis and Planning ",
+        "– Debt  Negotiation ",
+        "– Legal Compliance",
+        "– Credit Counselling "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Fame-Rap.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "FameRep",
+      "description": [
+        "– Reputation Monitoring ",
+        "– Online review Management",
+        "– Crisis Management",
+        "– Brand Enhancement Strategies "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Fitmed-V-2.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Fitmed",
+      "description": [
+        "– Comprehensive  Health Services to Elevate Your  Fitness Journey",
+        "– Advance Technology ",
+        "– Customer support and Maintenance "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/09/app4-design-01.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Scan QR  App",
+      "description": [
+        "– Instant QR Scanning",
+        "– User Friendly Interface",
+        "– Customizable Settings",
+        "– Security and Privacy",
+        "– Technical Support and Management"
       ]
     }
   ],
@@ -191,13 +391,180 @@
       "category": "software",
       "title": "Creative Dashboard",
       "description": [
-        "Real-time Analytics Dashboard",
-        "Data Visualization Components",
-        "Interactive Charts & Graphs",
-        "Custom Admin Controls",
-        "User Permission Management",
-        "Dark/Light Mode Toggle",
-        "Performance Optimization"
+        "-Real-time Analytics Dashboard",
+        "-Data Visualization Components",
+        "-Interactive Charts & Graphs",
+        "-Custom Admin Controls",
+        "-User Permission Management",
+        "-Dark/Light Mode Toggle",
+        "-Performance Optimization"
+      ]
+    },
+   
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/DH2.jpg",
+      "alt": "DH2",
+      "category": "apps",
+      "title": "DH2",
+      "description": [
+        "– Provide Security ",
+        "– UI/UX Design",
+        "– Responsive Device",
+        "– Customize graphics ",
+        "– Technical support and maintenance"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/09/North-Cab-Zone-images.jpg",
+      "alt": "North Cab Zone",
+      "category": "apps",
+      "title": "North Cab Zone",
+      "description": [
+        "– Custom  Ride Booking ",
+        "– Mobile app Development ",
+        "– GPS and Real time Tracking ",
+        "– Customer Payment Gateway",
+        "– Analytics and reporting "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Its-Been-Tranding.jpg",
+      "alt": "Its Been Trending",
+      "category": "apps",
+      "title": "Its Been Trending",
+      "description": [
+        "– Customize functionality ",
+        "– Innovative Digital Presence",
+        "– Social and Market Trends",
+        "– User Experience (UX) and Accessibility",
+        "– Security and Privacy "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Web-Design-You.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Web Design You",
+      "description": [
+        "– Custom Web Design Services ",
+        "– Responsive Design ",
+        "– UI/UX optimization ",
+        "– SEO- friendly  Design",
+        "– Content management system ",
+        "– Security Features"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/09/MAPTOONS-2.jpg",
+      "alt": "Advance Discounts Coupon",
+      "category": "apps",
+      "title": "Advance Discounts Coupon",
+      "description": [
+        "– Created both sites from scratch",
+        "– Advance Map integration system",
+        "– Responsive web solution",
+        "– Discount Coupon and management",
+        "– Maintenance and Support "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2021/07/alpha.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Alpha Antibiotics",
+      "description": [
+        "– Supply chain management",
+        "– Pharmacy management system ",
+        "– Customer and suppliers portals",
+        "– Quality Assurance ",
+        "– Training and support "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Asian.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Asian Maditech",
+      "description": [
+        "– Healthcare and development",
+        "– Medical device integration ",
+        "– User Friendly Interface",
+        "– Mobile and Web Applications ",
+        "– Training and Support  "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Freewill.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Freewill",
+      "description": [
+        "– Social Platform ",
+        "– Related to Hobbies ",
+        "– Earning According to Hobbies",
+        "– Networking"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Ridhi-Travels.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Ridhi Travels",
+      "description": [
+        "– Personalized Travel Services",
+        "– Destination Variety",
+        "– Quality and Reliability",
+        "– Special  Offer and Discounts"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Guru-Nanak-Service.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Guru Nanak Service",
+      "description": [
+        "– Crane Rental Services ",
+        "– Expertise and Safety",
+        "– Range of  Equipment ",
+        "– Timely and Reliable Services ",
+        "– Technical support and Maintenance "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Roxy-hall-1.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Roxy Hall",
+      "description": [
+        "– Custom Website Design ",
+        "– Online Booking and Reservations",
+        "– Content Management system ",
+        "– SEO and digital Marketing "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Bankruptcy.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Bankruptcy",
+      "description": [
+        "– Bankruptcy Filling Assistance ",
+        "– Financial Analysis and Planning ",
+        "– Debt  Negotiation ",
+        "– Legal Compliance",
+        "– Credit Counselling "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Fame-Rap.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "FameRep",
+      "description": [
+        "– Reputation Monitoring ",
+        "– Online review Management",
+        "– Crisis Management",
+        "– Brand Enhancement Strategies "
       ]
     },
     {
@@ -206,13 +573,13 @@
       "category": "software",
       "title": "Engaging Experiences",
       "description": [
-        "Interactive User Platform",
-        "Gamification Elements",
-        "Social Integration Features",
-        "Custom Animation Effects",
-        "User Achievement System",
-        "Content Management System",
-        "Mobile-First Design"
+        "-Interactive User Platform",
+        "-Gamification Elements",
+        "-Social Integration Features",
+        "-Custom Animation Effects",
+        "-User Achievement System",
+        "-Content Management System",
+        "-Mobile-First Design"
       ]
     },
     {
@@ -221,13 +588,13 @@
       "category": "apps",
       "title": "LogMeOnce",
       "description": [
-        "Secure Password Management App",
-        "Biometric Authentication",
-        "Cross-platform Synchronization",
-        "Zero-knowledge Architecture",
-        "Password Generator",
-        "Security Dashboard",
-        "Breach Monitoring"
+        "-Secure Password Management App",
+        "-Biometric Authentication",
+        "-Cross-platform Synchronization",
+        "-Zero-knowledge Architecture",
+        "-Password Generator",
+        "-Security Dashboard",
+        "-Breach Monitoring"
       ]
     },
     {
@@ -236,29 +603,28 @@
       "category": "apps",
       "title": "Hyleys Tea",
       "description": [
-        "eCommerce Mobile Application",
-        "Product Catalog System",
-        "Secure Payment Gateway",
-        "User Account Management",
-        "Order Tracking Feature",
-        "Wishlist & Favorites",
-        "Push Notifications"
+        "-eCommerce Mobile Application",
+        "-Product Catalog System",
+        "-Secure Payment Gateway",
+        "-User Account Management",
+        "-Order Tracking Feature",
+        "-Wishlist & Favorites",
+        "-Push Notifications"
       ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/muskilongue-landing-page-V-1.jpg",
-
       "alt": "Muskilongue Landing Page",
       "category": "graphics",
       "title": "Muskilongue Landing Page",
       "description": [
-        "Conversion-focused Design",
-        "Custom Illustrations",
-        "Animated Elements",
-        "Lead Generation Forms",
-        "Performance Optimization",
-        "A/B Testing Setup",
-        "Analytics Integration"
+        "-Conversion-focused Design",
+        "-Custom Illustrations",
+        "-Animated Elements",
+        "-Lead Generation Forms",
+        "-Performance Optimization",
+        "-A/B Testing Setup",
+        "-Analytics Integration"
       ]
     },
     {
@@ -267,13 +633,13 @@
       "category": "graphics",
       "title": "Multi-Device Responsive Design",
       "description": [
-        "Cross-platform Compatibility",
-        "Mobile-First Approach",
-        "Adaptive Layouts",
-        "Custom Breakpoints",
-        "Performance Optimization",
-        "Accessibility Compliance",
-        "Browser Compatibility"
+        "-Cross-platform Compatibility",
+        "-Mobile-First Approach",
+        "-Adaptive Layouts",
+        "-Custom Breakpoints",
+        "-Performance Optimization",
+        "-Accessibility Compliance",
+        "-Browser Compatibility"
       ]
     },
     {
@@ -282,13 +648,13 @@
       "category": "marketing",
       "title": "Georgynity",
       "description": [
-        "Comprehensive Brand Campaign",
-        "Social Media Strategy",
-        "Content Marketing",
-        "Email Marketing Automation",
-        "PPC Advertising",
-        "Analytics & Reporting",
-        "Conversion Rate Optimization"
+        "-Comprehensive Brand Campaign",
+        "-Social Media Strategy",
+        "-Content Marketing",
+        "-Email Marketing Automation",
+        "-PPC Advertising",
+        "-Analytics & Reporting",
+        "-Conversion Rate Optimization"
       ]
     },
     {
@@ -297,29 +663,28 @@
       "category": "marketing",
       "title": "Children's Therapy Center",
       "description": [
-        "Healthcare-focused Website",
-        "Appointment Booking System",
-        "Resource Library",
-        "Parent Portal",
-        "Therapist Profiles",
-        "Accessibility Features",
-        "HIPAA Compliance"
+        "-Healthcare-focused Website",
+        "-Appointment Booking System",
+        "-Resource Library",
+        "-Parent Portal",
+        "-Therapist Profiles",
+        "-Accessibility Features",
+        "-HIPAA Compliance"
       ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Master-Wine-Tours.jpg",
-
       "alt": "Master Wine Tours App",
       "category": "apps",
       "title": "Master Wine Tours",
       "description": [
-        "Tourism & Booking Application",
-        "Interactive Tour Maps",
-        "Reservation System",
-        "Payment Processing",
-        "Reviews & Ratings",
-        "Offline Content Access",
-        "Event Calendar"
+        "-Tourism & Booking Application",
+        "-Interactive Tour Maps",
+        "-Reservation System",
+        "-Payment Processing",
+        "-Reviews & Ratings",
+        "-Offline Content Access",
+        "-Event Calendar"
       ]
     },
     {
@@ -328,13 +693,13 @@
       "category": "apps",
       "title": "WhereYouEat",
       "description": [
-        "Restaurant Discovery App",
-        "Geolocation Features",
-        "Menu Browsing",
-        "User Reviews System",
-        "Reservation Integration",
-        "Dietary Filter Options",
-        "Favorite Restaurant Lists"
+        "-Restaurant Discovery App",
+        "-Geolocation Features",
+        "-Menu Browsing",
+        "-User Reviews System",
+        "-Reservation Integration",
+        "-Dietary Filter Options",
+        "-Favorite Restaurant Lists"
       ]
     },
     {
@@ -343,14 +708,14 @@
       "category": "software",
       "title": "Bolster AI",
       "description": [
-        "Cyber Security Application Company.",
-        "UI/UX Designs",
-        "Customize functionality",
-        "CRM API integration",
-        "Responsive Devices.",
-        "SEO & Digital Marketing integration.",
-        "AWS Deployment",
-        "Technical Support & Maintenance"
+        "-Cyber Security Application Company.",
+        "-UI/UX Designs",
+        "-Customize functionality",
+        "-CRM API integration",
+        "-Responsive Devices.",
+        "-SEO & Digital Marketing integration.",
+        "-AWS Deployment",
+        "-Technical Support & Maintenance"
       ]
     },
     {
@@ -359,13 +724,13 @@
       "category": "graphics",
       "title": "WhatsApp UX Redesign",
       "description": [
-        "Mobile UI/UX Design Project",
-        "User Interface Enhancements",
-        "Interactive Prototypes",
-        "User Flow Optimization",
-        "Color Scheme Updates",
-        "Usability Testing",
-        "Customer Feedback Implementation"
+        "-Mobile UI/UX Design Project",
+        "-User Interface Enhancements",
+        "-Interactive Prototypes",
+        "-User Flow Optimization",
+        "-Color Scheme Updates",
+        "-Usability Testing",
+        "-Customer Feedback Implementation"
       ]
     }
   ],
@@ -376,13 +741,13 @@
       "category": "graphics",
       "title": "Multi-Device Responsive Design",
       "description": [
-        "Cross-platform Compatibility",
-        "Mobile-First Approach",
-        "Adaptive Layouts",
-        "Custom Breakpoints",
-        "Performance Optimization",
-        "Accessibility Compliance",
-        "Browser Compatibility"
+        "-Cross-platform Compatibility",
+        "-Mobile-First Approach",
+        "-Adaptive Layouts",
+        "-Custom Breakpoints",
+        "-Performance Optimization",
+        "-Accessibility Compliance",
+        "-Browser Compatibility"
       ]
     },
     {
@@ -391,13 +756,13 @@
       "category": "marketing",
       "title": "Georgynity",
       "description": [
-        "Comprehensive Brand Campaign",
-        "Social Media Strategy",
-        "Content Marketing",
-        "Email Marketing Automation",
-        "PPC Advertising",
-        "Analytics & Reporting",
-        "Conversion Rate Optimization"
+        "-Comprehensive Brand Campaign",
+        "-Social Media Strategy",
+        "-Content Marketing",
+        "-Email Marketing Automation",
+        "-PPC Advertising",
+        "-Analytics & Reporting",
+        "-Conversion Rate Optimization"
       ]
     },
     {
@@ -406,29 +771,28 @@
       "category": "marketing",
       "title": "Children's Therapy Center",
       "description": [
-        "Healthcare-focused Website",
-        "Appointment Booking System",
-        "Resource Library",
-        "Parent Portal",
-        "Therapist Profiles",
-        "Accessibility Features",
-        "HIPAA Compliance"
+        "-Healthcare-focused Website",
+        "-Appointment Booking System",
+        "-Resource Library",
+        "-Parent Portal",
+        "-Therapist Profiles",
+        "-Accessibility Features",
+        "-HIPAA Compliance"
       ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Master-Wine-Tours.jpg",
-
       "alt": "Master Wine Tours App",
       "category": "apps",
       "title": "Master Wine Tours",
       "description": [
-        "Tourism & Booking Application",
-        "Interactive Tour Maps",
-        "Reservation System",
-        "Payment Processing",
-        "Reviews & Ratings",
-        "Offline Content Access",
-        "Event Calendar"
+        "-Tourism & Booking Application",
+        "-Interactive Tour Maps",
+        "-Reservation System",
+        "-Payment Processing",
+        "-Reviews & Ratings",
+        "-Offline Content Access",
+        "-Event Calendar"
       ]
     },
     {
@@ -437,13 +801,191 @@
       "category": "apps",
       "title": "WhereYouEat",
       "description": [
-        "Restaurant Discovery App",
-        "Geolocation Features",
-        "Menu Browsing",
-        "User Reviews System",
-        "Reservation Integration",
-        "Dietary Filter Options",
-        "Favorite Restaurant Lists"
+        "-Restaurant Discovery App",
+        "-Geolocation Features",
+        "-Menu Browsing",
+        "-User Reviews System",
+        "-Reservation Integration",
+        "-Dietary Filter Options",
+        "-Favorite Restaurant Lists"
+      ]
+    },
+        {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Catalina-Shopb-V4.-new.jpg",
+      "alt": "Catalina's Shop",
+      "category": "apps",
+      "title": "Catalina's Shop",
+      "description": [
+        "– Online Shopping ",
+        "– Customize Graphic Designing ",
+        "– Responsive Device",
+        "– Customer Support "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/DH2.jpg",
+      "alt": "DH2",
+      "category": "apps",
+      "title": "DH2",
+      "description": [
+        "– Provide Security ",
+        "– UI/UX Design",
+        "– Responsive Device",
+        "– Customize graphics ",
+        "– Technical support and maintenance"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/09/North-Cab-Zone-images.jpg",
+      "alt": "North Cab Zone",
+      "category": "apps",
+      "title": "North Cab Zone",
+      "description": [
+        "– Custom  Ride Booking ",
+        "– Mobile app Development ",
+        "– GPS and Real time Tracking ",
+        "– Customer Payment Gateway",
+        "– Analytics and reporting "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Its-Been-Tranding.jpg",
+      "alt": "Its Been Trending",
+      "category": "apps",
+      "title": "Its Been Trending",
+      "description": [
+        "– Customize functionality ",
+        "– Innovative Digital Presence",
+        "– Social and Market Trends",
+        "– User Experience (UX) and Accessibility",
+        "– Security and Privacy "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Web-Design-You.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Web Design You",
+      "description": [
+        "– Custom Web Design Services ",
+        "– Responsive Design ",
+        "– UI/UX optimization ",
+        "– SEO- friendly  Design",
+        "– Content management system ",
+        "– Security Features"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/09/MAPTOONS-2.jpg",
+      "alt": "Advance Discounts Coupon",
+      "category": "apps",
+      "title": "Advance Discounts Coupon",
+      "description": [
+        "– Created both sites from scratch",
+        "– Advance Map integration system",
+        "– Responsive web solution",
+        "– Discount Coupon and management",
+        "– Maintenance and Support "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2021/07/alpha.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Alpha Antibiotics",
+      "description": [
+        "– Supply chain management",
+        "– Pharmacy management system ",
+        "– Customer and suppliers portals",
+        "– Quality Assurance ",
+        "– Training and support "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Asian.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Asian Maditech",
+      "description": [
+        "– Healthcare and development",
+        "– Medical device integration ",
+        "– User Friendly Interface",
+        "– Mobile and Web Applications ",
+        "– Training and Support  "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Freewill.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Freewill",
+      "description": [
+        "– Social Platform ",
+        "– Related to Hobbies ",
+        "– Earning According to Hobbies",
+        "– Networking"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Ridhi-Travels.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Ridhi Travels",
+      "description": [
+        "– Personalized Travel Services",
+        "– Destination Variety",
+        "– Quality and Reliability",
+        "– Special  Offer and Discounts"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Guru-Nanak-Service.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Guru Nanak Service",
+      "description": [
+        "– Crane Rental Services ",
+        "– Expertise and Safety",
+        "– Range of  Equipment ",
+        "– Timely and Reliable Services ",
+        "– Technical support and Maintenance "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Roxy-hall-1.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Roxy Hall",
+      "description": [
+        "– Custom Website Design ",
+        "– Online Booking and Reservations",
+        "– Content Management system ",
+        "– SEO and digital Marketing "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Bankruptcy.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Bankruptcy",
+      "description": [
+        "– Bankruptcy Filling Assistance ",
+        "– Financial Analysis and Planning ",
+        "– Debt  Negotiation ",
+        "– Legal Compliance",
+        "– Credit Counselling "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Fame-Rap.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "FameRep",
+      "description": [
+        "– Reputation Monitoring ",
+        "– Online review Management",
+        "– Crisis Management",
+        "– Brand Enhancement Strategies "
       ]
     },
     {
@@ -452,14 +994,14 @@
       "category": "software",
       "title": "Bolster AI",
       "description": [
-        "Cyber Security Application Company.",
-        "UI/UX Designs",
-        "Customize functionality",
-        "CRM API integration",
-        "Responsive Devices.",
-        "SEO & Digital Marketing integration.",
-        "AWS Deployment",
-        "Technical Support & Maintenance"
+        "-Cyber Security Application Company.",
+        "-UI/UX Designs",
+        "-Customize functionality",
+        "-CRM API integration",
+        "-Responsive Devices.",
+        "-SEO & Digital Marketing integration.",
+        "-AWS Deployment",
+        "-Technical Support & Maintenance"
       ]
     },
     {
@@ -468,13 +1010,13 @@
       "category": "graphics",
       "title": "WhatsApp UX Redesign",
       "description": [
-        "Mobile UI/UX Design Project",
-        "User Interface Enhancements",
-        "Interactive Prototypes",
-        "User Flow Optimization",
-        "Color Scheme Updates",
-        "Usability Testing",
-        "Customer Feedback Implementation"
+        "-Mobile UI/UX Design Project",
+        "-User Interface Enhancements",
+        "-Interactive Prototypes",
+        "-User Flow Optimization",
+        "-Color Scheme Updates",
+        "-Usability Testing",
+        "-Customer Feedback Implementation"
       ]
     },
     {
@@ -483,13 +1025,13 @@
       "category": "software",
       "title": "Creative Dashboard",
       "description": [
-        "Real-time Analytics Dashboard",
-        "Data Visualization Components",
-        "Interactive Charts & Graphs",
-        "Custom Admin Controls",
-        "User Permission Management",
-        "Dark/Light Mode Toggle",
-        "Performance Optimization"
+        "-Real-time Analytics Dashboard",
+        "-Data Visualization Components",
+        "-Interactive Charts & Graphs",
+        "-Custom Admin Controls",
+        "-User Permission Management",
+        "-Dark/Light Mode Toggle",
+        "-Performance Optimization"
       ]
     },
     {
@@ -498,13 +1040,13 @@
       "category": "software",
       "title": "Engaging Experiences",
       "description": [
-        "Interactive User Platform",
-        "Gamification Elements",
-        "Social Integration Features",
-        "Custom Animation Effects",
-        "User Achievement System",
-        "Content Management System",
-        "Mobile-First Design"
+        "-Interactive User Platform",
+        "-Gamification Elements",
+        "-Social Integration Features",
+        "-Custom Animation Effects",
+        "-User Achievement System",
+        "-Content Management System",
+        "-Mobile-First Design"
       ]
     },
     {
@@ -513,31 +1055,30 @@
       "category": "apps",
       "title": "LogMeOnce",
       "description": [
-        "Secure Password Management App",
-        "Biometric Authentication",
-        "Cross-platform Synchronization",
-        "Zero-knowledge Architecture",
-        "Password Generator",
-        "Security Dashboard",
-        "Breach Monitoring"
+        "-Secure Password Management App",
+        "-Biometric Authentication",
+        "-Cross-platform Synchronization",
+        "-Zero-knowledge Architecture",
+        "-Password Generator",
+        "-Security Dashboard",
+        "-Breach Monitoring"
       ]
     }
   ],
   "graphics": [
-    
     {
       "src": "https://weboum.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-17-at-15.36.26_d394359d.jpg",
       "alt": "UI/UX Design Project",
       "category": "graphics",
       "title": "WhatsApp UX Redesign",
       "description": [
-        "Mobile UI/UX Design Project",
-        "User Interface Enhancements",
-        "Interactive Prototypes",
-        "User Flow Optimization",
-        "Color Scheme Updates",
-        "Usability Testing",
-        "Customer Feedback Implementation"
+        "-Mobile UI/UX Design Project",
+        "-User Interface Enhancements",
+        "-Interactive Prototypes",
+        "-User Flow Optimization",
+        "-Color Scheme Updates",
+        "-Usability Testing",
+        "-Customer Feedback Implementation"
       ]
     },
     {
@@ -546,13 +1087,13 @@
       "category": "software",
       "title": "Creative Dashboard",
       "description": [
-        "Real-time Analytics Dashboard",
-        "Data Visualization Components",
-        "Interactive Charts & Graphs",
-        "Custom Admin Controls",
-        "User Permission Management",
-        "Dark/Light Mode Toggle",
-        "Performance Optimization"
+        "-Real-time Analytics Dashboard",
+        "-Data Visualization Components",
+        "-Interactive Charts & Graphs",
+        "-Custom Admin Controls",
+        "-User Permission Management",
+        "-Dark/Light Mode Toggle",
+        "-Performance Optimization"
       ]
     },
     {
@@ -561,13 +1102,191 @@
       "category": "software",
       "title": "Engaging Experiences",
       "description": [
-        "Interactive User Platform",
-        "Gamification Elements",
-        "Social Integration Features",
-        "Custom Animation Effects",
-        "User Achievement System",
-        "Content Management System",
-        "Mobile-First Design"
+        "-Interactive User Platform",
+        "-Gamification Elements",
+        "-Social Integration Features",
+        "-Custom Animation Effects",
+        "-User Achievement System",
+        "-Content Management System",
+        "-Mobile-First Design"
+      ]
+    },
+        {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Catalina-Shopb-V4.-new.jpg",
+      "alt": "Catalina's Shop",
+      "category": "apps",
+      "title": "Catalina's Shop",
+      "description": [
+        "– Online Shopping ",
+        "– Customize Graphic Designing ",
+        "– Responsive Device",
+        "– Customer Support "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/DH2.jpg",
+      "alt": "DH2",
+      "category": "apps",
+      "title": "DH2",
+      "description": [
+        "– Provide Security ",
+        "– UI/UX Design",
+        "– Responsive Device",
+        "– Customize graphics ",
+        "– Technical support and maintenance"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/09/North-Cab-Zone-images.jpg",
+      "alt": "North Cab Zone",
+      "category": "apps",
+      "title": "North Cab Zone",
+      "description": [
+        "– Custom  Ride Booking ",
+        "– Mobile app Development ",
+        "– GPS and Real time Tracking ",
+        "– Customer Payment Gateway",
+        "– Analytics and reporting "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Its-Been-Tranding.jpg",
+      "alt": "Its Been Trending",
+      "category": "apps",
+      "title": "Its Been Trending",
+      "description": [
+        "– Customize functionality ",
+        "– Innovative Digital Presence",
+        "– Social and Market Trends",
+        "– User Experience (UX) and Accessibility",
+        "– Security and Privacy "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Web-Design-You.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Web Design You",
+      "description": [
+        "– Custom Web Design Services ",
+        "– Responsive Design ",
+        "– UI/UX optimization ",
+        "– SEO- friendly  Design",
+        "– Content management system ",
+        "– Security Features"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/09/MAPTOONS-2.jpg",
+      "alt": "Advance Discounts Coupon",
+      "category": "apps",
+      "title": "Advance Discounts Coupon",
+      "description": [
+        "– Created both sites from scratch",
+        "– Advance Map integration system",
+        "– Responsive web solution",
+        "– Discount Coupon and management",
+        "– Maintenance and Support "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2021/07/alpha.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Alpha Antibiotics",
+      "description": [
+        "– Supply chain management",
+        "– Pharmacy management system ",
+        "– Customer and suppliers portals",
+        "– Quality Assurance ",
+        "– Training and support "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Asian.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Asian Maditech",
+      "description": [
+        "– Healthcare and development",
+        "– Medical device integration ",
+        "– User Friendly Interface",
+        "– Mobile and Web Applications ",
+        "– Training and Support  "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Freewill.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Freewill",
+      "description": [
+        "– Social Platform ",
+        "– Related to Hobbies ",
+        "– Earning According to Hobbies",
+        "– Networking"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Ridhi-Travels.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Ridhi Travels",
+      "description": [
+        "– Personalized Travel Services",
+        "– Destination Variety",
+        "– Quality and Reliability",
+        "– Special  Offer and Discounts"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Guru-Nanak-Service.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Guru Nanak Service",
+      "description": [
+        "– Crane Rental Services ",
+        "– Expertise and Safety",
+        "– Range of  Equipment ",
+        "– Timely and Reliable Services ",
+        "– Technical support and Maintenance "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Roxy-hall-1.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Roxy Hall",
+      "description": [
+        "– Custom Website Design ",
+        "– Online Booking and Reservations",
+        "– Content Management system ",
+        "– SEO and digital Marketing "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Bankruptcy.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Bankruptcy",
+      "description": [
+        "– Bankruptcy Filling Assistance ",
+        "– Financial Analysis and Planning ",
+        "– Debt  Negotiation ",
+        "– Legal Compliance",
+        "– Credit Counselling "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Fame-Rap.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "FameRep",
+      "description": [
+        "– Reputation Monitoring ",
+        "– Online review Management",
+        "– Crisis Management",
+        "– Brand Enhancement Strategies "
       ]
     },
     {
@@ -576,13 +1295,13 @@
       "category": "apps",
       "title": "LogMeOnce",
       "description": [
-        "Secure Password Management App",
-        "Biometric Authentication",
-        "Cross-platform Synchronization",
-        "Zero-knowledge Architecture",
-        "Password Generator",
-        "Security Dashboard",
-        "Breach Monitoring"
+        "-Secure Password Management App",
+        "-Biometric Authentication",
+        "-Cross-platform Synchronization",
+        "-Zero-knowledge Architecture",
+        "-Password Generator",
+        "-Security Dashboard",
+        "-Breach Monitoring"
       ]
     },
     {
@@ -591,29 +1310,28 @@
       "category": "apps",
       "title": "Hyleys Tea",
       "description": [
-        "eCommerce Mobile Application",
-        "Product Catalog System",
-        "Secure Payment Gateway",
-        "User Account Management",
-        "Order Tracking Feature",
-        "Wishlist & Favorites",
-        "Push Notifications"
+        "-eCommerce Mobile Application",
+        "-Product Catalog System",
+        "-Secure Payment Gateway",
+        "-User Account Management",
+        "-Order Tracking Feature",
+        "-Wishlist & Favorites",
+        "-Push Notifications"
       ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/muskilongue-landing-page-V-1.jpg",
-
       "alt": "Muskilongue Landing Page",
       "category": "graphics",
       "title": "Muskilongue Landing Page",
       "description": [
-        "Conversion-focused Design",
-        "Custom Illustrations",
-        "Animated Elements",
-        "Lead Generation Forms",
-        "Performance Optimization",
-        "A/B Testing Setup",
-        "Analytics Integration"
+        "-Conversion-focused Design",
+        "-Custom Illustrations",
+        "-Animated Elements",
+        "-Lead Generation Forms",
+        "-Performance Optimization",
+        "-A/B Testing Setup",
+        "-Analytics Integration"
       ]
     },
     {
@@ -622,13 +1340,13 @@
       "category": "graphics",
       "title": "Multi-Device Responsive Design",
       "description": [
-        "Cross-platform Compatibility",
-        "Mobile-First Approach",
-        "Adaptive Layouts",
-        "Custom Breakpoints",
-        "Performance Optimization",
-        "Accessibility Compliance",
-        "Browser Compatibility"
+        "-Cross-platform Compatibility",
+        "-Mobile-First Approach",
+        "-Adaptive Layouts",
+        "-Custom Breakpoints",
+        "-Performance Optimization",
+        "-Accessibility Compliance",
+        "-Browser Compatibility"
       ]
     },
     {
@@ -637,13 +1355,13 @@
       "category": "marketing",
       "title": "Georgynity",
       "description": [
-        "Comprehensive Brand Campaign",
-        "Social Media Strategy",
-        "Content Marketing",
-        "Email Marketing Automation",
-        "PPC Advertising",
-        "Analytics & Reporting",
-        "Conversion Rate Optimization"
+        "-Comprehensive Brand Campaign",
+        "-Social Media Strategy",
+        "-Content Marketing",
+        "-Email Marketing Automation",
+        "-PPC Advertising",
+        "-Analytics & Reporting",
+        "-Conversion Rate Optimization"
       ]
     },
     {
@@ -652,29 +1370,28 @@
       "category": "marketing",
       "title": "Children's Therapy Center",
       "description": [
-        "Healthcare-focused Website",
-        "Appointment Booking System",
-        "Resource Library",
-        "Parent Portal",
-        "Therapist Profiles",
-        "Accessibility Features",
-        "HIPAA Compliance"
+        "-Healthcare-focused Website",
+        "-Appointment Booking System",
+        "-Resource Library",
+        "-Parent Portal",
+        "-Therapist Profiles",
+        "-Accessibility Features",
+        "-HIPAA Compliance"
       ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Master-Wine-Tours.jpg",
-
       "alt": "Master Wine Tours App",
       "category": "apps",
       "title": "Master Wine Tours",
       "description": [
-        "Tourism & Booking Application",
-        "Interactive Tour Maps",
-        "Reservation System",
-        "Payment Processing",
-        "Reviews & Ratings",
-        "Offline Content Access",
-        "Event Calendar"
+        "-Tourism & Booking Application",
+        "-Interactive Tour Maps",
+        "-Reservation System",
+        "-Payment Processing",
+        "-Reviews & Ratings",
+        "-Offline Content Access",
+        "-Event Calendar"
       ]
     },
     {
@@ -683,13 +1400,13 @@
       "category": "apps",
       "title": "WhereYouEat",
       "description": [
-        "Restaurant Discovery App",
-        "Geolocation Features",
-        "Menu Browsing",
-        "User Reviews System",
-        "Reservation Integration",
-        "Dietary Filter Options",
-        "Favorite Restaurant Lists"
+        "-Restaurant Discovery App",
+        "-Geolocation Features",
+        "-Menu Browsing",
+        "-User Reviews System",
+        "-Reservation Integration",
+        "-Dietary Filter Options",
+        "-Favorite Restaurant Lists"
       ]
     }
   ],
@@ -700,13 +1417,13 @@
       "category": "graphics",
       "title": "Multi-Device Responsive Design",
       "description": [
-        "Cross-platform Compatibility",
-        "Mobile-First Approach",
-        "Adaptive Layouts",
-        "Custom Breakpoints",
-        "Performance Optimization",
-        "Accessibility Compliance",
-        "Browser Compatibility"
+        "-Cross-platform Compatibility",
+        "-Mobile-First Approach",
+        "-Adaptive Layouts",
+        "-Custom Breakpoints",
+        "-Performance Optimization",
+        "-Accessibility Compliance",
+        "-Browser Compatibility"
       ]
     },
     {
@@ -715,13 +1432,13 @@
       "category": "marketing",
       "title": "Georgynity",
       "description": [
-        "Comprehensive Brand Campaign",
-        "Social Media Strategy",
-        "Content Marketing",
-        "Email Marketing Automation",
-        "PPC Advertising",
-        "Analytics & Reporting",
-        "Conversion Rate Optimization"
+        "-Comprehensive Brand Campaign",
+        "-Social Media Strategy",
+        "-Content Marketing",
+        "-Email Marketing Automation",
+        "-PPC Advertising",
+        "-Analytics & Reporting",
+        "-Conversion Rate Optimization"
       ]
     },
     {
@@ -730,29 +1447,206 @@
       "category": "marketing",
       "title": "Children's Therapy Center",
       "description": [
-        "Healthcare-focused Website",
-        "Appointment Booking System",
-        "Resource Library",
-        "Parent Portal",
-        "Therapist Profiles",
-        "Accessibility Features",
-        "HIPAA Compliance"
+        "-Healthcare-focused Website",
+        "-Appointment Booking System",
+        "-Resource Library",
+        "-Parent Portal",
+        "-Therapist Profiles",
+        "-Accessibility Features",
+        "-HIPAA Compliance"
+      ]
+    },
+        {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Catalina-Shopb-V4.-new.jpg",
+      "alt": "Catalina's Shop",
+      "category": "apps",
+      "title": "Catalina's Shop",
+      "description": [
+        "– Online Shopping ",
+        "– Customize Graphic Designing ",
+        "– Responsive Device",
+        "– Customer Support "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/DH2.jpg",
+      "alt": "DH2",
+      "category": "apps",
+      "title": "DH2",
+      "description": [
+        "– Provide Security ",
+        "– UI/UX Design",
+        "– Responsive Device",
+        "– Customize graphics ",
+        "– Technical support and maintenance"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/09/North-Cab-Zone-images.jpg",
+      "alt": "North Cab Zone",
+      "category": "apps",
+      "title": "North Cab Zone",
+      "description": [
+        "– Custom  Ride Booking ",
+        "– Mobile app Development ",
+        "– GPS and Real time Tracking ",
+        "– Customer Payment Gateway",
+        "– Analytics and reporting "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Its-Been-Tranding.jpg",
+      "alt": "Its Been Trending",
+      "category": "apps",
+      "title": "Its Been Trending",
+      "description": [
+        "– Customize functionality ",
+        "– Innovative Digital Presence",
+        "– Social and Market Trends",
+        "– User Experience (UX) and Accessibility",
+        "– Security and Privacy "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Web-Design-You.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Web Design You",
+      "description": [
+        "– Custom Web Design Services ",
+        "– Responsive Design ",
+        "– UI/UX optimization ",
+        "– SEO- friendly  Design",
+        "– Content management system ",
+        "– Security Features"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/09/MAPTOONS-2.jpg",
+      "alt": "Advance Discounts Coupon",
+      "category": "apps",
+      "title": "Advance Discounts Coupon",
+      "description": [
+        "– Created both sites from scratch",
+        "– Advance Map integration system",
+        "– Responsive web solution",
+        "– Discount Coupon and management",
+        "– Maintenance and Support "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2021/07/alpha.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Alpha Antibiotics",
+      "description": [
+        "– Supply chain management",
+        "– Pharmacy management system ",
+        "– Customer and suppliers portals",
+        "– Quality Assurance ",
+        "– Training and support "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Asian.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Asian Maditech",
+      "description": [
+        "– Healthcare and development",
+        "– Medical device integration ",
+        "– User Friendly Interface",
+        "– Mobile and Web Applications ",
+        "– Training and Support  "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Freewill.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Freewill",
+      "description": [
+        "– Social Platform ",
+        "– Related to Hobbies ",
+        "– Earning According to Hobbies",
+        "– Networking"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Ridhi-Travels.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Ridhi Travels",
+      "description": [
+        "– Personalized Travel Services",
+        "– Destination Variety",
+        "– Quality and Reliability",
+        "– Special  Offer and Discounts"
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Guru-Nanak-Service.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Guru Nanak Service",
+      "description": [
+        "– Crane Rental Services ",
+        "– Expertise and Safety",
+        "– Range of  Equipment ",
+        "– Timely and Reliable Services ",
+        "– Technical support and Maintenance "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Roxy-hall-1.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Roxy Hall",
+      "description": [
+        "– Custom Website Design ",
+        "– Online Booking and Reservations",
+        "– Content Management system ",
+        "– SEO and digital Marketing "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Bankruptcy.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "Bankruptcy",
+      "description": [
+        "– Bankruptcy Filling Assistance ",
+        "– Financial Analysis and Planning ",
+        "– Debt  Negotiation ",
+        "– Legal Compliance",
+        "– Credit Counselling "
+      ]
+    },
+    {
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Fame-Rap.jpg",
+      "alt": "Web Design You",
+      "category": "apps",
+      "title": "FameRep",
+      "description": [
+        "– Reputation Monitoring ",
+        "– Online review Management",
+        "– Crisis Management",
+        "– Brand Enhancement Strategies "
       ]
     },
     {
       "src": "https://weboum.com/wp-content/uploads/2024/03/Master-Wine-Tours.jpg",
-
       "alt": "Master Wine Tours App",
       "category": "apps",
       "title": "Master Wine Tours",
       "description": [
-        "Tourism & Booking Application",
-        "Interactive Tour Maps",
-        "Reservation System",
-        "Payment Processing",
-        "Reviews & Ratings",
-        "Offline Content Access",
-        "Event Calendar"
+        "-Tourism & Booking Application",
+        "-Interactive Tour Maps",
+        "-Reservation System",
+        "-Payment Processing",
+        "-Reviews & Ratings",
+        "-Offline Content Access",
+        "-Event Calendar"
       ]
     },
     {
@@ -761,13 +1655,13 @@
       "category": "apps",
       "title": "WhereYouEat",
       "description": [
-        "Restaurant Discovery App",
-        "Geolocation Features",
-        "Menu Browsing",
-        "User Reviews System",
-        "Reservation Integration",
-        "Dietary Filter Options",
-        "Favorite Restaurant Lists"
+        "-Restaurant Discovery App",
+        "-Geolocation Features",
+        "-Menu Browsing",
+        "-User Reviews System",
+        "-Reservation Integration",
+        "-Dietary Filter Options",
+        "-Favorite Restaurant Lists"
       ]
     },
     {
@@ -776,14 +1670,14 @@
       "category": "software",
       "title": "Bolster AI",
       "description": [
-        "Cyber Security Application Company.",
-        "UI/UX Designs",
-        "Customize functionality",
-        "CRM API integration",
-        "Responsive Devices.",
-        "SEO & Digital Marketing integration.",
-        "AWS Deployment",
-        "Technical Support & Maintenance"
+        "-Cyber Security Application Company.",
+        "-UI/UX Designs",
+        "-Customize functionality",
+        "-CRM API integration",
+        "-Responsive Devices.",
+        "-SEO & Digital Marketing integration.",
+        "-AWS Deployment",
+        "-Technical Support & Maintenance"
       ]
     },
     {
@@ -792,13 +1686,13 @@
       "category": "graphics",
       "title": "WhatsApp UX Redesign",
       "description": [
-        "Mobile UI/UX Design Project",
-        "User Interface Enhancements",
-        "Interactive Prototypes",
-        "User Flow Optimization",
-        "Color Scheme Updates",
-        "Usability Testing",
-        "Customer Feedback Implementation"
+        "-Mobile UI/UX Design Project",
+        "-User Interface Enhancements",
+        "-Interactive Prototypes",
+        "-User Flow Optimization",
+        "-Color Scheme Updates",
+        "-Usability Testing",
+        "-Customer Feedback Implementation"
       ]
     }
   ]
