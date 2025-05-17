@@ -12,7 +12,7 @@ import { BsTwitterX } from "react-icons/bs";
 import Days from "../days/page";
 import Image from "next/image";
 import "./contact.css";
-import { sendContactForm } from "@/utils/api";
+import { sendContactForm } from "../../../utils/api";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -40,16 +40,33 @@ export default function Contact() {
     if (status) setStatus(""); // Clear status on input change
   };
 
+  const handleNumericKeyPress = (e) => {
+    const charCode = e.charCode;
+    if (charCode < 48 || charCode > 57) {
+      e.preventDefault();
+    }
+  };
+
+  const handlePhonePaste = (e) => {
+    const pastedData = e.clipboardData.getData("text");
+    const numericData = pastedData.replace(/\D/g, ""); // Strip non-numeric characters
+    setFormData((prev) => ({
+      ...prev,
+      phone: numericData,
+    }));
+    e.preventDefault(); // Prevent the default paste behavior
+  };
+
   const createEmailTemplate = (data) => {
     // Sanitize inputs
     const sanitizeInput = (input) => {
       if (!input) return "";
       return input
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#x27;");
+        .replace(/&/g, "&")
+        .replace(/</g, "<")
+        .replace(/>/g, ">")
+        .replace(/"/g, "")
+        .replace(/'/g, "'");
     };
 
     const sanitizedName = sanitizeInput(data.name || "Not provided");
@@ -150,6 +167,12 @@ Message: ${sanitizedMessage}
       return;
     }
 
+    if (formData.phone && !/^\d+$/.test(formData.phone)) {
+      setStatus("Phone number must contain only numbers.");
+      setIsSubmitting(false);
+      return;
+    }
+
     if (!formData.notRobot) {
       setStatus("Please verify that you are not a robot.");
       setIsSubmitting(false);
@@ -177,7 +200,7 @@ Message: ${sanitizedMessage}
       });
 
       if (result.success) {
-        setStatus("Message sent successfully! We'll get back to you soon.");
+        setStatus("Your application has been submitted successfully!");
         setFormData({
           name: "",
           email: "",
@@ -287,12 +310,14 @@ Message: ${sanitizedMessage}
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
+                onKeyPress={handleNumericKeyPress}
+                onPaste={handlePhonePaste}
                 disabled={isSubmitting}
               />
               <label htmlFor="subject">Subject</label>
               <input
                 type="text"
-                id="subject"
+                id="name"
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
@@ -329,21 +354,23 @@ Message: ${sanitizedMessage}
                   height={40}
                 />
               </div>
-              <button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? "Submitting..." : "Submit"}
-              </button>
               {status && (
-                <p
-                  className={`form-status ${
-                    status.includes("Failed") || status.includes("Please")
-                      ? "error"
-                      : "success"
-                  }`}
+                <div
+                  className={
+                    status.includes("successfully")
+                      ? "contact-success-message"
+                      : status.includes("email")
+                      ? "contact-error-message contact-error-message-email"
+                      : "contact-error-message"
+                  }
                   role="alert"
                 >
                   {status}
-                </p>
+                </div>
               )}
+              <button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? "Submitting..." : "Submit"}
+              </button>
             </form>
           </div>
         </div>

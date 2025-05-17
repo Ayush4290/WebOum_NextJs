@@ -121,7 +121,7 @@
   /* Social Benefits Section */
   .DigitalMarketing-social-benefits-section {
     padding: 60px 20px;
-    background-color: #f5fafd;
+   
     text-align: center;
   }
   
@@ -148,11 +148,11 @@
   }
   
   .DigitalMarketing-benefit-box {
-    background: #fff;
+    
     padding: 20px;
-    border-radius: 10px;
+  
     transition: 0.3s;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+   
   }
   
   .DigitalMarketing-benefit-box:hover {
@@ -165,7 +165,7 @@
   
   .DigitalMarketing-benefit-box h3 {
     font-size: 18px;
-    color: #181116;
+    color: #800080;
     font-weight: 700;
     margin-bottom: 2px;
   }
@@ -180,6 +180,8 @@
   .DigitalMarketing-brand-voice-section {
     background-image: url(https://weboum.com/wp-content/uploads/2021/05/map-pattern.png);
     padding: 40px 20px;
+   background-color: #f5fafd
+
   }
   
   .DigitalMarketing-brand-voice-container {

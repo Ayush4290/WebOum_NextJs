@@ -6,7 +6,7 @@ import { FaFacebookF, FaYoutube } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import Image from "next/image";
 import { useState } from "react";
-import { sendContactForm } from "@/utils/api";
+import { sendContactForm } from "../utils/api";
 
 const createEmailTemplate = (data) => {
   // Sanitize inputs
@@ -225,7 +225,6 @@ export default function Footer() {
         <div className="footer-newsletter-section">
           <h3>Subscribe Newsletter</h3>
           <form className="newsletter-form" onSubmit={handleSubmit} noValidate>
-         
             <input
               type="email"
               id="email"
@@ -238,14 +237,21 @@ export default function Footer() {
               disabled={isSubmitting}
             />
             {formError && (
-              <p className="submit-message error" role="alert">
+              <div
+                className={
+                  formError.includes("email")
+                    ? "footer-error-message footer-error-message-email"
+                    : "footer-error-message"
+                }
+                role="alert"
+              >
                 {formError}
-              </p>
+              </div>
             )}
             {formSuccess && (
-              <p className="submit-message success" role="alert">
+              <div className="footer-success-message" role="alert">
                 {formSuccess}
-              </p>
+              </div>
             )}
             <button type="submit" disabled={isSubmitting}>
               {isSubmitting ? "Submitting..." : "Submit"}

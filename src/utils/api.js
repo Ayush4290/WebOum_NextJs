@@ -8,8 +8,7 @@ export const sendContactForm = async ({ email, subject, message, text, file, for
     formData.append("subject", subject);
     formData.append("message", text || message);
     formData.append("html", message);
-    formData.append("form_type", formType || "contact"); // identify which form
-    // if (replyTo) formData.append("replyTo", replyTo);
+    formData.append("form_type", formType || "contact"); 
 
     if (file) {
       formData.append("attachment", file);

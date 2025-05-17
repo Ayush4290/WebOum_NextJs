@@ -5,10 +5,7 @@ import "./careers.css";
 import Days from "../days/page";
 import SubHeader from "@/app/sub-header/page";
 import Image from "next/image";
-import { sendContactForm } from "@/utils/api";
-
-
-
+import { sendContactForm } from "../../../utils/api";
 
 const Careers = () => {
   const [formData, setFormData] = useState({
@@ -39,6 +36,23 @@ const Careers = () => {
     if (formSuccess) setFormSuccess("");
   };
 
+  const handleNumericKeyPress = (e) => {
+    const charCode = e.charCode;
+    if (charCode < 48 || charCode > 57) {
+      e.preventDefault();
+    }
+  };
+
+  const handlePhonePaste = (e) => {
+    const pastedData = e.clipboardData.getData("text");
+    const numericData = pastedData.replace(/\D/g, ""); // Strip non-numeric characters
+    setFormData((prev) => ({
+      ...prev,
+      phone: numericData,
+    }));
+    e.preventDefault(); // Prevent the default paste behavior
+  };
+
   const validateForm = () => {
     const requiredFields = [
       "firstName",
@@ -47,6 +61,7 @@ const Careers = () => {
       "phone",
       "post",
       "experience",
+      "message",
     ];
     for (const field of requiredFields) {
       if (!formData[field] || formData[field].trim() === "") {
@@ -60,21 +75,34 @@ const Careers = () => {
       return false;
     }
 
-    if (formData.resume) {
-      const allowedTypes = [
-        "application/pdf",
-        "application/msword",
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-      ];
-      const maxSize = 5 * 1024 * 1024; // 5MB
-      if (!allowedTypes.includes(formData.resume.type)) {
-        setFormError("Please upload a PDF or Word document.");
-        return false;
-      }
-      if (formData.resume.size > maxSize) {
-        setFormError("Resume file size must be less than 5MB.");
-        return false;
-      }
+    if (!/^\d+$/.test(formData.phone)) {
+      setFormError("Phone number must contain only numbers.");
+      return false;
+    }
+
+    if (!/^\d+$/.test(formData.experience)) {
+      setFormError("Experience must contain only numbers.");
+      return false;
+    }
+
+    if (!formData.resume) {
+      setFormError("Please upload a resume.");
+      return false;
+    }
+
+    const allowedTypes = [
+      "application/pdf",
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ];
+    const maxSize = 5 * 1024 * 1024; // 5MB
+    if (!allowedTypes.includes(formData.resume.type)) {
+      setFormError("Please upload a PDF or Word document.");
+      return false;
+    }
+    if (formData.resume.size > maxSize) {
+      setFormError("Resume file size must be less than 5MB.");
+      return false;
     }
 
     if (!formData.notRobot) {
@@ -101,11 +129,11 @@ const Careers = () => {
       const sanitizeInput = (input) => {
         if (!input) return "";
         return input
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;")
-          .replace(/'/g, "&#x27;");
+          .replace(/&/g, "&")
+          .replace(/</g, "<")
+          .replace(/>/g, ">")
+          .replace(/"/g, "")
+          .replace(/'/g, "'");
       };
 
       const sanitizedFormData = {
@@ -115,9 +143,7 @@ const Careers = () => {
         phone: sanitizeInput(formData.phone),
         post: sanitizeInput(formData.post),
         experience: sanitizeInput(formData.experience),
-        message: sanitizeInput(
-          formData.message || "No additional message provided"
-        ),
+        message: sanitizeInput(formData.message),
       };
 
       const messageContent = `
@@ -169,7 +195,7 @@ const Careers = () => {
           </tr>
           <tr>
             <td><strong>Resume:</strong></td>
-            <td>${formData.resume ? "formData.resume" : "Not provided"}</td>
+            <td>formData.resume</td>
           </tr>
         </table>
       </td>
@@ -193,7 +219,7 @@ Phone: ${sanitizedFormData.phone}
 Position: ${sanitizedFormData.post}
 Experience: ${sanitizedFormData.experience}
 Message: ${sanitizedFormData.message}
-Resume: ${formData.resume ? "Check in my attached PDF under the Email" : "Not provided"}
+Resume: Check in my attached PDF under the Email
 
       `.trim();
 
@@ -217,7 +243,7 @@ Resume: ${formData.resume ? "Check in my attached PDF under the Email" : "Not pr
 
       if (result.success) {
         setFormSuccess(
-          "Your application has been submitted successfully! We'll review your information and get back to you soon."
+          "Your application has been submitted successfully!"
         );
         setFormData({
           firstName: "",
@@ -257,13 +283,6 @@ Resume: ${formData.resume ? "Check in my attached PDF under the Email" : "Not pr
           <div className="careers-row">
             <div className="careers-col-lg-7">
               <div className="careers-application-form">
-                {formError && (
-                  <div className="careers-error-message">{formError}</div>
-                )}
-                {formSuccess && (
-                  <div className="careers-success-message">{formSuccess}</div>
-                )}
-
                 <form onSubmit={handleSubmit}>
                   <div className="careers-row">
                     <div className="careers-col-md-6">
@@ -313,6 +332,8 @@ Resume: ${formData.resume ? "Check in my attached PDF under the Email" : "Not pr
                         placeholder="Phone"
                         value={formData.phone}
                         onChange={handleInputChange}
+                        onKeyPress={handleNumericKeyPress}
+                        onPaste={handlePhonePaste}
                         required
                         disabled={isSubmitting}
                       />
@@ -340,6 +361,7 @@ Resume: ${formData.resume ? "Check in my attached PDF under the Email" : "Not pr
                         placeholder="Experience"
                         value={formData.experience}
                         onChange={handleInputChange}
+                        onKeyPress={handleNumericKeyPress}
                         required
                         disabled={isSubmitting}
                       />
@@ -357,6 +379,7 @@ Resume: ${formData.resume ? "Check in my attached PDF under the Email" : "Not pr
                       id="resume"
                       ref={fileInputRef}
                       onChange={handleInputChange}
+                      required
                       disabled={isSubmitting}
                       accept=".pdf,.doc,.docx"
                     />
@@ -369,6 +392,7 @@ Resume: ${formData.resume ? "Check in my attached PDF under the Email" : "Not pr
                     placeholder="Message"
                     value={formData.message}
                     onChange={handleInputChange}
+                    required
                     disabled={isSubmitting}
                   ></textarea>
 
@@ -379,6 +403,7 @@ Resume: ${formData.resume ? "Check in my attached PDF under the Email" : "Not pr
                       name="notRobot"
                       checked={formData.notRobot}
                       onChange={handleInputChange}
+                      required
                       disabled={isSubmitting}
                     />
                     <label htmlFor="robot-check">I'm not a robot</label>
@@ -390,6 +415,21 @@ Resume: ${formData.resume ? "Check in my attached PDF under the Email" : "Not pr
                       height={40}
                     />
                   </div>
+
+                  {formError && (
+                    <div
+                      className={
+                        formError.includes("email")
+                          ? "careers-error-message careers-error-message-email"
+                          : "careers-error-message"
+                      }
+                    >
+                      {formError}
+                    </div>
+                  )}
+                  {formSuccess && (
+                    <div className="careers-success-message">{formSuccess}</div>
+                  )}
 
                   <button
                     type="submit"

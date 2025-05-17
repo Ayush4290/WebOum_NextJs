@@ -47,7 +47,10 @@ export default function DigitalMarketing() {
               />
             </div>
             <div className="DigitalMarketing-text-content">
-              <h3>Spending in digital, but no multiples of return?</h3>
+              <h3>
+                Spending in digital, but there are no multiples of return?
+                You’re doing it wrong!
+              </h3>
               <p>
                 Social media has immense power to change the fate of your
                 business. If you spending your money and still not getting the
@@ -99,7 +102,7 @@ export default function DigitalMarketing() {
         <section className="DigitalMarketing-social-benefits-section">
           <div className="DigitalMarketing-container">
             <h2 className="DigitalMarketing-section-title">
-              Social Media Marketing Will Help Your Brand!
+              That’s How Social Media Marketing Will Help Your Brand!
             </h2>
             <p className="DigitalMarketing-section-subtitle">
               Social Media Marketing is a considerable aspect of Digital

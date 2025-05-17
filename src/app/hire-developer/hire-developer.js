@@ -121,8 +121,19 @@ export default function HireDeveloper() {
       return false;
     }
 
+    // Email validation
     if (!/\S+@\S+\.\S+/.test(email)) {
       setFormError("Please enter a valid email address.");
+      return false;
+    }
+
+    // Phone number validation
+    // Accepts formats like: +1234567890, 123-456-7890, (123) 456-7890, 1234567890
+    const phoneRegex = /^\+?[\d\s\-\(\)]{7,15}$/;
+    if (!phoneRegex.test(phone)) {
+      setFormError(
+        "Please enter a valid phone number (7-15 digits, may include +, -, (), or spaces)."
+      );
       return false;
     }
 
@@ -134,12 +145,12 @@ export default function HireDeveloper() {
     setFormError("");
     setFormSuccess("");
 
-    const name = formRef.current?.querySelector("#name")?.value;
-    const email = formRef.current?.querySelector("#email")?.value;
-    const phone = formRef.current?.querySelector("#phone")?.value;
-    const company = formRef.current?.querySelector("#company")?.value;
-    const website = formRef.current?.querySelector("#website")?.value;
-    const comment = formRef.current?.querySelector("#comment")?.value;
+    const name = formRef.current?.querySelector("#name")?.value.trim();
+    const email = formRef.current?.querySelector("#email")?.value.trim();
+    const phone = formRef.current?.querySelector("#phone")?.value.trim();
+    const company = formRef.current?.querySelector("#company")?.value.trim();
+    const website = formRef.current?.querySelector("#website")?.value.trim();
+    const comment = formRef.current?.querySelector("#comment")?.value.trim();
 
     if (!validateForm(name, email, phone)) {
       return;
@@ -152,11 +163,11 @@ export default function HireDeveloper() {
       const sanitizeInput = (input) => {
         if (!input) return "";
         return input
-          .replace(/&/g, "&")
-          .replace(/</g, "<")
-          .replace(/>/g, ">")
-          .replace(/"/g, "")
-          .replace(/'/g, "'");
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
       };
 
       const sanitizedFormData = {
@@ -168,9 +179,10 @@ export default function HireDeveloper() {
         comment: sanitizeInput(comment || "No comments provided"),
       };
 
-      const subject = sanitizedFormData.company !== "Not provided"
-        ? `Hire Developer Request from ${sanitizedFormData.name} - ${sanitizedFormData.company}`
-        : `Hire Developer Request from ${sanitizedFormData.name}`;
+      const subject =
+        sanitizedFormData.company !== "Not provided"
+          ? `Hire Developer Request from ${sanitizedFormData.name} - ${sanitizedFormData.company}`
+          : `Hire Developer Request from ${sanitizedFormData.name}`;
 
       // Plain HTML5 table-based email template without CSS
       const messageContent = `
@@ -270,7 +282,7 @@ Preferred Start: ${selectedStart.length > 0 ? selectedStart.join(", ") : "None s
 Comment: ${sanitizedFormData.comment}
       `.trim();
 
-      console.log("Submitting form with:", {
+      console.log(" submitting form with:", {
         email: sanitizedFormData.email,
         subject,
         message: messageContent.substring(0, 100) + "...",
@@ -288,7 +300,7 @@ Comment: ${sanitizedFormData.comment}
       });
 
       if (result.success) {
-        setFormSuccess("Form submitted successfully!");
+        setFormSuccess("Thank you! Your request has been submitted successfully.");
         setCurrentStep(1);
         formRef.current?.reset();
 
@@ -303,6 +315,9 @@ Comment: ${sanitizedFormData.comment}
         document
           .querySelectorAll(".tag")
           .forEach((tag) => tag.classList.remove("selected"));
+
+        // Scroll to top of form
+        window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
         setFormError(
           result.message || "Failed to submit the form. Please try again."
@@ -311,7 +326,7 @@ Comment: ${sanitizedFormData.comment}
     } catch (error) {
       console.error("Error submitting form:", error);
       setFormError(
-        "Failed to submit the form. Please try again later or contact support@weboum.com."
+        "An error occurred while submitting the form. Please try again later or contact support@weboum.com."
       );
     } finally {
       setIsSubmitting(false);
@@ -485,6 +500,7 @@ Comment: ${sanitizedFormData.comment}
                       id="name"
                       required
                       disabled={isSubmitting}
+                      placeholder="Enter your full name"
                     />
                   </div>
 
@@ -495,6 +511,7 @@ Comment: ${sanitizedFormData.comment}
                       id="email"
                       required
                       disabled={isSubmitting}
+                      placeholder="Enter your email address"
                     />
                   </div>
 
@@ -505,22 +522,37 @@ Comment: ${sanitizedFormData.comment}
                       id="phone"
                       required
                       disabled={isSubmitting}
+                      placeholder="Enter your phone number"
                     />
                   </div>
 
                   <div>
                     <label htmlFor="company">Company</label>
-                    <input type="text" id="company" disabled={isSubmitting} />
+                    <input
+                      type="text"
+                      id="company"
+                      disabled={isSubmitting}
+                      placeholder="Enter your company name"
+                    />
                   </div>
 
                   <div>
                     <label htmlFor="website">Website URL</label>
-                    <input type="url" id="website" disabled={isSubmitting} />
+                    <input
+                      type="url"
+                      id="website"
+                      disabled={isSubmitting}
+                      placeholder="Enter your website URL"
+                    />
                   </div>
 
                   <div>
                     <label htmlFor="comment">Comment</label>
-                    <textarea id="comment" disabled={isSubmitting}></textarea>
+                    <textarea
+                      id="comment"
+                      disabled={isSubmitting}
+                      placeholder="Additional comments or requirements"
+                    ></textarea>
                   </div>
 
                   {formError && (

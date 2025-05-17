@@ -15,7 +15,6 @@ const Home = () => {
     name: "",
     email: "",
     phoneNumber: "",
-
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -98,6 +97,23 @@ const Home = () => {
     if (formSuccess) setFormSuccess("");
   };
 
+  const handleNumericKeyPress = (e) => {
+    const charCode = e.charCode;
+    if (charCode < 48 || charCode > 57) {
+      e.preventDefault();
+    }
+  };
+
+  const handlePhonePaste = (e) => {
+    const pastedData = e.clipboardData.getData("text");
+    const numericData = pastedData.replace(/\D/g, ""); // Strip non-numeric characters
+    setFormData((prev) => ({
+      ...prev,
+      phoneNumber: numericData,
+    }));
+    e.preventDefault(); // Prevent the default paste behavior
+  };
+
   const validateForm = () => {
     const requiredFields = ["name", "email", "phoneNumber", "message"];
     for (const field of requiredFields) {
@@ -109,6 +125,11 @@ const Home = () => {
 
     if (!/\S+@\S+\.\S+/.test(formData.email)) {
       setFormError("Please enter a valid email address.");
+      return false;
+    }
+
+    if (!/^\d+$/.test(formData.phoneNumber)) {
+      setFormError("Phone number must contain only numbers.");
       return false;
     }
 
@@ -142,7 +163,6 @@ const Home = () => {
         name: sanitizeInput(formData.name || "Not provided"),
         email: sanitizeInput(formData.email || "Not provided"),
         phoneNumber: sanitizeInput(formData.phoneNumber || "Not provided"),
-
         message: sanitizeInput(formData.message || "No message provided"),
       };
 
@@ -182,7 +202,6 @@ const Home = () => {
             <td><strong>Phone:</strong></td>
             <td>${sanitizedFormData.phoneNumber}</td>
           </tr>
-          
           <tr>
             <td><strong>Message:</strong></td>
             <td>${sanitizedFormData.message.replace(/\n/g, "<br>")}</td>
@@ -207,7 +226,6 @@ Contact Form Submission Details:
 Name: ${sanitizedFormData.name}
 Email: ${sanitizedFormData.email}
 Phone: ${sanitizedFormData.phoneNumber}
-
 Message: ${sanitizedFormData.message}
       `.trim();
 
@@ -462,11 +480,12 @@ Message: ${sanitizedFormData.message}
                       placeholder="Phone Number"
                       value={formData.phoneNumber}
                       onChange={handleInputChange}
+                      onKeyPress={handleNumericKeyPress}
+                      onPaste={handlePhonePaste}
                       required
                       disabled={isSubmitting}
                     />
                   </div>
-
                   <div className="form-group">
                     <textarea
                       name="message"
@@ -480,12 +499,19 @@ Message: ${sanitizedFormData.message}
                     ></textarea>
                   </div>
                   {formError && (
-                    <div className="form-error" role="alert">
+                    <div
+                      className={
+                        formError.includes("email")
+                          ? "home-error-message home-error-message-email"
+                          : "home-error-message"
+                      }
+                      role="alert"
+                    >
                       {formError}
                     </div>
                   )}
                   {formSuccess && (
-                    <div className="form-success" role="alert">
+                    <div className="home-success-message" role="alert">
                       {formSuccess}
                     </div>
                   )}

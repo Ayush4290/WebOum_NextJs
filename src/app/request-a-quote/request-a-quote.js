@@ -6,7 +6,7 @@ import { BsTwitterX } from "react-icons/bs";
 import "./request_a_quote.css";
 import Days from "../about-us/days/page";
 import SubHeader from "../sub-header/page";
-import { sendContactForm } from "@/utils/api";
+import { sendContactForm } from "../../utils/api";
 
 const steps = [
   {
@@ -105,7 +105,7 @@ const steps = [
     fields: [
       { label: "Name*", name: "name", type: "text", required: true },
       { label: "Email*", name: "email", type: "email", required: true },
-      { label: "Phone", name: "phone", type: "tel" },
+      { label: "Phone*", name: "phone", type: "tel", required: true }, // Made phone required
       { label: "Company", name: "company", type: "text" },
       { label: "Website URL", name: "website", type: "url" },
       { label: "Your Message", name: "message", type: "textarea" },
@@ -119,6 +119,7 @@ export default function RequestaQuote() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState("");
   const [formSuccess, setFormSuccess] = useState("");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const formRef = useRef(null);
 
   // State for multi-selected options
@@ -136,7 +137,6 @@ export default function RequestaQuote() {
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
       setFormError("");
-      setFormSuccess("");
     }
   };
 
@@ -144,7 +144,6 @@ export default function RequestaQuote() {
     if (currentStep > 0) {
       setCurrentStep(currentStep - 1);
       setFormError("");
-      setFormSuccess("");
     }
   };
 
@@ -163,6 +162,14 @@ export default function RequestaQuote() {
 
       if (formData.email && !/^\S+@\S+\.\S+$/.test(formData.email)) {
         setFormError("Please enter a valid email address.");
+        return false;
+      }
+
+      if (
+        formData.phone &&
+        !/^\+?[\d\s-]{10,15}$/.test(formData.phone)
+      ) {
+        setFormError("Please enter a valid phone number (10-15 digits).");
         return false;
       }
     }
@@ -187,11 +194,11 @@ export default function RequestaQuote() {
       const sanitizeInput = (input) => {
         if (!input) return "";
         return input
-          .replace(/&/g, "&")
-          .replace(/</g, "<")
-          .replace(/>/g, ">")
-          .replace(/"/g, " ")
-          .replace(/'/g, "'");
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
       };
 
       const sanitizedFormData = {};
@@ -331,14 +338,6 @@ Start: ${selectedOptions.start.length > 0 ? getOptionLabels("start", selectedOpt
 Message: ${sanitizedFormData.message || "No message provided"}
       `.trim();
 
-      console.log("Submitting form with:", {
-        email: sanitizedFormData.email,
-        subject: `Quote Request from ${sanitizedFormData.name || "Website Visitor"}`,
-        message: messageContent.substring(0, 100) + "...",
-        text: plainTextContent.substring(0, 100) + "...",
-        formType: "quote-request",
-      });
-
       const result = await sendContactForm({
         email: sanitizedFormData.email || "",
         subject: `Quote Request from ${sanitizedFormData.name || "Website Visitor"}`,
@@ -352,6 +351,7 @@ Message: ${sanitizedFormData.message || "No message provided"}
         setFormSuccess(
           "Your quote request has been submitted successfully. We'll get back to you soon!"
         );
+        setShowSuccessModal(true);
         setFormData({});
         setSelectedOptions({
           stage: [],
@@ -396,9 +396,6 @@ Message: ${sanitizedFormData.message || "No message provided"}
     if (formError) {
       setFormError("");
     }
-    if (formSuccess) {
-      setFormSuccess("");
-    }
   };
 
   const handleInputChange = (e) => {
@@ -411,9 +408,11 @@ Message: ${sanitizedFormData.message || "No message provided"}
     if (formError) {
       setFormError("");
     }
-    if (formSuccess) {
-      setFormSuccess("");
-    }
+  };
+
+  const closeSuccessModal = () => {
+    setShowSuccessModal(false);
+    setFormSuccess("");
   };
 
   const currentStepData = steps[currentStep];
@@ -439,6 +438,7 @@ Message: ${sanitizedFormData.message || "No message provided"}
             <h2 className="requestaQuote-title">
               Do You Have Any Questions? We'll Be Happy To Assist!
             </h2>
+           
             <div className="requestaQuote-social">
               <a
                 href="https://www.facebook.com/people/Weboum-Technology-PvtLtd/100091375563554/"
@@ -475,11 +475,6 @@ Message: ${sanitizedFormData.message || "No message provided"}
               {formError && (
                 <div className="requestaQuote-error" role="alert">
                   {formError}
-                </div>
-              )}
-              {formSuccess && (
-                <div className="requestaQuote-success" role="alert">
-                  {formSuccess}
                 </div>
               )}
 
@@ -586,6 +581,23 @@ Message: ${sanitizedFormData.message || "No message provided"}
           </div>
         </div>
       </div>
+
+      {/* Success Modal */}
+      {showSuccessModal && (
+        <div className="requestaQuote-modal-overlay">
+          <div className="requestaQuote-modal">
+            <h3>Success!</h3>
+            <p>{formSuccess}</p>
+            <button
+              className="requestaQuote-modal-button"
+              onClick={closeSuccessModal}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+
       <Days />
     </>
   );

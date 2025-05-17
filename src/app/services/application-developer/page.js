@@ -34,7 +34,7 @@ export default function AppSections() {
             </div>
             <div className="Application-section-image Application-order-1 Application-order-md-2">
               <Image
-                src="/image/android-app.jpg"
+                src="https://weboum.com/wp-content/uploads/2021/04/mobile-application.jpg"
                 alt="Web Mobile App"
                 width={600}
                 height={400}

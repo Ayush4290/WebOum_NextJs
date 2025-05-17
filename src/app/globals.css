@@ -892,3 +892,49 @@ textarea.form-control {
     font-size: 0.8rem;
   }
 }
+
+
+.home-success-message {
+  background-color: #e6f4ea;
+  color: #2e7d32;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.home-error-message {
+  color: #d32f2f;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.home-error-message-email {
+  background-color: #ffebee;
+  color: #d32f2f;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .home-success-message,
+  .home-error-message,
+  .home-error-message-email {
+    font-size: 0.85rem;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .home-success-message,
+  .home-error-message,
+  .home-error-message-email {
+    font-size: 0.8rem;
+    padding: 6px;
+  }
+}

@@ -566,17 +566,26 @@
   margin-right: 8px;
 }
 
-.whyus-error-message {
-  color: #d32f2f;
+.whyus-error-message,
+.whyus-success-message {
+  margin-bottom: 15px;
+  padding: 8px;
+  border-radius: 4px;
   font-size: 0.9rem;
-  margin-bottom: 10px;
+}
+
+.whyus-error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
 }
 
 .whyus-success-message {
-  color: #28a745;
-  font-size: 0.9rem;
-  margin-bottom: 10px;
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
 }
+
 
 /* Submit button */
 .whyus-btn-submit {
