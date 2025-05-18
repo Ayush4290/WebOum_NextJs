@@ -1,5 +1,5 @@
 import Days from "../../about-us/days/page";
-import SubHeader from "@/app/sub-header/page";
+import SubHeader from "../../sub-header/page";
 import Image from "next/image";
 import "./product-lifecycle-management.css";
 

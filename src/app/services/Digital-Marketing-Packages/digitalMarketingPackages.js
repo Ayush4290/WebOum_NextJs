@@ -3,7 +3,7 @@
 import { useState } from "react";
 import "./DigitalMarketingPackages.css";
 import Days from "../../about-us/days/page";
-import SubHeader from "@/app/sub-header/page";
+import SubHeader from "../../sub-header/page";
 
 const DigitalMarketingPackages = () => {
   const [showMobileView, setShowMobileView] = useState(false);

@@ -19,7 +19,7 @@ import {
   FaCheckCircle,
 } from "react-icons/fa";
 
-import SubHeader from "@/app/sub-header/page";
+import SubHeader from "../../sub-header/page";
 
 import "./web-developer.css";
 import Days from "../../about-us/days/page";

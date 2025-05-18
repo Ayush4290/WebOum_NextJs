@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import SubHeader from "@/app/sub-header/page";
+import SubHeader from "../../sub-header/page";
 import {
   FaFacebookF,
   FaYoutube,
@@ -281,7 +281,7 @@ Message: ${sanitizedMessage}
           </div>
           <div className="approach-form">
             <form onSubmit={handleSubmit} noValidate>
-              <label htmlFor="name">Name</label>
+              <label htmlFor="name">Name*</label>
               <input
                 type="text"
                 id="name"
@@ -292,7 +292,7 @@ Message: ${sanitizedMessage}
                 aria-required="true"
                 disabled={isSubmitting}
               />
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">Email*</label>
               <input
                 type="email"
                 id="email"
@@ -303,7 +303,7 @@ Message: ${sanitizedMessage}
                 aria-required="true"
                 disabled={isSubmitting}
               />
-              <label htmlFor="phone">Phone</label>
+              <label htmlFor="phone">Phone*</label>
               <input
                 type="tel"
                 id="phone"
@@ -314,7 +314,7 @@ Message: ${sanitizedMessage}
                 onPaste={handlePhonePaste}
                 disabled={isSubmitting}
               />
-              <label htmlFor="subject">Subject</label>
+              <label htmlFor="subject">Subject*</label>
               <input
                 type="text"
                 id="name"
@@ -323,7 +323,7 @@ Message: ${sanitizedMessage}
                 onChange={handleChange}
                 disabled={isSubmitting}
               />
-              <label htmlFor="message">Message</label>
+              <label htmlFor="message">Message*</label>
               <textarea
                 id="message"
                 name="message"

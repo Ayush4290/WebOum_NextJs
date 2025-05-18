@@ -453,7 +453,7 @@ Message: ${sanitizedFormData.message}
                       type="text"
                       name="name"
                       className="form-control"
-                      placeholder="Name"
+                      placeholder="Name*"
                       value={formData.name}
                       onChange={handleInputChange}
                       required
@@ -465,7 +465,7 @@ Message: ${sanitizedFormData.message}
                       type="email"
                       name="email"
                       className="form-control"
-                      placeholder="Email"
+                      placeholder="Email*"
                       value={formData.email}
                       onChange={handleInputChange}
                       required
@@ -477,7 +477,7 @@ Message: ${sanitizedFormData.message}
                       type="tel"
                       name="phoneNumber"
                       className="form-control"
-                      placeholder="Phone Number"
+                      placeholder="Phone Number*"
                       value={formData.phoneNumber}
                       onChange={handleInputChange}
                       onKeyPress={handleNumericKeyPress}
@@ -491,7 +491,7 @@ Message: ${sanitizedFormData.message}
                       name="message"
                       className="form-control"
                       rows="4"
-                      placeholder="Message"
+                      placeholder="Message*"
                       value={formData.message}
                       onChange={handleInputChange}
                       required

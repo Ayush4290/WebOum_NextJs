@@ -3,7 +3,7 @@
 import React, { useState, useRef } from "react";
 import "./careers.css";
 import Days from "../days/page";
-import SubHeader from "@/app/sub-header/page";
+import SubHeader from "../../sub-header/page";
 import Image from "next/image";
 import { sendContactForm } from "../../../utils/api";
 
@@ -290,7 +290,7 @@ Resume: Check in my attached PDF under the Email
                         type="text"
                         name="firstName"
                         className="careers-form-control"
-                        placeholder="First Name"
+                        placeholder="First Name*"
                         value={formData.firstName}
                         onChange={handleInputChange}
                         required
@@ -300,9 +300,9 @@ Resume: Check in my attached PDF under the Email
                     <div className="careers-col-md-6">
                       <input
                         type="text"
-                        name="lastName"
+                        name="lastName*"
                         className="careers-form-control"
-                        placeholder="Last Name"
+                        placeholder="Last Name*"
                         value={formData.lastName}
                         onChange={handleInputChange}
                         required
@@ -317,7 +317,7 @@ Resume: Check in my attached PDF under the Email
                         type="email"
                         name="email"
                         className="careers-form-control"
-                        placeholder="Email"
+                        placeholder="Email*"
                         value={formData.email}
                         onChange={handleInputChange}
                         required
@@ -329,7 +329,7 @@ Resume: Check in my attached PDF under the Email
                         type="tel"
                         name="phone"
                         className="careers-form-control"
-                        placeholder="Phone"
+                        placeholder="Phone*"
                         value={formData.phone}
                         onChange={handleInputChange}
                         onKeyPress={handleNumericKeyPress}
@@ -346,7 +346,7 @@ Resume: Check in my attached PDF under the Email
                         type="text"
                         name="post"
                         className="careers-form-control"
-                        placeholder="Apply For Post"
+                        placeholder="Apply For Post*"
                         value={formData.post}
                         onChange={handleInputChange}
                         required
@@ -358,7 +358,7 @@ Resume: Check in my attached PDF under the Email
                         type="text"
                         name="experience"
                         className="careers-form-control"
-                        placeholder="Experience"
+                        placeholder="Experience*"
                         value={formData.experience}
                         onChange={handleInputChange}
                         onKeyPress={handleNumericKeyPress}
@@ -370,13 +370,13 @@ Resume: Check in my attached PDF under the Email
 
                   <div className="careers-mb-3">
                     <label htmlFor="resume" className="careers-form-label">
-                      Attach Resume
+                      Attach Resume*
                     </label>
                     <input
                       type="file"
                       name="resume"
                       className="careers-form-control"
-                      id="resume"
+                      id="resume*"
                       ref={fileInputRef}
                       onChange={handleInputChange}
                       required
@@ -389,7 +389,7 @@ Resume: Check in my attached PDF under the Email
                     name="message"
                     className="careers-form-control"
                     rows="5"
-                    placeholder="Message"
+                    placeholder="Message*"
                     value={formData.message}
                     onChange={handleInputChange}
                     required

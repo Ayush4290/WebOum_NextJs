@@ -500,7 +500,7 @@ Comment: ${sanitizedFormData.comment}
                       id="name"
                       required
                       disabled={isSubmitting}
-                      placeholder="Enter your full name"
+                     
                     />
                   </div>
 
@@ -510,8 +510,7 @@ Comment: ${sanitizedFormData.comment}
                       type="email"
                       id="email"
                       required
-                      disabled={isSubmitting}
-                      placeholder="Enter your email address"
+                      
                     />
                   </div>
 
@@ -522,36 +521,39 @@ Comment: ${sanitizedFormData.comment}
                       id="phone"
                       required
                       disabled={isSubmitting}
-                      placeholder="Enter your phone number"
+                     
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="company">Company</label>
+                    <label htmlFor="company">Company*</label>
                     <input
                       type="text"
                       id="company"
                       disabled={isSubmitting}
-                      placeholder="Enter your company name"
+                     
+                      required
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="website">Website URL</label>
+                    <label htmlFor="website">Website URL*</label>
                     <input
                       type="url"
                       id="website"
                       disabled={isSubmitting}
-                      placeholder="Enter your website URL"
+                     
+                      required
                     />
                   </div>
 
                   <div>
-                    <label htmlFor="comment">Comment</label>
+                    <label htmlFor="comment">Comment*</label>
                     <textarea
                       id="comment"
                       disabled={isSubmitting}
-                      placeholder="Additional comments or requirements"
+                      required
+                    
                     ></textarea>
                   </div>
 

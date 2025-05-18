@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import SubHeader from "@/app/sub-header/page";
+import SubHeader from "../../sub-header/page";
 import Days from "../days/page";
 import Image from "next/image";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import "./why-us.css";
-import { sendContactForm } from "@/utils/api";
+import { sendContactForm } from "../../../utils/api";
 
 export default function WhyUs() {
   const [formData, setFormData] = useState({
@@ -336,7 +336,7 @@ Message: ${sanitizedFormData.message}
                 type="text"
                 name="name"
                 className="whyus-form-control"
-                placeholder="Name"
+                placeholder="Name*"
                 value={formData.name}
                 onChange={handleInputChange}
                 required
@@ -346,7 +346,7 @@ Message: ${sanitizedFormData.message}
                 type="tel"
                 name="phone"
                 className="whyus-form-control"
-                placeholder="000-000-0000"
+                placeholder="000-000-0000*"
                 value={formData.phone}
                 onChange={handleInputChange}
                 required
@@ -356,7 +356,7 @@ Message: ${sanitizedFormData.message}
                 type="email"
                 name="email"
                 className="whyus-form-control"
-                placeholder="Email"
+                placeholder="Email*"
                 value={formData.email}
                 onChange={handleInputChange}
                 required
@@ -365,6 +365,7 @@ Message: ${sanitizedFormData.message}
               <select
                 name="project"
                 className="whyus-form-select"
+                placeholder="Select Project Type*"
                 value={formData.project}
                 onChange={handleInputChange}
                 required
@@ -387,7 +388,7 @@ Message: ${sanitizedFormData.message}
                 name="message"
                 className="whyus-form-control"
                 rows="4"
-                placeholder="Your Query / Message"
+                placeholder="Your Query / Message*"
                 value={formData.message}
                 onChange={handleInputChange}
                 disabled={isSubmitting}

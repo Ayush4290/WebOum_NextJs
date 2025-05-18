@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import "./HostingManagement.css";
+import Days from "../days/days";
 
 export default function WebHosting() {
   const [activeTab, setActiveTab] = useState("Cloud Server");
@@ -107,6 +108,7 @@ export default function WebHosting() {
   };
 
   return (
+    <>
     <main>
       {/* Hero Section */}
       <section className="herohosting">
@@ -411,5 +413,7 @@ export default function WebHosting() {
         </div>
       </section>
     </main>
+    <Days/>
+    </>
   );
 }

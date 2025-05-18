@@ -1,6 +1,6 @@
 import Image from "next/image";
 import "./digital-marketing-solutions.css";
-import SubHeader from "@/app/sub-header/page";
+import SubHeader from "../../sub-header/page";
 import Days from "../days/page";
 
 export const metadata = {

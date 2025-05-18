@@ -106,9 +106,9 @@ const steps = [
       { label: "Name*", name: "name", type: "text", required: true },
       { label: "Email*", name: "email", type: "email", required: true },
       { label: "Phone*", name: "phone", type: "tel", required: true }, // Made phone required
-      { label: "Company", name: "company", type: "text" },
-      { label: "Website URL", name: "website", type: "url" },
-      { label: "Your Message", name: "message", type: "textarea" },
+      { label: "Company*", name: "company", type: "text" ,required: true },
+      { label: "Website URL*", name: "website", type: "url", required: true },
+      { label: "Your Message*", name: "message", type: "textarea", required: true },
     ],
   },
 ];
