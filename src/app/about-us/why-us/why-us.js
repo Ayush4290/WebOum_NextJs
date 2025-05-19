@@ -21,6 +21,7 @@ export default function WhyUs() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState("");
   const [formSuccess, setFormSuccess] = useState("");
+  const [phoneError, setPhoneError] = useState(""); // Added for real-time phone validation
 
   useEffect(() => {
     AOS.init({
@@ -30,11 +31,38 @@ export default function WhyUs() {
     });
   }, []);
 
+  const formatPhoneNumber = (value) => {
+    if (!value) return value;
+    // Remove all non-digits
+    const phoneNumber = value.replace(/[^\d]/g, "");
+    const phoneNumberLength = phoneNumber.length;
+    // Format based on length
+    if (phoneNumberLength < 4) return phoneNumber;
+    if (phoneNumberLength < 7) {
+      return `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3)}`;
+    }
+    return `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
+  };
+
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
+    let formattedValue = value;
+
+    // Format phone number if the input is for phone
+    if (name === "phone") {
+      formattedValue = formatPhoneNumber(value);
+      // Validate phone number in real-time
+      const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
+      if (formattedValue && !phoneRegex.test(formattedValue)) {
+        setPhoneError("Please enter a valid phone number (e.g., 123-456-7890)");
+      } else {
+        setPhoneError("");
+      }
+    }
+
     setFormData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: type === "checkbox" ? checked : formattedValue,
     }));
     if (formError) setFormError("");
     if (formSuccess) setFormSuccess("");
@@ -54,6 +82,13 @@ export default function WhyUs() {
       return false;
     }
 
+    // Phone number validation: must match XXX-XXX-XXXX
+    const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
+    if (!phoneRegex.test(formData.phone)) {
+      setFormError("Please enter a valid phone number in the format 123-456-7890.");
+      return false;
+    }
+
     if (!formData.notRobot) {
       setFormError("Please verify that you are not a robot.");
       return false;
@@ -66,6 +101,7 @@ export default function WhyUs() {
     e.preventDefault();
     setFormError("");
     setFormSuccess("");
+    setPhoneError("");
 
     if (!validateForm()) {
       setIsSubmitting(false);
@@ -82,8 +118,8 @@ export default function WhyUs() {
           .replace(/&/g, "&")
           .replace(/</g, "<")
           .replace(/>/g, ">")
-          .replace(/"/g, "")
-          .replace(/'/g, "");
+          .replace(/"/g, " ")
+          .replace(/'/g, "'");
       };
 
       const sanitizedFormData = {
@@ -352,6 +388,7 @@ Message: ${sanitizedFormData.message}
                 required
                 disabled={isSubmitting}
               />
+              
               <input
                 type="email"
                 name="email"
@@ -371,7 +408,6 @@ Message: ${sanitizedFormData.message}
                 required
                 disabled={isSubmitting}
               >
-                
                 <option value="Project Development">Project Development</option>
                 <option value="Web Development">Web Development</option>
                 <option value="App Development">Mobile App Development</option>

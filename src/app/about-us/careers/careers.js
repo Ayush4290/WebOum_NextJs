@@ -43,14 +43,21 @@ const Careers = () => {
     }
   };
 
+  const handleAlphabeticKeyPress = (e) => {
+    const char = String.fromCharCode(e.charCode);
+    if (!/^[a-zA-Z\s]*$/.test(char)) {
+      e.preventDefault();
+    }
+  };
+
   const handlePhonePaste = (e) => {
     const pastedData = e.clipboardData.getData("text");
-    const numericData = pastedData.replace(/\D/g, ""); // Strip non-numeric characters
+    const numericData = pastedData.replace(/\D/g, "");
     setFormData((prev) => ({
       ...prev,
       phone: numericData,
     }));
-    e.preventDefault(); // Prevent the default paste behavior
+    e.preventDefault();
   };
 
   const validateForm = () => {
@@ -95,7 +102,7 @@ const Careers = () => {
       "application/msword",
       "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     ];
-    const maxSize = 5 * 1024 * 1024; // 5MB
+    const maxSize = 5 * 1024 * 1024;
     if (!allowedTypes.includes(formData.resume.type)) {
       setFormError("Please upload a PDF or Word document.");
       return false;
@@ -220,7 +227,6 @@ Position: ${sanitizedFormData.post}
 Experience: ${sanitizedFormData.experience}
 Message: ${sanitizedFormData.message}
 Resume: Check in my attached PDF under the Email
-
       `.trim();
 
       console.log("Submitting careers form with:", {
@@ -272,7 +278,7 @@ Resume: Check in my attached PDF under the Email
       );
     } finally {
       setIsSubmitting(false);
-    }
+    } 
   };
 
   return (
@@ -293,6 +299,7 @@ Resume: Check in my attached PDF under the Email
                         placeholder="First Name*"
                         value={formData.firstName}
                         onChange={handleInputChange}
+                        onKeyPress={handleAlphabeticKeyPress}
                         required
                         disabled={isSubmitting}
                       />
@@ -300,11 +307,12 @@ Resume: Check in my attached PDF under the Email
                     <div className="careers-col-md-6">
                       <input
                         type="text"
-                        name="lastName*"
+                        name="lastName"
                         className="careers-form-control"
-                        placeholder="Last Name*"
+                        placeholder="LastName*"
                         value={formData.lastName}
                         onChange={handleInputChange}
+                        onKeyPress={handleAlphabeticKeyPress}
                         required
                         disabled={isSubmitting}
                       />

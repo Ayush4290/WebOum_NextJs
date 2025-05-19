@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect, useRef } from "react";
@@ -19,6 +20,7 @@ export default function HireDeveloper() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState("");
   const [formSuccess, setFormSuccess] = useState("");
+  const [phoneError, setPhoneError] = useState(""); // For real-time phone validation
 
   // Skills section data
   const skills = [
@@ -61,6 +63,33 @@ export default function HireDeveloper() {
     "More than a month",
     "I am not sure",
   ];
+
+  const formatPhoneNumber = (value) => {
+    if (!value) return value;
+    const phoneNumber = value.replace(/[^\d]/g, ""); // Remove non-digits
+    const phoneNumberLength = phoneNumber.length;
+    if (phoneNumberLength < 4) return phoneNumber;
+    if (phoneNumberLength < 7) {
+      return `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3)}`;
+    }
+    return `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
+  };
+
+  // Real-time phone validation
+  const handlePhoneChange = (e) => {
+    const rawValue = e.target.value;
+    const formattedValue = formatPhoneNumber(rawValue);
+    e.target.value = formattedValue;
+
+    const phoneRegex = /^\+?[\d\s\-\(\)]{7,15}$/;
+    if (!formattedValue) {
+      setPhoneError("Phone number is required.");
+    } else if (!phoneRegex.test(formattedValue)) {
+      setPhoneError("Please enter a valid phone number (7-15 digits).");
+    } else {
+      setPhoneError("");
+    }
+  };
 
   // Function to handle tag selection
   const handleTagSelection = (value, category) => {
@@ -128,10 +157,12 @@ export default function HireDeveloper() {
     }
 
     // Phone number validation
-    // Accepts formats like: +1234567890, 123-456-7890, (123) 456-7890, 1234567890
     const phoneRegex = /^\+?[\d\s\-\(\)]{7,15}$/;
     if (!phoneRegex.test(phone)) {
       setFormError(
+        "Please enter a valid phone number (7-15 digits, may include +, -, (), or spaces)."
+      );
+      setPhoneError(
         "Please enter a valid phone number (7-15 digits, may include +, -, (), or spaces)."
       );
       return false;
@@ -144,6 +175,7 @@ export default function HireDeveloper() {
     e.preventDefault();
     setFormError("");
     setFormSuccess("");
+    setPhoneError(""); // Clear phone error on submit attempt
 
     const name = formRef.current?.querySelector("#name")?.value.trim();
     const email = formRef.current?.querySelector("#email")?.value.trim();
@@ -521,8 +553,9 @@ Comment: ${sanitizedFormData.comment}
                       id="phone"
                       required
                       disabled={isSubmitting}
-                     
+                      onChange={handlePhoneChange}
                     />
+                    
                   </div>
 
                   <div>
@@ -531,7 +564,6 @@ Comment: ${sanitizedFormData.comment}
                       type="text"
                       id="company"
                       disabled={isSubmitting}
-                     
                       required
                     />
                   </div>
@@ -542,7 +574,6 @@ Comment: ${sanitizedFormData.comment}
                       type="url"
                       id="website"
                       disabled={isSubmitting}
-                     
                       required
                     />
                   </div>
@@ -553,7 +584,6 @@ Comment: ${sanitizedFormData.comment}
                       id="comment"
                       disabled={isSubmitting}
                       required
-                    
                     ></textarea>
                   </div>
 
