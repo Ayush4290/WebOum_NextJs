@@ -1,12 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import React, { useEffect } from "react";
-import "./Days.css";
+import "./days.css";
 import Link from "next/link";
 import AOS from "aos";
 import "aos/dist/aos.css";
-// Uncomment the following if you want to use next/image
-// import Image from "next/image";
+
 
 const Days = () => {
   useEffect(() => {

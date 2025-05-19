@@ -234,7 +234,7 @@ Message: ${sanitizedMessage}
             <h2 className="approach-heading">
               Do You Have Any Questions?
               <br />
-              We'll Be Happy To Assist!
+              We&apos;ll Be Happy To Assist!
             </h2>
             <div className="approach-icons">
               <a
@@ -345,7 +345,7 @@ Message: ${sanitizedMessage}
                   aria-required="true"
                   disabled={isSubmitting}
                 />
-                <label htmlFor="captcha">I'm not a robot</label>
+                <label htmlFor="captcha">I&apos;m not a robot</label>
                 <Image
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzz6tIILsCKIN0knMR9sTn5Shad52WNMNpuw&s"
                   alt="Verification"

@@ -18,7 +18,7 @@ export default function Digital() {
           <p>
             At Weboum, we understand the power of digital presence. Our expert
             team helps businesses expand their reach, engage their audience, and
-            boost conversions through customized strategies. Whether you're a
+            boost conversions through customized strategies. Whether you&apos;re a
             small startup or an established brand, we offer the tools and
             expertise you need to succeed online.
           </p>
@@ -38,12 +38,12 @@ export default function Digital() {
             </div>
             <div className="digital-benefits-content">
               <h2>
-                Digital Investment Without Multiples of Return? You're Not Doing
+                Digital Investment Without Multiples of Return? You&lsquo;re Not Doing
                 it Correctly!
               </h2>
               <p>
                 Social media has the power to transform your business. But if
-                you're not seeing results, your campaign may not be reaching its
+                you&apos;re not seeing results, your campaign may not be reaching its
                 potential. Partnering with experts ensures a proven strategy can
                 elevate your brand, leveraging the full benefits of social
                 platforms. With our tailored social media services, watch your
@@ -51,9 +51,9 @@ export default function Digital() {
                 media player.
               </p>
               <p>
-                If your digital investment isn't yielding substantial returns,
-                it's likely due to ineffective strategies or poor execution.
-                Successful digital isn't just about spending—it's about reaching
+                If your digital investment isn&apos;t yielding substantial returns,
+                it&apos;s likely due to ineffective strategies or poor execution.
+                Successful digital isn&apos;t just about spending—it&apos;s about reaching
                 the right audience, optimizing campaigns, and measuring results.
                 Using the right mix of SEO, PPC, content creation, and social
                 media can significantly amplify your returns. Continuous
@@ -76,7 +76,7 @@ export default function Digital() {
             </p>
             <p>
               We recognize that every business has unique needs, which is why we
-              offer customized social media services. Whether you're focused on
+              offer customized social media services. Whether you&lsquo;re focused on
               one platform or multiple, our experts will create a strategy
               tailored specifically to your goals. This approach ensures that
               your business gets the most effective social media plan to
@@ -110,7 +110,7 @@ export default function Digital() {
               <h2>How Services for Digital Promote Business Development</h2>
               <p>
                 Digital services empower businesses of all sizes to promote
-                their brands 24/7 at minimal costs. Whether you're a startup,
+                their brands 24/7 at minimal costs. Whether you&apos;re a startup,
                 mid-sized company, or multi-location enterprise, digital enables
                 you to expand your reach, connect with target audiences, and
                 offer products and services anytime, anywhere, overcoming time
@@ -185,7 +185,7 @@ export default function Digital() {
                 <p>
                   By harnessing the power of influencer, product posts, and
                   features like Instagram Shop, Weboum Technology can help drive
-                  your business's sales growth. Our strategies leverage these
+                  your business&apos;s sales growth. Our strategies leverage these
                   tools to increase visibility, engagement, and conversion,
                   ensuring your brand connects with the right audience
                   effectively.
@@ -201,13 +201,13 @@ export default function Digital() {
             <h2>On Social Media, Give Your Brand a Voice!</h2>
             <p>
               We specialize in creating social media pages that align with your
-              business's core objectives. After thoroughly understanding your
+              business&apos;s core objectives. After thoroughly understanding your
               brand, we design tailored campaigns that are unique to your
               business, ensuring they capture attention and drive results.
               Research shows that nearly 74% of people turn to social media when
-              making purchase decisions. If your business isn't active on these
-              platforms, you're missing a significant opportunity. Connect with
-              Weboum Technology's social media managers to learn how we can
+              making purchase decisions. If your business isn&apos;t active on these
+              platforms, you&apos;re missing a significant opportunity. Connect with
+              Weboum Technology&apos;s social media managers to learn how we can
               integrate social media into your strategy for better results.
             </p>
           </div>
@@ -217,7 +217,7 @@ export default function Digital() {
             <ul>
               <li>
                 <span className="digital-check-icon">✔</span>
-                Solutions that are specifically tailored to our clients'
+                Solutions that are specifically tailored to our clients&apos;
                 requirements and tastes.
               </li>
               <li>
@@ -247,7 +247,7 @@ export default function Digital() {
             </ul>
             <div className="digital-weboum-note">
               <p>
-                It's time to enhance your social media with powerful strategies
+                It&apos;s time to enhance your social media with powerful strategies
                 from Weboum Technology. Our team can help you leverage the best
                 tools and techniques to grow your online presence and drive real
                 results. We are available to assist you at any moment.

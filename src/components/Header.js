@@ -5,7 +5,7 @@ import { BiCaretDown } from "react-icons/bi";
 import Link from "next/link";
 import Image from "next/image";
 import menuData from "../data/Header.json";
-import "./Header.css";
+import "./header.css";
 
 const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -174,19 +174,25 @@ const Header = () => {
     };
   }, []);
 
-  useEffect(() => {
-    return () => {
-      Object.values(timeoutRefs.current).forEach((timeout) => {
-        if (timeout) clearTimeout(timeout);
-      });
-      if (clickTimeoutRef.current) {
-        clearTimeout(clickTimeoutRef.current);
-      }
-      if (hoverDelayRef.current) {
-        clearTimeout(hoverDelayRef.current);
-      }
-    };
-  }, []);
+ useEffect(() => {
+  // Capture current ref values
+  const currentTimeoutRefs = timeoutRefs.current;
+  const currentClickTimeout = clickTimeoutRef.current;
+  const currentHoverDelay = hoverDelayRef.current;
+
+  return () => {
+    // Use captured values in cleanup
+    Object.values(currentTimeoutRefs).forEach((timeout) => {
+      if (timeout) clearTimeout(timeout);
+    });
+    if (currentClickTimeout) {
+      clearTimeout(currentClickTimeout);
+    }
+    if (currentHoverDelay) {
+      clearTimeout(currentHoverDelay);
+    }
+  };
+}, []);
 
   useEffect(() => {
     const handleResize = () => {

@@ -27,16 +27,16 @@ const Home = () => {
 
   // Reset scroll and states on mount or route change
   useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to top
-    setCurrentPortfolioIndex(0); // Reset portfolio carousel
-    setActiveTestimonial(0); // Reset testimonial carousel
-  }, [router.pathname]); // Trigger on route change
+    window.scrollTo(0, 0);
+    setCurrentPortfolioIndex(0);
+    setActiveTestimonial(0);
+  }, [router.pathname]);
 
   // Reset scroll and states on mount
   useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to top
-    setCurrentPortfolioIndex(0); // Reset portfolio carousel
-    setActiveTestimonial(0); // Reset testimonial carousel
+    window.scrollTo(0, 0);
+    setCurrentPortfolioIndex(0);
+    setActiveTestimonial(0);
   }, []);
 
   // Portfolio auto-scrolling
@@ -106,12 +106,12 @@ const Home = () => {
 
   const handlePhonePaste = (e) => {
     const pastedData = e.clipboardData.getData("text");
-    const numericData = pastedData.replace(/\D/g, ""); // Strip non-numeric characters
+    const numericData = pastedData.replace(/\D/g, "");
     setFormData((prev) => ({
       ...prev,
       phoneNumber: numericData,
     }));
-    e.preventDefault(); // Prevent the default paste behavior
+    e.preventDefault();
   };
 
   const validateForm = () => {
@@ -252,8 +252,6 @@ Message: ${sanitizedFormData.message}
           name: "",
           email: "",
           phoneNumber: "",
-          company: "",
-          website: "",
           message: "",
         });
       } else {
@@ -317,9 +315,7 @@ Message: ${sanitizedFormData.message}
                         className="service-icon"
                         width={64}
                         height={64}
-                        onError={(e) =>
-                          (e.target.src = "/image/placeholder.jpg")
-                        } // Fallback on error
+                        onError={(e) => (e.target.src = "/image/placeholder.jpg")} // Fallback on error
                       />
                       <div>
                         <div className="service-title">{service.title}</div>
@@ -349,9 +345,8 @@ Message: ${sanitizedFormData.message}
                               className="portfolio-image"
                               width={800}
                               height={400}
-                              onError={(e) =>
-                                (e.target.src = "/image/placeholder.jpg")
-                              } // Fallback on error
+                              style={{ width: "100%", height: "auto" }}
+                              onError={() => "/image/placeholder.jpg"} // Fallback on error
                             />
                           </div>
                           <div className="portfolio-text">
@@ -386,9 +381,9 @@ Message: ${sanitizedFormData.message}
             Trusted software design, develop and digital marketing company
           </h5>
           <p className="why-lead">
-            In today's digital landscape, a strong online presence is no longer
-            a luxury—it's a necessity. Choosing the right partner to guide you
-            through this complex world is crucial. Here's why Weboum is the
+            In today&apos;s digital landscape, a strong online presence is no longer
+            a luxury—it&apos;s a necessity. Choosing the right partner to guide you
+            through this complex world is crucial. Here&apos;s why Weboum is the
             perfect choice for your business:
           </p>
 
@@ -401,7 +396,7 @@ Message: ${sanitizedFormData.message}
                   className="why-icon"
                   width={64}
                   height={64}
-                  onError={(e) => (e.target.src = "/image/placeholder.jpg")} // Fallback on error
+                  onError={() => "/image/placeholder.jpg"} // Fallback on error
                 />
                 <div>
                   <div className="why-card-title">{card.title}</div>
@@ -428,7 +423,7 @@ Message: ${sanitizedFormData.message}
             className="process-image"
             width={1200}
             height={400}
-            onError={(e) => (e.target.src = "/image/placeholder.jpg")} // Fallback on error
+            onError={() => "/image/placeholder.jpg"} // Fallback on error
           />
         </div>
       </section>
@@ -543,18 +538,20 @@ Message: ${sanitizedFormData.message}
                   key={index}
                 >
                   <div className="testimonial-quote">
-                    <p className="testimonial-text">"{testimonial.text}"</p>
+                    <p className="testimonial-text">{testimonial.text}</p>
 
                     <div className="stars">
                       {"★".repeat(testimonial.stars)}
                       {"☆".repeat(5 - testimonial.stars)}
                     </div>
 
-                    <img
+                    <Image
                       src={testimonial.image}
                       alt={testimonial.name}
                       className="testimonial-image"
-                      onError={(e) => (e.target.src = "/image/placeholder.jpg")} // Fallback on error
+                      width={100}
+                      height={100}
+                      onError={() => "/image/placeholder.jpg"} // Fallback on error
                     />
                     <h4 className="testimonial-name">{testimonial.name}</h4>
                     <p className="testimonial-position">{testimonial.title}</p>
@@ -583,7 +580,7 @@ Message: ${sanitizedFormData.message}
           <div className="cta-left">
             <h2 className="cta-heading">Contact Us to Grow Your Business!</h2>
             <p className="cta-text">
-              Let's discuss how we can help you achieve your goals. Schedule a
+              Let&apos;s discuss how we can help you achieve your goals. Schedule a
               consultation to explore the best solutions for your needs.
             </p>
           </div>

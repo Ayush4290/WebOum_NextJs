@@ -8,8 +8,6 @@ import {
   Users,
   Map,
   X,
-  UserCog,
-  CheckCircle,
   Star,
   Quote,
 } from "lucide-react";
@@ -33,9 +31,11 @@ export default function SamplePage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState("");
   const [formSuccess, setFormSuccess] = useState("");
-  const [phoneError, setPhoneError] = useState(""); // For real-time phone validation
+  const [phoneError, setPhoneError] = useState("");
   const [testimonials, setTestimonials] = useState([]);
+  const [lightboxSrc, setLightboxSrc] = useState(null); // State for lightbox image src
   const whyUsRef = useRef(null);
+  const lightboxRef = useRef(null);
 
   // Set static testimonials data
   useEffect(() => {
@@ -57,23 +57,30 @@ export default function SamplePage() {
 
   // Scroll to "Why Us" section on initial load, but not in mobile view
   useEffect(() => {
-    if (whyUsRef.current && window.innerWidth >= 768) {
-      whyUsRef.current.scrollIntoView({ behavior: "smooth" });
-    }
+    const timer = setTimeout(() => {
+      if (whyUsRef.current && window.innerWidth >= 768) {
+        whyUsRef.current.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 1000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   const openLightbox = (src) => {
-    document.getElementById("samplePage_lightbox-img").src = src;
-    document.getElementById("samplePage_lightbox").classList.add("active");
+    setLightboxSrc(src);
+    if (lightboxRef.current) {
+      lightboxRef.current.classList.add("active");
+    }
   };
 
   const closeLightbox = () => {
-    document.getElementById("samplePage_lightbox").classList.remove("active");
+    setLightboxSrc(null);
+    if (lightboxRef.current) {
+      lightboxRef.current.classList.remove("active");
+    }
   };
 
   const imageRefs = useRef([]);
-  const lightboxRef = useRef(null);
-  const lightboxImgRef = useRef(null);
 
   useEffect(() => {
     imageRefs.current = document.querySelectorAll(
@@ -97,20 +104,22 @@ export default function SamplePage() {
   // Function to format phone number as XXX-XXX-XXXX
   const formatPhoneNumber = (value) => {
     if (!value) return value;
-    const phoneNumber = value.replace(/[^\d]/g, ""); // Remove non-digits
+    const phoneNumber = value.replace(/[^\d]/g, "");
     const phoneNumberLength = phoneNumber.length;
     if (phoneNumberLength < 4) return phoneNumber;
     if (phoneNumberLength < 7) {
       return `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3)}`;
     }
-    return `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
+    return `${phoneNumber.slice(0, 3)}-${phoneNumber.slice(
+      3,
+      6
+    )}-${phoneNumber.slice(6, 10)}`;
   };
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
     let formattedValue = value;
 
-    // Handle phone number formatting and real-time validation
     if (name === "phone") {
       formattedValue = formatPhoneNumber(value);
       const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
@@ -143,7 +152,6 @@ export default function SamplePage() {
       return false;
     }
 
-    // Phone number validation: must be XXX-XXX-XXXX
     const phoneRegex = /^\d{3}-\d{3}-\d{4}$/;
     if (!phoneRegex.test(formData.phone)) {
       setFormError("Please enter a valid phone number (e.g., 123-456-7890).");
@@ -172,7 +180,6 @@ export default function SamplePage() {
     setIsSubmitting(true);
 
     try {
-      // Sanitize inputs
       const sanitizeInput = (input) => {
         if (!input) return "";
         return input
@@ -193,7 +200,6 @@ export default function SamplePage() {
 
       const subject = `Free Consultation Request from ${sanitizedFormData.name}`;
 
-      // Plain HTML5 table-based email template without CSS
       const messageContent = `
 <!DOCTYPE html>
 <html lang="en">
@@ -223,7 +229,9 @@ export default function SamplePage() {
           </tr>
           <tr>
             <td><strong>Email:</strong></td>
-            <td><a href="mailto:${sanitizedFormData.email}">${sanitizedFormData.email}</a></td>
+            <td><a href="mailto:${sanitizedFormData.email}">${
+        sanitizedFormData.email
+      }</a></td>
           </tr>
           <tr>
             <td><strong>Phone:</strong></td>
@@ -250,7 +258,6 @@ export default function SamplePage() {
 </html>
       `.trim();
 
-      // Plain text fallback
       const plainTextContent = `
 Free Consultation Request Details:
 ------------------------
@@ -315,10 +322,10 @@ Message: ${sanitizedFormData.message}
                 for your Business
               </h1>
               <p>
-                In today's digital world, having a professional and efficient
-                website is essential for business growth. We specialize in
-                creating modern, fast, and responsive websites that help you
-                reach your target audience effectively.
+                In today&apos;s digital world, having a professional and
+                efficient website is essential for business growth. We
+                specialize in creating modern, fast, and responsive websites
+                that help you reach your target audience effectively.
               </p>
               <div className="samplePage_buttons">
                 <a
@@ -354,7 +361,7 @@ Message: ${sanitizedFormData.message}
               <p>Webapps Development</p>
             </div>
             <div className="samplePage_servicess-box samplePage_ecommerce-sol">
-              <a href="/solutions/shopify-developer">
+              <a href="/solutions/shopify-develop Optimierung">
                 <div className="samplePage_icon-circle">
                   <ShoppingCart size={45} />
                 </div>
@@ -706,7 +713,7 @@ Message: ${sanitizedFormData.message}
                     onChange={handleInputChange}
                     disabled={isSubmitting}
                   />
-                  <label htmlFor="captcha">I'm not a robot</label>
+                  <label htmlFor="captcha">I&apos;m not a robot</label>
                   <Image
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzz6tIILsCKIN0knMR9sTn5Shad52WNMNpuw&s"
                     alt="reCAPTCHA Verification"
@@ -735,8 +742,7 @@ Message: ${sanitizedFormData.message}
         <section className="samplePage_services-section">
           <div className="samplePage_service-box">
             <a href="/services/application-developer">
-        
-          <FaCode className="samplePage_icon-blue"/>
+              <FaCode className="samplePage_icon-blue" />
               <h3>App Design & Development</h3>
             </a>
             <p>
@@ -752,9 +758,10 @@ Message: ${sanitizedFormData.message}
               <h3>On-Demand Developers</h3>
             </a>
             <p>
-              Everything under one roof, giving you peace of mind. We are happy to
-              hire skilled, industry-experienced developers and provide on-premise IT
-              infrastructure flexibility to accelerate your performance.
+              Everything under one roof, giving you peace of mind. We are happy
+              to hire skilled, industry-experienced developers and provide
+              on-premise IT infrastructure flexibility to accelerate your
+              performance.
             </p>
           </div>
 
@@ -792,174 +799,178 @@ Message: ${sanitizedFormData.message}
           </div>
         </section>
         <div className="tech-logos-container">
-            <div className="tech-logos">
-              <Image
-                src="https://weboum.com/wp-content/uploads/2021/05/html.png"
-                alt="HTML5 Logo"
-                width={50}
+          <div className="tech-logos">
+            <Image
+              src="https://weboum.com/wp-content/uploads/2021/05/html.png"
+              alt="HTML5 Logo"
+              width={50}
               height={50}
             />
-              <Image
-                src="https://weboum.com/wp-content/uploads/2021/05/opengl-logo.png"
-                alt="OpenGL Logo"
-                width={50}
+            <Image
+              src="https://weboum.com/wp-content/uploads/2021/05/opengl-logo.png"
+              alt="OpenGL Logo"
+              width={50}
               height={50}
             />
-              <Image
-                src="https://weboum.com/wp-content/uploads/2021/05/javascript.png"
-                alt="JavaScript Logo"
-                width={50}
+            <Image
+              src="https://weboum.com/wp-content/uploads/2021/05/javascript.png"
+              alt="JavaScript Logo"
+              width={50}
               height={50}
             />
-              <Image
-                src="https://weboum.com/wp-content/uploads/2021/05/rest-api-logo.png"
-                alt="REST API Logo"
-                width={50}
+            <Image
+              src="https://weboum.com/wp-content/uploads/2021/05/rest-api-logo.png"
+              alt="REST API Logo"
+              width={50}
               height={50}
             />
-              <Image
-                src="https://weboum.com/wp-content/uploads/2021/05/soap-api-logo.png"
-                alt="SOAP API Logo"
-                width={50}
+            <Image
+              src="https://weboum.com/wp-content/uploads/2021/05/soap-api-logo.png"
+              alt="SOAP API Logo"
+              width={50}
               height={50}
             />
-              <Image
-                src="https://weboum.com/wp-content/uploads/2021/05/html.png"
-                alt="HTML5 Logo"
-                width={50}
+            <Image
+              src="https://weboum.com/wp-content/uploads/2021/05/html.png"
+              alt="HTML5 Logo"
+              width={50}
               height={50}
             />
-              <Image
-                src="https://weboum.com/wp-content/uploads/2021/05/opengl-logo.png"
-                alt="OpenGL Logo"
-                width={50}
+            <Image
+              src="https://weboum.com/wp-content/uploads/2021/05/opengl-logo.png"
+              alt="OpenGL Logo"
+              width={50}
               height={50}
             />
-              <Image
-                src="https://weboum.com/wp-content/uploads/2021/05/javascript.png"
-                alt="JavaScript Logo"
-                width={50}
+            <Image
+              src="https://weboum.com/wp-content/uploads/2021/05/javascript.png"
+              alt="JavaScript Logo"
+              width={50}
               height={50}
             />
-              <Image
-                src="https://weboum.com/wp-content/uploads/2021/05/rest-api-logo.png"
-                alt="REST API Logo"
-                width={50}
+            <Image
+              src="https://weboum.com/wp-content/uploads/2021/05/rest-api-logo.png"
+              alt="REST API Logo"
+              width={50}
               height={50}
             />
-              <Image
-                src="https://weboum.com/wp-content/uploads/2021/05/soap-api-logo.png"
-                alt="SOAP API Logo"
-                width={50}
+            <Image
+              src="https://weboum.com/wp-content/uploads/2021/05/soap-api-logo.png"
+              alt="SOAP API Logo"
+              width={50}
               height={50}
             />
-            </div>
+          </div>
         </div>
 
         <section className="samplePage_testimonial-section">
-              <h5>Our Testimonials</h5>
-              <div className="portfolio-highlight-line"></div>
-              <h2>What Clients Say About Us</h2>
-              <p className="samplePage_subtitle">
-                Our clients are delighted with our services, and most of them come
-                again to us.
-              </p>
+          <h5>Our Testimonials</h5>
+          <div className="portfolio-highlight-line"></div>
+          <h2>What Clients Say About Us</h2>
+          <p className="samplePage_subtitle">
+            Our clients are delighted with our services, and most of them come
+            again to us.
+          </p>
 
-              <div className="samplePage_testimonial-section">
-                <div className="samplePage_testimonial-slider-container">
+          <div className="samplePage_testimonial-section">
+            <div className="samplePage_testimonial-slider-container">
+              <div
+                className="samplePage_testimonial-slider"
+                id="testimonialSlider"
+              >
+                {testimonials.map((testimonial) => (
                   <div
-                    className="samplePage_testimonial-slider"
-                    id="testimonialSlider"
+                    className="samplePage_testimonial-card"
+                    key={testimonial.id}
                   >
-                    {testimonials.map((testimonial) => (
-                      <div
-                        className="samplePage_testimonial-card"
-                        key={testimonial.id}
-                      >
-                        <div className="samplePage_testimonial-inner">
-                          <div className="samplePage_stars">
-                            <Star size={26} />
-                            <Star size={26} />
-                            <Star size={26} />
-                            <Star size={26} />
-                            <Star size={26} />
-                          </div>
-                          <div className="samplePage_testimonial-text">
-                            {testimonial.text}
-                          </div>
-                          <div className="samplePage_author">
-                            <div className="samplePage_author-info">
-                              <Image
-                                src={testimonial.image}
-                                alt={`Testimonial author ${testimonial.author}`}
-                                width={50}
+                    <div className="samplePage_testimonial-inner">
+                      <div className="samplePage_stars">
+                        <Star size={26} />
+                        <Star size={26} />
+                        <Star size={26} />
+                        <Star size={26} />
+                        <Star size={26} />
+                      </div>
+                      <div className="samplePage_testimonial-text">
+                        {testimonial.text}
+                      </div>
+                      <div className="samplePage_author">
+                        <div className="samplePage_author-info">
+                          <Image
+                            src={testimonial.image}
+                            alt={`Testimonial author ${testimonial.author}`}
+                            width={50}
                             height={50}
                           />
-                              <strong>{testimonial.author}</strong>
-                            </div>
-                            <div className="samplePage_quote">
-                              <Quote size={16} />
-                            </div>
-                          </div>
+                          <strong>{testimonial.author}</strong>
+                        </div>
+                        <div className="samplePage_quote">
+                          <Quote size={16} />
                         </div>
                       </div>
-                    ))}
-                    {testimonials.map((testimonial) => (
-                      <div
-                        className="samplePage_testimonial-card"
-                        key={`duplicate-${testimonial.id}`}
-                      >
-                        <div className="samplePage_testimonial-inner">
-                          <div className="samplePage_stars">
-                            <Star size={26} />
-                            <Star size={26} />
-                            <Star size={26} />
-                            <Star size={26} />
-                            <Star size={26} />
-                          </div>
-                          <div className="samplePage_testimonial-text">
-                            {testimonial.text}
-                          </div>
-                          <div className="samplePage_author">
-                            <div className="samplePage_author-info">
-                              <Image
-                                src={testimonial.image}
-                                alt={`Testimonial author ${testimonial.author}`}
-                                width={50}
-                            height={50}
-                          />
-                              <strong>{testimonial.author}</strong>
-                            </div>
-                            <div className="samplePage_quote">
-                              <Quote size={16} />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
+                    </div>
                   </div>
-                </div>
+                ))}
+                {testimonials.map((testimonial) => (
+                  <div
+                    className="samplePage_testimonial-card"
+                    key={`duplicate-${testimonial.id}`}
+                  >
+                    <div className="samplePage_testimonial-inner">
+                      <div className="samplePage_stars">
+                        <Star size={26} />
+                        <Star size={26} />
+                        <Star size={26} />
+                        <Star size={26} />
+                        <Star size={26} />
+                      </div>
+                      <div className="samplePage_testimonial-text">
+                        {testimonial.text}
+                      </div>
+                      <div className="samplePage_author">
+                        <div className="samplePage_author-info">
+                          <Image
+                            src={testimonial.image}
+                            alt={`Testimonial author ${testimonial.author}`}
+                            width={50}
+                            height={50}
+                          />
+                          <strong>{testimonial.author}</strong>
+                        </div>
+                        <div className="samplePage_quote">
+                          <Quote size={16} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
+            </div>
+          </div>
         </section>
 
         <div
-              className="samplePage_lightbox"
-              id="samplePage_lightbox"
-              ref={lightboxRef}
-            >
-              <span
-                className="samplePage_close-btn"
-                onClick={closeLightbox}
-                aria-label="Close lightbox"
-              >
-                <X size={30} />
-              </span>
-              <img
-                className="samplePage_lightbox-img"
-                id="samplePage_lightbox-img"
-                alt="Enlarged portfolio image"
-            ref={lightboxImgRef}
-          />
+          className="samplePage_lightbox"
+          id="samplePage_lightbox"
+          ref={lightboxRef}
+        >
+          <span
+            className="samplePage_close-btn"
+            onClick={closeLightbox}
+            aria-label="Close lightbox"
+          >
+            <X size={30} />
+          </span>
+          {lightboxSrc && (
+            <Image
+              src={lightboxSrc}
+              alt="Enlarged portfolio image"
+              layout="fill"
+              objectFit="contain"
+              className="samplePage_lightbox-img"
+              priority
+            />
+          )}
         </div>
       </div>
 

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Image from "next/image";
@@ -190,7 +191,7 @@ export default function WebHosting() {
           <button className="btnhosting primary-btnhosting">Start Now</button>
         </div>
         <div className="testimonialhosting">
-          <div className="quote-iconhosting">"</div>
+          <div className="quote-iconhosting">&quot;</div>
           <div className="testimonial-contenthosting">
             <p>{testimonials[activeSlide]}</p>
           </div>
@@ -275,7 +276,7 @@ export default function WebHosting() {
         <div className="hosting-contenthosting">
           <div className="hosting-headinghosting">
             <h2>
-              Discover G2's top-rated SMB hosting provider, with a 4.7-star
+              Discover G2&apos;s top-rated SMB hosting provider, with a 4.7-star
               rating and trusted by websites across 200+ countries.
             </h2>
             <div className="rating-badgeshosting">
@@ -317,7 +318,7 @@ export default function WebHosting() {
       <section class="stats-sectionhosting">
         <div class="stats-headinghosting">
           <h2>
-            Discover G2's top-rated SMB hosting provider, with a 4.7- star
+            Discover G2&apos;s top-rated SMB hosting provider, with a 4.7- star
             rating and trusted by websites across 200+ countries.
           </h2>
         </div>

@@ -25,7 +25,7 @@ const WebsiteDesign = () => {
               </p>
               <p>
                 Are you running a business for quite some time now but still
-                haven't tapped the power of the internet by taking the online
+                haven&apos;t tapped the power of the internet by taking the online
                 route? Want to create a website right from scratch or facelift
                 one you already have? Our competent{" "}
                 <strong>web designers at</strong> Weboum Technology will go
@@ -85,7 +85,7 @@ const WebsiteDesign = () => {
               </p>
               <p>
                 With years of experience in the industry, we are well-aware of
-                what works and what doesn't. Our extensive expertise helps us
+                what works and what doesn&apos;t. Our extensive expertise helps us
                 deliver results-driven design services. We offer bespoke designs
                 and have the best consultants, UI/UX designers, experts in our
                 team to cater to varied needs.

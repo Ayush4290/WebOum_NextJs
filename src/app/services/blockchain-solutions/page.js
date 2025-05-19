@@ -57,7 +57,7 @@ export default function BlockchainSolutionSection() {
             <p>
               Our blockchain services provide a competitive edge by enabling
               secure transactions, reducing intermediaries, and enhancing data
-              transparency. Whether you're in finance, supply chain, or
+              transparency. Whether you&apos;re in finance, supply chain, or
               healthcare, our solutions are designed to elevate your operations.
             </p>
             <p>
@@ -123,7 +123,7 @@ export default function BlockchainSolutionSection() {
               <h4>🌐 Decentralized Applications (dApps)</h4>
               <p>
                 Our team builds intuitive and scalable dApps that enhance user
-                engagement and leverage blockchain's decentralized nature.
+                engagement and leverage blockchain&apos;s decentralized nature.
               </p>
             </div>
             <div className="blockchainSolution-box">
@@ -162,7 +162,7 @@ export default function BlockchainSolutionSection() {
               </div>
               <h3>Improved Transparency</h3>
               <p>
-                Blockchain's immutable ledger provides unparalleled
+                Blockchain&apos;s immutable ledger provides unparalleled
                 transparency, building trust with your stakeholders and
                 customers.
               </p>

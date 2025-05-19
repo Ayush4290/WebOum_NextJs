@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react"; // Added useEffect
 import { FaFacebookF, FaYoutube } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import "./request_a_quote.css";
@@ -105,8 +105,8 @@ const steps = [
     fields: [
       { label: "Name*", name: "name", type: "text", required: true },
       { label: "Email*", name: "email", type: "email", required: true },
-      { label: "Phone*", name: "phone", type: "tel", required: true }, // Made phone required
-      { label: "Company*", name: "company", type: "text" ,required: true },
+      { label: "Phone*", name: "phone", type: "tel", required: true },
+      { label: "Company*", name: "company", type: "text", required: true },
       { label: "Website URL*", name: "website", type: "url", required: true },
       { label: "Your Message*", name: "message", type: "textarea", required: true },
     ],
@@ -120,6 +120,8 @@ export default function RequestaQuote() {
   const [formError, setFormError] = useState("");
   const [formSuccess, setFormSuccess] = useState("");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showInlineSuccess, setShowInlineSuccess] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false); // Added to track successful submission
   const formRef = useRef(null);
 
   // State for multi-selected options
@@ -132,6 +134,19 @@ export default function RequestaQuote() {
     timeframe: [],
     start: [],
   });
+
+  // Effect to hide success message after 5 seconds
+  useEffect(() => {
+    let timer;
+    if (showInlineSuccess) {
+      timer = setTimeout(() => {
+        setShowInlineSuccess(false);
+      }, 9000); // 9 seconds
+    }
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [showInlineSuccess]);
 
   const handleNext = () => {
     if (currentStep < steps.length - 1) {
@@ -165,11 +180,9 @@ export default function RequestaQuote() {
         return false;
       }
 
-      if (
-        formData.phone &&
-        !/^\+?[\d\s-]{10,15}$/.test(formData.phone)
-      ) {
-        setFormError("Please enter a valid phone number (10-15 digits).");
+      // Simple phone number validation - must have at least 10 digits
+      if (formData.phone && formData.phone.length < 10) {
+        setFormError("Please enter a valid phone number (at least 10 digits).");
         return false;
       }
     }
@@ -177,11 +190,46 @@ export default function RequestaQuote() {
     return true;
   };
 
+  const resetForm = () => {
+    // Keep the current step instead of resetting to 0
+    const successStep = currentStep;
+    
+    setFormData({});
+    setSelectedOptions({
+      stage: [],
+      services_needed: [],
+      development_stages_needed: [],
+      project_scope: [],
+      expected_budget: [],
+      timeframe: [],
+      start: [],
+    });
+    
+    // Do not reset the current step
+    // setCurrentStep(0);
+    
+    if (formRef.current) {
+      formRef.current.reset();
+    }
+    document.querySelectorAll(".tag").forEach((tag) => tag.classList.remove("selected"));
+    
+    // Set flag to show submission was successful
+    setSubmitSuccess(true);
+  };
+
+  // Added function to start a new form after successful submission
+  const startNewForm = () => {
+    setCurrentStep(0);
+    setSubmitSuccess(false);
+    setShowSuccessModal(false);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     setFormError("");
     setFormSuccess("");
+    setShowInlineSuccess(false);
 
     if (!validateFinalForm()) {
       return;
@@ -348,25 +396,15 @@ Message: ${sanitizedFormData.message || "No message provided"}
       });
 
       if (result.success) {
-        setFormSuccess(
-          "Your quote request has been submitted successfully. We'll get back to you soon!"
-        );
+        const successMessage = "Your quote request has been submitted successfully"
+        setFormSuccess(successMessage);
+        
+        // Show both the modal and inline success message
         setShowSuccessModal(true);
-        setFormData({});
-        setSelectedOptions({
-          stage: [],
-          services_needed: [],
-          development_stages_needed: [],
-          project_scope: [],
-          expected_budget: [],
-          timeframe: [],
-          start: [],
-        });
-        setCurrentStep(0);
-        formRef.current?.reset();
-        document
-          .querySelectorAll(".tag")
-          .forEach((tag) => tag.classList.remove("selected"));
+        setShowInlineSuccess(true);
+        
+        // Reset the form but stay on current step
+        resetForm();
       } else {
         setFormError(
           result.message || "Failed to submit your request. Please try again."
@@ -398,21 +436,48 @@ Message: ${sanitizedFormData.message || "No message provided"}
     }
   };
 
+  // Modified to handle phone number input validation
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    
+    // Special handling for phone input
+    if (name === "phone") {
+      // Allow only numbers for phone field
+      const phoneValue = value.replace(/\D/g, '');
+      setFormData({
+        ...formData,
+        [name]: phoneValue,
+      });
+    } else {
+      // Normal handling for other fields
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
 
     if (formError) {
       setFormError("");
     }
   };
 
+  // Function to handle key press for phone input
+  const handlePhoneKeyPress = (e) => {
+    // Allow only numbers and control keys like backspace, delete, arrows
+    const allowedKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    const controlKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'];
+    
+    if (!allowedKeys.includes(e.key) && !controlKeys.includes(e.key)) {
+      e.preventDefault();
+    }
+  };
+
   const closeSuccessModal = () => {
     setShowSuccessModal(false);
-    setFormSuccess("");
+    if (submitSuccess) {
+      // Start a new form if we're closing the success modal after successful submission
+      startNewForm();
+    }
   };
 
   const currentStepData = steps[currentStep];
@@ -436,9 +501,8 @@ Message: ${sanitizedFormData.message || "No message provided"}
             </h4>
             <div className="requestaQuote-line"></div>
             <h2 className="requestaQuote-title">
-              Do You Have Any Questions? We'll Be Happy To Assist!
+              Do You Have Any Questions? We&apos;ll Be Happy To Assist!
             </h2>
-           
             <div className="requestaQuote-social">
               <a
                 href="https://www.facebook.com/people/Weboum-Technology-PvtLtd/100091375563554/"
@@ -472,13 +536,22 @@ Message: ${sanitizedFormData.message || "No message provided"}
           <div className="requestaQuote-right">
             <div className="requestaQuote-section">
               <h3 className="requestaQuote-heading">{currentStepData.title}</h3>
+              
+              {/* Display success message inline */}
+              {showInlineSuccess && (
+                <div className="requestaQuote-success" role="alert">
+                  {formSuccess}
+                </div>
+              )}
+              
+              {/* Display error message */}
               {formError && (
                 <div className="requestaQuote-error" role="alert">
                   {formError}
                 </div>
               )}
 
-              {currentStepData.sections ? (
+              { currentStepData.sections ? (
                 currentStepData.sections.map((section, secIndex) => {
                   const sectionId = section.subtitle
                     .toLowerCase()
@@ -530,6 +603,19 @@ Message: ${sanitizedFormData.message || "No message provided"}
                           rows={5}
                           disabled={isSubmitting}
                         ></textarea>
+                      ) : field.name === "phone" ? (
+                        <input
+                          type="tel"
+                          id={field.name}
+                          name={field.name}
+                          placeholder="Phone number*"
+                          onChange={handleInputChange}
+                          onKeyDown={handlePhoneKeyPress}
+                          value={formData[field.name] || ""}
+                          required={field.required}
+                          disabled={isSubmitting}
+                          inputMode="numeric"
+                        />
                       ) : (
                         <input
                           type={field.type}
@@ -556,47 +642,33 @@ Message: ${sanitizedFormData.message || "No message provided"}
                 </form>
               ) : null}
             </div>
-            <div className="requestaQuote-button-container">
-              {currentStep > 0 && (
-                <button
-                  className="requestaQuote-button back"
-                  onClick={handleBack}
-                  disabled={isSubmitting}
-                  type="button"
-                >
-                  BACK
-                </button>
-              )}
-              {currentStep < steps.length - 1 ? (
-                <button
-                  className="requestaQuote-button"
-                  onClick={handleNext}
-                  disabled={isSubmitting}
-                  type="button"
-                >
-                  CONTINUE
-                </button>
-              ) : null}
-            </div>
+            {!submitSuccess && (
+              <div className="requestaQuote-button-container">
+                {currentStep > 0 && (
+                  <button
+                    className="requestaQuote-button back"
+                    onClick={handleBack}
+                    disabled={isSubmitting}
+                    type="button"
+                  >
+                    BACK
+                  </button>
+                )}
+                {currentStep < steps.length - 1 ? (
+                  <button
+                    className="requestaQuote-button"
+                    onClick={handleNext}
+                    disabled={isSubmitting}
+                    type="button"
+                  >
+                    CONTINUE
+                  </button>
+                ) : null}
+              </div>
+            )}
           </div>
         </div>
       </div>
-
-      {/* Success Modal */}
-      {showSuccessModal && (
-        <div className="requestaQuote-modal-overlay">
-          <div className="requestaQuote-modal">
-            <h3>Success!</h3>
-            <p>{formSuccess}</p>
-            <button
-              className="requestaQuote-modal-button"
-              onClick={closeSuccessModal}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
 
       <Days />
     </>

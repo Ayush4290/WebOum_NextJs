@@ -413,7 +413,7 @@ Comment: ${sanitizedFormData.comment}
           <div id="content-wrapper">
             <div id="left-column">
               <h1 id="main-title">
-                Do You Have Any Questions? We'll Be Happy To Assist!
+                Do You Have Any Questions? We&apos;ll Be Happy To Assist!
               </h1>
             </div>
 

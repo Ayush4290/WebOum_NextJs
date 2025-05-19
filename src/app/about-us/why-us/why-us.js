@@ -438,7 +438,7 @@ Message: ${sanitizedFormData.message}
                   onChange={handleInputChange}
                   disabled={isSubmitting}
                 />
-                <label htmlFor="captcha">I'm not a robot</label>
+                <label htmlFor="captcha">I&apos;m not a robot</label>
                 <Image
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzz6tIILsCKIN0knMR9sTn5Shad52WNMNpuw&s"
                   alt="Verification"

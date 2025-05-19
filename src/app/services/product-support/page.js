@@ -1,3 +1,4 @@
+import Image from "next/image";
 
 export const metadata = {
   title: "Product Support  - Weboum Technology Pvt. Ltd",
@@ -47,7 +48,7 @@ export default function productSupport() {
           maxWidth: "45%",
         }}
       >
-        <img
+        <Image
           src="https://weboum.com/wp-content/uploads/2021/04/mobile-application.jpg"
           alt="Developer Illustration"
           style={{

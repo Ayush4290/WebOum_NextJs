@@ -80,7 +80,7 @@ export default function ShopifyDevelopment() {
                 management.
               </p>
               <p>
-                In addition, we provide a one-day 'free' Shopify development
+                In addition, we provide a one-day &apos;free&apos; Shopify development
                 trial job to give you a taste of our proven abilities.
               </p>
             </div>
@@ -127,13 +127,13 @@ export default function ShopifyDevelopment() {
             <h3>Workflow with a Purpose</h3>
             <p>
               Our Shopify development company provides a customizable and
-              user-friendly approach that is suited to the client's needs. We
+              user-friendly approach that is suited to the client&apos;s needs. We
               constantly prefer to provide the greatest e-Commerce solutions for
               your company. Our in-house specialists follow an agile workflow
               for all Shopify web development services and provide bespoke web
               portal solutions with a strong focus on customer requirements.
             </p>
-            <h3>Shopify's Dedicated Team</h3>
+            <h3>Shopify&apos;s Dedicated Team</h3>
             <p>
               Our in-house experts are the driving force behind our success.
               They are active Shopify certified specialists with extensive
@@ -278,7 +278,7 @@ export default function ShopifyDevelopment() {
 
           <h3>Services For Shopify Support And Maintenance</h3>
           <p>
-            Following the project's conclusion, our Shopify web design services
+            Following the project&apos;s conclusion, our Shopify web design services
             provide our clients with the highest quality Support and
             Maintenance. Our Shopify Design and Development Services broaden
             their scope to include rapid corrections and upgrades to any work

@@ -50,7 +50,7 @@ export default function QualityAssuranceServices() {
                 className="qa-info-image"
               />
               <div className="qa-info-text">
-                <h2>Let's Build and Deploy bug-free software products!</h2>
+                <h2>Let&apos;s Build and Deploy bug-free software products!</h2>
                 <p>
                   Our quality assurance and software testing services are based
                   on the metrics-driven approach along with automation testing.
@@ -72,9 +72,9 @@ export default function QualityAssuranceServices() {
           <div className="qa-prevention-wrapper">
             <section className="qa-prevention">
               <div className="qa-prevention-content">
-                <h2>We Don't Just Detect Issues, We Prevent Them!</h2>
+                <h2>We Don&apos;t Just Detect Issues, We Prevent Them!</h2>
                 <p>
-                  WebOum Technology is one of the industry's leading software
+                  WebOum Technology is one of the industry&apos;s leading software
                   development companies that specialize in building digital
                   experiences.
                 </p>
@@ -164,7 +164,7 @@ export default function QualityAssuranceServices() {
                 <div className="qa-service-content">
                   <h3>Mobile Testing:</h3>
                   <p>
-                    Mobile devices are becoming more dominant in today's world.
+                    Mobile devices are becoming more dominant in today&apos;s world.
                     Our team, hence, emphasizes more on mobile testing services
                     to make sure that testing services for mobile devices are
                     efficiently performed.
