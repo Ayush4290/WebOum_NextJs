@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import homeData from "../data/home.json";
+import homeData from "../../public/data/home.json";
 import HeroSection from "./herosection/page";
 import { sendContactForm } from "../utils/api";
 import Link from "next/link";

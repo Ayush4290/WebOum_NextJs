@@ -26,7 +26,7 @@ const Portfolio = () => {
 
   // Load portfolio data
   useEffect(() => {
-    import("../../data/portfolio.json")
+    import("../../../public/data/portfolio.json")
       .then((data) => {
         setPortfolioData(data.default);
         setDisplayedItems(data.default.all);

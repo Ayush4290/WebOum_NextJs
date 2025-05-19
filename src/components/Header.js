@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { BiCaretDown } from "react-icons/bi";
 import Link from "next/link";
 import Image from "next/image";
-import menuData from "../data/Header.json";
+import menuData from "../../public/data/Header.json";
 import "./header.css";
 
 const Header = () => {

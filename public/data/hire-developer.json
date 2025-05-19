@@ -1,0 +1,29 @@
+{
+  "skills": ["React", "Angular", "PHP", "Node", "HTML", "Javascript", "SEO"],
+  "technologies": [
+    "Creative UI/UX Designing",
+    "E-Commerce Solutions",
+    "App Development",
+    "Web Application",
+    "Digital Marketing",
+    "Technical Support",
+    "Business Intelligence Software",
+    "Custom Software Technology"
+  ],
+  "workTimes": ["Full-Time", "Part-Time"],
+  "timeframes": [
+    "Less than 1 month",
+    "1 to 3 months",
+    "3 to 6 months",
+    "More than 6 months",
+    "I am not sure"
+  ],
+  "starts": [
+    "In a couple of days",
+    "In a week",
+    "In a couple of weeks",
+    "In a month",
+    "More than a month",
+    "I am not sure"
+  ]
+}

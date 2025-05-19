@@ -3,7 +3,7 @@ import { useState } from "react";
 import Days from "../about-us/days/page";
 import SubHeader from "../sub-header/page";
 import Image from "next/image";
-import logosData from "../../data/all-logos.json"; // Importing the JSON file
+import logosData from "../../../public/data/all-logos.json"; 
 import "./all_logos.css";
 
 export default function LogosPage() {

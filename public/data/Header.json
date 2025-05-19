@@ -1,0 +1,79 @@
+[
+  {
+    "label": "About Us",
+    "href": "/",
+    "dropdownKey": "about",
+    "items": [
+      { "label": "Who We Are", "href": "/about-us" },
+      { "label": "Why Us Top 10 Reasons", "href": "/about-us/why-us" },
+      { "label": "How We Work", "href": "/about-us/sample-page" },
+      { "label": "Careers", "href": "/about-us/careers" },
+      { "label": "Approach", "href": "/about-us/contact" },
+      { "label": "Hosting Management", "href": "/about-us/hosting-management" },
+      {
+        "label": "Digital Marketing Solutions",
+        "href": "/about-us/digital-marketing-solutions"
+      }
+    ]
+  },
+  {
+    "label": "Services",
+    "href": "/",
+    "dropdownKey": "services",
+    "items": [
+      {
+        "label": "Application Development",
+        "href": "/services/application-developer"
+      },
+      {
+        "label": "Backup & Disaster Recovery",
+        "href": "/solutions/backup-disaster-recovery"
+      },
+      {
+        "label": "Blockchain Solutions",
+        "href": "/services/blockchain-solutions"
+      },
+      { "label": "Content Writing", "href": "/services/content-writing" },
+      { "label": "Cybersecurity", "href": "/services/cybersecurity" },
+      { "label": "Data Analytics", "href": "/services/data-analytics" },
+      { "label": "DevOps", "href": "/solutions/devops" },
+      { "label": "Digital Marketing", "href": "/services/digital-marketing-3" },
+      { "label": "Graphic Design", "href": "/services/graphic-design" },
+      { "label": "IT Consulting", "href": "/services/it-consulting" },
+      {
+        "label": "Product Lifecycle Management",
+        "href": "/solutions/product-lifecycle-management"
+      },
+      {
+        "label": "Quality Assurance Services",
+        "href": "/solutions/quality-assurance-services"
+      },
+      { "label": "Shopify Developer", "href": "/solutions/shopify-developer" },
+      {
+        "label": "SLA Support Services",
+        "href": "/solutions/sla-support-services"
+      },
+      { "label": "Software Testing", "href": "/solutions/software-testing" },
+      { "label": "Web Designing", "href": "/services/web-designing" },
+      { "label": "Web Development", "href": "/services/web-developer" },
+      {
+        "label": "Web Hosting Services",
+        "href": "/solutions/web-hosting-services"
+      }
+      
+    ]
+  },
+  {
+    "label": "Portfolio",
+    "href": "/portfolio"
+  },
+  {
+    "label": "Careers",
+    "href": "/about-us/careers"
+  },
+  {
+    "label": "Contact Us",
+    "href": "/about-us/contact",
+    "isButton": true
+  }
+]
