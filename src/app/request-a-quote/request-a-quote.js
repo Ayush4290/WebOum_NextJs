@@ -1,119 +1,15 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react"; // Added useEffect
+import { useState, useRef, useEffect } from "react";
 import { FaFacebookF, FaYoutube } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import "./request_a_quote.css";
 import Days from "../about-us/days/page";
 import SubHeader from "../sub-header/page";
 import { sendContactForm } from "../../utils/api";
+import steps from "../../../public/data/requestaquoate"; // Updated path
 
-const steps = [
-  {
-    title: "",
-    sections: [
-      {
-        subtitle: "Stage",
-        options: [
-          { label: "New System to be built from scratch", value: "new_system" },
-          {
-            label: "System Improvement to continue development",
-            value: "improvement",
-          },
-        ],
-      },
-      {
-        subtitle: "Services needed",
-        options: [
-          { label: "Web development", value: "web_dev" },
-          { label: "Mobile development", value: "mobile_dev" },
-          { label: "Minimum Viable Product", value: "mvp" },
-          { label: "Secure Hosting & Maintenance", value: "hosting" },
-          { label: "Dedicated development team", value: "dedicated_team" },
-          { label: "Ongoing System Innovations", value: "ongoing_innovations" },
-          { label: "Internet of Things", value: "iot" },
-        ],
-      },
-      {
-        subtitle: "Development stages needed",
-        options: [
-          { label: "UX/UI Design", value: "ux_ui" },
-          { label: "Development", value: "development" },
-          { label: "Software deployment", value: "deployment" },
-          { label: "Maintenance and support", value: "maintenance" },
-        ],
-      },
-    ],
-  },
-  {
-    title: "",
-    sections: [
-      {
-        subtitle:
-          "Project Scope: Do you want us to identify and suggest more advanced functionality options?",
-        options: [
-          {
-            label: "Yes, I welcome further functionality options",
-            value: "yes_scope",
-          },
-          {
-            label: "No, I know exactly what functionality I want",
-            value: "no_scope",
-          },
-          { label: "I am not sure", value: "not_sure_scope" },
-        ],
-      },
-      {
-        subtitle: "Expected budget",
-        options: [
-          { label: "Less than $1000", value: "less_1000" },
-          { label: "$1000 - $5,000", value: "1000_5000" },
-          { label: "More than $5,000", value: "more_5000" },
-          { label: "I am not sure", value: "not_sure_budget" },
-        ],
-      },
-    ],
-  },
-  {
-    title: "",
-    sections: [
-      {
-        subtitle: "Timeframe",
-        options: [
-          { label: "Less than 1 month", value: "less_1month" },
-          { label: "1 to 3 months", value: "1_3months" },
-          { label: "3 to 6 months", value: "3_6months" },
-          { label: "More than 6 months", value: "more_6months" },
-          { label: "I am not sure", value: "not_sure_time" },
-        ],
-      },
-      {
-        subtitle: "Start",
-        options: [
-          { label: "In a couple of days", value: "couple_days" },
-          { label: "In a week", value: "week" },
-          { label: "In a couple of weeks", value: "couple_weeks" },
-          { label: "In a month", value: "month" },
-          { label: "More than a month", value: "more_month" },
-          { label: "I am not sure", value: "not_sure_start" },
-        ],
-      },
-    ],
-  },
-  {
-    title: "Contact Information",
-    fields: [
-      { label: "Name*", name: "name", type: "text", required: true },
-      { label: "Email*", name: "email", type: "email", required: true },
-      { label: "Phone*", name: "phone", type: "tel", required: true },
-      { label: "Company*", name: "company", type: "text", required: true },
-      { label: "Website URL*", name: "website", type: "url", required: true },
-      { label: "Your Message*", name: "message", type: "textarea", required: true },
-    ],
-  },
-];
-
-export default function RequestaQuote() {
+export default function RequestAQuote() {
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -165,26 +61,26 @@ export default function RequestaQuote() {
   const validateFinalForm = () => {
     if (currentStep === steps.length - 1) {
       const requiredFields = steps[currentStep].fields.filter(
-        (field) => field.required
+      (field) => field.required
       );
 
-      for (const field of requiredFields) {
-        if (!formData[field.name] || formData[field.name].trim() === "") {
-          setFormError(`${field.label.replace("*", "")} is required.`);
-          return false;
-        }
-      }
-
-      if (formData.email && !/^\S+@\S+\.\S+$/.test(formData.email)) {
-        setFormError("Please enter a valid email address.");
+    for (const field of requiredFields) {
+      if (!formData[field.name] || formData[field.name].trim() === "") {
+        setFormError(`${field.label.replace("*", "")} is required.`);
         return false;
       }
+    }
+
+    if (formData.email && !/^\S+@\S+\.\S+$/.test(formData.email)) {
+      setFormError("Please enter a valid email address.");
+      return false;
+    }
 
       // Simple phone number validation - must have at least 10 digits
       if (formData.phone && formData.phone.length < 10) {
-        setFormError("Please enter a valid phone number (at least 10 digits).");
-        return false;
-      }
+      setFormError("Please enter a valid phone number (at least 10 digits).");
+      return false;
+    }
     }
 
     return true;
@@ -367,7 +263,6 @@ export default function RequestaQuote() {
 </html>
       `.trim();
 
-      // Plain text fallback
       const plainTextContent = `
 Quote Request Details:
 ------------------------
@@ -432,7 +327,7 @@ Message: ${sanitizedFormData.message || "No message provided"}
     });
 
     if (formError) {
-      setFormError("");
+    setFormError("");
     }
   };
 
@@ -457,7 +352,7 @@ Message: ${sanitizedFormData.message || "No message provided"}
     }
 
     if (formError) {
-      setFormError("");
+    setFormError("");
     }
   };
 
@@ -536,7 +431,7 @@ Message: ${sanitizedFormData.message || "No message provided"}
           <div className="requestaQuote-right">
             <div className="requestaQuote-section">
               <h3 className="requestaQuote-heading">{currentStepData.title}</h3>
-              
+
               {/* Display success message inline */}
               {showInlineSuccess && (
                 <div className="requestaQuote-success" role="alert">

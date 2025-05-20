@@ -1,7 +1,7 @@
-
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import hireDeveloperData  from "../../../public/data/hire-developer.json";
 import "./hire-developer.css";
 import SubHeader from "../sub-header/page";
 import Days from "../about-us/days/page";
@@ -17,53 +17,17 @@ export default function HireDeveloper() {
   const [selectedWorkTime, setSelectedWorkTime] = useState([]);
   const [selectedTimeframe, setSelectedTimeframe] = useState([]);
   const [selectedStart, setSelectedStart] = useState([]);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState("");
   const [formSuccess, setFormSuccess] = useState("");
-  const [phoneError, setPhoneError] = useState(""); // For real-time phone validation
+  const [phoneError, setPhoneError] = useState("");
 
-  // Skills section data
-  const skills = [
-    "React",
-    "Angular",
-    "PHP",
-    "Node",
-    "HTML",
-    "Javascript",
-    "SEO",
-  ];
+  // Import data from JSON
+  const { skills, technologies, workTimes, timeframes, starts } = hireDeveloperData;
 
-  const technologies = [
-    "Creative UI/UX Designing",
-    "E-Commerce Solutions",
-    "App Development",
-    "Web Application",
-    "Digital Marketing",
-    "Technical Support",
-    "Business Intelligence Software",
-    "Custom Software Technology",
-  ];
 
-  const workTimes = ["Full-Time", "Part-Time"];
 
-  // Timeframe section data
-  const timeframes = [
-    "Less than 1 month",
-    "1 to 3 months",
-    "3 to 6 months",
-    "More than 6 months",
-    "I am not sure",
-  ];
-
-  const starts = [
-    "In a couple of days",
-    "In a week",
-    "In a couple of weeks",
-    "In a month",
-    "More than a month",
-    "I am not sure",
-  ];
-
+  // Function to handle tag selection (for display purposes)
   const formatPhoneNumber = (value) => {
     if (!value) return value;
     const phoneNumber = value.replace(/[^\d]/g, ""); // Remove non-digits
