@@ -1,0 +1,275 @@
+{
+  "images": [
+    {
+      "section": "front-end-tech",
+      "src": "https://weboum.com/wp-content/uploads/2021/05/javascript.png",
+      "alt": "JavaScript Logo",
+      "width": 50,
+      "height": 50
+    },
+    {
+      "section": "front-end-tech",
+      "src": "https://weboum.com/wp-content/uploads/2021/05/html.png",
+      "alt": "HTML Logo",
+      "width": 50,
+      "height": 50
+    },
+    {
+      "section": "front-end-tech",
+      "src": "https://weboum.com/wp-content/uploads/2021/05/json.png",
+      "alt": "JSON Logo",
+      "width": 50,
+      "height": 50
+    },
+    {
+      "section": "front-end-tech",
+      "src": "https://weboum.com/wp-content/uploads/2021/05/elm.png",
+      "alt": "ELM Logo",
+      "width": 50,
+      "height": 50
+    },
+    {
+      "section": "front-end-tech",
+      "src": "https://weboum.com/wp-content/uploads/2021/05/angularjs.png",
+      "alt": "AngularJS Logo",
+      "width": 50,
+      "height": 50
+    },
+    {
+      "section": "front-end-tech",
+      "src": "https://weboum.com/wp-content/uploads/2021/05/jquery.png",
+      "alt": "jQuery Logo",
+      "width": 50,
+      "height": 50
+    },
+    {
+      "section": "back-end-tech",
+      "src": "https://weboum.com/wp-content/uploads/2021/05/php.png",
+      "alt": "PHP Logo",
+      "width": 50,
+      "height": 50
+    },
+    {
+      "section": "back-end-tech",
+      "src": "https://weboum.com/wp-content/uploads/2021/05/expressjs.png",
+      "alt": "Express.js Logo",
+      "width": 50,
+      "height": 50
+    },
+    {
+      "section": "back-end-tech",
+      "src": "https://weboum.com/wp-content/uploads/2021/05/node-js.png",
+      "alt": "Node.js Logo",
+      "width": 50,
+      "height": 50
+    },
+    {
+      "section": "back-end-tech",
+      "src": "https://weboum.com/wp-content/uploads/2021/05/java.png",
+      "alt": "Java Logo",
+      "width": 50,
+      "height": 50
+    },
+    {
+      "section": "back-end-tech",
+      "src": "https://weboum.com/wp-content/uploads/2021/05/python.png",
+      "alt": "Python Logo",
+      "width": 50,
+      "height": 50
+    },
+    {
+      "section": "back-end-tech",
+      "src": "https://weboum.com/wp-content/uploads/2021/05/mongo-db.png",
+      "alt": "MongoDB Logo",
+      "width": 50,
+      "height": 50
+    }
+  ],
+  "feature_cards": [
+    {
+      "icon": "FaExpandArrowsAlt",
+      "title": "Refreshingly Unique Model:",
+      "description": "Transparent & Local Interaction Real-time Collaboration & Accountability Full-time, Dedicated Developers"
+    },
+    {
+      "icon": "FaUsersCog",
+      "title": "One-Stop Development Shop:",
+      "description": "2000 In-house Developers\nBridge Any Skillset Gap\nIndustry Specific Technical Teams"
+    },
+    {
+      "icon": "FaFileCode",
+      "title": "Low Cost, High Productivity Services:",
+      "description": "No Overtime or Hidden Fees\nFree QA and Free Management\nSave 50 - 75% on Development Costs!"
+    },
+    {
+      "icon": "FaBolt",
+      "title": "Work for Hire Services:",
+      "description": "Start Your Project Within 48 Hours We Foster Long Term Relationships Over 21 Years in Service to Our Customers"
+    }
+  ],
+  "features": [
+    {
+      "icon": "FaLaptop",
+      "title": "Custom Web Application Development",
+      "description": "Since not all off-the-shelf applications have all the bells and whistles that you need to optimize your workflow, WTPL can customize and integrate your existing applications to get the job done. We can customize your existing applications for ERP, E-Commerce, Online Training, CRM, and much more."
+    },
+    {
+      "icon": "FaCodeBranch",
+      "title": "Diverse Coding Experience",
+      "description": "From database design and web app development to cloud consulting, our full-stack developers are experts in JavaScript, PHP, Python, Objective-C, Ruby on Rails, jQuery, AngularJS, Node.js, .NET, and more."
+    },
+    {
+      "icon": "FaProjectDiagram",
+      "title": "No Cookie-Cutter Solutions",
+      "description": "We customize the right tools and frameworks for your needs — from Data Integration, Application Upgrades, API Development, to Deployment & QA — ensuring tailored solutions that hit the mark every time."
+    },
+    {
+      "icon": "FaCog",
+      "title": "Maintenance, Monitoring, & Support",
+      "description": "We provide ongoing updates, security patching, debugging, and maintenance to ensure your web applications are always running at peak performance and protected against risks."
+    }
+  ],
+  "solutions": [
+    {
+      "icon": "FaSignInAlt",
+      "title": "Web Application Development Services",
+      "description": "Our back-end developers are experts in Java, PHP, Ruby, Python, SQL, and more while our front-end designers are well-versed in using JavaScript, CSS3, HTML5, and more."
+    },
+    {
+      "icon": "FaMobileAlt",
+      "title": "Mobile App Development Services",
+      "description": "Using our many years of experience in mobile app development, our Mobile App Development Team will help you create smooth, seamless experiences on any mobile device."
+    },
+    {
+      "icon": "FaProjectDiagram",
+      "title": "Enterprise Web Development Solutions",
+      "description": "We use custom APIs and our vast knowledge of web services to build Enterprise Web Applications for digital marketing, CRM, inventory control, expedited workflows, and so much more."
+    },
+    {
+      "icon": "FaServer",
+      "title": "Full-Stack Web Development Solutions",
+      "description": "Our expert Full-Stack Web Developers are highly skilled in Java and SQL programming languages with experience in leading 12-factor applications and cloud platform implementation."
+    },
+    {
+      "icon": "FaWindowMaximize",
+      "title": "Web Portal Development",
+      "description": "Our Web Portal Developers have both engineering expertise and a keen understanding of the business sector to create reliable and robust solutions that help companies manage their workflows."
+    },
+    {
+      "icon": "FaTh",
+      "title": "Animation & Graphics Web Design",
+      "description": "Our award-winning animators and graphic designers create beautiful logos, branding materials, illustrations, infographics, motion graphics, and more to fulfill your branding vision."
+    },
+    {
+      "icon": "FaShoppingCart",
+      "title": "E-Commerce Web Development Solutions",
+      "description": "Our Software Development Team uses Magento, Shopify, and/or BigCommerce platforms to create seamless, scalable, and powerful online stores for e-commerce companies of all sizes."
+    },
+    {
+      "icon": "FaArrowsAlt",
+      "title": "Web Integration Services",
+      "description": "We always stay on top of the latest developments in deployment, customization, and integration to create the perfect, seamless approach to how you utilize your software."
+    },
+    {
+      "icon": "FaExpandArrowsAlt",
+      "title": "CMS Integration",
+      "description": "We integrate CMS capabilities into your existing website or application, enabling you to add and edit web content without needing to rewrite or update any code."
+    }
+  ],
+  "process_items": [
+    {
+      "icon": "FaCheckCircle",
+      "title": "Custom Web App Development",
+      "description": "We integrate disparate business systems and processes, add web service functionality to your existing applications, and synchronize data across those applications."
+    },
+    {
+      "icon": "FaCheckCircle",
+      "title": "Defining Web Application",
+      "description": "Whether you require a Custom Web Development Solution developed from scratch, or a third-party integration to add to your existing app, WTPL can get the job done quickly, effectively, and affordably."
+    },
+    {
+      "icon": "FaCheckCircle",
+      "title": "Web Application Structure",
+      "description": "Our developers create a database architecture to effectively collect, store, retrieve, sort, and graph all of your data in your new integrated Custom Website or Application."
+    },
+    {
+      "icon": "FaCheckCircle",
+      "title": "Research & UX Workflow",
+      "description": "Our Custom Web Developers dive deep into research and analysis to uncover the most effective strategies for improving user experiences across the board."
+    },
+    {
+      "icon": "FaCheckCircle",
+      "title": "Third-Party Software Selections",
+      "description": "Our Custom Web Developers research and test the best state-of-the-art technologies, programming languages, and third-party vendors to integrate within your custom website or app."
+    },
+    {
+      "icon": "FaCheckCircle",
+      "title": "Prototyping & Design Testing",
+      "description": "We carefully detail out every functional and technical specification to ensure optimized usability, navigation, and functionality within your custom website or application."
+    }
+  ],
+  "front_end_tech": [
+    {
+      "image": "https://weboum.com/wp-content/uploads/2021/05/javascript.png",
+      "title": "Javascript",
+      "description": "Our software developers use JavaScript to calculate, manipulate, and validate different data to create dynamic and interactive user experiences."
+    },
+    {
+      "image": "https://weboum.com/wp-content/uploads/2021/05/html.png",
+      "title": "HTML",
+      "description": "Our Software Development Team has many years of experience working with HTML to develop best-in-class custom websites and applications."
+    },
+    {
+      "image": "https://weboum.com/wp-content/uploads/2021/05/json.png",
+      "title": "JSON",
+      "description": "We use JSON for transmitting web application data in a quicker, more efficient way to optimize the process of building your custom web app."
+    },
+    {
+      "image": "https://weboum.com/wp-content/uploads/2021/05/elm.png",
+      "title": "ELM",
+      "description": "Our team uses ELM's fast compilation, user-friendliness, and safety benefits to build, integrate, and customize your website or app."
+    },
+    {
+      "image": "https://weboum.com/wp-content/uploads/2021/05/angularjs.png",
+      "title": "AngularJS",
+      "description": "We use AngularJS for creating dynamic web applications, leveraging data binding and dependency injection to reduce coding efforts."
+    },
+    {
+      "image": "https://weboum.com/wp-content/uploads/2021/05/jquery.png",
+      "title": "jQuery",
+      "description": "We use jQuery to create animations, AJAX apps, and plug-ins on top of JavaScript, simplifying DOM manipulation and event handling."
+    }
+  ],
+  "back_end_tech": [
+    {
+      "image": "https://weboum.com/wp-content/uploads/2021/05/php.png",
+      "title": "PHP",
+      "description": "Our Software Development Team uses PHP frameworks to streamline and speed up the development process of custom web apps and websites."
+    },
+    {
+      "image": "https://weboum.com/wp-content/uploads/2021/05/expressjs.png",
+      "title": "Express.js",
+      "description": "Our developers utilize Express.js to simplify web app development, making it easier to write fast, secure, and modular applications."
+    },
+    {
+      "image": "https://weboum.com/wp-content/uploads/2021/05/node-js.png",
+      "title": "Node.js",
+      "description": "We use Node.js to build traditional websites, back-end APIs, and real-time apps that run across distributed devices."
+    },
+    {
+      "image": "https://weboum.com/wp-content/uploads/2021/05/java.png",
+      "title": "JAVA",
+      "description": "We use Java as a general-purpose language to develop mobile/web apps, embedded systems, and perform big data processing."
+    },
+    {
+      "image": "https://weboum.com/wp-content/uploads/2021/05/python.png",
+      "title": "Python",
+      "description": "We use Python for mobile and web dev, games, operating systems, machine learning, AI, and more."
+    },
+    {
+      "image": "https://weboum.com/wp-content/uploads/2021/05/mongo-db.png",
+      "title": "MongoDB",
+      "description": "Our developers use MongoDB to optimize performance in transactional stores and large-scale data storage."
+    }
+  ]
+}

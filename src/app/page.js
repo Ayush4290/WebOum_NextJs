@@ -152,11 +152,11 @@ const Home = () => {
       const sanitizeInput = (input) => {
         if (!input) return "";
         return input
-          .replace(/&/g, "&")
-          .replace(/</g, "<")
-          .replace(/>/g, ">")
-          .replace(/"/g, " ")
-          .replace(/'/g, "'");
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
       };
 
       const sanitizedFormData = {
@@ -196,7 +196,9 @@ const Home = () => {
           </tr>
           <tr>
             <td><strong>Email:</strong></td>
-            <td><a href="mailto:${sanitizedFormData.email}">${sanitizedFormData.email}</a></td>
+            <td><a href="mailto:${sanitizedFormData.email}">${
+        sanitizedFormData.email
+      }</a></td>
           </tr>
           <tr>
             <td><strong>Phone:</strong></td>
@@ -229,22 +231,27 @@ Phone: ${sanitizedFormData.phoneNumber}
 Message: ${sanitizedFormData.message}
       `.trim();
 
+      const formSubject = `Home Page Contact: ${sanitizedFormData.name}`;
+
       console.log("Submitting form with:", {
         email: sanitizedFormData.email,
-        subject: "New Contact Form Submission",
-        message: messageContent.substring(0, 100) + "...",
-        text: plainTextContent.substring(0, 100) + "...",
-        formType: "contact",
+        subject: formSubject,
+        message: messageContent,
+        text: plainTextContent,
+        formType: "consultation",
+        replyTo: sanitizedFormData.email,
       });
 
       const result = await sendContactForm({
         email: sanitizedFormData.email,
-        subject: "New Contact Form Submission",
+        subject: formSubject,
         message: messageContent,
         text: plainTextContent,
-        formType: "contact",
+        formType: "consultation",
         replyTo: sanitizedFormData.email,
       });
+
+      console.log("Form submission result:", result);
 
       if (result.success) {
         setFormSuccess("Your message has been submitted successfully!");
@@ -315,7 +322,9 @@ Message: ${sanitizedFormData.message}
                         className="service-icon"
                         width={64}
                         height={64}
-                        onError={(e) => (e.target.src = "/image/placeholder.jpg")} // Fallback on error
+                        onError={(e) =>
+                          (e.target.src = "/image/placeholder.jpg")
+                        } // Fallback on error
                       />
                       <div>
                         <div className="service-title">{service.title}</div>
@@ -381,10 +390,10 @@ Message: ${sanitizedFormData.message}
             Trusted software design, develop and digital marketing company
           </h5>
           <p className="why-lead">
-            In today&apos;s digital landscape, a strong online presence is no longer
-            a luxury—it&apos;s a necessity. Choosing the right partner to guide you
-            through this complex world is crucial. Here&apos;s why Weboum is the
-            perfect choice for your business:
+            In today&apos;s digital landscape, a strong online presence is no
+            longer a luxury—it&apos;s a necessity. Choosing the right partner to
+            guide you through this complex world is crucial. Here&apos;s why
+            Weboum is the perfect choice for your business:
           </p>
 
           <div className="why-card-grid">
@@ -580,8 +589,9 @@ Message: ${sanitizedFormData.message}
           <div className="cta-left">
             <h2 className="cta-heading">Contact Us to Grow Your Business!</h2>
             <p className="cta-text">
-              Let&apos;s discuss how we can help you achieve your goals. Schedule a
-              consultation to explore the best solutions for your needs.
+              Let&apos;s discuss how we can help you achieve your goals.
+              Schedule a consultation to explore the best solutions for your
+              needs.
             </p>
           </div>
           <div className="cta-right">

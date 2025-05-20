@@ -1,0 +1,287 @@
+{
+  "images": [
+    {
+      "section": "header",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/What-is-Digital-Marketing-768x512-1.jpg",
+      "alt": "Digital Marketing",
+      "width": 500,
+      "height": 400
+    },
+    {
+      "section": "portfolio",
+      "src": "https://weboum.com/wp-content/uploads/2021/05/phone-tab-lapitop.jpg",
+      "alt": "Kiosk and POS System",
+      "width": 300,
+      "height": 200
+    },
+    {
+      "section": "portfolio",
+      "src": "https://weboum.com/wp-content/uploads/2024/03/segundaa.jpg",
+      "alt": "Segunda Quimbamba Folkloric Center",
+      "width": 300,
+      "height": 200
+    },
+    {
+      "section": "portfolio",
+      "src": "https://weboum.com/wp-content/uploads/2021/05/log-me-once.jpg",
+      "alt": "Smart Password Management Application",
+      "width": 300,
+      "height": 200
+    },
+    {
+      "section": "portfolio",
+      "src": "https://weboum.com/wp-content/uploads/2021/05/Imperial-China.png",
+      "alt": "Online Shopping Mall",
+      "width": 300,
+      "height": 200
+    },
+    {
+      "section": "portfolio",
+      "src": "https://weboum.com/wp-content/uploads/2024/03/Forrest-Family-Outdoor-Adventures-New-V-1.jpg",
+      "alt": "Outdoor Accessories and Kids Sunscreen",
+      "width": 300,
+      "height": 200
+    },
+    {
+      "section": "portfolio",
+      "src": "https://weboum.com/wp-content/uploads/2024/03/sstp.jpg",
+      "alt": "South Shore Test Prep",
+      "width": 300,
+      "height": 200
+    },
+    {
+      "section": "whyus",
+      "src": "https://weboum.com/wp-content/uploads/2024/04/icon1.png",
+      "alt": "High Customer Retention Icon",
+      "width": 50,
+      "height": 50
+    },
+    {
+      "section": "whyus",
+      "src": "https://weboum.com/wp-content/uploads/2024/04/icon2.png",
+      "alt": "Meeting Deadlines Icon",
+      "width": 50,
+      "height": 50
+    },
+    {
+      "section": "whyus",
+      "src": "https://weboum.com/wp-content/uploads/2024/04/icon3.png",
+      "alt": "Professional Team Icon",
+      "width": 50,
+      "height": 50
+    },
+    {
+      "section": "whyus",
+      "src": "/image/featured-image.jpg",
+      "alt": "Free Consultation",
+      "width": 300,
+      "height": 200
+    },
+    {
+      "section": "whyus",
+      "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzz6tIILsCKIN0knMR9sTn5Shad52WNMNpuw&s",
+      "alt": "reCAPTCHA Verification",
+      "width": 80,
+      "height": 40
+    },
+    {
+      "section": "tech-logos",
+      "src": "https://weboum.com/wp-content/uploads/2021/05/html.png",
+      "alt": "HTML5 Logo",
+      "width": 50,
+      "height": 50
+    },
+    {
+      "section": "tech-logos",
+      "src": "https://weboum.com/wp-content/uploads/2021/05/opengl-logo.png",
+      "alt": "OpenGL Logo",
+      "width": 50,
+      "height": 50
+    },
+    {
+      "section": "tech-logos",
+      "src": "https://weboum.com/wp-content/uploads/2021/05/javascript.png",
+      "alt": "JavaScript Logo",
+      "width": 50,
+      "height": 50
+    },
+    {
+      "section": "tech-logos",
+      "src": "https://weboum.com/wp-content/uploads/2021/05/rest-api-logo.png",
+      "alt": "REST API Logo",
+      "width": 50,
+      "height": 50
+    },
+    {
+      "section": "tech-logos",
+      "src": "https://weboum.com/wp-content/uploads/2021/05/soap-api-logo.png",
+      "alt": "SOAP API Logo",
+      "width": 50,
+      "height": 50
+    },
+    {
+      "section": "testimonials",
+      "src": "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
+      "alt": "Testimonial author Jill Cabana",
+      "width": 50,
+      "height": 50
+    },
+    {
+      "section": "testimonials",
+      "src": "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
+      "alt": "Testimonial author Moby",
+      "width": 50,
+      "height": 50
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "text": "I would highly recommend using Guru for your web design needs. He offers a reliable and affordable service that never compromises quality. He is very knowledgeable, trustworthy, and responds to questions in a timely fashion.",
+      "author": "Jill Cabana",
+      "image": "https://weboum.com/wp-content/uploads/2024/06/placeholder.png"
+    },
+    {
+      "id": 2,
+      "text": "If you don’t want to be beaten, imprisoned, mutilated, killed or tortured then you shouldn’t condone such behaviour towards anyone, be they human or not.",
+      "author": "Moby",
+      "image": "https://weboum.com/wp-content/uploads/2024/06/placeholder.png"
+    }
+  ],
+  "portfolio": [
+    {
+      "title": "Kiosk & POS System",
+      "description": "Comprehensive Restaurant Self Ordering Kiosk, POS",
+      "image": "https://weboum.com/wp-content/uploads/2021/05/phone-tab-lapitop.jpg",
+      "details": [
+        "Created graphic UI layer",
+        "Developed with MVC framework and API",
+        "Digital marketing, SEO, and PPC",
+        "Technical support & maintenance"
+      ]
+    },
+    {
+      "title": "Segunda Quimbamba Folkloric Center",
+      "image": "https://weboum.com/wp-content/uploads/2024/03/segundaa.jpg",
+      "details": [
+        "Created UI / UX Design",
+        "Complete Development",
+        "Technical Support and Maintenance"
+      ]
+    },
+    {
+      "title": "smart Password Management Application",
+      "image": "https://weboum.com/wp-content/uploads/2021/05/log-me-once.jpg",
+      "details": [
+        "Next Generation Password Management Application.",
+        "Advance Development with API, Complex Coding and security.",
+        "Reputation Management",
+        "Technical Support and Maintenance"
+      ]
+    },
+    {
+      "title": "Online Shopping Mall",
+      "image": "https://weboum.com/wp-content/uploads/2021/05/Imperial-China.png",
+      "details": [
+        "Created UI / UX Design",
+        "Advance Development with API and payment solutions.",
+        "Product and Stock management",
+        "Support and Maintenance"
+      ]
+    },
+    {
+      "title": "Outdoor accessories and kids-safe sunscreen and blams to the online market",
+      "image": "https://weboum.com/wp-content/uploads/2024/03/Forrest-Family-Outdoor-Adventures-New-V-1.jpg",
+      "details": [
+        "Creative from scratch, graphics, UI/UX",
+        "Developed with WordPress and WooCommerce",
+        "Online Shopping",
+        "Fully customized section settings."
+      ]
+    },
+    {
+      "title": "South Shore Test Prep",
+      "image": "https://weboum.com/wp-content/uploads/2024/03/sstp.jpg",
+      "details": [
+        "Design From Scratch",
+        "WordPress Development",
+        "Online Class Booking System"
+      ]
+    }
+  ],
+  "services_first": [
+    {
+      "title": "Webapps Development",
+      "icon": "Laptop",
+      "link": "/services/application-developer"
+    },
+    {
+      "title": "E-Commerce Solutions",
+      "icon": "ShoppingCart",
+      "link": "/solutions/shopify-develop Optimierung"
+    },
+    {
+      "title": "Branding Solutions",
+      "icon": "Tags",
+      "link": "/services/graphic-design"
+    },
+    {
+      "title": "Optimization Solutions",
+      "icon": "Settings",
+      "link": "/solutions/backup-disaster-recovery"
+    },
+    {
+      "title": "UI/UX Solutions",
+      "icon": "Users",
+      "link": "/services/web-designing"
+    },
+    {
+      "title": "Marketing Solutions",
+      "icon": "Map",
+      "link": "/services/digital-marketing-3"
+    }
+  ],
+  "services_second": [
+    {
+      "title": "App Design & Development",
+      "icon": "FaCode",
+      "link": "/services/application-developer",
+      "description": "Our team of expert software developers focused on delivering best-in-class, user-friendly top-notch applications that perform better across multiple platforms to achieve long-term success."
+    },
+    {
+      "title": "On-Demand Developers",
+      "icon": "FaUserCog",
+      "link": "/services/on-demand-developers",
+      "description": "Everything under one roof, giving you peace of mind. We are happy to hire skilled, industry-experienced developers and provide on-premise IT infrastructure flexibility to accelerate your performance."
+    },
+    {
+      "title": "Product Support",
+      "icon": "FaTools",
+      "link": "/services/product-support",
+      "description": "Our global strategic partners enable us to create next-generation robust products and IT consulting, efficiently providing quick technical support solutions for any upcoming complexity."
+    }
+  ],
+  "stats": [
+    { "value": "1,500+", "label": "Project Completed" },
+    { "value": "20+", "label": "Team Members" },
+    { "value": "16+", "label": "Years in Business" },
+    { "value": "100%", "label": "Customer Satisfaction" }
+  ],
+  "whyus_features": [
+    {
+      "title": "High Customer Retention Rate",
+      "description": "We have a 100% retention rate due to our exceptional services and client satisfaction focus.",
+      "icon": "https://weboum.com/wp-content/uploads/2024/04/icon1.png"
+    },
+    {
+      "title": "Ability To Meet Deadlines",
+      "description": "We are 100% clear on when work needs to be completed and have a system to ensure it happens.",
+      "icon": "https://weboum.com/wp-content/uploads/2024/04/icon2.png"
+    },
+    {
+      "title": "Professional Team Member",
+      "description": "We have focused, creative team members with expert technical knowledge and practical experience.",
+      "icon": "https://weboum.com/wp-content/uploads/2024/04/icon3.png"
+    }
+  ]
+}

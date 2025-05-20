@@ -1,0 +1,335 @@
+{
+  "images": [
+    {
+      "section": "hero",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/web-hosting-1.jpg",
+      "alt": "Web Hosting Concept",
+      "width": 500,
+      "height": 500
+    },
+    {
+      "section": "trusted-by",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Siteground-1.png",
+      "alt": "SiteGround",
+      "width": 100,
+      "height": 50
+    },
+    {
+      "section": "trusted-by",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Wordpress-1.png",
+      "alt": "WordPress",
+      "width": 100,
+      "height": 50
+    },
+    {
+      "section": "trusted-by",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Knownhost-1.png",
+      "alt": "Knownhost",
+      "width": 100,
+      "height": 50
+    },
+    {
+      "section": "trusted-by",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Godaddy-1.png",
+      "alt": "GoDaddy",
+      "width": 100,
+      "height": 50
+    },
+    {
+      "section": "trusted-by",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Hostinger-1.png",
+      "alt": "HostGator",
+      "width": 100,
+      "height": 50
+    },
+    {
+      "section": "cloud-providers",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Aws.png",
+      "alt": "AWS (Amazon Web Services) Logo",
+      "width": 80,
+      "height": 50
+    },
+    {
+      "section": "cloud-providers",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Azure.png",
+      "alt": "Azure Logo",
+      "width": 80,
+      "height": 50
+    },
+    {
+      "section": "cloud-providers",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Google.png",
+      "alt": "(GCP) Google Cloud Platform Logo",
+      "width": 80,
+      "height": 50
+    },
+    {
+      "section": "vps-providers",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Knownhost.png",
+      "alt": "Knownhost Logo",
+      "width": 80,
+      "height": 50
+    },
+    {
+      "section": "vps-providers",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Bluehost.png",
+      "alt": "Bluehost Logo",
+      "width": 80,
+      "height": 50
+    },
+    {
+      "section": "vps-providers",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Veerotech.png",
+      "alt": "Veerotech Logo",
+      "width": 80,
+      "height": 50
+    },
+    {
+      "section": "vps-providers",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/HostGator.png",
+      "alt": "HostGator Logo",
+      "width": 80,
+      "height": 50
+    },
+    {
+      "section": "vps-providers",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Godaddy.png",
+      "alt": "GoDaddy Logo",
+      "width": 80,
+      "height": 50
+    },
+    {
+      "section": "vps-providers",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Hostinger.png",
+      "alt": "Hostinger Logo",
+      "width": 80,
+      "height": 50
+    },
+    {
+      "section": "dedicated-providers",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Knownhost.png",
+      "alt": "Knownhost Logo",
+      "width": 80,
+      "height": 50
+    },
+    {
+      "section": "dedicated-providers",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Bluehost.png",
+      "alt": "Bluehost Logo",
+      "width": 80,
+      "height": 50
+    },
+    {
+      "section": "dedicated-providers",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/HostGator.png",
+      "alt": "HostGator Logo",
+      "width": 80,
+      "height": 50
+    },
+    {
+      "section": "dedicated-providers",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Godaddy.png",
+      "alt": "GoDaddy Logo",
+      "width": 80,
+      "height": 50
+    },
+    {
+      "section": "rating-badges",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/watch-2.png",
+      "alt": "Average Response Time",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "section": "rating-badges",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/smile.png",
+      "alt": "CSAT Score",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "section": "rating-badges",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Support-1-1.png",
+      "alt": "Expert Support",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "section": "stats",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Industry-Leading-NPS.png",
+      "alt": "Industry-Leading NPS",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "section": "stats",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Global-Data-Centers.png",
+      "alt": "Global Data Centers",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "section": "stats",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Turbocharged-Websites.png",
+      "alt": "Turbocharged Websites",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "section": "app-selection",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Choose-Your-App-293x300.png",
+      "alt": "Technology Icons",
+      "width": 293,
+      "height": 300
+    },
+    {
+      "section": "features",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Level-Security.jpg",
+      "alt": "Security Icon",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "section": "features",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Team-collaboration.jpg",
+      "alt": "Collaboration Icon",
+      "width": 44,
+      "height": 44
+    },
+    {
+      "section": "features",
+      "src": "https://weboum.com/wp-content/uploads/2024/11/Real-Time-Server-Monitoring-1.jpg",
+      "alt": "Monitoring Icon",
+      "width": 44,
+      "height": 44
+    }
+  ],
+  "cloud_providers": [
+    {
+      "logo": "https://weboum.com/wp-content/uploads/2024/11/Aws.png",
+      "name": "AWS (Amazon Web Services)",
+      "description": "Since launching in 2006, Amazon Web Services has been providing world-leading cloud technologies that help any organization and any individual build solutions to transform industries, communities, and lives for the better."
+    },
+    {
+      "logo": "https://weboum.com/wp-content/uploads/2024/11/Azure.png",
+      "name": "Azure",
+      "description": "Microsoft created the cloud computing platform known as Microsoft Azure, or just Azure. Through its worldwide infrastructure, it manages, provides access to, and develops applications and services for people, businesses, and governments."
+    },
+    {
+      "logo": "https://weboum.com/wp-content/uploads/2024/11/Google.png",
+      "name": "(GCP) Google Cloud Platform",
+      "description": "Google Cloud Platform (GCP) is Google’s suite of cloud computing services, offering a range of modular options like computing power, data storage, data analytics, and machine learning, as well as management tools."
+    }
+  ],
+  "vps_providers": [
+    {
+      "logo": "https://weboum.com/wp-content/uploads/2024/11/Knownhost.png",
+      "name": "Knownhost",
+      "description": "Since our founding in 2006, we’ve been dedicated to delivering premium hosting services to customers in over 150 countries. Our mission is simple: to offer high-quality, fully managed hosting backed by exceptional, personalized support that exceeds expectations."
+    },
+    {
+      "logo": "https://weboum.com/wp-content/uploads/2024/11/Bluehost.png",
+      "name": "Bluehost",
+      "description": "Bluehost is a top web hosting solutions provider, committed to empowering users to make the most of the web since our founding in 2003. We continuously innovate to deliver on our mission, equipping millions of users worldwide with comprehensive tools and resources."
+    },
+    {
+      "logo": "https://weboum.com/wp-content/uploads/2024/11/Veerotech.png",
+      "name": "Veerotech",
+      "description": "Founded in 2010 and headquartered in Raleigh, NC, VeeroTech Hosting is a fully independent web hosting provider, remaining privately owned without any external influence from parent companies. VeeroTech offers a variety of services, including Shared, Reseller, WordPress, VPS, and fully managed hosting solutions."
+    },
+    {
+      "logo": "https://weboum.com/wp-content/uploads/2024/11/HostGator.png",
+      "name": "HostGator",
+      "description": "Web hosting is in our DNA, and we’ve been mastering it since the early days of the internet. Over the years, we’ve expanded globally, driven by our dedication to helping people worldwide build their websites their way."
+    },
+    {
+      "logo": "https://weboum.com/wp-content/uploads/2024/11/Godaddy.png",
+      "name": "GoDaddy",
+      "description": "GoDaddy does more than just sell domain names—we empower millions of small businesses worldwide to accelerate their growth. By providing entrepreneurs with confidence at every stage of their journey, we help them build and expand their businesses."
+    },
+    {
+      "logo": "https://weboum.com/wp-content/uploads/2024/11/Hostinger.png",
+      "name": "Hostinger",
+      "description": "Hostinger is dedicated to empowering anyone to achieve online success—whether you’re a developer, an aspiring blogger, or a business owner. With lightning-fast hosting, an AI-driven Website Builder, and an intuitive hPanel, creating and growing your website has never been easier."
+    }
+  ],
+  "dedicated_providers": [
+    {
+      "logo": "https://weboum.com/wp-content/uploads/2024/11/Knownhost.png",
+      "name": "Knownhost",
+      "description": "Since our founding in 2006, we’ve been dedicated to delivering premium hosting services to customers in over 150 countries. Our mission is simple: to offer high-quality, fully managed hosting backed by exceptional, personalized support that exceeds expectations."
+    },
+    {
+      "logo": "https://weboum.com/wp-content/uploads/2024/11/Bluehost.png",
+      "name": "Bluehost",
+      "description": "Bluehost is a top web hosting solutions provider, committed to empowering users to make the most of the web since our founding in 2003. We continuously innovate to deliver on our mission, equipping millions of users worldwide with comprehensive tools and resources."
+    },
+    {
+      "logo": "https://weboum.com/wp-content/uploads/2024/11/HostGator.png",
+      "name": "HostGator",
+      "description": "Web hosting is in our DNA, and we’ve been mastering it since the early days of the internet. Over the years, we’ve expanded globally, driven by our dedication to helping people worldwide build their websites their way."
+    },
+    {
+      "logo": "https://weboum.com/wp-content/uploads/2024/11/Godaddy.png",
+      "name": "GoDaddy",
+      "description": "GoDaddy does more than just sell domain names—we empower millions of small businesses worldwide to accelerate their growth. By providing entrepreneurs with confidence at every stage of their journey, we help them build and expand their businesses."
+    }
+  ],
+  "testimonials": [
+    "As a long-time user, I’ve been amazed by this platform! During my site’s beta phase, my project, WebPulse, saw multiple traffic surges. Thanks to autoscaling, I never had to stress about server adjustments. I’m beyond pleased with the service!",
+    "As a long-time user, I’ve been amazed by this platform! During my site’s beta phase, my project, WebPulse, saw multiple traffic surges. Thanks to autoscaling, I never had to stress about server adjustments. I’m beyond pleased with the service!",
+    "As a long-time user, I’ve been amazed by this platform! During my site’s beta phase, my project, WebPulse, saw multiple traffic surges. Thanks to autoscaling, I never had to stress about server adjustments. I’m beyond pleased with the service!",
+    "As a long-time user, I’ve been amazed by this platform! During my site’s beta phase, my project, WebPulse, saw multiple traffic surges. Thanks to autoscaling, I never had to stress about server adjustments. I’m beyond pleased with the service!"
+  ],
+  "stats": [
+    {
+      "image": "https://weboum.com/wp-content/uploads/2024/11/Industry-Leading-NPS.png",
+      "value": "73",
+      "label": "Industry-Leading NPS"
+    },
+    {
+      "image": "https://weboum.com/wp-content/uploads/2024/11/Global-Data-Centers.png",
+      "value": "50+",
+      "label": "Global Data Centers"
+    },
+    {
+      "image": "https://weboum.com/wp-content/uploads/2024/11/Turbocharged-Websites.png",
+      "value": "840k+",
+      "label": "Turbocharged Websites"
+    }
+  ],
+  "rating_badges": [
+    {
+      "image": "https://weboum.com/wp-content/uploads/2024/11/watch-2.png",
+      "value": "93 Sec",
+      "label": "Average Response Time"
+    },
+    {
+      "image": "https://weboum.com/wp-content/uploads/2024/11/smile.png",
+      "value": "96 %",
+      "label": "CSAT Score"
+    },
+    {
+      "image": "https://weboum.com/wp-content/uploads/2024/11/Support-1-1.png",
+      "value": "24/7",
+      "label": "Expert Support"
+    }
+  ],
+  "features": [
+    {
+      "image": "https://weboum.com/wp-content/uploads/2024/11/Level-Security.jpg",
+      "title": "Enterprise-Level Security",
+      "description": "Safeguard your business from diverse security threats with our integrated server-level firewall (Imunify360), malware scanning, vulnerability alerts, SSL certificates, and regular backups."
+    },
+    {
+      "image": "https://weboum.com/wp-content/uploads/2024/11/Team-collaboration.jpg",
+      "title": "Seamless Team Collaboration.",
+      "description": "Effortlessly collaborate by adding team members to your projects for easy management. Transfer servers and ownership with just a few clicks when needed."
+    },
+    {
+      "image": "https://weboum.com/wp-content/uploads/2024/11/Real-Time-Server-Monitoring-1.jpg",
+      "title": "Real-Time Server Monitoring",
+      "description": "With 24/7 real-time monitoring and CloudwaysBot notifications, you can relax and focus on growing your business, knowing everything is being expertly managed."
+    }
+  ]
+}

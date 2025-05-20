@@ -4,63 +4,138 @@
     "href": "/",
     "dropdownKey": "about",
     "items": [
-      { "label": "Who We Are", "href": "/about-us" },
-      { "label": "Why Us Top 10 Reasons", "href": "/about-us/why-us" },
-      { "label": "How We Work", "href": "/about-us/sample-page" },
-      { "label": "Careers", "href": "/about-us/careers" },
-      { "label": "Approach", "href": "/about-us/contact" },
-      { "label": "Hosting Management", "href": "/about-us/hosting-management" },
+      { "label": "Who We Are", "href": "/about-us", "icon": "FaUserFriends" },
       {
-        "label": "Digital Marketing Solutions",
-        "href": "/about-us/digital-marketing-solutions"
+        "label": "Why Us - Top 10 Reasons",
+        "href": "/about-us/why-us",
+        "icon": "FaListOl"
+      },
+      {
+        "label": "How We Work",
+        "href": "/about-us/sample-page",
+        "icon": "FaCogs"
+      },
+      {
+        "label": "Approach",
+        "href": "/about-us/contact",
+        "icon": "FaLightbulb"
       }
     ]
   },
+
   {
     "label": "Services",
     "href": "/",
     "dropdownKey": "services",
     "items": [
       {
-        "label": "Application Development",
-        "href": "/services/application-developer"
-      },
-      {
-        "label": "Backup & Disaster Recovery",
-        "href": "/solutions/backup-disaster-recovery"
-      },
-      {
         "label": "Blockchain Solutions",
-        "href": "/services/blockchain-solutions"
+        "href": "/services/blockchain-solutions",
+        "icon": "FaLink"
       },
-      { "label": "Content Writing", "href": "/services/content-writing" },
-      { "label": "Cybersecurity", "href": "/services/cybersecurity" },
-      { "label": "Data Analytics", "href": "/services/data-analytics" },
-      { "label": "DevOps", "href": "/solutions/devops" },
-      { "label": "Digital Marketing", "href": "/services/digital-marketing-3" },
-      { "label": "Graphic Design", "href": "/services/graphic-design" },
-      { "label": "IT Consulting", "href": "/services/it-consulting" },
+      {
+        "label": "Content Writing",
+        "href": "/services/content-writing",
+        "icon": "FaPen"
+      },
+      {
+        "label": "Cybersecurity",
+        "href": "/services/cybersecurity",
+        "icon": "FaShieldAlt"
+      },
+      {
+        "label": "Data Analytics",
+        "href": "/services/data-analytics",
+        "icon": "FaChartBar"
+      },
+      {
+        "label": "Graphic Design",
+        "href": "/services/graphic-design",
+        "icon": "FaPaintBrush"
+      },
+      {
+        "label": "Hosting Management",
+        "href": "/about-us/hosting-management",
+        "icon": "FaServer"
+      },
+      {
+        "label": "IT Consulting",
+        "href": "/services/it-consulting",
+        "icon": "FaComments"
+      },
       {
         "label": "Product Lifecycle Management",
-        "href": "/solutions/product-lifecycle-management"
+        "href": "/solutions/product-lifecycle-management",
+        "icon": "FaBox"
       },
       {
         "label": "Quality Assurance Services",
-        "href": "/solutions/quality-assurance-services"
+        "href": "/solutions/quality-assurance-services",
+        "icon": "FaCheckCircle"
       },
-      { "label": "Shopify Developer", "href": "/solutions/shopify-developer" },
+      {
+        "label": "Shopify Developer",
+        "href": "/solutions/shopify-developer",
+        "icon": "FaShoppingCart"
+      },
       {
         "label": "SLA Support Services",
-        "href": "/solutions/sla-support-services"
+        "href": "/solutions/sla-support-services",
+        "icon": "FaHandshake"
       },
-      { "label": "Software Testing", "href": "/solutions/software-testing" },
-      { "label": "Web Designing", "href": "/services/web-designing" },
-      { "label": "Web Development", "href": "/services/web-developer" },
       {
         "label": "Web Hosting Services",
-        "href": "/solutions/web-hosting-services"
+        "href": "/solutions/web-hosting-services",
+        "icon": "FaGlobe"
       }
-      
+    ]
+  },
+  {
+    "label": "Technology",
+    "href": "/",
+    "dropdownKey": "technology",
+    "items": [
+     
+      {
+        "label": "Mobile App Development",
+        "href": "/services/application-developer",
+        "icon": "FaMobileAlt"
+      },
+       {
+        "label": "Web App Development",
+        "href": "/services/web-developer",
+        "icon": "FaCode"
+      },
+      {
+        "label": "UI/UX Design",
+        "href": "/services/web-designing",
+        "icon": "FaPaintBrush"
+      },
+      {
+        "label": "DevOps & Cloud",
+        "href": "/solutions/devops",
+        "icon": "FaCloud"
+      },
+      {
+        "label": "eCommerce Development",
+        "href": "/solutions/shopify-developer",
+        "icon": "FaShoppingCart"
+      },
+      {
+        "label": "Digital Marketing",
+        "href": "/services/digital-marketing-3",
+        "icon": "FaBullhorn"
+      },
+      {
+        "label": "Software QA & Testing",
+        "href": "/solutions/software-testing",
+        "icon": "FaCheckCircle"
+      },
+      {
+        "label": "Backup & Disaster Recovery",
+        "href": "/solutions/backup-disaster-recovery",
+        "icon": "FaDatabase"
+      }
     ]
   },
   {
@@ -72,7 +147,7 @@
     "href": "/about-us/careers"
   },
   {
-    "label": "Contact Us",
+    "label": "Let's Talk",
     "href": "/about-us/contact",
     "isButton": true
   }

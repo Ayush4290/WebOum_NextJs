@@ -2,19 +2,72 @@
 
 import { useState, useEffect, useRef } from "react";
 import { BiCaretDown } from "react-icons/bi";
+import {
+  FaUserFriends,
+  FaListOl,
+  FaCogs,
+  FaLightbulb,
+  FaDatabase,
+  FaLink,
+  FaPen,
+  FaShieldAlt,
+  FaChartBar,
+  FaBullhorn,
+  FaPaintBrush,
+  FaServer,
+  FaComments,
+  FaBox,
+  FaCheckCircle,
+  FaShoppingCart,
+  FaHandshake,
+  FaGlobe,
+  FaCode,
+  FaMobileAlt,
+  FaCloud,
+} from "react-icons/fa";
+import { BsStars, BsGrid3X3GapFill, BsGlobe } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
 import menuData from "../../public/data/Header.json";
 import "./header.css";
 
+// Map icon names to their corresponding react-icons components
+const iconMap = {
+  FaUserFriends,
+  FaListOl,
+  FaCogs,
+  FaLightbulb,
+  FaDatabase,
+  FaLink,
+  FaPen,
+  FaShieldAlt,
+  FaChartBar,
+  FaBullhorn,
+  FaPaintBrush,
+  FaServer,
+  FaComments,
+  FaBox,
+  FaCheckCircle,
+  FaShoppingCart,
+  FaHandshake,
+  FaGlobe,
+  FaCode,
+  FaMobileAlt,
+  FaCloud,
+  BsStars,
+  BsGrid3X3GapFill,
+  BsGlobe,
+};
+
 const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [isFixed, setIsFixed] = useState(false); // New state for fixed header
+  const [isFixed, setIsFixed] = useState(false);
+  const [scrolledLogo, setScrolledLogo] = useState(false);
   const menuRef = useRef(null);
   const toggleButtonRef = useRef(null);
-  const headerRef = useRef(null); // Ref for header element
+  const headerRef = useRef(null);
   const dropdownRefs = useRef({});
   const timeoutRefs = useRef({});
   const clickTimeoutRef = useRef(null);
@@ -31,15 +84,17 @@ const Header = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Handle scroll for sticky header
+  // Handle scroll for sticky header and logo change
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      setIsFixed(scrollTop > 150); // Fix header after 150px
+      const newIsFixed = scrollTop > 150;
+      setIsFixed(newIsFixed);
+      setScrolledLogo(newIsFixed);
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Run on mount to handle page refresh
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -59,7 +114,7 @@ const Header = () => {
     };
 
     window.addEventListener("resize", updatePlaceholderHeight);
-    updatePlaceholderHeight(); // Run initially
+    updatePlaceholderHeight();
 
     return () => window.removeEventListener("resize", updatePlaceholderHeight);
   }, [isFixed]);
@@ -174,25 +229,23 @@ const Header = () => {
     };
   }, []);
 
- useEffect(() => {
-  // Capture current ref values
-  const currentTimeoutRefs = timeoutRefs.current;
-  const currentClickTimeout = clickTimeoutRef.current;
-  const currentHoverDelay = hoverDelayRef.current;
+  useEffect(() => {
+    const currentTimeoutRefs = timeoutRefs.current;
+    const currentClickTimeout = clickTimeoutRef.current;
+    const currentHoverDelay = hoverDelayRef.current;
 
-  return () => {
-    // Use captured values in cleanup
-    Object.values(currentTimeoutRefs).forEach((timeout) => {
-      if (timeout) clearTimeout(timeout);
-    });
-    if (currentClickTimeout) {
-      clearTimeout(currentClickTimeout);
-    }
-    if (currentHoverDelay) {
-      clearTimeout(currentHoverDelay);
-    }
-  };
-}, []);
+    return () => {
+      Object.values(currentTimeoutRefs).forEach((timeout) => {
+        if (timeout) clearTimeout(timeout);
+      });
+      if (currentClickTimeout) {
+        clearTimeout(currentClickTimeout);
+      }
+      if (currentHoverDelay) {
+        clearTimeout(currentHoverDelay);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -209,19 +262,25 @@ const Header = () => {
     };
   }, [mobileMenuOpen]);
 
-  const renderDropdownItems = (items, isServicesMenu = false) => {
-    if (isMobile || !isServicesMenu) {
-      return items.map((item, subIndex) => (
-        <li key={subIndex}>
-          <Link
-            href={item.href}
-            onClick={handleDropdownItemClick}
-            className="dropdown-link"
-          >
-            {item.label}
-          </Link>
-        </li>
-      ));
+  const renderDropdownItems = (items, isTwoColumn = false) => {
+    if (!Array.isArray(items)) return null; 
+
+    if (isMobile || !isTwoColumn) {
+      return items.map((item, subIndex) => {
+        const IconComponent = iconMap[item.icon];
+        return (
+          <li key={subIndex}>
+            <Link
+              href={item.href}
+              onClick={handleDropdownItemClick}
+              className="dropdown-link"
+            >
+              {IconComponent && <IconComponent />}
+              {item.label}
+            </Link>
+          </li>
+        );
+      });
     }
 
     const midPoint = Math.ceil(items.length / 2);
@@ -231,30 +290,38 @@ const Header = () => {
     return (
       <>
         <div className="dropdown-column">
-          {leftColumn.map((item, subIndex) => (
-            <li key={subIndex}>
-              <Link
-                href={item.href}
-                onClick={handleDropdownItemClick}
-                className="dropdown-link"
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
+          {leftColumn.map((item, subIndex) => {
+            const IconComponent = iconMap[item.icon];
+            return (
+              <li key={subIndex}>
+                <Link
+                  href={item.href}
+                  onClick={handleDropdownItemClick}
+                  className="dropdown-link"
+                >
+                  {IconComponent && <IconComponent />}
+                  {item.label}
+                </Link>
+              </li>
+            );
+          })}
         </div>
         <div className="dropdown-column">
-          {rightColumn.map((item, subIndex) => (
-            <li key={subIndex}>
-              <Link
-                href={item.href}
-                onClick={handleDropdownItemClick}
-                className="dropdown-link"
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
+          {rightColumn.map((item, subIndex) => {
+            const IconComponent = iconMap[item.icon];
+            return (
+              <li key={subIndex}>
+                <Link
+                  href={item.href}
+                  onClick={handleDropdownItemClick}
+                  className="dropdown-link"
+                >
+                  {IconComponent && <IconComponent />}
+                  {item.label}
+                </Link>
+              </li>
+            );
+          })}
         </div>
       </>
     );
@@ -281,14 +348,25 @@ const Header = () => {
         <header className="navbar">
           <div className="navbar-inner">
             <Link href="/" className="logo">
-              <Image
-                src="/image/logo-1.png"
-                alt="Weboum Logo"
-                className="logo-img"
-                width={150}
-                height={50}
-                priority
-              />
+              {scrolledLogo ? (
+                <Image
+                  src="https://weboum.com/wp-content/uploads/2024/10/weboum-footer-logo-1.png"
+                  alt="Weboum Logo"
+                  className="logo-img"
+                  width={150}
+                  height={50}
+                  priority
+                />
+              ) : (
+                <Image
+                  src="/image/logo-1.png"
+                  alt="Weboum Logo"
+                  className="logo-img"
+                  width={150}
+                  height={50}
+                  priority
+                />
+              )}
             </Link>
 
             <button
@@ -368,7 +446,8 @@ const Header = () => {
                           >
                             {renderDropdownItems(
                               menu.items,
-                              menu.dropdownKey === "services"
+                              menu.dropdownKey === "services" ||
+                                menu.dropdownKey === "technology"
                             )}
                           </ul>
                         )}
@@ -393,7 +472,6 @@ const Header = () => {
           </div>
         </header>
       </div>
-      {/* Placeholder div to prevent content jump */}
       {isFixed && <div className="header-placeholder"></div>}
     </>
   );

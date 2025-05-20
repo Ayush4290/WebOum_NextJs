@@ -18,6 +18,7 @@ import Image from "next/image";
 import "./sample-page.css";
 import { sendContactForm } from "../../../utils/api";
 import { FiPhoneCall } from "react-icons/fi";
+import data from "../../../../public/data/sample-page.json"; // Import the JSON file
 
 export default function SamplePage() {
   const [formData, setFormData] = useState({
@@ -33,26 +34,13 @@ export default function SamplePage() {
   const [formSuccess, setFormSuccess] = useState("");
   const [phoneError, setPhoneError] = useState("");
   const [testimonials, setTestimonials] = useState([]);
-  const [lightboxSrc, setLightboxSrc] = useState(null); // State for lightbox image src
+  const [lightboxSrc, setLightboxSrc] = useState(null);
   const whyUsRef = useRef(null);
   const lightboxRef = useRef(null);
 
-  // Set static testimonials data
+  // Set testimonials from JSON data
   useEffect(() => {
-    setTestimonials([
-      {
-        id: 1,
-        text: "I would highly recommend using Guru for your web design needs. He offers a reliable and affordable service that never compromises quality. He is very knowledgeable, trustworthy, and responds to questions in a timely fashion.",
-        author: "Jill Cabana",
-        image: "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
-      },
-      {
-        id: 2,
-        text: "If you don’t want to be beaten, imprisoned, mutilated, killed or tortured then you shouldn’t condone such behaviour towards anyone, be they human or not.",
-        author: "Moby",
-        image: "https://weboum.com/wp-content/uploads/2024/06/placeholder.png",
-      },
-    ]);
+    setTestimonials(data.testimonials);
   }, []);
 
   // Scroll to "Why Us" section on initial load, but not in mobile view
@@ -183,11 +171,11 @@ export default function SamplePage() {
       const sanitizeInput = (input) => {
         if (!input) return "";
         return input
-          .replace(/&/g, "&")
-          .replace(/</g, "<")
-          .replace(/>/g, ">")
-          .replace(/"/g, " ")
-          .replace(/'/g, "'");
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
       };
 
       const sanitizedFormData = {
@@ -268,14 +256,7 @@ Project Type: ${sanitizedFormData.project}
 Message: ${sanitizedFormData.message}
       `.trim();
 
-      console.log("Submitting form with:", {
-        email: sanitizedFormData.email,
-        subject,
-        message: messageContent.substring(0, 100) + "...",
-        text: plainTextContent.substring(0, 100) + "...",
-        formType: "consultation",
-      });
-
+      // Fix: Add recipient emails explicitly to make sure it goes to your Gmail
       const result = await sendContactForm({
         email: sanitizedFormData.email,
         subject,
@@ -283,6 +264,12 @@ Message: ${sanitizedFormData.message}
         text: plainTextContent,
         formType: "consultation",
         replyTo: sanitizedFormData.email,
+        // Add these new fields to fix Gmail delivery
+        toEmails: ["your.gmail@gmail.com", "another.recipient@gmail.com"], // Replace with your actual Gmail addresses
+        ccEmails: [], // Add CC recipients if needed
+        bccEmails: [], // Add BCC recipients if needed
+        // Ensure high priority for Gmail delivery
+        priority: "high"
       });
 
       if (result.success) {
@@ -341,10 +328,10 @@ Message: ${sanitizedFormData.message}
             </div>
             <div className="samplePage_image">
               <Image
-                src="https://weboum.com/wp-content/uploads/2024/11/What-is-Digital-Marketing-768x512-1.jpg"
-                alt="Digital Marketing"
-                width={500}
-                height={400}
+                src={data.images.find(img => img.section === "header").src}
+                alt={data.images.find(img => img.section === "header").alt}
+                width={data.images.find(img => img.section === "header").width}
+                height={data.images.find(img => img.section === "header").height}
               />
             </div>
           </div>
@@ -352,54 +339,21 @@ Message: ${sanitizedFormData.message}
 
         <section className="samplePage_servicess-section">
           <div className="samplePage_servicess-container">
-            <div className="samplePage_servicess-box samplePage_webapps-dev">
-              <a href="/services/application-developer">
-                <div className="samplePage_icon-circle">
-                  <Laptop size={45} />
-                </div>
-              </a>
-              <p>Webapps Development</p>
-            </div>
-            <div className="samplePage_servicess-box samplePage_ecommerce-sol">
-              <a href="/solutions/shopify-develop Optimierung">
-                <div className="samplePage_icon-circle">
-                  <ShoppingCart size={45} />
-                </div>
-              </a>
-              <p>E-Commerce Solutions</p>
-            </div>
-            <div className="samplePage_servicess-box samplePage_branding-sol">
-              <a href="/services/graphic-design">
-                <div className="samplePage_icon-circle">
-                  <Tags size={45} />
-                </div>
-              </a>
-              <p>Branding Solutions</p>
-            </div>
-            <div className="samplePage_servicess-box samplePage_optimization-sol">
-              <a href="/solutions/backup-disaster-recovery">
-                <div className="samplePage_icon-circle">
-                  <Settings size={45} />
-                </div>
-              </a>
-              <p>Optimization Solutions</p>
-            </div>
-            <div className="samplePage_servicess-box samplePage_uiux-sol">
-              <a href="/services/web-designing">
-                <div className="samplePage_icon-circle">
-                  <Users size={45} />
-                </div>
-              </a>
-              <p>UI/UX Solutions</p>
-            </div>
-            <div className="samplePage_servicess-box samplePage_marketing-sol">
-              <a href="/services/digital-marketing-3">
-                <div className="samplePage_icon-circle">
-                  <Map size={45} />
-                </div>
-              </a>
-              <p>Marketing Solutions</p>
-            </div>
+            {data.services_first.map((service, index) => (
+              <div key={index} className={`samplePage_servicess-box samplePage_${service.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                <a href={service.link}>
+                  <div className="samplePage_icon-circle">
+                    {service.icon === "Laptop" && <Laptop size={45} />}
+                    {service.icon === "ShoppingCart" && <ShoppingCart size={45} />}
+                    {service.icon === "Tags" && <Tags size={45} />}
+                    {service.icon === "Settings" && <Settings size={45} />}
+                    {service.icon === "Users" && <Users size={45} />}
+                    {service.icon === "Map" && <Map size={45} />}
+                  </div>
+                </a>
+                <p>{service.title}</p>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -410,118 +364,26 @@ Message: ${sanitizedFormData.message}
             Our <strong>Portfolio</strong>
           </h2>
           <div className="samplePage_portfolio">
-            <div className="samplePage_item">
-              <Image
-                src="https://weboum.com/wp-content/uploads/2021/05/phone-tab-lapitop.jpg"
-                alt="Kiosk and POS System"
-                width={300}
-                height={200}
-                className="default-img"
-              />
-              <div className="portfolio-overlay">
-                <h3>Kiosk & POS System</h3>
-                <p>Comprehensive Restaurant Self Ordering Kiosk, POS</p>
-                <ul>
-                  <li>Created graphic UI layer</li>
-                  <li>Developed with MVC framework and API</li>
-                  <li>Digital marketing, SEO, and PPC</li>
-                  <li>Technical support & maintenance</li>
-                </ul>
+            {data.portfolio.map((item, index) => (
+              <div key={index} className="samplePage_item">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  width={data.images.find(img => img.src === item.image).width}
+                  height={data.images.find(img => img.src === item.image).height}
+                  className="default-img"
+                />
+                <div className="portfolio-overlay">
+                  <h3>{item.title}</h3>
+                  {item.description && <p>{item.description}</p>}
+                  <ul>
+                    {item.details.map((detail, i) => (
+                      <li key={i}>{detail}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
-            <div className="samplePage_item">
-              <Image
-                src="https://weboum.com/wp-content/uploads/2024/03/segundaa.jpg"
-                alt="Segunda Quimbamba Folkloric Center"
-                width={300}
-                height={200}
-                className="default-img"
-              />
-              <div className="portfolio-overlay">
-                <h3>Segunda Quimbamba Folkloric Center</h3>
-                <ul>
-                  <li>– Created UI / UX Design </li>
-                  <li>– Complete Development</li>
-                  <li>– Technical Support and Maintenance</li>
-                </ul>
-              </div>
-            </div>
-            <div className="samplePage_item">
-              <Image
-                src="https://weboum.com/wp-content/uploads/2021/05/log-me-once.jpg"
-                alt="Smart Password Management Application"
-                width={300}
-                height={200}
-                className="default-img"
-              />
-              <div className="portfolio-overlay">
-                <h3>smart Password Management Application</h3>
-                <ul>
-                  <li>Next Generation Password Management Application.</li>
-                  <li>
-                    – Advance Development with API, Complex Coding and security.
-                  </li>
-                  <li>– Reputation Management</li>
-                  <li>– Technical Support and Maintenance</li>
-                </ul>
-              </div>
-            </div>
-            <div className="samplePage_item">
-              <Image
-                src="https://weboum.com/wp-content/uploads/2021/05/Imperial-China.png"
-                alt="Online Shopping Mall"
-                width={300}
-                height={200}
-                className="default-img"
-              />
-              <div className="portfolio-overlay">
-                <h3>Online Shopping Mall</h3>
-                <ul>
-                  <li>– Created UI / UX Design </li>
-                  <li>– Advance Development with API and payment solutions.</li>
-                  <li>– Product and Stock management</li>
-                  <li>– Support and Maintenance</li>
-                </ul>
-              </div>
-            </div>
-            <div className="samplePage_item">
-              <Image
-                src="https://weboum.com/wp-content/uploads/2024/03/Forrest-Family-Outdoor-Adventures-New-V-1.jpg"
-                alt="Outdoor Accessories and Kids Sunscreen"
-                width={300}
-                height={200}
-                className="default-img"
-              />
-              <div className="portfolio-overlay">
-                <h3>
-                  Outdoor accessories and kids-safe sunscreen and blams to the
-                  online market,
-                </h3>
-                <ul>
-                  <li>– Creative from scratch, graphics, UI/UX </li>
-                  <li>– Developed with WordPress and WooCommerce</li>
-                  <li>– Online Shopping</li>
-                  <li>– Fully customized section settings.</li>
-                </ul>
-              </div>
-            </div>
-            <div className="samplePage_item">
-              <Image
-                src="https://weboum.com/wp-content/uploads/2024/03/sstp.jpg"
-                alt="South Shore Test Prep"
-                width={300}
-                height={200}
-                className="default-img"
-              />
-              <div className="portfolio-overlay">
-                <h3>South Shore Test Prep</h3>
-                <ul>
-                  <li>– Design From Scratch </li>
-                  <li>– WordPress Development</li>
-                  <li>– Online Class Booking System</li>
-                </ul>
-              </div>
-            </div>
+            ))}
           </div>
           <div className="viewMoreWrapper">
             <a className="viewMoreButton" href="/portfolio">
@@ -573,62 +435,29 @@ Message: ${sanitizedFormData.message}
                 transformation of your business.
               </p>
 
-              <div className="whyus-feature">
-                <Image
-                  src="https://weboum.com/wp-content/uploads/2024/04/icon1.png"
-                  alt="High Customer Retention Icon"
-                  width={50}
-                  height={50}
-                  className="feature-icon"
-                />
-                <div>
-                  <h6>High Customer Retention Rate</h6>
-                  <p>
-                    We have a 100% retention rate due to our exceptional
-                    services and client satisfaction focus.
-                  </p>
+              {data.whyus_features.map((feature, index) => (
+                <div key={index} className="whyus-feature">
+                  <Image
+                    src={feature.icon}
+                    alt={feature.title}
+                    width={data.images.find(img => img.src === feature.icon).width}
+                    height={data.images.find(img => img.src === feature.icon).height}
+                    className="feature-icon"
+                  />
+                  <div>
+                    <h6>{feature.title}</h6>
+                    <p>{feature.description}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="whyus-feature">
-                <Image
-                  src="https://weboum.com/wp-content/uploads/2024/04/icon2.png"
-                  alt="Meeting Deadlines Icon"
-                  width={50}
-                  height={50}
-                  className="feature-icon"
-                />
-                <div>
-                  <h6>Ability To Meet Deadlines</h6>
-                  <p>
-                    We are 100% clear on when work needs to be completed and
-                    have a system to ensure it happens.
-                  </p>
-                </div>
-              </div>
-              <div className="whyus-feature">
-                <Image
-                  src="https://weboum.com/wp-content/uploads/2024/04/icon3.png"
-                  alt="Professional Team Icon"
-                  width={50}
-                  height={50}
-                  className="feature-icon"
-                />
-                <div>
-                  <h6>Professional Team Member</h6>
-                  <p>
-                    We have focused, creative team members with expert technical
-                    knowledge and practical experience.
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
 
             <div className="whyus-form-box">
               <Image
-                src="/image/featured-image.jpg"
-                alt="Free Consultation"
-                width={300}
-                height={200}
+                src={data.images.find(img => img.section === "whyus" && img.alt === "Free Consultation").src}
+                alt={data.images.find(img => img.section === "whyus" && img.alt === "Free Consultation").alt}
+                width={data.images.find(img => img.section === "whyus" && img.alt === "Free Consultation").width}
+                height={data.images.find(img => img.section === "whyus" && img.alt === "Free Consultation").height}
                 className="form-featured-image"
               />
               <h5>Request A Free Consultation</h5>
@@ -715,10 +544,10 @@ Message: ${sanitizedFormData.message}
                   />
                   <label htmlFor="captcha">I&apos;m not a robot</label>
                   <Image
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzz6tIILsCKIN0knMR9sTn5Shad52WNMNpuw&s"
-                    alt="reCAPTCHA Verification"
-                    width={80}
-                    height={40}
+                    src={data.images.find(img => img.section === "whyus" && img.alt === "reCAPTCHA Verification").src}
+                    alt={data.images.find(img => img.section === "whyus" && img.alt === "reCAPTCHA Verification").alt}
+                    width={data.images.find(img => img.section === "whyus" && img.alt === "reCAPTCHA Verification").width}
+                    height={data.images.find(img => img.section === "whyus" && img.alt === "reCAPTCHA Verification").height}
                   />
                 </div>
                 {formError && (
@@ -740,126 +569,43 @@ Message: ${sanitizedFormData.message}
         </section>
 
         <section className="samplePage_services-section">
-          <div className="samplePage_service-box">
-            <a href="/services/application-developer">
-              <FaCode className="samplePage_icon-blue" />
-              <h3>App Design & Development</h3>
-            </a>
-            <p>
-              Our team of expert software developers focused on delivering
-              best-in-class, user-friendly top-notch applications that perform
-              better across multiple platforms to achieve long-term success.
-            </p>
-          </div>
-
-          <div className="samplePage_service-box">
-            <a href="/services/on-demand-developers">
-              <FaUserCog className="samplePage_icon-orange" />
-              <h3>On-Demand Developers</h3>
-            </a>
-            <p>
-              Everything under one roof, giving you peace of mind. We are happy
-              to hire skilled, industry-experienced developers and provide
-              on-premise IT infrastructure flexibility to accelerate your
-              performance.
-            </p>
-          </div>
-
-          <div className="samplePage_service-box">
-            <a href="/services/product-support">
-              <FaTools className="samplePage_icon-green" />
-              <h3>Product Support</h3>
-            </a>
-            <p>
-              Our global strategic partners enable us to create next-generation
-              robust products and IT consulting, efficiently providing quick
-              technical support solutions for any upcoming complexity.
-            </p>
-          </div>
+          {data.services_second.map((service, index) => (
+            <div key={index} className="samplePage_service-box">
+              <a href={service.link}>
+                {service.icon === "FaCode" && <FaCode className="samplePage_icon-blue" />}
+                {service.icon === "FaUserCog" && <FaUserCog className="samplePage_icon-orange" />}
+                {service.icon === "FaTools" && <FaTools className="samplePage_icon-green" />}
+                <h3>{service.title}</h3>
+              </a>
+              <p>{service.description}</p>
+            </div>
+          ))}
         </section>
 
         <section className="samplePage_stats-section">
           <div className="samplePage_stats">
-            <div className="samplePage_stat-box">
-              <h2>1,500+</h2>
-              <p>Project Completed</p>
-            </div>
-            <div className="samplePage_stat-box">
-              <h2>20+</h2>
-              <p>Team Members</p>
-            </div>
-            <div className="samplePage_stat-box">
-              <h2>16+</h2>
-              <p>Years in Business</p>
-            </div>
-            <div className="samplePage_stat-box">
-              <h2>100%</h2>
-              <p>Customer Satisfaction</p>
-            </div>
+            {data.stats.map((stat, index) => (
+              <div key={index} className="samplePage_stat-box">
+                <h2>{stat.value}</h2>
+                <p>{stat.label}</p>
+              </div>
+            ))}
           </div>
         </section>
         <div className="tech-logos-container">
           <div className="tech-logos">
-            <Image
-              src="https://weboum.com/wp-content/uploads/2021/05/html.png"
-              alt="HTML5 Logo"
-              width={50}
-              height={50}
-            />
-            <Image
-              src="https://weboum.com/wp-content/uploads/2021/05/opengl-logo.png"
-              alt="OpenGL Logo"
-              width={50}
-              height={50}
-            />
-            <Image
-              src="https://weboum.com/wp-content/uploads/2021/05/javascript.png"
-              alt="JavaScript Logo"
-              width={50}
-              height={50}
-            />
-            <Image
-              src="https://weboum.com/wp-content/uploads/2021/05/rest-api-logo.png"
-              alt="REST API Logo"
-              width={50}
-              height={50}
-            />
-            <Image
-              src="https://weboum.com/wp-content/uploads/2021/05/soap-api-logo.png"
-              alt="SOAP API Logo"
-              width={50}
-              height={50}
-            />
-            <Image
-              src="https://weboum.com/wp-content/uploads/2021/05/html.png"
-              alt="HTML5 Logo"
-              width={50}
-              height={50}
-            />
-            <Image
-              src="https://weboum.com/wp-content/uploads/2021/05/opengl-logo.png"
-              alt="OpenGL Logo"
-              width={50}
-              height={50}
-            />
-            <Image
-              src="https://weboum.com/wp-content/uploads/2021/05/javascript.png"
-              alt="JavaScript Logo"
-              width={50}
-              height={50}
-            />
-            <Image
-              src="https://weboum.com/wp-content/uploads/2021/05/rest-api-logo.png"
-              alt="REST API Logo"
-              width={50}
-              height={50}
-            />
-            <Image
-              src="https://weboum.com/wp-content/uploads/2021/05/soap-api-logo.png"
-              alt="SOAP API Logo"
-              width={50}
-              height={50}
-            />
+            {data.images
+              .filter(img => img.section === "tech-logos")
+              .concat(data.images.filter(img => img.section === "tech-logos")) // Duplicate logos to match original
+              .map((img, index) => (
+                <Image
+                  key={index}
+                  src={img.src}
+                  alt={img.alt}
+                  width={img.width}
+                  height={img.height}
+                />
+              ))}
           </div>
         </div>
 
@@ -899,8 +645,8 @@ Message: ${sanitizedFormData.message}
                           <Image
                             src={testimonial.image}
                             alt={`Testimonial author ${testimonial.author}`}
-                            width={50}
-                            height={50}
+                            width={data.images.find(img => img.src === testimonial.image).width}
+                            height={data.images.find(img => img.src === testimonial.image).height}
                           />
                           <strong>{testimonial.author}</strong>
                         </div>
@@ -932,8 +678,8 @@ Message: ${sanitizedFormData.message}
                           <Image
                             src={testimonial.image}
                             alt={`Testimonial author ${testimonial.author}`}
-                            width={50}
-                            height={50}
+                            width={data.images.find(img => img.src === testimonial.image).width}
+                            height={data.images.find(img => img.src === testimonial.image).height}
                           />
                           <strong>{testimonial.author}</strong>
                         </div>

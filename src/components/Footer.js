@@ -13,11 +13,11 @@ const createEmailTemplate = (data) => {
   const sanitizeInput = (input) => {
     if (!input) return "";
     return input
-      .replace(/&/g, "&")
-      .replace(/</g, "<")
-      .replace(/>/g, ">")
-      .replace(/"/g, "")
-      .replace(/'/g, "'");
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
   };
 
   const sanitizedEmail = sanitizeInput(data.email || "Not provided");
@@ -91,7 +91,6 @@ export default function Footer() {
     setFormSuccess("");
 
     if (!validateForm()) {
-      setIsSubmitting(false);
       return;
     }
 
@@ -102,38 +101,25 @@ export default function Footer() {
 
       const payload = {
         email: formData.email,
-        subject: "Subscription Confirmation",
+        subject: "Newsletter Subscription",
         message: emailContent.html,
         text: emailContent.text,
-        formType: "contact",
-        replyTo: formData.email,
+        formType: "newsletter",
+        replyTo: "no-reply@weboum.com", // Changed from user's email to a proper no-reply address
       };
-
-      console.log("Submitting subscription:", {
-        email: payload.email,
-        subject: payload.subject,
-        message: payload.message.substring(0, 100) + "...",
-        text: payload.text,
-        formType: payload.formType,
-        replyTo: payload.replyTo,
-      });
 
       const response = await sendContactForm(payload);
 
-      console.log("API Response:", response);
-
-      if (response.success) {
+      if (response && response.success) {
         setFormSuccess(
           "Successfully subscribed! Check your inbox or spam folder."
         );
         setFormData({ email: "" });
       } else {
-        setFormError(
-          response.message || "Failed to subscribe. Please try again."
-        );
+        throw new Error(response?.message || "Failed to subscribe");
       }
     } catch (error) {
-      console.error("Subscription error:", error.message || error);
+      console.error("Subscription error:", error);
       setFormError(
         "Failed to subscribe. Please try again or contact support@weboum.com."
       );

@@ -1,6 +1,9 @@
 {
   "logos": [
-    { "file": "logo1-1.jpg", "name": "Law Offices of Suan G. Mintz Family Law" },
+    {
+      "file": "logo1-1.jpg",
+      "name": "Law Offices of Suan G. Mintz Family Law"
+    },
     { "file": "logo-2.jpg", "name": "Polska-Seas" },
     { "file": "logo-3.jpg", "name": "Garden-Care" },
     { "file": "logo-4.jpg", "name": "Kapestry" },
@@ -8,11 +11,20 @@
     { "file": "logo-6.jpg", "name": "JLU-events" },
     { "file": "logo-7.jpg", "name": "Ball-Business-Network" },
     { "file": "logo-8.jpg", "name": "Miracle Services Group" },
-    { "file": "logo-9.jpg", "name": "Taking To The Max" },
-    { "file": "logo-10.jpg", "name": "Aimee B. Davis Law PC" },
-    { "file": "logo-11.jpg", "name": "W.I.N Virtual Bridal Expo" },
-    { "file": "logo-12.jpg", "name": "Nursing New York LLC" },
-    { "file": "logo-13.jpg", "name": "Key Tech NY" },
-    { "file": "logo-14.jpg", "name": "Websight Creative" }
+    { "file": "logo-9.jpg", "name": "W.I.N Virtual Bridal  Expo" },
+    { "file": "logo-10.jpg", "name": "Nursing  New York  LLC" },
+    { "file": "logo-11.jpg", "name": "Key Tech NY" },
+    { "file": "logo-12.jpg", "name": "Websight Creative" },
+    { "file": "logo-13.jpg", "name": "Ceremoinces By Nancy" },
+    { "file": "logo-14.jpg", "name": "Congregation Beth Israel" },
+    { "file": "logo2-1.jpg", "name": "Aimee B. Davis Law PC" },
+    { "file": "logo3-1.jpg", "name": "Rainy  Day  Gutter Cleaning" },
+    { "file": "logo6-1.jpg", "name": "Taking To The Max" },
+    {
+      "file": "logo13.jpg",
+      "name": "Randazzo & Giffords,P.C"
+    },
+    { "file": "logo4-1.jpg", "name": "MR Plow" },
+    { "file": "logo12-1.jpg", "name": "Stress Solutions of New York" }
   ]
 }

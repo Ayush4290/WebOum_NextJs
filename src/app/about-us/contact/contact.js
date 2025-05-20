@@ -62,11 +62,11 @@ export default function Contact() {
     const sanitizeInput = (input) => {
       if (!input) return "";
       return input
-        .replace(/&/g, "&")
-        .replace(/</g, "<")
-        .replace(/>/g, ">")
-        .replace(/"/g, "")
-        .replace(/'/g, "'");
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
     };
 
     const sanitizedName = sanitizeInput(data.name || "Not provided");
@@ -181,18 +181,23 @@ Message: ${sanitizedMessage}
 
     try {
       const emailContent = createEmailTemplate(formData);
+      
+      const formSubject = formData.subject 
+        ? `Contact Form: ${formData.name} - ${formData.subject}`
+        : `Contact Form: ${formData.name}`;
 
       console.log("Submitting contact form with:", {
         email: formData.email,
-        subject: formData.subject || `Contact Form: ${formData.name}`,
-        message: emailContent.html.substring(0, 100) + "...",
-        text: emailContent.text.substring(0, 100) + "...",
+        subject: formSubject,
+        message: emailContent.html,
+        text: emailContent.text,
         formType: "contact",
+        replyTo: formData.email,
       });
 
       const result = await sendContactForm({
         email: formData.email,
-        subject: formData.subject || `Contact Form: ${formData.name}`,
+        subject: formSubject,
         message: emailContent.html,
         text: emailContent.text,
         formType: "contact",
@@ -200,7 +205,7 @@ Message: ${sanitizedMessage}
       });
 
       if (result.success) {
-        setStatus("Your application has been submitted successfully!");
+        setStatus("Your message has been sent successfully!");
         setFormData({
           name: "",
           email: "",
@@ -317,7 +322,7 @@ Message: ${sanitizedMessage}
               <label htmlFor="subject">Subject*</label>
               <input
                 type="text"
-                id="name"
+                id="subject"
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
