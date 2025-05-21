@@ -167,6 +167,12 @@ export default function Footer() {
             <li>
               <Link href="/about-us/contact">Contact</Link>
             </li>
+                        <li>
+              <Link href="/about-us/hosting-management">Hosting Management</Link>
+            </li>
+                        <li>
+              <Link href="/solutions/backup-disaster-recovery">Backup Disaster Recovery</Link>
+            </li>
             <li>
               <Link href="/hire-developer">Hire Developer</Link>
             </li>
@@ -201,6 +207,12 @@ export default function Footer() {
             </li>
             <li>
               <Link href="/services/content-writing">Content Writing</Link>
+            </li>
+            <li>
+              <Link href="/solutions/sla-support-services">Sla Support Services</Link>
+            </li>
+            <li>
+              <Link href="/services/content-writing">Web Hosting Services</Link>
             </li>
             <li>
               <Link href="/all-logos">All Logos Designs</Link>
