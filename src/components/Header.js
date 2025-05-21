@@ -295,7 +295,6 @@ const Header = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [mobileMenuOpen]);
-
   const renderDropdownItems = (items, isTwoColumn = false, dropdownKey) => {
     if (!Array.isArray(items)) return null;
 
@@ -317,43 +316,71 @@ const Header = () => {
         );
       });
     }
-
-    // For "Services" dropdown, render in two rows of four items each
+    // For "Services" dropdown, render in two rows of six items each
     if (dropdownKey === "services") {
-      const row1 = items.slice(0, 4); // First 4 items for the first row
-      const row2 = items.slice(4, 8); // Next 4 items for the second row
+      const row1 = items.slice(0, 4); // First 6 items for the first row
+      const row2 = items.slice(4); // Remaining items for the second row
 
       return (
         <>
-          <div className="dropdown-row">
+          <div className="dropdown-row services-row">
             {row1.map((item, subIndex) => {
               const IconComponent = iconMap[item.icon];
               return (
-                <li key={subIndex}>
+                <li key={subIndex} className="service-item">
                   <Link
                     href={item.href}
                     onClick={handleDropdownItemClick}
-                    className="dropdown-link"
+                    className="dropdown-link service-link"
                   >
-                    {IconComponent && <IconComponent />}
-                    {item.label}
+                    <div className="service-icon-container">
+                      {item.img ? (
+                        <Image
+                          src={item.img}
+                          alt={item.label}
+                          width={32}
+                          height={32}
+                          className="service-icon-image"
+                        />
+                      ) : (
+                        IconComponent && (
+                          <IconComponent className="service-icon" />
+                        )
+                      )}
+                    </div>
+                    <span className="service-label">{item.label}</span>
                   </Link>
                 </li>
               );
             })}
           </div>
-          <div className="dropdown-row">
+
+          <div className="dropdown-row services-row">
             {row2.map((item, subIndex) => {
               const IconComponent = iconMap[item.icon];
               return (
-                <li key={subIndex + 4}>
+                <li key={subIndex + 6} className="service-item">
                   <Link
                     href={item.href}
                     onClick={handleDropdownItemClick}
-                    className="dropdown-link"
+                    className="dropdown-link service-link"
                   >
-                    {IconComponent && <IconComponent />}
-                    {item.label}
+                    <div className="service-icon-container">
+                      {item.img ? (
+                        <Image
+                          src={item.img}
+                          alt={item.label}
+                          width={32}
+                          height={32}
+                          className="service-icon-image"
+                        />
+                      ) : (
+                        IconComponent && (
+                          <IconComponent className="service-icon" />
+                        )
+                      )}
+                    </div>
+                    <span className="service-label">{item.label}</span>
                   </Link>
                 </li>
               );
@@ -366,10 +393,14 @@ const Header = () => {
     // For "Technology" dropdown, render in five columns
     if (dropdownKey === "technology") {
       // Group items by category
-      const frontEndItems = items.filter((item) => item.category === "Front End");
+      const frontEndItems = items.filter(
+        (item) => item.category === "Front End"
+      );
       const mobileItems = items.filter((item) => item.category === "Mobile");
       const backendItems = items.filter((item) => item.category === "Backend");
-      const ecommerceItems = items.filter((item) => item.category === "Ecommerce");
+      const ecommerceItems = items.filter(
+        (item) => item.category === "Ecommerce"
+      );
       const othersItems = items.filter((item) => item.category === "Others");
 
       return (
@@ -447,6 +478,8 @@ const Header = () => {
             })}
           </div>
           <div className="dropdown-column">
+            {" "}
+            {/* Changed from dropdown-columnttt to dropdown-column */}
             <h3 className="column-header">Others / Miscellaneous</h3>
             {othersItems.map((item, subIndex) => {
               const IconComponent = iconMap[item.icon];
@@ -618,6 +651,10 @@ const Header = () => {
                             className={`dropdown ${
                               activeDropdown === menu.dropdownKey
                                 ? "active"
+                                : ""
+                            } ${
+                              menu.dropdownKey === "services"
+                                ? "services-dropdown"
                                 : ""
                             }`}
                             ref={(el) =>

@@ -1,3 +1,4 @@
+
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
@@ -20,24 +21,120 @@ const Home = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState("");
   const [formSuccess, setFormSuccess] = useState("");
+  const [isPageInitialized, setIsPageInitialized] = useState(false);
 
   const portfolioRef = useRef(null);
   const testimonialRef = useRef(null);
+  const sidebarRef = useRef(null);
   const router = useRouter();
 
-  // Reset scroll and states on mount or route change
+  // Improved initialization effect with navigation focus
   useEffect(() => {
-    window.scrollTo(0, 0);
-    setCurrentPortfolioIndex(0);
-    setActiveTestimonial(0);
+    // Force layout recalculation and reset states
+    const handleInitialization = () => {
+      // Reset scroll position
+      window.scrollTo({ top: 0, behavior: "auto" });
+      
+      // Reset states
+      setCurrentPortfolioIndex(0);
+      setActiveTestimonial(0);
+      
+      // Properly reset the sidebar
+      if (sidebarRef.current) {
+        // Force sidebar recalculation
+        sidebarRef.current.style.position = 'static';
+        
+        // Use RAF for smoother transitions
+        requestAnimationFrame(() => {
+          if (sidebarRef.current) {
+            sidebarRef.current.style.position = 'sticky';
+            setIsPageInitialized(true);
+          }
+        });
+      }
+    };
+    
+    // Execute immediately on mount
+    handleInitialization();
+    
+    // Set up event listeners for page visibility and focus changes
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        handleInitialization();
+      }
+    };
+    
+    const handleFocus = () => {
+      handleInitialization();
+    };
+    
+    // Add event listeners
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('focus', handleFocus);
+    
+    // Clean up effect
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('focus', handleFocus);
+    };
   }, [router.pathname]);
 
-  // Reset scroll and states on mount
+  // New effect to handle window resize
   useEffect(() => {
-    window.scrollTo(0, 0);
-    setCurrentPortfolioIndex(0);
-    setActiveTestimonial(0);
+    const handleResize = () => {
+      // Recalculate sidebar on resize
+      if (sidebarRef.current) {
+        sidebarRef.current.style.position = 'static';
+        
+        requestAnimationFrame(() => {
+          if (sidebarRef.current) {
+            sidebarRef.current.style.position = 'sticky';
+          }
+        });
+      }
+    };
+    
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
+
+  // New effect to handle navigation events
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setIsPageInitialized(false);
+    };
+
+    const handleRouteComplete = () => {
+      // Reset sidebar on navigation complete
+      if (sidebarRef.current) {
+        sidebarRef.current.style.position = 'static';
+        
+        // Use timeout to ensure DOM is ready
+        setTimeout(() => {
+          if (sidebarRef.current) {
+            sidebarRef.current.style.position = 'sticky';
+            setIsPageInitialized(true);
+          }
+        }, 100);
+      }
+    };
+
+    // Register with router events if available
+    if (router && router.events) {
+      router.events.on('routeChangeStart', handleRouteChange);
+      router.events.on('routeChangeComplete', handleRouteComplete);
+    }
+
+    return () => {
+      if (router && router.events) {
+        router.events.off('routeChangeStart', handleRouteChange);
+        router.events.off('routeChangeComplete', handleRouteComplete);
+      }
+    };
+  }, [router]);
 
   // Portfolio auto-scrolling
   useEffect(() => {
@@ -86,6 +183,46 @@ const Home = () => {
       });
     }
   }, [activeTestimonial]);
+
+  // New effect for scroll events to ensure sidebar functionality
+  useEffect(() => {
+    const handleScroll = () => {
+      // If sidebar element exists, ensure it has the proper CSS
+      if (sidebarRef.current && isPageInitialized) {
+        // Make sure scroll behavior works correctly by refreshing position property
+        const currentPosition = sidebarRef.current.style.position;
+        sidebarRef.current.style.position = 'static';
+        
+        // Force browser to recalculate
+        sidebarRef.current.offsetHeight;
+        
+        // Restore the sticky position
+        requestAnimationFrame(() => {
+          if (sidebarRef.current) {
+            sidebarRef.current.style.position = 'sticky';
+          }
+        });
+      }
+    };
+
+    // Add scroll listener with throttling
+    let scrollTimeout = null;
+    const throttledScrollHandler = () => {
+      if (!scrollTimeout) {
+        scrollTimeout = setTimeout(() => {
+          handleScroll();
+          scrollTimeout = null;
+        }, 200); // Throttle to once every 200ms
+      }
+    };
+
+    window.addEventListener('scroll', throttledScrollHandler, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', throttledScrollHandler);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+    };
+  }, [isPageInitialized]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -152,11 +289,11 @@ const Home = () => {
       const sanitizeInput = (input) => {
         if (!input) return "";
         return input
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;")
-          .replace(/'/g, "&#39;");
+          .replace(/&/g, "&")
+          .replace(/</g, "<")
+          .replace(/>/g, ">")
+          .replace(/"/g, "")
+          .replace(/'/g, "'");
       };
 
       const sanitizedFormData = {
@@ -196,9 +333,7 @@ const Home = () => {
           </tr>
           <tr>
             <td><strong>Email:</strong></td>
-            <td><a href="mailto:${sanitizedFormData.email}">${
-        sanitizedFormData.email
-      }</a></td>
+            <td><a href="mailto:${sanitizedFormData.email}">${sanitizedFormData.email}</a></td>
           </tr>
           <tr>
             <td><strong>Phone:</strong></td>
@@ -292,7 +427,7 @@ Message: ${sanitizedFormData.message}
         <div className="container">
           <div className="row">
             <div className="sidebar-col">
-              <div className="sidebar">
+              <div className="sidebar" ref={sidebarRef}>
                 <a href="#services">Our Services</a>
                 <a href="#portfolio">Our Portfolio</a>
                 <a href="#why-choose-us">Why Choose Us</a>
@@ -324,7 +459,7 @@ Message: ${sanitizedFormData.message}
                         height={64}
                         onError={(e) =>
                           (e.target.src = "/image/placeholder.jpg")
-                        } // Fallback on error
+                        }
                       />
                       <div>
                         <div className="service-title">{service.title}</div>
@@ -355,7 +490,7 @@ Message: ${sanitizedFormData.message}
                               width={800}
                               height={400}
                               style={{ width: "100%", height: "auto" }}
-                              onError={() => "/image/placeholder.jpg"} // Fallback on error
+                              onError={() => "/image/placeholder.jpg"}
                             />
                           </div>
                           <div className="portfolio-text">
@@ -405,7 +540,7 @@ Message: ${sanitizedFormData.message}
                   className="why-icon"
                   width={64}
                   height={64}
-                  onError={() => "/image/placeholder.jpg"} // Fallback on error
+                  onError={() => "/image/placeholder.jpg"}
                 />
                 <div>
                   <div className="why-card-title">{card.title}</div>
@@ -432,7 +567,7 @@ Message: ${sanitizedFormData.message}
             className="process-image"
             width={1200}
             height={400}
-            onError={() => "/image/placeholder.jpg"} // Fallback on error
+            onError={() => "/image/placeholder.jpg"}
           />
         </div>
       </section>
@@ -560,7 +695,7 @@ Message: ${sanitizedFormData.message}
                       className="testimonial-image"
                       width={100}
                       height={100}
-                      onError={() => "/image/placeholder.jpg"} // Fallback on error
+                      onError={() => "/image/placeholder.jpg"}
                     />
                     <h4 className="testimonial-name">{testimonial.name}</h4>
                     <p className="testimonial-position">{testimonial.title}</p>

@@ -8,11 +8,11 @@
       "href": "/solutions/product-lifecycle-management"
     },
     {
-      "img": "/image/service/Cloud-Services.png",
+ "img": "/image/AI-icone.png",
       "alt": "Cloud",
       "title": "AI Development services",
       "desc": "AI-driven solutions for enhanced efficiency and innovation.",
-      "href": "/solutions/devops"
+      "href": "/services/ai-develperment"
     },
     {
       "img": "/image/service/Cybersecurity.png",
@@ -52,7 +52,7 @@
      {
       "img": "/image/service/Mobile-App.png",
       "alt": "DevOps",
-      "title": "DevOps Services",
+      "title": "Cloud & DevOps Services",
       "desc": "Efficient solutions for automation, scalability, and accelerated delivery.",
       "href": "/solutions/devops"
     },

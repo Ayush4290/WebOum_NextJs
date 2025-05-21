@@ -5,64 +5,66 @@
     "dropdownKey": "services",
     "items": [
       {
+        "label": "MVP/ Product Development",
+        "href": "/solutions/product-lifecycle-management",
+        "img": "/image/service/MVP.png"
+      },
+      {
+        "label": "AI Development services",
+        "href": "/services/ai-develperment",
+        "img": "/image/AI-icone.png"
+      },
+      {
+        "label": "Web Development",
+        "href": "/services/web-developer",
+        "img": "/image/service/Web-Development.png"
+      },
+      {
+        "label": "Cyber Security",
+        "href": "/services/cybersecurity",
+        "img": "/image/service/Cybersecurity.png"
+      },
+
+      {
+        "label": "Mobile App Development",
+        "href": "/services/application-developer",
+         "img": "/image/service/Mobile-App.png"
+      },
+      {
         "label": "Blockchain Solutions",
         "href": "/services/blockchain-solutions",
-        "icon": "FaLink"
+        "img": "/image/service/Blockchain-Solutions.png"
       },
       {
-        "label": "Content Writing",
-        "href": "/services/content-writing",
-        "icon": "FaPen"
-      },
-      {
-        "label": "Cybersecurity",
-        "href": "/services/cybersecurity",
-        "icon": "FaShieldAlt"
-      },
-      {
-        "label": "Data Analytics",
-        "href": "/services/data-analytics",
-        "icon": "FaChartBar"
-      },
-      {
-        "label": "Graphic Design",
-        "href": "/services/graphic-design",
-        "icon": "FaPaintBrush"
-      },
-      {
-        "label": "Hosting Management",
-        "href": "/about-us/hosting-management",
-        "icon": "FaServer"
+        "label": "Cloud & DevOps Services",
+        "href": "/solutions/devops",
+         "img": "/image/service/Cloud-Services.png"
       },
       {
         "label": "IT Consulting",
         "href": "/services/it-consulting",
-        "icon": "FaComments"
+        "img": "/image/service/IT-Consulting.png"
+      },
+
+      {
+        "label": "Data Analytics",
+        "href": "/services/data-analytics",
+        "img": "/image/service/Data-Analytics.png"
       },
       {
-        "label": "Product Lifecycle Management",
-        "href": "/solutions/product-lifecycle-management",
-        "icon": "FaBox"
-      },
-      {
-        "label": "Quality Assurance Services",
-        "href": "/solutions/quality-assurance-services",
-        "icon": "FaCheckCircle"
-      },
-      {
-        "label": "Shopify Developer",
+        "label": "eCommerce Solutions",
         "href": "/solutions/shopify-developer",
-        "icon": "FaShoppingCart"
+        "img": "/image/service/eCommerce.png"
       },
       {
-        "label": "SLA Support Services",
-        "href": "/solutions/sla-support-services",
-        "icon": "FaHandshake"
+        "label": "Digital Marketing",
+        "href": "/services/digital-marketing-3",
+         "img": "/image/service/SEO-and-PPC-Mareting.png"
       },
       {
-        "label": "Web Hosting Services",
-        "href": "/solutions/web-hosting-services",
-        "icon": "FaGlobe"
+        "label": "UI/UX Designing",
+        "href": "/services/graphic-design",
+        "img": "/image/service/UI-UX-Designing-1.png"
       }
     ]
   },
@@ -72,151 +74,151 @@
     "items": [
       {
         "label": "Angular JS",
-        "href": "/technology/angular-js",
+        "href": "/services/web-developer",
         "icon": "FaAngular",
         "category": "Front End"
       },
       {
         "label": "Next JS",
-        "href": "/technology/next-js",
+        "href": "/services/web-developer",
         "icon": "FaReact",
         "category": "Front End"
       },
       {
         "label": "React JS",
-        "href": "/technology/react-js",
+        "href": "/services/web-developer",
         "icon": "FaReact",
         "category": "Front End"
       },
       {
         "label": "Vue.JS",
-        "href": "/technology/vue-js",
+        "href": "/services/web-developer",
         "icon": "FaVuejs",
         "category": "Front End"
       },
       {
         "label": "React Native",
-        "href": "/technology/react-native",
+        "href": "/services/application-developer",
         "icon": "FaReact",
         "category": "Front End"
       },
       {
         "label": "Android",
-        "href": "/technology/android",
+        "href": "/services/application-developer",
         "icon": "FaAndroid",
         "category": "Mobile"
       },
       {
         "label": "Flutter",
-        "href": "/technology/flutter",
+        "href": "/services/application-developer",
         "icon": "FaMobileAlt",
         "category": "Mobile"
       },
       {
         "label": "iOS Applications",
-        "href": "/technology/ios",
+        "href": "/services/application-developer",
         "icon": "FaApple",
         "category": "Mobile"
       },
       {
         "label": "MAUI",
-        "href": "/technology/maui",
+        "href": "/services/application-developer",
         "icon": "FaMobile",
         "category": "Mobile"
       },
       {
         "label": "C#",
-        "href": "/technology/csharp",
+        "href": "/services/web-developer",
         "icon": "FaCode",
         "category": "Backend"
       },
       {
         "label": "Java",
-        "href": "/technology/java",
+        "href": "/services/web-developer",
         "icon": "FaJava",
         "category": "Backend"
       },
       {
         "label": "Node JS",
-        "href": "/technology/node-js",
+        "href": "/services/web-developer",
         "icon": "FaNodeJs",
         "category": "Backend"
       },
       {
         "label": "PHP",
-        "href": "/technology/php",
+        "href": "/services/web-developer",
         "icon": "FaPhp",
         "category": "Backend"
       },
       {
         "label": "Python",
-        "href": "/technology/python",
+        "href": "/services/web-developer",
         "icon": "FaPython",
         "category": "Backend"
       },
       {
-        "label": ".net",
-        "href": "/technology/dotnet",
+        "label": ".Net",
+        "href": "/services/web-developer",
         "icon": "FaMicrosoft",
         "category": "Backend"
       },
       {
         "label": "Open Cart",
-        "href": "/technology/open-cart",
+        "href": "/solutions/shopify-developer",
         "icon": "FaShoppingCart",
         "category": "Ecommerce"
       },
       {
         "label": "Magento",
-        "href": "/technology/magento",
+        "href": "/solutions/shopify-developer",
         "icon": "FaMagento",
         "category": "Ecommerce"
       },
       {
         "label": "Shopify",
-        "href": "/technology/shopify",
+        "href": "/solutions/shopify-developer",
         "icon": "FaShopify",
         "category": "Ecommerce"
       },
       {
         "label": "Shopware",
-        "href": "/technology/shopware",
+        "href": "/solutions/shopify-developer",
         "icon": "FaShoppingBag",
         "category": "Ecommerce"
       },
       {
         "label": "WooCommerce",
-        "href": "/technology/woocommerce",
+        "href": "/solutions/shopify-developer",
         "icon": "FaWordpress",
         "category": "Ecommerce"
       },
       {
         "label": "UX/UI",
-        "href": "/technology/ux-ui",
+        "href": "/services/web-designing",
         "icon": "FaPaintBrush",
         "category": "Others"
       },
       {
         "label": "Mean",
-        "href": "/technology/mean",
+        "href": "/services/web-developer",
         "icon": "FaLayerGroup",
         "category": "Others"
       },
       {
         "label": "Mern",
-        "href": "/technology/mern",
+        "href": "/services/web-developer",
         "icon": "FaLayerGroup",
         "category": "Others"
       },
       {
         "label": "Testing",
-        "href": "/technology/testing",
+        "href": "/solutions/software-testing",
         "icon": "FaCheckCircle",
         "category": "Others"
       },
       {
         "label": "AI/ML",
-        "href": "/technology/ai-ml",
+        "href": "/services/ai-develperment",
         "icon": "FaBrain",
         "category": "Others"
       }
@@ -249,7 +251,8 @@
       },
       {
         "label": "Careers",
-        "href": "/about-us/careers"
+        "href": "/about-us/careers",
+        "icon": "FaCode"
       }
     ]
   },

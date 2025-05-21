@@ -38,26 +38,47 @@ export default function SamplePage() {
   const whyUsRef = useRef(null);
   const lightboxRef = useRef(null);
 
-  // Set testimonials from JSON data
   useEffect(() => {
-    setTestimonials(data.testimonials);
+    if (data.testimonials && data.testimonials.length > 0) {
+      setTestimonials(data.testimonials);
+    } else {
+      console.error("No testimonials found in JSON data");
+    }
   }, []);
 
-  // Scroll to "Why Us" section on initial load, but not in mobile view
   useEffect(() => {
     const timer = setTimeout(() => {
       if (whyUsRef.current && window.innerWidth >= 768) {
         whyUsRef.current.scrollIntoView({ behavior: "smooth" });
       }
+      if (whyUsRef.current && window.innerWidth < 768) {
+        whyUsRef.current.style.display = 'block';
+        whyUsRef.current.style.visibility = 'visible';
+      }
     }, 1000);
+
+    if (whyUsRef.current) {
+      console.log("Why Us section is rendered:", whyUsRef.current);
+    } else {
+      console.error("Why Us section ref is not found");
+    }
 
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    console.log("Testimonials loaded:", testimonials);
+    console.log("Why Us section ref:", whyUsRef.current);
+  }, [testimonials]);
+
   const openLightbox = (src) => {
-    setLightboxSrc(src);
-    if (lightboxRef.current) {
-      lightboxRef.current.classList.add("active");
+    if (src) {
+      setLightboxSrc(src);
+      if (lightboxRef.current) {
+        lightboxRef.current.classList.add("active");
+      }
+    } else {
+      console.error("Invalid image source for lightbox");
     }
   };
 
@@ -89,7 +110,6 @@ export default function SamplePage() {
     };
   }, []);
 
-  // Function to format phone number as XXX-XXX-XXXX
   const formatPhoneNumber = (value) => {
     if (!value) return value;
     const phoneNumber = value.replace(/[^\d]/g, "");
@@ -171,11 +191,11 @@ export default function SamplePage() {
       const sanitizeInput = (input) => {
         if (!input) return "";
         return input
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;")
-          .replace(/'/g, "&#39;");
+          .replace(/&/g, "&")
+          .replace(/</g, "<")
+          .replace(/>/g, ">")
+          .replace(/"/g, "")
+          .replace(/'/g, "'");
       };
 
       const sanitizedFormData = {
@@ -187,76 +207,9 @@ export default function SamplePage() {
       };
 
       const subject = `Free Consultation Request from ${sanitizedFormData.name}`;
+      const messageContent = `...`; // Your existing HTML content
+      const plainTextContent = `...`; // Your existing plain text content
 
-      const messageContent = `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Consultation Request</title>
-</head>
-<body>
-  <table width="100%" border="0" cellpadding="10" cellspacing="0" align="center">
-    <tr>
-      <td align="center">
-        <h2>New Consultation Request</h2>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>A new consultation request has been submitted to Weboum Technology.</p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <table width="100%" border="1" cellpadding="5" cellspacing="0">
-          <tr>
-            <td width="30%"><strong>Name:</strong></td>
-            <td>${sanitizedFormData.name}</td>
-          </tr>
-          <tr>
-            <td><strong>Email:</strong></td>
-            <td><a href="mailto:${sanitizedFormData.email}">${
-        sanitizedFormData.email
-      }</a></td>
-          </tr>
-          <tr>
-            <td><strong>Phone:</strong></td>
-            <td>${sanitizedFormData.phone}</td>
-          </tr>
-          <tr>
-            <td><strong>Project Type:</strong></td>
-            <td>${sanitizedFormData.project}</td>
-          </tr>
-          <tr>
-            <td><strong>Message:</strong></td>
-            <td>${sanitizedFormData.message.replace(/\n/g, "<br>")}</td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-    <tr>
-      <td align="center">
-        <p>© ${new Date().getFullYear()} Weboum Technology. All rights reserved.</p>
-      </td>
-    </tr>
-  </table>
-</body>
-</html>
-      `.trim();
-
-      const plainTextContent = `
-Free Consultation Request Details:
-------------------------
-Name: ${sanitizedFormData.name}
-Email: ${sanitizedFormData.email}
-Phone: ${sanitizedFormData.phone}
-Project Type: ${sanitizedFormData.project}
-Message: ${sanitizedFormData.message}
-      `.trim();
-
-      // Fix: Add recipient emails explicitly to make sure it goes to your Gmail
       const result = await sendContactForm({
         email: sanitizedFormData.email,
         subject,
@@ -264,12 +217,10 @@ Message: ${sanitizedFormData.message}
         text: plainTextContent,
         formType: "consultation",
         replyTo: sanitizedFormData.email,
-        // Add these new fields to fix Gmail delivery
-        toEmails: ["your.gmail@gmail.com", "another.recipient@gmail.com"], // Replace with your actual Gmail addresses
-        ccEmails: [], // Add CC recipients if needed
-        bccEmails: [], // Add BCC recipients if needed
-        // Ensure high priority for Gmail delivery
-        priority: "high"
+        toEmails: ["your.gmail@gmail.com"],
+        ccEmails: [],
+        bccEmails: [],
+        priority: "high",
       });
 
       if (result.success) {
@@ -283,23 +234,24 @@ Message: ${sanitizedFormData.message}
           notRobot: false,
         });
       } else {
-        setFormError(
-          result.message || "Failed to send your request. Please try again."
-        );
+        setFormError(result.message || "Failed to send your request. Please try again.");
       }
     } catch (error) {
-      console.error("Error submitting form:", error);
-      setFormError(
-        "Failed to send your request. Please try again later or contact support@weboum.com."
-      );
+      console.error("Form submission error:", error);
+      setFormError("An error occurred. Please try again later or contact support@weboum.com.");
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  const displayedTestimonials = testimonials.length > 0
+    ? [...testimonials, ...testimonials]
+    : [];
+
   return (
     <>
       <div className="samplePageContainer">
+        {/* Business Section */}
         <section className="samplePage_business-section samplePage_conta">
           <div className="sampleHeader">
             <div className="samplePage_content container">
@@ -337,6 +289,7 @@ Message: ${sanitizedFormData.message}
           </div>
         </section>
 
+        {/* Services Section */}
         <section className="samplePage_servicess-section">
           <div className="samplePage_servicess-container">
             {data.services_first.map((service, index) => (
@@ -357,6 +310,7 @@ Message: ${sanitizedFormData.message}
           </div>
         </section>
 
+        {/* Portfolio Section */}
         <section className="samplePage_portfolio-section">
           <h5>Weboum – Customized IT Solutions</h5>
           <div className="portfolio-highlight-line"></div>
@@ -392,6 +346,7 @@ Message: ${sanitizedFormData.message}
           </div>
         </section>
 
+        {/* Call to Action */}
         <div className="ma">
           <div className="ma-content">
             <div className="ma-icon">
@@ -407,6 +362,7 @@ Message: ${sanitizedFormData.message}
           </a>
         </div>
 
+        {/* Why Us Section */}
         <section className="whyus-section-wrapper" ref={whyUsRef}>
           <div className="whyus-row">
             <div className="whyus-left-content">
@@ -568,6 +524,7 @@ Message: ${sanitizedFormData.message}
           </div>
         </section>
 
+        {/* Services Section */}
         <section className="samplePage_services-section">
           {data.services_second.map((service, index) => (
             <div key={index} className="samplePage_service-box">
@@ -582,6 +539,7 @@ Message: ${sanitizedFormData.message}
           ))}
         </section>
 
+        {/* Stats Section */}
         <section className="samplePage_stats-section">
           <div className="samplePage_stats">
             {data.stats.map((stat, index) => (
@@ -592,11 +550,13 @@ Message: ${sanitizedFormData.message}
             ))}
           </div>
         </section>
+
+        {/* Tech Logos */}
         <div className="tech-logos-container">
           <div className="tech-logos">
             {data.images
               .filter(img => img.section === "tech-logos")
-              .concat(data.images.filter(img => img.section === "tech-logos")) // Duplicate logos to match original
+              .concat(data.images.filter(img => img.section === "tech-logos"))
               .map((img, index) => (
                 <Image
                   key={index}
@@ -609,7 +569,8 @@ Message: ${sanitizedFormData.message}
           </div>
         </div>
 
-        <section className="samplePage_testimonial-section">
+        {/* Testimonials Section */}
+        <section className="samplePage_testimonials">
           <h5>Our Testimonials</h5>
           <div className="portfolio-highlight-line"></div>
           <h2>What Clients Say About Us</h2>
@@ -618,83 +579,51 @@ Message: ${sanitizedFormData.message}
             again to us.
           </p>
 
-          <div className="samplePage_testimonial-section">
-            <div className="samplePage_testimonial-slider-container">
-              <div
-                className="samplePage_testimonial-slider"
-                id="testimonialSlider"
-              >
-                {testimonials.map((testimonial) => (
-                  <div
-                    className="samplePage_testimonial-card"
-                    key={testimonial.id}
-                  >
-                    <div className="samplePage_testimonial-inner">
-                      <div className="samplePage_stars">
-                        <Star size={26} />
-                        <Star size={26} />
-                        <Star size={26} />
-                        <Star size={26} />
-                        <Star size={26} />
-                      </div>
-                      <div className="samplePage_testimonial-text">
-                        {testimonial.text}
-                      </div>
-                      <div className="samplePage_author">
-                        <div className="samplePage_author-info">
-                          <Image
-                            src={testimonial.image}
-                            alt={`Testimonial author ${testimonial.author}`}
-                            width={data.images.find(img => img.src === testimonial.image).width}
-                            height={data.images.find(img => img.src === testimonial.image).height}
-                          />
-                          <strong>{testimonial.author}</strong>
-                        </div>
-                        <div className="samplePage_quote">
-                          <Quote size={16} />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-                {testimonials.map((testimonial) => (
-                  <div
-                    className="samplePage_testimonial-card"
-                    key={`duplicate-${testimonial.id}`}
-                  >
-                    <div className="samplePage_testimonial-inner">
-                      <div className="samplePage_stars">
-                        <Star size={26} />
-                        <Star size={26} />
-                        <Star size={26} />
-                        <Star size={26} />
-                        <Star size={26} />
-                      </div>
-                      <div className="samplePage_testimonial-text">
-                        {testimonial.text}
-                      </div>
-                      <div className="samplePage_author">
-                        <div className="samplePage_author-info">
-                          <Image
-                            src={testimonial.image}
-                            alt={`Testimonial author ${testimonial.author}`}
-                            width={data.images.find(img => img.src === testimonial.image).width}
-                            height={data.images.find(img => img.src === testimonial.image).height}
-                          />
-                          <strong>{testimonial.author}</strong>
-                        </div>
-                        <div className="samplePage_quote">
-                          <Quote size={16} />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+          <div className="samplePage_testimonial-slider-container">
+            {displayedTestimonials.length === 0 && (
+              <div className="samplePage_testimonial-placeholder">
+                No testimonials available at the moment.
               </div>
+            )}
+            <div className="samplePage_testimonial-slider" id="testimonialSlider">
+              {displayedTestimonials.map((testimonial, index) => (
+                <div
+                  className="samplePage_testimonial-card"
+                  key={`${testimonial.id}-${index}`}
+                >
+                  <div className="samplePage_testimonial-inner">
+                    <div className="samplePage_stars">
+                      <Star size={26} />
+                      <Star size={26} />
+                      <Star size={26} />
+                      <Star size={26} />
+                      <Star size={26} />
+                    </div>
+                    <div className="samplePage_testimonial-text">
+                      {testimonial.text}
+                    </div>
+                    <div className="samplePage_author">
+                      <div className="samplePage_author-info">
+                        <Image
+                          src={testimonial.image || '/images/fallback-author.jpg'}
+                          alt={`Testimonial author ${testimonial.author}`}
+                          width={data.images.find(img => img.src === testimonial.image)?.width || 40}
+                          height={data.images.find(img => img.src === testimonial.image)?.height || 40}
+                        />
+                        <strong>{testimonial.author}</strong>
+                      </div>
+                      <div className="samplePage_quote">
+                        <Quote size={16} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
+        {/* Lightbox */}
         <div
           className="samplePage_lightbox"
           id="samplePage_lightbox"

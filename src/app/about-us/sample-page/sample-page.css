@@ -397,7 +397,7 @@
 /* Why us section styles */
 .whyus-section-wrapper {
   padding: 40px 15px;
-  display: flex;
+  display: flex !important;
   flex-wrap: wrap;
   gap: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -408,6 +408,8 @@
   max-width: 1200px;
   margin: 0 auto;
   margin-top: 10px;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 /* Row */
@@ -774,22 +776,54 @@
   animation-play-state: paused;
 }
 
-.samplePage_testimonial-section {
+.samplePage_testimonials {
   padding: 60px 20px;
   text-align: center;
   max-width: 1200px;
   margin: auto;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
+  z-index: 1;
 }
 
-.samplePage_testimonial-section h5 {
+.samplePage_testimonial-slider-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+.samplePage_testimonial-slider {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 20px 0;
+  width: max-content;
+  animation: scroll 12s linear infinite;
+  touch-action: pan-x;
+}
+
+.samplePage_testimonial-card {
+  flex: 0 0 300px;
+  min-width: 300px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s;
+}
+
+
+.samplePage_testimonials h5 {
   font-size: 16px;
   font-weight: bold;
   color: #333;
   margin-bottom: 10px;
 }
 
-.samplePage_testimonial-section h2 {
+.samplePage_testimonials h2 {
   font-size: 32px;
   margin-bottom: 10px;
 }

@@ -24,7 +24,7 @@ export default function RequestAQuote() {
     stage: [],
     services_needed: [],
     development_stages_needed: [],
-    project_scope: [],
+    box: [], // Added new box section
     expected_budget: [],
     timeframe: [],
     start: [],
@@ -43,11 +43,14 @@ export default function RequestAQuote() {
   }, [showInlineSuccess]);
 
   const handleNext = () => {
+    const currentStepData = steps[currentStep];
+
     // Validate fields if the current step has fields (Step 0 or last step)
     if (currentStep === 0 || currentStep === steps.length - 1) {
-      const currentStepData = steps[currentStep];
       if (currentStepData.fields) {
-        const requiredFields = currentStepData.fields.filter((field) => field.required);
+        const requiredFields = currentStepData.fields.filter(
+          (field) => field.required
+        );
         for (const field of requiredFields) {
           if (!formData[field.name] || formData[field.name].trim() === "") {
             setFormError(`${field.label.replace("*", "")} is required.`);
@@ -56,13 +59,14 @@ export default function RequestAQuote() {
         }
 
         if (currentStep === 0) {
-          // Validate email and phone on the first step
           if (formData.email && !/^\S+@\S+\.\S+$/.test(formData.email)) {
             setFormError("Please enter a valid email address.");
             return;
           }
           if (formData.phone && formData.phone.length < 10) {
-            setFormError("Please enter a valid phone number (at least 10 digits).");
+            setFormError(
+              "Please enter a valid phone number (at least 10 digits)."
+            );
             return;
           }
         }
@@ -84,7 +88,9 @@ export default function RequestAQuote() {
 
   const validateFinalForm = () => {
     if (currentStep === steps.length - 1) {
-      const requiredFields = steps[currentStep].fields.filter((field) => field.required);
+      const requiredFields = steps[currentStep].fields.filter(
+        (field) => field.required
+      );
       for (const field of requiredFields) {
         if (!formData[field.name] || formData[field.name].trim() === "") {
           setFormError(`${field.label.replace("*", "")} is required.`);
@@ -101,16 +107,17 @@ export default function RequestAQuote() {
       stage: [],
       services_needed: [],
       development_stages_needed: [],
-      project_scope: [],
+      box: [], // Reset box section
       expected_budget: [],
       timeframe: [],
       start: [],
     });
-
     if (formRef.current) {
       formRef.current.reset();
     }
-    document.querySelectorAll(".tag").forEach((tag) => tag.classList.remove("selected"));
+    document
+      .querySelectorAll(".tag")
+      .forEach((tag) => tag.classList.remove("selected"));
     setSubmitSuccess(true);
   };
 
@@ -122,7 +129,6 @@ export default function RequestAQuote() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setFormError("");
     setFormSuccess("");
     setShowInlineSuccess(false);
@@ -160,7 +166,9 @@ export default function RequestAQuote() {
               if (normalizedSectionName === sectionName) {
                 return values
                   .map((value) => {
-                    const option = section.options.find((opt) => opt.value === value);
+                    const option = section.options.find(
+                      (opt) => opt.value === value
+                    );
                     return option ? option.label : value;
                   })
                   .join(", ");
@@ -200,7 +208,9 @@ export default function RequestAQuote() {
           </tr>
           <tr>
             <td><strong>Email:</strong></td>
-            <td><a href="mailto:${sanitizedFormData.email || "Not provided"}">${sanitizedFormData.email || "Not provided"}</a></td>
+            <td><a href="mailto:${sanitizedFormData.email || "Not provided"}">${
+        sanitizedFormData.email || "Not provided"
+      }</a></td>
           </tr>
           <tr>
             <td><strong>Phone:</strong></td>
@@ -216,35 +226,75 @@ export default function RequestAQuote() {
           </tr>
           <tr>
             <td><strong>Stage:</strong></td>
-            <td>${selectedOptions.stage.length > 0 ? getOptionLabels("stage", selectedOptions.stage) : "Not selected"}</td>
+            <td>${
+              selectedOptions.stage.length > 0
+                ? getOptionLabels("stage", selectedOptions.stage)
+                : "Not selected"
+            }</td>
           </tr>
           <tr>
             <td><strong>Services Needed:</strong></td>
-            <td>${selectedOptions.services_needed.length > 0 ? getOptionLabels("services_needed", selectedOptions.services_needed) : "Not selected"}</td>
+            <td>${
+              selectedOptions.services_needed.length > 0
+                ? getOptionLabels(
+                    "services_needed",
+                    selectedOptions.services_needed
+                  )
+                : "Not selected"
+            }</td>
           </tr>
           <tr>
             <td><strong>Development Stages Needed:</strong></td>
-            <td>${selectedOptions.development_stages_needed.length > 0 ? getOptionLabels("development_stages_needed", selectedOptions.development_stages_needed) : "Not selected"}</td>
+            <td>${
+              selectedOptions.development_stages_needed.length > 0
+                ? getOptionLabels(
+                    "development_stages_needed",
+                    selectedOptions.development_stages_needed
+                  )
+                : "Not selected"
+            }</td>
           </tr>
           <tr>
-            <td><strong>Project Scope:</strong></td>
-            <td>${selectedOptions.project_scope.length > 0 ? getOptionLabels("project_scope", selectedOptions.project_scope) : "Not selected"}</td>
+            <td><strong>Box:</strong></td>
+            <td>${
+              selectedOptions.box.length > 0
+                ? getOptionLabels("box", selectedOptions.box)
+                : "Not selected"
+            }</td>
           </tr>
           <tr>
             <td><strong>Expected Budget:</strong></td>
-            <td>${selectedOptions.expected_budget.length > 0 ? getOptionLabels("expected_budget", selectedOptions.expected_budget) : "Not selected"}</td>
+            <td>${
+              selectedOptions.expected_budget.length > 0
+                ? getOptionLabels(
+                    "expected_budget",
+                    selectedOptions.expected_budget
+                  )
+                : "Not selected"
+            }</td>
           </tr>
           <tr>
             <td><strong>Timeframe:</strong></td>
-            <td>${selectedOptions.timeframe.length > 0 ? getOptionLabels("timeframe", selectedOptions.timeframe) : "Not selected"}</td>
+            <td>${
+              selectedOptions.timeframe.length > 0
+                ? getOptionLabels("timeframe", selectedOptions.timeframe)
+                : "Not selected"
+            }</td>
           </tr>
           <tr>
             <td><strong>Start:</strong></td>
-            <td>${selectedOptions.start.length > 0 ? getOptionLabels("start", selectedOptions.start) : "Not selected"}</td>
+            <td>${
+              selectedOptions.start.length > 0
+                ? getOptionLabels("start", selectedOptions.start)
+                : "Not selected"
+            }</td>
           </tr>
           <tr>
             <td><strong>Message:</strong></td>
-            <td>${(sanitizedFormData.message || "No message provided").replace(/\n/g, "<br>")}</td>
+            <td>${(sanitizedFormData.message || "No message provided").replace(
+              /\n/g,
+              "<br>"
+            )}</td>
           </tr>
         </table>
       </td>
@@ -267,19 +317,52 @@ Email: ${sanitizedFormData.email || "Not provided"}
 Phone: ${sanitizedFormData.phone || "Not provided"}
 Company: ${sanitizedFormData.company || "Not provided"}
 Website: ${sanitizedFormData.website || "Not provided"}
-Stage: ${selectedOptions.stage.length > 0 ? getOptionLabels("stage", selectedOptions.stage) : "Not selected"}
-Services Needed: ${selectedOptions.services_needed.length > 0 ? getOptionLabels("services_needed", selectedOptions.services_needed) : "Not selected"}
-Development Stages Needed: ${selectedOptions.development_stages_needed.length > 0 ? getOptionLabels("development_stages_needed", selectedOptions.development_stages_needed) : "Not selected"}
-Project Scope: ${selectedOptions.project_scope.length > 0 ? getOptionLabels("project_scope", selectedOptions.project_scope) : "Not selected"}
-Expected Budget: ${selectedOptions.expected_budget.length > 0 ? getOptionLabels("expected_budget", selectedOptions.expected_budget) : "Not selected"}
-Timeframe: ${selectedOptions.timeframe.length > 0 ? getOptionLabels("timeframe", selectedOptions.timeframe) : "Not selected"}
-Start: ${selectedOptions.start.length > 0 ? getOptionLabels("start", selectedOptions.start) : "Not selected"}
+Stage: ${
+        selectedOptions.stage.length > 0
+          ? getOptionLabels("stage", selectedOptions.stage)
+          : "Not selected"
+      }
+Services Needed: ${
+        selectedOptions.services_needed.length > 0
+          ? getOptionLabels("services_needed", selectedOptions.services_needed)
+          : "Not selected"
+      }
+Development Stages Needed: ${
+        selectedOptions.development_stages_needed.length > 0
+          ? getOptionLabels(
+              "development_stages_needed",
+              selectedOptions.development_stages_needed
+            )
+          : "Not selected"
+      }
+Box: ${
+        selectedOptions.box.length > 0
+          ? getOptionLabels("box", selectedOptions.box)
+          : "Not selected"
+      }
+Expected Budget: ${
+        selectedOptions.expected_budget.length > 0
+          ? getOptionLabels("expected_budget", selectedOptions.expected_budget)
+          : "Not selected"
+      }
+Timeframe: ${
+        selectedOptions.timeframe.length > 0
+          ? getOptionLabels("timeframe", selectedOptions.timeframe)
+          : "Not selected"
+      }
+Start: ${
+        selectedOptions.start.length > 0
+          ? getOptionLabels("start", selectedOptions.start)
+          : "Not selected"
+      }
 Message: ${sanitizedFormData.message || "No message provided"}
       `.trim();
 
       const result = await sendContactForm({
         email: sanitizedFormData.email || "",
-        subject: `Quote Request from ${sanitizedFormData.name || "Website Visitor"}`,
+        subject: `Quote Request from ${
+          sanitizedFormData.name || "Website Visitor"
+        }`,
         message: messageContent,
         text: plainTextContent,
         formType: "quote-request",
@@ -287,17 +370,22 @@ Message: ${sanitizedFormData.message || "No message provided"}
       });
 
       if (result.success) {
-        const successMessage = "Your quote request has been submitted successfully";
+        const successMessage =
+          "Your quote request has been submitted successfully";
         setFormSuccess(successMessage);
         setShowSuccessModal(true);
         setShowInlineSuccess(true);
         resetForm();
       } else {
-        setFormError(result.message || "Failed to submit your request. Please try again.");
+        setFormError(
+          result.message || "Failed to submit your request. Please try again."
+        );
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      setFormError("Failed to submit your request. Please try again later or contact support@weboum.com.");
+      setFormError(
+        "Failed to submit your request. Please try again later or contact support@weboum.com."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -305,6 +393,19 @@ Message: ${sanitizedFormData.message || "No message provided"}
 
   const handleTagSelection = (sectionName, value) => {
     setSelectedOptions((prev) => {
+      const singleSelectFields = [
+        "stage",
+        "box", // Added box to single select fields
+        "expected_budget",
+        "timeframe",
+        "start",
+      ];
+      if (singleSelectFields.includes(sectionName)) {
+        return {
+          ...prev,
+          [sectionName]: prev[sectionName].includes(value) ? [] : [value],
+        };
+      }
       const currentSelections = prev[sectionName] || [];
       return {
         ...prev,
@@ -321,9 +422,8 @@ Message: ${sanitizedFormData.message || "No message provided"}
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-
     if (name === "phone") {
-      const phoneValue = value.replace(/\D/g, '');
+      const phoneValue = value.replace(/\D/g, "");
       setFormData({
         ...formData,
         [name]: phoneValue,
@@ -341,8 +441,14 @@ Message: ${sanitizedFormData.message || "No message provided"}
   };
 
   const handlePhoneKeyPress = (e) => {
-    const allowedKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-    const controlKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'];
+    const allowedKeys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    const controlKeys = [
+      "Backspace",
+      "Delete",
+      "ArrowLeft",
+      "ArrowRight",
+      "Tab",
+    ];
     if (!allowedKeys.includes(e.key) && !controlKeys.includes(e.key)) {
       e.preventDefault();
     }
@@ -370,7 +476,6 @@ Message: ${sanitizedFormData.message || "No message provided"}
           ></div>
         </div>
         <div className="requestaQuote-container">
-          
           <div className="requestaQuote-right">
             <div className="requestaQuote-section">
               <h3 className="requestaQuote-heading">{currentStepData.title}</h3>
@@ -393,6 +498,15 @@ Message: ${sanitizedFormData.message || "No message provided"}
                     .toLowerCase()
                     .replace(/[\s:]+/g, "_")
                     .replace(/[^a-z0-9_]/g, "");
+                  
+                  const isSingleSelect = [
+                    "stage",
+                    "box",
+                    "expected_budget",
+                    "timeframe",
+                    "start",
+                  ].includes(sectionId);
+                  
                   return (
                     <div key={secIndex} className="requestaQuote-section">
                       <h5 className="requestaQuote-heading">
@@ -406,10 +520,21 @@ Message: ${sanitizedFormData.message || "No message provided"}
                               selectedOptions[sectionId]?.includes(option.value)
                                 ? "selected"
                                 : ""
-                            }`}
+                            } ${isSingleSelect ? "single-select" : ""}`}
                             onClick={() =>
                               handleTagSelection(sectionId, option.value)
                             }
+                            role={isSingleSelect ? "radio" : "checkbox"}
+                            aria-checked={selectedOptions[sectionId]?.includes(
+                              option.value
+                            )}
+                            tabIndex={0}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter" || e.key === " ") {
+                                e.preventDefault();
+                                handleTagSelection(sectionId, option.value);
+                              }
+                            }}
                           >
                             {option.label}
                           </div>
@@ -421,7 +546,11 @@ Message: ${sanitizedFormData.message || "No message provided"}
               ) : currentStepData.fields ? (
                 <form
                   className="requestaQuote-form"
-                  onSubmit={currentStep === steps.length - 1 ? handleSubmit : (e) => e.preventDefault()}
+                  onSubmit={
+                    currentStep === steps.length - 1
+                      ? handleSubmit
+                      : (e) => e.preventDefault()
+                  }
                   ref={formRef}
                   noValidate
                 >
@@ -514,23 +643,6 @@ Message: ${sanitizedFormData.message || "No message provided"}
           </div>
         </div>
       </div>
-
-      {showSuccessModal && (
-        <div className="requestaQuote-modal" role="dialog" aria-labelledby="modal-title">
-          <div className="requestaQuote-modal-content">
-            <h3 id="modal-title">Success</h3>
-            <p>{formSuccess}</p>
-            <button
-              onClick={closeSuccessModal}
-              className="requestaQuote-button"
-              aria-label="Close success modal"
-            >
-              {submitSuccess ? "Start New Form" : "Close"}
-            </button>
-          </div>
-        </div>
-      )}
-
       <Days />
     </>
   );
