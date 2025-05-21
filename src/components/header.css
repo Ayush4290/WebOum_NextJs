@@ -209,10 +209,12 @@
   display: flex;
   flex-wrap: nowrap;
   gap: 0.5rem;
-  padding: 2rem 1rem; /* Increased vertical padding (top/bottom) from 1rem to 2rem */
+  padding: 2rem 1rem; /* Top/bottom 2rem, left/right 1rem */
   min-height: 300px;
-  left: -100px;
+  position: absolute; /* Make sure position is set if using left */
+  left: 40px; /* Shift box 40px from the left */
 }
+
 
 .menu-dropdown.services .dropdown li {
   margin-bottom: 0;
@@ -309,15 +311,18 @@
 /* Adjust link padding and alignment for better fit in the columns */
 .menu-dropdown.technology .dropdown li a {
   padding: 6px 8px;
-  font-size: 14px; /* Slightly increased for better readability */
-  white-space: normal; /* Allow text wrapping */
+  font-size: 14px;
+  white-space: nowrap; /* Keep text in one line */
   line-height: 1.5;
   display: flex;
   align-items: center;
   gap: 8px;
   color: #1a1a1a;
-  font-family: "Segoe UI", Roboto, system-ui, sans-serif; /* Optional: nicer, modern font */
+  font-family: "Segoe UI", Roboto, system-ui, sans-serif;
+  overflow: hidden;          /* Optional: hide overflow */
+  text-overflow: ellipsis;   /* Optional: show "..." if text is too long */
 }
+
 
 
 /* Optional: Adjust icon size for better proportionality */
