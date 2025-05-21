@@ -7,7 +7,7 @@ import "./request_a_quote.css";
 import Days from "../about-us/days/page";
 import SubHeader from "../sub-header/page";
 import { sendContactForm } from "../../utils/api";
-import steps from "../../../public/data/requestaquoate"; // Updated path
+import steps from "../../../public/data/request";
 
 export default function RequestAQuote() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -17,10 +17,9 @@ export default function RequestAQuote() {
   const [formSuccess, setFormSuccess] = useState("");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showInlineSuccess, setShowInlineSuccess] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false); // Added to track successful submission
+  const [submitSuccess, setSubmitSuccess] = useState(false);
   const formRef = useRef(null);
 
-  // State for multi-selected options
   const [selectedOptions, setSelectedOptions] = useState({
     stage: [],
     services_needed: [],
@@ -31,13 +30,12 @@ export default function RequestAQuote() {
     start: [],
   });
 
-  // Effect to hide success message after 5 seconds
   useEffect(() => {
     let timer;
     if (showInlineSuccess) {
       timer = setTimeout(() => {
         setShowInlineSuccess(false);
-      }, 9000); // 9 seconds
+      }, 9000);
     }
     return () => {
       if (timer) clearTimeout(timer);
@@ -45,6 +43,32 @@ export default function RequestAQuote() {
   }, [showInlineSuccess]);
 
   const handleNext = () => {
+    // Validate fields if the current step has fields (Step 0 or last step)
+    if (currentStep === 0 || currentStep === steps.length - 1) {
+      const currentStepData = steps[currentStep];
+      if (currentStepData.fields) {
+        const requiredFields = currentStepData.fields.filter((field) => field.required);
+        for (const field of requiredFields) {
+          if (!formData[field.name] || formData[field.name].trim() === "") {
+            setFormError(`${field.label.replace("*", "")} is required.`);
+            return;
+          }
+        }
+
+        if (currentStep === 0) {
+          // Validate email and phone on the first step
+          if (formData.email && !/^\S+@\S+\.\S+$/.test(formData.email)) {
+            setFormError("Please enter a valid email address.");
+            return;
+          }
+          if (formData.phone && formData.phone.length < 10) {
+            setFormError("Please enter a valid phone number (at least 10 digits).");
+            return;
+          }
+        }
+      }
+    }
+
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1);
       setFormError("");
@@ -60,36 +84,18 @@ export default function RequestAQuote() {
 
   const validateFinalForm = () => {
     if (currentStep === steps.length - 1) {
-      const requiredFields = steps[currentStep].fields.filter(
-      (field) => field.required
-      );
-
-    for (const field of requiredFields) {
-      if (!formData[field.name] || formData[field.name].trim() === "") {
-        setFormError(`${field.label.replace("*", "")} is required.`);
-        return false;
+      const requiredFields = steps[currentStep].fields.filter((field) => field.required);
+      for (const field of requiredFields) {
+        if (!formData[field.name] || formData[field.name].trim() === "") {
+          setFormError(`${field.label.replace("*", "")} is required.`);
+          return false;
+        }
       }
     }
-
-    if (formData.email && !/^\S+@\S+\.\S+$/.test(formData.email)) {
-      setFormError("Please enter a valid email address.");
-      return false;
-    }
-
-      // Simple phone number validation - must have at least 10 digits
-      if (formData.phone && formData.phone.length < 10) {
-      setFormError("Please enter a valid phone number (at least 10 digits).");
-      return false;
-    }
-    }
-
     return true;
   };
 
   const resetForm = () => {
-    // Keep the current step instead of resetting to 0
-    const successStep = currentStep;
-    
     setFormData({});
     setSelectedOptions({
       stage: [],
@@ -100,20 +106,14 @@ export default function RequestAQuote() {
       timeframe: [],
       start: [],
     });
-    
-    // Do not reset the current step
-    // setCurrentStep(0);
-    
+
     if (formRef.current) {
       formRef.current.reset();
     }
     document.querySelectorAll(".tag").forEach((tag) => tag.classList.remove("selected"));
-    
-    // Set flag to show submission was successful
     setSubmitSuccess(true);
   };
 
-  // Added function to start a new form after successful submission
   const startNewForm = () => {
     setCurrentStep(0);
     setSubmitSuccess(false);
@@ -134,15 +134,14 @@ export default function RequestAQuote() {
     setIsSubmitting(true);
 
     try {
-      // Sanitize inputs
       const sanitizeInput = (input) => {
         if (!input) return "";
         return input
-          .replace(/&/g, "&amp;")
-          .replace(/</g, "&lt;")
-          .replace(/>/g, "&gt;")
-          .replace(/"/g, "&quot;")
-          .replace(/'/g, "&#39;");
+          .replace(/&/g, "&")
+          .replace(/</g, "<")
+          .replace(/>/g, ">")
+          .replace(/"/g, "")
+          .replace(/'/g, "'");
       };
 
       const sanitizedFormData = {};
@@ -161,9 +160,7 @@ export default function RequestAQuote() {
               if (normalizedSectionName === sectionName) {
                 return values
                   .map((value) => {
-                    const option = section.options.find(
-                      (opt) => opt.value === value
-                    );
+                    const option = section.options.find((opt) => opt.value === value);
                     return option ? option.label : value;
                   })
                   .join(", ");
@@ -174,7 +171,6 @@ export default function RequestAQuote() {
         return values.join(", ");
       };
 
-      // Plain HTML5 table-based email template without CSS
       const messageContent = `
 <!DOCTYPE html>
 <html lang="en">
@@ -291,25 +287,17 @@ Message: ${sanitizedFormData.message || "No message provided"}
       });
 
       if (result.success) {
-        const successMessage = "Your quote request has been submitted successfully"
+        const successMessage = "Your quote request has been submitted successfully";
         setFormSuccess(successMessage);
-        
-        // Show both the modal and inline success message
         setShowSuccessModal(true);
         setShowInlineSuccess(true);
-        
-        // Reset the form but stay on current step
         resetForm();
       } else {
-        setFormError(
-          result.message || "Failed to submit your request. Please try again."
-        );
+        setFormError(result.message || "Failed to submit your request. Please try again.");
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      setFormError(
-        "Failed to submit your request. Please try again later or contact support@weboum.com."
-      );
+      setFormError("Failed to submit your request. Please try again later or contact support@weboum.com.");
     } finally {
       setIsSubmitting(false);
     }
@@ -327,24 +315,20 @@ Message: ${sanitizedFormData.message || "No message provided"}
     });
 
     if (formError) {
-    setFormError("");
+      setFormError("");
     }
   };
 
-  // Modified to handle phone number input validation
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    
-    // Special handling for phone input
+
     if (name === "phone") {
-      // Allow only numbers for phone field
       const phoneValue = value.replace(/\D/g, '');
       setFormData({
         ...formData,
         [name]: phoneValue,
       });
     } else {
-      // Normal handling for other fields
       setFormData({
         ...formData,
         [name]: value,
@@ -352,16 +336,13 @@ Message: ${sanitizedFormData.message || "No message provided"}
     }
 
     if (formError) {
-    setFormError("");
+      setFormError("");
     }
   };
 
-  // Function to handle key press for phone input
   const handlePhoneKeyPress = (e) => {
-    // Allow only numbers and control keys like backspace, delete, arrows
     const allowedKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
     const controlKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'];
-    
     if (!allowedKeys.includes(e.key) && !controlKeys.includes(e.key)) {
       e.preventDefault();
     }
@@ -370,7 +351,6 @@ Message: ${sanitizedFormData.message || "No message provided"}
   const closeSuccessModal = () => {
     setShowSuccessModal(false);
     if (submitSuccess) {
-      // Start a new form if we're closing the success modal after successful submission
       startNewForm();
     }
   };
@@ -390,63 +370,24 @@ Message: ${sanitizedFormData.message || "No message provided"}
           ></div>
         </div>
         <div className="requestaQuote-container">
-          <div className="requestaQuote-left">
-            <h4 className="requestaQuote-subtitle">
-              Weboum – Send Us A Message
-            </h4>
-            <div className="requestaQuote-line"></div>
-            <h2 className="requestaQuote-title">
-              Do You Have Any Questions? We&apos;ll Be Happy To Assist!
-            </h2>
-            <div className="requestaQuote-social">
-              <a
-                href="https://www.facebook.com/people/Weboum-Technology-PvtLtd/100091375563554/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="requestaQuote-social-icon"
-                aria-label="Visit our Facebook page"
-              >
-                <FaFacebookF />
-              </a>
-              <a
-                href="https://x.com/weboumtech33587"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="requestaQuote-social-icon"
-                aria-label="Visit our Twitter page"
-              >
-                <BsTwitterX />
-              </a>
-              <a
-                href="https://www.youtube.com/@WeboumTechnologyPvt.Ltd."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="requestaQuote-social-icon"
-                aria-label="Visit our YouTube channel"
-              >
-                <FaYoutube />
-              </a>
-            </div>
-          </div>
+          
           <div className="requestaQuote-right">
             <div className="requestaQuote-section">
               <h3 className="requestaQuote-heading">{currentStepData.title}</h3>
 
-              {/* Display success message inline */}
               {showInlineSuccess && (
                 <div className="requestaQuote-success" role="alert">
                   {formSuccess}
                 </div>
               )}
-              
-              {/* Display error message */}
+
               {formError && (
                 <div className="requestaQuote-error" role="alert">
                   {formError}
                 </div>
               )}
 
-              { currentStepData.sections ? (
+              {currentStepData.sections ? (
                 currentStepData.sections.map((section, secIndex) => {
                   const sectionId = section.subtitle
                     .toLowerCase()
@@ -480,7 +421,7 @@ Message: ${sanitizedFormData.message || "No message provided"}
               ) : currentStepData.fields ? (
                 <form
                   className="requestaQuote-form"
-                  onSubmit={handleSubmit}
+                  onSubmit={currentStep === steps.length - 1 ? handleSubmit : (e) => e.preventDefault()}
                   ref={formRef}
                   noValidate
                 >
@@ -525,17 +466,24 @@ Message: ${sanitizedFormData.message || "No message provided"}
                       )}
                     </div>
                   ))}
-                  <div className="requestaQuote-button-container">
-                    <button
-                      type="submit"
-                      className="requestaQuote-button"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
-                    </button>
-                  </div>
+                  {currentStep === steps.length - 1 && (
+                    <div className="requestaQuote-button-container">
+                      <button
+                        type="submit"
+                        className="requestaQuote-button"
+                        disabled={isSubmitting}
+                        aria-busy={isSubmitting}
+                      >
+                        {isSubmitting ? "SUBMITTING..." : "SUBMIT"}
+                      </button>
+                    </div>
+                  )}
                 </form>
-              ) : null}
+              ) : (
+                <div className="requestaQuote-error" role="alert">
+                  Error: Invalid step configuration
+                </div>
+              )}
             </div>
             {!submitSuccess && (
               <div className="requestaQuote-button-container">
@@ -545,25 +493,43 @@ Message: ${sanitizedFormData.message || "No message provided"}
                     onClick={handleBack}
                     disabled={isSubmitting}
                     type="button"
+                    aria-label="Go back to previous step"
                   >
                     BACK
                   </button>
                 )}
-                {currentStep < steps.length - 1 ? (
+                {currentStep < steps.length - 1 && (
                   <button
                     className="requestaQuote-button"
                     onClick={handleNext}
                     disabled={isSubmitting}
                     type="button"
+                    aria-label="Continue to next step"
                   >
                     CONTINUE
                   </button>
-                ) : null}
+                )}
               </div>
             )}
           </div>
         </div>
       </div>
+
+      {showSuccessModal && (
+        <div className="requestaQuote-modal" role="dialog" aria-labelledby="modal-title">
+          <div className="requestaQuote-modal-content">
+            <h3 id="modal-title">Success</h3>
+            <p>{formSuccess}</p>
+            <button
+              onClick={closeSuccessModal}
+              className="requestaQuote-button"
+              aria-label="Close success modal"
+            >
+              {submitSuccess ? "Start New Form" : "Close"}
+            </button>
+          </div>
+        </div>
+      )}
 
       <Days />
     </>

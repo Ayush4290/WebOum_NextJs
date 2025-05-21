@@ -1,29 +1,5 @@
 [
   {
-    "label": "About Us",
-    "href": "/",
-    "dropdownKey": "about",
-    "items": [
-      { "label": "Who We Are", "href": "/about-us", "icon": "FaUserFriends" },
-      {
-        "label": "Why Us - Top 10 Reasons",
-        "href": "/about-us/why-us",
-        "icon": "FaListOl"
-      },
-      {
-        "label": "How We Work",
-        "href": "/about-us/sample-page",
-        "icon": "FaCogs"
-      },
-      {
-        "label": "Approach",
-        "href": "/about-us/contact",
-        "icon": "FaLightbulb"
-      }
-    ]
-  },
-
-  {
     "label": "Services",
     "href": "/",
     "dropdownKey": "services",
@@ -92,49 +68,157 @@
   },
   {
     "label": "Technology",
-    "href": "/",
     "dropdownKey": "technology",
     "items": [
-     
       {
-        "label": "Mobile App Development",
-        "href": "/services/application-developer",
-        "icon": "FaMobileAlt"
-      },
-       {
-        "label": "Web App Development",
-        "href": "/services/web-developer",
-        "icon": "FaCode"
+        "label": "Angular JS",
+        "href": "/technology/angular-js",
+        "icon": "FaAngular",
+        "category": "Front End"
       },
       {
-        "label": "UI/UX Design",
-        "href": "/services/web-designing",
-        "icon": "FaPaintBrush"
+        "label": "Next JS",
+        "href": "/technology/next-js",
+        "icon": "FaReact",
+        "category": "Front End"
       },
       {
-        "label": "DevOps & Cloud",
-        "href": "/solutions/devops",
-        "icon": "FaCloud"
+        "label": "React JS",
+        "href": "/technology/react-js",
+        "icon": "FaReact",
+        "category": "Front End"
       },
       {
-        "label": "eCommerce Development",
-        "href": "/solutions/shopify-developer",
-        "icon": "FaShoppingCart"
+        "label": "Vue.JS",
+        "href": "/technology/vue-js",
+        "icon": "FaVuejs",
+        "category": "Front End"
       },
       {
-        "label": "Digital Marketing",
-        "href": "/services/digital-marketing-3",
-        "icon": "FaBullhorn"
+        "label": "React Native",
+        "href": "/technology/react-native",
+        "icon": "FaReact",
+        "category": "Front End"
       },
       {
-        "label": "Software QA & Testing",
-        "href": "/solutions/software-testing",
-        "icon": "FaCheckCircle"
+        "label": "Android",
+        "href": "/technology/android",
+        "icon": "FaAndroid",
+        "category": "Mobile"
       },
       {
-        "label": "Backup & Disaster Recovery",
-        "href": "/solutions/backup-disaster-recovery",
-        "icon": "FaDatabase"
+        "label": "Flutter",
+        "href": "/technology/flutter",
+        "icon": "FaMobileAlt",
+        "category": "Mobile"
+      },
+      {
+        "label": "iOS Applications",
+        "href": "/technology/ios",
+        "icon": "FaApple",
+        "category": "Mobile"
+      },
+      {
+        "label": "MAUI",
+        "href": "/technology/maui",
+        "icon": "FaMobile",
+        "category": "Mobile"
+      },
+      {
+        "label": "C#",
+        "href": "/technology/csharp",
+        "icon": "FaCode",
+        "category": "Backend"
+      },
+      {
+        "label": "Java",
+        "href": "/technology/java",
+        "icon": "FaJava",
+        "category": "Backend"
+      },
+      {
+        "label": "Node JS",
+        "href": "/technology/node-js",
+        "icon": "FaNodeJs",
+        "category": "Backend"
+      },
+      {
+        "label": "PHP",
+        "href": "/technology/php",
+        "icon": "FaPhp",
+        "category": "Backend"
+      },
+      {
+        "label": "Python",
+        "href": "/technology/python",
+        "icon": "FaPython",
+        "category": "Backend"
+      },
+      {
+        "label": ".net",
+        "href": "/technology/dotnet",
+        "icon": "FaMicrosoft",
+        "category": "Backend"
+      },
+      {
+        "label": "Open Cart",
+        "href": "/technology/open-cart",
+        "icon": "FaShoppingCart",
+        "category": "Ecommerce"
+      },
+      {
+        "label": "Magento",
+        "href": "/technology/magento",
+        "icon": "FaMagento",
+        "category": "Ecommerce"
+      },
+      {
+        "label": "Shopify",
+        "href": "/technology/shopify",
+        "icon": "FaShopify",
+        "category": "Ecommerce"
+      },
+      {
+        "label": "Shopware",
+        "href": "/technology/shopware",
+        "icon": "FaShoppingBag",
+        "category": "Ecommerce"
+      },
+      {
+        "label": "WooCommerce",
+        "href": "/technology/woocommerce",
+        "icon": "FaWordpress",
+        "category": "Ecommerce"
+      },
+      {
+        "label": "UX/UI",
+        "href": "/technology/ux-ui",
+        "icon": "FaPaintBrush",
+        "category": "Others"
+      },
+      {
+        "label": "Mean",
+        "href": "/technology/mean",
+        "icon": "FaLayerGroup",
+        "category": "Others"
+      },
+      {
+        "label": "Mern",
+        "href": "/technology/mern",
+        "icon": "FaLayerGroup",
+        "category": "Others"
+      },
+      {
+        "label": "Testing",
+        "href": "/technology/testing",
+        "icon": "FaCheckCircle",
+        "category": "Others"
+      },
+      {
+        "label": "AI/ML",
+        "href": "/technology/ai-ml",
+        "icon": "FaBrain",
+        "category": "Others"
       }
     ]
   },
@@ -143,8 +227,31 @@
     "href": "/portfolio"
   },
   {
-    "label": "Careers",
-    "href": "/about-us/careers"
+    "label": "About Us",
+    "href": "/",
+    "dropdownKey": "about",
+    "items": [
+      { "label": "Who We Are", "href": "/about-us", "icon": "FaUserFriends" },
+      {
+        "label": "Why Us - Top 10 Reasons",
+        "href": "/about-us/why-us",
+        "icon": "FaListOl"
+      },
+      {
+        "label": "How We Work",
+        "href": "/about-us/sample-page",
+        "icon": "FaCogs"
+      },
+      {
+        "label": "Approach",
+        "href": "/about-us/contact",
+        "icon": "FaLightbulb"
+      },
+      {
+        "label": "Careers",
+        "href": "/about-us/careers"
+      }
+    ]
   },
   {
     "label": "Let's Talk",

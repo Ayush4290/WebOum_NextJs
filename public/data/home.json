@@ -10,8 +10,8 @@
     {
       "img": "/image/service/Cloud-Services.png",
       "alt": "Cloud",
-      "title": "Cloud Services",
-      "desc": "Scalable, secure solutions for seamless business operations.",
+      "title": "AI Development services",
+      "desc": "AI-driven solutions for enhanced efficiency and innovation.",
       "href": "/solutions/devops"
     },
     {
@@ -49,13 +49,14 @@
       "desc": "Expert solutions for strategic growth and digital transformation.",
       "href": "/services/it-consulting"
     },
-    {
-      "img": "/image/service/UI-UX-Designing-1.png",
-      "alt": "UI/UX Designing",
-      "title": "UI/UX Designing",
-      "desc": "Intuitive and engaging design for seamless user experiences.",
-      "href": "/services/web-designing"
+     {
+      "img": "/image/service/Mobile-App.png",
+      "alt": "DevOps",
+      "title": "DevOps Services",
+      "desc": "Efficient solutions for automation, scalability, and accelerated delivery.",
+      "href": "/solutions/devops"
     },
+   
     {
       "img": "/image/service/Data-Analytics.png",
       "alt": "Data",
@@ -70,13 +71,14 @@
       "desc": "Scalable solutions for effortless shopping experiences and business growth.",
       "href": "/solutions/shopify-developer/"
     },
-    {
-      "img": "/image/service/Mobile-App.png",
-      "alt": "DevOps",
-      "title": "DevOps Services",
-      "desc": "Efficient solutions for automation, scalability, and accelerated delivery.",
-      "href": "/solutions/devops"
+     {
+      "img": "/image/service/UI-UX-Designing-1.png",
+      "alt": "UI/UX Designing",
+      "title": "UI/UX Designing",
+      "desc": "Intuitive and engaging design for seamless user experiences.",
+      "href": "/services/web-designing"
     },
+   
     {
       "img": "/image/service/SEO-and-PPC-Mareting.png",
       "alt": "Digital Marketing",

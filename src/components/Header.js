@@ -24,6 +24,23 @@ import {
   FaCode,
   FaMobileAlt,
   FaCloud,
+  FaAngular,
+  FaReact,
+  FaVuejs,
+  FaAndroid,
+  FaApple,
+  FaJava,
+  FaNodeJs,
+  FaPhp,
+  FaPython,
+  FaMicrosoft,
+  FaMagento,
+  FaShopify,
+  FaShoppingBag,
+  FaWordpress,
+  FaLayerGroup,
+  FaBrain,
+  FaMobile,
 } from "react-icons/fa";
 import { BsStars, BsGrid3X3GapFill, BsGlobe } from "react-icons/bs";
 import Link from "next/link";
@@ -57,6 +74,23 @@ const iconMap = {
   BsStars,
   BsGrid3X3GapFill,
   BsGlobe,
+  FaAngular,
+  FaReact,
+  FaVuejs,
+  FaAndroid,
+  FaApple,
+  FaJava,
+  FaNodeJs,
+  FaPhp,
+  FaPython,
+  FaMicrosoft,
+  FaMagento,
+  FaShopify,
+  FaShoppingBag,
+  FaWordpress,
+  FaLayerGroup,
+  FaBrain,
+  FaMobile,
 };
 
 const Header = () => {
@@ -262,9 +296,10 @@ const Header = () => {
     };
   }, [mobileMenuOpen]);
 
-  const renderDropdownItems = (items, isTwoColumn = false) => {
-    if (!Array.isArray(items)) return null; 
+  const renderDropdownItems = (items, isTwoColumn = false, dropdownKey) => {
+    if (!Array.isArray(items)) return null;
 
+    // For mobile view or non-two-column layouts, render as a list
     if (isMobile || !isTwoColumn) {
       return items.map((item, subIndex) => {
         const IconComponent = iconMap[item.icon];
@@ -283,6 +318,157 @@ const Header = () => {
       });
     }
 
+    // For "Services" dropdown, render in two rows of four items each
+    if (dropdownKey === "services") {
+      const row1 = items.slice(0, 4); // First 4 items for the first row
+      const row2 = items.slice(4, 8); // Next 4 items for the second row
+
+      return (
+        <>
+          <div className="dropdown-row">
+            {row1.map((item, subIndex) => {
+              const IconComponent = iconMap[item.icon];
+              return (
+                <li key={subIndex}>
+                  <Link
+                    href={item.href}
+                    onClick={handleDropdownItemClick}
+                    className="dropdown-link"
+                  >
+                    {IconComponent && <IconComponent />}
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </div>
+          <div className="dropdown-row">
+            {row2.map((item, subIndex) => {
+              const IconComponent = iconMap[item.icon];
+              return (
+                <li key={subIndex + 4}>
+                  <Link
+                    href={item.href}
+                    onClick={handleDropdownItemClick}
+                    className="dropdown-link"
+                  >
+                    {IconComponent && <IconComponent />}
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </div>
+        </>
+      );
+    }
+
+    // For "Technology" dropdown, render in five columns
+    if (dropdownKey === "technology") {
+      // Group items by category
+      const frontEndItems = items.filter((item) => item.category === "Front End");
+      const mobileItems = items.filter((item) => item.category === "Mobile");
+      const backendItems = items.filter((item) => item.category === "Backend");
+      const ecommerceItems = items.filter((item) => item.category === "Ecommerce");
+      const othersItems = items.filter((item) => item.category === "Others");
+
+      return (
+        <div className="dropdown-columns">
+          <div className="dropdown-column">
+            <h3 className="column-header">Front End</h3>
+            {frontEndItems.map((item, subIndex) => {
+              const IconComponent = iconMap[item.icon];
+              return (
+                <li key={`front-end-${subIndex}`}>
+                  <Link
+                    href={item.href}
+                    onClick={handleDropdownItemClick}
+                    className="dropdown-link"
+                  >
+                    {IconComponent && <IconComponent />}
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </div>
+          <div className="dropdown-column">
+            <h3 className="column-header">Mobile</h3>
+            {mobileItems.map((item, subIndex) => {
+              const IconComponent = iconMap[item.icon];
+              return (
+                <li key={`mobile-${subIndex}`}>
+                  <Link
+                    href={item.href}
+                    onClick={handleDropdownItemClick}
+                    className="dropdown-link"
+                  >
+                    {IconComponent && <IconComponent />}
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </div>
+          <div className="dropdown-column">
+            <h3 className="column-header">Backend</h3>
+            {backendItems.map((item, subIndex) => {
+              const IconComponent = iconMap[item.icon];
+              return (
+                <li key={`backend-${subIndex}`}>
+                  <Link
+                    href={item.href}
+                    onClick={handleDropdownItemClick}
+                    className="dropdown-link"
+                  >
+                    {IconComponent && <IconComponent />}
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </div>
+          <div className="dropdown-column">
+            <h3 className="column-header">Ecommerce</h3>
+            {ecommerceItems.map((item, subIndex) => {
+              const IconComponent = iconMap[item.icon];
+              return (
+                <li key={`ecommerce-${subIndex}`}>
+                  <Link
+                    href={item.href}
+                    onClick={handleDropdownItemClick}
+                    className="dropdown-link"
+                  >
+                    {IconComponent && <IconComponent />}
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </div>
+          <div className="dropdown-column">
+            <h3 className="column-header">Others / Miscellaneous</h3>
+            {othersItems.map((item, subIndex) => {
+              const IconComponent = iconMap[item.icon];
+              return (
+                <li key={`others-${subIndex}`}>
+                  <Link
+                    href={item.href}
+                    onClick={handleDropdownItemClick}
+                    className="dropdown-link"
+                  >
+                    {IconComponent && <IconComponent />}
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </div>
+        </div>
+      );
+    }
+
+    // For other two-column dropdowns (like "About"), keep the existing logic
     const midPoint = Math.ceil(items.length / 2);
     const leftColumn = items.slice(0, midPoint);
     const rightColumn = items.slice(midPoint);
@@ -447,7 +633,8 @@ const Header = () => {
                             {renderDropdownItems(
                               menu.items,
                               menu.dropdownKey === "services" ||
-                                menu.dropdownKey === "technology"
+                                menu.dropdownKey === "technology",
+                              menu.dropdownKey
                             )}
                           </ul>
                         )}

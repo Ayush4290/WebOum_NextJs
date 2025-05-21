@@ -142,6 +142,7 @@
   transform: scaleX(1);
 }
 
+
 .menu-item-content {
   display: flex;
   align-items: center;
@@ -189,14 +190,29 @@
 }
 
 /* Specific styles for dropdowns with two columns */
-.menu-dropdown.services .dropdown,
+.menu-dropdown.services .dropdown {
+  min-width: 600px; /* Adjusted width to fit 4 items per row */
+  max-width: 90vw;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 2rem 1rem; /* Increased vertical padding (top/bottom) from 1rem to 2rem */
+  min-height: 300px;
+  left: -100px;
+}
 .menu-dropdown.technology .dropdown {
   min-width: 540px;
   max-width: 90vw;
   display: flex;
   flex-wrap: nowrap;
   gap: 0.5rem;
+  padding: 2rem 1rem; /* Increased vertical padding (top/bottom) from 1rem to 2rem */
+  min-height: 300px;
   left: -100px;
+}
+
+.menu-dropdown.services .dropdown li {
+  margin-bottom: 0; /* Remove margin-bottom since we're using grid gap */
 }
 
 /* For "About Us" dropdown, keep single column */
@@ -206,6 +222,22 @@
   display: block;
 }
 
+
+.menu-dropdown.services .dropdown li a {
+  padding: 8px;
+  font-size: 13px; /* Slightly smaller font for better fit */
+  white-space: normal; /* Allow text wrapping */
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Optional: Adjust icon size for better proportionality */
+.menu-dropdown.services .dropdown li a svg {
+  width: 18px;
+  height: 18px;
+}
 .dropdown-column {
   width: 50%;
   box-sizing: border-box;
@@ -225,7 +257,66 @@
   display: flex;
   align-items: center;
 }
+/* Replace the existing rule for Technology dropdown */
+.menu-dropdown.technology .dropdown {
+  min-width: 700px; /* Adjusted width to fit 5 columns */
+  max-width: 130vw;
+  display: block; /* Remove flex for columns */
+  padding: 1rem;
+  left: -100px;
+}
 
+/* Style for the container of all columns in the Technology dropdown */
+.dropdown-columns {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns */
+  gap: 1rem;
+}
+
+
+.menu-dropdown.technology .dropdown-column {
+  width: 100%; /* Override previous width */
+  padding: 0;
+}
+
+
+.column-header {
+  font-size: 18px;
+  font-weight: 600;
+  color: #50c878; /* Green color to match the image */
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 0.25rem;
+}
+
+/* Adjust link padding and alignment for better fit in the columns */
+.menu-dropdown.technology .dropdown li a {
+  padding: 6px 8px;
+  font-size: 13px; /* Slightly smaller font for better fit */
+  white-space: normal; /* Allow text wrapping */
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Optional: Adjust icon size for better proportionality */
+.menu-dropdown.technology .dropdown li a svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Ensure dropdown items have no extra margin */
+.menu-dropdown.technology .dropdown li {
+  margin-bottom: 0.25rem;
+}
+
+.dropdown-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 items per row */
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
 .dropdown li a {
   color: #1a1a1a;
   padding: 8px 12px;
@@ -240,6 +331,12 @@
   border-radius: 4px;
   gap: 10px;
   width: 100%;
+}
+
+/* Highlight the "AI Development Services" item */
+.menu-dropdown.services .dropdown li:nth-child(1) a {
+  border: 2px solid #0984e3; /* Blue border to highlight */
+  background-color: #e6f0fa; /* Light blue background */
 }
 
 /* Ensure long text like "Why Us - Top 10 Reasons" wraps correctly */
@@ -278,62 +375,54 @@
   color: #000000; /* Black */
 }
 
-/* Icon colors for "Services" dropdown */
+/* Updated icon colors for "Services" dropdown to match the image */
 .menu-dropdown.services .dropdown li:nth-child(1) a svg {
-  /* Backup & Disaster Recovery */
-  color: #50c878; /* Green */
-}
-.menu-dropdown.services .dropdown li:nth-child(2) a svg {
-  /* Blockchain Solutions */
+  /* AI Development Services */
   color: #0984e3; /* Blue */
 }
-.menu-dropdown.services .dropdown li:nth-child(3) a svg {
-  /* Content Writing */
-color: #50c878; /* Green */
-}
-.menu-dropdown.services .dropdown li:nth-child(4) a svg {
-  /* Cybersecurity */
-  color: #000000; /* Black */
-}
-.menu-dropdown.services .dropdown li:nth-child(5) a svg {
-  /* Data Analytics */
+.menu-dropdown.services .dropdown li:nth-child(2) a svg {
+  /* Gen AI Services */
   color: #50c878; /* Green */
 }
+.menu-dropdown.services .dropdown li:nth-child(3) a svg {
+  /* Dedicated Development Team */
+  color: #ff0000; /* Red */
+}
+.menu-dropdown.services .dropdown li:nth-child(4) a svg {
+  /* Application Modernization */
+  color: #ff9900; /* Orange */
+}
+.menu-dropdown.services .dropdown li:nth-child(5) a svg {
+  /* Custom Software Development */
+  color: #7f005b; /* Magenta */
+}
 .menu-dropdown.services .dropdown li:nth-child(6) a svg {
-  /* Digital Marketing */
+  /* MVP Development */
   color: #0984e3; /* Blue */
 }
 .menu-dropdown.services .dropdown li:nth-child(7) a svg {
-  /* Graphic Design */
-  color: #7f005b; /* Magenta */
+  /* Experience Design */
+  color: #50c878; /* Green */
 }
 .menu-dropdown.services .dropdown li:nth-child(8) a svg {
-  /* Hosting Management */
-  color: #000000; /* Black */
+  /* IT Outsourcing Services */
+  color: #ff0000; /* Red */
 }
 .menu-dropdown.services .dropdown li:nth-child(9) a svg {
-  /* IT Consulting */
-  color: #50c878; /* Green */
+  /* Mobile App Consulting */
+  color: #ff0000; /* Red */
 }
 .menu-dropdown.services .dropdown li:nth-child(10) a svg {
-  /* Product Lifecycle Management */
-  color: #0984e3; /* Blue */
-}
-.menu-dropdown.services .dropdown li:nth-child(11) a svg {
-  /* Quality Assurance Services */
-  color: #7f005b; /* Magenta */
-}
-.menu-dropdown.services .dropdown li:nth-child(12) a svg {
-  /* Shopify Developer */
+  /* Offshore Development Services */
   color: #000000; /* Black */
 }
-.menu-dropdown.services .dropdown li:nth-child(13) a svg {
-  /* SLA Support Services */
-  color: #50c878; /* Green */
-}
-.menu-dropdown.services .dropdown li:nth-child(14) a svg {
-  /* Web Hosting Services */
+.menu-dropdown.services .dropdown li:nth-child(11) a svg {
+  /* Product Development */
   color: #0984e3; /* Blue */
+}
+.menu-dropdown.services .dropdown li:nth-child(12) a svg {
+  /* Software Consulting Services */
+  color: #50c878; /* Green */
 }
 
 /* Icon colors for "Technology" dropdown */
@@ -394,7 +483,6 @@ color: #50c878; /* Green */
   color: rgb(255, 255, 255);
   transform: translateY(-3px);
   box-shadow: 0 4px 10px rgba(230, 0, 115, 0.3);
- 
 }
 
 /* Special case for when btn-contact is in a menu-link */
@@ -571,6 +659,12 @@ color: #50c878; /* Green */
     border-radius: 0;
   }
 
+  /* Highlight "AI Development Services" in mobile view as well */
+  .menu-dropdown.services .dropdown li:nth-child(1) a {
+    border: 2px solid #0984e3;
+    background-color: #e6f0fa;
+  }
+
   .dropdown li:last-child a {
     border-bottom: none;
   }
@@ -606,7 +700,6 @@ color: #50c878; /* Green */
     position: relative;
     margin-top: auto;
     background-image: url(https://www.example.com/wp-content/uploads/2024/09/button-arrow_outward.svg);
-
     background-repeat: no-repeat;
   }
 
