@@ -12,7 +12,7 @@ export const metadata = {
 const AiDevelopment = () => {
   return (
     <>
-      <SubHeader title="AI Development Solutions" />
+      <SubHeader title="AI Development " />
       <div className="ai-development">
         <section className="ai-development-hero">
           <div className="ai-development-hero-content">
@@ -22,12 +22,18 @@ const AiDevelopment = () => {
               success.
             </p>
             <div className="ai-development-hero-buttons">
-              <button className="ai-development-btn primary">
+              <a
+                className="ai-development-btn primary"
+                href="/about-us/contact/"
+              >
                 Get Started Now
-              </button>
-              <button className="ai-development-btn secondary">
+              </a>
+              <a
+                className="ai-development-btn secondary"
+                href="/about-us/contact/"
+              >
                 Explore Services
-              </button>
+              </a>
             </div>
           </div>
         </section>

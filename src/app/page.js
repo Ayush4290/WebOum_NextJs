@@ -461,9 +461,9 @@ Message: ${sanitizedFormData.message}
             Trusted software design, develop and digital marketing company
           </h5>
           <p className="why-lead">
-            In today's digital landscape, a strong online presence is no
-            longer a luxury—it's a necessity. Choosing the right partner to
-            guide you through this complex world is crucial. Here's why
+            In today&apos;s digital landscape, a strong online presence is no
+            longer a luxury—it&apos;s a necessity. Choosing the right partner to
+            guide you through this complex world is crucial. Here&apos;s why
             Weboum is the perfect choice for your business:
           </p>
 
@@ -660,9 +660,9 @@ Message: ${sanitizedFormData.message}
           <div className="cta-left">
             <h2 className="cta-heading">Contact Us to Grow Your Business!</h2>
             <p className="cta-text">
-              Let's discuss how we can help you achieve your goals.
+              Let&apos;s discuss how we can help you achieve your goals.
               Schedule a consultation to explore the best solutions for your
-              needs.
+              needs.  
             </p>
           </div>
           <div className="cta-right">

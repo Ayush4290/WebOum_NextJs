@@ -42,13 +42,13 @@ import {
   FaBrain,
   FaMobile,
 } from "react-icons/fa";
+import { SiNextdotjs } from "react-icons/si";
 import { BsStars, BsGrid3X3GapFill, BsGlobe } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
 import menuData from "../../public/data/Header.json";
 import "./header.css";
 
-// Map icon names to their corresponding react-icons components
 const iconMap = {
   FaUserFriends,
   FaListOl,
@@ -76,6 +76,7 @@ const iconMap = {
   BsGlobe,
   FaAngular,
   FaReact,
+  SiNextdotjs,
   FaVuejs,
   FaAndroid,
   FaApple,
@@ -104,10 +105,7 @@ const Header = () => {
   const headerRef = useRef(null);
   const dropdownRefs = useRef({});
   const timeoutRefs = useRef({});
-  const clickTimeoutRef = useRef(null);
-  const hoverDelayRef = useRef(null);
 
-  // Handle mobile detection
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 992);
@@ -118,7 +116,6 @@ const Header = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Handle scroll for sticky header and logo change
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -129,11 +126,9 @@ const Header = () => {
 
     window.addEventListener("scroll", handleScroll);
     handleScroll();
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Update placeholder height on resize
   useEffect(() => {
     const updatePlaceholderHeight = () => {
       if (headerRef.current) {
@@ -149,12 +144,12 @@ const Header = () => {
 
     window.addEventListener("resize", updatePlaceholderHeight);
     updatePlaceholderHeight();
-
     return () => window.removeEventListener("resize", updatePlaceholderHeight);
   }, [isFixed]);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen((prev) => !prev);
+    setActiveDropdown(null);
     document.body.style.overflow = !mobileMenuOpen ? "hidden" : "auto";
   };
 
@@ -163,20 +158,15 @@ const Header = () => {
       if (timeoutRefs.current[menuKey]) {
         clearTimeout(timeoutRefs.current[menuKey]);
       }
-      hoverDelayRef.current = setTimeout(() => {
-        setActiveDropdown(menuKey);
-      }, 100);
+      setActiveDropdown(menuKey);
     }
   };
 
   const handleMouseLeave = (menuKey) => {
     if (!isMobile) {
-      if (hoverDelayRef.current) {
-        clearTimeout(hoverDelayRef.current);
-      }
       timeoutRefs.current[menuKey] = setTimeout(() => {
         setActiveDropdown(null);
-      }, 800);
+      }, 300);
     }
   };
 
@@ -193,43 +183,15 @@ const Header = () => {
     if (!isMobile) {
       timeoutRefs.current[menuKey] = setTimeout(() => {
         setActiveDropdown(null);
-      }, 600);
+      }, 300);
     }
-  };
-
-  const debounceClick = (callback, menuKey, event) => {
-    if (clickTimeoutRef.current) {
-      clearTimeout(clickTimeoutRef.current);
-    }
-    clickTimeoutRef.current = setTimeout(() => {
-      callback(menuKey, event);
-    }, 150); // Reduced timeout for better responsiveness
   };
 
   const handleMenuItemClick = (menuKey, event) => {
     if (isMobile) {
       event.preventDefault();
       event.stopPropagation();
-      debounceClick(
-        (key) => {
-          setActiveDropdown((prev) => (prev === key ? null : key));
-        },
-        menuKey,
-        event
-      );
-    }
-  };
-
-  const handleIconClick = (menuKey, event) => {
-    event.stopPropagation();
-    if (isMobile) {
-      debounceClick(
-        (key) => {
-          setActiveDropdown((prev) => (prev === key ? null : key));
-        },
-        menuKey,
-        event
-      );
+      setActiveDropdown((prev) => (prev === menuKey ? null : menuKey));
     }
   };
 
@@ -249,35 +211,29 @@ const Header = () => {
       }
 
       if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setActiveDropdown(null);
-        setMobileMenuOpen(false);
-        document.body.style.overflow = "auto";
+        if (isMobile) {
+          setActiveDropdown(null);
+          setMobileMenuOpen(false);
+          document.body.style.overflow = "auto";
+        } else {
+          setActiveDropdown(null);
+        }
       }
     };
 
     document.addEventListener("mousedown", handleOutsideClick);
-
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
       document.body.style.overflow = "auto";
     };
-  }, []);
+  }, [isMobile]);
 
   useEffect(() => {
     const currentTimeoutRefs = timeoutRefs.current;
-    const currentClickTimeout = clickTimeoutRef.current;
-    const currentHoverDelay = hoverDelayRef.current;
-
     return () => {
       Object.values(currentTimeoutRefs).forEach((timeout) => {
         if (timeout) clearTimeout(timeout);
       });
-      if (currentClickTimeout) {
-        clearTimeout(currentClickTimeout);
-      }
-      if (currentHoverDelay) {
-        clearTimeout(currentHoverDelay);
-      }
     };
   }, []);
 
@@ -285,23 +241,19 @@ const Header = () => {
     const handleResize = () => {
       if (window.innerWidth > 992 && mobileMenuOpen) {
         setMobileMenuOpen(false);
+        setActiveDropdown(null);
         document.body.style.overflow = "auto";
       }
     };
 
     window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, [mobileMenuOpen]);
 
   const renderDropdownItems = (items, isTwoColumn = false, dropdownKey) => {
     if (!Array.isArray(items)) return null;
 
-    // For mobile view, render all items in a single column with proper styling
     if (isMobile) {
-      // For technology dropdown in mobile, group by category
       if (dropdownKey === "technology") {
         const frontEndItems = items.filter(
           (item) => item.category === "Front End"
@@ -317,7 +269,7 @@ const Header = () => {
           <div className="mobile-dropdown-content">
             {frontEndItems.length > 0 && (
               <div className="mobile-category-section">
-                <h4 className="mobile-category-header">Front End</h4>
+                <h4 className="mobile-category-header">Front-End</h4>
                 <ul className="mobile-category-list">
                   {frontEndItems.map((item, subIndex) => {
                     const IconComponent = iconMap[item.icon];
@@ -337,10 +289,9 @@ const Header = () => {
                 </ul>
               </div>
             )}
-            
             {mobileItems.length > 0 && (
               <div className="mobile-category-section">
-                <h4 className="mobile-category-header">Mobile</h4>
+                <h4 className="mobile-category-header">Mobile App</h4>
                 <ul className="mobile-category-list">
                   {mobileItems.map((item, subIndex) => {
                     const IconComponent = iconMap[item.icon];
@@ -360,10 +311,9 @@ const Header = () => {
                 </ul>
               </div>
             )}
-            
             {backendItems.length > 0 && (
               <div className="mobile-category-section">
-                <h4 className="mobile-category-header">Backend</h4>
+                <h4 className="mobile-category-header">Back-End</h4>
                 <ul className="mobile-category-list">
                   {backendItems.map((item, subIndex) => {
                     const IconComponent = iconMap[item.icon];
@@ -383,10 +333,9 @@ const Header = () => {
                 </ul>
               </div>
             )}
-            
             {ecommerceItems.length > 0 && (
               <div className="mobile-category-section">
-                <h4 className="mobile-category-header">Ecommerce</h4>
+                <h4 className="mobile-category-header">E-commerce</h4>
                 <ul className="mobile-category-list">
                   {ecommerceItems.map((item, subIndex) => {
                     const IconComponent = iconMap[item.icon];
@@ -406,7 +355,6 @@ const Header = () => {
                 </ul>
               </div>
             )}
-            
             {othersItems.length > 0 && (
               <div className="mobile-category-section">
                 <h4 className="mobile-category-header">Others / Miscellaneous</h4>
@@ -432,27 +380,29 @@ const Header = () => {
           </div>
         );
       }
-      
-      // For other dropdowns in mobile, render as simple list
-      return items.map((item, subIndex) => {
-        const IconComponent = iconMap[item.icon];
-        return (
-          <li key={subIndex}>
-            <Link
-              href={item.href}
-              onClick={handleDropdownItemClick}
-              className="mobile-dropdown-link"
-            >
-              {IconComponent && <IconComponent className="mobile-link-icon" />}
-              <span>{item.label}</span>
-            </Link>
-          </li>
-        );
-      });
+
+      // Updated mobile rendering for services and other dropdowns
+      return (
+        <ul className="mobile-simple-list">
+          {items.map((item, subIndex) => {
+            const IconComponent = iconMap[item.icon];
+            return (
+              <li key={subIndex}>
+                <Link
+                  href={item.href}
+                  onClick={handleDropdownItemClick}
+                  className="mobile-dropdown-link"
+                >
+                  {IconComponent && <IconComponent className="mobile-link-icon" />}
+                  <span>{item.label}</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      );
     }
 
-    // Desktop view logic remains the same
-    // For "Services" dropdown, render in two rows of six items each
     if (dropdownKey === "services") {
       const row1 = items.slice(0, 4);
       const row2 = items.slice(4);
@@ -490,7 +440,6 @@ const Header = () => {
               );
             })}
           </div>
-
           <div className="dropdown-row services-row">
             {row2.map((item, subIndex) => {
               const IconComponent = iconMap[item.icon];
@@ -526,7 +475,6 @@ const Header = () => {
       );
     }
 
-    // For "Technology" dropdown, render in five columns
     if (dropdownKey === "technology") {
       const frontEndItems = items.filter(
         (item) => item.category === "Front End"
@@ -634,7 +582,6 @@ const Header = () => {
       );
     }
 
-    // For other two-column dropdowns (like "About"), keep the existing logic
     const midPoint = Math.ceil(items.length / 2);
     const leftColumn = items.slice(0, midPoint);
     const rightColumn = items.slice(midPoint);
@@ -774,13 +721,13 @@ const Header = () => {
                                   : ""
                               }`}
                               onClick={(event) =>
-                                handleIconClick(menu.dropdownKey, event)
+                                handleMenuItemClick(menu.dropdownKey, event)
                               }
                             />
                           </span>
                         </div>
                         {menu.dropdownKey && (
-                          <ul
+                          <div
                             className={`dropdown ${
                               activeDropdown === menu.dropdownKey
                                 ? "active"
@@ -806,7 +753,7 @@ const Header = () => {
                                 menu.dropdownKey === "technology",
                               menu.dropdownKey
                             )}
-                          </ul>
+                          </div>
                         )}
                       </li>
                     );

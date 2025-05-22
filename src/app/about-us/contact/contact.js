@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import SubHeader from "../../sub-header/page";
 import {
@@ -15,7 +15,13 @@ import Image from "next/image";
 import "./contact.css";
 import { sendContactForm } from "../../../utils/api";
 
-export default function Contact() {
+const packagePricing = {
+  starter: "USD 450",
+  standard: "USD 950",
+  professional: "USD 1500",
+};
+
+function ContactContent() {
   const searchParams = useSearchParams();
   const [isFromPackagePage, setIsFromPackagePage] = useState(false);
   
@@ -29,17 +35,10 @@ export default function Contact() {
     packageType: "",
     packagePrice: "",
   });
-  const [status, setStatus] = useState("");
+  const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const packagePricing = {
-    starter: "USD 450",
-    standard: "USD 950",
-    professional: "USD 1500",
-  };
-
   useEffect(() => {
-    // Check if user came from digital marketing packages page
     const fromPackage = searchParams.get('from') === 'package';
     const packageType = searchParams.get('package');
     
@@ -51,6 +50,8 @@ export default function Contact() {
         packagePrice: packagePricing[packageType],
         subject: `Digital Marketing Package Inquiry - ${packageType.charAt(0).toUpperCase() + packageType.slice(1)}`,
       }));
+      // Clear errors when package data is pre-filled
+      setErrors(prev => ({ ...prev, packageType: "", subject: "" }));
     }
   }, [searchParams]);
 
@@ -59,13 +60,53 @@ export default function Contact() {
     return emailRegex.test(email);
   };
 
+  const validateField = (name, value) => {
+    switch (name) {
+      case "name":
+        return value.trim() ? "" : "Name is required.";
+      case "email":
+        if (!value.trim()) return "Email is required.";
+        return validateEmail(value) ? "" : "Please enter a valid email address.";
+      case "subject":
+        return value.trim() ? "" : "Subject is required.";
+      case "message":
+        return value.trim() ? "" : "Message is required.";
+      case "notRobot":
+        return value ? "" : "Please verify that you are not a robot.";
+      case "packageType":
+        return isFromPackagePage && !value ? "Package type is required." : "";
+      case "phone":
+        return value && !/^\d+$/.test(value) ? "Phone number must contain only numbers." : "";
+      default:
+        return "";
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    Object.keys(formData).forEach((key) => {
+      const error = validateField(key, formData[key]);
+      if (error) newErrors[key] = error;
+    });
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
-    if (status) setStatus(""); // Clear status on input change
+    // Validate field on change
+    const error = validateField(name, type === "checkbox" ? checked : value);
+    setErrors((prev) => ({ ...prev, [name]: error }));
+  };
+
+  const handleBlur = (e) => {
+    const { name, value, type, checked } = e.target;
+    const error = validateField(name, type === "checkbox" ? checked : value);
+    setErrors((prev) => ({ ...prev, [name]: error }));
   };
 
   const handlePackageChange = (e) => {
@@ -75,6 +116,11 @@ export default function Contact() {
       packageType: selectedPackage,
       packagePrice: packagePricing[selectedPackage] || "",
       subject: selectedPackage ? `Digital Marketing Package Inquiry - ${selectedPackage.charAt(0).toUpperCase() + selectedPackage.slice(1)}` : prev.subject,
+    }));
+    setErrors((prev) => ({
+      ...prev,
+      packageType: validateField("packageType", selectedPackage),
+      subject: validateField("subject", selectedPackage ? `Digital Marketing Package Inquiry - ${selectedPackage.charAt(0).toUpperCase() + selectedPackage.slice(1)}` : prev.subject),
     }));
   };
 
@@ -87,24 +133,27 @@ export default function Contact() {
 
   const handlePhonePaste = (e) => {
     const pastedData = e.clipboardData.getData("text");
-    const numericData = pastedData.replace(/\D/g, ""); // Strip non-numeric characters
+    const numericData = pastedData.replace(/\D/g, "");
     setFormData((prev) => ({
       ...prev,
       phone: numericData,
     }));
-    e.preventDefault(); // Prevent the default paste behavior
+    setErrors((prev) => ({
+      ...prev,
+      phone: validateField("phone", numericData),
+    }));
+    e.preventDefault();
   };
 
   const createEmailTemplate = (data) => {
-    // Sanitize inputs
     const sanitizeInput = (input) => {
       if (!input) return "";
       return input
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#39;");
+        .replace(/&/g, "&")
+        .replace(/</g, "<")
+        .replace(/>/g, ">")
+        .replace(/"/g, "")
+        .replace(/'/g, "'");
     };
 
     const sanitizedName = sanitizeInput(data.name || "Not provided");
@@ -115,7 +164,6 @@ export default function Contact() {
     const sanitizedPackageType = sanitizeInput(data.packageType || "");
     const sanitizedPackagePrice = sanitizeInput(data.packagePrice || "");
 
-    // Enhanced HTML template for package inquiries
     const packageRows = isFromPackagePage && data.packageType ? `
           <tr>
             <td><strong>Package Type:</strong></td>
@@ -183,7 +231,6 @@ export default function Contact() {
 </html>
     `.trim();
 
-    // Plain text fallback
     const packageText = isFromPackagePage && data.packageType ? `
 Package Type: ${sanitizedPackageType.charAt(0).toUpperCase() + sanitizedPackageType.slice(1)}
 Package Price: ${sanitizedPackagePrice}` : '';
@@ -207,36 +254,8 @@ Message: ${sanitizedMessage}
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setStatus("");
 
-    // Validate inputs
-    if (!formData.name || !formData.email || !formData.message) {
-      setStatus("Please fill in all required fields.");
-      setIsSubmitting(false);
-      return;
-    }
-
-    if (!validateEmail(formData.email)) {
-      setStatus("Please enter a valid email address.");
-      setIsSubmitting(false);
-      return;
-    }
-
-    if (formData.phone && !/^\d+$/.test(formData.phone)) {
-      setStatus("Phone number must contain only numbers.");
-      setIsSubmitting(false);
-      return;
-    }
-
-    if (!formData.notRobot) {
-      setStatus("Please verify that you are not a robot.");
-      setIsSubmitting(false);
-      return;
-    }
-
-    // Additional validation for package fields
-    if (isFromPackagePage && !formData.packageType) {
-      setStatus("Package information is missing. Please try again.");
+    if (!validateForm()) {
       setIsSubmitting(false);
       return;
     }
@@ -247,19 +266,6 @@ Message: ${sanitizedMessage}
       const formSubject = formData.subject 
         ? `Contact Form: ${formData.name} - ${formData.subject}`
         : `Contact Form: ${formData.name}`;
-
-      console.log("Submitting contact form with:", {
-        email: formData.email,
-        subject: formSubject,
-        message: emailContent.html,
-        text: emailContent.text,
-        formType: isFromPackagePage ? "package-inquiry" : "contact",
-        replyTo: formData.email,
-        packageDetails: isFromPackagePage ? {
-          type: formData.packageType,
-          price: formData.packagePrice
-        } : null,
-      });
 
       const result = await sendContactForm({
         email: formData.email,
@@ -275,7 +281,7 @@ Message: ${sanitizedMessage}
       });
 
       if (result.success) {
-        setStatus("Your message has been sent successfully!");
+        setErrors({});
         setFormData({
           name: "",
           email: "",
@@ -287,18 +293,27 @@ Message: ${sanitizedMessage}
           packagePrice: "",
         });
       } else {
-        setStatus(
-          result.message || "Failed to send your message. Please try again."
-        );
+        setErrors({ general: result.message || "Failed to send your message. Please try again." });
       }
     } catch (error) {
       console.error("Error submitting form:", error);
-      setStatus(
-        "Failed to send your message. Please try again or contact support@weboum.com."
-      );
+      setErrors({ general: "Failed to send your message. Please try again or contact support@weboum.com." });
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  // Determine if the form is valid to enable/disable the submit button
+  const isFormValid = () => {
+    return (
+      formData.name.trim() &&
+      validateEmail(formData.email) &&
+      formData.subject.trim() &&
+      formData.message.trim() &&
+      formData.notRobot &&
+      (!isFromPackagePage || formData.packageType) &&
+      (!formData.phone || /^\d+$/.test(formData.phone))
+    );
   };
 
   return (
@@ -313,7 +328,7 @@ Message: ${sanitizedMessage}
                 <>
                   Interested In Our Digital Marketing Package?
                   <br />
-                  Let&apos;s Get Started!
+                  Let&lsquo;s Get Started!
                 </>
               ) : (
                 <>
@@ -375,10 +390,16 @@ Message: ${sanitizedMessage}
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 required
                 aria-required="true"
                 disabled={isSubmitting}
               />
+              {errors.name && (
+                <div className="contact-error-message" role="alert">
+                  {errors.name}
+                </div>
+              )}
               
               <label htmlFor="email">Email*</label>
               <input
@@ -387,27 +408,38 @@ Message: ${sanitizedMessage}
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 required
                 aria-required="true"
                 disabled={isSubmitting}
               />
+              {errors.email && (
+                <div className="contact-error-message" role="alert">
+                  {errors.email}
+                </div>
+              )}
               
-              <label htmlFor="phone">Phone*</label>
+              <label htmlFor="phone">Phone</label>
               <input
                 type="tel"
                 id="phone"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 onKeyPress={handleNumericKeyPress}
                 onPaste={handlePhonePaste}
                 disabled={isSubmitting}
               />
+              {errors.phone && (
+                <div className="contact-error-message" role="alert">
+                  {errors.phone}
+                </div>
+              )}
 
-              {/* Package Fields - Only show when coming from package page */}
               {isFromPackagePage && (
                 <>
-                  <label htmlFor="packageType">Package Type</label>
+                  <label htmlFor="packageType">Package Type*</label>
                   <input
                     type="text"
                     id="packageType"
@@ -415,8 +447,13 @@ Message: ${sanitizedMessage}
                     value={formData.packageType ? `${formData.packageType.charAt(0).toUpperCase() + formData.packageType.slice(1)} Package` : ''}
                     readOnly
                     disabled
-                    style={{backgroundColor: '#f5f5f5', cursor: 'not-allowed'}}
+                    style={{ backgroundColor: '#f5f5f5', cursor: 'not-allowed' }}
                   />
+                  {errors.packageType && (
+                    <div className="contact-error-message" role="alert">
+                      {errors.packageType}
+                    </div>
+                  )}
 
                   <label htmlFor="packagePrice">Package Price</label>
                   <input
@@ -426,7 +463,7 @@ Message: ${sanitizedMessage}
                     value={formData.packagePrice}
                     readOnly
                     disabled
-                    style={{backgroundColor: '#f5f5f5', cursor: 'not-allowed'}}
+                    style={{ backgroundColor: '#f5f5f5', cursor: 'not-allowed' }}
                   />
                 </>
               )}
@@ -438,8 +475,16 @@ Message: ${sanitizedMessage}
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
+                onBlur={handleBlur}
+                required
+                aria-required="true"
                 disabled={isSubmitting}
               />
+              {errors.subject && (
+                <div className="contact-error-message" role="alert">
+                  {errors.subject}
+                </div>
+              )}
               
               <label htmlFor="message">Message*</label>
               <textarea
@@ -448,11 +493,17 @@ Message: ${sanitizedMessage}
                 rows="5"
                 value={formData.message}
                 onChange={handleChange}
+                onBlur={handleBlur}
                 required
                 aria-required="true"
                 disabled={isSubmitting}
                 placeholder={isFromPackagePage ? "Please describe your requirements and any questions about the selected package..." : "Your message..."}
               ></textarea>
+              {errors.message && (
+                <div className="contact-error-message" role="alert">
+                  {errors.message}
+                </div>
+              )}
               
               <div className="captcha-box">
                 <input
@@ -461,6 +512,7 @@ Message: ${sanitizedMessage}
                   name="notRobot"
                   checked={formData.notRobot}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   required
                   aria-required="true"
                   disabled={isSubmitting}
@@ -474,23 +526,19 @@ Message: ${sanitizedMessage}
                   height={40}
                 />
               </div>
-              
-              {status && (
-                <div
-                  className={
-                    status.includes("successfully")
-                      ? "contact-success-message"
-                      : status.includes("email")
-                      ? "contact-error-message contact-error-message-email"
-                      : "contact-error-message"
-                  }
-                  role="alert"
-                >
-                  {status}
+              {errors.notRobot && (
+                <div className="contact-error-message" role="alert">
+                  {errors.notRobot}
                 </div>
               )}
               
-              <button type="submit" disabled={isSubmitting}>
+              {errors.general && (
+                <div className="contact-success-message" role="alert">
+                  {errors.general}
+                </div>
+              )}
+              
+              <button type="submit" disabled={isSubmitting || !isFormValid()}>
                 {isSubmitting ? "Submitting..." : isFromPackagePage ? "Send Package Inquiry" : "Submit"}
               </button>
             </form>
@@ -499,5 +547,13 @@ Message: ${sanitizedMessage}
       </section>
       <Days />
     </>
+  );
+}
+
+export default function Contact() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ContactContent />
+    </Suspense>
   );
 }

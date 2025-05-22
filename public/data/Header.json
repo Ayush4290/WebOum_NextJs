@@ -81,7 +81,7 @@
       {
         "label": "Next JS",
         "href": "/services/web-developer",
-        "icon": "FaReact",
+        "icon": "SiNextdotjs",
         "category": "Front End"
       },
       {
@@ -96,12 +96,7 @@
         "icon": "FaVuejs",
         "category": "Front End"
       },
-      {
-        "label": "React Native",
-        "href": "/services/application-developer",
-        "icon": "FaReact",
-        "category": "Front End"
-      },
+     
       {
         "label": "Android",
         "href": "/services/application-developer",
@@ -124,6 +119,12 @@
         "label": "MAUI",
         "href": "/services/application-developer",
         "icon": "FaMobile",
+        "category": "Mobile"
+      },
+       {
+        "label": "React Native",
+        "href": "/services/application-developer",
+        "icon": "FaReact",
         "category": "Mobile"
       },
       {

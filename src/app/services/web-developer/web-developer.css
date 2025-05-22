@@ -111,7 +111,7 @@
 .features-row {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 150px;
+  margin: 0 0px;
 }
 
 .features-column {

@@ -4,18 +4,18 @@ import {
   FaExpandArrowsAlt,
   FaUsersCog,
   FaFileCode,
-  FaBolt,
-  FaLaptop,
-  FaCodeBranch,
-  FaProjectDiagram,
-  FaCog,
+  FaSearchengin,
+  FaLaptopCode,
+  FaCode,
+  FaBezierCurve,
+  FaCogs,
   FaSignInAlt,
-  FaMobileAlt,
-  FaServer,
+  FaBuromobelexperte,
+  FaDatabase,
   FaWindowMaximize,
-  FaTh,
-  FaShoppingCart,
-  FaArrowsAlt,
+  FaBorderNone,
+  FaLuggageCart,
+  FaCog,
   FaCheckCircle,
 } from "react-icons/fa";
 
@@ -34,18 +34,19 @@ const iconMap = {
   FaExpandArrowsAlt: FaExpandArrowsAlt,
   FaUsersCog: FaUsersCog,
   FaFileCode: FaFileCode,
-  FaBolt: FaBolt,
-  FaLaptop: FaLaptop,
-  FaCodeBranch: FaCodeBranch,
-  FaProjectDiagram: FaProjectDiagram,
-  FaCog: FaCog,
+  FaBolt: FaSearchengin,
+  FaLaptop: FaLaptopCode,
+
+  FaProjectDiagram: FaBezierCurve,
+  FaCodeBranch: FaCode,
+  FaCog: FaCogs,
   FaSignInAlt: FaSignInAlt,
-  FaMobileAlt: FaMobileAlt,
-  FaServer: FaServer,
-  FaWindowMaximize: FaWindowMaximize,
-  FaTh: FaTh,
-  FaShoppingCart: FaShoppingCart,
-  FaArrowsAlt: FaArrowsAlt,
+  FaMobileAlt: FaBuromobelexperte,
+  FaServer: FaDatabase,
+  FaWindowMaximize: FaLaptopCode,
+  FaTh: FaBorderNone,
+  FaShoppingCart: FaLuggageCart,
+  FaArrowsAlt: FaCog,
   FaCheckCircle: FaCheckCircle,
 };
 
@@ -144,7 +145,7 @@ export default function WebDevelopment() {
                 );
               })}
             </div>
-        </div>
+          </div>
         </div>
 
         {/* Process Section */}
@@ -212,7 +213,7 @@ export default function WebDevelopment() {
                     src={tech.image}
                     alt={`${tech.title} Logo`}
                     className="tech-logo"
-                     width={20}
+                    width={20}
                     height={30}
                   />
                   <div className="tech-title">{tech.title}</div>
