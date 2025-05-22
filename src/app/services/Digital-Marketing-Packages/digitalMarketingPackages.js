@@ -626,19 +626,28 @@ const DigitalMarketingPackages = () => {
               <div></div>
               <div></div>
               <div>
-                <a href="/about-us/contact" class="buy-now-btn">
+                <a
+                  href="/about-us/contact?from=package&package=starter"
+                  className="buy-now-btn"
+                >
                   Buy Now!
                 </a>
               </div>
 
               <div>
-                <a href="/about-us/contact" class="buy-now-btn">
+                <a
+                  href="/about-us/contact?from=package&package=standard"
+                  className="buy-now-btn"
+                >
                   Buy Now!
                 </a>
               </div>
 
               <div>
-                <a href="/about-us/contact" class="buy-now-btn">
+                <a
+                  href="/about-us/contact?from=package&package=professional"
+                  className="buy-now-btn"
+                >
                   Buy Now!
                 </a>
               </div>

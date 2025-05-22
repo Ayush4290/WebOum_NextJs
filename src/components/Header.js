@@ -203,7 +203,7 @@ const Header = () => {
     }
     clickTimeoutRef.current = setTimeout(() => {
       callback(menuKey, event);
-    }, 300);
+    }, 150); // Reduced timeout for better responsiveness
   };
 
   const handleMenuItemClick = (menuKey, event) => {
@@ -295,11 +295,145 @@ const Header = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [mobileMenuOpen]);
+
   const renderDropdownItems = (items, isTwoColumn = false, dropdownKey) => {
     if (!Array.isArray(items)) return null;
 
-    // For mobile view or non-two-column layouts, render as a list
-    if (isMobile || !isTwoColumn) {
+    // For mobile view, render all items in a single column with proper styling
+    if (isMobile) {
+      // For technology dropdown in mobile, group by category
+      if (dropdownKey === "technology") {
+        const frontEndItems = items.filter(
+          (item) => item.category === "Front End"
+        );
+        const mobileItems = items.filter((item) => item.category === "Mobile");
+        const backendItems = items.filter((item) => item.category === "Backend");
+        const ecommerceItems = items.filter(
+          (item) => item.category === "Ecommerce"
+        );
+        const othersItems = items.filter((item) => item.category === "Others");
+
+        return (
+          <div className="mobile-dropdown-content">
+            {frontEndItems.length > 0 && (
+              <div className="mobile-category-section">
+                <h4 className="mobile-category-header">Front End</h4>
+                <ul className="mobile-category-list">
+                  {frontEndItems.map((item, subIndex) => {
+                    const IconComponent = iconMap[item.icon];
+                    return (
+                      <li key={`front-end-${subIndex}`}>
+                        <Link
+                          href={item.href}
+                          onClick={handleDropdownItemClick}
+                          className="mobile-dropdown-link"
+                        >
+                          {IconComponent && <IconComponent className="mobile-link-icon" />}
+                          <span>{item.label}</span>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
+            
+            {mobileItems.length > 0 && (
+              <div className="mobile-category-section">
+                <h4 className="mobile-category-header">Mobile</h4>
+                <ul className="mobile-category-list">
+                  {mobileItems.map((item, subIndex) => {
+                    const IconComponent = iconMap[item.icon];
+                    return (
+                      <li key={`mobile-${subIndex}`}>
+                        <Link
+                          href={item.href}
+                          onClick={handleDropdownItemClick}
+                          className="mobile-dropdown-link"
+                        >
+                          {IconComponent && <IconComponent className="mobile-link-icon" />}
+                          <span>{item.label}</span>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
+            
+            {backendItems.length > 0 && (
+              <div className="mobile-category-section">
+                <h4 className="mobile-category-header">Backend</h4>
+                <ul className="mobile-category-list">
+                  {backendItems.map((item, subIndex) => {
+                    const IconComponent = iconMap[item.icon];
+                    return (
+                      <li key={`backend-${subIndex}`}>
+                        <Link
+                          href={item.href}
+                          onClick={handleDropdownItemClick}
+                          className="mobile-dropdown-link"
+                        >
+                          {IconComponent && <IconComponent className="mobile-link-icon" />}
+                          <span>{item.label}</span>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
+            
+            {ecommerceItems.length > 0 && (
+              <div className="mobile-category-section">
+                <h4 className="mobile-category-header">Ecommerce</h4>
+                <ul className="mobile-category-list">
+                  {ecommerceItems.map((item, subIndex) => {
+                    const IconComponent = iconMap[item.icon];
+                    return (
+                      <li key={`ecommerce-${subIndex}`}>
+                        <Link
+                          href={item.href}
+                          onClick={handleDropdownItemClick}
+                          className="mobile-dropdown-link"
+                        >
+                          {IconComponent && <IconComponent className="mobile-link-icon" />}
+                          <span>{item.label}</span>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
+            
+            {othersItems.length > 0 && (
+              <div className="mobile-category-section">
+                <h4 className="mobile-category-header">Others / Miscellaneous</h4>
+                <ul className="mobile-category-list">
+                  {othersItems.map((item, subIndex) => {
+                    const IconComponent = iconMap[item.icon];
+                    return (
+                      <li key={`others-${subIndex}`}>
+                        <Link
+                          href={item.href}
+                          onClick={handleDropdownItemClick}
+                          className="mobile-dropdown-link"
+                        >
+                          {IconComponent && <IconComponent className="mobile-link-icon" />}
+                          <span>{item.label}</span>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            )}
+          </div>
+        );
+      }
+      
+      // For other dropdowns in mobile, render as simple list
       return items.map((item, subIndex) => {
         const IconComponent = iconMap[item.icon];
         return (
@@ -307,19 +441,21 @@ const Header = () => {
             <Link
               href={item.href}
               onClick={handleDropdownItemClick}
-              className="dropdown-link"
+              className="mobile-dropdown-link"
             >
-              {IconComponent && <IconComponent />}
-              {item.label}
+              {IconComponent && <IconComponent className="mobile-link-icon" />}
+              <span>{item.label}</span>
             </Link>
           </li>
         );
       });
     }
+
+    // Desktop view logic remains the same
     // For "Services" dropdown, render in two rows of six items each
     if (dropdownKey === "services") {
-      const row1 = items.slice(0, 4); // First 6 items for the first row
-      const row2 = items.slice(4); // Remaining items for the second row
+      const row1 = items.slice(0, 4);
+      const row2 = items.slice(4);
 
       return (
         <>
@@ -392,7 +528,6 @@ const Header = () => {
 
     // For "Technology" dropdown, render in five columns
     if (dropdownKey === "technology") {
-      // Group items by category
       const frontEndItems = items.filter(
         (item) => item.category === "Front End"
       );
@@ -478,8 +613,6 @@ const Header = () => {
             })}
           </div>
           <div className="dropdown-column">
-            {" "}
-            {/* Changed from dropdown-columnttt to dropdown-column */}
             <h3 className="column-header">Others / Miscellaneous</h3>
             {othersItems.map((item, subIndex) => {
               const IconComponent = iconMap[item.icon];

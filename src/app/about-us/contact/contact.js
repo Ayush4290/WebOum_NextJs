@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import SubHeader from "../../sub-header/page";
 import {
   FaFacebookF,
@@ -15,6 +16,9 @@ import "./contact.css";
 import { sendContactForm } from "../../../utils/api";
 
 export default function Contact() {
+  const searchParams = useSearchParams();
+  const [isFromPackagePage, setIsFromPackagePage] = useState(false);
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,9 +26,33 @@ export default function Contact() {
     subject: "",
     message: "",
     notRobot: false,
+    packageType: "",
+    packagePrice: "",
   });
   const [status, setStatus] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const packagePricing = {
+    starter: "USD 450",
+    standard: "USD 950",
+    professional: "USD 1500",
+  };
+
+  useEffect(() => {
+    // Check if user came from digital marketing packages page
+    const fromPackage = searchParams.get('from') === 'package';
+    const packageType = searchParams.get('package');
+    
+    if (fromPackage && packageType && packagePricing[packageType]) {
+      setIsFromPackagePage(true);
+      setFormData(prev => ({
+        ...prev,
+        packageType: packageType,
+        packagePrice: packagePricing[packageType],
+        subject: `Digital Marketing Package Inquiry - ${packageType.charAt(0).toUpperCase() + packageType.slice(1)}`,
+      }));
+    }
+  }, [searchParams]);
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -38,6 +66,16 @@ export default function Contact() {
       [name]: type === "checkbox" ? checked : value,
     }));
     if (status) setStatus(""); // Clear status on input change
+  };
+
+  const handlePackageChange = (e) => {
+    const selectedPackage = e.target.value;
+    setFormData(prev => ({
+      ...prev,
+      packageType: selectedPackage,
+      packagePrice: packagePricing[selectedPackage] || "",
+      subject: selectedPackage ? `Digital Marketing Package Inquiry - ${selectedPackage.charAt(0).toUpperCase() + selectedPackage.slice(1)}` : prev.subject,
+    }));
   };
 
   const handleNumericKeyPress = (e) => {
@@ -74,21 +112,33 @@ export default function Contact() {
     const sanitizedPhone = sanitizeInput(data.phone || "Not provided");
     const sanitizedSubject = sanitizeInput(data.subject || "Not specified");
     const sanitizedMessage = sanitizeInput(data.message || "No message provided");
+    const sanitizedPackageType = sanitizeInput(data.packageType || "");
+    const sanitizedPackagePrice = sanitizeInput(data.packagePrice || "");
 
-    // Plain HTML5 table-based email template without CSS
+    // Enhanced HTML template for package inquiries
+    const packageRows = isFromPackagePage && data.packageType ? `
+          <tr>
+            <td><strong>Package Type:</strong></td>
+            <td>${sanitizedPackageType.charAt(0).toUpperCase() + sanitizedPackageType.slice(1)}</td>
+          </tr>
+          <tr>
+            <td><strong>Package Price:</strong></td>
+            <td>${sanitizedPackagePrice}</td>
+          </tr>` : '';
+
     const htmlContent = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>New Contact Form Submission</title>
+  <title>New Contact Form Submission${isFromPackagePage ? ' - Package Inquiry' : ''}</title>
 </head>
 <body>
   <table width="100%" border="0" cellpadding="10" cellspacing="0" align="center">
     <tr>
       <td align="center">
-        <h2>New Contact Form Submission</h2>
+        <h2>New Contact Form Submission${isFromPackagePage ? ' - Digital Marketing Package Inquiry' : ''}</h2>
       </td>
     </tr>
     <tr>
@@ -115,6 +165,7 @@ export default function Contact() {
             <td><strong>Subject:</strong></td>
             <td>${sanitizedSubject}</td>
           </tr>
+          ${packageRows}
           <tr>
             <td><strong>Message:</strong></td>
             <td>${sanitizedMessage.replace(/\n/g, "<br>")}</td>
@@ -133,13 +184,17 @@ export default function Contact() {
     `.trim();
 
     // Plain text fallback
+    const packageText = isFromPackagePage && data.packageType ? `
+Package Type: ${sanitizedPackageType.charAt(0).toUpperCase() + sanitizedPackageType.slice(1)}
+Package Price: ${sanitizedPackagePrice}` : '';
+
     const plainTextContent = `
 Contact Form Submission:
 ------------------------
 Name: ${sanitizedName}
 Email: ${sanitizedEmail}
 Phone: ${sanitizedPhone}
-Subject: ${sanitizedSubject}
+Subject: ${sanitizedSubject}${packageText}
 Message: ${sanitizedMessage}
     `.trim();
 
@@ -179,6 +234,13 @@ Message: ${sanitizedMessage}
       return;
     }
 
+    // Additional validation for package fields
+    if (isFromPackagePage && !formData.packageType) {
+      setStatus("Package information is missing. Please try again.");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
       const emailContent = createEmailTemplate(formData);
       
@@ -191,8 +253,12 @@ Message: ${sanitizedMessage}
         subject: formSubject,
         message: emailContent.html,
         text: emailContent.text,
-        formType: "contact",
+        formType: isFromPackagePage ? "package-inquiry" : "contact",
         replyTo: formData.email,
+        packageDetails: isFromPackagePage ? {
+          type: formData.packageType,
+          price: formData.packagePrice
+        } : null,
       });
 
       const result = await sendContactForm({
@@ -200,8 +266,12 @@ Message: ${sanitizedMessage}
         subject: formSubject,
         message: emailContent.html,
         text: emailContent.text,
-        formType: "contact",
+        formType: isFromPackagePage ? "package-inquiry" : "contact",
         replyTo: formData.email,
+        packageDetails: isFromPackagePage ? {
+          type: formData.packageType,
+          price: formData.packagePrice
+        } : null,
       });
 
       if (result.success) {
@@ -213,6 +283,8 @@ Message: ${sanitizedMessage}
           subject: "",
           message: "",
           notRobot: false,
+          packageType: "",
+          packagePrice: "",
         });
       } else {
         setStatus(
@@ -231,15 +303,25 @@ Message: ${sanitizedMessage}
 
   return (
     <>
-      <SubHeader title="Contact Us" />
+      <SubHeader title={isFromPackagePage ? "Digital Marketing Package Inquiry" : "Contact Us"} />
       <section className="approach-section">
         <div className="approach-row">
           <div className="approach-left">
             <p className="approach-title">WEBOUM – SEND US A MESSAGE</p>
             <h2 className="approach-heading">
-              Do You Have Any Questions?
-              <br />
-              We&apos;ll Be Happy To Assist!
+              {isFromPackagePage ? (
+                <>
+                  Interested In Our Digital Marketing Package?
+                  <br />
+                  Let&apos;s Get Started!
+                </>
+              ) : (
+                <>
+                  Do You Have Any Questions?
+                  <br />
+                  We&apos;ll Be Happy To Assist!
+                </>
+              )}
             </h2>
             <div className="approach-icons">
               <a
@@ -297,6 +379,7 @@ Message: ${sanitizedMessage}
                 aria-required="true"
                 disabled={isSubmitting}
               />
+              
               <label htmlFor="email">Email*</label>
               <input
                 type="email"
@@ -308,6 +391,7 @@ Message: ${sanitizedMessage}
                 aria-required="true"
                 disabled={isSubmitting}
               />
+              
               <label htmlFor="phone">Phone*</label>
               <input
                 type="tel"
@@ -319,6 +403,34 @@ Message: ${sanitizedMessage}
                 onPaste={handlePhonePaste}
                 disabled={isSubmitting}
               />
+
+              {/* Package Fields - Only show when coming from package page */}
+              {isFromPackagePage && (
+                <>
+                  <label htmlFor="packageType">Package Type</label>
+                  <input
+                    type="text"
+                    id="packageType"
+                    name="packageType"
+                    value={formData.packageType ? `${formData.packageType.charAt(0).toUpperCase() + formData.packageType.slice(1)} Package` : ''}
+                    readOnly
+                    disabled
+                    style={{backgroundColor: '#f5f5f5', cursor: 'not-allowed'}}
+                  />
+
+                  <label htmlFor="packagePrice">Package Price</label>
+                  <input
+                    type="text"
+                    id="packagePrice"
+                    name="packagePrice"
+                    value={formData.packagePrice}
+                    readOnly
+                    disabled
+                    style={{backgroundColor: '#f5f5f5', cursor: 'not-allowed'}}
+                  />
+                </>
+              )}
+              
               <label htmlFor="subject">Subject*</label>
               <input
                 type="text"
@@ -328,6 +440,7 @@ Message: ${sanitizedMessage}
                 onChange={handleChange}
                 disabled={isSubmitting}
               />
+              
               <label htmlFor="message">Message*</label>
               <textarea
                 id="message"
@@ -338,7 +451,9 @@ Message: ${sanitizedMessage}
                 required
                 aria-required="true"
                 disabled={isSubmitting}
+                placeholder={isFromPackagePage ? "Please describe your requirements and any questions about the selected package..." : "Your message..."}
               ></textarea>
+              
               <div className="captcha-box">
                 <input
                   type="checkbox"
@@ -359,6 +474,7 @@ Message: ${sanitizedMessage}
                   height={40}
                 />
               </div>
+              
               {status && (
                 <div
                   className={
@@ -373,8 +489,9 @@ Message: ${sanitizedMessage}
                   {status}
                 </div>
               )}
+              
               <button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? "Submitting..." : "Submit"}
+                {isSubmitting ? "Submitting..." : isFromPackagePage ? "Send Package Inquiry" : "Submit"}
               </button>
             </form>
           </div>

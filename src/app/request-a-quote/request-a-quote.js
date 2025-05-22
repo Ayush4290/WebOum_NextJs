@@ -24,7 +24,9 @@ export default function RequestAQuote() {
     stage: [],
     services_needed: [],
     development_stages_needed: [],
-    box: [], // Added new box section
+    box: [], // if Project Scope section ID is "box"
+    project_scope_do_you_want_us_to_identify_and_suggest_more_advanced_functionality_options: [], // Full Project Scope ID
+    project_scope: [], // Short Project Scope ID
     expected_budget: [],
     timeframe: [],
     start: [],
@@ -108,6 +110,8 @@ export default function RequestAQuote() {
       services_needed: [],
       development_stages_needed: [],
       box: [], // Reset box section
+      project_scope_do_you_want_us_to_identify_and_suggest_more_advanced_functionality_options: [], // Reset Project Scope
+      project_scope: [], // Reset Project Scope short ID
       expected_budget: [],
       timeframe: [],
       start: [],
@@ -393,9 +397,12 @@ Message: ${sanitizedFormData.message || "No message provided"}
 
   const handleTagSelection = (sectionName, value) => {
     setSelectedOptions((prev) => {
+      // FIXED: Added all possible Project Scope section IDs to single select fields
       const singleSelectFields = [
         "stage",
-        "box", // Added box to single select fields
+        "box", // if Project Scope section ID is "box"
+        "project_scope_do_you_want_us_to_identify_and_suggest_more_advanced_functionality_options", // Full Project Scope ID
+        "project_scope", // Short Project Scope ID
         "expected_budget",
         "timeframe",
         "start",
@@ -406,6 +413,7 @@ Message: ${sanitizedFormData.message || "No message provided"}
           [sectionName]: prev[sectionName].includes(value) ? [] : [value],
         };
       }
+      // For multi-select fields (including "box")
       const currentSelections = prev[sectionName] || [];
       return {
         ...prev,
@@ -499,9 +507,16 @@ Message: ${sanitizedFormData.message || "No message provided"}
                     .replace(/[\s:]+/g, "_")
                     .replace(/[^a-z0-9_]/g, "");
                   
+                  // Debug: Log section IDs to identify Project Scope section
+                  console.log("Section subtitle:", section.subtitle);
+                  console.log("Section ID:", sectionId);
+                  
+                  // FIXED: Updated single select logic to include Project Scope section
                   const isSingleSelect = [
                     "stage",
-                    "box",
+                    "box", // if Project Scope section ID is "box"
+                    "project_scope_do_you_want_us_to_identify_and_suggest_more_advanced_functionality_options", // Full Project Scope ID
+                    "project_scope", // Short Project Scope ID
                     "expected_budget",
                     "timeframe",
                     "start",

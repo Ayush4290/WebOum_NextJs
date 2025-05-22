@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
@@ -22,16 +21,16 @@ const Home = () => {
   const [formError, setFormError] = useState("");
   const [formSuccess, setFormSuccess] = useState("");
   const [isPageInitialized, setIsPageInitialized] = useState(false);
+  const [componentKey, setComponentKey] = useState(0); // Added to force re-render
 
   const portfolioRef = useRef(null);
   const testimonialRef = useRef(null);
   const sidebarRef = useRef(null);
   const router = useRouter();
 
-  // Improved initialization effect with navigation focus
+  // Initialize page and reset on navigation
   useEffect(() => {
-    // Force layout recalculation and reset states
-    const handleInitialization = () => {
+    const initializePage = () => {
       // Reset scroll position
       window.scrollTo({ top: 0, behavior: "auto" });
       
@@ -39,105 +38,37 @@ const Home = () => {
       setCurrentPortfolioIndex(0);
       setActiveTestimonial(0);
       
-      // Properly reset the sidebar
+      // Force re-render by updating component key
+      setComponentKey((prev) => prev + 1);
+      
+      // Initialize sidebar
       if (sidebarRef.current) {
-        // Force sidebar recalculation
-        sidebarRef.current.style.position = 'static';
-        
-        // Use RAF for smoother transitions
-        requestAnimationFrame(() => {
-          if (sidebarRef.current) {
-            sidebarRef.current.style.position = 'sticky';
-            setIsPageInitialized(true);
-          }
-        });
+        sidebarRef.current.style.position = "sticky";
+        sidebarRef.current.style.top = "80px";
       }
+      
+      setIsPageInitialized(true);
     };
-    
-    // Execute immediately on mount
-    handleInitialization();
-    
-    // Set up event listeners for page visibility and focus changes
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === 'visible') {
-        handleInitialization();
-      }
-    };
-    
-    const handleFocus = () => {
-      handleInitialization();
-    };
-    
-    // Add event listeners
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    window.addEventListener('focus', handleFocus);
-    
-    // Clean up effect
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-      window.removeEventListener('focus', handleFocus);
-    };
-  }, [router.pathname]);
 
-  // New effect to handle window resize
-  useEffect(() => {
-    const handleResize = () => {
-      // Recalculate sidebar on resize
-      if (sidebarRef.current) {
-        sidebarRef.current.style.position = 'static';
-        
-        requestAnimationFrame(() => {
-          if (sidebarRef.current) {
-            sidebarRef.current.style.position = 'sticky';
-          }
-        });
-      }
-    };
-    
-    window.addEventListener('resize', handleResize);
-    
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+    // Run initialization immediately
+    initializePage();
 
-  // New effect to handle navigation events
-  useEffect(() => {
+    // Handle route changes
     const handleRouteChange = () => {
-      setIsPageInitialized(false);
+      initializePage();
     };
 
-    const handleRouteComplete = () => {
-      // Reset sidebar on navigation complete
-      if (sidebarRef.current) {
-        sidebarRef.current.style.position = 'static';
-        
-        // Use timeout to ensure DOM is ready
-        setTimeout(() => {
-          if (sidebarRef.current) {
-            sidebarRef.current.style.position = 'sticky';
-            setIsPageInitialized(true);
-          }
-        }, 100);
-      }
-    };
-
-    // Register with router events if available
-    if (router && router.events) {
-      router.events.on('routeChangeStart', handleRouteChange);
-      router.events.on('routeChangeComplete', handleRouteComplete);
-    }
+    router.events?.on("routeChangeComplete", handleRouteChange);
 
     return () => {
-      if (router && router.events) {
-        router.events.off('routeChangeStart', handleRouteChange);
-        router.events.off('routeChangeComplete', handleRouteComplete);
-      }
+      router.events?.off("routeChangeComplete", handleRouteChange);
     };
   }, [router]);
 
   // Portfolio auto-scrolling
   useEffect(() => {
+    if (!isPageInitialized || !portfolioRef.current) return;
+
     const portfolioInterval = setInterval(() => {
       setCurrentPortfolioIndex((prev) =>
         prev === homeData.portfolio.all.length - 1 ? 0 : prev + 1
@@ -145,23 +76,24 @@ const Home = () => {
     }, 5000);
 
     return () => clearInterval(portfolioInterval);
-  }, []);
+  }, [isPageInitialized]);
 
   // Update portfolio scroll position
   useEffect(() => {
-    if (portfolioRef.current) {
-      const scrollPosition =
-        currentPortfolioIndex *
-          portfolioRef.current.children[0]?.offsetHeight || 0;
-      portfolioRef.current.scrollTo({
-        top: scrollPosition,
-        behavior: "smooth",
-      });
-    }
-  }, [currentPortfolioIndex]);
+    if (!isPageInitialized || !portfolioRef.current) return;
+
+    const scrollPosition =
+      currentPortfolioIndex * (portfolioRef.current.children[0]?.offsetHeight || 0);
+    portfolioRef.current.scrollTo({
+      top: scrollPosition,
+      behavior: "smooth",
+    });
+  }, [currentPortfolioIndex, isPageInitialized]);
 
   // Testimonial auto-scrolling
   useEffect(() => {
+    if (!isPageInitialized || !testimonialRef.current) return;
+
     const testimonialInterval = setInterval(() => {
       setActiveTestimonial((prev) =>
         prev === homeData.testimonials.length - 1 ? 0 : prev + 1
@@ -169,59 +101,77 @@ const Home = () => {
     }, 5000);
 
     return () => clearInterval(testimonialInterval);
-  }, []);
+  }, [isPageInitialized]);
 
   // Update testimonial scroll position
   useEffect(() => {
-    if (testimonialRef.current) {
-      const scrollPosition =
-        activeTestimonial * testimonialRef.current.children[0]?.offsetWidth ||
-        0;
-      testimonialRef.current.scrollTo({
-        left: scrollPosition,
-        behavior: "smooth",
-      });
-    }
-  }, [activeTestimonial]);
+    if (!isPageInitialized || !testimonialRef.current) return;
 
-  // New effect for scroll events to ensure sidebar functionality
+    const scrollPosition =
+      activeTestimonial * (testimonialRef.current.children[0]?.offsetWidth || 0);
+    testimonialRef.current.scrollTo({
+      left: scrollPosition,
+      behavior: "smooth",
+    });
+  }, [activeTestimonial, isPageInitialized]);
+
+  // Handle sidebar sticky behavior
   useEffect(() => {
+    if (!isPageInitialized || !sidebarRef.current) return;
+
     const handleScroll = () => {
-      // If sidebar element exists, ensure it has the proper CSS
-      if (sidebarRef.current && isPageInitialized) {
-        // Make sure scroll behavior works correctly by refreshing position property
-        const currentPosition = sidebarRef.current.style.position;
-        sidebarRef.current.style.position = 'static';
-        
-        // Force browser to recalculate
-        sidebarRef.current.offsetHeight;
-        
-        // Restore the sticky position
-        requestAnimationFrame(() => {
-          if (sidebarRef.current) {
-            sidebarRef.current.style.position = 'sticky';
+      if (sidebarRef.current) {
+        // Ensure sticky behavior
+        sidebarRef.current.style.position = "sticky";
+        sidebarRef.current.style.top = "80px";
+
+        // Check if sidebar is within services or portfolio section
+        const servicesSection = document.getElementById("services");
+        const portfolioSection = document.getElementById("portfolio");
+        if (servicesSection && portfolioSection) {
+          const servicesRect = servicesSection.getBoundingClientRect();
+          const portfolioRect = portfolioSection.getBoundingClientRect();
+          const sidebarRect = sidebarRef.current.getBoundingClientRect();
+          
+          // Adjust sidebar visibility or position if needed
+          if (servicesRect.top <= 80 && portfolioRect.bottom >= 80) {
+            sidebarRef.current.style.visibility = "visible";
           }
-        });
+        }
       }
     };
 
-    // Add scroll listener with throttling
-    let scrollTimeout = null;
-    const throttledScrollHandler = () => {
-      if (!scrollTimeout) {
-        scrollTimeout = setTimeout(() => {
+    // Throttle scroll for performance
+    let scrollTimer = null;
+    const throttledScroll = () => {
+      if (!scrollTimer) {
+        scrollTimer = setTimeout(() => {
           handleScroll();
-          scrollTimeout = null;
-        }, 200); // Throttle to once every 200ms
+          scrollTimer = null;
+        }, 100);
       }
     };
 
-    window.addEventListener('scroll', throttledScrollHandler, { passive: true });
-    
+    window.addEventListener("scroll", throttledScroll, { passive: true });
+
     return () => {
-      window.removeEventListener('scroll', throttledScrollHandler);
-      if (scrollTimeout) clearTimeout(scrollTimeout);
+      window.removeEventListener("scroll", throttledScroll);
+      if (scrollTimer) clearTimeout(scrollTimer);
     };
+  }, [isPageInitialized]);
+
+  // Handle window resize for sidebar
+  useEffect(() => {
+    if (!isPageInitialized || !sidebarRef.current) return;
+
+    const handleResize = () => {
+      sidebarRef.current.style.position = "sticky";
+      sidebarRef.current.style.top = "80px";
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
   }, [isPageInitialized]);
 
   const handleInputChange = (e) => {
@@ -285,15 +235,14 @@ const Home = () => {
     setIsSubmitting(true);
 
     try {
-      // Sanitize inputs
       const sanitizeInput = (input) => {
         if (!input) return "";
         return input
-          .replace(/&/g, "&")
-          .replace(/</g, "<")
-          .replace(/>/g, ">")
-          .replace(/"/g, "")
-          .replace(/'/g, "'");
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#x27;");
       };
 
       const sanitizedFormData = {
@@ -303,7 +252,6 @@ const Home = () => {
         message: sanitizeInput(formData.message || "No message provided"),
       };
 
-      // Plain HTML5 table-based email template without CSS
       const messageContent = `
 <!DOCTYPE html>
 <html lang="en">
@@ -356,7 +304,6 @@ const Home = () => {
 </html>
       `.trim();
 
-      // Plain text fallback
       const plainTextContent = `
 Contact Form Submission Details:
 ------------------------
@@ -368,15 +315,6 @@ Message: ${sanitizedFormData.message}
 
       const formSubject = `Home Page Contact: ${sanitizedFormData.name}`;
 
-      console.log("Submitting form with:", {
-        email: sanitizedFormData.email,
-        subject: formSubject,
-        message: messageContent,
-        text: plainTextContent,
-        formType: "consultation",
-        replyTo: sanitizedFormData.email,
-      });
-
       const result = await sendContactForm({
         email: sanitizedFormData.email,
         subject: formSubject,
@@ -385,8 +323,6 @@ Message: ${sanitizedFormData.message}
         formType: "consultation",
         replyTo: sanitizedFormData.email,
       });
-
-      console.log("Form submission result:", result);
 
       if (result.success) {
         setFormSuccess("Your message has been submitted successfully!");
@@ -420,14 +356,18 @@ Message: ${sanitizedFormData.message}
   };
 
   return (
-    <div className="home-page">
+    <div className="home-page" key={componentKey}>
       <HeroSection />
 
       <section id="services" className="services-section">
         <div className="container">
           <div className="row">
             <div className="sidebar-col">
-              <div className="sidebar" ref={sidebarRef}>
+              <div
+                className="sidebar"
+                ref={sidebarRef}
+                style={{ position: "sticky", top: "80px" }}
+              >
                 <a href="#services">Our Services</a>
                 <a href="#portfolio">Our Portfolio</a>
                 <a href="#why-choose-us">Why Choose Us</a>
@@ -457,9 +397,7 @@ Message: ${sanitizedFormData.message}
                         className="service-icon"
                         width={64}
                         height={64}
-                        onError={(e) =>
-                          (e.target.src = "/image/placeholder.jpg")
-                        }
+                        onError={(e) => (e.target.src = "/image/placeholder.jpg")}
                       />
                       <div>
                         <div className="service-title">{service.title}</div>
@@ -490,12 +428,10 @@ Message: ${sanitizedFormData.message}
                               width={800}
                               height={400}
                               style={{ width: "100%", height: "auto" }}
-                              onError={() => "/image/placeholder.jpg"}
+                              onError={(e) => (e.target.src = "/image/placeholder.jpg")}
                             />
                           </div>
-                          <div className="portfolio-text">
-                            {portfolio.title}
-                          </div>
+                          <div className="portfolio-text">{portfolio.title}</div>
                         </div>
                       ))}
                     </div>
@@ -525,9 +461,9 @@ Message: ${sanitizedFormData.message}
             Trusted software design, develop and digital marketing company
           </h5>
           <p className="why-lead">
-            In today&apos;s digital landscape, a strong online presence is no
-            longer a luxury—it&apos;s a necessity. Choosing the right partner to
-            guide you through this complex world is crucial. Here&apos;s why
+            In today's digital landscape, a strong online presence is no
+            longer a luxury—it's a necessity. Choosing the right partner to
+            guide you through this complex world is crucial. Here's why
             Weboum is the perfect choice for your business:
           </p>
 
@@ -540,7 +476,7 @@ Message: ${sanitizedFormData.message}
                   className="why-icon"
                   width={64}
                   height={64}
-                  onError={() => "/image/placeholder.jpg"}
+                  onError={(e) => (e.target.src = "/image/placeholder.jpg")}
                 />
                 <div>
                   <div className="why-card-title">{card.title}</div>
@@ -567,7 +503,7 @@ Message: ${sanitizedFormData.message}
             className="process-image"
             width={1200}
             height={400}
-            onError={() => "/image/placeholder.jpg"}
+            onError={(e) => (e.target.src = "/image/placeholder.jpg")}
           />
         </div>
       </section>
@@ -695,7 +631,7 @@ Message: ${sanitizedFormData.message}
                       className="testimonial-image"
                       width={100}
                       height={100}
-                      onError={() => "/image/placeholder.jpg"}
+                      onError={(e) => (e.target.src = "/image/placeholder.jpg")}
                     />
                     <h4 className="testimonial-name">{testimonial.name}</h4>
                     <p className="testimonial-position">{testimonial.title}</p>
@@ -724,7 +660,7 @@ Message: ${sanitizedFormData.message}
           <div className="cta-left">
             <h2 className="cta-heading">Contact Us to Grow Your Business!</h2>
             <p className="cta-text">
-              Let&apos;s discuss how we can help you achieve your goals.
+              Let's discuss how we can help you achieve your goals.
               Schedule a consultation to explore the best solutions for your
               needs.
             </p>
