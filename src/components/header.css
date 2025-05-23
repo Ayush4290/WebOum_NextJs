@@ -706,9 +706,12 @@
   }
 
   .menu-dropdown.services .dropdown li a svg {
+    display: inline-block; /* Ensure icons are not hidden */
     width: 20px;
     height: 20px;
     flex-shrink: 0;
+    fill: currentColor; /* Use the color defined in the parent link */
+    opacity: 1;
   }
 
   /* Technology Dropdown Mobile - FIXED */

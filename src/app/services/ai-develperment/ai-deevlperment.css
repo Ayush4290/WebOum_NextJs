@@ -51,15 +51,15 @@
 }
 
 .ai-development-btn.primary {
-  background-color: #007bff;
+  background-color: #0064e0;
   color: #fff;
   box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
   text-decoration: none;
 }
 
 .ai-development-btn.secondary {
-  background-color: #d2dbe4;
-  color:black;
+  background-color: #0064e0;
+  color:white;
   border: 2px solid #fff;
   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
     text-decoration: none;

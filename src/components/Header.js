@@ -280,7 +280,9 @@ const Header = () => {
                           onClick={handleDropdownItemClick}
                           className="mobile-dropdown-link"
                         >
-                          {IconComponent && <IconComponent className="mobile-link-icon" />}
+                          {IconComponent && (
+                            <IconComponent className="mobile-link-icon" />
+                          )}
                           <span>{item.label}</span>
                         </Link>
                       </li>
@@ -302,7 +304,9 @@ const Header = () => {
                           onClick={handleDropdownItemClick}
                           className="mobile-dropdown-link"
                         >
-                          {IconComponent && <IconComponent className="mobile-link-icon" />}
+                          {IconComponent && (
+                            <IconComponent className="mobile-link-icon" />
+                          )}
                           <span>{item.label}</span>
                         </Link>
                       </li>
@@ -324,7 +328,9 @@ const Header = () => {
                           onClick={handleDropdownItemClick}
                           className="mobile-dropdown-link"
                         >
-                          {IconComponent && <IconComponent className="mobile-link-icon" />}
+                          {IconComponent && (
+                            <IconComponent className="mobile-link-icon" />
+                          )}
                           <span>{item.label}</span>
                         </Link>
                       </li>
@@ -346,7 +352,9 @@ const Header = () => {
                           onClick={handleDropdownItemClick}
                           className="mobile-dropdown-link"
                         >
-                          {IconComponent && <IconComponent className="mobile-link-icon" />}
+                          {IconComponent && (
+                            <IconComponent className="mobile-link-icon" />
+                          )}
                           <span>{item.label}</span>
                         </Link>
                       </li>
@@ -368,7 +376,9 @@ const Header = () => {
                           onClick={handleDropdownItemClick}
                           className="mobile-dropdown-link"
                         >
-                          {IconComponent && <IconComponent className="mobile-link-icon" />}
+                          {IconComponent && (
+                            <IconComponent className="mobile-link-icon" />
+                          )}
                           <span>{item.label}</span>
                         </Link>
                       </li>
@@ -381,7 +391,7 @@ const Header = () => {
         );
       }
 
-      // Updated mobile rendering for services and other dropdowns
+      // Mobile rendering for Services and About dropdowns
       return (
         <ul className="mobile-simple-list">
           {items.map((item, subIndex) => {
@@ -393,7 +403,9 @@ const Header = () => {
                   onClick={handleDropdownItemClick}
                   className="mobile-dropdown-link"
                 >
-                  {IconComponent && <IconComponent className="mobile-link-icon" />}
+                  {IconComponent && (
+                    <IconComponent className="mobile-link-icon" />
+                  )}
                   <span>{item.label}</span>
                 </Link>
               </li>
@@ -444,7 +456,7 @@ const Header = () => {
             {row2.map((item, subIndex) => {
               const IconComponent = iconMap[item.icon];
               return (
-                <li key={subIndex + 6} className="service-item">
+                <li key={subIndex + 4} className="service-item">
                   <Link
                     href={item.href}
                     onClick={handleDropdownItemClick}
@@ -720,9 +732,6 @@ const Header = () => {
                                   ? "rotate"
                                   : ""
                               }`}
-                              onClick={(event) =>
-                                handleMenuItemClick(menu.dropdownKey, event)
-                              }
                             />
                           </span>
                         </div>

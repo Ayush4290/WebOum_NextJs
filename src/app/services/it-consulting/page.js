@@ -106,13 +106,7 @@ export default function ITConsulting() {
                 implementing compliant and future-proof security measures.
               </p>
             </div>
-            <div className="it-consulting-feature">
-              <h3>Transparent Pricing</h3>
-              <p>
-                Our flexible pricing models, including hourly and project-based
-                options, are transparent with no hidden fees.
-              </p>
-            </div>
+            
             <div className="it-consulting-feature">
               <h3>24/7 Support</h3>
               <p>

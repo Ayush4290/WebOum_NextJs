@@ -267,7 +267,7 @@
   
   .DigitalMarketing-cta a {
     display: inline-block;
-    background-color: #800080;
+    background-color: #0064e0;
     color: white;
     font-weight: bold;
     padding: 12px 24px;
@@ -276,9 +276,7 @@
     transition: background-color 0.3s;
   }
   
-  .DigitalMarketing-cta a:hover {
-    background-color: #660066;
-  }
+  
   
   /* Connect Section */
   .DigitalMarketing-connect-section {

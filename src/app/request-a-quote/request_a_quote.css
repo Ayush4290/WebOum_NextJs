@@ -170,7 +170,7 @@ display: flex;
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
-  background-color: #da228d;
+  background-color:#007bff;
   color: #fff;
   font-size: 1.3rem;
   cursor: pointer;
@@ -182,7 +182,7 @@ display: flex;
 }
 
 .requestaQuote-button.back {
-  background-color: #1d9329;
+  background-color: #007bff;
   font-size: 1.2rem;
 }
 

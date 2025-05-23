@@ -105,13 +105,7 @@ export default function Cybersecurity() {
                 security solutions, including firewalls and intrusion detection.
               </p>
             </div>
-            <div className="cybersecurity-box">
-              <h4>📊 Security Audits & Compliance</h4>
-              <p>
-                Our thorough audits ensure your business meets industry
-                standards and regulations, reducing risks and enhancing trust.
-              </p>
-            </div>
+        
           </div>
         </section>
 
