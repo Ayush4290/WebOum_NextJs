@@ -457,7 +457,7 @@
 }
 
 .btn-contact:hover {
-  background-color: var(--contact-btn-hover);
+  background-color: #00247d;
   color: rgb(255, 255, 255);
   transform: translateY(-3px);
   box-shadow: 0 4px 10px rgba(230, 0, 115, 0.3);
@@ -833,7 +833,7 @@
   }
 
   .btn-contact:hover {
-    background-color: var(--contact-btn-hover);
+    background-color: #00247d;
     transform: none;
     box-shadow: none;
   }
