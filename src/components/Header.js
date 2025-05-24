@@ -106,6 +106,8 @@ const Header = () => {
   const dropdownRefs = useRef({});
   const timeoutRefs = useRef({});
 
+  
+
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 992);
@@ -654,7 +656,7 @@ const Header = () => {
             })}
           </div>
           <div className="dropdown-column">
-            <h3 className="column-header">Mobile</h3>
+            <h3 className="column-header">Mobile App</h3>
             {mobileItems.map((item, subIndex) => {
               const IconComponent = iconMap[item.icon];
               return (
@@ -672,7 +674,7 @@ const Header = () => {
             })}
           </div>
           <div className="dropdown-column">
-            <h3 className="column-header">Backend</h3>
+            <h3 className="column-header">Back End</h3>
             {backendItems.map((item, subIndex) => {
               const IconComponent = iconMap[item.icon];
               return (
@@ -690,7 +692,7 @@ const Header = () => {
             })}
           </div>
           <div className="dropdown-column">
-            <h3 className="column-header">Ecommerce</h3>
+            <h3 className="column-header">E-Commerce</h3>
             {ecommerceItems.map((item, subIndex) => {
               const IconComponent = iconMap[item.icon];
               return (

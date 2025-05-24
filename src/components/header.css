@@ -1,3 +1,6 @@
+/* Add to the top of header.css */
+
+
 :root {
   --primary-gradient: linear-gradient(to right, #85005f, #1b0d1e);
   --primary-color: #85005f;
@@ -18,6 +21,7 @@
   position: relative;
   width: 100%;
   z-index: 1000;
+  
 }
 
 .main-container.fixed {
@@ -37,7 +41,6 @@
 
 .main-container.fixed .menu-link,
 .main-container.fixed .dropdown-link,
-.main-container.fixed .btn-contact,
 .main-container.fixed .menu-open .menu-link {
   color: #000;
 }
@@ -391,7 +394,7 @@
   color: #b41437; /* Angular */
 }
 .menu-dropdown.technology .dropdown li:nth-child(2) a svg {
-  color: #000000; /* Next.js */
+  color: #e91313; /* Next.js */
 }
 .menu-dropdown.technology .dropdown li:nth-child(3) a svg {
   color: #61dafb; /* React */
@@ -403,7 +406,7 @@
   color: #3ddc84; /* Android */
 }
 .menu-dropdown.technology .dropdown li:nth-child(6) a svg {
-  color: #000000; /* iOS */
+  color: #67b923; /* iOS */
 }
 .menu-dropdown.technology .dropdown li:nth-child(7) a svg {
   color: #007396; /* Java */
@@ -457,7 +460,7 @@
 }
 
 .btn-contact:hover {
-  background-color: #00247d;
+  background-color: #0064e0;
   color: rgb(255, 255, 255);
   transform: translateY(-3px);
   box-shadow: 0 4px 10px rgba(230, 0, 115, 0.3);
@@ -828,7 +831,7 @@
     width: calc(100% - 3rem);
     text-align: center;
     padding: 1rem;
-    background-color: #ff007f;
+    background-color: #0064e0;
     color: white;
     font-size: 16px;
     font-weight: 600;
@@ -840,7 +843,7 @@
   }
 
   .btn-contact:hover {
-    background-color: #00247d;
+    background-color: #0064e0;
     transform: none;
     box-shadow: none;
   }

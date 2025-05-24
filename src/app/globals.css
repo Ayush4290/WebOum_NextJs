@@ -368,7 +368,6 @@
 /* Contact Section */
 .contact-section {
   padding: 60px 20px;
-  min-height: 100vh;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -616,7 +615,7 @@ textarea.form-control {
 }
 
 .cta-button {
-  background-color: #00247d;
+  background-color: #0064e0;
   color: #ffffff;
   font-weight: bold;
   padding: 14px 32px;
