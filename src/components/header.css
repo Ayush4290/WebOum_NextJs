@@ -74,9 +74,9 @@
 }
 .logo-img
  {
-    height: auto;
-    width: 260px;
-    object-fit: contain;
+  height: auto;
+  width: 260px;
+  object-fit: contain;
 }
 
 .logo:hover .logo-img {
@@ -489,14 +489,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: white; /* Default color */
 }
 
-.hamburger-icon {
-  color: white;
+.main-container.fixed .hamburger-icon,
+.main-container.fixed .close-icon {
+  color: black; /* Change to black when header is fixed */
 }
 
-.close-icon {
-  color: white;
+@media (max-width: 992px) {
+  .hamburger-icon {
+    color: white;
+  }
+
+  .close-icon {
+    color: #000;
+  }
+
+  .main-container.fixed .hamburger-icon {
+    color: black;
+  }
 }
 
 .menu-overlay {
@@ -539,14 +551,6 @@
     width: 40px;
     height: 40px;
     margin-right: 0.5rem;
-  }
-
-  .hamburger-icon {
-    color: white;
-  }
-
-  .close-icon {
-    color: #000;
   }
 
   .menu {

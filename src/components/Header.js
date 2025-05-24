@@ -269,8 +269,29 @@ const Header = () => {
           <div className="mobile-dropdown-content">
             {frontEndItems.length > 0 && (
               <div className="mobile-category-section">
-                <h4 className="mobile-category-header">Front-End</h4>
-                <ul className="mobile-category-list">
+                <h4
+                  className="mobile-category-header"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveDropdown((prev) =>
+                      prev === "technology-front-end"
+                        ? null
+                        : "technology-front-end"
+                    );
+                  }}
+                >
+                  Front-End
+                  <BiCaretDown
+                    className={`mobile-category-icon ${
+                      activeDropdown === "technology-front-end" ? "rotate" : ""
+                    }`}
+                  />
+                </h4>
+                <ul
+                  className={`mobile-category-list ${
+                    activeDropdown === "technology-front-end" ? "active" : ""
+                  }`}
+                >
                   {frontEndItems.map((item, subIndex) => {
                     const IconComponent = iconMap[item.icon];
                     return (
@@ -293,8 +314,27 @@ const Header = () => {
             )}
             {mobileItems.length > 0 && (
               <div className="mobile-category-section">
-                <h4 className="mobile-category-header">Mobile App</h4>
-                <ul className="mobile-category-list">
+                <h4
+                  className="mobile-category-header"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveDropdown((prev) =>
+                      prev === "technology-mobile" ? null : "technology-mobile"
+                    );
+                  }}
+                >
+                  Mobile App
+                  <BiCaretDown
+                    className={`mobile-category-icon ${
+                      activeDropdown === "technology-mobile" ? "rotate" : ""
+                    }`}
+                  />
+                </h4>
+                <ul
+                  className={`mobile-category-list ${
+                    activeDropdown === "technology-mobile" ? "active" : ""
+                  }`}
+                >
                   {mobileItems.map((item, subIndex) => {
                     const IconComponent = iconMap[item.icon];
                     return (
@@ -317,8 +357,27 @@ const Header = () => {
             )}
             {backendItems.length > 0 && (
               <div className="mobile-category-section">
-                <h4 className="mobile-category-header">Back-End</h4>
-                <ul className="mobile-category-list">
+                <h4
+                  className="mobile-category-header"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveDropdown((prev) =>
+                      prev === "technology-backend" ? null : "technology-backend"
+                    );
+                  }}
+                >
+                  Back-End
+                  <BiCaretDown
+                    className={`mobile-category-icon ${
+                      activeDropdown === "technology-backend" ? "rotate" : ""
+                    }`}
+                  />
+                </h4>
+                <ul
+                  className={`mobile-category-list ${
+                    activeDropdown === "technology-backend" ? "active" : ""
+                  }`}
+                >
                   {backendItems.map((item, subIndex) => {
                     const IconComponent = iconMap[item.icon];
                     return (
@@ -341,8 +400,29 @@ const Header = () => {
             )}
             {ecommerceItems.length > 0 && (
               <div className="mobile-category-section">
-                <h4 className="mobile-category-header">E-commerce</h4>
-                <ul className="mobile-category-list">
+                <h4
+                  className="mobile-category-header"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveDropdown((prev) =>
+                      prev === "technology-ecommerce"
+                        ? null
+                        : "technology-ecommerce"
+                    );
+                  }}
+                >
+                  E-commerce
+                  <BiCaretDown
+                    className={`mobile-category-icon ${
+                      activeDropdown === "technology-ecommerce" ? "rotate" : ""
+                    }`}
+                  />
+                </h4>
+                <ul
+                  className={`mobile-category-list ${
+                    activeDropdown === "technology-ecommerce" ? "active" : ""
+                  }`}
+                >
                   {ecommerceItems.map((item, subIndex) => {
                     const IconComponent = iconMap[item.icon];
                     return (
@@ -365,8 +445,27 @@ const Header = () => {
             )}
             {othersItems.length > 0 && (
               <div className="mobile-category-section">
-                <h4 className="mobile-category-header">Others / Miscellaneous</h4>
-                <ul className="mobile-category-list">
+                <h4
+                  className="mobile-category-header"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveDropdown((prev) =>
+                      prev === "technology-others" ? null : "technology-others"
+                    );
+                  }}
+                >
+                  Others / Miscellaneous
+                  <BiCaretDown
+                    className={`mobile-category-icon ${
+                      activeDropdown === "technology-others" ? "rotate" : ""
+                    }`}
+                  />
+                </h4>
+                <ul
+                  className={`mobile-category-list ${
+                    activeDropdown === "technology-others" ? "active" : ""
+                  }`}
+                >
                   {othersItems.map((item, subIndex) => {
                     const IconComponent = iconMap[item.icon];
                     return (
@@ -391,7 +490,43 @@ const Header = () => {
         );
       }
 
-      // Mobile rendering for Services and About dropdowns
+      if (dropdownKey === "services") {
+        return (
+          <ul className="mobile-simple-list">
+            {items.map((item, subIndex) => {
+              const IconComponent = iconMap[item.icon];
+              return (
+                <li key={subIndex} className="service-item">
+                  <Link
+                    href={item.href}
+                    onClick={handleDropdownItemClick}
+                    className="mobile-dropdown-link service-link"
+                  >
+                    <div className="service-icon-container">
+                      {item.img ? (
+                        <Image
+                          src={item.img}
+                          alt={item.label}
+                          width={24}
+                          height={24}
+                          className="service-icon-image"
+                        />
+                      ) : (
+                        IconComponent && (
+                          <IconComponent className="mobile-link-icon" />
+                        )
+                      )}
+                    </div>
+                    <span>{item.label}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        );
+      }
+
+      // Mobile rendering for About and other dropdowns
       return (
         <ul className="mobile-simple-list">
           {items.map((item, subIndex) => {
